@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gemini Enterprise for Customer Exp
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:25:12 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:25:12 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:20:05 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:20:05 GMT
 - **Created:** Sun, 01 Mar 2026 00:25:12 GMT
 
 
@@ -18,6 +18,14 @@ Auto-generated client library for using the **Gemini Enterprise for Customer Exp
 
 ### `projects.locations`
 
+#### `projects.locations.get()`
+
+Gets information about a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Resource name for the location. |
+
 #### `projects.locations.list()`
 
 Lists information about the supported locations for this service. This method can be called in two ways:
@@ -28,70 +36,13 @@ Lists information about the supported locations for this service. This method ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `projects.locations.apps`
-
-#### `projects.locations.apps.patch()`
-
-Updates the specified app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The unique identifier of the app. Format: `projects/{project}/locations/{location}/apps/{app}` |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apps.get()`
 
@@ -101,14 +52,13 @@ Gets details of the specified app.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the app to retrieve. |
 
-#### `projects.locations.apps.create()`
+#### `projects.locations.apps.importApp()`
 
-Creates a new app in the given project and location.
+Imports the specified app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the location to create an app in. |
-| `params.appId` | `string` | No | Optional. The ID to use for the app, which will become the final component of the app's resource name. If not provided, a unique ID will be automatically assigned for the app. |
+| `params.parent` | `string` | Yes | Required. The parent resource name with the location of the app to import. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apps.retrieveToolSchema()`
@@ -129,13 +79,14 @@ Exports the specified app.
 | `params.name` | `string` | Yes | Required. The resource name of the app to export. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.importApp()`
+#### `projects.locations.apps.patch()`
 
-Imports the specified app.
+Updates the specified app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name with the location of the app to import. |
+| `params.name` | `string` | Yes | Identifier. The unique identifier of the app. Format: `projects/{project}/locations/{location}/apps/{app}` |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apps.executeTool()`
@@ -147,17 +98,27 @@ Executes the given tool with the given arguments.
 | `params.parent` | `string` | Yes | Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.apps.create()`
+
+Creates a new app in the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.appId` | `string` | No | Optional. The ID to use for the app, which will become the final component of the app's resource name. If not provided, a unique ID will be automatically assigned for the app. |
+| `params.parent` | `string` | Yes | Required. The resource name of the location to create an app in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.apps.list()`
 
 Lists apps in the given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the location to list apps from. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListApps call. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
 | `params.filter` | `string` | No | Optional. Filter to be applied when listing the apps. See https://google.aip.dev/160 for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the location to list apps from. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListApps call. |
 
 #### `projects.locations.apps.delete()`
 
@@ -168,119 +129,49 @@ Deletes the specified app.
 | `params.name` | `string` | Yes | Required. The resource name of the app to delete. |
 | `params.etag` | `string` | No | Optional. The current etag of the app. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app, deletion will be blocked and an ABORTED error will be returned. |
 
-### `projects.locations.apps.conversations`
+### `projects.locations.apps.changelogs`
 
-#### `projects.locations.apps.conversations.batchDelete()`
+#### `projects.locations.apps.changelogs.get()`
 
-Batch deletes the specified conversations.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.conversations.list()`
-
-Lists conversations in the given app.
+Gets the specified changelog.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListConversations call. |
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the conversations. See https://google.aip.dev/160 for more details. |
-| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field. |
-| `params.sources` | `string` | No | Optional. Indicate the sources of the conversations. If not set, all available sources will be applied by default. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list conversations from. |
+| `params.name` | `string` | Yes | Required. The resource name of the changelog to retrieve. |
 
-#### `projects.locations.apps.conversations.delete()`
+#### `projects.locations.apps.changelogs.list()`
 
-Deletes the specified conversation.
+Lists the changelogs of the specified app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. |
-| `params.name` | `string` | Yes | Required. The resource name of the conversation to delete. |
-
-#### `projects.locations.apps.conversations.get()`
-
-Gets details of the specified conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, all source will be searched. |
-| `params.name` | `string` | Yes | Required. The resource name of the conversation to retrieve. |
-
-### `projects.locations.apps.deployments`
-
-#### `projects.locations.apps.deployments.patch()`
-
-Updates the specified deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the deployment. Format: projects/{project}/locations/{location}/apps/{app}/deployments/{deployment} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.deployments.list()`
-
-Lists deployments in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}` |
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the changelogs. See https://google.aip.dev/160 for more details. The filter string can be used to filter by `action`, `resource_type`, `resource_name`, `author`, and `create_time`. The `:` comparator can be used for case-insensitive partial matching on string fields, while `=` performs an exact case-sensitive match. Examples: * `action:update` (case-insensitive partial match) * `action="Create"` (case-sensitive exact match) * `resource_type:agent` * `resource_name:my-agent` * `author:me@example.com` * `create_time > "2025-01-01T00:00:00Z"` * `create_time <= "2025-01-01T00:00:00Z" AND resource_type:tool` |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list changelogs from. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListChangelogs call. |
 | `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeployments` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 deployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
-#### `projects.locations.apps.deployments.create()`
-
-Creates a new deployment in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}` |
-| `params.deploymentId` | `string` | No | Optional. The ID to use for the deployment, which will become the final component of the deployment's resource name. If not provided, a unique ID will be automatically assigned for the deployment. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.deployments.get()`
-
-Gets details of the specified deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` |
-
-#### `projects.locations.apps.deployments.delete()`
-
-Deletes the specified deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.etag` | `string` | No | Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned. |
-| `params.name` | `string` | Yes | Required. The name of the deployment to delete. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` |
-
-### `projects.locations.apps.sessions`
-
-#### `projects.locations.apps.sessions.generateChatToken()`
-
-Generates a session scoped token for chat widget to authenticate with Session APIs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The session name to generate the chat token for. Format: projects/{project}/locations/{location}/apps/{app}/sessions/{session} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.sessions.runSession()`
-
-Initiates a single turn interaction with the CES agent within a session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.session` | `string` | Yes | Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 
 ### `projects.locations.apps.guardrails`
+
+#### `projects.locations.apps.guardrails.create()`
+
+Creates a new guardrail in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the app to create a guardrail in. |
+| `params.guardrailId` | `string` | No | Optional. The ID to use for the guardrail, which will become the final component of the guardrail's resource name. If not provided, a unique ID will be automatically assigned for the guardrail. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.guardrails.delete()`
+
+Deletes the specified guardrail.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.etag` | `string` | No | Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned. |
+| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the guardrail, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any apps/agents still reference the guardrail. * If `force = true`, all existing references from apps/agents will be removed and the guardrail will be deleted. |
+| `params.name` | `string` | Yes | Required. The resource name of the guardrail to delete. |
 
 #### `projects.locations.apps.guardrails.get()`
 
@@ -300,140 +191,192 @@ Updates the specified guardrail.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.guardrails.delete()`
-
-Deletes the specified guardrail.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the guardrail, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any apps/agents still reference the guardrail. * If `force = true`, all existing references from apps/agents will be removed and the guardrail will be deleted. |
-| `params.etag` | `string` | No | Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned. |
-| `params.name` | `string` | Yes | Required. The resource name of the guardrail to delete. |
-
-#### `projects.locations.apps.guardrails.create()`
-
-Creates a new guardrail in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.guardrailId` | `string` | No | Optional. The ID to use for the guardrail, which will become the final component of the guardrail's resource name. If not provided, a unique ID will be automatically assigned for the guardrail. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to create a guardrail in. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.apps.guardrails.list()`
 
 Lists guardrails in the given app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list guardrails from. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
 | `params.filter` | `string` | No | Optional. Filter to be applied when listing the guardrails. See https://google.aip.dev/160 for more details. |
 | `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListGuardrails call. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list guardrails from. |
 
-### `projects.locations.apps.examples`
+### `projects.locations.apps.toolsets`
 
-#### `projects.locations.apps.examples.get()`
+#### `projects.locations.apps.toolsets.retrieveTools()`
 
-Gets details of the specified example.
+Retrieve the list of tools included in the specified toolset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the example to retrieve. |
+| `params.toolset` | `string` | Yes | Required. The name of the toolset to retrieve the tools for. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.examples.patch()`
+#### `projects.locations.apps.toolsets.delete()`
 
-Updates the specified example.
+Deletes the specified toolset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the toolset to delete. |
+| `params.etag` | `string` | No | Optional. The current etag of the toolset. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the toolset, deletion will be blocked and an ABORTED error will be returned. |
+| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the toolset, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any agents still reference the toolset. * If `force = true`, all existing references from agents will be removed and the toolset will be deleted. |
+
+#### `projects.locations.apps.toolsets.list()`
+
+Lists toolsets in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the toolsets. See https://google.aip.dev/160 for more details. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list toolsets from. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListToolsets call. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+
+#### `projects.locations.apps.toolsets.patch()`
+
+Updates the specified toolset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.name` | `string` | Yes | Identifier. The unique identifier of the example. Format: `projects/{project}/locations/{location}/apps/{app}/examples/{example}` |
+| `params.name` | `string` | Yes | Identifier. The unique identifier of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.examples.delete()`
+#### `projects.locations.apps.toolsets.create()`
 
-Deletes the specified example.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the example to delete. |
-| `params.etag` | `string` | No | Optional. The current etag of the example. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the example, deletion will be blocked and an ABORTED error will be returned. |
-
-#### `projects.locations.apps.examples.list()`
-
-Lists examples in the given app.
+Creates a new toolset in the given app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the examples. See https://google.aip.dev/160 for more details. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListExamples call. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list examples from. |
+| `params.toolsetId` | `string` | No | Optional. The ID to use for the toolset, which will become the final component of the toolset's resource name. If not provided, a unique ID will be automatically assigned for the toolset. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to create a toolset in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.toolsets.get()`
+
+Gets details of the specified toolset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the toolset to retrieve. |
+
+### `projects.locations.apps.tools`
+
+#### `projects.locations.apps.tools.create()`
+
+Creates a new tool in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the app to create a tool in. |
+| `params.toolId` | `string` | No | Optional. The ID to use for the tool, which will become the final component of the tool's resource name. If not provided, a unique ID will be automatically assigned for the tool. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.tools.patch()`
+
+Updates the specified tool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the tool. Format: * `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is expected. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.tools.delete()`
+
+Deletes the specified tool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the tool, even if it is still referenced by agents/examples. * If `force = false`, the deletion will fail if any agents still reference the tool. * If `force = true`, all existing references from agents will be removed and the tool will be deleted. |
+| `params.name` | `string` | Yes | Required. The resource name of the tool to delete. |
+| `params.etag` | `string` | No | Optional. The current etag of the tool. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the tool, deletion will be blocked and an ABORTED error will be returned. |
+
+#### `projects.locations.apps.tools.list()`
+
+Lists tools in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the tools. Use "include_system_tools=true" to include system tools in the response. See https://google.aip.dev/160 for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list tools from. |
 | `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-
-#### `projects.locations.apps.examples.create()`
-
-Creates a new example in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the app to create an example in. |
-| `params.exampleId` | `string` | No | Optional. The ID to use for the example, which will become the final component of the example's resource name. If not provided, a unique ID will be automatically assigned for the example. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.apps.versions`
-
-#### `projects.locations.apps.versions.get()`
-
-Gets details of the specified app version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the app version to retrieve. |
-
-#### `projects.locations.apps.versions.restore()`
-
-Restores the specified app version. This will create a new app version from the current draft app and overwrite the current draft with the specified app version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the app version to restore. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.versions.list()`
-
-Lists all app versions in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the app versions. See https://google.aip.dev/160 for more details. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list app versions from. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListTools call. |
 
-#### `projects.locations.apps.versions.delete()`
+#### `projects.locations.apps.tools.get()`
 
-Deletes the specified app version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the app version to delete. |
-| `params.etag` | `string` | No | Optional. The current etag of the app version. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app version, deletion will be blocked and an ABORTED error will be returned. |
-
-#### `projects.locations.apps.versions.create()`
-
-Creates a new app version in the given app.
+Gets details of the specified tool.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the app to create an app version in. |
-| `params.appVersionId` | `string` | No | Optional. The ID to use for the app version, which will become the final component of the app version's resource name. If not provided, a unique ID will be automatically assigned for the app version. |
+| `params.name` | `string` | Yes | Required. The resource name of the tool to retrieve. |
+
+### `projects.locations.apps.deployments`
+
+#### `projects.locations.apps.deployments.get()`
+
+Gets details of the specified deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` |
+
+#### `projects.locations.apps.deployments.list()`
+
+Lists deployments in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeployments` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 deployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.parent` | `string` | Yes | Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}` |
+
+#### `projects.locations.apps.deployments.delete()`
+
+Deletes the specified deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment to delete. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` |
+| `params.etag` | `string` | No | Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned. |
+
+#### `projects.locations.apps.deployments.create()`
+
+Creates a new deployment in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.deploymentId` | `string` | No | Optional. The ID to use for the deployment, which will become the final component of the deployment's resource name. If not provided, a unique ID will be automatically assigned for the deployment. |
+| `params.parent` | `string` | Yes | Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.deployments.patch()`
+
+Updates the specified deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.apps.agents`
+
+#### `projects.locations.apps.agents.patch()`
+
+Updates the specified agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
+| `params.name` | `string` | Yes | Identifier. The unique identifier of the agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apps.agents.create()`
 
@@ -453,16 +396,6 @@ Gets details of the specified agent.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the agent to retrieve. |
 
-#### `projects.locations.apps.agents.patch()`
-
-Updates the specified agent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.name` | `string` | Yes | Identifier. The unique identifier of the agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.apps.agents.delete()`
 
 Deletes the specified agent.
@@ -470,8 +403,8 @@ Deletes the specified agent.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the agent, even if it is still referenced by other app/agents/examples. * If `force = false`, the deletion fails if other agents/examples reference it. * If `force = true`, delete the agent and remove it from all referencing apps/agents/examples. |
-| `params.etag` | `string` | No | Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned. |
 | `params.name` | `string` | Yes | Required. The resource name of the agent to delete. |
+| `params.etag` | `string` | No | Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned. |
 
 #### `projects.locations.apps.agents.list()`
 
@@ -479,143 +412,210 @@ Lists agents in the given app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.filter` | `string` | No | Optional. Filter to be applied when listing the agents. See https://google.aip.dev/160 for more details. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list agents from. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListAgents call. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list agents from. |
 
-### `projects.locations.apps.tools`
+### `projects.locations.apps.versions`
 
-#### `projects.locations.apps.tools.list()`
+#### `projects.locations.apps.versions.list()`
 
-Lists tools in the given app.
+Lists all app versions in the given app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list tools from. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the tools. Use "include_system_tools=true" to include system tools in the response. See https://google.aip.dev/160 for more details. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListTools call. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call. |
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the app versions. See https://google.aip.dev/160 for more details. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list app versions from. |
 
-#### `projects.locations.apps.tools.create()`
+#### `projects.locations.apps.versions.restore()`
 
-Creates a new tool in the given app.
+Restores the specified app version. This will create a new app version from the current draft app and overwrite the current draft with the specified app version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the app to create a tool in. |
-| `params.toolId` | `string` | No | Optional. The ID to use for the tool, which will become the final component of the tool's resource name. If not provided, a unique ID will be automatically assigned for the tool. |
+| `params.name` | `string` | Yes | Required. The resource name of the app version to restore. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.tools.patch()`
+#### `projects.locations.apps.versions.get()`
 
-Updates the specified tool.
+Gets details of the specified app version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The unique identifier of the tool. Format: - `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for ## standalone tools. `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only, they cannot be referenced directly where a tool is expected. |
+| `params.name` | `string` | Yes | Required. The resource name of the app version to retrieve. |
+
+#### `projects.locations.apps.versions.delete()`
+
+Deletes the specified app version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.etag` | `string` | No | Optional. The current etag of the app version. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app version, deletion will be blocked and an ABORTED error will be returned. |
+| `params.name` | `string` | Yes | Required. The resource name of the app version to delete. |
+
+#### `projects.locations.apps.versions.create()`
+
+Creates a new app version in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.appVersionId` | `string` | No | Optional. The ID to use for the app version, which will become the final component of the app version's resource name. If not provided, a unique ID will be automatically assigned for the app version. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to create an app version in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.apps.examples`
+
+#### `projects.locations.apps.examples.create()`
+
+Creates a new example in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.exampleId` | `string` | No | Optional. The ID to use for the example, which will become the final component of the example's resource name. If not provided, a unique ID will be automatically assigned for the example. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to create an example in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.examples.patch()`
+
+Updates the specified example.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The unique identifier of the example. Format: `projects/{project}/locations/{location}/apps/{app}/examples/{example}` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.tools.delete()`
+#### `projects.locations.apps.examples.delete()`
 
-Deletes the specified tool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the tool, even if it is still referenced by agents/examples. * If `force = false`, the deletion will fail if any agents still reference the tool. * If `force = true`, all existing references from agents will be removed and the tool will be deleted. |
-| `params.etag` | `string` | No | Optional. The current etag of the tool. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the tool, deletion will be blocked and an ABORTED error will be returned. |
-| `params.name` | `string` | Yes | Required. The resource name of the tool to delete. |
-
-#### `projects.locations.apps.tools.get()`
-
-Gets details of the specified tool.
+Deletes the specified example.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the tool to retrieve. |
+| `params.name` | `string` | Yes | Required. The resource name of the example to delete. |
+| `params.etag` | `string` | No | Optional. The current etag of the example. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the example, deletion will be blocked and an ABORTED error will be returned. |
 
-### `projects.locations.apps.changelogs`
+#### `projects.locations.apps.examples.list()`
 
-#### `projects.locations.apps.changelogs.get()`
-
-Gets the specified changelog.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the changelog to retrieve. |
-
-#### `projects.locations.apps.changelogs.list()`
-
-Lists the changelogs of the specified app.
+Lists examples in the given app.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list changelogs from. |
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the changelogs. See https://google.aip.dev/160 for more details. The filter string can be used to filter by `action`, `resource_type`, `resource_name`, `author`, and `create_time`. The `:` comparator can be used for case-insensitive partial matching on string fields, while `=` performs an exact case-sensitive match. Examples: * `action:update` (case-insensitive partial match) * `action="Create"` (case-sensitive exact match) * `resource_type:agent` * `resource_name:my-agent` * `author:me@example.com` * `create_time > "2025-01-01T00:00:00Z"` * `create_time <= "2025-01-01T00:00:00Z" AND resource_type:tool` |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListChangelogs call. |
-
-### `projects.locations.apps.toolsets`
-
-#### `projects.locations.apps.toolsets.create()`
-
-Creates a new toolset in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.toolsetId` | `string` | No | Optional. The ID to use for the toolset, which will become the final component of the toolset's resource name. If not provided, a unique ID will be automatically assigned for the toolset. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to create a toolset in. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.apps.toolsets.list()`
-
-Lists toolsets in the given app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filter to be applied when listing the toolsets. See https://google.aip.dev/160 for more details. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListToolsets call. |
-| `params.parent` | `string` | Yes | Required. The resource name of the app to list toolsets from. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListExamples call. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.orderBy` | `string` | No | Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list examples from. |
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the examples. See https://google.aip.dev/160 for more details. |
 
-#### `projects.locations.apps.toolsets.get()`
+#### `projects.locations.apps.examples.get()`
 
-Gets details of the specified toolset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the toolset to retrieve. |
-
-#### `projects.locations.apps.toolsets.delete()`
-
-Deletes the specified toolset.
+Gets details of the specified example.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.force` | `boolean` | No | Optional. Indicates whether to forcefully delete the toolset, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any agents still reference the toolset. * If `force = true`, all existing references from agents will be removed and the toolset will be deleted. |
-| `params.etag` | `string` | No | Optional. The current etag of the toolset. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the toolset, deletion will be blocked and an ABORTED error will be returned. |
-| `params.name` | `string` | Yes | Required. The resource name of the toolset to delete. |
+| `params.name` | `string` | Yes | Required. The resource name of the example to retrieve. |
 
-#### `projects.locations.apps.toolsets.retrieveTools()`
+### `projects.locations.apps.conversations`
 
-Retrieve the list of tools included in the specified toolset.
+#### `projects.locations.apps.conversations.get()`
+
+Gets details of the specified conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.toolset` | `string` | Yes | Required. The name of the toolset to retrieve the tools for. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` |
+| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, all source will be searched. |
+| `params.name` | `string` | Yes | Required. The resource name of the conversation to retrieve. |
+
+#### `projects.locations.apps.conversations.list()`
+
+Lists conversations in the given app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.sources` | `string` | No | Optional. Indicate the sources of the conversations. If not set, all available sources will be applied by default. |
+| `params.filter` | `string` | No | Optional. Filter to be applied when listing the conversations. See https://google.aip.dev/160 for more details. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list AgentService.ListConversations call. |
+| `params.parent` | `string` | Yes | Required. The resource name of the app to list conversations from. |
+| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field. |
+
+#### `projects.locations.apps.conversations.batchDelete()`
+
+Batch deletes the specified conversations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.apps.toolsets.patch()`
+#### `projects.locations.apps.conversations.delete()`
 
-Updates the specified toolset.
+Deletes the specified conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.name` | `string` | Yes | Identifier. The unique identifier of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` |
+| `params.name` | `string` | Yes | Required. The resource name of the conversation to delete. |
+| `params.source` | `string` | No | Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. |
+
+### `projects.locations.apps.sessions`
+
+#### `projects.locations.apps.sessions.generateChatToken()`
+
+Generates a session scoped token for chat widget to authenticate with Session APIs.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The session name to generate the chat token for. Format: projects/{project}/locations/{location}/apps/{app}/sessions/{session} |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.apps.sessions.runSession()`
+
+Initiates a single-turn interaction with the CES agent within a session.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.session` | `string` | Yes | Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
