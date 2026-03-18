@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE Hub API (version: v1beta1)** i
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:45:32 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:45:32 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:41:21 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:41:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:26 GMT
 
 
@@ -20,15 +20,19 @@ Auto-generated client library for using the **GKE Hub API (version: v1beta1)** i
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service.
+Lists information about the supported locations for this service. This method can be called in two ways:
+
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -40,20 +44,24 @@ Gets information about a location.
 
 ### `projects.locations.memberships`
 
-#### `projects.locations.memberships.generateConnectManifest()`
+#### `projects.locations.memberships.setIamPolicy()`
 
-Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly.
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.registry` | `string` | No | Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. |
-| `params.version` | `string` | No | Optional. The Connect agent version to use. Defaults to the most current version. |
-| `params.name` | `string` | Yes | Required. The Membership resource name the Agent will associate with, in the format `projects/*/locations/*/memberships/*`. |
-| `params.connectAgent.name` | `string` | No | Do not set. |
-| `params.isUpgrade` | `boolean` | No | Optional. If true, generate the resources for upgrade only. Some resources generated only for installation (e.g. secrets) will be excluded. |
-| `params.imagePullSecretContent` | `string` | No | Optional. The image pull secret content for the registry, if not public. |
-| `params.connectAgent.proxy` | `string` | No | Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. |
-| `params.connectAgent.namespace` | `string` | No | Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.memberships.generateExclusivityManifest()`
+
+GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are any differences between the versions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
+| `params.crManifest` | `string` | No | Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. |
+| `params.crdManifest` | `string` | No | Optional. The YAML manifest of the membership CRD retrieved by `kubectl get customresourcedefinitions membership`. Leave empty if the resource does not exist. |
 
 #### `projects.locations.memberships.validateExclusivity()`
 
@@ -61,28 +69,9 @@ ValidateExclusivity validates the state of exclusivity in the cluster. The valid
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
 | `params.crManifest` | `string` | No | Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. |
 | `params.intendedMembership` | `string` | No | Required. The intended membership name under the `parent`. This method only does validation in anticipation of a CreateMembership call with the same name. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
-
-#### `projects.locations.memberships.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.memberships.delete()`
-
-Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To unregister other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.force` | `boolean` | No | Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
 
 #### `projects.locations.memberships.getIamPolicy()`
 
@@ -99,20 +88,10 @@ Creates a new Membership. **This is currently only supported for GKE clusters on
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
 | `params.membershipId` | `string` | No | Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.memberships.generateExclusivityManifest()`
-
-GenerateExclusivityManifest generates the manifests to update the exclusivity artifacts in the cluster if needed. Exclusivity artifacts include the Membership custom resource definition (CRD) and the singleton Membership custom resource (CR). Combined with ValidateExclusivity, exclusivity artifacts guarantee that a Kubernetes cluster is only registered to a single GKE Hub. The Membership CRD is versioned, and may require conversion when the GKE Hub API server begins serving a newer version of the CRD and corresponding CR. The response will be the converted CRD and CR if there are any differences between the versions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.crdManifest` | `string` | No | Optional. The YAML manifest of the membership CRD retrieved by `kubectl get customresourcedefinitions membership`. Leave empty if the resource does not exist. |
-| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
-| `params.crManifest` | `string` | No | Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. |
 
 #### `projects.locations.memberships.patch()`
 
@@ -120,22 +99,19 @@ Updates an existing Membership.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one field path must be specified in this mask. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Required. The membership resource name in the format: `projects/[project_id]/locations/global/memberships/[membership_id]` |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one field path must be specified in this mask. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.memberships.list()`
+#### `projects.locations.memberships.testIamPermissions()`
 
-Lists Memberships in a given project and location.
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. |
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the regions. |
-| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING |
-| `params.orderBy` | `string` | No | Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.memberships.get()`
 
@@ -145,14 +121,42 @@ Gets the details of a Membership.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
 
-#### `projects.locations.memberships.setIamPolicy()`
+#### `projects.locations.memberships.delete()`
 
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To unregister other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. |
+
+#### `projects.locations.memberships.generateConnectManifest()`
+
+Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Membership resource name the Agent will associate with, in the format `projects/*/locations/*/memberships/*`. |
+| `params.registry` | `string` | No | Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. |
+| `params.imagePullSecretContent` | `string` | No | Optional. The image pull secret content for the registry, if not public. |
+| `params.connectAgent.namespace` | `string` | No | Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. |
+| `params.isUpgrade` | `boolean` | No | Optional. If true, generate the resources for upgrade only. Some resources generated only for installation (e.g. secrets) will be excluded. |
+| `params.connectAgent.name` | `string` | No | Do not set. |
+| `params.connectAgent.proxy` | `string` | No | Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. |
+| `params.version` | `string` | No | Optional. The Connect agent version to use. Defaults to the most current version. |
+
+#### `projects.locations.memberships.list()`
+
+Lists Memberships in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.orderBy` | `string` | No | Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the regions. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. |
+| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING |
 
 ### `projects.locations.operations`
 
@@ -179,10 +183,10 @@ Lists operations that match the specified filter in the request. If the server d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.cancel()`
 
