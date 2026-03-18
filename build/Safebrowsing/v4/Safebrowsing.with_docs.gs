@@ -18,6 +18,30 @@ class Safebrowsing {
     this._servicePath = '';
 
 
+    this.threatMatches = {};
+
+    /**
+     * Finds the threat entries that match the Safe Browsing lists.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
+
+    this.threatListUpdates = {};
+
+    /**
+     * Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
+
     this.encodedUpdates = {};
 
     /**
@@ -56,41 +80,6 @@ class Safebrowsing {
      */
     this.encodedFullHashes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedFullHashes/{encodedRequest}', 'GET', apiParams, clientConfig);
 
-    this.threatMatches = {};
-
-    /**
-     * Finds the threat entries that match the Safe Browsing lists.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
-
-    this.threatListUpdates = {};
-
-    /**
-     * Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
-
-    this.threatLists = {};
-
-    /**
-     * Lists the Safe Browsing threat lists available for download.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.threatLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatLists', 'GET', apiParams, clientConfig);
-
     this.threatHits = {};
 
     /**
@@ -102,6 +91,17 @@ class Safebrowsing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
+
+    this.threatLists = {};
+
+    /**
+     * Lists the Safe Browsing threat lists available for download.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.threatLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatLists', 'GET', apiParams, clientConfig);
   }
 
 /**
