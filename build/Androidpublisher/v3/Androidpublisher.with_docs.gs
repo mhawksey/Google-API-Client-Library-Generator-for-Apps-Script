@@ -396,6 +396,7 @@ class Androidpublisher {
     /**
      * Commits an app edit.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.changesInReviewBehavior - Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing.
      * @param {boolean} apiParams.changesNotSentForReview - When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed until they are explicitly sent for review from within the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review.
      * @param {string} apiParams.editId - (Required) Identifier of the edit.
      * @param {string} apiParams.packageName - (Required) Package name of the app.
@@ -1139,6 +1140,20 @@ class Androidpublisher {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.applications.deviceTierConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/applications/{packageName}/deviceTierConfigs', 'GET', apiParams, clientConfig);
+
+    this.applications.tracks = {};
+
+    this.applications.tracks.releases = {};
+
+    /**
+     * Returns the list of all releases for a given track. This excludes any releases that are obsolete.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.tracks.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/{+parent}/releases', 'GET', apiParams, clientConfig);
 
     this.monetization = {};
 
