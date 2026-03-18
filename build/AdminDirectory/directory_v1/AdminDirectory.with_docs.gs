@@ -54,7 +54,7 @@ class AdminDirectory {
      * @param {string} apiParams.orgUnitPath - The full path of the organizational unit (minus the leading `/`) or its unique ID.
      * @param {string} apiParams.pageToken - The `pageToken` query parameter is used to request the next page of query results. The follow-on request's `pageToken` query parameter is the `nextPageToken` from your previous response.
      * @param {string} apiParams.projection - Determines whether the response contains the full list of properties or only a subset.
-     * @param {string} apiParams.query - Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+     * @param {string} apiParams.query - Search string in the format given at [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
      * @param {string} apiParams.sortOrder - Whether to return results in ascending or descending order. Must be used with the `orderBy` parameter.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -133,7 +133,7 @@ class AdminDirectory {
      * Counts ChromeOS devices matching the request.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) Required. Immutable ID of the Google Workspace account.
-     * @param {string} apiParams.filter - Optional. Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/list-query-operators
+     * @param {string} apiParams.filter - Optional. Search string in the format given at [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators).
      * @param {boolean} apiParams.includeChildOrgunits - Optional. Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided.
      * @param {string} apiParams.orgUnitPath - Optional. The full path of the organizational unit (minus the leading `/`) or its unique ID.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -1337,7 +1337,7 @@ class AdminDirectory {
     this.users.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/directory/v1/users', 'POST', apiParams, clientConfig);
 
     /**
-     * Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature.
+     * Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
