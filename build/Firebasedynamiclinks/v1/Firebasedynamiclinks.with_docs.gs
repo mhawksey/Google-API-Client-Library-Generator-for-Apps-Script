@@ -45,18 +45,6 @@ class Firebasedynamiclinks {
     this.v1 = {};
 
     /**
-     * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.durationDays - The span of time requested in days.
-     * @param {string} apiParams.dynamicLink - (Required) Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
-     * @param {string} apiParams.sdkVersion - Google SDK version. Version takes the form "$major.$minor.$patch"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.v1.getLinkStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{dynamicLink}/linkStats', 'GET', apiParams, clientConfig);
-
-    /**
      * Get iOS strong/weak-match info for post-install attribution.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -75,6 +63,18 @@ class Firebasedynamiclinks {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.v1.reopenAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reopenAttribution', 'POST', apiParams, clientConfig);
+
+    /**
+     * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.durationDays - The span of time requested in days.
+     * @param {string} apiParams.dynamicLink - (Required) Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
+     * @param {string} apiParams.sdkVersion - Google SDK version. Version takes the form "$major.$minor.$patch"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.v1.getLinkStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{dynamicLink}/linkStats', 'GET', apiParams, clientConfig);
   }
 
 /**
