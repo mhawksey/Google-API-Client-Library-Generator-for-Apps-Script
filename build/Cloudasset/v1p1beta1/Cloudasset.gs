@@ -18,11 +18,11 @@ class Cloudasset {
     this._servicePath = '';
 
 
-    this.resources = {};
-    this.resources.searchAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+scope}/resources:searchAll', 'GET', apiParams, clientConfig);
-
     this.iamPolicies = {};
     this.iamPolicies.searchAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+scope}/iamPolicies:searchAll', 'GET', apiParams, clientConfig);
+
+    this.resources = {};
+    this.resources.searchAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+scope}/resources:searchAll', 'GET', apiParams, clientConfig);
   }
 
 /**
