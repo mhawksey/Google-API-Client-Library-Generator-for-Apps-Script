@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:08:20 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:23:09 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:09:30 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:09:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -428,6 +428,17 @@ Permanently deletes a folder. Only applicable to buckets with hierarchical names
 | `params.ifMetagenerationMatch` | `string` | No | If set, only deletes the folder if its metageneration matches this value. |
 | `params.ifMetagenerationNotMatch` | `string` | No | If set, only deletes the folder if its metageneration does not match this value. |
 
+#### `folders.deleteRecursive()`
+
+Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the bucket in which the folder resides. |
+| `params.folder` | `string` | Yes | Name of a folder. |
+| `params.ifMetagenerationMatch` | `string` | No | If set, only deletes the folder if its metageneration matches this value. |
+| `params.ifMetagenerationNotMatch` | `string` | No | If set, only deletes the folder if its metageneration does not match this value. |
+
 #### `folders.get()`
 
 Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled.
@@ -680,6 +691,7 @@ Concatenates a list of existing objects into a new object in the same bucket.
 | `params.destinationBucket` | `string` | Yes | Name of the bucket containing the source objects. The destination object is stored in this bucket. |
 | `params.destinationObject` | `string` | Yes | Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.destinationPredefinedAcl` | `string` | No | Apply a predefined set of access controls to the destination object. |
+| `params.dropContextGroups` | `string` | No | Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object. |
 | `params.ifGenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. |
 | `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current metageneration matches the given value. |
 | `params.kmsKeyName` | `string` | No | Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. |
@@ -825,6 +837,7 @@ Rewrites a source object to a destination object. Optionally overrides metadata.
 | `params.destinationKmsKeyName` | `string` | No | Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. |
 | `params.destinationObject` | `string` | Yes | Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.destinationPredefinedAcl` | `string` | No | Apply a predefined set of access controls to the destination object. |
+| `params.dropContextGroups` | `string` | No | Specifies which groups of Object Contexts from the source object should be dropped from the destination object. |
 | `params.ifGenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. |
 | `params.ifGenerationNotMatch` | `string` | No | Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object. |
 | `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the destination object's current metageneration matches the given value. |
