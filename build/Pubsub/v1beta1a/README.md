@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:05:35 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:05:35 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:00:38 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:00:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:48 GMT
 
 
@@ -14,87 +14,11 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## API Reference
 
-### `topics`
-
-#### `topics.publish()`
-
-Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `topics.publishBatch()`
-
-Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `topics.get()`
-
-Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.topic` | `string` | Yes | The name of the topic to get. |
-
-#### `topics.create()`
-
-Creates the given topic with the given name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `topics.delete()`
-
-Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.topic` | `string` | Yes | Name of the topic to delete. |
-
-#### `topics.list()`
-
-Lists matching topics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | Maximum number of topics to return. |
-| `params.pageToken` | `string` | No | The value obtained in the last ListTopicsResponse for continuation. |
-| `params.query` | `string` | No | A valid label query expression. |
-
 ### `subscriptions`
 
-#### `subscriptions.get()`
+#### `subscriptions.modifyPushConfig()`
 
-Gets the configuration details of a subscription.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.subscription` | `string` | Yes | The name of the subscription to get. |
-
-#### `subscriptions.delete()`
-
-Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.subscription` | `string` | Yes | The subscription to delete. |
-
-#### `subscriptions.acknowledge()`
-
-Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `subscriptions.create()`
-
-Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.
+Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -108,15 +32,55 @@ Pulls a single message from the server. If return_immediately is true, and no me
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `subscriptions.get()`
+
+Gets the configuration details of a subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.subscription` | `string` | Yes | The name of the subscription to get. |
+
+#### `subscriptions.create()`
+
+Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `subscriptions.acknowledge()`
+
+Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `subscriptions.list()`
 
 Lists matching subscriptions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The value obtained in the last ListSubscriptionsResponse for continuation. |
 | `params.query` | `string` | No | A valid label query expression. |
+| `params.pageToken` | `string` | No | The value obtained in the last ListSubscriptionsResponse for continuation. |
 | `params.maxResults` | `integer` | No | Maximum number of subscriptions to return. |
+
+#### `subscriptions.delete()`
+
+Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.subscription` | `string` | Yes | The subscription to delete. |
+
+#### `subscriptions.pullBatch()`
+
+Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.modifyAckDeadline()`
 
@@ -126,18 +90,54 @@ Modifies the Ack deadline for a message received from a pull request.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `subscriptions.modifyPushConfig()`
+### `topics`
 
-Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.
+#### `topics.publishBatch()`
+
+Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `topics.list()`
+
+Lists matching topics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.query` | `string` | No | A valid label query expression. |
+| `params.pageToken` | `string` | No | The value obtained in the last ListTopicsResponse for continuation. |
+| `params.maxResults` | `integer` | No | Maximum number of topics to return. |
+
+#### `topics.delete()`
+
+Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.topic` | `string` | Yes | Name of the topic to delete. |
+
+#### `topics.publish()`
+
+Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `subscriptions.pullBatch()`
+#### `topics.create()`
 
-Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.
+Creates the given topic with the given name.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `topics.get()`
+
+Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.topic` | `string` | Yes | The name of the topic to get. |
