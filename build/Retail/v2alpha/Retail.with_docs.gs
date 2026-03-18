@@ -21,16 +21,6 @@ class Retail {
     this.projects = {};
 
     /**
-     * Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the Retail API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.getRetailProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * The method enrolls a solution of type Retail Search into a project. The Recommendations AI solution type is enrolled by default when your project enables Retail API, so you don't need to call the enrollSolution method for recommendations.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.project - (Required) Required. Full resource name of parent. Format: `projects/{project_number_or_id}`
@@ -42,16 +32,6 @@ class Retail {
     this.projects.enrollSolution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+project}:enrollSolution', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all the retail API solutions the project has enrolled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent. Format: `projects/{project_number_or_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.listEnrolledSolutions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}:enrolledSolutions', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets the LoggingConfig of the requested project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Full LoggingConfig resource name. Format: projects/{project_number}/loggingConfig
@@ -60,6 +40,16 @@ class Retail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.getLoggingConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all the retail API solutions the project has enrolled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent. Format: `projects/{project_number_or_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.listEnrolledSolutions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}:enrolledSolutions', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the LoggingConfig of the requested project.
@@ -95,6 +85,16 @@ class Retail {
      */
     this.projects.updateAlertConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
+    /**
+     * Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the Retail API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.getRetailProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations = {};
 
     this.projects.locations.operations = {};
@@ -126,39 +126,28 @@ class Retail {
     this.projects.locations.catalogs = {};
 
     /**
-     * Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`. `Operation.metadata` is of type `ExportMetadata`.
+     * Updates the conversational search customization config for a given catalog.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.catalog - (Required) Required. Full resource name of the parent catalog. Expected format: `projects/*\/locations/*\/catalogs/*`
+     * @param {string} apiParams.catalog - (Required) Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided ConversationalSearchCustomizationConfig to update. If not set or empty, all supported fields are updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.exportAnalyticsMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}:exportAnalyticsMetrics', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.updateConversationalSearchCustomizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/conversationalSearchCustomizationConfig', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Lists all the Catalogs associated with the project.
+     * Updates the AttributesConfig. The catalog attributes in the request will be updated in the catalog, or inserted if they do not exist. Existing catalog attributes not included in the request will remain unchanged. Attributes that are assigned to products, but do not exist at the catalog level, are always included in the response. The product attribute is assigned default values for missing catalog attribute fields, e.g., searchable and dynamic facetable options.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Maximum number of Catalogs to return. If unspecified, defaults to 50. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT is returned.
-     * @param {string} apiParams.pageToken - A page token ListCatalogsResponse.next_page_token, received from a previous CatalogService.ListCatalogs call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CatalogService.ListCatalogs must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
-     * @param {string} apiParams.parent - (Required) Required. The account resource name with an associated location. If the caller does not have permission to list Catalogs under this location, regardless of whether or not this location exists, a PERMISSION_DENIED error is returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/catalogs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the Catalogs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Immutable. The fully qualified resource name of the catalog.
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided Catalog to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned.
+     * @param {string} apiParams.name - (Required) Required. Immutable. The fully qualified resource name of the attribute config. Format: `projects/*\/locations/*\/catalogs/*\/attributesConfig`
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided AttributesConfig to update. The following is the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.updateAttributesConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Set a specified branch id as default branch. API methods such as SearchService.Search, ProductService.GetProduct, ProductService.ListProducts will treat requests using "default_branch" to the actual branch id set as default. For example, if `projects/*\/locations/*\/catalogs/*\/branches/1` is set as default, setting SearchRequest.branch to `projects/*\/locations/*\/catalogs/*\/branches/default_branch` is equivalent to setting SearchRequest.branch to `projects/*\/locations/*\/catalogs/*\/branches/1`. Using multiple branches can be useful when developers would like to have a staging branch to test and verify for future usage. When it becomes ready, developers switch on the staging branch using this API while keeping using `projects/*\/locations/*\/catalogs/*\/branches/default_branch` as SearchRequest.branch to route the traffic to this staging branch. CAUTION: If you have live predict/search traffic, switching the default branch could potentially cause outages if the ID space of the new branch is very different from the old one. More specifically: * PredictionService will only return product IDs from branch {newBranch}. * SearchService will only return product IDs from branch {newBranch} (if branch is not explicitly set). * UserEventService will only join events with products from branch {newBranch}.
@@ -170,6 +159,29 @@ class Retail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.catalogs.setDefaultBranch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}:setDefaultBranch', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the CompletionConfigs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Immutable. Fully qualified name `projects/*\/locations/*\/catalogs/*\/completionConfig`
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided CompletionConfig to update. The following are the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported fields are updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.updateCompletionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`. `Operation.metadata` is of type `ExportMetadata`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.catalog - (Required) Required. Full resource name of the parent catalog. Expected format: `projects/*\/locations/*\/catalogs/*`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.exportAnalyticsMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}:exportAnalyticsMetrics', 'POST', apiParams, clientConfig);
 
     /**
      * Get which branch is currently default branch set by CatalogService.SetDefaultBranch method under a specified parent catalog.
@@ -192,38 +204,38 @@ class Retail {
     this.projects.locations.catalogs.getCompletionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the CompletionConfigs.
+     * Returns the conversational search customization config for a given catalog.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Immutable. Fully qualified name `projects/*\/locations/*\/catalogs/*\/completionConfig`
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided CompletionConfig to update. The following are the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported fields are updated.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.getConversationalSearchCustomizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}/conversationalSearchCustomizationConfig', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the Catalogs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Immutable. The fully qualified resource name of the catalog.
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided Catalog to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.updateCompletionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Gets an AttributesConfig.
+     * Manages overal generative question feature state -- enables toggling feature on and off.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.getAttributesConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the AttributesConfig. The catalog attributes in the request will be updated in the catalog, or inserted if they do not exist. Existing catalog attributes not included in the request will remain unchanged. Attributes that are assigned to products, but do not exist at the catalog level, are always included in the response. The product attribute is assigned default values for missing catalog attribute fields, e.g., searchable and dynamic facetable options.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Immutable. The fully qualified resource name of the attribute config. Format: `projects/*\/locations/*\/catalogs/*\/attributesConfig`
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided AttributesConfig to update. The following is the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are updated.
+     * @param {string} apiParams.catalog - (Required) Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided GenerativeQuestionsFeatureConfig to update. If not set or empty, all supported fields are updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.updateAttributesConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.updateGenerativeQuestionFeature = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/generativeQuestionFeature', 'PATCH', apiParams, clientConfig);
 
     /**
      * Completes the specified prefix with keyword suggestions. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
@@ -244,26 +256,26 @@ class Retail {
     this.projects.locations.catalogs.completeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}:completeQuery', 'GET', apiParams, clientConfig);
 
     /**
-     * Manages overal generative question feature state -- enables toggling feature on and off.
+     * Lists all the Catalogs associated with the project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.catalog - (Required) Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
-     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided GenerativeQuestionsFeatureConfig to update. If not set or empty, all supported fields are updated.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Maximum number of Catalogs to return. If unspecified, defaults to 50. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT is returned.
+     * @param {string} apiParams.pageToken - A page token ListCatalogsResponse.next_page_token, received from a previous CatalogService.ListCatalogs call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CatalogService.ListCatalogs must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
+     * @param {string} apiParams.parent - (Required) Required. The account resource name with an associated location. If the caller does not have permission to list Catalogs under this location, regardless of whether or not this location exists, a PERMISSION_DENIED error is returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.updateGenerativeQuestionFeature = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/generativeQuestionFeature', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/catalogs', 'GET', apiParams, clientConfig);
 
     /**
-     * Manages overal generative question feature state -- enables toggling feature on and off.
+     * Gets an AttributesConfig.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.catalog - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {string} apiParams.name - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.getGenerativeQuestionFeature = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/generativeQuestionFeature', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.getAttributesConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Allows management of individual questions.
@@ -278,26 +290,244 @@ class Retail {
     this.projects.locations.catalogs.updateGenerativeQuestion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/generativeQuestion', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Returns the conversational search customization config for a given catalog.
+     * Manages overal generative question feature state -- enables toggling feature on and off.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {string} apiParams.catalog - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.getConversationalSearchCustomizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}/conversationalSearchCustomizationConfig', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.getGenerativeQuestionFeature = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/generativeQuestionFeature', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.placements = {};
 
     /**
-     * Updates the conversational search customization config for a given catalog.
+     * Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.catalog - (Required) Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
-     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided ConversationalSearchCustomizationConfig to update. If not set or empty, all supported fields are updated.
+     * @param {string} apiParams.placement - (Required) Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.updateConversationalSearchCustomizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+catalog}/conversationalSearchCustomizationConfig', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.placements.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:search', 'POST', apiParams, clientConfig);
+
+    /**
+     * Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.placement - (Required) Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.placements.conversationalSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:conversationalSearch', 'POST', apiParams, clientConfig);
+
+    /**
+     * Makes a recommendation prediction.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.placement - (Required) Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.placements.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:predict', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.merchantCenterAccountLinks = {};
+
+    /**
+     * Creates a MerchantCenterAccountLink.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The branch resource where this MerchantCenterAccountLink will be created. Format: `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.merchantCenterAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/merchantCenterAccountLinks', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all MerchantCenterAccountLinks under the specified parent Catalog.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent Catalog of the resource. It must match this format: `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.merchantCenterAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/merchantCenterAccountLinks', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a MerchantCenterAccountLink. If the MerchantCenterAccountLink to delete does not exist, a NOT_FOUND error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Full resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.merchantCenterAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.models = {};
+
+    /**
+     * Gets a model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Model to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all the models linked to this event store.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListModels` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent for which to list models. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/models', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.dryRun - Optional. Whether to run a dry run to validate the request (without actually creating the model).
+     * @param {string} apiParams.parent - (Required) Required. The parent resource under which to create the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/models', 'POST', apiParams, clientConfig);
+
+    /**
+     * Pauses the training of an existing model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the model to pause. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:pause', 'POST', apiParams, clientConfig);
+
+    /**
+     * Update of model metadata. Only fields that currently can be updated are: `filtering_option` and `periodic_tuning_state`. If other values are provided, this API method ignores them.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
+     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided 'model' to update. If not set, by default updates all fields.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Tunes an existing model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the model to tune. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.tune = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:tune', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an existing model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Model to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Resumes the training of an existing model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the model to resume. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.models.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:resume', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.attributesConfig = {};
+
+    /**
+     * Removes the specified CatalogAttribute from the AttributesConfig. If the CatalogAttribute to remove does not exist, a NOT_FOUND error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.attributesConfig.removeCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:removeCatalogAttribute', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes all specified CatalogAttributes from the AttributesConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attributesConfig - (Required) Required. The attributes config resource shared by all catalog attributes being deleted. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.attributesConfig.batchRemoveCatalogAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:batchRemoveCatalogAttributes', 'POST', apiParams, clientConfig);
+
+    /**
+     * Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist, a NOT_FOUND error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.attributesConfig.replaceCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:replaceCatalogAttribute', 'POST', apiParams, clientConfig);
+
+    /**
+     * Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttribute to add already exists, an ALREADY_EXISTS error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.attributesConfig.addCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:addCatalogAttribute', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.completionData = {};
+
+    /**
+     * Bulk import of processed completion dataset. Request processing is asynchronous. Partial updating is not supported. The operation is successfully finished only after the imported suggestions are indexed successfully and ready for serving. The process takes hours. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The catalog which the suggestions dataset belongs to. Format: `projects/1234/locations/global/catalogs/default_catalog`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.completionData.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/completionData:import', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.generativeQuestions = {};
+
+    /**
+     * Returns all questions for a given catalog.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.generativeQuestions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/generativeQuestions', 'GET', apiParams, clientConfig);
 
     this.projects.locations.catalogs.operations = {};
 
@@ -378,26 +608,26 @@ class Retail {
     this.projects.locations.catalogs.branches.products = {};
 
     /**
-     * Creates a Product.
+     * Permanently deletes all selected Products under a branch. This process is asynchronous. If the request is valid, the removal will be enqueued and processed offline. Depending on the number of Products, this operation could take hours to complete. Before the operation completes, some Products may still be returned by ProductService.GetProduct or ProductService.ListProducts. Depending on the number of Products, this operation could take hours to complete. To get a sample of Products that would be deleted, set PurgeProductsRequest.force to false.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch`.
-     * @param {string} apiParams.productId - Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.branches.products.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products:purge', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets a Product.
+     * We recommend that you use the ProductService.RemoveLocalInventories method instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the removed place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Product does not exist, a NOT_FOUND error is returned.
+     * @param {string} apiParams.product - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.branches.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.removeFulfillmentPlaces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+product}:removeFulfillmentPlaces', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a list of Products.
@@ -413,52 +643,6 @@ class Retail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.catalogs.branches.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a Product.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - If set to true, and the Product is not found, a new Product will be created. In this situation, `update_mask` is ignored.
-     * @param {string} apiParams.name - (Required) Immutable. Full resource name of the product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided Product to update. The immutable and output only fields are NOT supported. If not set, all supported fields (the fields that are neither immutable nor output only) are updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. The attribute key can be updated by setting the mask path as "attributes.${key_name}". If a key name is present in the mask but not in the patching product from the request, this key will be deleted after the update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.branches.products.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a Product.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - This value only applies to the case when the target product is of type PRIMARY. When deleting a product of VARIANT/COLLECTION type, this value will be ignored. When set to true, the subsequent variant products will be deleted. When set to false, if the primary product has active variant products, an error will be returned.
-     * @param {string} apiParams.name - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to delete the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not exist, a NOT_FOUND error is returned. The Product to delete can neither be a Product.Type.COLLECTION Product member nor a Product.Type.PRIMARY Product with more than one variants. Otherwise, an INVALID_ARGUMENT error is returned. All inventory information for the named Product will be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.branches.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Permanently deletes all selected Products under a branch. This process is asynchronous. If the request is valid, the removal will be enqueued and processed offline. Depending on the number of Products, this operation could take hours to complete. Before the operation completes, some Products may still be returned by ProductService.GetProduct or ProductService.ListProducts. Depending on the number of Products, this operation could take hours to complete. To get a sample of Products that would be deleted, set PurgeProductsRequest.force to false.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.branches.products.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products:purge', 'POST', apiParams, clientConfig);
-
-    /**
-     * Bulk import of multiple Products. Request processing may be synchronous. Non-existing items are created. Note that it is possible for a subset of the Products to be successfully updated.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` If no updateMask is specified, requires products.create permission. If updateMask is specified, requires products.update permission.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.branches.products.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products:import', 'POST', apiParams, clientConfig);
 
     /**
      * Exports multiple Products.
@@ -483,26 +667,36 @@ class Retail {
     this.projects.locations.catalogs.branches.products.setInventory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:setInventory', 'POST', apiParams, clientConfig);
 
     /**
-     * We recommend that you use the ProductService.AddLocalInventories method instead of the ProductService.AddFulfillmentPlaces method. ProductService.AddLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the added place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.
+     * Gets a Product.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.product - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Product does not exist, a NOT_FOUND error is returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.branches.products.addFulfillmentPlaces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+product}:addFulfillmentPlaces', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * We recommend that you use the ProductService.RemoveLocalInventories method instead of the ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the removed place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.
+     * Bulk import of multiple Products. Request processing may be synchronous. Non-existing items are created. Note that it is possible for a subset of the Products to be successfully updated.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.product - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
+     * @param {string} apiParams.parent - (Required) Required. `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` If no updateMask is specified, requires products.create permission. If updateMask is specified, requires products.update permission.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.branches.products.removeFulfillmentPlaces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+product}:removeFulfillmentPlaces', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products:import', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a Product.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - This value only applies to the case when the target product is of type PRIMARY. When deleting a product of VARIANT/COLLECTION type, this value will be ignored. When set to true, the subsequent variant products will be deleted. When set to false, if the primary product has active variant products, an error will be returned.
+     * @param {string} apiParams.name - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to delete the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Product to delete does not exist, a NOT_FOUND error is returned. The Product to delete can neither be a Product.Type.COLLECTION Product member nor a Product.Type.PRIMARY Product with more than one variants. Otherwise, an INVALID_ARGUMENT error is returned. All inventory information for the named Product will be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.branches.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates local inventory information for a Product at a list of places, while respecting the last update timestamps of each inventory field. This process is asynchronous and does not require the Product to exist before updating inventory information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, updates are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. Local inventory information can only be modified using this method. ProductService.CreateProduct and ProductService.UpdateProduct has no effect on local inventories. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.
@@ -526,389 +720,87 @@ class Retail {
      */
     this.projects.locations.catalogs.branches.products.removeLocalInventories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+product}:removeLocalInventories', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.catalogs.attributesConfig = {};
-
     /**
-     * Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttribute to add already exists, an ALREADY_EXISTS error is returned.
+     * Creates a Product.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {string} apiParams.parent - (Required) Required. The parent catalog resource name, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch`.
+     * @param {string} apiParams.productId - Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.attributesConfig.addCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:addCatalogAttribute', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/products', 'POST', apiParams, clientConfig);
 
     /**
-     * Removes the specified CatalogAttribute from the AttributesConfig. If the CatalogAttribute to remove does not exist, a NOT_FOUND error is returned.
+     * We recommend that you use the ProductService.AddLocalInventories method instead of the ProductService.AddFulfillmentPlaces method. ProductService.AddLocalInventories achieves the same results but provides more fine-grained control over ingesting local inventory data. Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is asynchronous and does not require the Product to exist before updating fulfillment information. If the request is valid, the update will be enqueued and processed downstream. As a consequence, when a response is returned, the added place IDs are not immediately manifested in the Product queried by ProductService.GetProduct or ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the Operations associated with the stale updates will not be marked as done until being obsolete.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {string} apiParams.product - (Required) Required. Full resource name of Product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.attributesConfig.removeCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:removeCatalogAttribute', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.addFulfillmentPlaces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+product}:addFulfillmentPlaces', 'POST', apiParams, clientConfig);
 
     /**
-     * Removes all specified CatalogAttributes from the AttributesConfig.
+     * Updates a Product.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attributesConfig - (Required) Required. The attributes config resource shared by all catalog attributes being deleted. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
+     * @param {boolean} apiParams.allowMissing - If set to true, and the Product is not found, a new Product will be created. In this situation, `update_mask` is ignored.
+     * @param {string} apiParams.name - (Required) Immutable. Full resource name of the product, such as `projects/*\/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided Product to update. The immutable and output only fields are NOT supported. If not set, all supported fields (the fields that are neither immutable nor output only) are updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. The attribute key can be updated by setting the mask path as "attributes.${key_name}". If a key name is present in the mask but not in the patching product from the request, this key will be deleted after the update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.attributesConfig.batchRemoveCatalogAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:batchRemoveCatalogAttributes', 'POST', apiParams, clientConfig);
-
-    /**
-     * Replaces the specified CatalogAttribute in the AttributesConfig by updating the catalog attribute with the same CatalogAttribute.key. If the CatalogAttribute to replace does not exist, a NOT_FOUND error is returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attributesConfig - (Required) Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.attributesConfig.replaceCatalogAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+attributesConfig}:replaceCatalogAttribute', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.placements = {};
-
-    /**
-     * Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.placements.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:search', 'POST', apiParams, clientConfig);
-
-    /**
-     * Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.placements.conversationalSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:conversationalSearch', 'POST', apiParams, clientConfig);
-
-    /**
-     * Makes a recommendation prediction.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.placements.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:predict', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.servingConfigs = {};
-
-    /**
-     * Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:search', 'POST', apiParams, clientConfig);
-
-    /**
-     * Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.conversationalSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:conversationalSearch', 'POST', apiParams, clientConfig);
-
-    /**
-     * Makes a recommendation prediction.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.placement - (Required) Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:predict', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a FAILED_PRECONDITION error is returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {string} apiParams.servingConfigId - Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/servingConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the ServingConfig to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates a ServingConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/servingConfig/*`
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the ServingConfig to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all ServingConfigs linked to this catalog.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/servingConfigs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Enables a Control on the specified ServingConfig. The control is added in the last position of the list of controls it belongs to (e.g. if it's a facet spec control it will be applied in the last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS error if the control has already been applied. Returns a FAILED_PRECONDITION error if the addition could exceed maximum number of control allowed for that type of control.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.servingConfig - (Required) Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.addControl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+servingConfig}:addControl', 'POST', apiParams, clientConfig);
-
-    /**
-     * Disables a Control on the specified ServingConfig. The control is removed from the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.servingConfig - (Required) Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.servingConfigs.removeControl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+servingConfig}:removeControl', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.completionData = {};
-
-    /**
-     * Bulk import of processed completion dataset. Request processing is asynchronous. Partial updating is not supported. The operation is successfully finished only after the imported suggestions are indexed successfully and ready for serving. The process takes hours. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The catalog which the suggestions dataset belongs to. Format: `projects/1234/locations/global/catalogs/default_catalog`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.completionData.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/completionData:import', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.controls = {};
-
-    /**
-     * Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.controlId - Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
-     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent catalog. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.controls.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/controls', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Control to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.controls.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT is returned. If the Control to update does not exist, a NOT_FOUND error is returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/controls/*`
-     * @param {string} apiParams.updateMask - Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name If not set or empty, all supported fields are updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.controls.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets a Control.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Control to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.controls.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all Controls by their parent Catalog.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. * List controls that are used in a single ServingConfig: 'serving_config = "boosted_home_page_cvr"'
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.controls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/controls', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.generativeQuestions = {};
-
-    /**
-     * Returns all questions for a given catalog.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.generativeQuestions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/generativeQuestions', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.generativeQuestion = {};
-
-    /**
-     * Allows management of multiple questions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.generativeQuestion.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/generativeQuestion:batchUpdate', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.models = {};
-
-    /**
-     * Creates a new model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.dryRun - Optional. Whether to run a dry run to validate the request (without actually creating the model).
-     * @param {string} apiParams.parent - (Required) Required. The parent resource under which to create the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/models', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Model to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog}/models/{model_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Pauses the training of an existing model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the model to pause. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:pause', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resumes the training of an existing model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the model to resume. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:resume', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes an existing model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Model to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists all the models linked to this event store.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListModels` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The parent for which to list models. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/models', 'GET', apiParams, clientConfig);
-
-    /**
-     * Update of model metadata. Only fields that currently can be updated are: `filtering_option` and `periodic_tuning_state`. If other values are provided, this API method ignores them.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40.
-     * @param {string} apiParams.updateMask - Optional. Indicates which fields in the provided 'model' to update. If not set, by default updates all fields.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Tunes an existing model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the model to tune. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.catalogs.models.tune = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:tune', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.branches.products.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.catalogs.userEvents = {};
+
+    /**
+     * Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. `Operation.response` is of type `ImportResponse`. Note that it is possible for a subset of the items to be successfully inserted. `Operation.metadata` is of type `ImportMetadata`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. `projects/1234/locations/global/catalogs/default_catalog`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.userEvents.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:import', 'POST', apiParams, clientConfig);
+
+    /**
+     * Starts a user-event rejoin operation with latest product catalog. Events are not annotated with detailed product information for products that are missing from the catalog when the user event is ingested. These events are stored as unjoined events with limited usage on training and serving. You can use this method to start a join operation on specified events with the latest version of product catalog. You can also use this method to correct events joined with the wrong product catalog. A rejoin operation can take hours or days to complete.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.userEvents.rejoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:rejoin', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.userEvents.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:purge', 'POST', apiParams, clientConfig);
+
+    /**
+     * Exports user events. `Operation.response` is of type `ExportResponse`. `Operation.metadata` is of type `ExportMetadata`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of a Catalog. For example `projects/1234/locations/global/catalogs/default_catalog`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.userEvents.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:export', 'POST', apiParams, clientConfig);
 
     /**
      * Writes a single user event.
@@ -933,82 +825,190 @@ class Retail {
      */
     this.projects.locations.catalogs.userEvents.collect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:collect', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.catalogs.controls = {};
+
     /**
-     * Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.
+     * Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}`
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Control to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.controls.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a Control.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Control to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/controls/{control_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.controls.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all Controls by their parent Catalog.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. * List controls that are used in a single ServingConfig: 'serving_config = "boosted_home_page_cvr"'
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.controls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/controls', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a Control. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.controlId - Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
+     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent catalog. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.userEvents.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:purge', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.controls.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/controls', 'POST', apiParams, clientConfig);
 
     /**
-     * Bulk import of User events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. `Operation.response` is of type `ImportResponse`. Note that it is possible for a subset of the items to be successfully inserted. `Operation.metadata` is of type `ImportMetadata`.
+     * Updates a Control. Control cannot be set to a different oneof field, if so an INVALID_ARGUMENT is returned. If the Control to update does not exist, a NOT_FOUND error is returned.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. `projects/1234/locations/global/catalogs/default_catalog`
+     * @param {string} apiParams.name - (Required) Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/controls/*`
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name If not set or empty, all supported fields are updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.userEvents.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.controls.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.generativeQuestion = {};
 
     /**
-     * Exports user events. `Operation.response` is of type `ExportResponse`. `Operation.metadata` is of type `ExportMetadata`.
+     * Allows management of multiple questions.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of a Catalog. For example `projects/1234/locations/global/catalogs/default_catalog`
+     * @param {string} apiParams.parent - (Required) Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.userEvents.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:export', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.generativeQuestion.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/generativeQuestion:batchUpdate', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.servingConfigs = {};
 
     /**
-     * Starts a user-event rejoin operation with latest product catalog. Events are not annotated with detailed product information for products that are missing from the catalog when the user event is ingested. These events are stored as unjoined events with limited usage on training and serving. You can use this method to start a join operation on specified events with the latest version of product catalog. You can also use this method to correct events joined with the wrong product catalog. A rejoin operation can take hours or days to complete.
+     * Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalog, otherwise a FAILED_PRECONDITION error is returned.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`.
+     * @param {string} apiParams.parent - (Required) Required. Full resource name of parent. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
+     * @param {string} apiParams.servingConfigId - Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.userEvents.rejoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/userEvents:rejoin', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.merchantCenterAccountLinks = {};
+    this.projects.locations.catalogs.servingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/servingConfigs', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all MerchantCenterAccountLinks under the specified parent Catalog.
+     * Lists all ServingConfigs linked to this catalog.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent Catalog of the resource. It must match this format: `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The catalog resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.merchantCenterAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/merchantCenterAccountLinks', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.servingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/servingConfigs', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a MerchantCenterAccountLink.
+     * Performs a search. This feature is only available for users who have Retail Search enabled. Enable Retail Search on Cloud Console before using this feature.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The branch resource where this MerchantCenterAccountLink will be created. Format: `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
+     * @param {string} apiParams.placement - (Required) Required. The resource name of the Retail Search serving config, such as `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.merchantCenterAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/merchantCenterAccountLinks', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.servingConfigs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:search', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a MerchantCenterAccountLink. If the MerchantCenterAccountLink to delete does not exist, a NOT_FOUND error is returned.
+     * Deletes a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Full resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}`
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ServingConfig to delete. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.catalogs.merchantCenterAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.catalogs.servingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.placement - (Required) Required. The resource name of the search engine placement, such as `projects/*\/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*\/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.conversationalSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:conversationalSearch', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a ServingConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Immutable. Fully qualified name `projects/*\/locations/global/catalogs/*\/servingConfig/*`
+     * @param {string} apiParams.updateMask - Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ServingConfig to get. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Enables a Control on the specified ServingConfig. The control is added in the last position of the list of controls it belongs to (e.g. if it's a facet spec control it will be applied in the last position of servingConfig.facetSpecIds) Returns a ALREADY_EXISTS error if the control has already been applied. Returns a FAILED_PRECONDITION error if the addition could exceed maximum number of control allowed for that type of control.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.servingConfig - (Required) Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.addControl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+servingConfig}:addControl', 'POST', apiParams, clientConfig);
+
+    /**
+     * Makes a recommendation prediction.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.placement - (Required) Required. Full resource name of the format: `{placement=projects/*\/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*\/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+placement}:predict', 'POST', apiParams, clientConfig);
+
+    /**
+     * Disables a Control on the specified ServingConfig. The control is removed from the ServingConfig. Returns a NOT_FOUND error if the Control is not enabled for the ServingConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.servingConfig - (Required) Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.catalogs.servingConfigs.removeControl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+servingConfig}:removeControl', 'POST', apiParams, clientConfig);
 
     this.projects.operations = {};
 
