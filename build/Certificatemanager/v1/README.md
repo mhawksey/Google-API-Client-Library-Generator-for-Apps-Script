@@ -4,7 +4,7 @@ Auto-generated client library for using the **Certificate Manager API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:25:04 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:19:57 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:25:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:59 GMT
 
@@ -20,7 +20,11 @@ Auto-generated client library for using the **Certificate Manager API (version: 
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service.
+Lists information about the supported locations for this service. This method can be called in two ways:
+
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
