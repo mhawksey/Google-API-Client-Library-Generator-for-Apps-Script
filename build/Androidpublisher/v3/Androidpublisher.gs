@@ -187,6 +187,11 @@ class Androidpublisher {
     this.applications.deviceTierConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/applications/{packageName}/deviceTierConfigs/{deviceTierConfigId}', 'GET', apiParams, clientConfig);
     this.applications.deviceTierConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/applications/{packageName}/deviceTierConfigs', 'GET', apiParams, clientConfig);
 
+    this.applications.tracks = {};
+
+    this.applications.tracks.releases = {};
+    this.applications.tracks.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/{+parent}/releases', 'GET', apiParams, clientConfig);
+
     this.monetization = {};
     this.monetization.convertRegionPrices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidpublisher/v3/applications/{packageName}/pricing:convertRegionPrices', 'POST', apiParams, clientConfig);
 
