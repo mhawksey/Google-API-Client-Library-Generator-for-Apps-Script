@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:56:36 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:56:36 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:51:45 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:51:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **My Business Verifications API (ver
 ---
 
 ## API Reference
-
-### `verificationTokens`
-
-#### `verificationTokens.generate()`
-
-Generate a token for the provided location data to verify the location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations`
 
@@ -34,15 +24,6 @@ Gets the VoiceOfMerchant state.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the location. |
 
-#### `locations.verify()`
-
-Starts the verification process for a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `locations.fetchVerificationOptions()`
 
 Reports all eligible verification options for a location in a specific language.
@@ -50,6 +31,15 @@ Reports all eligible verification options for a location in a specific language.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location to verify. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `locations.verify()`
+
+Starts the verification process for a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.verifications`
@@ -69,6 +59,16 @@ List verifications of a location, ordered by create time.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
 | `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
 | `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
-| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
+
+### `verificationTokens`
+
+#### `verificationTokens.generate()`
+
+Generate a token for the provided location data to verify the location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
