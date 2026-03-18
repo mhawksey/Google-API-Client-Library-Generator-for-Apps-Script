@@ -375,20 +375,6 @@ class Youtube {
      */
     this.youtube.v3.liveChat.messages.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages/stream', 'GET', apiParams, clientConfig);
 
-    this.youtube.v3.videos = {};
-
-    /**
-     * Retrieves a batch of VideoStat resources, possibly filtered.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - Required. Return videos with the given ids.
-     * @param {string} apiParams.onBehalfOfContentOwner - Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.
-     * @param {string} apiParams.part - Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a `videoStat` resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set `**part=snippet**`, the API response will contain all of those properties.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.youtube.v3.videos.batchGetStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos:batchGetStats', 'GET', apiParams, clientConfig);
-
     this.i18nLanguages = {};
 
     /**
