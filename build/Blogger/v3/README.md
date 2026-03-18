@@ -4,7 +4,7 @@ Auto-generated client library for using the **Blogger API (version: v3)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:24:54 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:19:46 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:24:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:46 GMT
 
@@ -321,7 +321,7 @@ Gets a blog by id.
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
 | `params.maxPosts` | `integer` | No |  |
-| `params.view` | `string` | No |  |
+| `params.view` | `string` | No | Unspecified is interpreted as READER. |
 
 #### `blogs.getByUrl()`
 
@@ -330,7 +330,7 @@ Gets a blog by url.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.url` | `string` | Yes |  |
-| `params.view` | `string` | No |  |
+| `params.view` | `string` | No | Unspecified is interpreted as READER. |
 
 #### `blogs.listByUser()`
 
@@ -342,7 +342,7 @@ Lists blogs by user.
 | `params.fetchUserInfo` | `boolean` | No |  |
 | `params.role` | `string` | No |  |
 | `params.status` | `string` | No | Default value of status is LIVE. |
-| `params.view` | `string` | No |  |
+| `params.view` | `string` | No | Unspecified is interpreted as the user's role on the blog. |
 
 ### `blogUserInfos`
 
