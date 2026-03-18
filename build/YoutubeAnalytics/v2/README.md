@@ -4,7 +4,7 @@ Auto-generated client library for using the **YouTube Analytics API (version: v2
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:16:05 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:12:01 GMT
 - **Last Modified:** Thu, 01 Jan 2026 01:16:05 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:34 GMT
 
