@@ -23,17 +23,6 @@ class Datalineage {
     this.projects.locations = {};
 
     /**
-     * Retrieve information about LineageProcesses associated with specific links. LineageProcesses are transformation pipelines that result in data flowing from **source** to **target** assets. Links between assets represent this operation. If you have specific link names, you can use this method to verify which LineageProcesses contribute to creating those links. See the SearchLinks method for more information on how to retrieve link name. You can retrieve the LineageProcess information in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The project and location where you want to search.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.batchSearchLinkProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:batchSearchLinkProcesses', 'POST', apiParams, clientConfig);
-
-    /**
      * Creates new lineage events together with their parents: process and run. Updates the process and run if they already exist. Mapped from Open Lineage specification: https://github.com/OpenLineage/OpenLineage/blob/main/spec/OpenLineage.json.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The name of the project and its location that should own the process, run, and lineage event.
@@ -55,6 +44,17 @@ class Datalineage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.searchLinks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:searchLinks', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieve information about LineageProcesses associated with specific links. LineageProcesses are transformation pipelines that result in data flowing from **source** to **target** assets. Links between assets represent this operation. If you have specific link names, you can use this method to verify which LineageProcesses contribute to creating those links. See the SearchLinks method for more information on how to retrieve link name. You can retrieve the LineageProcess information in every project where you have the `datalineage.events.get` permission. The project provided in the URL is used for Billing and Quota.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The project and location where you want to search.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.batchSearchLinkProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:batchSearchLinkProcesses', 'POST', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
 
@@ -83,17 +83,6 @@ class Datalineage {
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    /**
      * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
@@ -103,28 +92,16 @@ class Datalineage {
      */
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.config = {};
-
     /**
-     * Get the Config for a given resource.
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. REQUIRED: The resource name of the config to be fetched. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.config.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Update the Config for a given resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config`
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.processes = {};
 
@@ -141,15 +118,28 @@ class Datalineage {
     this.projects.locations.processes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/processes', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the process with the specified name.
+     * Updates a process.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - If set to true and the process is not found, the request succeeds but the server doesn't perform any actions.
-     * @param {string} apiParams.name - (Required) Required. The name of the process to delete.
+     * @param {boolean} apiParams.allowMissing - If set to true and the process is not found, the request inserts it.
+     * @param {string} apiParams.name - (Required) Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
+     * @param {string} apiParams.requestId - Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
+     * @param {string} apiParams.updateMask - The list of fields to update. Currently not used. The whole message is updated.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.processes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.processes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets the details of the specified process.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the process to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * List processes in the given project and location. List order is descending by insertion time.
@@ -164,40 +154,29 @@ class Datalineage {
     this.projects.locations.processes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/processes', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the details of the specified process.
+     * Deletes the process with the specified name.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the process to get.
+     * @param {boolean} apiParams.allowMissing - If set to true and the process is not found, the request succeeds but the server doesn't perform any actions.
+     * @param {string} apiParams.name - (Required) Required. The name of the process to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.processes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.processes.runs = {};
 
     /**
-     * Updates a process.
+     * Creates a new run.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - If set to true and the process is not found, the request inserts it.
-     * @param {string} apiParams.name - (Required) Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
+     * @param {string} apiParams.parent - (Required) Required. The name of the process that should own the run.
      * @param {string} apiParams.requestId - Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-     * @param {string} apiParams.updateMask - The list of fields to update. Currently not used. The whole message is updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.processes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.processes.runs = {};
-
-    /**
-     * Gets the details of the specified run.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the run to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processes.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processes.runs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a run.
@@ -213,15 +192,14 @@ class Datalineage {
     this.projects.locations.processes.runs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes the run with the specified name.
+     * Gets the details of the specified run.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - If set to true and the run is not found, the request succeeds but the server doesn't perform any actions.
-     * @param {string} apiParams.name - (Required) Required. The name of the run to delete.
+     * @param {string} apiParams.name - (Required) Required. The name of the run to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.processes.runs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.processes.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists runs in the given project and location. List order is descending by `start_time`.
@@ -236,18 +214,29 @@ class Datalineage {
     this.projects.locations.processes.runs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new run.
+     * Deletes the run with the specified name.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the process that should own the run.
+     * @param {boolean} apiParams.allowMissing - If set to true and the run is not found, the request succeeds but the server doesn't perform any actions.
+     * @param {string} apiParams.name - (Required) Required. The name of the run to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processes.runs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.processes.runs.lineageEvents = {};
+
+    /**
+     * Creates a new lineage event.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The name of the run that should own the lineage event.
      * @param {string} apiParams.requestId - Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.processes.runs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.processes.runs.lineageEvents = {};
+    this.projects.locations.processes.runs.lineageEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'POST', apiParams, clientConfig);
 
     /**
      * Gets details of a specified lineage event.
@@ -272,18 +261,6 @@ class Datalineage {
     this.projects.locations.processes.runs.lineageEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new lineage event.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the run that should own the lineage event.
-     * @param {string} apiParams.requestId - Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processes.runs.lineageEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'POST', apiParams, clientConfig);
-
-    /**
      * Deletes the lineage event with the specified name.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.allowMissing - If set to true and the lineage event is not found, the request succeeds but the server doesn't perform any actions.
@@ -294,11 +271,7 @@ class Datalineage {
      */
     this.projects.locations.processes.runs.lineageEvents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations = {};
-
-    this.organizations.locations = {};
-
-    this.organizations.locations.config = {};
+    this.projects.locations.config = {};
 
     /**
      * Get the Config for a given resource.
@@ -308,7 +281,7 @@ class Datalineage {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.config.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.config.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Update the Config for a given resource.
@@ -319,7 +292,7 @@ class Datalineage {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.folders = {};
 
@@ -347,6 +320,33 @@ class Datalineage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.folders.locations.config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.locations = {};
+
+    this.organizations.locations.config = {};
+
+    /**
+     * Get the Config for a given resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. REQUIRED: The resource name of the config to be fetched. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.config.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update the Config for a given resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
