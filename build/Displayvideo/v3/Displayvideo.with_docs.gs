@@ -139,6 +139,41 @@ class Displayvideo {
      */
     this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
 
+    /**
+     * Creates an ad group ad.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroupAds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an ad group ad.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupAdId - (Required) Output only. The unique ID of the ad. Assigned by the system.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroupAds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes an ad group ad.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupAdId - (Required) Required. The ID of the ad to delete.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad belongs to.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroupAds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'DELETE', apiParams, clientConfig);
+
     this.advertisers.lineItems = {};
 
     /**
@@ -327,6 +362,17 @@ class Displayvideo {
     this.advertisers.adGroups.bulkListAdGroupAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions', 'GET', apiParams, clientConfig);
 
     /**
+     * Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad groups belong to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    /**
      * Gets an ad group.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to fetch.
@@ -350,6 +396,41 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new ad group. Returns the newly created ad group if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to delete.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group belongs to.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates an existing ad group. Returns the updated ad group if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Output only. The unique ID of the ad group. Assigned by the system.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'PATCH', apiParams, clientConfig);
 
     this.advertisers.adGroups.targetingTypes = {};
 
@@ -383,6 +464,32 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option will belong to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an assigned targeting option from an ad group. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option belongs to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
 
     this.advertisers.targetingTypes = {};
 
