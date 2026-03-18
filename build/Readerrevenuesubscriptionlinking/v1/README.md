@@ -4,8 +4,8 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:05:50 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:05:50 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:00:58 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:00:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:07 GMT
 
 
@@ -17,6 +17,23 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 ### `publications`
 
 ### `publications.readers`
+
+#### `publications.readers.get()`
+
+Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
+
+#### `publications.readers.delete()`
+
+Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
+| `params.force` | `boolean` | No | If set to true, any entitlements under the reader will also be purged. |
 
 #### `publications.readers.getEntitlements()`
 
@@ -35,20 +52,3 @@ Updates the reader entitlements for a publication reader. The entire reader enti
 | `params.name` | `string` | Yes | Output only. The resource name of the singleton. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Defaults to all fields. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `publications.readers.get()`
-
-Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
-
-#### `publications.readers.delete()`
-
-Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.force` | `boolean` | No | If set to true, any entitlements under the reader will also be purged. |
-| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
