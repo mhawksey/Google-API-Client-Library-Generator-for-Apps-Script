@@ -48,30 +48,6 @@ class Recaptchaenterprise {
      */
     this.projects.relatedaccountgroups.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships', 'GET', apiParams, clientConfig);
 
-    this.projects.assessments = {};
-
-    /**
-     * Annotates a previously created Assessment to provide additional information on whether the event turned out to be authentic or fraudulent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Assessment, in the format `projects/{project}/assessments/{assessment}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.assessments.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:annotate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates an Assessment of the likelihood an event is legitimate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the project in which the assessment is created, in the format `projects/{project}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.assessments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assessments', 'POST', apiParams, clientConfig);
-
     this.projects.firewallpolicies = {};
 
     /**
@@ -96,6 +72,16 @@ class Recaptchaenterprise {
     this.projects.firewallpolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Returns the specified firewall policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the requested policy, in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.firewallpolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates the specified firewall policy.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
@@ -106,16 +92,6 @@ class Recaptchaenterprise {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.firewallpolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Returns the specified firewall policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the requested policy, in the format `projects/{project}/firewallpolicies/{firewallpolicy}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.firewallpolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Reorders all firewall policies.
@@ -140,65 +116,27 @@ class Recaptchaenterprise {
      */
     this.projects.firewallpolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies', 'GET', apiParams, clientConfig);
 
-    this.projects.relatedaccountgroupmemberships = {};
-
-    /**
-     * Search group memberships related to a given account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.project - (Required) Required. The name of the project to search related account group memberships from. Specify the project name in the following format: `projects/{project}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.relatedaccountgroupmemberships.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/relatedaccountgroupmemberships:search', 'POST', apiParams, clientConfig);
-
     this.projects.keys = {};
 
     /**
-     * Returns the list of all keys that belong to a project.
+     * Returns the secret key related to the specified public key. You must use the legacy secret key only in a 3rd party integration with legacy reCAPTCHA.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of keys to return. Default is 10. Max limit is 1000.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous. ListKeysRequest, if any.
-     * @param {string} apiParams.parent - (Required) Required. The name of the project that contains the keys that is listed, in the format `projects/{project}`.
+     * @param {string} apiParams.key - (Required) Required. The public key name linked to the requested secret key in the format `projects/{project}/keys/{key}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
+    this.projects.keys.retrieveLegacySecretKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+key}:retrieveLegacySecretKey', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new reCAPTCHA Enterprise key.
+     * Returns the specified key.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the project in which the key is created, in the format `projects/{project}`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the requested key, in the format `projects/{project}/keys/{key}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
-
-    /**
-     * Get some aggregated metrics for a Key. This data can be used to build dashboards.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the requested metrics, in the format `projects/{project}/keys/{key}/metrics`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.keys.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified key.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
-     * @param {string} apiParams.updateMask - Optional. The mask to control which fields of the key get updated. If the mask is not present, all fields are updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per key is 1000. * For any conflict (such as IP already exists or IP part of an existing IP range), an error is returned.
@@ -212,24 +150,25 @@ class Recaptchaenterprise {
     this.projects.keys.addIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addIpOverride', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the specified key.
+     * Creates a new reCAPTCHA Enterprise key.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the requested key, in the format `projects/{project}/keys/{key}`.
+     * @param {string} apiParams.parent - (Required) Required. The name of the project in which the key is created, in the format `projects/{project}`.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the secret key related to the specified public key. You must use the legacy secret key only in a 3rd party integration with legacy reCAPTCHA.
+     * Deletes the specified key.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.key - (Required) Required. The public key name linked to the requested secret key in the format `projects/{project}/keys/{key}`.
+     * @param {string} apiParams.name - (Required) Required. The name of the key to be deleted, in the format `projects/{project}/keys/{key}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.retrieveLegacySecretKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+key}:retrieveLegacySecretKey', 'GET', apiParams, clientConfig);
+    this.projects.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists all IP overrides for a key.
@@ -244,14 +183,49 @@ class Recaptchaenterprise {
     this.projects.keys.listIpOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listIpOverrides', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes the specified key.
+     * Get some aggregated metrics for a Key. This data can be used to build dashboards.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the key to be deleted, in the format `projects/{project}/keys/{key}`.
+     * @param {string} apiParams.name - (Required) Required. The name of the requested metrics, in the format `projects/{project}/keys/{key}/metrics`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.keys.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated as one of the current owners of the reCAPTCHA Key, and your user must have the reCAPTCHA Enterprise Admin IAM role in the destination project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.keys.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:migrate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the specified key.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`.
+     * @param {string} apiParams.updateMask - Optional. The mask to control which fields of the key get updated. If the mask is not present, all fields are updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns the list of all keys that belong to a project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of keys to return. Default is 10. Max limit is 1000.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous. ListKeysRequest, if any.
+     * @param {string} apiParams.parent - (Required) Required. The name of the project that contains the keys that is listed, in the format `projects/{project}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
 
     /**
      * Removes an IP override from a key. The following restrictions hold: * If the IP isn't found in an existing IP override, a `NOT_FOUND` error is returned. * If the IP is found in an existing IP override, but the override type does not match, a `NOT_FOUND` error is returned.
@@ -264,16 +238,42 @@ class Recaptchaenterprise {
      */
     this.projects.keys.removeIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeIpOverride', 'POST', apiParams, clientConfig);
 
+    this.projects.assessments = {};
+
     /**
-     * Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is migrated, it can be used from either product. SiteVerify requests are billed as CreateAssessment calls. You must be authenticated as one of the current owners of the reCAPTCHA Key, and your user must have the reCAPTCHA Enterprise Admin IAM role in the destination project.
+     * Creates an Assessment of the likelihood an event is legitimate.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`.
+     * @param {string} apiParams.parent - (Required) Required. The name of the project in which the assessment is created, in the format `projects/{project}`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.keys.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:migrate', 'POST', apiParams, clientConfig);
+    this.projects.assessments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assessments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Annotates a previously created Assessment to provide additional information on whether the event turned out to be authentic or fraudulent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Assessment, in the format `projects/{project}/assessments/{assessment}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.assessments.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:annotate', 'POST', apiParams, clientConfig);
+
+    this.projects.relatedaccountgroupmemberships = {};
+
+    /**
+     * Search group memberships related to a given account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Required. The name of the project to search related account group memberships from. Specify the project name in the following format: `projects/{project}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.relatedaccountgroupmemberships.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/relatedaccountgroupmemberships:search', 'POST', apiParams, clientConfig);
   }
 
 /**
