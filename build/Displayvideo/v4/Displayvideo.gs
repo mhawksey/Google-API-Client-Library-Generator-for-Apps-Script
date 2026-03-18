@@ -42,6 +42,9 @@ class Displayvideo {
     this.advertisers.adGroupAds = {};
     this.advertisers.adGroupAds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'GET', apiParams, clientConfig);
     this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroupAds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroupAds', 'POST', apiParams, clientConfig);
+    this.advertisers.adGroupAds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.adGroupAds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'DELETE', apiParams, clientConfig);
 
     this.advertisers.lineItems = {};
     this.advertisers.lineItems.bulkListAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions', 'GET', apiParams, clientConfig);
@@ -71,14 +74,20 @@ class Displayvideo {
 
     this.advertisers.adGroups = {};
     this.advertisers.adGroups.bulkListAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups:bulkListAssignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroups.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
     this.advertisers.adGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'GET', apiParams, clientConfig);
     this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups', 'POST', apiParams, clientConfig);
+    this.advertisers.adGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.adGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'PATCH', apiParams, clientConfig);
 
     this.advertisers.adGroups.targetingTypes = {};
 
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions = {};
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
 
     this.advertisers.adGroups.youtubeAssetTypes = {};
 
