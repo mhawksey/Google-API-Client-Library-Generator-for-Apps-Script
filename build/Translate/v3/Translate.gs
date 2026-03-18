@@ -21,49 +21,29 @@ class Translate {
     this.projects = {};
     this.projects.translateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:translateText', 'POST', apiParams, clientConfig);
     this.projects.romanizeText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:romanizeText', 'POST', apiParams, clientConfig);
-    this.projects.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
     this.projects.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
+    this.projects.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.translateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:translateText', 'POST', apiParams, clientConfig);
     this.projects.locations.romanizeText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:romanizeText', 'POST', apiParams, clientConfig);
-    this.projects.locations.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
-    this.projects.locations.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
-    this.projects.locations.translateDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:translateDocument', 'POST', apiParams, clientConfig);
     this.projects.locations.batchTranslateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:batchTranslateText', 'POST', apiParams, clientConfig);
     this.projects.locations.batchTranslateDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:batchTranslateDocument', 'POST', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.translateDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:translateDocument', 'POST', apiParams, clientConfig);
+    this.projects.locations.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
+    this.projects.locations.refineText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:refineText', 'POST', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
     this.projects.locations.adaptiveMtTranslate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:adaptiveMtTranslate', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:wait', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.glossaries = {};
-    this.projects.locations.glossaries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaries', 'POST', apiParams, clientConfig);
-    this.projects.locations.glossaries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.glossaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaries', 'GET', apiParams, clientConfig);
-    this.projects.locations.glossaries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.glossaries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.glossaries.glossaryEntries = {};
-    this.projects.locations.glossaries.glossaryEntries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.glossaries.glossaryEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaryEntries', 'GET', apiParams, clientConfig);
-    this.projects.locations.glossaries.glossaryEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaryEntries', 'POST', apiParams, clientConfig);
-    this.projects.locations.glossaries.glossaryEntries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.glossaries.glossaryEntries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.datasets = {};
-    this.projects.locations.datasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/datasets', 'POST', apiParams, clientConfig);
-    this.projects.locations.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/datasets', 'GET', apiParams, clientConfig);
-    this.projects.locations.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.datasets.importData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+dataset}:importData', 'POST', apiParams, clientConfig);
+    this.projects.locations.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.datasets.exportData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+dataset}:exportData', 'POST', apiParams, clientConfig);
+    this.projects.locations.datasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/datasets', 'POST', apiParams, clientConfig);
+    this.projects.locations.datasets.importData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+dataset}:importData', 'POST', apiParams, clientConfig);
+    this.projects.locations.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.datasets.examples = {};
     this.projects.locations.datasets.examples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/examples', 'GET', apiParams, clientConfig);
@@ -71,9 +51,9 @@ class Translate {
     this.projects.locations.adaptiveMtDatasets = {};
     this.projects.locations.adaptiveMtDatasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/adaptiveMtDatasets', 'POST', apiParams, clientConfig);
     this.projects.locations.adaptiveMtDatasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.adaptiveMtDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.adaptiveMtDatasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/adaptiveMtDatasets', 'GET', apiParams, clientConfig);
     this.projects.locations.adaptiveMtDatasets.importAdaptiveMtFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}:importAdaptiveMtFile', 'POST', apiParams, clientConfig);
+    this.projects.locations.adaptiveMtDatasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/adaptiveMtDatasets', 'GET', apiParams, clientConfig);
+    this.projects.locations.adaptiveMtDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.adaptiveMtDatasets.adaptiveMtFiles = {};
     this.projects.locations.adaptiveMtDatasets.adaptiveMtFiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
@@ -86,11 +66,32 @@ class Translate {
     this.projects.locations.adaptiveMtDatasets.adaptiveMtSentences = {};
     this.projects.locations.adaptiveMtDatasets.adaptiveMtSentences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/adaptiveMtSentences', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.glossaries = {};
+    this.projects.locations.glossaries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.glossaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaries', 'GET', apiParams, clientConfig);
+    this.projects.locations.glossaries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaries', 'POST', apiParams, clientConfig);
+    this.projects.locations.glossaries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.glossaries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.glossaries.glossaryEntries = {};
+    this.projects.locations.glossaries.glossaryEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaryEntries', 'POST', apiParams, clientConfig);
+    this.projects.locations.glossaries.glossaryEntries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.glossaries.glossaryEntries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.glossaries.glossaryEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/glossaryEntries', 'GET', apiParams, clientConfig);
+    this.projects.locations.glossaries.glossaryEntries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.models = {};
-    this.projects.locations.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/models', 'POST', apiParams, clientConfig);
     this.projects.locations.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/models', 'GET', apiParams, clientConfig);
-    this.projects.locations.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/models', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:wait', 'POST', apiParams, clientConfig);
   }
 
 /**
