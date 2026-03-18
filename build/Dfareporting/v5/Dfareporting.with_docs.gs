@@ -2221,6 +2221,9 @@ class Dfareporting {
      * @param {string} apiParams.placementIds - Generate tags for these placements.
      * @param {string} apiParams.profileId - (Required) User profile ID associated with this request.
      * @param {string} apiParams.tagFormats - Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.
+     * @param {boolean} apiParams.tagProperties.dcDbmMacroIncluded - Optional. Indicates whether to include the dc_dbm macro in the generated tags. [Learn more](https://support.google.com/campaignmanager/answer/9280273) about this macro.
+     * @param {boolean} apiParams.tagProperties.gppMacrosIncluded - Optional. Indicates whether to include the GPP macro in the generated tags. [Learn more](https://support.google.com/campaignmanager/answer/10031693) about this macro.
+     * @param {boolean} apiParams.tagProperties.tcfGdprMacrosIncluded - Optional. Indicates whether to include the TCF macro in the generated tags. Default true. [Learn more](https://support.google.com/campaignmanager/answer/10031693) about this macro.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
