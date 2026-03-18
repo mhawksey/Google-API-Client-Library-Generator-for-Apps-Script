@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Forms API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:45:06 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:45:06 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:40:39 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:40:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:04 GMT
 
 
@@ -25,13 +25,13 @@ Create a new form using the title given in the provided form message in the requ
 | `params.unpublished` | `boolean` | No | Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `forms.batchUpdate()`
+#### `forms.setPublishSettings()`
 
-Change the form with a batch of updates.
+Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.formId` | `string` | Yes | Required. The form ID. |
+| `params.formId` | `string` | Yes | Required. The ID of the form. You can get the id from Form.form_id field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.get()`
@@ -42,47 +42,25 @@ Get a form.
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. The form ID. |
 
-#### `forms.setPublishSettings()`
+#### `forms.batchUpdate()`
 
-Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.formId` | `string` | Yes | Required. The ID of the form. You can get the id from Form.form_id field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `forms.responses`
-
-#### `forms.responses.list()`
-
-List a form's responses.
+Change the form with a batch of updates.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. |
-| `params.pageSize` | `integer` | No | The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. |
-| `params.formId` | `string` | Yes | Required. ID of the Form whose responses to list. |
-| `params.filter` | `string` | No | Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". |
-
-#### `forms.responses.get()`
-
-Get one response from the form.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.responseId` | `string` | Yes | Required. The response ID within the form. |
 | `params.formId` | `string` | Yes | Required. The form ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `forms.watches`
 
-#### `forms.watches.delete()`
+#### `forms.watches.create()`
 
-Delete a watch.
+Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.watchId` | `string` | Yes | Required. The ID of the Watch to delete. |
-| `params.formId` | `string` | Yes | Required. The ID of the Form. |
+| `params.formId` | `string` | Yes | Required. ID of the Form to watch. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.watches.renew()`
 
@@ -90,8 +68,8 @@ Renew an existing watch for seven days. The state of the watch after renewal is 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.watchId` | `string` | Yes | Required. The ID of the Watch to renew. |
 | `params.formId` | `string` | Yes | Required. The ID of the Form. |
+| `params.watchId` | `string` | Yes | Required. The ID of the Watch to renew. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.watches.list()`
@@ -102,11 +80,33 @@ Return a list of the watches owned by the invoking project. The maximum number o
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. ID of the Form whose watches to list. |
 
-#### `forms.watches.create()`
+#### `forms.watches.delete()`
 
-Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+Delete a watch.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.formId` | `string` | Yes | Required. ID of the Form to watch. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.formId` | `string` | Yes | Required. The ID of the Form. |
+| `params.watchId` | `string` | Yes | Required. The ID of the Watch to delete. |
+
+### `forms.responses`
+
+#### `forms.responses.get()`
+
+Get one response from the form.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.formId` | `string` | Yes | Required. The form ID. |
+| `params.responseId` | `string` | Yes | Required. The response ID within the form. |
+
+#### `forms.responses.list()`
+
+List a form's responses.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. |
+| `params.pageToken` | `string` | No | A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. |
+| `params.formId` | `string` | Yes | Required. ID of the Form whose responses to list. |
+| `params.filter` | `string` | No | Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". |
