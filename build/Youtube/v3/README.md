@@ -4,8 +4,8 @@ Auto-generated client library for using the **YouTube Data API v3 (version: v3)*
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:16:01 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:16:01 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:11:59 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:11:59 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:32 GMT
 
 
@@ -310,18 +310,6 @@ Allows a user to load live chat through a server-streamed RPC.
 | `params.maxResults` | `integer` | No | The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. Not used in the streaming RPC. |
 | `params.pageToken` | `string` | No | The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken property identify other pages that could be retrieved. |
 | `params.part` | `string` | No | The *part* parameter specifies the liveChatComment resource parts that the API response will include. Supported values are id, snippet, and authorDetails. |
-
-### `youtube.v3.videos`
-
-#### `youtube.v3.videos.batchGetStats()`
-
-Retrieves a batch of VideoStat resources, possibly filtered.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | No | Required. Return videos with the given ids. |
-| `params.part` | `string` | No | Required. The `**part**` parameter specifies a comma-separated list of one or more `videoStat` resource properties that the API response will include. If the parameter identifies a property that contains child properties, the child properties will be included in the response. For example, in a `videoStat` resource, the `statistics` property contains `view_count` and `like_count`. As such, if you set `**part=snippet**`, the API response will contain all of those properties. |
-| `params.onBehalfOfContentOwner` | `string` | No | Optional. **Note:** This parameter is intended exclusively for YouTube content partners. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner. |
 
 ### `i18nLanguages`
 
