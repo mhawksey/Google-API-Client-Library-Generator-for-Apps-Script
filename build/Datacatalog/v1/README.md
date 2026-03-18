@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Data Catalog API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:35:20 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:35:20 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:29:45 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:29:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:39 GMT
 
 
@@ -14,9 +14,70 @@ Auto-generated client library for using the **Google Cloud Data Catalog API (ver
 
 ## API Reference
 
+### `catalog`
+
+#### `catalog.search()`
+
+Searches Data Catalog for multiple resources like entries and tags that match a query. This is a [Custom Method] (https://cloud.google.com/apis/design/custom_methods) that doesn't return all information on a resource, only its ID and high level fields. To get more information, you can subsequently call specific get methods. Note: Data Catalog search queries don't guarantee full recall. Results that match your query might not be returned, even in subsequent result pages. Additionally, returned (and not returned) results can vary if you repeat search queries. For more information, see [Data Catalog search syntax] (https://cloud.google.com/data-catalog/docs/how-to/search-reference).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `entries`
+
+#### `entries.lookup()`
+
+Gets an entry by its target resource name. The resource name comes from the source Google Cloud Platform service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.linkedResource` | `string` | No | The full name of the Google Cloud Platform resource the Data Catalog entry represents. For more information, see [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). Full names are case-sensitive. For example: * `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` * `//pubsub.googleapis.com/projects/{PROJECT_ID}/topics/{TOPIC_ID}` |
+| `params.location` | `string` | No | Location where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. |
+| `params.fullyQualifiedName` | `string` | No | [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}` |
+| `params.sqlResource` | `string` | No | The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` * `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` * `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` * `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should comply with the [Lexical structure in GoogleSQL] (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical). |
+| `params.project` | `string` | No | Project where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. |
+
+### `organizations`
+
+### `organizations.locations`
+
+#### `organizations.locations.setConfig()`
+
+Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The organization or project whose config is being specified. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.locations.retrieveConfig()`
+
+Retrieves the configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization, including all the projects under it which have a separate configuration set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The organization whose config is being retrieved. |
+
+#### `organizations.locations.retrieveEffectiveConfig()`
+
+Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource whose effective config is being retrieved. |
+
 ### `projects`
 
 ### `projects.locations`
+
+#### `projects.locations.retrieveEffectiveConfig()`
+
+Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource whose effective config is being retrieved. |
 
 #### `projects.locations.setConfig()`
 
@@ -27,14 +88,6 @@ Sets the configuration related to the migration to Dataplex Universal Catalog fo
 | `params.name` | `string` | Yes | Required. The organization or project whose config is being specified. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.retrieveEffectiveConfig()`
-
-Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource whose effective config is being retrieved. |
-
 ### `projects.locations.operations`
 
 #### `projects.locations.operations.list()`
@@ -43,11 +96,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `projects.locations.operations.get()`
 
@@ -75,6 +128,25 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `projects.locations.entryGroups`
 
+#### `projects.locations.entryGroups.get()`
+
+Gets an entry group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entry group to get. |
+| `params.readMask` | `string` | No | The fields to return. If empty or omitted, all fields are returned. |
+
+#### `projects.locations.entryGroups.list()`
+
+Lists entry groups.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the location that contains the entry groups to list. Can be provided as a URL. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. Default is 10. Maximum limit is 1000. Throws an invalid argument if `page_size` is greater than 1000. |
+| `params.pageToken` | `string` | No | Optional. Pagination token that specifies the next page to return. If empty, returns the first page. |
+
 #### `projects.locations.entryGroups.create()`
 
 Creates an entry group. An entry group contains logically related entries together with [Cloud Identity and Access Management](/data-catalog/docs/concepts/iam) policies. These policies specify users who can create, edit, and view entries within entry groups. Data Catalog automatically creates entry groups with names that start with the `@` symbol for the following resources:
@@ -91,15 +163,6 @@ Creates an entry group. An entry group contains logically related entries togeth
 | `params.entryGroupId` | `string` | No | Required. The ID of the entry group to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.entryGroups.get()`
-
-Gets an entry group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry group to get. |
-| `params.readMask` | `string` | No | The fields to return. If empty or omitted, all fields are returned. |
-
 #### `projects.locations.entryGroups.patch()`
 
 Updates an entry group. You must enable the Data Catalog API in the project identified by the `entry_group.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
@@ -110,24 +173,23 @@ Updates an entry group. You must enable the Data Catalog API in the project iden
 | `params.updateMask` | `string` | No | Names of fields whose values to overwrite on an entry group. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.entryGroups.testIamPermissions()`
+
+Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources ingested into Data Catalog. No Google IAM permissions are required to call this method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.entryGroups.delete()`
 
 Deletes an entry group. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry group to delete. |
 | `params.force` | `boolean` | No | Optional. If true, deletes all entries in the entry group. |
-
-#### `projects.locations.entryGroups.list()`
-
-Lists entry groups.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the location that contains the entry groups to list. Can be provided as a URL. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. Default is 10. Maximum limit is 1000. Throws an invalid argument if `page_size` is greater than 1000. |
-| `params.pageToken` | `string` | No | Optional. Pagination token that specifies the next page to return. If empty, returns the first page. |
+| `params.name` | `string` | Yes | Required. The name of the entry group to delete. |
 
 #### `projects.locations.entryGroups.setIamPolicy()`
 
@@ -151,26 +213,7 @@ Gets the access control policy for a resource. May return:
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.entryGroups.testIamPermissions()`
-
-Gets your permissions on a resource. Returns an empty set of permissions if the resource doesn't exist. Supported resources are: - Tag templates - Entry groups Note: This method gets policies only within Data Catalog and can't be used to get policies from BigQuery, Pub/Sub, Dataproc Metastore, and any external Google Cloud Platform resources ingested into Data Catalog. No Google IAM permissions are required to call this method.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.locations.entryGroups.entries`
-
-#### `projects.locations.entryGroups.entries.create()`
-
-Creates an entry. You can create entries only with 'FILESET', 'CLUSTER', 'DATA_STREAM', or custom types. Data Catalog automatically creates entries with other types during metadata ingestion from integrated systems. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). An entry group can have a maximum of 100,000 entries.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name. |
-| `params.entryId` | `string` | No | Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entries.patch()`
 
@@ -180,69 +223,6 @@ Updates an existing entry. You must enable the Data Catalog API in the project i
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. |
 | `params.updateMask` | `string` | No | Names of fields whose values to overwrite on an entry. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. You can modify only the fields listed below. For entries with type `DATA_STREAM`: * `schema` For entries with type `FILESET`: * `schema` * `display_name` * `description` * `gcs_fileset_spec` * `gcs_fileset_spec.file_patterns` For entries with `user_specified_type`: * `schema` * `display_name` * `description` * `user_specified_type` * `user_specified_system` * `linked_resource` * `source_system_timestamps` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.entryGroups.entries.delete()`
-
-Deletes an existing entry. You can delete only the entries created by the CreateEntry method. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry to delete. |
-
-#### `projects.locations.entryGroups.entries.get()`
-
-Gets an entry.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry to get. |
-
-#### `projects.locations.entryGroups.entries.list()`
-
-Lists entries. Note: Currently, this method can list only custom entries. To get a list of both custom and automatically created entries, use SearchCatalog.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the entry group that contains the entries to list. Can be provided in URL format. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. Default is 10. Maximum limit is 1000. Throws an invalid argument if `page_size` is more than 1000. |
-| `params.pageToken` | `string` | No | Pagination token that specifies the next page to return. If empty, the first page is returned. |
-| `params.readMask` | `string` | No | The fields to return for each entry. If empty or omitted, all fields are returned. For example, to return a list of entries with only the `name` field, set `read_mask` to only one path with the `name` value. |
-
-#### `projects.locations.entryGroups.entries.modifyEntryOverview()`
-
-Modifies entry overview, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateOverview` IAM permission on the corresponding project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the entry. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.entryGroups.entries.modifyEntryContacts()`
-
-Modifies contacts, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateContacts` IAM permission on the corresponding project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the entry. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.entryGroups.entries.star()`
-
-Marks an Entry as starred by the current user. Starring information is private to each user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry to mark as starred. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.entryGroups.entries.unstar()`
-
-Marks an Entry as NOT starred by the current user. Starring information is private to each user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entry to mark as **not** starred. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entries.getIamPolicy()`
@@ -256,6 +236,25 @@ Gets the access control policy for a resource. May return:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.entryGroups.entries.unstar()`
+
+Marks an Entry as NOT starred by the current user. Starring information is private to each user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entry to mark as **not** starred. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.entryGroups.entries.create()`
+
+Creates an entry. You can create entries only with 'FILESET', 'CLUSTER', 'DATA_STREAM', or custom types. Data Catalog automatically creates entries with other types during metadata ingestion from integrated systems. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). An entry group can have a maximum of 100,000 entries.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the entry group this entry belongs to. Note: The entry itself and its child resources might not be stored in the location specified in its name. |
+| `params.entryId` | `string` | No | Required. The ID of the entry to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (_). The maximum size is 64 bytes when encoded in UTF-8. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entries.testIamPermissions()`
@@ -276,7 +275,80 @@ Imports entries from a source, such as data previously dumped into a Cloud Stora
 | `params.parent` | `string` | Yes | Required. Target entry group for ingested entries. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.entryGroups.entries.delete()`
+
+Deletes an existing entry. You can delete only the entries created by the CreateEntry method. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entry to delete. |
+
+#### `projects.locations.entryGroups.entries.star()`
+
+Marks an Entry as starred by the current user. Starring information is private to each user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entry to mark as starred. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.entryGroups.entries.modifyEntryOverview()`
+
+Modifies entry overview, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateOverview` IAM permission on the corresponding project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the entry. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.entryGroups.entries.get()`
+
+Gets an entry.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entry to get. |
+
+#### `projects.locations.entryGroups.entries.list()`
+
+Lists entries. Note: Currently, this method can list only custom entries. To get a list of both custom and automatically created entries, use SearchCatalog.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the entry group that contains the entries to list. Can be provided in URL format. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. Default is 10. Maximum limit is 1000. Throws an invalid argument if `page_size` is more than 1000. |
+| `params.pageToken` | `string` | No | Pagination token that specifies the next page to return. If empty, the first page is returned. |
+| `params.readMask` | `string` | No | The fields to return for each entry. If empty or omitted, all fields are returned. For example, to return a list of entries with only the `name` field, set `read_mask` to only one path with the `name` value. |
+
+#### `projects.locations.entryGroups.entries.modifyEntryContacts()`
+
+Modifies contacts, part of the business context of an Entry. To call this method, you must have the `datacatalog.entries.updateContacts` IAM permission on the corresponding project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the entry. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.entryGroups.entries.tags`
+
+#### `projects.locations.entryGroups.entries.tags.reconcile()`
+
+`ReconcileTags` creates or updates a list of tags on the entry. If the ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not included in the input tag list. `ReconcileTags` returns a long-running operation resource that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a ReconcileTagsResponse message. Note: SearchCatalog might return stale search results for up to 24 hours after the `ReconcileTags` operation completes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of Entry to be tagged. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.entryGroups.entries.tags.list()`
+
+Lists tags assigned to an Entry. The columns in the response are lowercased.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). |
+| `params.pageSize` | `integer` | No | The maximum number of tags to return. Default is 10. Maximum limit is 1000. |
+| `params.pageToken` | `string` | No | Pagination token that specifies the next page to return. If empty, the first page is returned. |
 
 #### `projects.locations.entryGroups.entries.tags.create()`
 
@@ -308,25 +380,6 @@ Deletes a tag.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the tag to delete. |
-
-#### `projects.locations.entryGroups.entries.tags.list()`
-
-Lists tags assigned to an Entry. The columns in the response are lowercased.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the Data Catalog resource to list the tags of. The resource can be an Entry or an EntryGroup (without `/entries/{entries}` at the end). |
-| `params.pageSize` | `integer` | No | The maximum number of tags to return. Default is 10. Maximum limit is 1000. |
-| `params.pageToken` | `string` | No | Pagination token that specifies the next page to return. If empty, the first page is returned. |
-
-#### `projects.locations.entryGroups.entries.tags.reconcile()`
-
-`ReconcileTags` creates or updates a list of tags on the entry. If the ReconcileTagsRequest.force_delete_missing parameter is set, the operation deletes tags not included in the input tag list. `ReconcileTags` returns a long-running operation resource that can be queried with Operations.GetOperation to return ReconcileTagsMetadata and a ReconcileTagsResponse message. Note: SearchCatalog might return stale search results for up to 24 hours after the `ReconcileTags` operation completes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of Entry to be tagged. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.entryGroups.tags`
 
@@ -373,16 +426,6 @@ Lists tags assigned to an Entry. The columns in the response are lowercased.
 
 ### `projects.locations.tagTemplates`
 
-#### `projects.locations.tagTemplates.create()`
-
-Creates a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). |
-| `params.tagTemplateId` | `string` | No | Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.tagTemplates.get()`
 
 Gets a tag template.
@@ -391,24 +434,14 @@ Gets a tag template.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the tag template to get. |
 
-#### `projects.locations.tagTemplates.patch()`
-
-Updates a tag template. You can't update template fields with this method. These fields are separate resources with their own create, update, and delete methods. You must enable the Data Catalog API in the project identified by the `tag_template.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. |
-| `params.updateMask` | `string` | No | Names of fields whose values to overwrite on a tag template. Currently, only `display_name` and `is_publicly_readable` can be overwritten. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. Note: Updating the `is_publicly_readable` field may require up to 12 hours to take effect in search results. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.tagTemplates.delete()`
 
 Deletes a tag template and all tags that use it. You must enable the Data Catalog API in the project identified by the `name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the tag template to delete. |
 | `params.force` | `boolean` | No | Required. If true, deletes all tags that use this template. Currently, `true` is the only supported value. |
+| `params.name` | `string` | Yes | Required. The name of the tag template to delete. |
 
 #### `projects.locations.tagTemplates.setIamPolicy()`
 
@@ -430,6 +463,26 @@ Gets the access control policy for a resource. May return:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.tagTemplates.create()`
+
+Creates a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tagTemplateId` | `string` | No | Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8. |
+| `params.parent` | `string` | Yes | Required. The name of the project and the template location [region](https://cloud.google.com/data-catalog/docs/concepts/regions). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.tagTemplates.patch()`
+
+Updates a tag template. You can't update template fields with this method. These fields are separate resources with their own create, update, and delete methods. You must enable the Data Catalog API in the project identified by the `tag_template.name` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name. |
+| `params.updateMask` | `string` | No | Names of fields whose values to overwrite on a tag template. Currently, only `display_name` and `is_publicly_readable` can be overwritten. If this parameter is absent or empty, all modifiable fields are overwritten. If such fields are non-required and omitted in the request body, their values are emptied. Note: Updating the `is_publicly_readable` field may require up to 12 hours to take effect in search results. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tagTemplates.testIamPermissions()`
@@ -478,8 +531,8 @@ Deletes a field in a tag template and all uses of this field from the tags based
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the tag template field to delete. |
 | `params.force` | `boolean` | No | Required. If true, deletes this field from any tags that use it. Currently, `true` is the only supported value. |
+| `params.name` | `string` | Yes | Required. The name of the tag template field to delete. |
 
 ### `projects.locations.tagTemplates.fields.enumValues`
 
@@ -493,33 +546,6 @@ Renames an enum value in a tag template. Within a single enum field, enum values
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.taxonomies`
-
-#### `projects.locations.taxonomies.create()`
-
-Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the project that the taxonomy will belong to. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.taxonomies.delete()`
-
-Deletes a taxonomy, including all policy tags in this taxonomy, their associated policies, and the policy tags references from BigQuery columns.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the taxonomy to delete. Note: All policy tags in this taxonomy are also deleted. |
-
-#### `projects.locations.taxonomies.patch()`
-
-Updates a taxonomy, including its display name, description, and activated policy types.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. |
-| `params.updateMask` | `string` | No | Specifies fields to update. If not set, defaults to all fields you can update. For more information, see [FieldMask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask). |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.taxonomies.list()`
 
@@ -540,22 +566,13 @@ Gets a taxonomy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the taxonomy to get. |
 
-#### `projects.locations.taxonomies.getIamPolicy()`
+#### `projects.locations.taxonomies.create()`
 
-Gets the IAM policy for a policy tag or a taxonomy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.taxonomies.setIamPolicy()`
-
-Sets the IAM policy for a policy tag or a taxonomy.
+Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. Resource name of the project that the taxonomy will belong to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.taxonomies.testIamPermissions()`
@@ -567,15 +584,6 @@ Returns your permissions on a specified policy tag or taxonomy.
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.taxonomies.replace()`
-
-Replaces (updates) a taxonomy and all its policy tags. The taxonomy and its entire hierarchy of policy tags must be represented literally by `SerializedTaxonomy` and the nested `SerializedPolicyTag` messages. This operation automatically does the following: - Deletes the existing policy tags that are missing from the `SerializedPolicyTag`. - Creates policy tags that don't have resource names. They are considered new. - Updates policy tags with valid resources names accordingly.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the taxonomy to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.taxonomies.import()`
 
 Creates new taxonomies (including their policy tags) in a given project by importing from inlined or cross-regional sources. For a cross-regional source, new taxonomies are created by copying from a source in another region. For an inlined source, taxonomies and policy tags are created in bulk using nested protocol buffer structures.
@@ -584,6 +592,23 @@ Creates new taxonomies (including their policy tags) in a given project by impor
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of project that the imported taxonomies will belong to. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.taxonomies.setIamPolicy()`
+
+Sets the IAM policy for a policy tag or a taxonomy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.taxonomies.delete()`
+
+Deletes a taxonomy, including all policy tags in this taxonomy, their associated policies, and the policy tags references from BigQuery columns.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the taxonomy to delete. Note: All policy tags in this taxonomy are also deleted. |
 
 #### `projects.locations.taxonomies.export()`
 
@@ -594,6 +619,34 @@ Exports taxonomies in the requested type and returns them, including their polic
 | `params.parent` | `string` | Yes | Required. Resource name of the project that the exported taxonomies belong to. |
 | `params.taxonomies` | `string` | No | Required. Resource names of the taxonomies to export. |
 | `params.serializedTaxonomies` | `boolean` | No | Serialized export taxonomies that contain all the policy tags as nested protocol buffers. |
+
+#### `projects.locations.taxonomies.patch()`
+
+Updates a taxonomy, including its display name, description, and activated policy types.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name of this taxonomy in URL format. Note: Policy tag manager generates unique taxonomy IDs. |
+| `params.updateMask` | `string` | No | Specifies fields to update. If not set, defaults to all fields you can update. For more information, see [FieldMask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.taxonomies.replace()`
+
+Replaces (updates) a taxonomy and all its policy tags. The taxonomy and its entire hierarchy of policy tags must be represented literally by `SerializedTaxonomy` and the nested `SerializedPolicyTag` messages. This operation automatically does the following: - Deletes the existing policy tags that are missing from the `SerializedPolicyTag`. - Creates policy tags that don't have resource names. They are considered new. - Updates policy tags with valid resources names accordingly.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the taxonomy to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.taxonomies.getIamPolicy()`
+
+Gets the IAM policy for a policy tag or a taxonomy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.taxonomies.policyTags`
 
@@ -606,20 +659,6 @@ Creates a policy tag in a taxonomy.
 | `params.parent` | `string` | Yes | Required. Resource name of the taxonomy that the policy tag will belong to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.taxonomies.policyTags.delete()`
-
-Deletes a policy tag together with the following:
-
-* All of its descendant policy tags, if any
-
-* Policies associated with the policy tag and its descendants
-
-* References from BigQuery table schema of the policy tag and its descendants
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the policy tag to delete. Note: All of its descendant policy tags are also deleted. |
-
 #### `projects.locations.taxonomies.policyTags.patch()`
 
 Updates a policy tag, including its display name, description, and parent policy tag.
@@ -630,23 +669,14 @@ Updates a policy tag, including its display name, description, and parent policy
 | `params.updateMask` | `string` | No | Specifies the fields to update. You can update only display name, description, and parent policy tag. If not set, defaults to all updatable fields. For more information, see [FieldMask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.taxonomies.policyTags.list()`
+#### `projects.locations.taxonomies.policyTags.testIamPermissions()`
 
-Lists all policy tags in a taxonomy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the taxonomy to list the policy tags of. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. Must be a value between 1 and 1000 inclusively. If not set, defaults to 50. |
-| `params.pageToken` | `string` | No | The pagination token of the next results page. If not set, returns the first page. The token is returned in the response to a previous list request. |
-
-#### `projects.locations.taxonomies.policyTags.get()`
-
-Gets a policy tag.
+Returns your permissions on a specified policy tag or taxonomy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the policy tag. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.taxonomies.policyTags.getIamPolicy()`
 
@@ -666,64 +696,34 @@ Sets the IAM policy for a policy tag or a taxonomy.
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.taxonomies.policyTags.testIamPermissions()`
+#### `projects.locations.taxonomies.policyTags.delete()`
 
-Returns your permissions on a specified policy tag or taxonomy.
+Deletes a policy tag together with the following:
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+* All of its descendant policy tags, if any
 
-### `catalog`
+* Policies associated with the policy tag and its descendants
 
-#### `catalog.search()`
-
-Searches Data Catalog for multiple resources like entries and tags that match a query. This is a [Custom Method] (https://cloud.google.com/apis/design/custom_methods) that doesn't return all information on a resource, only its ID and high level fields. To get more information, you can subsequently call specific get methods. Note: Data Catalog search queries don't guarantee full recall. Results that match your query might not be returned, even in subsequent result pages. Additionally, returned (and not returned) results can vary if you repeat search queries. For more information, see [Data Catalog search syntax] (https://cloud.google.com/data-catalog/docs/how-to/search-reference).
+* References from BigQuery table schema of the policy tag and its descendants
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Resource name of the policy tag to delete. Note: All of its descendant policy tags are also deleted. |
 
-### `entries`
+#### `projects.locations.taxonomies.policyTags.list()`
 
-#### `entries.lookup()`
-
-Gets an entry by its target resource name. The resource name comes from the source Google Cloud Platform service.
+Lists all policy tags in a taxonomy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.linkedResource` | `string` | No | The full name of the Google Cloud Platform resource the Data Catalog entry represents. For more information, see [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). Full names are case-sensitive. For example: * `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` * `//pubsub.googleapis.com/projects/{PROJECT_ID}/topics/{TOPIC_ID}` |
-| `params.sqlResource` | `string` | No | The SQL name of the entry. SQL names are case-sensitive. Examples: * `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` * `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` * `bigquery.table.{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}` * `bigquery.dataset.{PROJECT_ID}.{DATASET_ID}` * `datacatalog.entry.{PROJECT_ID}.{LOCATION_ID}.{ENTRY_GROUP_ID}.{ENTRY_ID}` Identifiers (`*_ID`) should comply with the [Lexical structure in GoogleSQL] (https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical). |
-| `params.fullyQualifiedName` | `string` | No | [Fully Qualified Name (FQN)](https://cloud.google.com//data-catalog/docs/fully-qualified-names) of the resource. FQNs take two forms: * For non-regionalized resources: `{SYSTEM}:{PROJECT}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` * For regionalized resources: `{SYSTEM}:{PROJECT}.{LOCATION_ID}.{PATH_TO_RESOURCE_SEPARATED_WITH_DOTS}` Example for a DPMS table: `dataproc_metastore:{PROJECT_ID}.{LOCATION_ID}.{INSTANCE_ID}.{DATABASE_ID}.{TABLE_ID}` |
-| `params.project` | `string` | No | Project where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. |
-| `params.location` | `string` | No | Location where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases. |
+| `params.parent` | `string` | Yes | Required. Resource name of the taxonomy to list the policy tags of. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. Must be a value between 1 and 1000 inclusively. If not set, defaults to 50. |
+| `params.pageToken` | `string` | No | The pagination token of the next results page. If not set, returns the first page. The token is returned in the response to a previous list request. |
 
-### `organizations`
+#### `projects.locations.taxonomies.policyTags.get()`
 
-### `organizations.locations`
-
-#### `organizations.locations.setConfig()`
-
-Sets the configuration related to the migration to Dataplex Universal Catalog for an organization or project.
+Gets a policy tag.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The organization or project whose config is being specified. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.locations.retrieveConfig()`
-
-Retrieves the configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization, including all the projects under it which have a separate configuration set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The organization whose config is being retrieved. |
-
-#### `organizations.locations.retrieveEffectiveConfig()`
-
-Retrieves the effective configuration related to the migration from Data Catalog to Dataplex Universal Catalog for a specific organization or project. If there is no specific configuration set for the resource, the setting is checked hierarchicahlly through the ancestors of the resource, starting from the resource itself.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource whose effective config is being retrieved. |
+| `params.name` | `string` | Yes | Required. Resource name of the policy tag. |
