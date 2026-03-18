@@ -4,8 +4,8 @@ Auto-generated client library for using the **Security Posture API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:07:19 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:07:19 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:02:48 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:02:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:56 GMT
 
 
@@ -14,35 +14,102 @@ Auto-generated client library for using the **Security Posture API (version: v1)
 
 ## API Reference
 
-### `projects`
-
-### `projects.locations`
-
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-
 ### `organizations`
 
 ### `organizations.locations`
 
+### `organizations.locations.reports`
+
+#### `organizations.locations.reports.list()`
+
+Lists every Report in a given organization and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of reports to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
+| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list reports. Provide this token to retrieve the next page of results. |
+| `params.filter` | `string` | No | Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+
+#### `organizations.locations.reports.get()`
+
+Gets details for a Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. |
+
+#### `organizations.locations.reports.createIaCValidationReport()`
+
+Validates a specified infrastructure-as-code (IaC) configuration, and creates a Report with the validation results. Only Terraform configurations are supported. Only modified assets are validated.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.locations.postureDeployments`
+
+#### `organizations.locations.postureDeployments.create()`
+
+Creates a new PostureDeployment in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postureDeploymentId` | `string` | No | Required. An identifier for the posture deployment. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.locations.postureDeployments.delete()`
+
+Deletes a PostureDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_id}`. |
+| `params.etag` | `string` | No | Optional. An opaque identifier for the current version of the posture deployment. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture deployment is deleted regardless of its current `etag` value. |
+
+#### `organizations.locations.postureDeployments.list()`
+
+Lists every PostureDeployment in a project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of posture deployments to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
+| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. |
+| `params.filter` | `string` | No | Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+
+#### `organizations.locations.postureDeployments.get()`
+
+Gets details for a PostureDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the PostureDeployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_deployment_id}`. |
+
+#### `organizations.locations.postureDeployments.patch()`
+
+Updates an existing PostureDeployment. To prevent concurrent updates from overwriting each other, always follow the read-modify-write pattern when you update a posture deployment: 1. Call GetPostureDeployment to get the current version of the deployment. 2. Update the fields in the deployment as needed. 3. Call UpdatePostureDeployment to update the deployment. Ensure that your request includes the `etag` value from the GetPostureDeployment response. **Important:** If you omit the `etag` when you call UpdatePostureDeployment, then the updated deployment unconditionally overwrites the existing deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Identifier. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. |
+| `params.updateMask` | `string` | No | Required. The fields in the PostureDeployment to update. You can update only the following fields: * PostureDeployment.posture_id * PostureDeployment.posture_revision_id |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `organizations.locations.postureTemplates`
+
+#### `organizations.locations.postureTemplates.list()`
+
+Lists every PostureTemplate in a given organization and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of posture templates to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list posture templates. Provide this token to retrieve the next page of results. |
+| `params.filter` | `string` | No | Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
 
 #### `organizations.locations.postureTemplates.get()`
 
@@ -53,46 +120,46 @@ Gets a single revision of a PostureTemplate.
 | `params.name` | `string` | Yes | Required. The name of the PostureTemplate, in the format `organizations/{organization}/locations/global/postureTemplates/{posture_template}`. |
 | `params.revisionId` | `string` | No | Optional. The posture template revision to retrieve. If not specified, the most recently updated revision is retrieved. |
 
-#### `organizations.locations.postureTemplates.list()`
+### `organizations.locations.operations`
 
-Lists every PostureTemplate in a given organization and location.
+#### `organizations.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list posture templates. Provide this token to retrieve the next page of results. |
-| `params.filter` | `string` | No | Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of posture templates to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `organizations.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `organizations.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 ### `organizations.locations.postures`
-
-#### `organizations.locations.postures.delete()`
-
-Deletes all revisions of a Posture. You can only delete a posture if none of its revisions are deployed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.etag` | `string` | No | Optional. An opaque identifier for the current version of the posture. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture is deleted regardless of its current `etag` value. |
-| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
-
-#### `organizations.locations.postures.get()`
-
-Gets a single revision of a Posture.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.revisionId` | `string` | No | Optional. The posture revision to retrieve. If not specified, the most recently updated revision is retrieved. |
-| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
-
-#### `organizations.locations.postures.create()`
-
-Creates a new Posture.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.postureId` | `string` | No | Required. An identifier for the posture. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postures.listRevisions()`
 
@@ -100,9 +167,20 @@ Lists all revisions of a single Posture.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of posture revisions to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
 | `params.pageToken` | `string` | No | Optional. A pagination token from a previous request to list posture revisions. Provide this token to retrieve the next page of results. |
-| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
+
+#### `organizations.locations.postures.patch()`
+
+Updates a revision of an existing Posture. If the posture revision that you update is currently deployed, then a new revision of the posture is created. To prevent concurrent updates from overwriting each other, always follow the read-modify-write pattern when you update a posture: 1. Call GetPosture to get the current version of the posture. 2. Update the fields in the posture as needed. 3. Call UpdatePosture to update the posture. Ensure that your request includes the `etag` value from the GetPosture response. **Important:** If you omit the `etag` when you call UpdatePosture, then the updated posture unconditionally overwrites the existing posture.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. The fields in the Posture to update. You can update only the following fields: * Posture.description * Posture.policy_sets * Posture.state |
+| `params.revisionId` | `string` | No | Required. The revision ID of the posture to update. If the posture revision that you update is currently deployed, then a new revision of the posture is created. |
+| `params.name` | `string` | Yes | Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postures.extract()`
 
@@ -119,137 +197,63 @@ Lists the most recent revisions of all Posture resources in a specified organiza
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. |
 | `params.filter` | `string` | No | Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of postures to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous request to list postures. Provide this token to retrieve the next page of results. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
 
-#### `organizations.locations.postures.patch()`
+#### `organizations.locations.postures.get()`
 
-Updates a revision of an existing Posture. If the posture revision that you update is currently deployed, then a new revision of the posture is created. To prevent concurrent updates from overwriting each other, always follow the read-modify-write pattern when you update a posture: 1. Call GetPosture to get the current version of the posture. 2. Update the fields in the posture as needed. 3. Call UpdatePosture to update the posture. Ensure that your request includes the `etag` value from the GetPosture response. **Important:** If you omit the `etag` when you call UpdatePosture, then the updated posture unconditionally overwrites the existing posture.
+Gets a single revision of a Posture.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
-| `params.updateMask` | `string` | No | Required. The fields in the Posture to update. You can update only the following fields: * Posture.description * Posture.policy_sets * Posture.state |
-| `params.revisionId` | `string` | No | Required. The revision ID of the posture to update. If the posture revision that you update is currently deployed, then a new revision of the posture is created. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
+| `params.revisionId` | `string` | No | Optional. The posture revision to retrieve. If not specified, the most recently updated revision is retrieved. |
 
-### `organizations.locations.operations`
+#### `organizations.locations.postures.create()`
 
-#### `organizations.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `organizations.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `organizations.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `organizations.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.locations.reports`
-
-#### `organizations.locations.reports.get()`
-
-Gets details for a Report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. |
-
-#### `organizations.locations.reports.list()`
-
-Lists every Report in a given organization and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list reports. Provide this token to retrieve the next page of results. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.filter` | `string` | No | Optional. A filter to apply to the list of reports, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of reports to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
-
-#### `organizations.locations.reports.createIaCValidationReport()`
-
-Validates a specified infrastructure-as-code (IaC) configuration, and creates a Report with the validation results. Only Terraform configurations are supported. Only modified assets are validated.
+Creates a new Posture.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
+| `params.postureId` | `string` | No | Required. An identifier for the posture. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.locations.postureDeployments`
+#### `organizations.locations.postures.delete()`
 
-#### `organizations.locations.postureDeployments.list()`
-
-Lists every PostureDeployment in a project and location.
+Deletes all revisions of a Posture. You can only delete a posture if none of its revisions are deployed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous request to list posture deployments. Provide this token to retrieve the next page of results. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of posture deployments to return. The default value is `500`. If you exceed the maximum value of `1000`, then the service uses the maximum value. |
-| `params.filter` | `string` | No | Optional. A filter to apply to the list of postures, in the format defined in [AIP-160: Filtering](https://google.aip.dev/160). |
+| `params.name` | `string` | Yes | Required. The name of the Posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
+| `params.etag` | `string` | No | Optional. An opaque identifier for the current version of the posture. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture is deleted regardless of its current `etag` value. |
 
-#### `organizations.locations.postureDeployments.delete()`
+### `projects`
 
-Deletes a PostureDeployment.
+### `projects.locations`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_id}`. |
-| `params.etag` | `string` | No | Optional. An opaque identifier for the current version of the posture deployment. If you provide this value, then it must match the existing value. If the values don't match, then the request fails with an ABORTED error. If you omit this value, then the posture deployment is deleted regardless of its current `etag` value. |
+#### `projects.locations.list()`
 
-#### `organizations.locations.postureDeployments.create()`
+Lists information about the supported locations for this service. This method can be called in two ways:
 
-Creates a new PostureDeployment in a given project and location.
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.postureDeploymentId` | `string` | No | Required. An identifier for the posture deployment. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 
-#### `organizations.locations.postureDeployments.patch()`
+#### `projects.locations.get()`
 
-Updates an existing PostureDeployment. To prevent concurrent updates from overwriting each other, always follow the read-modify-write pattern when you update a posture deployment: 1. Call GetPostureDeployment to get the current version of the deployment. 2. Update the fields in the deployment as needed. 3. Call UpdatePostureDeployment to update the deployment. Ensure that your request includes the `etag` value from the GetPostureDeployment response. **Important:** If you omit the `etag` when you call UpdatePostureDeployment, then the updated deployment unconditionally overwrites the existing deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Required. The fields in the PostureDeployment to update. You can update only the following fields: * PostureDeployment.posture_id * PostureDeployment.posture_revision_id |
-| `params.name` | `string` | Yes | Required. Identifier. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.locations.postureDeployments.get()`
-
-Gets details for a PostureDeployment.
+Gets information about a location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the PostureDeployment, in the format `organizations/{organization}/locations/global/postureDeployments/{posture_deployment_id}`. |
+| `params.name` | `string` | Yes | Resource name for the location. |
