@@ -19,32 +19,33 @@ class Translate {
 
 
     this.projects = {};
-    this.projects.translateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:translateText', 'POST', apiParams, clientConfig);
     this.projects.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
+    this.projects.translateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:translateText', 'POST', apiParams, clientConfig);
     this.projects.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.translateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:translateText', 'POST', apiParams, clientConfig);
+    this.projects.locations.refineText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:refineText', 'POST', apiParams, clientConfig);
     this.projects.locations.detectLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:detectLanguage', 'POST', apiParams, clientConfig);
-    this.projects.locations.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
     this.projects.locations.translateDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:translateDocument', 'POST', apiParams, clientConfig);
-    this.projects.locations.batchTranslateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:batchTranslateText', 'POST', apiParams, clientConfig);
     this.projects.locations.batchTranslateDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:batchTranslateDocument', 'POST', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.getSupportedLanguages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/supportedLanguages', 'GET', apiParams, clientConfig);
+    this.projects.locations.batchTranslateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}:batchTranslateText', 'POST', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}:wait', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.glossaries = {};
-    this.projects.locations.glossaries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/glossaries', 'POST', apiParams, clientConfig);
     this.projects.locations.glossaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/glossaries', 'GET', apiParams, clientConfig);
-    this.projects.locations.glossaries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.glossaries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+parent}/glossaries', 'POST', apiParams, clientConfig);
     this.projects.locations.glossaries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.glossaries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
