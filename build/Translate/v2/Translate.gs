@@ -19,8 +19,8 @@ class Translate {
 
 
     this.detections = {};
-    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
     this.detections.detect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'POST', apiParams, clientConfig);
+    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
 
     this.languages = {};
     this.languages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/languages', 'GET', apiParams, clientConfig);
