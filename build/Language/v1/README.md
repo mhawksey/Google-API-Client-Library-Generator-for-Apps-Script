@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:46:58 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:46:58 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:49:05 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:49:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:52 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ### `documents`
 
-#### `documents.classifyText()`
+#### `documents.analyzeSentiment()`
 
-Classifies a document into categories.
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeSentiment()`
+#### `documents.analyzeEntities()`
 
-Analyzes the sentiment of the provided text.
+Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -40,14 +40,6 @@ Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment as
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.moderateText()`
-
-Moderates a document for harmful and sensitive categories.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `documents.analyzeSyntax()`
 
 Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
@@ -56,17 +48,25 @@ Analyzes the syntax of the text and provides sentence boundaries and tokenizatio
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.annotateText()`
+#### `documents.classifyText()`
 
-A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
+Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntities()`
+#### `documents.moderateText()`
 
-Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
+Moderates a document for harmful and sensitive categories.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `documents.annotateText()`
+
+A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
