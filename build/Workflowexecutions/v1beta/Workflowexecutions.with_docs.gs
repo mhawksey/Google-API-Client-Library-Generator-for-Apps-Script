@@ -38,6 +38,17 @@ class Workflowexecutions {
     this.projects.locations.workflows.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
+     * Creates a new execution using the latest revision of the given workflow.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Name of the workflow for which an execution should be created. Format: projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow will be used.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workflows.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/executions', 'POST', apiParams, clientConfig);
+
+    /**
      * Returns a list of executions which belong to the workflow with the given name. The method returns executions of all workflow revisions. Returned executions are ordered by their start time (newest first).
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Maximum number of executions to return per call. Max supported value depends on the selected Execution view: it's 10000 for BASIC and 100 for FULL. The default value used if the field is not specified is 100, regardless of the selected view. Values greater than the max value will be coerced down to it.
@@ -49,17 +60,6 @@ class Workflowexecutions {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.workflows.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/executions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new execution using the latest revision of the given workflow.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Name of the workflow for which an execution should be created. Format: projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow will be used.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.workflows.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/executions', 'POST', apiParams, clientConfig);
 
     /**
      * Cancels an execution of the given name.
