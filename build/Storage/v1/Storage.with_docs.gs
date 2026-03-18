@@ -509,6 +509,19 @@ class Storage {
     this.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders/{folder}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Deletes a folder recursively. Only applicable to buckets with hierarchical namespace enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the bucket in which the folder resides.
+     * @param {string} apiParams.folder - (Required) Name of a folder.
+     * @param {string} apiParams.ifMetagenerationMatch - If set, only deletes the folder if its metageneration matches this value.
+     * @param {string} apiParams.ifMetagenerationNotMatch - If set, only deletes the folder if its metageneration does not match this value.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.folders.deleteRecursive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders/{folder}/deleteRecursive', 'POST', apiParams, clientConfig);
+
+    /**
      * Returns metadata for the specified folder. Only applicable to buckets with hierarchical namespace enabled.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.bucket - (Required) Name of the bucket in which the folder resides.
@@ -799,6 +812,7 @@ class Storage {
      * @param {string} apiParams.destinationBucket - (Required) Name of the bucket containing the source objects. The destination object is stored in this bucket.
      * @param {string} apiParams.destinationObject - (Required) Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
      * @param {string} apiParams.destinationPredefinedAcl - Apply a predefined set of access controls to the destination object.
+     * @param {string} apiParams.dropContextGroups - Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object.
      * @param {string} apiParams.ifGenerationMatch - Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      * @param {string} apiParams.ifMetagenerationMatch - Makes the operation conditional on whether the object's current metageneration matches the given value.
      * @param {string} apiParams.kmsKeyName - Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
@@ -964,6 +978,7 @@ class Storage {
      * @param {string} apiParams.destinationKmsKeyName - Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
      * @param {string} apiParams.destinationObject - (Required) Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
      * @param {string} apiParams.destinationPredefinedAcl - Apply a predefined set of access controls to the destination object.
+     * @param {string} apiParams.dropContextGroups - Specifies which groups of Object Contexts from the source object should be dropped from the destination object.
      * @param {string} apiParams.ifGenerationMatch - Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      * @param {string} apiParams.ifGenerationNotMatch - Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
      * @param {string} apiParams.ifMetagenerationMatch - Makes the operation conditional on whether the destination object's current metageneration matches the given value.
