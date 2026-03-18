@@ -78,9 +78,6 @@ class Youtube {
     this.youtube.v3.liveChat.messages = {};
     this.youtube.v3.liveChat.messages.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages/stream', 'GET', apiParams, clientConfig);
 
-    this.youtube.v3.videos = {};
-    this.youtube.v3.videos.batchGetStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos:batchGetStats', 'GET', apiParams, clientConfig);
-
     this.i18nLanguages = {};
     this.i18nLanguages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/i18nLanguages', 'GET', apiParams, clientConfig);
 
