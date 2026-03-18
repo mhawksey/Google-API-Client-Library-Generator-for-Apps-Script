@@ -372,7 +372,7 @@ class Blogger {
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
      * @param {integer} apiParams.maxPosts - 
-     * @param {string} apiParams.view - 
+     * @param {string} apiParams.view - Unspecified is interpreted as READER.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -383,7 +383,7 @@ class Blogger {
      * Gets a blog by url.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.url - (Required)
-     * @param {string} apiParams.view - 
+     * @param {string} apiParams.view - Unspecified is interpreted as READER.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -397,7 +397,7 @@ class Blogger {
      * @param {string} apiParams.role - 
      * @param {string} apiParams.status - Default value of status is LIVE.
      * @param {string} apiParams.userId - (Required)
-     * @param {string} apiParams.view - 
+     * @param {string} apiParams.view - Unspecified is interpreted as the user's role on the blog.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
