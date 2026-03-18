@@ -4,7 +4,7 @@ Auto-generated client library for using the **Business Profile Performance API (
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:25:00 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:19:52 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:25:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:53 GMT
 
