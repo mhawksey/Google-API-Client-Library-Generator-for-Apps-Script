@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Android Developer API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:22:38 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:22:38 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:17:46 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:17:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:21 GMT
 
 
@@ -338,6 +338,7 @@ Commits an app edit.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.changesNotSentForReview` | `boolean` | No | When a rejection happens, the parameter will make sure that the changes in this edit won't be reviewed until they are explicitly sent for review from within the Google Play Console UI. These changes will be added to any other changes that are not yet sent for review. |
+| `params.changesInReviewBehavior` | `string` | No | Optional. Specify how the API should behave if there are changes currently in review. If this value is not set, it will default to "CANCEL_IN_REVIEW_AND_SUBMIT", which will cancel the changes in review and then send all the changes for publishing. |
 
 #### `edits.validate()`
 
@@ -933,6 +934,18 @@ Returns created device tier configs, ordered by descending creation time.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.pageSize` | `integer` | No | The maximum number of device tier configs to return. The service may return fewer than this value. If unspecified, at most 10 device tier configs will be returned. The maximum value for this field is 100; values above 100 will be coerced to 100. Device tier configs will be ordered by descending creation time. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListDeviceTierConfigs` call. Provide this to retrieve the subsequent page. |
+
+### `applications.tracks`
+
+### `applications.tracks.releases`
+
+#### `applications.tracks.releases.list()`
+
+Returns the list of all releases for a given track. This excludes any releases that are obsolete.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent track, which owns this collection of releases. Format: applications/{package_name}/tracks/{track} |
 
 ### `monetization`
 
