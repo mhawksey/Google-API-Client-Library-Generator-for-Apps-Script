@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Workspace Alert Center API 
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:17:07 GMT
+- **Last Checked:** Mon, 30 Mar 2026 19:59:04 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:35 GMT
 
