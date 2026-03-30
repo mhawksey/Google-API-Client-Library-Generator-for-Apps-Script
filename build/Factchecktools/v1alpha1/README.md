@@ -4,7 +4,7 @@ Auto-generated client library for using the **Fact Check Tools API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:39:01 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:20:07 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:43:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:52 GMT
 
