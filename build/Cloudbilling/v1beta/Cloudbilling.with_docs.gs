@@ -18,6 +18,18 @@ class Cloudbilling {
     this._servicePath = '';
 
 
+    this.v1beta = {};
+
+    /**
+     * Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and supporting datasets.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.v1beta.generateInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:generateInsights', 'POST', apiParams, clientConfig);
+
     this.billingAccounts = {};
 
     this.billingAccounts.services = {};
