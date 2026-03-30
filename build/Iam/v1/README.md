@@ -4,8 +4,8 @@ Auto-generated client library for using the **Identity and Access Management (IA
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:48:10 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:48:10 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:22:31 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:22:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:04 GMT
 
 
@@ -206,6 +206,44 @@ Returns the caller's permissions on a WorkloadIdentityPool
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.workloadIdentityPools.addAttestationRule()`
+
+Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules after addition must not exceed 50.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | Required. The resource name of the managed identity or namespace resource to add an attestation rule to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.workloadIdentityPools.removeAttestationRule()`
+
+Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | Required. The resource name of the managed identity or namespace resource to remove an attestation rule from. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.workloadIdentityPools.setAttestationRules()`
+
+Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50 AttestationRules can be set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | Required. The resource name of the managed identity or namespace resource to add an attestation rule to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.workloadIdentityPools.listAttestationRules()`
+
+List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | Required. The resource name of the managed identity or namespace resource to list attestation rules of. |
+| `params.filter` | `string` | No | Optional. A query filter. Supports the following function: * `container_ids()`: Returns only the AttestationRules under the specific container ids. The function expects a comma-delimited list with only project numbers and must use the format `projects/`. For example: `container_ids(projects/, projects/,...)`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of AttestationRules to return. If unspecified, at most 50 AttestationRules are returned. The maximum value is 100; values above 100 are truncated to 100. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the subsequent page. |
 
 ### `projects.locations.workloadIdentityPools.operations`
 
