@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Engine Admin API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:18:16 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:23:08 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:00:04 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:00:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:53 GMT
 
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **App Engine Admin API (version: v1b
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
+Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -132,6 +132,19 @@ Deletes an existing Version resource.
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+
+#### `projects.locations.applications.services.versions.exportAppImage()`
+
+Exports a user image to Artifact Registry.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} |
+| `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.applications.services.versions.instances`
 
@@ -470,6 +483,17 @@ Deletes an existing Version resource.
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
+#### `apps.services.versions.exportAppImage()`
+
+Exports a user image to Artifact Registry.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version} |
+| `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
+| `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `apps.services.versions.instances`
 
 #### `apps.services.versions.instances.list()`
@@ -699,7 +723,7 @@ Deletes the specified domain mapping. A user must be authorized to administer th
 
 #### `apps.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
+Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
