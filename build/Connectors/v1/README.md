@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:28:53 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:28:53 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:10:58 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:10:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:46 GMT
 
 
@@ -34,13 +34,15 @@ GetRegionalSettings gets settings of a region. RegionalSettings is a singleton r
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Regional Settings. |
 
-#### `projects.locations.get()`
+#### `projects.locations.updateRegionalSettings()`
 
-Gets information about a location.
+Update the settings of a region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
+| `params.name` | `string` | Yes | Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/regionalSettings |
+| `params.updateMask` | `string` | No | Required. The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -52,61 +54,21 @@ Lists information about the supported locations for this service. This method ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
-#### `projects.locations.updateRegionalSettings()`
+#### `projects.locations.get()`
 
-Update the settings of a region.
+Gets information about a location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/regionalSettings |
-| `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.connections`
-
-#### `projects.locations.connections.search()`
-
-Returns Top matching Connections for a given query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The number of top matching connectors to return |
-| `params.query` | `string` | No | Required. The query against which the search needs to be done. |
-| `params.pageToken` | `string` | No | Optional. page_token |
-| `params.name` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*/connections` |
-
-#### `projects.locations.connections.generateToolspecOverride()`
-
-Generates Toolspec Override for a connection for the given list of entityTypes and operations. Returns results from the db if the entityType and operation are already present.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.delete()`
-
-Deletes a single Connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
-| `params.force` | `boolean` | No | Optional. If set to true, any child EndUserAuthentication/EventSubscription resources will also be deleted. Otherwise, the request will fail if the connection has any children. Followed the best practice from https://aip.dev/135#cascading-delete |
-
-#### `projects.locations.connections.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 
 #### `projects.locations.connections.listenEvent()`
 
@@ -117,27 +79,48 @@ ListenEvent listens to the event.
 | `params.resourcePath` | `string` | Yes | Required. Resource path for request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.connections.list()`
 
 Lists Connections in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Filter. |
-| `params.pageSize` | `integer` | No | Page size. |
 | `params.parent` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*` |
-| `params.orderBy` | `string` | No | Order by parameters. |
+| `params.pageSize` | `integer` | No | Page size. |
 | `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter. |
+| `params.orderBy` | `string` | No | Order by parameters. |
 | `params.view` | `string` | No | Specifies which fields of the Connection are returned in the response. Defaults to `BASIC` view. |
+
+#### `projects.locations.connections.search()`
+
+Returns Top matching Connections for a given query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*/connections` |
+| `params.query` | `string` | No | Required. The query against which the search needs to be done. |
+| `params.pageSize` | `integer` | No | Optional. The number of top matching connectors to return |
+| `params.pageToken` | `string` | No | Optional. page_token |
+
+#### `projects.locations.connections.get()`
+
+Gets details of a single Connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
+| `params.view` | `string` | No | Specifies which fields of the Connection are returned in the response. Defaults to `BASIC` view. |
+
+#### `projects.locations.connections.create()`
+
+Creates a new Connection in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*` |
+| `params.connectionId` | `string` | No | Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.patch()`
 
@@ -149,6 +132,15 @@ Updates the parameters of a single Connection.
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the connection. A field will be overwritten if it is in the mask. The field mask must not be empty, and it must not contain fields that are immutable or only set by the server. You can modify only the fields listed below. To lock/unlock a connection: * `lock_config` To suspend/resume a connection: * `suspended` To update the connection details: * `description` * `labels` * `connector_version` * `config_variables` * `auth_config` * `destination_configs` * `node_config` * `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config` * `auth_override_enabled` * `async_operations_enabled` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.connections.delete()`
+
+Deletes a single Connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
+| `params.force` | `boolean` | No | Optional. If set to true, any child EndUserAuthentication/EventSubscription resources will also be deleted. Otherwise, the request will fail if the connection has any children. Followed the best practice from https://aip.dev/135#cascading-delete |
+
 #### `projects.locations.connections.getConnectionSchemaMetadata()`
 
 Gets schema metadata of a connection. SchemaMetadata is a singleton resource for each connection.
@@ -157,24 +149,6 @@ Gets schema metadata of a connection. SchemaMetadata is a singleton resource for
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Connection name Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
 
-#### `projects.locations.connections.get()`
-
-Gets details of a single Connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
-| `params.view` | `string` | No | Specifies which fields of the Connection are returned in the response. Defaults to `BASIC` view. |
-
-#### `projects.locations.connections.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.connections.repairEventing()`
 
 RepaiEventing tries to repair eventing related event subscriptions.
@@ -182,6 +156,24 @@ RepaiEventing tries to repair eventing related event subscriptions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.generateToolspecOverride()`
+
+Generates Toolspec Override for a connection for the given list of entityTypes and operations. Returns results from the db if the entityType and operation are already present.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.fetchToolspecOverride()`
+
+Fetches Toolspec Override for a connection for the given list of tools. Returns results from the db if the tool is already present.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.removeToolspecOverride()`
@@ -202,26 +194,43 @@ Updates Toolspec Override for a connection with the admin provided descriptions.
 | `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.create()`
+#### `projects.locations.connections.setIamPolicy()`
 
-Creates a new Connection in a given project and location.
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.connectionId` | `string` | No | Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*` |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.connections.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.connectionSchemaMetadata`
 
-#### `projects.locations.connections.connectionSchemaMetadata.getAction()`
+#### `projects.locations.connections.connectionSchemaMetadata.refresh()`
 
-Get action.
+Refresh runtime schema of a connection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
-| `params.actionId` | `string` | No | Required. Id of the action. |
+| `params.name` | `string` | Yes | Required. Resource name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.connectionSchemaMetadata.listEntityTypes()`
 
@@ -230,9 +239,21 @@ List entity types.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
-| `params.filter` | `string` | No | Required. Filter Wildcards are not supported in the filter currently. |
 | `params.pageSize` | `integer` | No | Page size. If unspecified, at most 50 entity types will be returned. |
 | `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Required. Filter Wildcards are not supported in the filter currently. |
+| `params.view` | `string` | No | Specifies which fields are returned in response. Defaults to BASIC view. |
+
+#### `projects.locations.connections.connectionSchemaMetadata.listActions()`
+
+List actions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name format. projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
+| `params.pageSize` | `integer` | No | Page size. If unspecified, at most 50 actions will be returned. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Required. Filter Wildcards are not supported in the filter currently. |
 | `params.view` | `string` | No | Specifies which fields are returned in response. Defaults to BASIC view. |
 
 #### `projects.locations.connections.connectionSchemaMetadata.getEntityType()`
@@ -244,28 +265,73 @@ Get entity type.
 | `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
 | `params.entityId` | `string` | No | Required. Id of the entity type. |
 
-#### `projects.locations.connections.connectionSchemaMetadata.refresh()`
+#### `projects.locations.connections.connectionSchemaMetadata.getAction()`
 
-Refresh runtime schema of a connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.connectionSchemaMetadata.listActions()`
-
-List actions.
+Get action.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Page size. If unspecified, at most 50 actions will be returned. |
-| `params.filter` | `string` | No | Required. Filter Wildcards are not supported in the filter currently. |
-| `params.name` | `string` | Yes | Required. Resource name format. projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
+| `params.name` | `string` | Yes | Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
+| `params.actionId` | `string` | No | Required. Id of the action. |
+
+### `projects.locations.connections.runtimeEntitySchemas`
+
+#### `projects.locations.connections.runtimeEntitySchemas.list()`
+
+List schema of a runtime entities filtered by entity name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of RuntimeEntitySchema Format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.pageSize` | `integer` | No | Page size. |
 | `params.pageToken` | `string` | No | Page token. |
-| `params.view` | `string` | No | Specifies which fields are returned in response. Defaults to BASIC view. |
+| `params.filter` | `string` | No | Required. Filter Format: entity="{entityId}" Only entity field is supported with literal equality operator. Accepted filter example: entity="Order" Wildcards are not supported in the filter currently. |
+
+### `projects.locations.connections.runtimeActionSchemas`
+
+#### `projects.locations.connections.runtimeActionSchemas.list()`
+
+List schema of a runtime actions filtered by action name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of RuntimeActionSchema Format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Required. Filter Format: action="{actionId}" Only action field is supported with literal equality operator. Accepted filter example: action="CancelOrder" Wildcards are not supported in the filter currently. |
+| `params.schemaAsString` | `boolean` | No | Optional. Flag to indicate if schema should be returned as string or not |
 
 ### `projects.locations.connections.eventSubscriptions`
+
+#### `projects.locations.connections.eventSubscriptions.list()`
+
+List EventSubscriptions in a given project,location and connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the EventSubscription, of the form: `projects/*/locations/*/connections/*` |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter. |
+| `params.orderBy` | `string` | No | Order by parameters. |
+
+#### `projects.locations.connections.eventSubscriptions.get()`
+
+Gets details of a single EventSubscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/eventSubscriptions/*` |
+
+#### `projects.locations.connections.eventSubscriptions.create()`
+
+Creates a new EventSubscription in a given project,location and connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the EventSubscription, of the form: `projects/*/locations/*/connections/*` |
+| `params.eventSubscriptionId` | `string` | No | Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.eventSubscriptions.patch()`
 
@@ -285,36 +351,6 @@ Deletes a single EventSubscription.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/eventsubscriptions/*` |
 
-#### `projects.locations.connections.eventSubscriptions.list()`
-
-List EventSubscriptions in a given project,location and connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Page token. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the EventSubscription, of the form: `projects/*/locations/*/connections/*` |
-| `params.orderBy` | `string` | No | Order by parameters. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.filter` | `string` | No | Filter. |
-
-#### `projects.locations.connections.eventSubscriptions.get()`
-
-Gets details of a single EventSubscription.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/eventSubscriptions/*` |
-
-#### `projects.locations.connections.eventSubscriptions.create()`
-
-Creates a new EventSubscription in a given project,location and connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.eventSubscriptionId` | `string` | No | Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the EventSubscription, of the form: `projects/*/locations/*/connections/*` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.connections.eventSubscriptions.retry()`
 
 RetryEventSubscription retries the registration of Subscription.
@@ -324,34 +360,19 @@ RetryEventSubscription retries the registration of Subscription.
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/eventSubscriptions/*` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.connections.runtimeActionSchemas`
-
-#### `projects.locations.connections.runtimeActionSchemas.list()`
-
-List schema of a runtime actions filtered by action name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource of RuntimeActionSchema Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.filter` | `string` | No | Required. Filter Format: action="{actionId}" Only action field is supported with literal equality operator. Accepted filter example: action="CancelOrder" Wildcards are not supported in the filter currently. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.schemaAsString` | `boolean` | No | Optional. Flag to indicate if schema should be returned as string or not |
-| `params.pageToken` | `string` | No | Page token. |
-
-### `projects.locations.connections.runtimeEntitySchemas`
-
-#### `projects.locations.connections.runtimeEntitySchemas.list()`
-
-List schema of a runtime entities filtered by entity name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource of RuntimeEntitySchema Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.filter` | `string` | No | Required. Filter Format: entity="{entityId}" Only entity field is supported with literal equality operator. Accepted filter example: entity="Order" Wildcards are not supported in the filter currently. |
-
 ### `projects.locations.connections.endUserAuthentications`
+
+#### `projects.locations.connections.endUserAuthentications.list()`
+
+List EndUserAuthentications in a given project,location and connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the EndUserAuthentication, of the form: `projects/*/locations/*/connections/*` |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter. |
+| `params.orderBy` | `string` | No | Order by parameters. |
 
 #### `projects.locations.connections.endUserAuthentications.get()`
 
@@ -368,8 +389,8 @@ Creates a new EndUserAuthentication in a given project,location and connection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.endUserAuthenticationId` | `string` | No | Required. Identifier to assign to the EndUserAuthentication. Must be unique within scope of the parent resource. |
 | `params.parent` | `string` | Yes | Required. Parent resource of the EndUserAuthentication, of the form: `projects/*/locations/*/connections/*` |
+| `params.endUserAuthenticationId` | `string` | No | Required. Identifier to assign to the EndUserAuthentication. Must be unique within scope of the parent resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.endUserAuthentications.patch()`
@@ -382,18 +403,6 @@ Updates the parameters of a single EndUserAuthentication.
 | `params.updateMask` | `string` | No | Required. The list of fields to update. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EndUserAuthentication details: * `notify_endpoint_destination` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.endUserAuthentications.list()`
-
-List EndUserAuthentications in a given project,location and connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.filter` | `string` | No | Filter. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the EndUserAuthentication, of the form: `projects/*/locations/*/connections/*` |
-| `params.orderBy` | `string` | No | Order by parameters. |
-| `params.pageToken` | `string` | No | Page token. |
-
 #### `projects.locations.connections.endUserAuthentications.delete()`
 
 Deletes a single EndUserAuthentication.
@@ -401,54 +410,6 @@ Deletes a single EndUserAuthentication.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/endUserAuthentication/*` |
-
-### `projects.locations.customConnectors`
-
-#### `projects.locations.customConnectors.validateCustomConnectorSpec()`
-
-Validates a Custom Connector Spec.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Location at which the custom connector is being created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.customConnectors.customConnectorVersions`
-
-#### `projects.locations.customConnectors.customConnectorVersions.deprecate()`
-
-Deprecates a single CustomConnectorVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.customConnectors.customConnectorVersions.publish()`
-
-Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will be published as PartnerConnector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.customConnectors.customConnectorVersions.withdraw()`
-
-Withdraw the publish request for the CustomConnectorVersion. This can only be used before the CustomConnectorVersion is published.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.customConnectors.customConnectorVersions.delete()`
-
-Deletes a single CustomConnectorVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
 
 ### `projects.locations.operations`
 
@@ -458,19 +419,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 #### `projects.locations.operations.get()`
 
@@ -480,6 +433,14 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
 #### `projects.locations.operations.cancel()`
 
 Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
@@ -488,6 +449,125 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.providers`
+
+#### `projects.locations.providers.list()`
+
+Lists Providers in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the API, of the form: `projects/*/locations/*` Only global location is supported for Provider resource. |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+
+#### `projects.locations.providers.get()`
+
+Gets details of a provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*` Only global location is supported for Provider resource. |
+
+#### `projects.locations.providers.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.providers.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.providers.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.providers.connectors`
+
+#### `projects.locations.providers.connectors.list()`
+
+Lists Connectors in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the connectors, of the form: `projects/*/locations/*/providers/*` Only global location is supported for Connector resource. |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter string. |
+
+#### `projects.locations.providers.connectors.get()`
+
+Gets details of a single Connector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for Connector resource. |
+
+### `projects.locations.providers.connectors.versions`
+
+#### `projects.locations.providers.connectors.versions.list()`
+
+Lists Connector Versions in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.view` | `string` | No | Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `BASIC` view. |
+
+#### `projects.locations.providers.connectors.versions.get()`
+
+Gets details of a single connector version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is supported for ConnectorVersion resource. |
+| `params.view` | `string` | No | Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `CUSTOMER` view. |
+
+#### `projects.locations.providers.connectors.versions.fetchAuthSchema()`
+
+fetch and return the list of auth config variables required to override the connection backend auth.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Parent resource of the Connector Version, of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` |
+| `params.view` | `string` | No | Optional. View of the AuthSchema. The default value is BASIC. |
+
+### `projects.locations.providers.connectors.versions.eventtypes`
+
+#### `projects.locations.providers.connectors.versions.eventtypes.list()`
+
+Lists Event Types in a given Connector Version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the connectors, of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is supported for EventType resource. |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+
+#### `projects.locations.providers.connectors.versions.eventtypes.get()`
+
+Gets details of a single event type.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*/eventtypes/*` Only global location is supported for EventType resource. |
 
 ### `projects.locations.global`
 
@@ -510,6 +590,19 @@ Update the global settings of a project.
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.managedZones`
+
+#### `projects.locations.global.managedZones.list()`
+
+List ManagedZones in a given project
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the Managed Zone, of the form: `projects/*/locations/global` |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter. |
+| `params.orderBy` | `string` | No | Order by parameters. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
 
 #### `projects.locations.global.managedZones.get()`
 
@@ -539,19 +632,6 @@ Updates the parameters of a single ManagedZone.
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the managedZone. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the managedZone details: * `description` * `labels` * `target_project` * `target_network` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.managedZones.list()`
-
-List ManagedZones in a given project
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource of the Managed Zone, of the form: `projects/*/locations/global` |
-| `params.orderBy` | `string` | No | Order by parameters. |
-| `params.filter` | `string` | No | Filter. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
-| `params.pageToken` | `string` | No | Page token. |
-
 #### `projects.locations.global.managedZones.delete()`
 
 Deletes a single ManagedZone.
@@ -561,6 +641,26 @@ Deletes a single ManagedZone.
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/global/managedZones/*` |
 
 ### `projects.locations.global.customConnectors`
+
+#### `projects.locations.global.customConnectors.delete()`
+
+Deletes a single CustomConnector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{connector}` |
+| `params.force` | `boolean` | No | Optional. If set to true, any customConnectorVersion which is a child resource will also be deleted. https://aip.dev/135#cascading-delete |
+
+#### `projects.locations.global.customConnectors.list()`
+
+List CustomConnectorVersions in a given project
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the custom connectors, of the form: `projects/*/locations/*` Only global location is supported for CustomConnector resource. |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter string. |
 
 #### `projects.locations.global.customConnectors.get()`
 
@@ -579,26 +679,6 @@ Creates a new CustomConnector in a given project and location.
 | `params.parent` | `string` | Yes | Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/*` |
 | `params.customConnectorId` | `string` | No | Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.customConnectors.delete()`
-
-Deletes a single CustomConnector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{connector}` |
-| `params.force` | `boolean` | No | Optional. If set to true, any customConnectorVersion which is a child resource will also be deleted. https://aip.dev/135#cascading-delete |
-
-#### `projects.locations.global.customConnectors.list()`
-
-List CustomConnectorVersions in a given project
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.filter` | `string` | No | Filter string. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the custom connectors, of the form: `projects/*/locations/*` Only global location is supported for CustomConnector resource. |
 
 #### `projects.locations.global.customConnectors.patch()`
 
@@ -619,8 +699,8 @@ List CustomConnectorVersions in a given project
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the connectors, of the form: `projects/*/locations/{location}/customConnectors/*/customConnectorVersions/*` |
-| `params.pageToken` | `string` | No | Page token. |
 | `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
 
 #### `projects.locations.global.customConnectors.customConnectorVersions.get()`
 
@@ -642,14 +722,27 @@ Creates a new CustomConnectorVersion in a given project and location.
 
 ### `projects.locations.endpointAttachments`
 
+#### `projects.locations.endpointAttachments.list()`
+
+List EndpointAttachments in a given project
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource od the EndpointAttachment, of the form: `projects/*/locations/*` |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Filter. |
+| `params.orderBy` | `string` | No | Order by parameters. |
+| `params.view` | `string` | No | Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. |
+
 #### `projects.locations.endpointAttachments.get()`
 
 Gets details of a single EndpointAttachment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.view` | `string` | No | Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. |
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/endpointAttachments/*` |
+| `params.view` | `string` | No | Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. |
 
 #### `projects.locations.endpointAttachments.create()`
 
@@ -671,19 +764,6 @@ Updates the parameters of a single EndpointAttachment.
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the endpointAttachment. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the endpointAttachment details: * `description` * `labels` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.endpointAttachments.list()`
-
-List EndpointAttachments in a given project
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Page token. |
-| `params.view` | `string` | No | Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. |
-| `params.filter` | `string` | No | Filter. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.parent` | `string` | Yes | Required. Parent resource od the EndpointAttachment, of the form: `projects/*/locations/*` |
-| `params.orderBy` | `string` | No | Order by parameters. |
-
 #### `projects.locations.endpointAttachments.delete()`
 
 Deletes a single EndpointAttachment.
@@ -692,121 +772,50 @@ Deletes a single EndpointAttachment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/endpointAttachments/*` |
 
-### `projects.locations.providers`
+### `projects.locations.customConnectors`
 
-#### `projects.locations.providers.list()`
+#### `projects.locations.customConnectors.validateCustomConnectorSpec()`
 
-Lists Providers in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Page token. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the API, of the form: `projects/*/locations/*` Only global location is supported for Provider resource. |
-
-#### `projects.locations.providers.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+Validates a Custom Connector Spec.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. Location at which the custom connector is being created. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.providers.getIamPolicy()`
+### `projects.locations.customConnectors.customConnectorVersions`
 
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+#### `projects.locations.customConnectors.customConnectorVersions.delete()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.providers.get()`
-
-Gets details of a provider.
+Deletes a single CustomConnectorVersion.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*` Only global location is supported for Provider resource. |
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
 
-#### `projects.locations.providers.setIamPolicy()`
+#### `projects.locations.customConnectors.customConnectorVersions.deprecate()`
 
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+Deprecates a single CustomConnectorVersion.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.providers.connectors`
+#### `projects.locations.customConnectors.customConnectorVersions.publish()`
 
-#### `projects.locations.providers.connectors.list()`
-
-Lists Connectors in a given project and location.
+Publish request for the CustomConnectorVersion. Once approved, the CustomConnectorVersion will be published as PartnerConnector.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Page token. |
-| `params.filter` | `string` | No | Filter string. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the connectors, of the form: `projects/*/locations/*/providers/*` Only global location is supported for Connector resource. |
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.providers.connectors.get()`
+#### `projects.locations.customConnectors.customConnectorVersions.withdraw()`
 
-Gets details of a single Connector.
+Withdraw the publish request for the CustomConnectorVersion. This can only be used before the CustomConnectorVersion is published.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*` Only global location is supported for Connector resource. |
-
-### `projects.locations.providers.connectors.versions`
-
-#### `projects.locations.providers.connectors.versions.list()`
-
-Lists Connector Versions in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.view` | `string` | No | Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `BASIC` view. |
-| `params.pageSize` | `integer` | No | Page size. |
-
-#### `projects.locations.providers.connectors.versions.fetchAuthSchema()`
-
-fetch and return the list of auth config variables required to override the connection backend auth.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Parent resource of the Connector Version, of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` |
-| `params.view` | `string` | No | Optional. View of the AuthSchema. The default value is BASIC. |
-
-#### `projects.locations.providers.connectors.versions.get()`
-
-Gets details of a single connector version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.view` | `string` | No | Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `CUSTOMER` view. |
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is supported for ConnectorVersion resource. |
-
-### `projects.locations.providers.connectors.versions.eventtypes`
-
-#### `projects.locations.providers.connectors.versions.eventtypes.list()`
-
-Lists Event Types in a given Connector Version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Page token. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.parent` | `string` | Yes | Required. Parent resource of the connectors, of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*` Only global location is supported for EventType resource. |
-
-#### `projects.locations.providers.connectors.versions.eventtypes.get()`
-
-Gets details of a single event type.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/providers/*/connectors/*/versions/*/eventtypes/*` Only global location is supported for EventType resource. |
+| `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
+| `params.requestBody` | `object` | Yes | The request body. |
