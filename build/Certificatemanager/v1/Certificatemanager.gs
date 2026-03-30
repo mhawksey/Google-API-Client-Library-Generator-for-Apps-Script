@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Certificate Manager API
- * Documentation URL: https://cloud.google.com/certificate-manager
+ * Documentation URL: https://docs.cloud.google.com/certificate-manager/docs/overview
  * @class
  */
 class Certificatemanager {
