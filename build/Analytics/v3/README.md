@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Analytics API (version: v3)
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:17:21 GMT
+- **Last Checked:** Mon, 30 Mar 2026 19:59:16 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:22:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:49 GMT
 
