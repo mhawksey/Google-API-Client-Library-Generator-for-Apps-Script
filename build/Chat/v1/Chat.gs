@@ -82,6 +82,17 @@ class Chat {
     this.users.spaces.spaceNotificationSetting = {};
     this.users.spaces.spaceNotificationSetting.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.users.spaces.spaceNotificationSetting.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.users.sections = {};
+    this.users.sections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sections', 'POST', apiParams, clientConfig);
+    this.users.sections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.users.sections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.users.sections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sections', 'GET', apiParams, clientConfig);
+    this.users.sections.position = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:position', 'POST', apiParams, clientConfig);
+
+    this.users.sections.items = {};
+    this.users.sections.items.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/items', 'GET', apiParams, clientConfig);
+    this.users.sections.items.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
   }
 
 /**
