@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Key Management Service (KMS)
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:26:46 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:09:34 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:32:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:05 GMT
 
@@ -40,7 +40,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, o
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the KeyAccessJustificationsPolicyConfig to get. |
+| `params.name` | `string` | Yes | Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. |
 
 #### `folders.updateKajPolicyConfig()`
 
@@ -48,8 +48,8 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.name` | `string` | Yes | Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
+| `params.updateMask` | `string` | No | Optional. Specifies the list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
@@ -86,7 +86,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, o
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the KeyAccessJustificationsPolicyConfig to get. |
+| `params.name` | `string` | Yes | Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. |
 
 #### `projects.updateKajPolicyConfig()`
 
@@ -94,8 +94,8 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.name` | `string` | Yes | Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
+| `params.updateMask` | `string` | No | Optional. Specifies the list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.showEffectiveKeyAccessJustificationsPolicyConfig()`
@@ -104,7 +104,7 @@ Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the g
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.project` | `string` | Yes | Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}" |
+| `params.project` | `string` | Yes | Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}" |
 
 #### `projects.showEffectiveKeyAccessJustificationsEnrollmentConfig()`
 
@@ -112,7 +112,7 @@ Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to t
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.project` | `string` | Yes | Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for. |
+| `params.project` | `string` | Yes | Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for. |
 
 ### `projects.locations`
 
@@ -145,11 +145,11 @@ Generate random bytes using the Cloud KMS randomness source in the provided loca
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -807,7 +807,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, o
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the KeyAccessJustificationsPolicyConfig to get. |
+| `params.name` | `string` | Yes | Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. |
 
 #### `organizations.updateKajPolicyConfig()`
 
@@ -815,6 +815,6 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.name` | `string` | Yes | Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
+| `params.updateMask` | `string` | No | Optional. Specifies the list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
