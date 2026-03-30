@@ -4,8 +4,8 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:48:17 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:48:17 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:22:36 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:22:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:09 GMT
 
 
@@ -17,15 +17,6 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 ### `projects`
 
 ### `projects.serviceAccounts`
-
-#### `projects.serviceAccounts.generateAccessToken()`
-
-Generates an OAuth 2.0 access token for a service account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.serviceAccounts.signBlob()`
 
@@ -52,6 +43,15 @@ Returns the trust boundary info for a given service account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of service account. |
+
+#### `projects.serviceAccounts.generateAccessToken()`
+
+Generates an OAuth 2.0 access token for a service account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.serviceAccounts.signJwt()`
 
