@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Functions API (version: v2al
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:21:07 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:21:07 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:09:11 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:09:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:44 GMT
 
 
@@ -20,31 +20,64 @@ Auto-generated client library for using the **Cloud Functions API (version: v2al
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `projects.locations.functions`
 
-#### `projects.locations.functions.patch()`
+#### `projects.locations.functions.get()`
 
-Updates existing function.
+Returns a function with the given name from the requested project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*` |
-| `params.updateMask` | `string` | No | The list of fields to be updated. If no field mask is provided, all fields will be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the function which details should be obtained. |
+| `params.revision` | `string` | No | Optional. The optional version of the 1st gen function whose details should be obtained. The version of a 1st gen function is an integer that starts from 1 and gets incremented on redeployments. GCF may keep historical configs for old versions of 1st gen function. This field can be specified to fetch the historical configs. This field is valid only for GCF 1st gen function. |
+
+#### `projects.locations.functions.list()`
+
+Returns a list of functions that belong to the requested project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location from which the function should be listed, specified in the format `projects/*/locations/*` If you want to list functions in all locations, use "-" in place of a location. When listing functions in all locations, if one or more location(s) are unreachable, the response will contain functions from all reachable locations along with the names of any unreachable locations. |
+| `params.pageSize` | `integer` | No | Maximum number of functions to return per call. The largest allowed page_size is 1,000, if the page_size is omitted or specified as greater than 1,000 then it will be replaced as 1,000. The size of the list response can be less than specified when used with filters. |
+| `params.pageToken` | `string` | No | The value returned by the last `ListFunctionsResponse`; indicates that this is a continuation of a prior `ListFunctions` call, and that the system should return the next page of data. |
+| `params.filter` | `string` | No | The filter for Functions that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
+| `params.orderBy` | `string` | No | The sorting order of the resources returned. Value should be a comma separated list of fields. The default sorting order is ascending. See https://google.aip.dev/132#ordering. |
 
 #### `projects.locations.functions.create()`
 
@@ -56,34 +89,14 @@ Creates a new function. If a function with the given name already exists in the 
 | `params.functionId` | `string` | No | The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.functions.detachFunction()`
+#### `projects.locations.functions.patch()`
 
-Detaches 2nd Gen function to Cloud Run function.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function for which should be detached. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.functions.list()`
-
-Returns a list of functions that belong to the requested project.
+Updates existing function.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of functions to return per call. The largest allowed page_size is 1,000, if the page_size is omitted or specified as greater than 1,000 then it will be replaced as 1,000. The size of the list response can be less than specified when used with filters. |
-| `params.parent` | `string` | Yes | Required. The project and location from which the function should be listed, specified in the format `projects/*/locations/*` If you want to list functions in all locations, use "-" in place of a location. When listing functions in all locations, if one or more location(s) are unreachable, the response will contain functions from all reachable locations along with the names of any unreachable locations. |
-| `params.filter` | `string` | No | The filter for Functions that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | The sorting order of the resources returned. Value should be a comma separated list of fields. The default sorting order is ascending. See https://google.aip.dev/132#ordering. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListFunctionsResponse`; indicates that this is a continuation of a prior `ListFunctions` call, and that the system should return the next page of data. |
-
-#### `projects.locations.functions.generateDownloadUrl()`
-
-Returns a signed URL for downloading deployed function source code. The URL is only valid for a limited period and should be used within 30 minutes of generation. For more information about the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of function for which source code Google Cloud Storage signed URL should be generated. |
+| `params.name` | `string` | Yes | A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*` |
+| `params.updateMask` | `string` | No | The list of fields to be updated. If no field mask is provided, all fields will be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.setupFunctionUpgradeConfig()`
@@ -95,13 +108,14 @@ Creates a 2nd Gen copy of the function configuration based on the 1st Gen functi
 | `params.name` | `string` | Yes | Required. The name of the function which should have configuration copied for upgrade. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.functions.delete()`
+#### `projects.locations.functions.abortFunctionUpgrade()`
 
-Deletes a function with the given name from the specified project. If the given function is used by some trigger, the trigger will be updated to remove this function.
+Aborts generation upgrade process for a function with the given name from the specified project. Deletes all 2nd Gen copy related configuration and resources which were created during the upgrade process.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function which should be deleted. |
+| `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be aborted. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.redirectFunctionUpgradeTraffic()`
 
@@ -110,6 +124,24 @@ Changes the traffic target of a function from the original 1st Gen function to t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which traffic target should be changed to 2nd Gen from 1st Gen. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.functions.rollbackFunctionUpgradeTraffic()`
+
+Reverts the traffic target of a function from the 2nd Gen copy to the original 1st Gen function. After this operation, all new traffic would be served by the 1st Gen.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the function for which traffic target should be changed back to 1st Gen from 2nd Gen. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.functions.commitFunctionUpgrade()`
+
+Finalizes the upgrade after which function upgrade can not be rolled back. This is the last step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Deletes all original 1st Gen related configuration and resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be finalized. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.commitFunctionUpgradeAsGen2()`
@@ -121,14 +153,13 @@ Commits a function upgrade from GCF Gen1 to GCF Gen2. This action deletes the Ge
 | `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be committed to Gen2. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.functions.testIamPermissions()`
+#### `projects.locations.functions.delete()`
 
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+Deletes a function with the given name from the specified project. If the given function is used by some trigger, the trigger will be updated to remove this function.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the function which should be deleted. |
 
 #### `projects.locations.functions.generateUploadUrl()`
 
@@ -147,49 +178,22 @@ Returns a signed URL for uploading a function source code. For more information 
 | `params.parent` | `string` | Yes | Required. The project and location in which the Google Cloud Storage signed URL should be generated, specified in the format `projects/*/locations/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.functions.abortFunctionUpgrade()`
+#### `projects.locations.functions.generateDownloadUrl()`
 
-Aborts generation upgrade process for a function with the given name from the specified project. Deletes all 2nd Gen copy related configuration and resources which were created during the upgrade process.
+Returns a signed URL for downloading deployed function source code. The URL is only valid for a limited period and should be used within 30 minutes of generation. For more information about the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be aborted. |
+| `params.name` | `string` | Yes | Required. The name of function for which source code Google Cloud Storage signed URL should be generated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.functions.get()`
+#### `projects.locations.functions.detachFunction()`
 
-Returns a function with the given name from the requested project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function which details should be obtained. |
-| `params.revision` | `string` | No | Optional. The optional version of the 1st gen function whose details should be obtained. The version of a 1st gen function is an integer that starts from 1 and gets incremented on redeployments. GCF may keep historical configs for old versions of 1st gen function. This field can be specified to fetch the historical configs. This field is valid only for GCF 1st gen function. |
-
-#### `projects.locations.functions.commitFunctionUpgrade()`
-
-Finalizes the upgrade after which function upgrade can not be rolled back. This is the last step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Deletes all original 1st Gen related configuration and resources.
+Detaches 2nd Gen function to Cloud Run function.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be finalized. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.functions.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.functions.rollbackFunctionUpgradeTraffic()`
-
-Reverts the traffic target of a function from the 2nd Gen copy to the original 1st Gen function. After this operation, all new traffic would be served by the 1st Gen.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the function for which traffic target should be changed back to 1st Gen from 2nd Gen. |
+| `params.name` | `string` | Yes | Required. The name of the function for which should be detached. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.setIamPolicy()`
@@ -201,27 +205,23 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.operations`
+#### `projects.locations.functions.getIamPolicy()`
 
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
 
-#### `projects.locations.operations.list()`
+#### `projects.locations.functions.testIamPermissions()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.runtimes`
 
