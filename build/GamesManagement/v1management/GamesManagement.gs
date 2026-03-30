@@ -19,32 +19,32 @@ class GamesManagement {
 
 
     this.achievements = {};
+    this.achievements.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/reset', 'POST', apiParams, clientConfig);
     this.achievements.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/{achievementId}/resetForAllPlayers', 'POST', apiParams, clientConfig);
     this.achievements.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/{achievementId}/reset', 'POST', apiParams, clientConfig);
-    this.achievements.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/reset', 'POST', apiParams, clientConfig);
     this.achievements.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
     this.achievements.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-
-    this.scores = {};
-    this.scores.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/reset', 'POST', apiParams, clientConfig);
-    this.scores.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers', 'POST', apiParams, clientConfig);
-    this.scores.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/reset', 'POST', apiParams, clientConfig);
-    this.scores.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-    this.scores.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
-
-    this.events = {};
-    this.events.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/reset', 'POST', apiParams, clientConfig);
-    this.events.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/resetForAllPlayers', 'POST', apiParams, clientConfig);
-    this.events.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/reset', 'POST', apiParams, clientConfig);
-    this.events.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-    this.events.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
 
     this.players = {};
     this.players.hide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/applications/{applicationId}/players/hidden/{playerId}', 'POST', apiParams, clientConfig);
     this.players.unhide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/applications/{applicationId}/players/hidden/{playerId}', 'DELETE', apiParams, clientConfig);
 
+    this.scores = {};
+    this.scores.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/reset', 'POST', apiParams, clientConfig);
+    this.scores.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/reset', 'POST', apiParams, clientConfig);
+    this.scores.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
+    this.scores.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers', 'POST', apiParams, clientConfig);
+    this.scores.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
+
     this.applications = {};
     this.applications.listHidden = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/applications/{applicationId}/players/hidden', 'GET', apiParams, clientConfig);
+
+    this.events = {};
+    this.events.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
+    this.events.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/reset', 'POST', apiParams, clientConfig);
+    this.events.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/reset', 'POST', apiParams, clientConfig);
+    this.events.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
+    this.events.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/resetForAllPlayers', 'POST', apiParams, clientConfig);
   }
 
 /**
