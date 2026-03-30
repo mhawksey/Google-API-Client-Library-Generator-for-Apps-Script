@@ -4,7 +4,7 @@ Auto-generated client library for using the **Drive Labels API (version: v2beta)
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:38:49 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:19:58 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:45:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:41 GMT
 
