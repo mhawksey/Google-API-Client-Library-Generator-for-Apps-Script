@@ -4,8 +4,8 @@ Auto-generated client library for using the **Developer Connect API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:31:24 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:42:21 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:12:54 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:12:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:15 GMT
 
 
@@ -20,11 +20,11 @@ Auto-generated client library for using the **Developer Connect API (version: v1
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -334,6 +334,17 @@ Deletes a single AccountConnector.
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
 | `params.etag` | `string` | No | Optional. The current etag of the AccountConnectorn. If an etag is provided and does not match the current etag of the AccountConnector, deletion will be blocked and an ABORTED error will be returned. |
 | `params.force` | `boolean` | No | Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.) |
+
+#### `projects.locations.accountConnectors.fetchUserRepositories()`
+
+FetchUserRepositories returns a list of UserRepos that are available for an account connector resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountConnector` | `string` | Yes | Required. The name of the Account Connector resource in the format: `projects/*/locations/*/accountConnectors/*`. |
+| `params.pageSize` | `integer` | No | Optional. Number of results to return in the list. Defaults to 20. |
+| `params.pageToken` | `string` | No | Optional. Page start. |
+| `params.repository` | `string` | No | Optional. The name of the repository. When specified, only the UserRepository with this name will be returned if the repository is accessible under this Account Connector for the calling user. |
 
 ### `projects.locations.accountConnectors.users`
 
