@@ -45,7 +45,7 @@ class Cloudkms {
     /**
      * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+     * @param {string} apiParams.name - (Required) Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -55,8 +55,8 @@ class Cloudkms {
     /**
      * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {string} apiParams.name - (Required) Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
+     * @param {string} apiParams.updateMask - Optional. Specifies the list of fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -101,7 +101,7 @@ class Cloudkms {
     /**
      * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+     * @param {string} apiParams.name - (Required) Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -111,8 +111,8 @@ class Cloudkms {
     /**
      * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {string} apiParams.name - (Required) Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
+     * @param {string} apiParams.updateMask - Optional. Specifies the list of fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -123,7 +123,7 @@ class Cloudkms {
     /**
      * Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.project - (Required) Required. The number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
+     * @param {string} apiParams.project - (Required) Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}"
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -133,7 +133,7 @@ class Cloudkms {
     /**
      * Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in hierarchy.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.project - (Required) Required. The number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for.
+     * @param {string} apiParams.project - (Required) Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -176,7 +176,7 @@ class Cloudkms {
     this.projects.locations.generateRandomBytes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generateRandomBytes', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
@@ -966,7 +966,7 @@ class Cloudkms {
     /**
      * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
+     * @param {string} apiParams.name - (Required) Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -976,8 +976,8 @@ class Cloudkms {
     /**
      * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {string} apiParams.name - (Required) Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
+     * @param {string} apiParams.updateMask - Optional. Specifies the list of fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
