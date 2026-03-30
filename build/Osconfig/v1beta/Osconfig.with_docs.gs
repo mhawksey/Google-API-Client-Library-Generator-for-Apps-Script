@@ -23,30 +23,6 @@ class Osconfig {
     this.projects.patchJobs = {};
 
     /**
-     * Get a list of patch jobs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - If provided, this field specifies the criteria that must be met by patch jobs to be included in the response. Currently, filtering is only available on the patch_deployment field.
-     * @param {integer} apiParams.pageSize - The maximum number of instance status to return.
-     * @param {string} apiParams.pageToken - A pagination token returned from a previous call that indicates where this listing should continue from.
-     * @param {string} apiParams.parent - (Required) Required. In the form of `projects/*`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the patch in the form `projects/*\/patchJobs/*`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    /**
      * Patch VM instances by creating and running a patch job.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The project in which to run this patch in the form `projects/*`
@@ -67,6 +43,30 @@ class Osconfig {
      */
     this.projects.patchJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
+    /**
+     * Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be restarted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the patch in the form `projects/*\/patchJobs/*`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Get a list of patch jobs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - If provided, this field specifies the criteria that must be met by patch jobs to be included in the response. Currently, filtering is only available on the patch_deployment field.
+     * @param {integer} apiParams.pageSize - The maximum number of instance status to return.
+     * @param {string} apiParams.pageToken - A pagination token returned from a previous call that indicates where this listing should continue from.
+     * @param {string} apiParams.parent - (Required) Required. In the form of `projects/*`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
+
     this.projects.patchJobs.instanceDetails = {};
 
     /**
@@ -85,16 +85,26 @@ class Osconfig {
     this.projects.patchDeployments = {};
 
     /**
-     * Update an OS Config patch deployment.
+     * Create an OS Config patch deployment.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
-     * @param {string} apiParams.updateMask - Optional. Field mask that controls which fields of the patch deployment should be updated.
+     * @param {string} apiParams.parent - (Required) Required. The project to apply this patch deployment to in the form `projects/*`.
+     * @param {string} apiParams.patchDeploymentId - Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.patchDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchDeployments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Get an OS Config patch deployment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.patchDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Get a page of OS Config patch deployments.
@@ -109,27 +119,6 @@ class Osconfig {
     this.projects.patchDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchDeployments', 'GET', apiParams, clientConfig);
 
     /**
-     * Get an OS Config patch deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.patchDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to generate patch jobs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resume', 'POST', apiParams, clientConfig);
-
-    /**
      * Delete an OS Config patch deployment.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`.
@@ -140,16 +129,16 @@ class Osconfig {
     this.projects.patchDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Create an OS Config patch deployment.
+     * Update an OS Config patch deployment.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The project to apply this patch deployment to in the form `projects/*`.
-     * @param {string} apiParams.patchDeploymentId - Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     * @param {string} apiParams.name - (Required) Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
+     * @param {string} apiParams.updateMask - Optional. Field mask that controls which fields of the patch deployment should be updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.patchDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchDeployments', 'POST', apiParams, clientConfig);
+    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Change state of patch deployment to "PAUSED". Patch deployment in paused state doesn't generate patch jobs.
@@ -162,7 +151,30 @@ class Osconfig {
      */
     this.projects.patchDeployments.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:pause', 'POST', apiParams, clientConfig);
 
+    /**
+     * Change state of patch deployment back to "ACTIVE". Patch deployment in active state continues to generate patch jobs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the patch deployment in the form `projects/*\/patchDeployments/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resume', 'POST', apiParams, clientConfig);
+
     this.projects.guestPolicies = {};
+
+    /**
+     * Create an OS Config guest policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.guestPolicyId - Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the parent using one of the following forms: `projects/{project_number}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.guestPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guestPolicies', 'POST', apiParams, clientConfig);
 
     /**
      * Get an OS Config guest policy.
@@ -197,18 +209,6 @@ class Osconfig {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.guestPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Create an OS Config guest policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.guestPolicyId - Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the parent using one of the following forms: `projects/{project_number}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.guestPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guestPolicies', 'POST', apiParams, clientConfig);
 
     /**
      * Delete an OS Config guest policy.
