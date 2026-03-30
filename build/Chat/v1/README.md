@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Chat API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:20:07 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:25:15 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:02:01 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:02:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:03 GMT
 
 
@@ -397,4 +397,74 @@ Updates the space notification setting. For an example, see [Update the caller's
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the space notification setting. Format: `users/{user}/spaces/{space}/spaceNotificationSetting`. |
 | `params.updateMask` | `string` | No | Required. Supported field paths: - `notification_setting` - `mute_setting` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.sections`
+
+#### `users.sections.create()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Creates a section in Google Chat. Sections help users group conversations and customize the list of spaces displayed in Chat navigation panel. Only sections of type `CUSTOM_SECTION` can be created. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the section is created. Format: `users/{user}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.sections.delete()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Deletes a section of type `CUSTOM_SECTION`. If the section contains items, such as spaces, the items are moved to Google Chat's default sections and are not deleted. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the section to delete. Format: `users/{user}/sections/{section}` |
+
+#### `users.sections.patch()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Updates a section. Only sections of type `CUSTOM_SECTION` can be updated. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name of the section. For system sections, the section ID is a constant string: - DEFAULT_DIRECT_MESSAGES: `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES: `users/{user}/sections/default-spaces` - DEFAULT_APPS: `users/{user}/sections/default-apps` Format: `users/{user}/sections/{section}` |
+| `params.updateMask` | `string` | No | Required. The mask to specify which fields to update. Currently supported field paths: - `display_name` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.sections.list()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Lists sections available to the Chat user. Sections help users group their conversations and customize the list of spaces displayed in Chat navigation panel. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which is the user resource name that owns this collection of sections. Only supports listing sections for the calling user. To refer to the calling user, set one of the following: - The `me` alias. For example, `users/me`. - Their Workspace email address. For example, `users/user@example.com`. - Their user id. For example, `users/123456789`. Format: `users/{user}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of sections to return. The service may return fewer than this value. If unspecified, at most 10 sections will be returned. The maximum value is 100. If you use a value more than 100, it's automatically changed to 100. Negative values return an `INVALID_ARGUMENT` error. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous list sections call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results. |
+
+#### `users.sections.position()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Changes the sort order of a section. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the section to position. Format: `users/{user}/sections/{section}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.sections.items`
+
+#### `users.sections.items.list()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Lists items in a section. Only spaces can be section items. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections` - `https://www.googleapis.com/auth/chat.users.sections.readonly`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which is the section resource name that owns this collection of section items. Only supports listing section items for the calling user. When you're filtering by space, use the wildcard `-` to search across all sections. For example, `users/{user}/sections/-`. Format: `users/{user}/sections/{section}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of section items to return. The service may return fewer than this value. If unspecified, at most 10 section items will be returned. The maximum value is 100. If you use a value more than 100, it's automatically changed to 100. Negative values return an `INVALID_ARGUMENT` error. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous list section items call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results. |
+| `params.filter` | `string` | No | Optional. A query filter. Currently only supports filtering by space. For example, `space = spaces/{space}`. Invalid queries are rejected with an `INVALID_ARGUMENT` error. |
+
+#### `users.sections.items.move()`
+
+[Developer Preview](https://developers.google.com/workspace/preview): Moves an item from one section to another. For example, if a section contains spaces, this method can be used to move a space to a different section. For details, see [Create and organize sections in Google Chat](https://support.google.com/chat/answer/16059854). Requires [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) with the [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.sections`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the section item to move. Format: `users/{user}/sections/{section}/items/{item}` |
 | `params.requestBody` | `object` | Yes | The request body. |
