@@ -47,6 +47,10 @@ class Iam {
     this.projects.locations.workloadIdentityPools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.addAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:addAttestationRule', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.removeAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:removeAttestationRule', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.setAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAttestationRules', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.listAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAttestationRules', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.operations = {};
     this.projects.locations.workloadIdentityPools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
