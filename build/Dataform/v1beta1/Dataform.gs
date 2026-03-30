@@ -38,6 +38,7 @@ class Dataform {
     this.projects.locations.teamFolders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/teamFolders', 'POST', apiParams, clientConfig);
     this.projects.locations.teamFolders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.teamFolders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.teamFolders.deleteTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:deleteTree', 'POST', apiParams, clientConfig);
     this.projects.locations.teamFolders.queryContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+teamFolder}:queryContents', 'GET', apiParams, clientConfig);
     this.projects.locations.teamFolders.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/teamFolders:search', 'GET', apiParams, clientConfig);
     this.projects.locations.teamFolders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
@@ -49,6 +50,7 @@ class Dataform {
     this.projects.locations.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/folders', 'POST', apiParams, clientConfig);
     this.projects.locations.folders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.folders.deleteTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:deleteTree', 'POST', apiParams, clientConfig);
     this.projects.locations.folders.queryFolderContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+folder}:queryFolderContents', 'GET', apiParams, clientConfig);
     this.projects.locations.folders.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:move', 'POST', apiParams, clientConfig);
     this.projects.locations.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
