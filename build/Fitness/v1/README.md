@@ -4,7 +4,7 @@ Auto-generated client library for using the **Fitness API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:40:34 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:21:12 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:45:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:01 GMT
 
