@@ -18,16 +18,16 @@ class Gmailpostmastertools {
     this._servicePath = '';
 
 
-    this.domainStats = {};
-    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
-
     this.domains = {};
     this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.domains.getComplianceStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'GET', apiParams, clientConfig);
+    this.domains.getComplianceStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.domains.domainStats = {};
     this.domains.domainStats.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/domainStats:query', 'POST', apiParams, clientConfig);
+
+    this.domainStats = {};
+    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
   }
 
 /**
