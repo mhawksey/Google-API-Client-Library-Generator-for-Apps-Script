@@ -18,6 +18,9 @@ class Cloudbilling {
     this._servicePath = '';
 
 
+    this.v1beta = {};
+    this.v1beta.generateInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:generateInsights', 'POST', apiParams, clientConfig);
+
     this.billingAccounts = {};
 
     this.billingAccounts.services = {};
