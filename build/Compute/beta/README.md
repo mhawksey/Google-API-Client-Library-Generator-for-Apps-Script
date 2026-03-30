@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: beta)
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:28:35 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:28:35 GMT
-- **Created:** Wed, 18 Mar 2026 21:28:35 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:10:46 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:10:46 GMT
+- **Created:** Mon, 30 Mar 2026 20:10:46 GMT
 
 
 
