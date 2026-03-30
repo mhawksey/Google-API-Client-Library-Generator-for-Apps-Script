@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dataform API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:29:53 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:35:34 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:11:45 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:11:45 GMT
 - **Created:** Sat, 01 Nov 2025 00:34:56 GMT
 
 
@@ -17,6 +17,18 @@ Auto-generated client library for using the **Dataform API (version: v1)** in Go
 ### `projects`
 
 ### `projects.locations`
+
+#### `projects.locations.queryUserRootContents()`
+
+Returns the contents of a caller's root folder in a given location. The root folder contains all resources that are created by the user and not contained in any other folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. Location of the user root folder whose contents to list. Format: projects/*/locations/* |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryUserRootContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryUserRootFolderContents`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), created_at, last_modified_at. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` |
+| `params.filter` | `string` | No | Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` |
 
 #### `projects.locations.getConfig()`
 
@@ -38,11 +50,11 @@ Update default config for a given project and location. **Note:** *This method d
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -99,6 +111,197 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+### `projects.locations.teamFolders`
+
+#### `projects.locations.teamFolders.get()`
+
+Fetches a single TeamFolder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TeamFolder's name. |
+
+#### `projects.locations.teamFolders.create()`
+
+Creates a new TeamFolder in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location in which to create the TeamFolder. Must be in the format `projects/*/locations/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.teamFolders.patch()`
+
+Updates a single TeamFolder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The TeamFolder's name. |
+| `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the Folder. If left unset, all fields will be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.teamFolders.delete()`
+
+Deletes a single TeamFolder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TeamFolder's name. |
+
+#### `projects.locations.teamFolders.deleteTree()`
+
+Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.teamFolders.queryContents()`
+
+Returns the contents of a given TeamFolder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.teamFolder` | `string` | Yes | Required. Name of the team_folder whose contents to list. Format: `projects/*/locations/*/teamFolders/*`. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryTeamFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryTeamFolderContents`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: `display_name` (default), `create_time`, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` |
+| `params.filter` | `string` | No | Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` |
+
+#### `projects.locations.teamFolders.search()`
+
+Returns all TeamFolders in a given location that the caller has access to and match the provided filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. Location in which to query TeamFolders. Format: `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of TeamFolders to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `SearchTeamFolders` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchTeamFolders`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. Field to additionally sort results by. Supported keywords: `display_name` (default), `create_time`, `last_modified_time`. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` |
+| `params.filter` | `string` | No | Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` |
+
+#### `projects.locations.teamFolders.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.teamFolders.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.teamFolders.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.folders`
+
+#### `projects.locations.folders.get()`
+
+Fetches a single Folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Folder's name. |
+
+#### `projects.locations.folders.create()`
+
+Creates a new Folder in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location in which to create the Folder. Must be in the format `projects/*/locations/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.folders.patch()`
+
+Updates a single Folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The Folder's name. |
+| `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the Folder. If left unset, all fields that can be updated, will be updated. A few fields cannot be updated and will be ignored if specified in the update_mask (e.g. parent_name, team_folder_name). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.folders.delete()`
+
+Deletes a single Folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Folder's name. |
+
+#### `projects.locations.folders.deleteTree()`
+
+Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.folders.queryFolderContents()`
+
+Returns the contents of a given Folder.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.folder` | `string` | Yes | Required. Name of the folder whose contents to list. Format: projects/*/locations/*/folders/* |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryFolderContents`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), create_time, last_modified_time. Examples: - `orderBy="display_name"` - `orderBy="display_name desc"` |
+| `params.filter` | `string` | No | Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: - `filter="display_name="MyFolder""` |
+
+#### `projects.locations.folders.move()`
+
+Moves a Folder to a new Folder, TeamFolder, or the root location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the Folder to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.folders.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.folders.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.folders.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.repositories`
 
 #### `projects.locations.repositories.list()`
@@ -149,6 +352,15 @@ Deletes a single Repository.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The repository's name. |
 | `params.force` | `boolean` | No | Optional. If set to true, child resources of this repository (compilation results and workflow invocations) will also be deleted. Otherwise, the request will only succeed if the repository has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of such resources exists in the repository, the request will fail.*. |
+
+#### `projects.locations.repositories.move()`
+
+Moves a Repository to a new location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the repository to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.commit()`
 
@@ -355,6 +567,7 @@ Returns the contents of a given Workspace directory.
 | `params.path` | `string` | No | Optional. The directory's full path including directory name, relative to the workspace root. If left unset, the workspace root is used. |
 | `params.pageSize` | `integer` | No | Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.view` | `string` | No | Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. |
 
 #### `projects.locations.repositories.workspaces.searchFiles()`
 
@@ -653,61 +866,3 @@ Returns WorkflowInvocationActions in a given WorkflowInvocation.
 | `params.name` | `string` | Yes | Required. The workflow invocation's name. |
 | `params.pageSize` | `integer` | No | Optional. Maximum number of workflow invocations to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call that provided the page token. |
-
-### `projects.locations.folders`
-
-#### `projects.locations.folders.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.folders.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.folders.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.teamFolders`
-
-#### `projects.locations.teamFolders.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.teamFolders.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.teamFolders.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
