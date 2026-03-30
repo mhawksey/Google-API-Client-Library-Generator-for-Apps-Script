@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Billing API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:20:41 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:25:49 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:02:39 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:02:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:12 GMT
 
 
@@ -13,6 +13,16 @@ Auto-generated client library for using the **Cloud Billing API (version: v1beta
 ---
 
 ## API Reference
+
+### `v1beta`
+
+#### `v1beta.generateInsights()`
+
+Analyzes cost data for a billing account and/or specific projects. Returns a natural language summary and supporting datasets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts`
 
