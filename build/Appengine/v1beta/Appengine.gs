@@ -38,6 +38,7 @@ class Appengine {
     this.projects.locations.applications.services.versions = {};
     this.projects.locations.applications.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.applications.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.applications.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
 
     this.projects.locations.applications.services.versions.instances = {};
     this.projects.locations.applications.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
@@ -83,6 +84,7 @@ class Appengine {
     this.apps.services.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions', 'POST', apiParams, clientConfig);
     this.apps.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
     this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+    this.apps.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
 
     this.apps.services.versions.instances = {};
     this.apps.services.versions.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', 'GET', apiParams, clientConfig);
