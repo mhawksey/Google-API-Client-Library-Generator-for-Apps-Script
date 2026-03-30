@@ -75,6 +75,19 @@ class Config {
     this.projects.locations.terraformVersions = {};
     this.projects.locations.terraformVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/terraformVersions', 'GET', apiParams, clientConfig);
     this.projects.locations.terraformVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.deploymentGroups = {};
+    this.projects.locations.deploymentGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deploymentGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deploymentGroups', 'GET', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:provision', 'POST', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.deprovision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deprovision', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.deploymentGroups.revisions = {};
+    this.projects.locations.deploymentGroups.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.deploymentGroups.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
   }
 
 /**
