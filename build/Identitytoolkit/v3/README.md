@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Identity Toolkit API (versi
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:48:31 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:48:31 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:22:53 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:22:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:23 GMT
 
 
@@ -16,9 +16,49 @@ Auto-generated client library for using the **Google Identity Toolkit API (versi
 
 ### `relyingparty`
 
-#### `relyingparty.downloadAccount()`
+#### `relyingparty.verifyPassword()`
 
-Batch download user accounts.
+Verifies the user entered password.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.deleteAccount()`
+
+Delete user account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.setAccountInfo()`
+
+Set account info for a user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.verifyPhoneNumber()`
+
+Verifies ownership of a phone number and creates/updates the user account accordingly.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.setProjectConfig()`
+
+Set project configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.emailLinkSignin()`
+
+Reset password for a user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -33,33 +73,22 @@ Get project configuration.
 | `params.delegatedProjectNumber` | `string` | No | Delegated GCP project number of the request. |
 | `params.projectNumber` | `string` | No | GCP project number of the request. |
 
+#### `relyingparty.getRecaptchaParam()`
+
+Get recaptcha secure param.
+
+
+#### `relyingparty.createAuthUri()`
+
+Creates the URI used by the IdP to authenticate the user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `relyingparty.signOutUser()`
 
 Sign out user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.emailLinkSignin()`
-
-Reset password for a user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.resetPassword()`
-
-Reset password for a user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.getOobConfirmationCode()`
-
-Get a code for user action confirmation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -73,21 +102,58 @@ Send SMS verification code.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `relyingparty.setAccountInfo()`
+#### `relyingparty.getAccountInfo()`
 
-Set account info for a user.
+Returns the account info.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.getOobConfirmationCode()`
+
+Get a code for user action confirmation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `relyingparty.setProjectConfig()`
+#### `relyingparty.resetPassword()`
 
-Set project configuration.
+Reset password for a user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.downloadAccount()`
+
+Batch download user accounts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.uploadAccount()`
+
+Batch upload existing user accounts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.signupNewUser()`
+
+Signup new user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `relyingparty.getPublicKeys()`
+
+Get token signing public key.
+
 
 #### `relyingparty.verifyCustomToken()`
 
@@ -100,72 +166,6 @@ Verifies the developer asserted ID token.
 #### `relyingparty.verifyAssertion()`
 
 Verifies the assertion returned by the IdP.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.verifyPhoneNumber()`
-
-Verifies ownership of a phone number and creates/updates the user account accordingly.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.getRecaptchaParam()`
-
-Get recaptcha secure param.
-
-
-#### `relyingparty.signupNewUser()`
-
-Signup new user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.deleteAccount()`
-
-Delete user account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.createAuthUri()`
-
-Creates the URI used by the IdP to authenticate the user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.getAccountInfo()`
-
-Returns the account info.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.getPublicKeys()`
-
-Get token signing public key.
-
-
-#### `relyingparty.verifyPassword()`
-
-Verifies the user entered password.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `relyingparty.uploadAccount()`
-
-Batch upload existing user accounts.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
