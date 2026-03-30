@@ -39,6 +39,12 @@ class Netapp {
     this.projects.locations.storagePools.validateDirectoryService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:validateDirectoryService', 'POST', apiParams, clientConfig);
     this.projects.locations.storagePools.switch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:switch', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.storagePools.ontap = {};
+    this.projects.locations.storagePools.ontap.executeOntapPost = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+ontapPath}', 'POST', apiParams, clientConfig);
+    this.projects.locations.storagePools.ontap.executeOntapGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+ontapPath}', 'GET', apiParams, clientConfig);
+    this.projects.locations.storagePools.ontap.executeOntapDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+ontapPath}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.storagePools.ontap.executeOntapPatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+ontapPath}', 'PATCH', apiParams, clientConfig);
+
     this.projects.locations.volumes = {};
     this.projects.locations.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/volumes', 'GET', apiParams, clientConfig);
     this.projects.locations.volumes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
