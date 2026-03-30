@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Forms API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:40:39 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:40:39 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:21:16 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:21:16 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:04 GMT
 
 
@@ -25,15 +25,6 @@ Create a new form using the title given in the provided form message in the requ
 | `params.unpublished` | `boolean` | No | Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `forms.setPublishSettings()`
-
-Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.formId` | `string` | Yes | Required. The ID of the form. You can get the id from Form.form_id field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `forms.get()`
 
 Get a form.
@@ -51,43 +42,14 @@ Change the form with a batch of updates.
 | `params.formId` | `string` | Yes | Required. The form ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `forms.watches`
+#### `forms.setPublishSettings()`
 
-#### `forms.watches.create()`
-
-Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.formId` | `string` | Yes | Required. ID of the Form to watch. |
+| `params.formId` | `string` | Yes | Required. The ID of the form. You can get the id from Form.form_id field. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `forms.watches.renew()`
-
-Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.formId` | `string` | Yes | Required. The ID of the Form. |
-| `params.watchId` | `string` | Yes | Required. The ID of the Watch to renew. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `forms.watches.list()`
-
-Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.formId` | `string` | Yes | Required. ID of the Form whose watches to list. |
-
-#### `forms.watches.delete()`
-
-Delete a watch.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.formId` | `string` | Yes | Required. The ID of the Form. |
-| `params.watchId` | `string` | Yes | Required. The ID of the Watch to delete. |
 
 ### `forms.responses`
 
@@ -106,7 +68,45 @@ List a form's responses.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. |
-| `params.pageToken` | `string` | No | A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. |
 | `params.formId` | `string` | Yes | Required. ID of the Form whose responses to list. |
 | `params.filter` | `string` | No | Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z". |
+| `params.pageSize` | `integer` | No | The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned. |
+| `params.pageToken` | `string` | No | A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request. |
+
+### `forms.watches`
+
+#### `forms.watches.create()`
+
+Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.formId` | `string` | Yes | Required. ID of the Form to watch. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `forms.watches.list()`
+
+Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.formId` | `string` | Yes | Required. ID of the Form whose watches to list. |
+
+#### `forms.watches.renew()`
+
+Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.formId` | `string` | Yes | Required. The ID of the Form. |
+| `params.watchId` | `string` | Yes | Required. The ID of the Watch to renew. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `forms.watches.delete()`
+
+Delete a watch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.formId` | `string` | Yes | Required. The ID of the Form. |
+| `params.watchId` | `string` | Yes | Required. The ID of the Watch to delete. |
