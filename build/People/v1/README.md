@@ -4,7 +4,7 @@ Auto-generated client library for using the **People API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:59:16 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:32:05 GMT
 - **Last Modified:** Thu, 01 Jan 2026 01:04:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:10 GMT
 
