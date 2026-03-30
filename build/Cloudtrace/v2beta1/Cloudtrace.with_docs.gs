@@ -35,6 +35,16 @@ class Cloudtrace {
     this.projects.traceSinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'GET', apiParams, clientConfig);
 
     /**
+     * Get a trace sink by name under the parent resource (GCP project).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.traceSinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`.
@@ -56,16 +66,6 @@ class Cloudtrace {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.traceSinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Get a trace sink by name under the parent resource (GCP project).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.traceSinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a sink.
