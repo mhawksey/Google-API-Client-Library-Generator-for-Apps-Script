@@ -251,6 +251,52 @@ class Iam {
      */
     this.projects.locations.workloadIdentityPools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
+    /**
+     * Add an AttestationRule on a WorkloadIdentityPoolManagedIdentity. The total attestation rules after addition must not exceed 50.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) Required. The resource name of the managed identity or namespace resource to add an attestation rule to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.addAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:addAttestationRule', 'POST', apiParams, clientConfig);
+
+    /**
+     * Remove an AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) Required. The resource name of the managed identity or namespace resource to remove an attestation rule from.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.removeAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:removeAttestationRule', 'POST', apiParams, clientConfig);
+
+    /**
+     * Set all AttestationRule on a WorkloadIdentityPoolManagedIdentity. A maximum of 50 AttestationRules can be set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) Required. The resource name of the managed identity or namespace resource to add an attestation rule to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.setAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAttestationRules', 'POST', apiParams, clientConfig);
+
+    /**
+     * List all AttestationRule on a WorkloadIdentityPoolManagedIdentity.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A query filter. Supports the following function: * `container_ids()`: Returns only the AttestationRules under the specific container ids. The function expects a comma-delimited list with only project numbers and must use the format `projects/`. For example: `container_ids(projects/, projects/,...)`.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of AttestationRules to return. If unspecified, at most 50 AttestationRules are returned. The maximum value is 100; values above 100 are truncated to 100.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListWorkloadIdentityPoolProviderKeys` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.resource - (Required) Required. The resource name of the managed identity or namespace resource to list attestation rules of.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.listAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAttestationRules', 'GET', apiParams, clientConfig);
+
     this.projects.locations.workloadIdentityPools.operations = {};
 
     /**
