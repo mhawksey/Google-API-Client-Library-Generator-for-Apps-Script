@@ -40,7 +40,7 @@ class Apikeys {
      * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.keyId - User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-     * @param {string} apiParams.parent - (Required) Required. The project in which the API key is created.
+     * @param {string} apiParams.parent - (Required) Required. The project in which the API key is created. The parent field must be in format of "projects//locations/global".
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -53,7 +53,7 @@ class Apikeys {
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. Specifies the maximum number of results to be returned at a time.
      * @param {string} apiParams.pageToken - Optional. Requests a specific page of results.
-     * @param {string} apiParams.parent - (Required) Required. Lists all API keys associated with this project.
+     * @param {string} apiParams.parent - (Required) Required. Lists all API keys associated with this project. The parent field must be in format of "projects//locations/global".
      * @param {boolean} apiParams.showDeleted - Optional. Indicate that keys deleted in the past 30 days should also be returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -84,7 +84,7 @@ class Apikeys {
     /**
      * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {string} apiParams.updateMask - The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
