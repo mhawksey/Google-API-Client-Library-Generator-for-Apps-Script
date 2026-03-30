@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Talent Solution API (version
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:48:46 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:48:46 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:23:09 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:23:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:36 GMT
 
 
@@ -22,25 +22,35 @@ Completes the specified prefix with keyword suggestions. Intended for use by a j
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Required. Completion result count. The maximum allowed page size is 10. |
-| `params.companyName` | `string` | No | Optional. If provided, restricts completion to specified company. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". |
-| `params.languageCode` | `string` | No | Deprecated. Use language_codes instead. Optional. The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same language_code are returned. For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_code are returned. For CompletionType.COMBINED type, only open jobs with the same language_code or companies having open jobs with the same language_code are returned. The maximum number of allowed characters is 255. |
-| `params.languageCodes` | `string` | No | Optional. The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same language_codes are returned. For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_codes are returned. For CompletionType.COMBINED type, only open jobs with the same language_codes or companies having open jobs with the same language_codes are returned. The maximum number of allowed characters is 255. |
 | `params.name` | `string` | Yes | Required. Resource name of project the completion is performed within. The format is "projects/{project_id}", for example, "projects/api-test-project". |
+| `params.languageCode` | `string` | No | Deprecated. Use language_codes instead. Optional. The language of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same language_code are returned. For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_code are returned. For CompletionType.COMBINED type, only open jobs with the same language_code or companies having open jobs with the same language_code are returned. The maximum number of allowed characters is 255. |
 | `params.scope` | `string` | No | Optional. The scope of the completion. The defaults is CompletionScope.PUBLIC. |
 | `params.type` | `string` | No | Optional. The completion topic. The default is CompletionType.COMBINED. |
 | `params.query` | `string` | No | Required. The query used to generate suggestions. The maximum number of allowed characters is 255. |
+| `params.pageSize` | `integer` | No | Required. Completion result count. The maximum allowed page size is 10. |
+| `params.languageCodes` | `string` | No | Optional. The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For CompletionType.JOB_TITLE type, only open jobs with the same language_codes are returned. For CompletionType.COMPANY_NAME type, only companies having open jobs with the same language_codes are returned. For CompletionType.COMBINED type, only open jobs with the same language_codes or companies having open jobs with the same language_codes are returned. The maximum number of allowed characters is 255. |
+| `params.companyName` | `string` | No | Optional. If provided, restricts completion to specified company. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". |
 
 ### `projects.companies`
 
-#### `projects.companies.create()`
+#### `projects.companies.list()`
 
-Creates a new company entity.
+Lists all companies associated with the service account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. |
 | `params.parent` | `string` | Yes | Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.requireOpenJobs` | `boolean` | No | Optional. Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. |
+| `params.pageToken` | `string` | No | Optional. The starting indicator from which to return results. |
+
+#### `projects.companies.delete()`
+
+Deletes specified company. Prerequisite: The company has no jobs associated with it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the company to be deleted. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". |
 
 #### `projects.companies.patch()`
 
@@ -59,24 +69,14 @@ Retrieves specified company.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". |
 
-#### `projects.companies.delete()`
+#### `projects.companies.create()`
 
-Deletes specified company. Prerequisite: The company has no jobs associated with it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the company to be deleted. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo". |
-
-#### `projects.companies.list()`
-
-Lists all companies associated with the service account.
+Creates a new company entity.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. The starting indicator from which to return results. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. |
-| `params.requireOpenJobs` | `boolean` | No | Optional. Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. |
 | `params.parent` | `string` | Yes | Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.clientEvents`
 
@@ -90,6 +90,36 @@ Report events issued when end user interacts with customer's application that us
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.jobs`
+
+#### `projects.jobs.batchDelete()`
+
+Deletes a list of Jobs by filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.jobs.patch()`
+
+Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.jobs.list()`
+
+Lists jobs by filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.jobView` | `string` | No | Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. |
+| `params.pageToken` | `string` | No | Optional. The starting point of a query result. |
+| `params.parent` | `string` | Yes | Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
+| `params.filter` | `string` | No | Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/api-test-project/companies/123" * companyName = "projects/api-test-project/companies/123" AND requisitionId = "req-1" * companyName = "projects/api-test-project/companies/123" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. |
 
 #### `projects.jobs.searchForAlert()`
 
@@ -108,21 +138,13 @@ Deletes the specified job. Typically, the job becomes unsearchable within 10 sec
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the job to be deleted. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". |
 
-#### `projects.jobs.get()`
+#### `projects.jobs.search()`
 
-Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". |
-
-#### `projects.jobs.patch()`
-
-Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.
+Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. |
+| `params.parent` | `string` | Yes | Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.create()`
@@ -134,32 +156,10 @@ Creates a new job. Typically, the job becomes searchable within 10 seconds, but 
 | `params.parent` | `string` | Yes | Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.jobs.search()`
+#### `projects.jobs.get()`
 
-Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project". |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.jobs.list()`
-
-Lists jobs by filter.
+Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.jobView` | `string` | No | Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. |
-| `params.pageToken` | `string` | No | Optional. The starting point of a query result. |
-| `params.parent` | `string` | Yes | Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
-| `params.filter` | `string` | No | Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/api-test-project/companies/123" * companyName = "projects/api-test-project/companies/123" AND requisitionId = "req-1" * companyName = "projects/api-test-project/companies/123" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" |
-
-#### `projects.jobs.batchDelete()`
-
-Deletes a list of Jobs by filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project". |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234". |
