@@ -4,7 +4,7 @@ Auto-generated client library for using the **Data Manager API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:30:16 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:11:58 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:35:52 GMT
 - **Created:** Sat, 01 Nov 2025 00:35:17 GMT
 
@@ -79,8 +79,6 @@ Creates a partner link for the given account. Authorization Headers: This method
 
 * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
 
-* `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of partner links. Format: accountTypes/{account_type}/accounts/{account} |
@@ -92,8 +90,6 @@ Deletes a partner link for the given account. Authorization Headers: This method
 
 * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
 
-* `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the partner link to delete. Format: accountTypes/{account_type}/accounts/{account}/partnerLinks/{partner_link} |
@@ -103,8 +99,6 @@ Deletes a partner link for the given account. Authorization Headers: This method
 Searches for all partner links to and from a given account. Authorization Headers: This method supports the following optional headers to define how the API authorizes access for the request:
 
 * `login-account`: (Optional) The resource name of the account where the Google Account of the credentials is a user. If not set, defaults to the account of the request. Format: `accountTypes/{loginAccountType}/accounts/{loginAccountId}`
-
-* `linked-account`: (Optional) The resource name of the account with an established product link to the `login-account`. Format: `accountTypes/{linkedAccountType}/accounts/{linkedAccountId}`
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
