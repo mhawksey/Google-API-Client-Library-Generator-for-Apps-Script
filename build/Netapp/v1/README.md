@@ -4,8 +4,8 @@ Auto-generated client library for using the **NetApp API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:51:52 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:51:52 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:30:49 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:30:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:48 GMT
 
 
@@ -20,11 +20,11 @@ Auto-generated client library for using the **NetApp API (version: v1)** in Goog
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -147,6 +147,42 @@ This operation will switch the active/replica zone for a regional storagePool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the storage pool |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.storagePools.ontap`
+
+#### `projects.locations.storagePools.ontap.executeOntapPost()`
+
+`ExecuteOntapPost` dispatches the ONTAP `POST` request to the `StoragePool` cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.ontapPath` | `string` | Yes | Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.storagePools.ontap.executeOntapGet()`
+
+`ExecuteOntapGet` dispatches the ONTAP `GET` request to the `StoragePool` cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.ontapPath` | `string` | Yes | Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. |
+
+#### `projects.locations.storagePools.ontap.executeOntapDelete()`
+
+`ExecuteOntapDelete` dispatches the ONTAP `DELETE` request to the `StoragePool` cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.ontapPath` | `string` | Yes | Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. |
+
+#### `projects.locations.storagePools.ontap.executeOntapPatch()`
+
+`ExecuteOntapPatch` dispatches the ONTAP `PATCH` request to the `StoragePool` cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.ontapPath` | `string` | Yes | Required. The resource path of the ONTAP resource. Format: `projects/{project_number}/locations/{location_id}/storagePools/{storage_pool_id}/ontap/{ontap_resource_path}`. For example: `projects/123456789/locations/us-central1/storagePools/my-storage-pool/ontap/api/storage/volumes`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.volumes`
