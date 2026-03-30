@@ -59,6 +59,7 @@ class Developerconnect {
     this.projects.locations.accountConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'POST', apiParams, clientConfig);
     this.projects.locations.accountConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.accountConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.fetchUserRepositories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}:fetchUserRepositories', 'GET', apiParams, clientConfig);
 
     this.projects.locations.accountConnectors.users = {};
     this.projects.locations.accountConnectors.users.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:fetchAccessToken', 'POST', apiParams, clientConfig);
