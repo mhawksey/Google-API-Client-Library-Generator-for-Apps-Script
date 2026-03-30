@@ -37,9 +37,6 @@ class Networkconnectivity {
     this.projects.locations.serviceConnectionMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionMaps', 'POST', apiParams, clientConfig);
     this.projects.locations.serviceConnectionMaps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.serviceConnectionMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.serviceConnectionPolicies = {};
     this.projects.locations.serviceConnectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionPolicies', 'GET', apiParams, clientConfig);
@@ -47,18 +44,12 @@ class Networkconnectivity {
     this.projects.locations.serviceConnectionPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.serviceConnectionPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.serviceConnectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.serviceClasses = {};
     this.projects.locations.serviceClasses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceClasses', 'GET', apiParams, clientConfig);
     this.projects.locations.serviceClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.serviceClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.serviceClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.serviceConnectionTokens = {};
     this.projects.locations.serviceConnectionTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -158,6 +149,17 @@ class Networkconnectivity {
     this.projects.locations.regionalEndpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.regionalEndpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/regionalEndpoints', 'POST', apiParams, clientConfig);
     this.projects.locations.regionalEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.remoteTransportProfiles = {};
+    this.projects.locations.remoteTransportProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/remoteTransportProfiles', 'GET', apiParams, clientConfig);
+    this.projects.locations.remoteTransportProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.transports = {};
+    this.projects.locations.transports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transports', 'GET', apiParams, clientConfig);
+    this.projects.locations.transports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.transports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transports', 'POST', apiParams, clientConfig);
+    this.projects.locations.transports.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.transports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
