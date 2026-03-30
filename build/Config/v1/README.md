@@ -4,8 +4,8 @@ Auto-generated client library for using the **Infrastructure Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:28:49 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:34:23 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:10:55 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:10:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:42 GMT
 
 
@@ -38,11 +38,11 @@ Updates the AutoMigrationConfig for a given project and location.
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -403,3 +403,96 @@ Gets details about a TerraformVersion.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the TerraformVersion. Format: 'projects/{project_id}/locations/{location}/terraformVersions/{terraform_version}' |
+
+### `projects.locations.deploymentGroups`
+
+#### `projects.locations.deploymentGroups.get()`
+
+Get a DeploymentGroup for a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment group to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. |
+
+#### `projects.locations.deploymentGroups.create()`
+
+Creates a DeploymentGroup The newly created DeploymentGroup will be in the `CREATING` state and can be retrieved via Get and List calls.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent in whose context the Deployment Group is created. The parent value is in the format: 'projects/{project_id}/locations/{location}' |
+| `params.deploymentGroupId` | `string` | No | Required. The deployment group ID. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.deploymentGroups.patch()`
+
+Updates a DeploymentGroup
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the deployment group. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. |
+| `params.updateMask` | `string` | No | Optional. Field mask used to specify the fields to be overwritten in the Deployment Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.deploymentGroups.delete()`
+
+Deletes a DeploymentGroup
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of DeploymentGroup in the format projects/{project_id}/locations/{location_id}/deploymentGroups/{deploymentGroup} |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to true, any revisions for this deployment group will also be deleted. (Otherwise, the request will only work if the deployment group has no revisions.) |
+| `params.deploymentReferencePolicy` | `string` | No | Optional. Policy on how to handle referenced deployments when deleting the DeploymentGroup. If unspecified, the default behavior is to fail the deletion if any deployments currently referenced in the `deployment_units` of the DeploymentGroup or in the latest revision are not deleted. |
+
+#### `projects.locations.deploymentGroups.list()`
+
+List DeploymentGroups for a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of deployment groups. Format: 'projects/{project_id}/locations/{location}'. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, at most 500 will be returned. The maximum value is 1000. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to 'ListDeploymentGroups' which specifies the position in the list from where to continue listing the deployment groups. |
+| `params.filter` | `string` | No | Optional. Lists the DeploymentGroups that match the filter expression. A filter expression filters the deployment groups listed in the response. The expression must be of the form '{field} {operator} {value}' where operators: '<', '>', '<=', '>=', '!=', '=', ':' are supported (colon ':' represents a HAS operator which is roughly synonymous with equality). {field} can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: - Filter by name: name = "projects/foo/locations/us-central1/deploymentGroups/bar" - Filter by labels: - Resources that have a key called 'foo' labels.foo:* - Resources that have a key called 'foo' whose value is 'bar' labels.foo = bar - Filter by state: - DeploymentGroups in CREATING state. state=CREATING |
+| `params.orderBy` | `string` | No | Optional. Field to use to sort the list. |
+
+#### `projects.locations.deploymentGroups.provision()`
+
+Provisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment group to provision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.deploymentGroups.deprovision()`
+
+Deprovisions a deployment group. NOTE: As a first step of this operation, Infra Manager will automatically delete any Deployments that were part of the *last successful* DeploymentGroupRevision but are *no longer* included in the *current* DeploymentGroup definition (e.g., following an `UpdateDeploymentGroup` call), along with their actuated resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment group to deprovision. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.deploymentGroups.revisions`
+
+#### `projects.locations.deploymentGroups.revisions.get()`
+
+Gets details about a DeploymentGroupRevision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment group revision to retrieve. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}/revisions/{revision}'. |
+
+#### `projects.locations.deploymentGroups.revisions.list()`
+
+Lists DeploymentGroupRevisions in a given DeploymentGroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of deployment group revisions. Format: 'projects/{project_id}/locations/{location}/deploymentGroups/{deployment_group}'. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a page of resources, 'page_size' specifies number of resources to return. If unspecified, a sensible default will be used by the server. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to 'ListDeploymentGroupRevisions' which specifies the position in the list from where to continue listing the deployment group revisions. All other parameters provided to `ListDeploymentGroupRevisions` must match the call that provided the page token. |
