@@ -4,7 +4,7 @@ Auto-generated client library for using the **Admin SDK API (version: reports_v1
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:16:35 GMT
+- **Last Checked:** Mon, 30 Mar 2026 19:58:32 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:16 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:57 GMT
 
@@ -38,6 +38,7 @@ Retrieves a list of activities for a specific customer's account and application
 | `params.networkInfoFilter` | `string` | No | Optional. Used to filter on the `regionCode` field present in [`NetworkInfo`](#networkinfo) message. **Usage** ``` GET...&networkInfoFilter=regionCode="IN" GET...&networkInfoFilter=regionCode=%22IN%22 ``` |
 | `params.statusFilter` | `string` | No | Optional. Used to filter on the `statusCode` field present in [`Status`](#status) message. **Usage** ``` GET...&statusFilter=statusCode="200" GET...&statusFilter=statusCode=%22200%22 ``` |
 | `params.applicationInfoFilter` | `string` | No | Optional. Used to filter on the `oAuthClientId` field present in [`ApplicationInfo`](#applicationinfo) message. **Usage** ``` GET...&applicationInfoFilter=oAuthClientId="clientId" GET...&applicationInfoFilter=oAuthClientId=%22clientId%22 ``` |
+| `params.includeSensitiveData` | `boolean` | No | Optional. When set to `true`, this field allows sensitive user-generated content to be included in the returned audit logs. This parameter is supported only for Rules (DLP) and Chat applications; using it with any other application will result in a permission error. |
 
 #### `activities.watch()`
 
