@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dataform API (version: v1beta1)** 
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:29:51 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:35:29 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:11:41 GMT
+- **Last Modified:** Mon, 30 Mar 2026 20:11:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:47 GMT
 
 
@@ -50,11 +50,11 @@ Update default config for a given project and location. **Note:** *This method d
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -128,7 +128,7 @@ Creates a new TeamFolder in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location in which to create the TeamFolder. Must be in the format `projects/*/locations/*`. |
-| `params.teamFolderId` | `string` | No | The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. |
+| `params.teamFolderId` | `string` | No | Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.teamFolders.patch()`
@@ -148,6 +148,15 @@ Deletes a single TeamFolder.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The TeamFolder's name. |
+
+#### `projects.locations.teamFolders.deleteTree()`
+
+Deletes a TeamFolder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TeamFolder's name. Format: projects/{project}/locations/{location}/teamFolders/{team_folder} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.teamFolders.queryContents()`
 
@@ -217,7 +226,7 @@ Creates a new Folder in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location in which to create the Folder. Must be in the format `projects/*/locations/*`. |
-| `params.folderId` | `string` | No | The ID to use for the Folder, which will become the final component of the Folder's resource name. |
+| `params.folderId` | `string` | No | Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the Folder, which will become the final component of the Folder's resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.folders.patch()`
@@ -237,6 +246,15 @@ Deletes a single Folder.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Folder's name. |
+
+#### `projects.locations.folders.deleteTree()`
+
+Deletes a Folder with its contents (Folders, Repositories, Workspaces, ReleaseConfigs, and WorkflowConfigs).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.folders.queryFolderContents()`
 
@@ -551,6 +569,7 @@ Returns the contents of a given Workspace directory.
 | `params.path` | `string` | No | Optional. The directory's full path including directory name, relative to the workspace root. If left unset, the workspace root is used. |
 | `params.pageSize` | `integer` | No | Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. |
+| `params.view` | `string` | No | Optional. Specifies the metadata to return for each directory entry. If unspecified, the default is `DIRECTORY_CONTENTS_VIEW_BASIC`. Currently the `DIRECTORY_CONTENTS_VIEW_METADATA` view is not supported by CMEK-protected workspaces. |
 
 #### `projects.locations.repositories.workspaces.searchFiles()`
 
