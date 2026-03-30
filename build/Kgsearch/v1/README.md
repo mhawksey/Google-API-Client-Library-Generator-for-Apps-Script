@@ -4,7 +4,7 @@ Auto-generated client library for using the **Knowledge Graph Search API (versio
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:48:55 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:23:18 GMT
 - **Last Modified:** Sat, 01 Nov 2025 00:54:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:44 GMT
 
