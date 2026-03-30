@@ -21,6 +21,15 @@ class GamesManagement {
     this.achievements = {};
 
     /**
+     * Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/reset', 'POST', apiParams, clientConfig);
+
+    /**
      * Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
@@ -41,15 +50,6 @@ class GamesManagement {
     this.achievements.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/{achievementId}/reset', 'POST', apiParams, clientConfig);
 
     /**
-     * Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/reset', 'POST', apiParams, clientConfig);
-
-    /**
      * Resets achievements with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft achievements may be reset.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -67,106 +67,6 @@ class GamesManagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.achievements.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/achievements/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-
-    this.scores = {};
-
-    /**
-     * Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/reset', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/reset', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
-
-    this.events = {};
-
-    /**
-     * Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/reset', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.eventId - (Required) The ID of the event.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/resetForAllPlayers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.eventId - (Required) The ID of the event.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/reset', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets all draft events for all players. This method is only available to user accounts for your developer console.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
 
     this.players = {};
 
@@ -192,6 +92,56 @@ class GamesManagement {
      */
     this.players.unhide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/applications/{applicationId}/players/hidden/{playerId}', 'DELETE', apiParams, clientConfig);
 
+    this.scores = {};
+
+    /**
+     * Resets all scores for all leaderboards for the currently authenticated players. This method is only accessible to whitelisted tester accounts for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/reset', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets scores for the leaderboard with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/reset', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/leaderboards/{leaderboardId}/scores/resetForAllPlayers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/scores/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
+
     this.applications = {};
 
     /**
@@ -205,6 +155,56 @@ class GamesManagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.applications.listHidden = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/applications/{applicationId}/players/hidden', 'GET', apiParams, clientConfig);
+
+    this.events = {};
+
+    /**
+     * Resets all draft events for all players. This method is only available to user accounts for your developer console.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.resetAllForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetAllForAllPlayers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.resetAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/reset', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.eventId - (Required) The ID of the event.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/reset', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.resetMultipleForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/resetMultipleForAllPlayers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.eventId - (Required) The ID of the event.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.resetForAllPlayers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1management/events/{eventId}/resetForAllPlayers', 'POST', apiParams, clientConfig);
   }
 
 /**
