@@ -4,7 +4,7 @@ Auto-generated client library for using the **Ad Experience Report API (version:
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:16:28 GMT
+- **Last Checked:** Mon, 30 Mar 2026 19:58:26 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:47 GMT
 
