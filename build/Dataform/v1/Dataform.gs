@@ -21,6 +21,7 @@ class Dataform {
     this.projects = {};
 
     this.projects.locations = {};
+    this.projects.locations.queryUserRootContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:queryUserRootContents', 'GET', apiParams, clientConfig);
     this.projects.locations.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
@@ -32,12 +33,37 @@ class Dataform {
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.teamFolders = {};
+    this.projects.locations.teamFolders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.teamFolders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/teamFolders', 'POST', apiParams, clientConfig);
+    this.projects.locations.teamFolders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.teamFolders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.teamFolders.deleteTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteTree', 'POST', apiParams, clientConfig);
+    this.projects.locations.teamFolders.queryContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+teamFolder}:queryContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.teamFolders.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/teamFolders:search', 'GET', apiParams, clientConfig);
+    this.projects.locations.teamFolders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.teamFolders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.teamFolders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.folders = {};
+    this.projects.locations.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/folders', 'POST', apiParams, clientConfig);
+    this.projects.locations.folders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.folders.deleteTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteTree', 'POST', apiParams, clientConfig);
+    this.projects.locations.folders.queryFolderContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+folder}:queryFolderContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.folders.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.projects.locations.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
     this.projects.locations.repositories = {};
     this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:commit', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.readFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:readFile', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.queryDirectoryContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:queryDirectoryContents', 'GET', apiParams, clientConfig);
@@ -101,16 +127,6 @@ class Dataform {
     this.projects.locations.repositories.workflowInvocations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.workflowInvocations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.workflowInvocations.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:query', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.folders = {};
-    this.projects.locations.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.teamFolders = {};
-    this.projects.locations.teamFolders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.teamFolders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.teamFolders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
   }
 
 /**
