@@ -23,7 +23,7 @@ class Batch {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
@@ -93,20 +93,20 @@ class Batch {
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.state = {};
+    this.projects.locations.jobs = {};
 
     /**
-     * Report agent's state, e.g. agent status and tasks information
+     * Create a Job.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Format: projects/{project}/locations/{location} {project} should be a project number.
+     * @param {string} apiParams.jobId - ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}".
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the Job will be created. Pattern: "projects/{project}/locations/{location}"
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.state.report = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/state:report', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.jobs = {};
+    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
 
     /**
      * Get a Job specified by its resource name.
@@ -155,19 +155,6 @@ class Batch {
      */
     this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
 
-    /**
-     * Create a Job.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobId - ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}".
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the Job will be created. Pattern: "projects/{project}/locations/{location}"
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-
     this.projects.locations.jobs.taskGroups = {};
 
     this.projects.locations.jobs.taskGroups.tasks = {};
@@ -194,6 +181,19 @@ class Batch {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.jobs.taskGroups.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tasks', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.state = {};
+
+    /**
+     * Report agent's state, e.g. agent status and tasks information
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Format: projects/{project}/locations/{location} {project} should be a project number.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.state.report = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/state:report', 'POST', apiParams, clientConfig);
   }
 
 /**
