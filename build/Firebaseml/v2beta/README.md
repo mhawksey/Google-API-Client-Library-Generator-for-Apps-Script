@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase ML API (version: v2beta)*
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:40:04 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:20:56 GMT
 - **Last Modified:** Fri, 03 Oct 2025 09:04:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:43 GMT
 
