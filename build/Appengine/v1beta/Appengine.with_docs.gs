@@ -23,7 +23,7 @@ class Appengine {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -154,6 +154,21 @@ class Appengine {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.applications.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Exports a user image to Artifact Registry.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
 
     this.projects.locations.applications.services.versions.instances = {};
 
@@ -550,6 +565,19 @@ class Appengine {
      */
     this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
 
+    /**
+     * Exports a user image to Artifact Registry.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
+
     this.apps.services.versions.instances = {};
 
     /**
@@ -820,7 +848,7 @@ class Appengine {
     this.apps.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
