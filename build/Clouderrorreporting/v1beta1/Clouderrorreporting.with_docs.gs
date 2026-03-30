@@ -118,25 +118,6 @@ class Clouderrorreporting {
      */
     this.projects.locations.deleteEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.events = {};
-
-    /**
-     * Lists the specified events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.groupId - Required. The group for which events shall be returned. The `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return per response.
-     * @param {string} apiParams.pageToken - Optional. A `next_page_token` provided by a previous response.
-     * @param {string} apiParams.projectName - (Required) Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or `projects/{projectID}/locations/{location}`, where `{projectID}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840) and `{location}` is a Cloud region. Examples: `projects/my-project-123`, `projects/my-project-123/locations/global`. For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified.
-     * @param {string} apiParams.serviceFilter.resourceType - Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
-     * @param {string} apiParams.serviceFilter.service - Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
-     * @param {string} apiParams.serviceFilter.version - Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-     * @param {string} apiParams.timeRange.period - Restricts the query to the specified time range.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'GET', apiParams, clientConfig);
-
     this.projects.locations.groups = {};
 
     /**
@@ -182,6 +163,25 @@ class Clouderrorreporting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.groupStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/groupStats', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.events = {};
+
+    /**
+     * Lists the specified events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.groupId - Required. The group for which events shall be returned. The `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return per response.
+     * @param {string} apiParams.pageToken - Optional. A `next_page_token` provided by a previous response.
+     * @param {string} apiParams.projectName - (Required) Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectID}` or `projects/{projectID}/locations/{location}`, where `{projectID}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840) and `{location}` is a Cloud region. Examples: `projects/my-project-123`, `projects/my-project-123/locations/global`. For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified.
+     * @param {string} apiParams.serviceFilter.resourceType - Optional. The exact value to match against [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+     * @param {string} apiParams.serviceFilter.service - Optional. The exact value to match against [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+     * @param {string} apiParams.serviceFilter.version - Optional. The exact value to match against [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+     * @param {string} apiParams.timeRange.period - Restricts the query to the specified time range.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'GET', apiParams, clientConfig);
   }
 
 /**
