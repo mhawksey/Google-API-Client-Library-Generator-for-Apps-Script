@@ -4,7 +4,7 @@ Auto-generated client library for using the **Looker (Google Cloud core) API (ve
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 21:49:25 GMT
+- **Last Checked:** Mon, 30 Mar 2026 20:23:35 GMT
 - **Last Modified:** Wed, 18 Mar 2026 21:49:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:00 GMT
 
