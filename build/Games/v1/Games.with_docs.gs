@@ -18,87 +18,6 @@ class Games {
     this._servicePath = '';
 
 
-    this.achievements = {};
-
-    /**
-     * Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
-     * @param {integer} apiParams.steps - (Required) Required. The minimum value to set the steps to.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.setStepsAtLeast = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/setStepsAtLeast', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates multiple achievements for the currently authenticated player.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.updateMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/updateMultiple', 'POST', apiParams, clientConfig);
-
-    /**
-     * Unlocks this achievement for the currently authenticated player.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.unlock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/unlock', 'POST', apiParams, clientConfig);
-
-    /**
-     * Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.reveal = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/reveal', 'POST', apiParams, clientConfig);
-
-    /**
-     * Increments the steps of the achievement with the given ID for the currently authenticated player.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
-     * @param {string} apiParams.requestId - A randomly generated numeric ID for each request specified by the caller. This number is used at the server to ensure that the request is handled correctly across retries.
-     * @param {integer} apiParams.stepsToIncrement - (Required) Required. The number of steps to increment.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.increment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/increment', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists the progress for all your application's achievements for the currently authenticated player.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
-     * @param {string} apiParams.state - Tells the server to return only achievements with the specified state. If this parameter isn't specified, all achievements are returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/achievements', 'GET', apiParams, clientConfig);
-
-    this.revisions = {};
-
-    /**
-     * Checks whether the games client is out of date.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientRevision - (Required) Required. The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.revisions.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/revisions/check', 'GET', apiParams, clientConfig);
-
     this.stats = {};
 
     /**
@@ -109,214 +28,6 @@ class Games {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.stats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/stats', 'GET', apiParams, clientConfig);
-
-    this.achievementDefinitions = {};
-
-    /**
-     * Lists all the achievement definitions for your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievementDefinitions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements', 'GET', apiParams, clientConfig);
-
-    this.accesstokens = {};
-
-    /**
-     * Generates a Play Grouping API token for the PGS user identified by the attached credential.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.packageName - Required. App package name to generate the token for (e.g. com.example.mygame).
-     * @param {string} apiParams.persona - Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accesstokens.generatePlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generatePlayGroupingApiToken', 'POST', apiParams, clientConfig);
-
-    /**
-     * Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.packageName - Required. App package name to generate the token for (e.g. com.example.mygame).
-     * @param {string} apiParams.persona - Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system.
-     * @param {string} apiParams.recallSessionId - Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. See https://developer.android.com/games/pgs/recall/recall-setup on how to integrate with Recall and get session ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accesstokens.generateRecallPlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generateRecallPlayGroupingApiToken', 'POST', apiParams, clientConfig);
-
-    this.applications = {};
-
-    /**
-     * Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified `platformType`, the returned response will not include any instance data.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {string} apiParams.platformType - Restrict application details returned to the specific platform.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a URL for the requested end point type.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - The application ID from the Google Play developer console.
-     * @param {string} apiParams.endPointType - Type of endpoint being requested.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.applications.getEndPoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/getEndPoint', 'POST', apiParams, clientConfig);
-
-    /**
-     * Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.applications.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}/verify', 'GET', apiParams, clientConfig);
-
-    /**
-     * Indicate that the currently authenticated user is playing your application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.applications.played = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/played', 'POST', apiParams, clientConfig);
-
-    this.events = {};
-
-    /**
-     * Returns a list showing the current progress on events in this application for the currently authenticated user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of events to return in the response, used for paging. For any response, the actual number of events to return may be less than the specified maxResults.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.listByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a list of the event definitions in this application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of event definitions to return in the response, used for paging. For any response, the actual number of event definitions to return may be less than the specified `maxResults`.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.listDefinitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/eventDefinitions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.record = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'POST', apiParams, clientConfig);
-
-    this.recall = {};
-
-    /**
-     * Retrieve the Recall tokens from all requested games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have an active PGS Player profile.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationIds - Required. The application IDs from the Google Play developer console for the games to return scoped ids for.
-     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.gamesPlayerTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/gamesPlayerTokens/{sessionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Associate the PGS Player principal encoded in the provided recall session id with an in-game account
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.linkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:linkPersona', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.lastTokenFromAllDeveloperGames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/developerGamesLastPlayerToken/{sessionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Delete a Recall token linking the PGS Player principal identified by the Recall session and an in-game account identified either by the 'persona' or by the token value.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.unlinkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:unlinkPersona', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve all Recall tokens associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.retrieveTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/tokens/{sessionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Delete all Recall tokens linking the given persona to any player (with or without a profile).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.recall.resetPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:resetPersona', 'POST', apiParams, clientConfig);
-
-    this.metagame = {};
-
-    /**
-     * Return the metagame configuration data for the calling application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.metagame.getMetagameConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/metagameConfig', 'GET', apiParams, clientConfig);
-
-    /**
-     * List play data aggregated per category for the player corresponding to `playerId`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.collection - (Required) The collection of categories for which data will be returned.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of category resources to return in the response, used for paging. For any response, the actual number of category resources returned may be less than the specified `maxResults`.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.metagame.listCategoriesByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/categories/{collection}', 'GET', apiParams, clientConfig);
 
     this.players = {};
 
@@ -364,6 +75,127 @@ class Games {
      */
     this.players.getScopedPlayerIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/scopedIds', 'GET', apiParams, clientConfig);
 
+    this.snapshots = {};
+
+    /**
+     * Retrieves the metadata for a given snapshot ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {string} apiParams.snapshotId - (Required) The ID of the snapshot.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves a list of snapshots created by your application for the player corresponding to the player ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of snapshot resources to return in the response, used for paging. For any response, the actual number of snapshot resources returned may be less than the specified `maxResults`.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/snapshots', 'GET', apiParams, clientConfig);
+
+    this.achievementDefinitions = {};
+
+    /**
+     * Lists all the achievement definitions for your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievementDefinitions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements', 'GET', apiParams, clientConfig);
+
+    this.achievements = {};
+
+    /**
+     * Sets the state of the achievement with the given ID to `REVEALED` for the currently authenticated player.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.reveal = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/reveal', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates multiple achievements for the currently authenticated player.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.updateMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/updateMultiple', 'POST', apiParams, clientConfig);
+
+    /**
+     * Increments the steps of the achievement with the given ID for the currently authenticated player.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
+     * @param {string} apiParams.requestId - A randomly generated numeric ID for each request specified by the caller. This number is used at the server to ensure that the request is handled correctly across retries.
+     * @param {integer} apiParams.stepsToIncrement - (Required) Required. The number of steps to increment.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.increment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/increment', 'POST', apiParams, clientConfig);
+
+    /**
+     * Unlocks this achievement for the currently authenticated player.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.unlock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/unlock', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets the steps for the currently authenticated player towards unlocking an achievement. If the steps parameter is less than the current number of steps that the player already gained for the achievement, the achievement is not modified.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
+     * @param {integer} apiParams.steps - (Required) Required. The minimum value to set the steps to.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.setStepsAtLeast = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/setStepsAtLeast', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the progress for all your application's achievements for the currently authenticated player.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of achievement resources to return in the response, used for paging. For any response, the actual number of achievement resources returned may be less than the specified `maxResults`.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
+     * @param {string} apiParams.state - Tells the server to return only achievements with the specified state. If this parameter isn't specified, all achievements are returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/achievements', 'GET', apiParams, clientConfig);
+
+    this.revisions = {};
+
+    /**
+     * Checks whether the games client is out of date.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientRevision - (Required) Required. The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.revisions.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/revisions/check', 'GET', apiParams, clientConfig);
+
     this.leaderboards = {};
 
     /**
@@ -389,7 +221,212 @@ class Games {
      */
     this.leaderboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
 
+    this.events = {};
+
+    /**
+     * Records a batch of changes to the number of times events have occurred for the currently authenticated user of this application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.record = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns a list showing the current progress on events in this application for the currently authenticated user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of events to return in the response, used for paging. For any response, the actual number of events to return may be less than the specified maxResults.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.listByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a list of the event definitions in this application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of event definitions to return in the response, used for paging. For any response, the actual number of event definitions to return may be less than the specified `maxResults`.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.listDefinitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/eventDefinitions', 'GET', apiParams, clientConfig);
+
+    this.accesstokens = {};
+
+    /**
+     * Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.packageName - Required. App package name to generate the token for (e.g. com.example.mygame).
+     * @param {string} apiParams.persona - Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system.
+     * @param {string} apiParams.recallSessionId - Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application. See https://developer.android.com/games/pgs/recall/recall-setup on how to integrate with Recall and get session ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accesstokens.generateRecallPlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generateRecallPlayGroupingApiToken', 'POST', apiParams, clientConfig);
+
+    /**
+     * Generates a Play Grouping API token for the PGS user identified by the attached credential.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.packageName - Required. App package name to generate the token for (e.g. com.example.mygame).
+     * @param {string} apiParams.persona - Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user profile ID (if the app has the concept), according to the developer's own user identity system.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accesstokens.generatePlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generatePlayGroupingApiToken', 'POST', apiParams, clientConfig);
+
+    this.recall = {};
+
+    /**
+     * Retrieve all Recall tokens associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.retrieveTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/tokens/{sessionId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Associate the PGS Player principal encoded in the provided recall session id with an in-game account
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.linkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:linkPersona', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieve the Recall tokens from all requested games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have an active PGS Player profile.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationIds - Required. The application IDs from the Google Play developer console for the games to return scoped ids for.
+     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.gamesPlayerTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/gamesPlayerTokens/{sessionId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Delete all Recall tokens linking the given persona to any player (with or without a profile).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.resetPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:resetPersona', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in the provided recall session id. The API is only available for users that have active PGS Player profile.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sessionId - (Required) Required. Opaque server-generated string that encodes all the necessary information to identify the PGS player / Google user and application.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.lastTokenFromAllDeveloperGames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/developerGamesLastPlayerToken/{sessionId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Delete a Recall token linking the PGS Player principal identified by the Recall session and an in-game account identified either by the 'persona' or by the token value.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.recall.unlinkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:unlinkPersona', 'POST', apiParams, clientConfig);
+
+    this.metagame = {};
+
+    /**
+     * Return the metagame configuration data for the calling application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.metagame.getMetagameConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/metagameConfig', 'GET', apiParams, clientConfig);
+
+    /**
+     * List play data aggregated per category for the player corresponding to `playerId`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.collection - (Required) The collection of categories for which data will be returned.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {integer} apiParams.maxResults - The maximum number of category resources to return in the response, used for paging. For any response, the actual number of category resources returned may be less than the specified `maxResults`.
+     * @param {string} apiParams.pageToken - The token returned by the previous request.
+     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.metagame.listCategoriesByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/categories/{collection}', 'GET', apiParams, clientConfig);
+
+    this.applications = {};
+
+    /**
+     * Indicate that the currently authenticated user is playing your application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.played = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/played', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves the metadata of the application with the given ID. If the requested application is not available for the specified `platformType`, the returned response will not include any instance data.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {string} apiParams.platformType - Restrict application details returned to the specific platform.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}/verify', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a URL for the requested end point type.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - The application ID from the Google Play developer console.
+     * @param {string} apiParams.endPointType - Type of endpoint being requested.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.getEndPoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/getEndPoint', 'POST', apiParams, clientConfig);
+
     this.scores = {};
+
+    /**
+     * Submits multiple scores to leaderboards.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.scores.submitMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/scores', 'POST', apiParams, clientConfig);
 
     /**
      * Lists the scores in a leaderboard, starting from the top.
@@ -424,17 +461,6 @@ class Games {
     this.scores.listWindow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/window/{collection}', 'GET', apiParams, clientConfig);
 
     /**
-     * Submits multiple scores to leaderboards.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.scores.submitMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/scores', 'POST', apiParams, clientConfig);
-
-    /**
      * Get high scores, and optionally ranks, in leaderboards for the currently authenticated player. For a specific time span, `leaderboardId` can be set to `ALL` to retrieve data for all leaderboards in a given time span. `NOTE: You cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one parameter may be set to 'ALL'.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.includeRankType - The types of ranks to return. If the parameter is omitted, no ranks will be returned.
@@ -462,32 +488,6 @@ class Games {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.scores.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/scores', 'POST', apiParams, clientConfig);
-
-    this.snapshots = {};
-
-    /**
-     * Retrieves the metadata for a given snapshot ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {string} apiParams.snapshotId - (Required) The ID of the snapshot.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Retrieves a list of snapshots created by your application for the player corresponding to the player ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.language - The preferred language to use for strings returned by this method.
-     * @param {integer} apiParams.maxResults - The maximum number of snapshot resources to return in the response, used for paging. For any response, the actual number of snapshot resources returned may be less than the specified `maxResults`.
-     * @param {string} apiParams.pageToken - The token returned by the previous request.
-     * @param {string} apiParams.playerId - (Required) A player ID. A value of `me` may be used in place of the authenticated player's ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/snapshots', 'GET', apiParams, clientConfig);
   }
 
 /**
