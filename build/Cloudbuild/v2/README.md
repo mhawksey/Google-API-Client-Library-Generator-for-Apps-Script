@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Build API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:02:48 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:02:48 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:24:57 GMT
+- **Last Modified:** Tue, 31 Mar 2026 23:24:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:22 GMT
 
 
@@ -18,6 +18,22 @@ Auto-generated client library for using the **Cloud Build API (version: v2)** in
 
 ### `projects.locations`
 
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
+
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -25,22 +41,6 @@ Gets information about a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
-
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service. This method can be called in two ways:
-
-* **List all public locations:** Use the path `GET /v1/locations`.
-
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 ### `projects.locations.operations`
 
@@ -63,49 +63,6 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `projects.locations.connections`
 
-#### `projects.locations.connections.delete()`
-
-Deletes a single connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | If set, validate the request, but do not actually post it. |
-| `params.name` | `string` | Yes | Required. The name of the Connection to delete. Format: `projects/*/locations/*/connections/*`. |
-| `params.etag` | `string` | No | The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned. |
-
-#### `projects.locations.connections.processWebhook()`
-
-ProcessWebhook is called by the external SCM for notifying of events.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`. |
-| `params.webhookKey` | `string` | No | Arbitrary additional key to find the matching repository for a webhook event if needed. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.patch()`
-
-Updates a single connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.allowMissing` | `boolean` | No | If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). |
-| `params.name` | `string` | Yes | Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`. |
-| `params.etag` | `string` | No | The current etag of the connection. If an etag is provided and does not match the current etag of the connection, update will be blocked and an ABORTED error will be returned. |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.list()`
-
-Lists Connections in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. |
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of Connections. Format: `projects/*/locations/*`. |
-| `params.pageSize` | `integer` | No | Number of results to return in the list. |
-| `params.pageToken` | `string` | No | Page start. |
-
 #### `projects.locations.connections.create()`
 
 Creates a Connection.
@@ -124,6 +81,49 @@ Gets details of a single connection.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Connection to retrieve. Format: `projects/*/locations/*/connections/*`. |
 
+#### `projects.locations.connections.list()`
+
+Lists Connections in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of Connections. Format: `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Number of results to return in the list. |
+| `params.pageToken` | `string` | No | Page start. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. |
+
+#### `projects.locations.connections.patch()`
+
+Updates a single connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`. |
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.allowMissing` | `boolean` | No | If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). |
+| `params.etag` | `string` | No | The current etag of the connection. If an etag is provided and does not match the current etag of the connection, update will be blocked and an ABORTED error will be returned. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.delete()`
+
+Deletes a single connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Connection to delete. Format: `projects/*/locations/*/connections/*`. |
+| `params.etag` | `string` | No | The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned. |
+| `params.validateOnly` | `boolean` | No | If set, validate the request, but do not actually post it. |
+
+#### `projects.locations.connections.processWebhook()`
+
+ProcessWebhook is called by the external SCM for notifying of events.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`. |
+| `params.webhookKey` | `string` | No | Arbitrary additional key to find the matching repository for a webhook event if needed. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.connections.fetchLinkableRepositories()`
 
 FetchLinkableRepositories get repositories from SCM that are accessible and could be added to the connection.
@@ -133,6 +133,15 @@ FetchLinkableRepositories get repositories from SCM that are accessible and coul
 | `params.connection` | `string` | Yes | Required. The name of the Connection. Format: `projects/*/locations/*/connections/*`. |
 | `params.pageSize` | `integer` | No | Number of results to return in the list. Default to 20. |
 | `params.pageToken` | `string` | No | Page start. |
+
+#### `projects.locations.connections.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.getIamPolicy()`
 
@@ -152,15 +161,6 @@ Returns permissions that a caller has on the specified resource. If the resource
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.locations.connections.repositories`
 
 #### `projects.locations.connections.repositories.create()`
@@ -173,6 +173,15 @@ Creates a Repository.
 | `params.repositoryId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.connections.repositories.batchCreate()`
+
+Creates multiple repositories inside a connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The connection to contain all the repositories being created. Format: projects/*/locations/*/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.connections.repositories.get()`
 
 Gets details of a single repository.
@@ -180,6 +189,18 @@ Gets details of a single repository.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Repository to retrieve. Format: `projects/*/locations/*/connections/*/repositories/*`. |
+
+#### `projects.locations.connections.repositories.list()`
+
+Lists Repositories in a given connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of Repositories. Format: `projects/*/locations/*/connections/*`. |
+| `params.pageSize` | `integer` | No | Number of results to return in the list. |
+| `params.pageToken` | `string` | No | Page start. |
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Expressions must follow API improvement proposal [AIP-160](https://google.aip.dev/160). e.g. `remote_uri:"https://github.com*"`. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. |
 
 #### `projects.locations.connections.repositories.delete()`
 
@@ -190,29 +211,6 @@ Deletes a single repository.
 | `params.name` | `string` | Yes | Required. The name of the Repository to delete. Format: `projects/*/locations/*/connections/*/repositories/*`. |
 | `params.etag` | `string` | No | The current etag of the repository. If an etag is provided and does not match the current etag of the repository, deletion will be blocked and an ABORTED error will be returned. |
 | `params.validateOnly` | `boolean` | No | If set, validate the request, but do not actually post it. |
-
-#### `projects.locations.connections.repositories.fetchGitRefs()`
-
-Fetch the list of branches or tags for a given repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.refType` | `string` | No | Type of refs to fetch |
-| `params.repository` | `string` | Yes | Required. The resource name of the repository in the format `projects/*/locations/*/connections/*/repositories/*`. |
-| `params.pageSize` | `integer` | No | Optional. Number of results to return in the list. Default to 20. |
-| `params.pageToken` | `string` | No | Optional. Page start. |
-
-#### `projects.locations.connections.repositories.list()`
-
-Lists Repositories in a given connection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable. |
-| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Expressions must follow API improvement proposal [AIP-160](https://google.aip.dev/160). e.g. `remote_uri:"https://github.com*"`. |
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of Repositories. Format: `projects/*/locations/*/connections/*`. |
-| `params.pageSize` | `integer` | No | Number of results to return in the list. |
-| `params.pageToken` | `string` | No | Page start. |
 
 #### `projects.locations.connections.repositories.accessReadWriteToken()`
 
@@ -232,11 +230,13 @@ Fetches read token of a given repository.
 | `params.repository` | `string` | Yes | Required. The resource name of the repository in the format `projects/*/locations/*/connections/*/repositories/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.repositories.batchCreate()`
+#### `projects.locations.connections.repositories.fetchGitRefs()`
 
-Creates multiple repositories inside a connection.
+Fetch the list of branches or tags for a given repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The connection to contain all the repositories being created. Format: projects/*/locations/*/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.repository` | `string` | Yes | Required. The resource name of the repository in the format `projects/*/locations/*/connections/*/repositories/*`. |
+| `params.refType` | `string` | No | Type of refs to fetch |
+| `params.pageSize` | `integer` | No | Optional. Number of results to return in the list. Default to 20. |
+| `params.pageToken` | `string` | No | Optional. Page start. |
