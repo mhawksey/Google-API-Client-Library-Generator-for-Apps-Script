@@ -98,7 +98,7 @@ class Workstations {
      * Creates a new workstation cluster.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Parent resource name.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {string} apiParams.workstationClusterId - Required. ID to use for the workstation cluster.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -113,7 +113,7 @@ class Workstations {
      * @param {boolean} apiParams.allowMissing - Optional. If set, and the workstation cluster is not found, a new workstation cluster will be created. In this situation, update_mask is ignored.
      * @param {string} apiParams.name - (Required) Identifier. Full name of this workstation cluster.
      * @param {string} apiParams.updateMask - Required. Mask that specifies which fields in the workstation cluster should be updated.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -127,7 +127,7 @@ class Workstations {
      * @param {string} apiParams.etag - Optional. If set, the request will be rejected if the latest version of the workstation cluster on the server does not have this ETag.
      * @param {boolean} apiParams.force - Optional. If set, any workstation configurations and workstations in the workstation cluster are also deleted. Otherwise, the request only works if the workstation cluster has no configurations or workstations.
      * @param {string} apiParams.name - (Required) Required. Name of the workstation cluster to delete.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not apply it.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -175,7 +175,7 @@ class Workstations {
      * Creates a new workstation configuration.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Parent resource name.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {string} apiParams.workstationConfigId - Required. ID to use for the workstation configuration.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -190,7 +190,7 @@ class Workstations {
      * @param {boolean} apiParams.allowMissing - Optional. If set and the workstation configuration is not found, a new workstation configuration will be created. In this situation, update_mask is ignored.
      * @param {string} apiParams.name - (Required) Identifier. Full name of this workstation configuration.
      * @param {string} apiParams.updateMask - Required. Mask specifying which fields in the workstation configuration should be updated.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -204,7 +204,7 @@ class Workstations {
      * @param {string} apiParams.etag - Optional. If set, the request is rejected if the latest version of the workstation configuration on the server does not have this ETag.
      * @param {boolean} apiParams.force - Optional. If set, any workstations in the workstation configuration are also deleted. Otherwise, the request works only if the workstation configuration has no workstations.
      * @param {string} apiParams.name - (Required) Required. Name of the workstation configuration to delete.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -285,7 +285,7 @@ class Workstations {
      * Creates a new workstation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Parent resource name.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {string} apiParams.workstationId - Required. ID to use for the workstation.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -297,10 +297,10 @@ class Workstations {
     /**
      * Updates an existing workstation.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - Optional. If set and the workstation configuration is not found, a new workstation configuration is created. In this situation, update_mask is ignored.
+     * @param {boolean} apiParams.allowMissing - Optional. If set and the workstation is not found, a new workstation is created. In this situation, update_mask is ignored.
      * @param {string} apiParams.name - (Required) Identifier. Full name of this workstation.
-     * @param {string} apiParams.updateMask - Required. Mask specifying which fields in the workstation configuration should be updated.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {string} apiParams.updateMask - Required. Mask specifying which fields in the workstation should be updated.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -313,7 +313,7 @@ class Workstations {
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.etag - Optional. If set, the request will be rejected if the latest version of the workstation on the server does not have this ETag.
      * @param {string} apiParams.name - (Required) Required. Name of the workstation to delete.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the review, but do not actually apply it.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the result, but do not actually apply it.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
