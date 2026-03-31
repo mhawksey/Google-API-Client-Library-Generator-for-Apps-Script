@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Vision API (version: v1p1bet
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:10:58 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:10:58 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:35:30 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:35:30 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:33 GMT
 
 
@@ -38,18 +38,18 @@ Run asynchronous image detection and annotation for a list of images. Progress a
 
 ### `projects.locations.images`
 
-#### `projects.locations.images.asyncBatchAnnotate()`
+#### `projects.locations.images.annotate()`
 
-Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+Run image detection and annotation for a batch of images.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.images.annotate()`
+#### `projects.locations.images.asyncBatchAnnotate()`
 
-Run image detection and annotation for a batch of images.
+Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -78,18 +78,18 @@ Run asynchronous image detection and annotation for a list of generic files, suc
 
 ### `projects.images`
 
-#### `projects.images.asyncBatchAnnotate()`
+#### `projects.images.annotate()`
 
-Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+Run image detection and annotation for a batch of images.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.images.annotate()`
+#### `projects.images.asyncBatchAnnotate()`
 
-Run image detection and annotation for a batch of images.
+Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
