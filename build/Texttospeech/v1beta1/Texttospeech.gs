@@ -18,12 +18,6 @@ class Texttospeech {
     this._servicePath = '';
 
 
-    this.voices = {};
-    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/voices', 'GET', apiParams, clientConfig);
-
-    this.text = {};
-    this.text.synthesize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/text:synthesize', 'POST', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
@@ -32,6 +26,12 @@ class Texttospeech {
     this.projects.locations.operations = {};
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.voices = {};
+    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/voices', 'GET', apiParams, clientConfig);
+
+    this.text = {};
+    this.text.synthesize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/text:synthesize', 'POST', apiParams, clientConfig);
   }
 
 /**
