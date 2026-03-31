@@ -4,7 +4,7 @@ Auto-generated client library for using the **Public Certificate Authority API (
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:33:57 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:25:06 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:14:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:45 GMT
 
