@@ -22,30 +22,60 @@ class Datalabeling {
 
     this.projects.annotationSpecSets = {};
     this.projects.annotationSpecSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.annotationSpecSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/annotationSpecSets', 'POST', apiParams, clientConfig);
     this.projects.annotationSpecSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/annotationSpecSets', 'GET', apiParams, clientConfig);
+    this.projects.annotationSpecSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/annotationSpecSets', 'POST', apiParams, clientConfig);
     this.projects.annotationSpecSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.projects.evaluationJobs = {};
+    this.projects.evaluationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/evaluationJobs', 'GET', apiParams, clientConfig);
+    this.projects.evaluationJobs.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.projects.evaluationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.evaluationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/evaluationJobs', 'POST', apiParams, clientConfig);
+    this.projects.evaluationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.evaluationJobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.evaluationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.datasets = {};
-    this.projects.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/datasets', 'GET', apiParams, clientConfig);
-    this.projects.datasets.importData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:importData', 'POST', apiParams, clientConfig);
     this.projects.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.datasets.exportData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:exportData', 'POST', apiParams, clientConfig);
+    this.projects.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.datasets.importData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:importData', 'POST', apiParams, clientConfig);
     this.projects.datasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/datasets', 'POST', apiParams, clientConfig);
+    this.projects.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/datasets', 'GET', apiParams, clientConfig);
+
+    this.projects.datasets.annotatedDatasets = {};
+    this.projects.datasets.annotatedDatasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/annotatedDatasets', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.datasets.annotatedDatasets.examples = {};
+    this.projects.datasets.annotatedDatasets.examples.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.examples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/examples', 'GET', apiParams, clientConfig);
+
+    this.projects.datasets.annotatedDatasets.dataItems = {};
+    this.projects.datasets.annotatedDatasets.dataItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.dataItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dataItems', 'GET', apiParams, clientConfig);
+
+    this.projects.datasets.annotatedDatasets.feedbackThreads = {};
+    this.projects.datasets.annotatedDatasets.feedbackThreads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.feedbackThreads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.feedbackThreads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackThreads', 'GET', apiParams, clientConfig);
+
+    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages = {};
+    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackMessages', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackMessages', 'POST', apiParams, clientConfig);
 
     this.projects.datasets.image = {};
     this.projects.datasets.image.label = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/image:label', 'POST', apiParams, clientConfig);
 
     this.projects.datasets.dataItems = {};
-    this.projects.datasets.dataItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dataItems', 'GET', apiParams, clientConfig);
     this.projects.datasets.dataItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.datasets.dataItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dataItems', 'GET', apiParams, clientConfig);
 
     this.projects.datasets.video = {};
     this.projects.datasets.video.label = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/video:label', 'POST', apiParams, clientConfig);
-
-    this.projects.datasets.text = {};
-    this.projects.datasets.text.label = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/text:label', 'POST', apiParams, clientConfig);
 
     this.projects.datasets.evaluations = {};
     this.projects.datasets.evaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
@@ -53,53 +83,23 @@ class Datalabeling {
     this.projects.datasets.evaluations.exampleComparisons = {};
     this.projects.datasets.evaluations.exampleComparisons.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/exampleComparisons:search', 'POST', apiParams, clientConfig);
 
-    this.projects.datasets.annotatedDatasets = {};
-    this.projects.datasets.annotatedDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/annotatedDatasets', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.datasets.annotatedDatasets.examples = {};
-    this.projects.datasets.annotatedDatasets.examples.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.examples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/examples', 'GET', apiParams, clientConfig);
-
-    this.projects.datasets.annotatedDatasets.feedbackThreads = {};
-    this.projects.datasets.annotatedDatasets.feedbackThreads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackThreads', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.feedbackThreads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.feedbackThreads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages = {};
-    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackMessages', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/feedbackMessages', 'POST', apiParams, clientConfig);
-
-    this.projects.datasets.annotatedDatasets.dataItems = {};
-    this.projects.datasets.annotatedDatasets.dataItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dataItems', 'GET', apiParams, clientConfig);
-    this.projects.datasets.annotatedDatasets.dataItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.operations = {};
-    this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'GET', apiParams, clientConfig);
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.instructions = {};
-    this.projects.instructions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instructions', 'GET', apiParams, clientConfig);
-    this.projects.instructions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instructions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.instructions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instructions', 'POST', apiParams, clientConfig);
+    this.projects.datasets.text = {};
+    this.projects.datasets.text.label = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/text:label', 'POST', apiParams, clientConfig);
 
     this.projects.evaluations = {};
     this.projects.evaluations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/evaluations:search', 'GET', apiParams, clientConfig);
 
-    this.projects.evaluationJobs = {};
-    this.projects.evaluationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.evaluationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.evaluationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/evaluationJobs', 'POST', apiParams, clientConfig);
-    this.projects.evaluationJobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.evaluationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/evaluationJobs', 'GET', apiParams, clientConfig);
-    this.projects.evaluationJobs.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.projects.evaluationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.operations = {};
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'GET', apiParams, clientConfig);
+    this.projects.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.instructions = {};
+    this.projects.instructions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instructions', 'GET', apiParams, clientConfig);
+    this.projects.instructions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instructions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instructions', 'POST', apiParams, clientConfig);
+    this.projects.instructions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
