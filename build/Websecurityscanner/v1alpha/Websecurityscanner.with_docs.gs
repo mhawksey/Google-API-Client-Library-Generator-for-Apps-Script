@@ -67,16 +67,6 @@ class Websecurityscanner {
     this.projects.scanConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Gets a ScanConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists ScanConfigs under a given project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
@@ -87,6 +77,16 @@ class Websecurityscanner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.scanConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanConfigs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a ScanConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns = {};
 
@@ -102,6 +102,16 @@ class Websecurityscanner {
     this.projects.scanConfigs.scanRuns.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:stop', 'POST', apiParams, clientConfig);
 
     /**
+     * Gets a ScanRun.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.scanConfigs.scanRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
@@ -112,16 +122,6 @@ class Websecurityscanner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.scanConfigs.scanRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanRuns', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a ScanRun.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.scanConfigs.scanRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.findingTypeStats = {};
 
@@ -134,6 +134,20 @@ class Websecurityscanner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.scanConfigs.scanRuns.findingTypeStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/findingTypeStats', 'GET', apiParams, clientConfig);
+
+    this.projects.scanConfigs.scanRuns.crawledUrls = {};
+
+    /**
+     * List CrawledUrls under a given ScanRun.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.scanConfigs.scanRuns.crawledUrls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/crawledUrls', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.findings = {};
 
@@ -159,20 +173,6 @@ class Websecurityscanner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.scanConfigs.scanRuns.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/findings', 'GET', apiParams, clientConfig);
-
-    this.projects.scanConfigs.scanRuns.crawledUrls = {};
-
-    /**
-     * List CrawledUrls under a given ScanRun.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
-     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.scanConfigs.scanRuns.crawledUrls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/crawledUrls', 'GET', apiParams, clientConfig);
   }
 
 /**
