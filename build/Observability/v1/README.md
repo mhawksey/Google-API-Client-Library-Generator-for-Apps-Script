@@ -4,7 +4,7 @@ Auto-generated client library for using the **Observability API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:23:41 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:55:27 GMT
 - **Last Modified:** Wed, 18 Mar 2026 21:58:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:22 GMT
 
