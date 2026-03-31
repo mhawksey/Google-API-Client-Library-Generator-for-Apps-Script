@@ -4,8 +4,8 @@ Auto-generated client library for using the **Serverless VPC Access API (version
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:11:17 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:11:17 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:36:00 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:36:00 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:49 GMT
 
 
@@ -20,57 +20,43 @@ Auto-generated client library for using the **Serverless VPC Access API (version
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `projects.locations.connectors`
-
-#### `projects.locations.connectors.patch()`
-
-Updates a Serverless VPC Access connector, returns an operation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name in the format `projects/*/locations/*/connectors/*`. |
-| `params.updateMask` | `string` | No | The fields to update on the entry group. If absent or empty, all modifiable fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connectors.list()`
-
-Lists Serverless VPC Access connectors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of functions to return per call. |
-| `params.pageToken` | `string` | No | Continuation token. |
-| `params.parent` | `string` | Yes | Required. The project and location from which the routes should be listed. |
-
-#### `projects.locations.connectors.delete()`
-
-Deletes a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of a Serverless VPC Access connector to delete. |
-
-#### `projects.locations.connectors.get()`
-
-Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of a Serverless VPC Access connector to get. |
 
 #### `projects.locations.connectors.create()`
 
@@ -82,24 +68,38 @@ Creates a Serverless VPC Access connector, returns an operation.
 | `params.connectorId` | `string` | No | Required. The ID to use for this connector. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.operations`
+#### `projects.locations.connectors.patch()`
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Updates a Serverless VPC Access connector, returns an operation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The resource name in the format `projects/*/locations/*/connectors/*`. |
+| `params.updateMask` | `string` | No | The fields to update on the entry group. If absent or empty, all modifiable fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.operations.get()`
+#### `projects.locations.connectors.get()`
 
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.name` | `string` | Yes | Required. Name of a Serverless VPC Access connector to get. |
+
+#### `projects.locations.connectors.list()`
+
+Lists Serverless VPC Access connectors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location from which the routes should be listed. |
+| `params.pageSize` | `integer` | No | Maximum number of functions to return per call. |
+| `params.pageToken` | `string` | No | Continuation token. |
+
+#### `projects.locations.connectors.delete()`
+
+Deletes a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of a Serverless VPC Access connector to delete. |
