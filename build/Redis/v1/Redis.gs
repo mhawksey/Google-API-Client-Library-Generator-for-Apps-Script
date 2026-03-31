@@ -41,6 +41,13 @@ class Redis {
     this.projects.locations.clusters.rescheduleClusterMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rescheduleClusterMaintenance', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.backup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:backup', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.aclPolicies = {};
+    this.projects.locations.aclPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/aclPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.aclPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.aclPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.aclPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.aclPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/aclPolicies', 'POST', apiParams, clientConfig);
+
     this.projects.locations.backupCollections = {};
     this.projects.locations.backupCollections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupCollections', 'GET', apiParams, clientConfig);
     this.projects.locations.backupCollections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
