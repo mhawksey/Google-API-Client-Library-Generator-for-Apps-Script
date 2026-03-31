@@ -4,7 +4,7 @@ Auto-generated client library for using the **Chrome Web Store API (version: v2)
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:02:14 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:24:32 GMT
 - **Last Modified:** Sat, 01 Nov 2025 00:25:41 GMT
 - **Created:** Sat, 01 Nov 2025 00:25:41 GMT
 
