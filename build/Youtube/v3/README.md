@@ -4,7 +4,7 @@ Auto-generated client library for using the **YouTube Data API v3 (version: v3)*
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:11:59 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:37:16 GMT
 - **Last Modified:** Wed, 18 Mar 2026 22:11:59 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:32 GMT
 
@@ -821,6 +821,7 @@ POST method.
 |---|---|---|---|
 | `params.part` | `string` | Yes |  |
 | `params.externalChannelId` | `string` | No |  |
+| `params.onBehalfOfContentOwnerChannel` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `thirdPartyLinks`
