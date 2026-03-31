@@ -4,8 +4,8 @@ Auto-generated client library for using the **Smart Device Management API (versi
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:09:11 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:09:11 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:27:30 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:27:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:47 GMT
 
 
@@ -18,14 +18,22 @@ Auto-generated client library for using the **Smart Device Management API (versi
 
 ### `enterprises.devices`
 
+#### `enterprises.devices.get()`
+
+Gets a device managed by the enterprise.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the device requested. For example: "enterprises/XYZ/devices/123" |
+
 #### `enterprises.devices.list()`
 
 Lists devices managed by the enterprise.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' |
 | `params.parent` | `string` | Yes | The parent enterprise to list devices under. E.g. "enterprises/XYZ". |
+| `params.filter` | `string` | No | Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' |
 
 #### `enterprises.devices.executeCommand()`
 
@@ -35,14 +43,6 @@ Executes a command to device managed by the enterprise.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the device requested. For example: "enterprises/XYZ/devices/123" |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `enterprises.devices.get()`
-
-Gets a device managed by the enterprise.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the device requested. For example: "enterprises/XYZ/devices/123" |
 
 ### `enterprises.structures`
 
