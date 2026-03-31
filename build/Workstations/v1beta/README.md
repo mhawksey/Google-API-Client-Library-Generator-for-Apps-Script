@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Workstations API (version: v
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:11:54 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:37:06 GMT
 - **Last Modified:** Wed, 18 Mar 2026 22:11:54 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:27 GMT
 
@@ -86,7 +86,7 @@ Creates a new workstation cluster.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationClusterId` | `string` | No | Required. ID to use for the workstation cluster. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.patch()`
@@ -97,7 +97,7 @@ Updates an existing workstation cluster.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Full name of this workstation cluster. |
 | `params.updateMask` | `string` | No | Required. Mask that specifies which fields in the workstation cluster should be updated. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.allowMissing` | `boolean` | No | Optional. If set, and the workstation cluster is not found, a new workstation cluster will be created. In this situation, update_mask is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -108,7 +108,7 @@ Deletes the specified workstation cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workstation cluster to delete. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not apply it. |
 | `params.etag` | `string` | No | Optional. If set, the request will be rejected if the latest version of the workstation cluster on the server does not have this ETag. |
 | `params.force` | `boolean` | No | Optional. If set, any workstation configurations and workstations in the workstation cluster are also deleted. Otherwise, the request only works if the workstation cluster has no configurations or workstations. |
 
@@ -151,7 +151,7 @@ Creates a new workstation configuration.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationConfigId` | `string` | No | Required. ID to use for the workstation configuration. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.patch()`
@@ -162,7 +162,7 @@ Updates an existing workstation configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Full name of this workstation configuration. |
 | `params.updateMask` | `string` | No | Required. Mask specifying which fields in the workstation configuration should be updated. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.allowMissing` | `boolean` | No | Optional. If set and the workstation configuration is not found, a new workstation configuration will be created. In this situation, update_mask is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -173,7 +173,7 @@ Deletes the specified workstation configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workstation configuration to delete. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.etag` | `string` | No | Optional. If set, the request is rejected if the latest version of the workstation configuration on the server does not have this ETag. |
 | `params.force` | `boolean` | No | Optional. If set, any workstations in the workstation configuration are also deleted. Otherwise, the request works only if the workstation configuration has no workstations. |
 
@@ -243,7 +243,7 @@ Creates a new workstation.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationId` | `string` | No | Required. ID to use for the workstation. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.patch()`
@@ -253,9 +253,9 @@ Updates an existing workstation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Full name of this workstation. |
-| `params.updateMask` | `string` | No | Required. Mask specifying which fields in the workstation configuration should be updated. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
-| `params.allowMissing` | `boolean` | No | Optional. If set and the workstation configuration is not found, a new workstation configuration is created. In this situation, update_mask is ignored. |
+| `params.updateMask` | `string` | No | Required. Mask specifying which fields in the workstation should be updated. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
+| `params.allowMissing` | `boolean` | No | Optional. If set and the workstation is not found, a new workstation is created. In this situation, update_mask is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.delete()`
@@ -265,7 +265,7 @@ Deletes the specified workstation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workstation to delete. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the result, but do not actually apply it. |
 | `params.etag` | `string` | No | Optional. If set, the request will be rejected if the latest version of the workstation on the server does not have this ETag. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.start()`
