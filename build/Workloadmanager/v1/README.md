@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workload Manager API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:11:49 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:11:49 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:36:58 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:36:58 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:21 GMT
 
 
@@ -28,11 +28,11 @@ Lists information about the supported locations for this service. This method ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -42,115 +42,58 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.rules`
+### `projects.locations.operations`
 
-#### `projects.locations.rules.list()`
+#### `projects.locations.operations.list()`
 
-Lists rules in a given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. The [project] on which to execute the request. The format is: projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available to all projects and all regions. |
-| `params.filter` | `string` | No | Filter based on primary_category, secondary_category. |
-| `params.evaluationType` | `string` | No | Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for custom rules. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.customRulesBucket` | `string` | No | The Cloud Storage bucket name for custom rules. |
-
-### `projects.locations.deployments`
-
-#### `projects.locations.deployments.get()`
-
-Gets details of a single Deployment.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. The format will be 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}' |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
-#### `projects.locations.deployments.delete()`
+#### `projects.locations.operations.get()`
 
-Deletes a single Deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.force` | `boolean` | No | Optional. If set to true, any actuation will also be deleted. Followed the best practice from https://aip.dev/135#cascading-delete |
-| `params.name` | `string` | Yes | Required. Name of the resource |
-
-#### `projects.locations.deployments.list()`
-
-Lists Deployments in a given project and location.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource prefix of the Deployment using the form: `projects/{project_id}/locations/{location_id}` |
-| `params.filter` | `string` | No | Optional. Filter resource follow https://google.aip.dev/160 |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.deployments.create()`
+#### `projects.locations.operations.delete()`
 
-Creates a new Deployment in a given project and location.
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.deploymentId` | `string` | No | Required. Id of the deployment |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The resource prefix of the Deployment using the form: `projects/{project_id}/locations/{location_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
-### `projects.locations.deployments.actuations`
+#### `projects.locations.operations.cancel()`
 
-#### `projects.locations.deployments.actuations.get()`
-
-Gets details of a single Actuation.
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource |
-
-#### `projects.locations.deployments.actuations.delete()`
-
-Deletes a single Actuation
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the book to delete. project/{project_id}/locations/{location_id}/deployments/{deployment_id}/actuations/{actuation_id} |
-
-#### `projects.locations.deployments.actuations.list()`
-
-Lists Actuations in a given project, location and deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. The resource prefix of the Actuation using the form: 'projects/{project_id}/locations/{location}/deployments/{deployment}' |
-| `params.filter` | `string` | No | Optional. Filtering results |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-
-#### `projects.locations.deployments.actuations.create()`
-
-Creates a new actuation for an existing Deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Actuation location using the form: 'projects/{project_id}/locations/{location}/deployments/{deployment}' |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.evaluations`
 
-#### `projects.locations.evaluations.create()`
+#### `projects.locations.evaluations.list()`
 
-Creates a new Evaluation in a given project and location.
+Lists Evaluations in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The resource prefix of the evaluation location using the form: `projects/{project_id}/locations/{location_id}`. |
-| `params.evaluationId` | `string` | No | Required. Id of the requesting object. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. Parent value for ListEvaluationsRequest. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filter to be applied when listing the evaluation results. |
+| `params.orderBy` | `string` | No | Hint for how to order the results. |
 
 #### `projects.locations.evaluations.get()`
 
@@ -160,15 +103,26 @@ Gets details of a single Evaluation.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
 
+#### `projects.locations.evaluations.create()`
+
+Creates a new Evaluation in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource prefix of the evaluation location using the form: `projects/{project_id}/locations/{location_id}`. |
+| `params.evaluationId` | `string` | No | Required. Id of the requesting object. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.evaluations.patch()`
 
 Updates the parameters of a single Evaluation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Name of resource that has the form `projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}`. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Evaluation resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluations.delete()`
@@ -177,40 +131,11 @@ Deletes a single Evaluation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.force` | `boolean` | No | Optional. Followed the best practice from https://aip.dev/135#cascading-delete. |
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.evaluations.list()`
-
-Lists Evaluations in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. Parent value for ListEvaluationsRequest. |
-| `params.filter` | `string` | No | Filter to be applied when listing the evaluation results. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Hint for how to order the results. |
 
 ### `projects.locations.evaluations.executions`
-
-#### `projects.locations.evaluations.executions.get()`
-
-Gets details of a single Execution.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.evaluations.executions.delete()`
-
-Deletes a single Execution.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 #### `projects.locations.evaluations.executions.list()`
 
@@ -219,10 +144,18 @@ Lists Executions in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource prefix of the Execution using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. |
-| `params.filter` | `string` | No | Filtering results. |
 | `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
 | `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.evaluations.executions.get()`
+
+Gets details of a single Execution.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
 
 #### `projects.locations.evaluations.executions.run()`
 
@@ -233,6 +166,15 @@ Creates a new Execution in a given project and location.
 | `params.name` | `string` | Yes | Required. The resource name of the Evaluation using the form: `projects/{project}/locations/{location}/evaluations/{evaluation}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.evaluations.executions.delete()`
+
+Deletes a single Execution.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
 ### `projects.locations.evaluations.executions.results`
 
 #### `projects.locations.evaluations.executions.results.list()`
@@ -241,10 +183,10 @@ Lists the result of a single evaluation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.parent` | `string` | Yes | Required. The execution results. Format: {parent}/evaluations/*/executions/*/results. |
-| `params.filter` | `string` | No | Filtering results. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
 
 ### `projects.locations.evaluations.executions.scannedResources`
 
@@ -255,11 +197,26 @@ List all scanned resources for a single Execution.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent for ListScannedResourcesRequest. |
-| `params.filter` | `string` | No | Filtering results. |
+| `params.rule` | `string` | No | Rule name. |
 | `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
 | `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.rule` | `string` | No | Rule name. |
+
+### `projects.locations.rules`
+
+#### `projects.locations.rules.list()`
+
+Lists rules in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The [project] on which to execute the request. The format is: projects/{project_id}/locations/{location} Currently, the pre-defined rules are global available to all projects and all regions. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filter based on primary_category, secondary_category. |
+| `params.customRulesBucket` | `string` | No | The Cloud Storage bucket name for custom rules. |
+| `params.evaluationType` | `string` | No | Optional. The evaluation type of the rules will be applied to. The Cloud Storage bucket name for custom rules. |
 
 ### `projects.locations.insights`
 
@@ -281,6 +238,88 @@ Delete the data insights from workload manager data warehouse.
 | `params.name` | `string` | Yes | Required. The system id of the SAP system resource to delete. Formatted as projects/{project}/locations/{location}/sapSystems/{sap_system_id} |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
+### `projects.locations.deployments`
+
+#### `projects.locations.deployments.list()`
+
+Lists Deployments in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource prefix of the Deployment using the form: `projects/{project_id}/locations/{location_id}` |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. Filter resource follow https://google.aip.dev/160 |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.deployments.get()`
+
+Gets details of a single Deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. The format will be 'projects/{project_id}/locations/{location_id}/deployments/{deployment_id}' |
+
+#### `projects.locations.deployments.create()`
+
+Creates a new Deployment in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource prefix of the Deployment using the form: `projects/{project_id}/locations/{location_id}` |
+| `params.deploymentId` | `string` | No | Required. Id of the deployment |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.deployments.delete()`
+
+Deletes a single Deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource |
+| `params.force` | `boolean` | No | Optional. If set to true, any actuation will also be deleted. Followed the best practice from https://aip.dev/135#cascading-delete |
+
+### `projects.locations.deployments.actuations`
+
+#### `projects.locations.deployments.actuations.list()`
+
+Lists Actuations in a given project, location and deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource prefix of the Actuation using the form: 'projects/{project_id}/locations/{location}/deployments/{deployment}' |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. Filtering results |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.deployments.actuations.get()`
+
+Gets details of a single Actuation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource |
+
+#### `projects.locations.deployments.actuations.create()`
+
+Creates a new actuation for an existing Deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Actuation location using the form: 'projects/{project_id}/locations/{location}/deployments/{deployment}' |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.deployments.actuations.delete()`
+
+Deletes a single Actuation
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the book to delete. project/{project_id}/locations/{location_id}/deployments/{deployment_id}/actuations/{actuation_id} |
+
 ### `projects.locations.discoveredprofiles`
 
 #### `projects.locations.discoveredprofiles.list()`
@@ -290,9 +329,9 @@ List discovered workload profiles
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent value for ListDiscoveredProfilesRequest |
-| `params.filter` | `string` | No | Optional. Filtering results |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. Filtering results |
 
 #### `projects.locations.discoveredprofiles.get()`
 
@@ -311,42 +350,3 @@ Get the health of a discovered workload profile.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
