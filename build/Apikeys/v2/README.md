@@ -4,7 +4,7 @@ Auto-generated client library for using the **API Keys API (version: v2)** in Go
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 19:59:54 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:22:40 GMT
 - **Last Modified:** Wed, 18 Mar 2026 21:18:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:43 GMT
 
