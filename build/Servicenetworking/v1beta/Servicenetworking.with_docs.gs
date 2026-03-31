@@ -33,6 +33,19 @@ class Servicenetworking {
     this.services = {};
 
     /**
+     * Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - If a previously defined allocated range is removed, force flag must be set to true.
+     * @param {string} apiParams.name - (Required) The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`.
+     * @param {string} apiParams.updateMask - The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.updateConnections = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/connections', 'PATCH', apiParams, clientConfig);
+
+    /**
      * For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. The response from the `get` operation will be of type `Subnetwork` if the operation successfully completes.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project.
@@ -54,31 +67,7 @@ class Servicenetworking {
      */
     this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:searchRange', 'POST', apiParams, clientConfig);
 
-    /**
-     * Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - If a previously defined allocated range is removed, force flag must be set to true.
-     * @param {string} apiParams.name - (Required) The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`.
-     * @param {string} apiParams.updateMask - The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.updateConnections = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/connections', 'PATCH', apiParams, clientConfig);
-
     this.services.connections = {};
-
-    /**
-     * Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'POST', apiParams, clientConfig);
 
     /**
      * List the private connections that are configured in a service consumer's VPC network.
@@ -90,6 +79,17 @@ class Servicenetworking {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.services.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'POST', apiParams, clientConfig);
   }
 
 /**
