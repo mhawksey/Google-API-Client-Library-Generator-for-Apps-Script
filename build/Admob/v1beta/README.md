@@ -4,7 +4,7 @@ Auto-generated client library for using the **AdMob API (version: v1beta)** in G
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 19:58:34 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:21:11 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:01 GMT
 
