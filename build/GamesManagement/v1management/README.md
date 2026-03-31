@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services Managem
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:21:27 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:21:27 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:44:36 GMT
+- **Last Modified:** Tue, 31 Mar 2026 23:44:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:12 GMT
 
 
@@ -14,11 +14,31 @@ Auto-generated client library for using the **Google Play Games Services Managem
 
 ## API Reference
 
+### `applications`
+
+#### `applications.listHidden()`
+
+Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.maxResults` | `integer` | No | The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`. |
+| `params.pageToken` | `string` | No | The token returned by the previous request. |
+
 ### `achievements`
 
-#### `achievements.resetAll()`
+#### `achievements.reset()`
 
-Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.
+Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
+
+#### `achievements.resetAllForAllPlayers()`
+
+Resets all draft achievements for all players. This method is only available to user accounts for your developer console.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -26,14 +46,6 @@ Resets all achievements for the currently authenticated player for your applicat
 #### `achievements.resetForAllPlayers()`
 
 Resets the achievement with the given ID for all players. This method is only available to user accounts for your developer console. Only draft achievements can be reset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
-
-#### `achievements.reset()`
-
-Resets the achievement with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -47,34 +59,37 @@ Resets achievements with the given IDs for all players. This method is only avai
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `achievements.resetAllForAllPlayers()`
+#### `achievements.resetAll()`
 
-Resets all draft achievements for all players. This method is only available to user accounts for your developer console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-### `players`
-
-#### `players.hide()`
-
-Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.
+Resets all achievements for the currently authenticated player for your application. This method is only accessible to whitelisted tester accounts for your application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.playerId` | `string` | Yes | A player ID. A value of `me` may be used in place of the authenticated player's ID. |
-
-#### `players.unhide()`
-
-Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.playerId` | `string` | Yes | A player ID. A value of `me` may be used in place of the authenticated player's ID. |
 
 ### `scores`
+
+#### `scores.resetAllForAllPlayers()`
+
+Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+#### `scores.resetForAllPlayers()`
+
+Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
+
+#### `scores.resetMultipleForAllPlayers()`
+
+Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `scores.resetAll()`
 
@@ -91,42 +106,15 @@ Resets scores for the leaderboard with the given ID for the currently authentica
 |---|---|---|---|
 | `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
 
-#### `scores.resetMultipleForAllPlayers()`
-
-Resets scores for the leaderboards with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft leaderboards may be reset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `scores.resetForAllPlayers()`
-
-Resets scores for the leaderboard with the given ID for all players. This method is only available to user accounts for your developer console. Only draft leaderboards can be reset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
-
-#### `scores.resetAllForAllPlayers()`
-
-Resets scores for all draft leaderboards for all players. This method is only available to user accounts for your developer console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-### `applications`
-
-#### `applications.listHidden()`
-
-Get the list of players hidden from the given application. This method is only available to user accounts for your developer console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | The maximum number of player resources to return in the response, used for paging. For any response, the actual number of player resources returned may be less than the specified `maxResults`. |
-| `params.pageToken` | `string` | No | The token returned by the previous request. |
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-
 ### `events`
+
+#### `events.reset()`
+
+Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.eventId` | `string` | Yes | The ID of the event. |
 
 #### `events.resetAllForAllPlayers()`
 
@@ -142,9 +130,9 @@ Resets all player progress on all events for the currently authenticated player.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
-#### `events.reset()`
+#### `events.resetForAllPlayers()`
 
-Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.
+Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -158,10 +146,22 @@ Resets events with the given IDs for all players. This method is only available 
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `events.resetForAllPlayers()`
+### `players`
 
-Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.
+#### `players.unhide()`
+
+Unhide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.eventId` | `string` | Yes | The ID of the event. |
+| `params.playerId` | `string` | Yes | A player ID. A value of `me` may be used in place of the authenticated player's ID. |
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+
+#### `players.hide()`
+
+Hide the given player's leaderboard scores from the given application. This method is only available to user accounts for your developer console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.playerId` | `string` | Yes | A player ID. A value of `me` may be used in place of the authenticated player's ID. |
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
