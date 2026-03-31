@@ -4,7 +4,7 @@ Auto-generated client library for using the **Gemini Enterprise for Customer Exp
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:01:53 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:24:15 GMT
 - **Last Modified:** Mon, 30 Mar 2026 20:01:53 GMT
 - **Created:** Sun, 01 Mar 2026 00:25:08 GMT
 
