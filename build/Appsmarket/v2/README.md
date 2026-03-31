@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Workspace Marketplace API (
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:00:15 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:22:56 GMT
 - **Last Modified:** Sun, 01 Feb 2026 00:23:31 GMT
 - **Created:** Sun, 01 Feb 2026 00:23:31 GMT
 
