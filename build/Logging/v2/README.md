@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Logging API (version: v2)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:23:33 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:53:00 GMT
 - **Last Modified:** Wed, 18 Mar 2026 21:49:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:41:57 GMT
 
