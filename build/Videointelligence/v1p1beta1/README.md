@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Video Intelligence API (vers
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:10:48 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:35:13 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:24:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:42 GMT
 
