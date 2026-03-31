@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Runtime Configuration API (v
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:01:54 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:01:54 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:26:08 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:26:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:03 GMT
 
 
@@ -15,18 +15,6 @@ Auto-generated client library for using the **Cloud Runtime Configuration API (v
 ## API Reference
 
 ### `operations`
-
-#### `operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 
 #### `operations.delete()`
 
@@ -44,3 +32,15 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
