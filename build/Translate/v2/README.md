@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Translation API (vers
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:10:33 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:10:33 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:34:44 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:34:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:18 GMT
 
 
@@ -16,14 +16,6 @@ Auto-generated client library for using the **Google Cloud Translation API (vers
 
 ### `detections`
 
-#### `detections.detect()`
-
-Detects the language of text within a request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `detections.list()`
 
 Detects the language of text within a request.
@@ -32,6 +24,44 @@ Detects the language of text within a request.
 |---|---|---|---|
 | `params.q` | `string` | Yes | The input text upon which to perform language detection. Repeat this
 parameter to perform language detection on multiple text inputs. |
+
+#### `detections.detect()`
+
+Detects the language of text within a request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `translations`
+
+#### `translations.list()`
+
+Translates input text, returning translated text.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.cid` | `string` | No | The customization id for translate |
+| `params.q` | `string` | Yes | The input text to translate. Repeat this parameter to perform translation
+operations on multiple text inputs. |
+| `params.target` | `string` | Yes | The language to use for translation of the input text, set to one of the
+language codes listed in Language Support. |
+| `params.model` | `string` | No | The `model` type requested for this translation. Valid values are
+listed in public documentation. |
+| `params.format` | `string` | No | The format of the source text, in either HTML (default) or plain-text. A
+value of "html" indicates HTML and a value of "text" indicates plain-text. |
+| `params.source` | `string` | No | The language of the source text, set to one of the language codes listed in
+Language Support. If the source language is not specified, the API will
+attempt to identify the source language automatically and return it within
+the response. |
+
+#### `translations.translate()`
+
+Translates input text, returning translated text.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `languages`
 
@@ -44,33 +74,3 @@ Returns a list of supported languages for translation.
 | `params.target` | `string` | No | The language to use to return localized, human readable names of supported
 languages. |
 | `params.model` | `string` | No | The model type for which supported languages should be returned. |
-
-### `translations`
-
-#### `translations.list()`
-
-Translates input text, returning translated text.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.model` | `string` | No | The `model` type requested for this translation. Valid values are
-listed in public documentation. |
-| `params.cid` | `string` | No | The customization id for translate |
-| `params.q` | `string` | Yes | The input text to translate. Repeat this parameter to perform translation
-operations on multiple text inputs. |
-| `params.source` | `string` | No | The language of the source text, set to one of the language codes listed in
-Language Support. If the source language is not specified, the API will
-attempt to identify the source language automatically and return it within
-the response. |
-| `params.target` | `string` | Yes | The language to use for translation of the input text, set to one of the
-language codes listed in Language Support. |
-| `params.format` | `string` | No | The format of the source text, in either HTML (default) or plain-text. A
-value of "html" indicates HTML and a value of "text" indicates plain-text. |
-
-#### `translations.translate()`
-
-Translates input text, returning translated text.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
