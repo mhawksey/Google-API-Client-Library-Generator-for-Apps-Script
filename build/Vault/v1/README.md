@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Vault API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:10:41 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:10:41 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:34:59 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:34:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:28 GMT
 
 
@@ -15,6 +15,26 @@ Auto-generated client library for using the **Google Vault API (version: v1)** i
 ## API Reference
 
 ### `operations`
+
+#### `operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `operations.delete()`
 
@@ -33,45 +53,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-
-#### `operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
 ### `matters`
-
-#### `matters.count()`
-
-Counts the accounts processed by the specified query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `matters.update()`
-
-Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.create()`
 
@@ -81,18 +63,9 @@ Creates a matter with the given name and description. The initial state is open,
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `matters.undelete()`
+#### `matters.update()`
 
-Undeletes the specified matter. Returns the matter with updated state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `matters.addPermissions()`
-
-Adds an account as a matter collaborator.
+Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -107,35 +80,6 @@ Closes the specified matter. Returns the matter with updated state.
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `matters.list()`
-
-Lists matters the requestor has access to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The pagination token as returned in the response. |
-| `params.pageSize` | `integer` | No | The number of matters to return in the response. Default and maximum are 100. |
-| `params.state` | `string` | No | If set, lists only matters with the specified state. The default lists matters of all states. |
-| `params.view` | `string` | No | Specifies how much information about the matter to return in response. |
-
-#### `matters.removePermissions()`
-
-Removes an account as a matter collaborator.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `matters.get()`
-
-Gets the specified matter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.view` | `string` | No | Specifies how much information about the matter to return in the response. |
 
 #### `matters.reopen()`
 
@@ -154,46 +98,72 @@ Deletes the specified matter. Returns the matter with updated state.
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID |
 
-### `matters.savedQueries`
+#### `matters.undelete()`
 
-#### `matters.savedQueries.get()`
-
-Retrieves the specified saved query.
+Undeletes the specified matter. Returns the matter with updated state.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.matterId` | `string` | Yes | The ID of the matter to get the saved query from. |
-| `params.savedQueryId` | `string` | Yes | ID of the saved query to retrieve. |
-
-#### `matters.savedQueries.create()`
-
-Creates a saved query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The ID of the matter to create the saved query in. |
+| `params.matterId` | `string` | Yes | The matter ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `matters.savedQueries.list()`
+#### `matters.get()`
 
-Lists the saved queries in a matter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The ID of the matter to get the saved queries for. |
-| `params.pageToken` | `string` | No | The pagination token as returned in the previous response. An empty token means start from the beginning. |
-| `params.pageSize` | `integer` | No | The maximum number of saved queries to return. |
-
-#### `matters.savedQueries.delete()`
-
-Deletes the specified saved query.
+Gets the specified matter.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.matterId` | `string` | Yes | The ID of the matter to delete the saved query from. |
-| `params.savedQueryId` | `string` | Yes | ID of the saved query to delete. |
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.view` | `string` | No | Specifies how much information about the matter to return in the response. |
+
+#### `matters.list()`
+
+Lists matters the requestor has access to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The number of matters to return in the response. Default and maximum are 100. |
+| `params.pageToken` | `string` | No | The pagination token as returned in the response. |
+| `params.view` | `string` | No | Specifies how much information about the matter to return in response. |
+| `params.state` | `string` | No | If set, lists only matters with the specified state. The default lists matters of all states. |
+
+#### `matters.addPermissions()`
+
+Adds an account as a matter collaborator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `matters.removePermissions()`
+
+Removes an account as a matter collaborator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `matters.count()`
+
+Counts the accounts processed by the specified query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `matters.exports`
+
+#### `matters.exports.create()`
+
+Creates an export.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.exports.delete()`
 
@@ -204,14 +174,14 @@ Deletes an export.
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.exportId` | `string` | Yes | The export ID. |
 
-#### `matters.exports.create()`
+#### `matters.exports.get()`
 
-Creates an export.
+Gets an export.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.exportId` | `string` | Yes | The export ID. |
 
 #### `matters.exports.list()`
 
@@ -223,55 +193,15 @@ Lists details about the exports in the specified matter.
 | `params.pageSize` | `integer` | No | The number of exports to return in the response. |
 | `params.pageToken` | `string` | No | The pagination token as returned in the response. |
 
-#### `matters.exports.get()`
-
-Gets an export.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.exportId` | `string` | Yes | The export ID. |
-
 ### `matters.holds`
 
-#### `matters.holds.list()`
+#### `matters.holds.create()`
 
-Lists the holds in a matter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.view` | `string` | No | The amount of detail to return for a hold. |
-| `params.pageToken` | `string` | No | The pagination token as returned in the response. An empty token means start from the beginning. |
-| `params.pageSize` | `integer` | No | The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or as 0, is the same as **page_size** = 100. |
-
-#### `matters.holds.removeHeldAccounts()`
-
-Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request.
+Creates a hold in the specified matter.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.holdId` | `string` | Yes | The hold ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `matters.holds.delete()`
-
-Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the data is not preserved by another hold or retention rule, it might be purged.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.holdId` | `string` | Yes | The hold ID. |
-
-#### `matters.holds.addHeldAccounts()`
-
-Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be added only to an existing account-based hold.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matterId` | `string` | Yes | The matter ID. |
-| `params.holdId` | `string` | Yes | The hold ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.holds.update()`
@@ -284,6 +214,15 @@ Updates the scope (organizational unit or accounts) and query parameters of a ho
 | `params.holdId` | `string` | Yes | The ID of the hold. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `matters.holds.delete()`
+
+Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the data is not preserved by another hold or retention rule, it might be purged.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.holdId` | `string` | Yes | The hold ID. |
+
 #### `matters.holds.get()`
 
 Gets the specified hold.
@@ -291,29 +230,41 @@ Gets the specified hold.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.view` | `string` | No | The amount of detail to return for a hold. |
 | `params.holdId` | `string` | Yes | The hold ID. |
+| `params.view` | `string` | No | The amount of detail to return for a hold. |
 
-#### `matters.holds.create()`
+#### `matters.holds.list()`
 
-Creates a hold in the specified matter.
+Lists the holds in a matter.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
+| `params.pageSize` | `integer` | No | The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or as 0, is the same as **page_size** = 100. |
+| `params.pageToken` | `string` | No | The pagination token as returned in the response. An empty token means start from the beginning. |
+| `params.view` | `string` | No | The amount of detail to return for a hold. |
+
+#### `matters.holds.addHeldAccounts()`
+
+Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be added only to an existing account-based hold.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.holdId` | `string` | Yes | The hold ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `matters.holds.removeHeldAccounts()`
+
+Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.holdId` | `string` | Yes | The hold ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `matters.holds.accounts`
-
-#### `matters.holds.accounts.delete()`
-
-Removes an account from a hold.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.holdId` | `string` | Yes | The hold ID. |
-| `params.accountId` | `string` | Yes | The ID of the account to remove from the hold. |
-| `params.matterId` | `string` | Yes | The matter ID. |
 
 #### `matters.holds.accounts.create()`
 
@@ -325,6 +276,16 @@ Adds an account to a hold. Accounts can be added only to a hold that does not ha
 | `params.holdId` | `string` | Yes | The hold ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `matters.holds.accounts.delete()`
+
+Removes an account from a hold.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The matter ID. |
+| `params.holdId` | `string` | Yes | The hold ID. |
+| `params.accountId` | `string` | Yes | The ID of the account to remove from the hold. |
+
 #### `matters.holds.accounts.list()`
 
 Lists the accounts covered by a hold. This can list only individually-specified accounts covered by the hold. If the hold covers an organizational unit, use the [Admin SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on hold.
@@ -333,3 +294,42 @@ Lists the accounts covered by a hold. This can list only individually-specified 
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.holdId` | `string` | Yes | The hold ID. |
+
+### `matters.savedQueries`
+
+#### `matters.savedQueries.create()`
+
+Creates a saved query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The ID of the matter to create the saved query in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `matters.savedQueries.delete()`
+
+Deletes the specified saved query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The ID of the matter to delete the saved query from. |
+| `params.savedQueryId` | `string` | Yes | ID of the saved query to delete. |
+
+#### `matters.savedQueries.get()`
+
+Retrieves the specified saved query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The ID of the matter to get the saved query from. |
+| `params.savedQueryId` | `string` | Yes | ID of the saved query to retrieve. |
+
+#### `matters.savedQueries.list()`
+
+Lists the saved queries in a matter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matterId` | `string` | Yes | The ID of the matter to get the saved queries for. |
+| `params.pageSize` | `integer` | No | The maximum number of saved queries to return. |
+| `params.pageToken` | `string` | No | The pagination token as returned in the previous response. An empty token means start from the beginning. |
