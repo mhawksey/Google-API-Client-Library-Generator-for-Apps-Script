@@ -20,8 +20,8 @@ class Slides {
 
     this.presentations = {};
     this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
-    this.presentations.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}:batchUpdate', 'POST', apiParams, clientConfig);
     this.presentations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations', 'POST', apiParams, clientConfig);
+    this.presentations.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}:batchUpdate', 'POST', apiParams, clientConfig);
 
     this.presentations.pages = {};
     this.presentations.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}', 'GET', apiParams, clientConfig);
