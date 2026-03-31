@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:10:03 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:10:03 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:34:04 GMT
+- **Last Modified:** Tue, 31 Mar 2026 07:34:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:46 GMT
 
 
@@ -34,25 +34,6 @@ Synthesizes speech synchronously: receive results after all text input has been 
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `operations`
-
-#### `operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects`
 
 ### `projects.locations`
@@ -74,10 +55,10 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
@@ -87,3 +68,22 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `operations`
+
+#### `operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
