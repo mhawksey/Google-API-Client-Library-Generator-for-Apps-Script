@@ -971,6 +971,7 @@ class Youtube {
      * POST method.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.externalChannelId - 
+     * @param {string} apiParams.onBehalfOfContentOwnerChannel - 
      * @param {string} apiParams.part - (Required)
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
