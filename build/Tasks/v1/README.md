@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Tasks API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Wed, 18 Mar 2026 22:09:54 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:33:51 GMT
 - **Last Modified:** Wed, 18 Mar 2026 22:09:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:36 GMT
 
