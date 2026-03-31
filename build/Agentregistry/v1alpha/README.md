@@ -4,7 +4,7 @@ Auto-generated client library for using the **Agent Registry API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 19:58:45 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:21:24 GMT
 - **Last Modified:** Mon, 30 Mar 2026 19:58:45 GMT
 - **Created:** Mon, 30 Mar 2026 19:58:45 GMT
 
