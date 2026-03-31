@@ -4,7 +4,7 @@ Auto-generated client library for using the **Dataform API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:11:45 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:33:53 GMT
 - **Last Modified:** Mon, 30 Mar 2026 20:11:45 GMT
 - **Created:** Sat, 01 Nov 2025 00:34:56 GMT
 
