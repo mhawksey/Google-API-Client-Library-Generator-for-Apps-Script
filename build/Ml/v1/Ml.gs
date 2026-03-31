@@ -19,19 +19,19 @@ class Ml {
 
 
     this.projects = {};
-    this.projects.explain = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:explain', 'POST', apiParams, clientConfig);
     this.projects.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getConfig', 'GET', apiParams, clientConfig);
+    this.projects.explain = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:explain', 'POST', apiParams, clientConfig);
     this.projects.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:predict', 'POST', apiParams, clientConfig);
 
     this.projects.jobs = {};
+    this.projects.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-    this.projects.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations = {};
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'GET', apiParams, clientConfig);
@@ -43,44 +43,44 @@ class Ml {
 
     this.projects.locations.studies = {};
     this.projects.locations.studies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.studies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.studies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/studies', 'POST', apiParams, clientConfig);
+    this.projects.locations.studies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.studies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/studies', 'GET', apiParams, clientConfig);
 
     this.projects.locations.studies.trials = {};
-    this.projects.locations.studies.trials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials', 'POST', apiParams, clientConfig);
-    this.projects.locations.studies.trials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.studies.trials.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.studies.trials.suggest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials:suggest', 'POST', apiParams, clientConfig);
     this.projects.locations.studies.trials.complete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:complete', 'POST', apiParams, clientConfig);
-    this.projects.locations.studies.trials.checkEarlyStoppingState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkEarlyStoppingState', 'POST', apiParams, clientConfig);
-    this.projects.locations.studies.trials.listOptimalTrials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials:listOptimalTrials', 'POST', apiParams, clientConfig);
     this.projects.locations.studies.trials.addMeasurement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addMeasurement', 'POST', apiParams, clientConfig);
-    this.projects.locations.studies.trials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.studies.trials.suggest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials:suggest', 'POST', apiParams, clientConfig);
+    this.projects.locations.studies.trials.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
+    this.projects.locations.studies.trials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials', 'POST', apiParams, clientConfig);
     this.projects.locations.studies.trials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials', 'GET', apiParams, clientConfig);
+    this.projects.locations.studies.trials.listOptimalTrials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trials:listOptimalTrials', 'POST', apiParams, clientConfig);
+    this.projects.locations.studies.trials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.studies.trials.checkEarlyStoppingState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkEarlyStoppingState', 'POST', apiParams, clientConfig);
+    this.projects.locations.studies.trials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.models = {};
-    this.projects.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/models', 'POST', apiParams, clientConfig);
-    this.projects.models.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/models', 'GET', apiParams, clientConfig);
     this.projects.models.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.models.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.models.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/models', 'POST', apiParams, clientConfig);
+    this.projects.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.models.versions = {};
+    this.projects.models.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.models.versions.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setDefault', 'POST', apiParams, clientConfig);
     this.projects.models.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
     this.projects.models.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.models.versions.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setDefault', 'POST', apiParams, clientConfig);
     this.projects.models.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.models.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.models.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
 
     this.projects.operations = {};
-    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
   }
 
 /**
