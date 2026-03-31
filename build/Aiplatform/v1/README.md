@@ -4,7 +4,7 @@ Auto-generated client library for using the **Vertex AI API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 19:59:00 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:21:38 GMT
 - **Last Modified:** Mon, 30 Mar 2026 19:59:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:27 GMT
 
