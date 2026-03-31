@@ -4,7 +4,7 @@ Auto-generated client library for using the **Bare Metal Solution API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:00:45 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:23:26 GMT
 - **Last Modified:** Wed, 18 Mar 2026 21:18:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:44 GMT
 
