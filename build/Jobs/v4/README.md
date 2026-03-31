@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Talent Solution API (version
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:23:12 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:23:12 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:52:38 GMT
+- **Last Modified:** Tue, 31 Mar 2026 23:52:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:38 GMT
 
 
@@ -28,13 +28,37 @@ Gets the latest state of a long-running operation. Clients can use this method t
 
 ### `projects.tenants`
 
-#### `projects.tenants.delete()`
+#### `projects.tenants.completeQuery()`
 
-Deletes specified tenant.
+Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
+| `params.type` | `string` | No | The completion topic. The default is CompletionType.COMBINED. |
+| `params.scope` | `string` | No | The scope of the completion. The defaults is CompletionScope.PUBLIC. |
+| `params.languageCodes` | `string` | No | The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. |
+| `params.company` | `string` | No | If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". |
+| `params.tenant` | `string` | Yes | Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
+| `params.query` | `string` | No | Required. The query used to generate suggestions. The maximum number of allowed characters is 255. |
+| `params.pageSize` | `integer` | No | Required. Completion result count. The maximum allowed page size is 10. |
+
+#### `projects.tenants.list()`
+
+Lists all tenants associated with the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of tenants to be returned, at most 100. Default is 100 if a non-positive number is provided. |
+| `params.pageToken` | `string` | No | The starting indicator from which to return results. |
+| `params.parent` | `string` | Yes | Required. Resource name of the project under which the tenant is created. The format is "projects/{project_id}", for example, "projects/foo". |
+
+#### `projects.tenants.get()`
+
+Retrieves specified tenant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the tenant to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
 
 #### `projects.tenants.patch()`
 
@@ -46,23 +70,13 @@ Updates specified tenant.
 | `params.updateMask` | `string` | No | Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in tenant are updated. Otherwise all the fields are updated. A field mask to specify the tenant fields to be updated. Only top level fields of Tenant are supported. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.tenants.get()`
+#### `projects.tenants.delete()`
 
-Retrieves specified tenant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the tenant to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
-
-#### `projects.tenants.list()`
-
-Lists all tenants associated with the project.
+Deletes specified tenant.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The starting indicator from which to return results. |
-| `params.parent` | `string` | Yes | Required. Resource name of the project under which the tenant is created. The format is "projects/{project_id}", for example, "projects/foo". |
-| `params.pageSize` | `integer` | No | The maximum number of tenants to be returned, at most 100. Default is 100 if a non-positive number is provided. |
+| `params.name` | `string` | Yes | Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
 
 #### `projects.tenants.create()`
 
@@ -73,21 +87,15 @@ Creates a new tenant entity.
 | `params.parent` | `string` | Yes | Required. Resource name of the project under which the tenant is created. The format is "projects/{project_id}", for example, "projects/foo". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.tenants.completeQuery()`
+### `projects.tenants.companies`
 
-Completes the specified prefix with keyword suggestions. Intended for use by a job search auto-complete search box.
+#### `projects.tenants.companies.get()`
+
+Retrieves specified company.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.scope` | `string` | No | The scope of the completion. The defaults is CompletionScope.PUBLIC. |
-| `params.pageSize` | `integer` | No | Required. Completion result count. The maximum allowed page size is 10. |
-| `params.type` | `string` | No | The completion topic. The default is CompletionType.COMBINED. |
-| `params.company` | `string` | No | If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". |
-| `params.query` | `string` | No | Required. The query used to generate suggestions. The maximum number of allowed characters is 255. |
-| `params.tenant` | `string` | Yes | Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
-| `params.languageCodes` | `string` | No | The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. |
-
-### `projects.tenants.companies`
+| `params.name` | `string` | Yes | Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/api-test-project/tenants/foo/companies/bar". |
 
 #### `projects.tenants.companies.create()`
 
@@ -98,6 +106,27 @@ Creates a new company entity.
 | `params.parent` | `string` | Yes | Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.tenants.companies.patch()`
+
+Updates specified company.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". |
+| `params.updateMask` | `string` | No | Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in company are updated. Otherwise all the fields are updated. A field mask to specify the company fields to be updated. Only top level fields of Company are supported. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.tenants.companies.list()`
+
+Lists all companies associated with the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. |
+| `params.parent` | `string` | Yes | Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
+| `params.requireOpenJobs` | `boolean` | No | Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. |
+| `params.pageToken` | `string` | No | The starting indicator from which to return results. |
+
 #### `projects.tenants.companies.delete()`
 
 Deletes specified company. Prerequisite: The company has no jobs associated with it.
@@ -106,36 +135,39 @@ Deletes specified company. Prerequisite: The company has no jobs associated with
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the company to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". |
 
-#### `projects.tenants.companies.get()`
+### `projects.tenants.clientEvents`
 
-Retrieves specified company.
+#### `projects.tenants.clientEvents.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/api-test-project/tenants/foo/companies/bar". |
-
-#### `projects.tenants.companies.list()`
-
-Lists all companies associated with the project.
+Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requireOpenJobs` | `boolean` | No | Set to true if the companies requested must have open jobs. Defaults to false. If true, at most page_size of companies are fetched, among which only those with open jobs are returned. |
-| `params.parent` | `string` | Yes | Required. Resource name of the tenant under which the company is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
-| `params.pageSize` | `integer` | No | The maximum number of companies to be returned, at most 100. Default is 100 if a non-positive number is provided. |
-| `params.pageToken` | `string` | No | The starting indicator from which to return results. |
-
-#### `projects.tenants.companies.patch()`
-
-Updates specified company.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in company are updated. Otherwise all the fields are updated. A field mask to specify the company fields to be updated. Only top level fields of Company are supported. |
-| `params.name` | `string` | Yes | Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". |
+| `params.parent` | `string` | Yes | Required. Resource name of the tenant under which the event is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.tenants.jobs`
+
+#### `projects.tenants.jobs.list()`
+
+Lists jobs by filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.jobView` | `string` | No | The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. |
+| `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
+| `params.pageToken` | `string` | No | The starting point of a query result. |
+| `params.pageSize` | `integer` | No | The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. |
+| `params.filter` | `string` | No | Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" * companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" |
+
+#### `projects.tenants.jobs.create()`
+
+Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.jobs.batchUpdate()`
 
@@ -146,13 +178,14 @@ Begins executing a batch update jobs operation.
 | `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.tenants.jobs.get()`
+#### `projects.tenants.jobs.search()`
 
-Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
+Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the job to retrieve. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". |
+| `params.parent` | `string` | Yes | Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.jobs.batchCreate()`
 
@@ -171,18 +204,9 @@ Deletes the specified job. Typically, the job becomes unsearchable within 10 sec
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the job to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". |
 
-#### `projects.tenants.jobs.create()`
+#### `projects.tenants.jobs.searchForAlert()`
 
-Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.tenants.jobs.search()`
-
-Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
+Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), it has different algorithmic adjustments that are designed to specifically target passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -195,9 +219,17 @@ Updates specified job. Typically, updated contents become visible in search resu
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. |
 | `params.name` | `string` | Yes | Required during job update. The resource name for the job. This is generated by the service when a job is created. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". Use of this field in job queries and API calls is preferred over the use of requisition_id since this value is unique. |
+| `params.updateMask` | `string` | No | Strongly recommended for the best service experience. If update_mask is provided, only the specified fields in job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.tenants.jobs.get()`
+
+Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the job to retrieve. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". |
 
 #### `projects.tenants.jobs.batchDelete()`
 
@@ -206,36 +238,4 @@ Begins executing a batch delete jobs operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.tenants.jobs.searchForAlert()`
-
-Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), it has different algorithmic adjustments that are designed to specifically target passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the tenant to search within. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.tenants.jobs.list()`
-
-Lists jobs by filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.jobView` | `string` | No | The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified. |
-| `params.parent` | `string` | Yes | Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". |
-| `params.pageSize` | `integer` | No | The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified. |
-| `params.pageToken` | `string` | No | The starting point of a query result. |
-| `params.filter` | `string` | No | Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/foo/tenants/bar/companies/baz" * companyName = "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" * companyName = "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED" |
-
-### `projects.tenants.clientEvents`
-
-#### `projects.tenants.clientEvents.create()`
-
-Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the tenant under which the event is created. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". |
 | `params.requestBody` | `object` | Yes | The request body. |
