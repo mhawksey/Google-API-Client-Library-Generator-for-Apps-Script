@@ -4,7 +4,7 @@ Auto-generated client library for using the **My Business Lodging API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 20:30:36 GMT
+- **Last Checked:** Tue, 31 Mar 2026 07:23:05 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:56:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:31 GMT
 
