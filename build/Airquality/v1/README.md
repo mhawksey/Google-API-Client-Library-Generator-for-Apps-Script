@@ -4,7 +4,7 @@ Auto-generated client library for using the **Air Quality API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Mon, 30 Mar 2026 19:59:02 GMT
+- **Last Checked:** Tue, 31 Mar 2026 23:21:41 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:31 GMT
 
