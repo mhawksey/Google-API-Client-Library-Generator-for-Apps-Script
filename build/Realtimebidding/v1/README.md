@@ -4,7 +4,7 @@ Auto-generated client library for using the **Real-time Bidding API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:25:24 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:02:52 GMT
 - **Last Modified:** Wed, 18 Mar 2026 22:01:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:11 GMT
 
