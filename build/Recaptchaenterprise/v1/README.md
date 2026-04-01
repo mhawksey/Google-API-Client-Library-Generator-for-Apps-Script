@@ -4,7 +4,7 @@ Auto-generated client library for using the **reCAPTCHA Enterprise API (version:
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:25:27 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:02:53 GMT
 - **Last Modified:** Tue, 31 Mar 2026 07:25:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:14 GMT
 
