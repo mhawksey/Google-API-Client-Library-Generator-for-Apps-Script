@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:27:27 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:04:21 GMT
 - **Last Modified:** Tue, 31 Mar 2026 07:27:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
