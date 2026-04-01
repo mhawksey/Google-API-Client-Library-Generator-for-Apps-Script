@@ -4,7 +4,7 @@ Auto-generated client library for using the **Security Posture API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:26:52 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:03:54 GMT
 - **Last Modified:** Tue, 31 Mar 2026 07:26:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:56 GMT
 
