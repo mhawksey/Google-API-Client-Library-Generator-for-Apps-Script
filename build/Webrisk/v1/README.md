@@ -4,7 +4,7 @@ Auto-generated client library for using the **Web Risk API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:36:16 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:06:12 GMT
 - **Last Modified:** Wed, 18 Mar 2026 22:11:27 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:00 GMT
 
