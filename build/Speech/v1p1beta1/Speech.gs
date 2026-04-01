@@ -28,16 +28,16 @@ class Speech {
 
     this.projects.locations.phraseSets = {};
     this.projects.locations.phraseSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/phraseSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.phraseSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.phraseSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/phraseSets', 'GET', apiParams, clientConfig);
     this.projects.locations.phraseSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.phraseSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.phraseSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.phraseSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/phraseSets', 'GET', apiParams, clientConfig);
 
     this.projects.locations.customClasses = {};
+    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.customClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.customClasses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/customClasses', 'GET', apiParams, clientConfig);
     this.projects.locations.customClasses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/customClasses', 'POST', apiParams, clientConfig);
-    this.projects.locations.customClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.customClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.speech = {};
