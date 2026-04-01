@@ -62,6 +62,26 @@ class Speech {
     this.projects.locations.phraseSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/phraseSets', 'POST', apiParams, clientConfig);
 
     /**
+     * Delete a phrase set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the phrase set to delete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.phraseSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Get a phrase set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the phrase set to retrieve. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.phraseSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Update a phrase set.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The resource name of the phrase set.
@@ -85,27 +105,29 @@ class Speech {
      */
     this.projects.locations.phraseSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/phraseSets', 'GET', apiParams, clientConfig);
 
-    /**
-     * Delete a phrase set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the phrase set to delete. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.phraseSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Get a phrase set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the phrase set to retrieve. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.phraseSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.customClasses = {};
+
+    /**
+     * Get a custom class.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the custom class to retrieve. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update a custom class.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the custom class.
+     * @param {string} apiParams.updateMask - The list of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * List custom classes.
@@ -129,28 +151,6 @@ class Speech {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.customClasses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/customClasses', 'POST', apiParams, clientConfig);
-
-    /**
-     * Update a custom class.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the custom class.
-     * @param {string} apiParams.updateMask - The list of fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Get a custom class.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the custom class to retrieve. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Delete a custom class.
