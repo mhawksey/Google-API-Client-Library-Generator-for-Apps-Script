@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:25:08 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:02:41 GMT
 - **Last Modified:** Mon, 30 Mar 2026 20:34:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:48 GMT
 
