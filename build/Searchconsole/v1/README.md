@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:26:27 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:03:35 GMT
 - **Last Modified:** Thu, 01 Jan 2026 01:06:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
