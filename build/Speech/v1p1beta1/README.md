@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Speech-to-Text API (version:
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:27:39 GMT
-- **Last Modified:** Tue, 31 Mar 2026 07:27:39 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:04:32 GMT
+- **Last Modified:** Wed, 01 Apr 2026 00:04:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:56 GMT
 
 
@@ -22,11 +22,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
 | `params.name` | `string` | No | The name of the operation's parent resource. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 
 #### `operations.get()`
 
@@ -51,26 +51,6 @@ Create a set of phrase hints. Each item in the set can be a single word or a mul
 | `params.parent` | `string` | Yes | Required. The parent resource where this phrase set will be created. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.phraseSets.patch()`
-
-Update a phrase set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the phrase set. |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.phraseSets.list()`
-
-List phrase sets.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of phrase set. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListPhraseSet` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPhraseSet` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | The maximum number of phrase sets to return. The service may return fewer than this value. If unspecified, at most 50 phrase sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
 #### `projects.locations.phraseSets.delete()`
 
 Delete a phrase set.
@@ -87,7 +67,45 @@ Get a phrase set.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the phrase set to retrieve. Format: `projects/{project}/locations/{location}/phraseSets/{phrase_set}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
 
+#### `projects.locations.phraseSets.patch()`
+
+Update a phrase set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name of the phrase set. |
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.phraseSets.list()`
+
+List phrase sets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListPhraseSet` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPhraseSet` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of phrase set. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
+| `params.pageSize` | `integer` | No | The maximum number of phrase sets to return. The service may return fewer than this value. If unspecified, at most 50 phrase sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
 ### `projects.locations.customClasses`
+
+#### `projects.locations.customClasses.get()`
+
+Get a custom class.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the custom class to retrieve. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}` |
+
+#### `projects.locations.customClasses.patch()`
+
+Update a custom class.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.name` | `string` | Yes | The resource name of the custom class. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customClasses.list()`
 
@@ -107,24 +125,6 @@ Create a custom class.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this custom class will be created. Format: `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.customClasses.patch()`
-
-Update a custom class.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the custom class. |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.customClasses.get()`
-
-Get a custom class.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the custom class to retrieve. Format: `projects/{project}/locations/{location}/customClasses/{custom_class}` |
 
 #### `projects.locations.customClasses.delete()`
 
