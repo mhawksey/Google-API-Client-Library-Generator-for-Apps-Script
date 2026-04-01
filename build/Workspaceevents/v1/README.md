@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Workspace Events API (versi
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:37:01 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:06:33 GMT
 - **Last Modified:** Thu, 01 Jan 2026 01:15:52 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:24 GMT
 
