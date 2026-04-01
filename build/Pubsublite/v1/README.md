@@ -4,7 +4,7 @@ Auto-generated client library for using the **Pub/Sub Lite API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:25:17 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:02:46 GMT
 - **Last Modified:** Tue, 31 Mar 2026 07:25:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:01 GMT
 
