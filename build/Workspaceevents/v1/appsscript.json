@@ -4,8 +4,10 @@
   "runtimeVersion": "V8",
   "oauthScopes": [
     "https://www.googleapis.com/auth/chat.app.memberships",
+    "https://www.googleapis.com/auth/chat.app.memberships.readonly",
     "https://www.googleapis.com/auth/chat.app.messages.readonly",
     "https://www.googleapis.com/auth/chat.app.spaces",
+    "https://www.googleapis.com/auth/chat.app.spaces.readonly",
     "https://www.googleapis.com/auth/chat.bot",
     "https://www.googleapis.com/auth/chat.memberships",
     "https://www.googleapis.com/auth/chat.memberships.readonly",
