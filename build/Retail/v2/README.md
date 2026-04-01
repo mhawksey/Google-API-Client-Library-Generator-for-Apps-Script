@@ -4,7 +4,7 @@ Auto-generated client library for using the **Vertex AI Search for commerce API 
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 07:25:54 GMT
+- **Last Checked:** Wed, 01 Apr 2026 00:03:10 GMT
 - **Last Modified:** Tue, 31 Mar 2026 07:25:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:48 GMT
 
