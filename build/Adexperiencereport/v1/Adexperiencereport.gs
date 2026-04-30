@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Ad Experience Report API
  * Documentation URL: https://developers.google.com/ad-experience-report/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Adexperiencereport {
@@ -18,11 +19,11 @@ class Adexperiencereport {
     this._servicePath = '';
 
 
-    this.sites = {};
-    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.violatingSites = {};
     this.violatingSites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/violatingSites', 'GET', apiParams, clientConfig);
+
+    this.sites = {};
+    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
