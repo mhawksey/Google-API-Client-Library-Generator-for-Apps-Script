@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdSense Platform API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:21:20 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:16:47 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:22:28 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:22:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:15 GMT
 
 
@@ -26,25 +26,6 @@ Gets information about the selected sub-account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} |
 
-#### `platforms.accounts.lookup()`
-
-Looks up information about a sub-account for a specified creation_request_id. If no account exists for the given creation_request_id, returns 404.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Platform who parents the account. Format: platforms/{platform} |
-| `params.creationRequestId` | `string` | No | Optional. The creation_request_id provided when calling createAccount. |
-
-#### `platforms.accounts.list()`
-
-Lists a partial view of sub-accounts for a specific parent account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Platform who parents the accounts. Format: platforms/{platform} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. |
-
 #### `platforms.accounts.create()`
 
 Creates a sub-account.
@@ -62,6 +43,25 @@ Closes a sub-account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Account to close. Format: platforms/{platform}/accounts/{account_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `platforms.accounts.lookup()`
+
+Looks up information about a sub-account for a specified creation_request_id. If no account exists for the given creation_request_id, returns 404.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Platform who parents the account. Format: platforms/{platform} |
+| `params.creationRequestId` | `string` | No | Optional. The creation_request_id provided when calling createAccount. |
+
+#### `platforms.accounts.list()`
+
+Lists a partial view of sub-accounts for a specific parent account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
+| `params.parent` | `string` | Yes | Required. Platform who parents the accounts. Format: platforms/{platform} |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. |
 
 ### `platforms.accounts.events`
 
@@ -83,16 +83,6 @@ Gets a site from a specified sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} |
-
-#### `platforms.accounts.sites.list()`
-
-Lists sites for a specific account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} |
-| `params.pageSize` | `integer` | No | The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. |
 
 #### `platforms.accounts.sites.create()`
 
@@ -118,3 +108,13 @@ Deletes a site from a specified account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site} |
+
+#### `platforms.accounts.sites.list()`
+
+Lists sites for a specific account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
