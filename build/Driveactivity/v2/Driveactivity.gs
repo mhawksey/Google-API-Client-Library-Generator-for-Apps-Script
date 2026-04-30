@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Drive Activity API
  * Documentation URL: https://developers.google.com/workspace/drive/activity/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Driveactivity {
