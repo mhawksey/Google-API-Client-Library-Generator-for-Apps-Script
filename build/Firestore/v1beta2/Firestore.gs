@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Firestore API
  * Documentation URL: https://cloud.google.com/firestore
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firestore {
@@ -21,16 +22,16 @@ class Firestore {
     this.projects = {};
 
     this.projects.databases = {};
-    this.projects.databases.exportDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:exportDocuments', 'POST', apiParams, clientConfig);
     this.projects.databases.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:importDocuments', 'POST', apiParams, clientConfig);
+    this.projects.databases.exportDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:exportDocuments', 'POST', apiParams, clientConfig);
 
     this.projects.databases.collectionGroups = {};
 
     this.projects.databases.collectionGroups.indexes = {};
-    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.databases.collectionGroups.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'GET', apiParams, clientConfig);
     this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
 
     this.projects.databases.collectionGroups.fields = {};
     this.projects.databases.collectionGroups.fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
