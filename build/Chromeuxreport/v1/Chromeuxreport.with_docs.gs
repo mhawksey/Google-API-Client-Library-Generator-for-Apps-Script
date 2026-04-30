@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome UX Report API
  * Documentation URL: https://developers.google.com/web/tools/chrome-user-experience-report/api/reference
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Chromeuxreport {
@@ -21,16 +22,6 @@ class Chromeuxreport {
     this.records = {};
 
     /**
-     * Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested site.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.records.queryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryRecord', 'POST', apiParams, clientConfig);
-
-    /**
      * Queries the Chrome User Experience Report for a timeseries `history record` for a given site. Returns a `history record` that contains one or more `metric timeseries` corresponding to performance data about the requested site.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -39,6 +30,16 @@ class Chromeuxreport {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.records.queryHistoryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryHistoryRecord', 'POST', apiParams, clientConfig);
+
+    /**
+     * Queries the Chrome User Experience for a single `record` for a given site. Returns a `record` that contains one or more `metrics` corresponding to performance data about the requested site.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.records.queryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryRecord', 'POST', apiParams, clientConfig);
   }
 
 /**
