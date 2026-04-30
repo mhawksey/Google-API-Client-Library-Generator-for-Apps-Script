@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Custom Search API
  * Documentation URL: https://developers.google.com/custom-search/v1/introduction
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Customsearch {
