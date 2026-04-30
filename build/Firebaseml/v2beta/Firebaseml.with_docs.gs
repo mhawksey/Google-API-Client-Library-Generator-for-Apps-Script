@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase ML API
  * Documentation URL: https://firebase.google.com
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseml {
@@ -38,17 +39,6 @@ class Firebaseml {
     this.projects.locations.publishers.models.countTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+endpoint}:countTokens', 'POST', apiParams, clientConfig);
 
     /**
-     * Generate content with multimodal inputs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.model - (Required) Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
-
-    /**
      * Generate content with multimodal inputs with streaming support.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.model - (Required) Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
@@ -58,6 +48,17 @@ class Firebaseml {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.publishers.models.streamGenerateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:streamGenerateContent', 'POST', apiParams, clientConfig);
+
+    /**
+     * Generate content with multimodal inputs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.model - (Required) Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*\/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
   }
 
 /**
