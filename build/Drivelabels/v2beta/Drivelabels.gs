@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Drive Labels API
  * Documentation URL: https://developers.google.com/workspace/drive/labels
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Drivelabels {
@@ -22,22 +23,22 @@ class Drivelabels {
     this.users.getCapabilities = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.labels = {};
-    this.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/labels', 'GET', apiParams, clientConfig);
-    this.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/labels', 'POST', apiParams, clientConfig);
     this.labels.delta = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:delta', 'POST', apiParams, clientConfig);
-    this.labels.updateLabelCopyMode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelCopyMode', 'POST', apiParams, clientConfig);
-    this.labels.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:publish', 'POST', apiParams, clientConfig);
-    this.labels.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:disable', 'POST', apiParams, clientConfig);
     this.labels.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/labels', 'GET', apiParams, clientConfig);
     this.labels.updatePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'PATCH', apiParams, clientConfig);
+    this.labels.updateLabelCopyMode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelCopyMode', 'POST', apiParams, clientConfig);
+    this.labels.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.labels.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:publish', 'POST', apiParams, clientConfig);
+    this.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
     this.labels.updateLabelEnabledAppSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelEnabledAppSettings', 'POST', apiParams, clientConfig);
 
     this.labels.permissions = {};
     this.labels.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'GET', apiParams, clientConfig);
-    this.labels.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'POST', apiParams, clientConfig);
     this.labels.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.labels.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'POST', apiParams, clientConfig);
     this.labels.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
     this.labels.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
 
@@ -45,11 +46,11 @@ class Drivelabels {
     this.labels.revisions.updatePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'PATCH', apiParams, clientConfig);
 
     this.labels.revisions.permissions = {};
+    this.labels.revisions.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.labels.revisions.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'GET', apiParams, clientConfig);
     this.labels.revisions.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'POST', apiParams, clientConfig);
-    this.labels.revisions.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.labels.revisions.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
     this.labels.revisions.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
+    this.labels.revisions.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
 
     this.labels.revisions.locks = {};
     this.labels.revisions.locks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/locks', 'GET', apiParams, clientConfig);
