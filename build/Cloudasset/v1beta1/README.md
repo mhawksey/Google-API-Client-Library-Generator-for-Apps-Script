@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Asset API (version: v1beta1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:24:44 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:02:30 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:33:30 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:33:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:04 GMT
 
 
@@ -31,11 +31,11 @@ Batch gets the update history of assets that overlap a time window. For IAM_POLI
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The relative name of the root asset. It can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345"). |
 | `params.assetNames` | `string` | No | A list of the full names of the assets. For example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info. The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is 100 in one request. |
-| `params.contentType` | `string` | No | Optional. The content type. |
 | `params.readTimeWindow.startTime` | `string` | No | Start time of the time window (exclusive). |
 | `params.readTimeWindow.endTime` | `string` | No | End time of the time window (inclusive). If not specified, the current timestamp is used instead. |
+| `params.parent` | `string` | Yes | Required. The relative name of the root asset. It can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345"). |
+| `params.contentType` | `string` | No | Optional. The content type. |
 
 ### `projects.operations`
 
@@ -85,11 +85,11 @@ Batch gets the update history of assets that overlap a time window. For IAM_POLI
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The relative name of the root asset. It can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345"). |
 | `params.assetNames` | `string` | No | A list of the full names of the assets. For example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more info. The request becomes a no-op if the asset name list is empty, and the max size of the asset name list is 100 in one request. |
-| `params.contentType` | `string` | No | Optional. The content type. |
 | `params.readTimeWindow.startTime` | `string` | No | Start time of the time window (exclusive). |
 | `params.readTimeWindow.endTime` | `string` | No | End time of the time window (inclusive). If not specified, the current timestamp is used instead. |
+| `params.parent` | `string` | Yes | Required. The relative name of the root asset. It can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345"). |
+| `params.contentType` | `string` | No | Optional. The content type. |
 
 ### `organizations.operations`
 
