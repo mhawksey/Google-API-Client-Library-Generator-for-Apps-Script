@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Developer Connect API
  * Documentation URL: http://cloud.google.com/developer-connect/docs/overview
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Developerconnect {
@@ -23,9 +24,9 @@ class Developerconnect {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -49,6 +50,16 @@ class Developerconnect {
     this.projects.locations.operations = {};
 
     /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The standard list filter.
@@ -61,16 +72,6 @@ class Developerconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -93,240 +94,21 @@ class Developerconnect {
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.connections = {};
-
-    /**
-     * Lists Connections in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListConnectionsRequest
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single Connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Connection in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.connectionId - Required. Id of the requesting object If auto-generating Id server-side, remove this field and connection_id from the method_signature of Create RPC
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the parameters of a single Connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties).
-     * @param {string} apiParams.name - (Required) Identifier. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.updateMask - Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a single Connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the Connection. If an etag is provided and does not match the current etag of the Connection, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * FetchLinkableGitRepositories returns a list of git repositories from an SCM that are available to be added to a Connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.connection - (Required) Required. The name of the Connection. Format: `projects/*\/locations/*\/connections/*`.
-     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Defaults to 20.
-     * @param {string} apiParams.pageToken - Optional. Page start.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.fetchLinkableGitRepositories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchLinkableGitRepositories', 'GET', apiParams, clientConfig);
-
-    /**
-     * FetchGitHubInstallations returns the list of GitHub Installations that are available to be added to a Connection. For github.com, only installations accessible to the authorizer token are returned. For GitHub Enterprise, all installations are returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.connection - (Required) Required. The resource name of the connection in the format `projects/*\/locations/*\/connections/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.fetchGitHubInstallations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchGitHubInstallations', 'GET', apiParams, clientConfig);
-
-    /**
-     * ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise instances for notifying events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Project and location where the webhook will be received. Format: `projects/*\/locations/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.processGitHubEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections:processGitHubEnterpriseWebhook', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.connections.gitRepositoryLinks = {};
-
-    /**
-     * Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect will configure the Git Repository to send webhook events to Developer Connect. Connections that use Firebase GitHub Application will have events forwarded to the Firebase service. Connections that use Gemini Code Assist will have events forwarded to Gemini Code Assist service. All other Connections will have events forwarded to Cloud Build.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.gitRepositoryLinkId - Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single GitRepositoryLink.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists GitRepositoryLinks in a given project, location, and connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListGitRepositoryLinksRequest
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single GitRepositoryLink.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Fetches read/write token of a given gitRepositoryLink.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.fetchReadWriteToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadWriteToken', 'POST', apiParams, clientConfig);
-
-    /**
-     * Fetches read token of a given gitRepositoryLink.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.fetchReadToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadToken', 'POST', apiParams, clientConfig);
-
-    /**
-     * Fetch the list of branches or tags for a given repository.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of GitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Default to 20.
-     * @param {string} apiParams.pageToken - Optional. Page start.
-     * @param {string} apiParams.refType - Required. Type of refs to fetch.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchGitRefs', 'GET', apiParams, clientConfig);
-
-    /**
-     * ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for notifying events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.processGitLabEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabEnterpriseWebhook', 'POST', apiParams, clientConfig);
-
-    /**
-     * ProcessGitLabWebhook is called by the GitLab.com for notifying events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.processGitLabWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabWebhook', 'POST', apiParams, clientConfig);
-
-    /**
-     * ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Center instances for notifying events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.processBitbucketDataCenterWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketDataCenterWebhook', 'POST', apiParams, clientConfig);
-
-    /**
-     * ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.gitRepositoryLinks.processBitbucketCloudWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketCloudWebhook', 'POST', apiParams, clientConfig);
-
     this.projects.locations.accountConnectors = {};
+
+    /**
+     * Deletes a single AccountConnector.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the AccountConnectorn. If an etag is provided and does not match the current etag of the AccountConnector, deletion will be blocked and an ABORTED error will be returned.
+     * @param {boolean} apiParams.force - Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.)
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.accountConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists AccountConnectors in a given project and location.
@@ -353,20 +135,6 @@ class Developerconnect {
     this.projects.locations.accountConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new AccountConnector in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountConnectorId - Required. The ID to use for the AccountConnector, which will become the final component of the AccountConnector's resource name. Its format should adhere to https://google.aip.dev/122#resource-id-segments Names must be unique per-project per-location.
-     * @param {string} apiParams.parent - (Required) Required. Location resource name as the account_connector’s parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.accountConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates the parameters of a single AccountConnector.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the accountConnector is not found a new accountConnector will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input accountConnector has all the necessary
@@ -382,18 +150,18 @@ class Developerconnect {
     this.projects.locations.accountConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a single AccountConnector.
+     * Creates a new AccountConnector in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the AccountConnectorn. If an etag is provided and does not match the current etag of the AccountConnector, deletion will be blocked and an ABORTED error will be returned.
-     * @param {boolean} apiParams.force - Optional. If set to true, any Users from this AccountConnector will also be deleted. (Otherwise, the request will only work if the AccountConnector has no Users.)
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.accountConnectorId - Required. The ID to use for the AccountConnector, which will become the final component of the AccountConnector's resource name. Its format should adhere to https://google.aip.dev/122#resource-id-segments Names must be unique per-project per-location.
+     * @param {string} apiParams.parent - (Required) Required. Location resource name as the account_connector’s parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.accountConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'POST', apiParams, clientConfig);
 
     /**
      * FetchUserRepositories returns a list of UserRepos that are available for an account connector resource.
@@ -422,18 +190,34 @@ class Developerconnect {
     this.projects.locations.accountConnectors.users.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:fetchAccessToken', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists Users in a given project, location, and account_connector.
+     * Fetch the User based on the user credentials.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListUsersRequest
+     * @param {string} apiParams.name - (Required) Required. Name of the AccountConnector resource
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.accountConnectors.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.fetchSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:fetchSelf', 'GET', apiParams, clientConfig);
+
+    /**
+     * Starts OAuth flow for an account connector.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountConnector - (Required) Required. The resource name of the AccountConnector in the format `projects/*\/locations/*\/accountConnectors/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.accountConnectors.users.startOAuthFlow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:startOAuthFlow', 'GET', apiParams, clientConfig);
+
+    /**
+     * Delete the User based on the user credentials.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the AccountConnector resource
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.accountConnectors.users.deleteSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:deleteSelf', 'DELETE', apiParams, clientConfig);
 
     /**
      * Deletes a single User.
@@ -447,36 +231,6 @@ class Developerconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.accountConnectors.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Fetch the User based on the user credentials.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the AccountConnector resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.accountConnectors.users.fetchSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:fetchSelf', 'GET', apiParams, clientConfig);
-
-    /**
-     * Delete the User based on the user credentials.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the AccountConnector resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.accountConnectors.users.deleteSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:deleteSelf', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Starts OAuth flow for an account connector.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountConnector - (Required) Required. The resource name of the AccountConnector in the format `projects/*\/locations/*\/accountConnectors/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.accountConnectors.users.startOAuthFlow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:startOAuthFlow', 'GET', apiParams, clientConfig);
 
     /**
      * Finishes OAuth flow for an account connector.
@@ -493,44 +247,254 @@ class Developerconnect {
      */
     this.projects.locations.accountConnectors.users.finishOAuthFlow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:finishOAuthFlow', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.insightsConfigs = {};
-
     /**
-     * Lists InsightsConfigs in a given project and location.
+     * Lists Users in a given project, location, and account_connector.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results. See https://google.aip.dev/160 for more details. Filter string, adhering to the rules in https://google.aip.dev/160. List only InsightsConfigs matching the filter. If filter is empty, all InsightsConfigs are listed.
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {string} apiParams.filter - Optional. Filtering results
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
      * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListInsightsConfigsRequest.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListUsersRequest
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.insightsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.connections = {};
 
     /**
-     * Creates a new InsightsConfig in a given project and location.
+     * Deletes a single Connection.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.insightsConfigId - Required. ID of the requesting InsightsConfig.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.etag - Optional. The current etag of the Connection. If an etag is provided and does not match the current etag of the Connection, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Connections in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListConnectionsRequest
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
+
+    /**
+     * FetchLinkableGitRepositories returns a list of git repositories from an SCM that are available to be added to a Connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.connection - (Required) Required. The name of the Connection. Format: `projects/*\/locations/*\/connections/*`.
+     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Defaults to 20.
+     * @param {string} apiParams.pageToken - Optional. Page start.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.fetchLinkableGitRepositories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchLinkableGitRepositories', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the parameters of a single Connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties).
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.updateMask - Required. Field mask is used to specify the fields to be overwritten in the Connection resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
      * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.insightsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Gets details of a single Insight.
+     * FetchGitHubInstallations returns the list of GitHub Installations that are available to be added to a Connection. For github.com, only installations accessible to the authorizer token are returned. For GitHub Enterprise, all installations are returned.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource.
+     * @param {string} apiParams.connection - (Required) Required. The resource name of the connection in the format `projects/*\/locations/*\/connections/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.insightsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.fetchGitHubInstallations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchGitHubInstallations', 'GET', apiParams, clientConfig);
+
+    /**
+     * ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise instances for notifying events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Project and location where the webhook will be received. Format: `projects/*\/locations/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.processGitHubEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections:processGitHubEnterpriseWebhook', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new Connection in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.connectionId - Required. Id of the requesting object If auto-generating Id server-side, remove this field and connection_id from the method_signature of Create RPC
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.connections.gitRepositoryLinks = {};
+
+    /**
+     * ProcessGitLabWebhook is called by the GitLab.com for notifying events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.processGitLabWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabWebhook', 'POST', apiParams, clientConfig);
+
+    /**
+     * Fetches read/write token of a given gitRepositoryLink.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.fetchReadWriteToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadWriteToken', 'POST', apiParams, clientConfig);
+
+    /**
+     * Fetches read token of a given gitRepositoryLink.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of the gitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.fetchReadToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadToken', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists GitRepositoryLinks in a given project, location, and connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListGitRepositoryLinksRequest
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'GET', apiParams, clientConfig);
+
+    /**
+     * ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise instances for notifying events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.processGitLabEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabEnterpriseWebhook', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a single GitRepositoryLink.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Fetch the list of branches or tags for a given repository.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.gitRepositoryLink - (Required) Required. The resource name of GitRepositoryLink in the format `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Default to 20.
+     * @param {string} apiParams.pageToken - Optional. Page start.
+     * @param {string} apiParams.refType - Required. Type of refs to fetch.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchGitRefs', 'GET', apiParams, clientConfig);
+
+    /**
+     * ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Center instances for notifying events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.processBitbucketDataCenterWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketDataCenterWebhook', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect will configure the Git Repository to send webhook events to Developer Connect. Connections that use Firebase GitHub Application will have events forwarded to the Firebase service. Connections that use Gemini Code Assist will have events forwarded to Gemini Code Assist service. All other Connections will have events forwarded to Cloud Build.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.gitRepositoryLinkId - Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single GitRepositoryLink.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances for notifying events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*\/locations/*\/connections/*\/gitRepositoryLinks/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.gitRepositoryLinks.processBitbucketCloudWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketCloudWebhook', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.insightsConfigs = {};
 
     /**
      * Updates the parameters of a single InsightsConfig.
@@ -547,6 +511,19 @@ class Developerconnect {
     this.projects.locations.insightsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Creates a new InsightsConfig in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.insightsConfigId - Required. ID of the requesting InsightsConfig.
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request, but do not actually post it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.insightsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'POST', apiParams, clientConfig);
+
+    /**
      * Deletes a single Insight.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.etag - Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -558,6 +535,30 @@ class Developerconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.insightsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Insight.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.insightsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists InsightsConfigs in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results. See https://google.aip.dev/160 for more details. Filter string, adhering to the rules in https://google.aip.dev/160. List only InsightsConfigs matching the filter. If filter is empty, all InsightsConfigs are listed.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListInsightsConfigsRequest.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.insightsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'GET', apiParams, clientConfig);
 
     this.projects.locations.insightsConfigs.deploymentEvents = {};
 
