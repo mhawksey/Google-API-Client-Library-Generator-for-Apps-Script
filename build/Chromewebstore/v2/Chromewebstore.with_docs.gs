@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Web Store API
  * Documentation URL: https://developer.chrome.com/docs/webstore/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Chromewebstore {
@@ -18,9 +19,37 @@ class Chromewebstore {
     this._servicePath = '';
 
 
+    this.media = {};
+
+    /**
+     * Upload a new package to an existing item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v2/{+name}:upload' : 'v2/{+name}:upload';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
     this.publishers = {};
 
     this.publishers.items = {};
+
+    /**
+     * Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.publishers.items.setPublishedDeployPercentage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setPublishedDeployPercentage', 'POST', apiParams, clientConfig);
 
     /**
      * Submit the item to be published in the store. The item will be submitted for review unless `skip_review` is set to true, or the item is staged from a previous submission with `publish_type` set to `STAGED_PUBLISH`.
@@ -53,34 +82,6 @@ class Chromewebstore {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
-
-    /**
-     * Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.publishers.items.setPublishedDeployPercentage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setPublishedDeployPercentage', 'POST', apiParams, clientConfig);
-
-    this.media = {};
-
-    /**
-     * Upload a new package to an existing item.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v2/{+name}:upload' : 'v2/{+name}:upload';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
   }
 
 /**
