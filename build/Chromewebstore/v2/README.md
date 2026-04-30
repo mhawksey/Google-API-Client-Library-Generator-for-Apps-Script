@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Web Store API (version: v2)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:24:32 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:25:41 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:33:09 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:33:09 GMT
 - **Created:** Sat, 01 Nov 2025 00:25:41 GMT
 
 
@@ -14,9 +14,29 @@ Auto-generated client library for using the **Chrome Web Store API (version: v2)
 
 ## API Reference
 
+### `media`
+
+#### `media.upload()`
+
+Upload a new package to an existing item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `publishers`
 
 ### `publishers.items`
+
+#### `publishers.items.setPublishedDeployPercentage()`
+
+Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.items.publish()`
 
@@ -42,24 +62,4 @@ Cancel the current active submission of an item if present. This can be used to 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the item to cancel the submission of in the form `publishers/{publisherId}/items/{itemId}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `publishers.items.setPublishedDeployPercentage()`
-
-Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `media`
-
-#### `media.upload()`
-
-Upload a new package to an existing item.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the item to upload the new package to in the form `publishers/{publisherId}/items/{itemId}` |
 | `params.requestBody` | `object` | Yes | The request body. |
