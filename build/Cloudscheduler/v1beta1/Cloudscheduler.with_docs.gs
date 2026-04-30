@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Scheduler API
  * Documentation URL: https://cloud.google.com/scheduler/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudscheduler {
