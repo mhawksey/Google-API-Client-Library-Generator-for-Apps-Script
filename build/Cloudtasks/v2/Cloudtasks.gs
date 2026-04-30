@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Tasks API
  * Documentation URL: https://cloud.google.com/tasks/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudtasks {
