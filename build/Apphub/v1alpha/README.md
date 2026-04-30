@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Hub API (version: v1alpha)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:22:52 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:23:15 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:24:47 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:24:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:00 GMT
 
 
@@ -18,13 +18,32 @@ Auto-generated client library for using the **App Hub API (version: v1alpha)** i
 
 ### `projects.locations`
 
-#### `projects.locations.lookupServiceProjectAttachment()`
+#### `projects.locations.updateBoundary()`
 
-Lists a service project attachment for a given service project. You can call this API from any project to find if it is attached to a host project.
+Updates a Boundary.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Service project ID and location to lookup service project attachment for. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the boundary. Format: "projects/{project}/locations/{location}/boundary" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.get()`
+
+Gets information about a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Resource name for the location. |
+
+#### `projects.locations.getBoundary()`
+
+Gets a Boundary.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the boundary to retrieve. Format: `projects/{project}/locations/{location}/boundary`. |
 
 #### `projects.locations.detachServiceProjectAttachment()`
 
@@ -35,172 +54,29 @@ Detaches a service project from a host project. You can call this API from any s
 | `params.name` | `string` | Yes | Required. Service project id and location to detach from a host project. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.getBoundary()`
+#### `projects.locations.lookupServiceProjectAttachment()`
 
-Gets a Boundary.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the boundary to retrieve. Format: `projects/{project}/locations/{location}/boundary`. |
-
-#### `projects.locations.updateBoundary()`
-
-Updates a Boundary.
+Lists a service project attachment for a given service project. You can call this API from any project to find if it is attached to a host project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the boundary. Format: "projects/{project}/locations/{location}/boundary" |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Boundary resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Service project ID and location to lookup service project attachment for. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.serviceProjectAttachments`
-
-#### `projects.locations.serviceProjectAttachments.list()`
-
-Lists service projects attached to the host project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Host project ID and location to list service project attachments. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
-
-#### `projects.locations.serviceProjectAttachments.create()`
-
-Attaches a service project to the host project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Host project ID and location to which service project is being attached. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
-| `params.serviceProjectAttachmentId` | `string` | No | Required. The service project attachment identifier must contain the project id of the service project specified in the service_project_attachment.service_project field. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.serviceProjectAttachments.get()`
-
-Gets a service project attachment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Fully qualified name of the service project attachment to retrieve. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. |
-
-#### `projects.locations.serviceProjectAttachments.delete()`
-
-Deletes a service project attachment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Fully qualified name of the service project attachment to delete. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.discoveredServices`
-
-#### `projects.locations.discoveredServices.list()`
-
-Lists Discovered Services that can be added to an Application in a host project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location to list Discovered Services on. Expected format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
-
-#### `projects.locations.discoveredServices.get()`
-
-Gets a Discovered Service in a host project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Fully qualified name of the Discovered Service to fetch. Expected format: `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`. |
-
-#### `projects.locations.discoveredServices.lookup()`
-
-Lists a Discovered Service in a host project and location, with a given resource URI.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Host project ID and location to lookup Discovered Service in. Expected format: `projects/{project}/locations/{location}`. |
-| `params.uri` | `string` | No | Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID and does translation when needed. |
-
-#### `projects.locations.discoveredServices.findUnregistered()`
-
-Finds unregistered services in a host project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location to find unregistered Discovered Services on. Expected format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 
 ### `projects.locations.discoveredWorkloads`
 
@@ -210,9 +86,9 @@ Lists Discovered Workloads that can be added to an Application in a host project
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 | `params.parent` | `string` | Yes | Required. Project and location to list Discovered Workloads on. Expected format: `projects/{project}/locations/{location}`. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 | `params.filter` | `string` | No | Optional. Filtering results. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
 
@@ -239,36 +115,13 @@ Finds unregistered workloads in a host project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 | `params.parent` | `string` | Yes | Required. Project and location to find unregistered Discovered Workloads on. Expected format: `projects/{project}/locations/{location}`. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
 
 ### `projects.locations.applications`
-
-#### `projects.locations.applications.list()`
-
-Lists Applications in a host project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location to list Applications on. Expected format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
-
-#### `projects.locations.applications.create()`
-
-Creates an Application in a host project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location to create Application in. Expected format: `projects/{project}/locations/{location}`. |
-| `params.applicationId` | `string` | No | Required. The Application identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.get()`
 
@@ -307,6 +160,29 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.applications.create()`
+
+Creates an Application in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | No | Required. The Application identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. Project and location to create Application in. Expected format: `projects/{project}/locations/{location}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.applications.list()`
+
+Lists Applications in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. Project and location to list Applications on. Expected format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+
 #### `projects.locations.applications.getIamPolicy()`
 
 Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -326,29 +202,6 @@ Returns permissions that a caller has on the specified resource. If the resource
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.applications.services`
-
-#### `projects.locations.applications.services.list()`
-
-Lists Services in an Application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Fully qualified name of the parent Application to list Services for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
-
-#### `projects.locations.applications.services.create()`
-
-Creates a Service in an Application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Fully qualified name of the parent Application to create the Service in. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
-| `params.serviceId` | `string` | No | Required. The Service identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.services.get()`
 
@@ -375,10 +228,44 @@ Deletes a Service from an Application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Fully qualified name of the Service to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. Fully qualified name of the Service to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/services/{service}`. |
+
+#### `projects.locations.applications.services.create()`
+
+Creates a Service in an Application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.serviceId` | `string` | No | Required. The Service identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. Fully qualified name of the parent Application to create the Service in. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.applications.services.list()`
+
+Lists Services in an Application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filtering results |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. Fully qualified name of the parent Application to list Services for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 
 ### `projects.locations.applications.workloads`
+
+#### `projects.locations.applications.workloads.create()`
+
+Creates a Workload in an Application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Fully qualified name of the Application to create Workload in. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.workloadId` | `string` | No | Required. The Workload identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.workloads.list()`
 
@@ -389,19 +276,8 @@ Lists Workloads in an Application.
 | `params.parent` | `string` | Yes | Required. Fully qualified name of the parent Application to list Workloads for. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
-
-#### `projects.locations.applications.workloads.create()`
-
-Creates a Workload in an Application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Fully qualified name of the Application to create Workload in. Expected format: `projects/{project}/locations/{location}/applications/{application}`. |
-| `params.workloadId` | `string` | No | Required. The Workload identifier. Must contain only lowercase letters, numbers or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.filter` | `string` | No | Optional. Filtering results. |
 
 #### `projects.locations.applications.workloads.get()`
 
@@ -431,7 +307,60 @@ Deletes a Workload from an Application.
 | `params.name` | `string` | Yes | Required. Fully qualified name of the Workload to delete from an Application. Expected format: `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
+### `projects.locations.discoveredServices`
+
+#### `projects.locations.discoveredServices.get()`
+
+Gets a Discovered Service in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Fully qualified name of the Discovered Service to fetch. Expected format: `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`. |
+
+#### `projects.locations.discoveredServices.lookup()`
+
+Lists a Discovered Service in a host project and location, with a given resource URI.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Host project ID and location to lookup Discovered Service in. Expected format: `projects/{project}/locations/{location}`. |
+| `params.uri` | `string` | No | Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID and does translation when needed. |
+
+#### `projects.locations.discoveredServices.findUnregistered()`
+
+Finds unregistered services in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. Project and location to find unregistered Discovered Services on. Expected format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+
+#### `projects.locations.discoveredServices.list()`
+
+Lists Discovered Services that can be added to an Application in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. Project and location to list Discovered Services on. Expected format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+
 ### `projects.locations.extendedMetadataSchemas`
+
+#### `projects.locations.extendedMetadataSchemas.list()`
+
+Lists Extended Metadata Schemas available in a host project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. Project and location to list Extended Metadata Schemas on. Expected format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 
 #### `projects.locations.extendedMetadataSchemas.get()`
 
@@ -441,12 +370,83 @@ Gets an Extended Metadata Schema.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Schema resource name. Format: `projects/{project}/locations/{location}/extendedMetadataSchemas/{extended_metadata_schema}`. `{extended_metadata_schema}` has the format `"apphub.googleapis.com/{SchemaName}"`. |
 
-#### `projects.locations.extendedMetadataSchemas.list()`
+### `projects.locations.serviceProjectAttachments`
 
-Lists Extended Metadata Schemas available in a host project and location.
+#### `projects.locations.serviceProjectAttachments.list()`
+
+Lists service projects attached to the host project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location to list Extended Metadata Schemas on. Expected format: `projects/{project}/locations/{location}`. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.parent` | `string` | Yes | Required. Host project ID and location to list service project attachments. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+#### `projects.locations.serviceProjectAttachments.delete()`
+
+Deletes a service project attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Fully qualified name of the service project attachment to delete. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.serviceProjectAttachments.create()`
+
+Attaches a service project to the host project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.serviceProjectAttachmentId` | `string` | No | Required. The service project attachment identifier must contain the project id of the service project specified in the service_project_attachment.service_project field. |
+| `params.parent` | `string` | Yes | Required. Host project ID and location to which service project is being attached. Only global location is supported. Expected format: `projects/{project}/locations/{location}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.serviceProjectAttachments.get()`
+
+Gets a service project attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Fully qualified name of the service project attachment to retrieve. Expected format: `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
