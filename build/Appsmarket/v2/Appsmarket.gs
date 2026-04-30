@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Workspace Marketplace API
  * Documentation URL: https://developers.google.com/workspace/marketplace
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Appsmarket {
@@ -18,11 +19,11 @@ class Appsmarket {
     this._servicePath = '';
 
 
-    this.customerLicense = {};
-    this.customerLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/customerLicense/{applicationId}/{customerId}', 'GET', apiParams, clientConfig);
-
     this.userLicense = {};
     this.userLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/userLicense/{applicationId}/{userId}', 'GET', apiParams, clientConfig);
+
+    this.customerLicense = {};
+    this.customerLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/customerLicense/{applicationId}/{customerId}', 'GET', apiParams, clientConfig);
   }
 
 /**
