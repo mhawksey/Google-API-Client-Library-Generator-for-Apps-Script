@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Fact Check Tools API
  * Documentation URL: https://developers.google.com/fact-check/tools/api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Factchecktools {
@@ -19,15 +20,15 @@ class Factchecktools {
 
 
     this.claims = {};
-    this.claims.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/claims:search', 'GET', apiParams, clientConfig);
     this.claims.imageSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/claims:imageSearch', 'GET', apiParams, clientConfig);
+    this.claims.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/claims:search', 'GET', apiParams, clientConfig);
 
     this.pages = {};
     this.pages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/pages', 'POST', apiParams, clientConfig);
-    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/pages', 'GET', apiParams, clientConfig);
-    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PUT', apiParams, clientConfig);
     this.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PUT', apiParams, clientConfig);
   }
 
 /**
