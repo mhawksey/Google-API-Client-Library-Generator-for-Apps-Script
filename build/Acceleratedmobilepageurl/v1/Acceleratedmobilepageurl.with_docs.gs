@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Accelerated Mobile Pages (AMP) URL API
  * Documentation URL: https://developers.google.com/amp/cache/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Acceleratedmobilepageurl {
