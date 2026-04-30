@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Docs API
  * Documentation URL: https://developers.google.com/workspace/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Docs {
