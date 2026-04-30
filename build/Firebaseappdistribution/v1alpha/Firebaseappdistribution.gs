@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase App Distribution API
  * Documentation URL: https://firebase.google.com/products/app-distribution
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseappdistribution {
@@ -18,9 +19,40 @@ class Firebaseappdistribution {
     this._servicePath = '';
 
 
+    this.projects = {};
+    this.projects.getTestQuota = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.testers = {};
+    this.projects.testers.getUdids = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+project}/testers:udids', 'GET', apiParams, clientConfig);
+
+    this.projects.apps = {};
+    this.projects.apps.updateTestConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.getTestConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.apps.testCases = {};
+    this.projects.apps.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.testCases.clearTestCaseCache = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+testCase}:clearTestCaseCache', 'POST', apiParams, clientConfig);
+    this.projects.apps.testCases.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchUpdate', 'POST', apiParams, clientConfig);
+    this.projects.apps.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'POST', apiParams, clientConfig);
+    this.projects.apps.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.apps.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.apps.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'GET', apiParams, clientConfig);
+
+    this.projects.apps.releases = {};
+
+    this.projects.apps.releases.tests = {};
+    this.projects.apps.releases.tests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.tests.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.tests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.tests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
     this.apps = {};
-    this.apps.getJwt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/jwt', 'GET', apiParams, clientConfig);
     this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}', 'GET', apiParams, clientConfig);
+    this.apps.getJwt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/jwt', 'GET', apiParams, clientConfig);
+
+    this.apps.upload_status = {};
+    this.apps.upload_status.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}', 'GET', apiParams, clientConfig);
 
     this.apps.releases = {};
     this.apps.releases.enable_access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/releases/{releaseId}/enable_access', 'POST', apiParams, clientConfig);
@@ -31,39 +63,8 @@ class Firebaseappdistribution {
     this.apps.release_by_hash = {};
     this.apps.release_by_hash.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}', 'GET', apiParams, clientConfig);
 
-    this.apps.upload_status = {};
-    this.apps.upload_status.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}', 'GET', apiParams, clientConfig);
-
     this.apps.testers = {};
     this.apps.testers.getTesterUdids = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/testers:getTesterUdids', 'GET', apiParams, clientConfig);
-
-    this.projects = {};
-    this.projects.getTestQuota = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.testers = {};
-    this.projects.testers.getUdids = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+project}/testers:udids', 'GET', apiParams, clientConfig);
-
-    this.projects.apps = {};
-    this.projects.apps.getTestConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.updateTestConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.apps.releases = {};
-
-    this.projects.apps.releases.tests = {};
-    this.projects.apps.releases.tests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'POST', apiParams, clientConfig);
-    this.projects.apps.releases.tests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.tests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.tests.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'GET', apiParams, clientConfig);
-
-    this.projects.apps.testCases = {};
-    this.projects.apps.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'POST', apiParams, clientConfig);
-    this.projects.apps.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'GET', apiParams, clientConfig);
-    this.projects.apps.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.apps.testCases.clearTestCaseCache = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+testCase}:clearTestCaseCache', 'POST', apiParams, clientConfig);
-    this.projects.apps.testCases.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchUpdate', 'POST', apiParams, clientConfig);
-    this.projects.apps.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.apps.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
   }
 
 /**
