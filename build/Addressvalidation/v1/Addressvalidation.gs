@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Address Validation API
  * Documentation URL: https://developers.google.com/maps/documentation/addressvalidation
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Addressvalidation {
