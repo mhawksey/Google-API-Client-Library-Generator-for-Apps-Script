@@ -4,8 +4,8 @@ Auto-generated client library for using the **Checks API (version: v1alpha)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:24:23 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:25:46 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:32:52 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:32:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:07 GMT
 
 
@@ -14,7 +14,70 @@ Auto-generated client library for using the **Checks API (version: v1alpha)** in
 
 ## API Reference
 
+### `media`
+
+#### `media.upload()`
+
+Analyzes the uploaded app bundle and returns a google.longrunning.Operation containing the generated Report. ## Example (upload only) Send a regular POST request with the header `X-Goog-Upload-Protocol: raw`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: raw Content-Length: Content-Type: application/octet-stream ``` ## Example (upload with metadata) Send a multipart POST request where the first body part contains the metadata JSON and the second body part contains the binary upload. Include the header `X-Goog-Upload-Protocol: multipart`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: multipart Content-Length: ? Content-Type: multipart/related; boundary=BOUNDARY --BOUNDARY Content-Type: application/json {"code_reference_id":"db5bcc20f94055fb5bc08cbb9b0e7a5530308786"} --BOUNDARY --BOUNDARY-- ``` *Note:* Metadata-only requests are not supported. 
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the app. Example: `accounts/123/apps/456` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `aisafety`
+
+#### `aisafety.classifyContent()`
+
+Analyze a piece of content with the provided set of policies.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `accounts`
+
+### `accounts.repos`
+
+### `accounts.repos.scans`
+
+#### `accounts.repos.scans.list()`
+
+Lists repo scans for the specified repo.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the repo. Example: `accounts/123/repos/456` |
+| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListRepoScans` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRepoScans` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter repo scans. Example: `scmMetadata.branch = main` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of repo scans to return. If unspecified, at most 10 repo scans will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
+
+#### `accounts.repos.scans.get()`
+
+Gets a repo scan. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=name,sources` will return the name and sources fields.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the repo scan. Example: `accounts/123/repos/456/scans/789` |
+
+#### `accounts.repos.scans.generate()`
+
+Uploads the results of local Code Compliance analysis and generates a scan of privacy issues. Returns a google.longrunning.Operation containing analysis and findings.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the repo. Example: `accounts/123/repos/456` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `accounts.repos.operations`
+
+#### `accounts.repos.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `accounts.apps`
 
@@ -33,22 +96,19 @@ Lists the apps under the given account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent account. Example: `accounts/123` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. The server may further constrain the maximum number of results returned in a single page. If unspecified, the server will decide the number of results to be returned. |
 | `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListApps` call. Provide this to retrieve the subsequent page. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. The server may further constrain the maximum number of results returned in a single page. If unspecified, the server will decide the number of results to be returned. |
 
 ### `accounts.apps.operations`
 
-#### `accounts.apps.operations.list()`
+#### `accounts.apps.operations.wait()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.apps.operations.get()`
 
@@ -75,14 +135,17 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.apps.operations.wait()`
+#### `accounts.apps.operations.list()`
 
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 ### `accounts.apps.reports`
 
@@ -101,71 +164,8 @@ Lists reports for the specified app. By default, only the name and results_uri f
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the app. Example: `accounts/123/apps/456` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of reports to return. If unspecified, at most 10 reports will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
-| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReports` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter reports. Example: `appBundle.releaseType = PRE_RELEASE` |
 | `params.checksFilter` | `string` | No | Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter checks within reports. Only checks that match the filter string are included in the response. Example: `state = FAILED` |
-
-### `accounts.repos`
-
-### `accounts.repos.operations`
-
-#### `accounts.repos.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `accounts.repos.scans`
-
-#### `accounts.repos.scans.generate()`
-
-Uploads the results of local Code Compliance analysis and generates a scan of privacy issues. Returns a google.longrunning.Operation containing analysis and findings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the repo. Example: `accounts/123/repos/456` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.repos.scans.get()`
-
-Gets a repo scan. By default, only the name and results_uri fields are returned. You can include other fields by listing them in the `fields` URL query parameter. For example, `?fields=name,sources` will return the name and sources fields.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the repo scan. Example: `accounts/123/repos/456/scans/789` |
-
-#### `accounts.repos.scans.list()`
-
-Lists repo scans for the specified repo.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the repo. Example: `accounts/123/repos/456` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of repo scans to return. If unspecified, at most 10 repo scans will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
-| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListRepoScans` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRepoScans` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter repo scans. Example: `scmMetadata.branch = main` |
-
-### `aisafety`
-
-#### `aisafety.classifyContent()`
-
-Analyze a piece of content with the provided set of policies.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `media`
-
-#### `media.upload()`
-
-Analyzes the uploaded app bundle and returns a google.longrunning.Operation containing the generated Report. ## Example (upload only) Send a regular POST request with the header `X-Goog-Upload-Protocol: raw`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: raw Content-Length: Content-Type: application/octet-stream ``` ## Example (upload with metadata) Send a multipart POST request where the first body part contains the metadata JSON and the second body part contains the binary upload. Include the header `X-Goog-Upload-Protocol: multipart`. ``` POST https://checks.googleapis.com/upload/v1alpha/{parent=accounts/*/apps/*}/reports:analyzeUpload HTTP/1.1 X-Goog-Upload-Protocol: multipart Content-Length: ? Content-Type: multipart/related; boundary=BOUNDARY --BOUNDARY Content-Type: application/json {"code_reference_id":"db5bcc20f94055fb5bc08cbb9b0e7a5530308786"} --BOUNDARY --BOUNDARY-- ``` *Note:* Metadata-only requests are not supported. 
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.filter` | `string` | No | Optional. An [AIP-160](https://google.aip.dev/160) filter string to filter reports. Example: `appBundle.releaseType = PRE_RELEASE` |
 | `params.parent` | `string` | Yes | Required. Resource name of the app. Example: `accounts/123/apps/456` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReports` must match the call that provided the page token. |
