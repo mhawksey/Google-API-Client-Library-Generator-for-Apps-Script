@@ -4,8 +4,8 @@ Auto-generated client library for using the **Container Analysis API (version: v
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:33:16 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:29:20 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:42:48 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:42:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:13 GMT
 
 
@@ -26,18 +26,6 @@ Gets the specified occurrence.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
 
-#### `projects.occurrences.list()`
-
-Lists occurrences for the specified project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
-| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Occurrences and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
-
 #### `projects.occurrences.delete()`
 
 Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.
@@ -45,52 +33,6 @@ Deletes the specified occurrence. For example, use this method to delete an occu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-
-#### `projects.occurrences.create()`
-
-Creates a new occurrence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.occurrences.batchCreate()`
-
-Creates new occurrences in batch.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.occurrences.patch()`
-
-Updates the specified occurrence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-| `params.updateMask` | `string` | No | The fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.occurrences.getNotes()`
-
-Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-
-#### `projects.occurrences.getVulnerabilitySummary()`
-
-Gets a summary of the number and severity of occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to get a vulnerability summary for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable occurrence summaries and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
 
 #### `projects.occurrences.setIamPolicy()`
 
@@ -110,6 +52,54 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.occurrences.batchCreate()`
+
+Creates new occurrences in batch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.occurrences.getNotes()`
+
+Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
+
+#### `projects.occurrences.list()`
+
+Lists occurrences for the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`. |
+| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Occurrences and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
+| `params.filter` | `string` | No | The filter expression. |
+
+#### `projects.occurrences.create()`
+
+Creates a new occurrence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.occurrences.getVulnerabilitySummary()`
+
+Gets a summary of the number and severity of occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable occurrence summaries and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.parent` | `string` | Yes | Required. The name of the project to get a vulnerability summary for in the form of `projects/[PROJECT_ID]`. |
+| `params.filter` | `string` | No | The filter expression. |
+
 #### `projects.occurrences.testIamPermissions()`
 
 Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
@@ -119,161 +109,19 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations`
-
-### `projects.locations.occurrences`
-
-#### `projects.locations.occurrences.get()`
-
-Gets the specified occurrence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-
-#### `projects.locations.occurrences.list()`
-
-Lists occurrences for the specified project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
-| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Occurrences and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
-
-#### `projects.locations.occurrences.delete()`
-
-Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-
-#### `projects.locations.occurrences.create()`
-
-Creates a new occurrence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.occurrences.batchCreate()`
-
-Creates new occurrences in batch.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.occurrences.patch()`
+#### `projects.occurrences.patch()`
 
 Updates the specified occurrence.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
 | `params.updateMask` | `string` | No | The fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.occurrences.getNotes()`
-
-Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
-
-#### `projects.locations.occurrences.getVulnerabilitySummary()`
-
-Gets a summary of the number and severity of occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to get a vulnerability summary for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable occurrence summaries and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
-
-#### `projects.locations.occurrences.setIamPolicy()`
-
-Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.occurrences.getIamPolicy()`
+### `projects.notes`
 
-Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.occurrences.testIamPermissions()`
-
-Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.notes`
-
-#### `projects.locations.notes.get()`
-
-Gets the specified note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
-
-#### `projects.locations.notes.list()`
-
-Lists notes for the specified project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.pageSize` | `integer` | No | Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
-| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Notes and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
-
-#### `projects.locations.notes.delete()`
-
-Deletes the specified note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
-
-#### `projects.locations.notes.create()`
-
-Creates a new note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created. |
-| `params.noteId` | `string` | No | Required. The ID to use for this note. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.notes.batchCreate()`
-
-Creates new notes in batch.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.notes.patch()`
+#### `projects.notes.patch()`
 
 Updates the specified note.
 
@@ -283,25 +131,7 @@ Updates the specified note.
 | `params.updateMask` | `string` | No | The fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.notes.setIamPolicy()`
-
-Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.notes.getIamPolicy()`
-
-Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.notes.testIamPermissions()`
+#### `projects.notes.testIamPermissions()`
 
 Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
 
@@ -309,69 +139,6 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.notes.occurrences`
-
-#### `projects.locations.notes.occurrences.list()`
-
-Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note to list occurrences for in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. |
-| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
-
-### `projects.locations.resources`
-
-#### `projects.locations.resources.generatePackagesSummary()`
-
-Gets a summary of the packages within a given resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource to get a packages summary for in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.resources.exportSBOM()`
-
-Generates an SBOM and other dependency information for the given resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.notes`
-
-#### `projects.notes.get()`
-
-Gets the specified note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
-
-#### `projects.notes.list()`
-
-Lists notes for the specified project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`. |
-| `params.filter` | `string` | No | The filter expression. |
-| `params.pageSize` | `integer` | No | Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
-| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
-| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Notes and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
-
-#### `projects.notes.delete()`
-
-Deletes the specified note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
 
 #### `projects.notes.create()`
 
@@ -392,15 +159,17 @@ Creates new notes in batch.
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.notes.patch()`
+#### `projects.notes.list()`
 
-Updates the specified note.
+Lists notes for the specified project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
-| `params.updateMask` | `string` | No | The fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`. |
+| `params.pageSize` | `integer` | No | Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Notes and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
+| `params.filter` | `string` | No | The filter expression. |
 
 #### `projects.notes.setIamPolicy()`
 
@@ -420,14 +189,21 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.notes.testIamPermissions()`
+#### `projects.notes.get()`
 
-Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+Gets the specified note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
+
+#### `projects.notes.delete()`
+
+Deletes the specified note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
 
 ### `projects.notes.occurrences`
 
@@ -437,14 +213,227 @@ Lists occurrences referencing the specified note. Provider projects can use this
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
 | `params.name` | `string` | Yes | Required. The name of the note to list occurrences for in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
 | `params.filter` | `string` | No | The filter expression. |
 | `params.pageSize` | `integer` | No | Number of occurrences to return in the list. |
+
+### `projects.locations`
+
+### `projects.locations.occurrences`
+
+#### `projects.locations.occurrences.create()`
+
+Creates a new occurrence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.getVulnerabilitySummary()`
+
+Gets a summary of the number and severity of occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable occurrence summaries and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.parent` | `string` | Yes | Required. The name of the project to get a vulnerability summary for in the form of `projects/[PROJECT_ID]`. |
+| `params.filter` | `string` | No | The filter expression. |
+
+#### `projects.locations.occurrences.testIamPermissions()`
+
+Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.patch()`
+
+Updates the specified occurrence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
+| `params.updateMask` | `string` | No | The fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.get()`
+
+Gets the specified occurrence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
+
+#### `projects.locations.occurrences.delete()`
+
+Deletes the specified occurrence. For example, use this method to delete an occurrence when the occurrence is no longer applicable for the given resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
+
+#### `projects.locations.occurrences.setIamPolicy()`
+
+Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.getIamPolicy()`
+
+Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.batchCreate()`
+
+Creates new occurrences in batch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.occurrences.getNotes()`
+
+Gets the note attached to the specified occurrence. Consumer projects can use this method to get a note that belongs to a provider project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
+
+#### `projects.locations.occurrences.list()`
+
+Lists occurrences for the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The filter expression. |
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Occurrences and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
+| `params.parent` | `string` | Yes | Required. The name of the project to list occurrences for in the form of `projects/[PROJECT_ID]`. |
+| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
+
+### `projects.locations.notes`
+
+#### `projects.locations.notes.setIamPolicy()`
+
+Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.notes.getIamPolicy()`
+
+Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.notes.get()`
+
+Gets the specified note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
+
+#### `projects.locations.notes.delete()`
+
+Deletes the specified note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
+
+#### `projects.locations.notes.batchCreate()`
+
+Creates new notes in batch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.notes.list()`
+
+Lists notes for the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | If set, the request will return all reachable Notes and report all unreachable regions in the `unreachable` field in the response. Only applicable for requests in the global region. |
+| `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
+| `params.filter` | `string` | No | The filter expression. |
+| `params.parent` | `string` | Yes | Required. The name of the project to list notes for in the form of `projects/[PROJECT_ID]`. |
+| `params.pageSize` | `integer` | No | Number of notes to return in the list. Must be positive. Max allowed page size is 1000. If not specified, page size defaults to 20. |
+
+#### `projects.locations.notes.testIamPermissions()`
+
+Returns the permissions that a caller has on the specified note or occurrence. Requires list permission on the project (for example, `containeranalysis.notes.list`). The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.notes.create()`
+
+Creates a new note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.noteId` | `string` | No | Required. The ID to use for this note. |
+| `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.notes.patch()`
+
+Updates the specified note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The fields to update. |
+| `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.notes.occurrences`
+
+#### `projects.locations.notes.occurrences.list()`
+
+Lists occurrences referencing the specified note. Provider projects can use this method to get all occurrences across consumer projects referencing the specified note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Number of occurrences to return in the list. |
+| `params.name` | `string` | Yes | Required. The name of the note to list occurrences for in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
+| `params.filter` | `string` | No | The filter expression. |
 | `params.pageToken` | `string` | No | Token to provide to skip to a particular spot in the list. |
 
-### `projects.resources`
+### `projects.locations.resources`
 
-#### `projects.resources.generatePackagesSummary()`
+#### `projects.locations.resources.exportSBOM()`
+
+Generates an SBOM and other dependency information for the given resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.resources.generatePackagesSummary()`
 
 Gets a summary of the packages within a given resource.
 
@@ -453,6 +442,8 @@ Gets a summary of the packages within a given resource.
 | `params.name` | `string` | Yes | Required. The name of the resource to get a packages summary for in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+### `projects.resources`
+
 #### `projects.resources.exportSBOM()`
 
 Generates an SBOM and other dependency information for the given resource.
@@ -460,4 +451,13 @@ Generates an SBOM and other dependency information for the given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.resources.generatePackagesSummary()`
+
+Gets a summary of the packages within a given resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the resource to get a packages summary for in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
 | `params.requestBody` | `object` | Yes | The request body. |
