@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase App Hosting API
  * Documentation URL: https://firebase.google.com/docs/app-hosting
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseapphosting {
