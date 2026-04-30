@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the App Engine Admin API
  * Documentation URL: https://cloud.google.com/appengine/docs/admin-api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Appengine {
@@ -19,17 +20,6 @@ class Appengine {
 
 
     this.apps = {};
-
-    /**
-     * Gets information about an application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the Application resource to get. Example: apps/myapp.
-     * @param {string} apiParams.includeExtraData - Options to include extra data
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
@@ -54,6 +44,17 @@ class Appengine {
     this.apps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Gets information about an application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the Application resource to get. Example: apps/myapp.
+     * @param {string} apiParams.includeExtraData - Options to include extra data
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Recreates the required App Engine features for the specified App Engine application, for example a Cloud Storage bucket or App Engine service account. Use this method if you receive an error message about a missing feature, for example, Error retrieving the App Engine service account. If you have deleted your App Engine service account, this will not be able to recreate it. Instead, you should attempt to use the IAM undelete API if possible at https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the application to repair. Example: apps/myapp
@@ -75,222 +76,20 @@ class Appengine {
      */
     this.apps.listRuntimes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}:listRuntimes', 'GET', apiParams, clientConfig);
 
-    this.apps.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation's parent resource.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation resource.
-     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
-
-    this.apps.services = {};
-
-    /**
-     * Lists all the services in the application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the current configuration of the specified service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the configuration of the specified service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default.
-     * @param {boolean} apiParams.migrateTraffic - Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified service and all enclosed versions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
-
-    this.apps.services.versions = {};
-
-    /**
-     * Lists the versions of a service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Service resource. Example: apps/myapp/services/default.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
-     * @param {string} apiParams.view - Controls the set of fields returned in the List response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.view - Controls the set of fields returned in the Get response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deploys code and resource files to a new version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default.
-     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes an existing Version resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Exports a user image to Artifact Registry.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
-
-    this.apps.services.versions.instances = {};
-
-    /**
-     * Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `parent`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets instance information.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
-
     this.apps.firewall = {};
 
     this.apps.firewall.ingressRules = {};
+
+    /**
+     * Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.firewall.ingressRules.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules:batchUpdate', 'POST', apiParams, clientConfig);
 
     /**
      * Lists the firewall rules of an application.
@@ -306,15 +105,15 @@ class Appengine {
     this.apps.firewall.ingressRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules', 'GET', apiParams, clientConfig);
 
     /**
-     * Replaces the entire firewall ruleset in one bulk operation. This overrides and replaces the rules of an existing firewall with the new rules.If the final rule does not match traffic with the '*' wildcard IP range, then an "allow all" rule is explicitly added to the end of the list.
+     * Deletes the specified firewall rule.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100.
+     * @param {string} apiParams.ingressRulesId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.apps.firewall.ingressRules.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules:batchUpdate', 'POST', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a firewall rule for the application.
@@ -326,17 +125,6 @@ class Appengine {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.apps.firewall.ingressRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the specified firewall rule.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100.
-     * @param {string} apiParams.ingressRulesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.firewall.ingressRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the specified firewall rule.
@@ -352,15 +140,42 @@ class Appengine {
     this.apps.firewall.ingressRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes the specified firewall rule.
+     * Gets the specified firewall rule.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall resource to delete. Example: apps/myapp/firewall/ingressRules/100.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Name of the Firewall resource to retrieve. Example: apps/myapp/firewall/ingressRules/100.
      * @param {string} apiParams.ingressRulesId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.apps.firewall.ingressRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'DELETE', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'GET', apiParams, clientConfig);
+
+    this.apps.locations = {};
+
+    /**
+     * Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
+     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
+     * @param {string} apiParams.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets information about a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Resource name for the location.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
 
     this.apps.authorizedDomains = {};
 
@@ -376,7 +191,45 @@ class Appengine {
      */
     this.apps.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/authorizedDomains', 'GET', apiParams, clientConfig);
 
+    this.apps.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation resource.
+     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation's parent resource.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
+
     this.apps.authorizedCertificates = {};
+
+    /**
+     * Deletes the specified SSL certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists all SSL certificates the user is authorized to administer.
@@ -427,18 +280,204 @@ class Appengine {
      */
     this.apps.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
 
+    this.apps.services = {};
+
     /**
-     * Deletes the specified SSL certificate.
+     * Gets the current configuration of the specified service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
-     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
+    this.apps.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified service and all enclosed versions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the configuration of the specified service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default.
+     * @param {boolean} apiParams.migrateTraffic - Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists all the services in the application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services', 'GET', apiParams, clientConfig);
+
+    this.apps.services.versions = {};
+
+    /**
+     * Lists the versions of a service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Service resource. Example: apps/myapp/services/default.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
+     * @param {string} apiParams.view - Controls the set of fields returned in the List response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Exports a user image to Artifact Registry.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an existing Version resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Deploys code and resource files to a new version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default.
+     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.view - Controls the set of fields returned in the Get response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'GET', apiParams, clientConfig);
+
+    this.apps.services.versions.instances = {};
+
+    /**
+     * Gets instance information.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the instances of a version.Tip: To aggregate details about instances over time, see the Stackdriver Monitoring API (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.servicesId - (Required) Part of `parent`. See documentation of `appsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `parent`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.services.versions.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', 'GET', apiParams, clientConfig);
 
     this.apps.domainMappings = {};
+
+    /**
+     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists the domain mappings on an application.
@@ -488,44 +527,6 @@ class Appengine {
      */
     this.apps.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
 
-    /**
-     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
-
-    this.apps.locations = {};
-
-    /**
-     * Lists information about the supported locations for this service.This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: Global locations: If name is empty, the method lists the public locations available to all projects. Project-specific locations: If name follows the format projects/{project}, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project.For gRPC and client library implementations, the resource name is passed as the name field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
-     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
-     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
-     * @param {string} apiParams.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Resource name for the location.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
@@ -546,149 +547,7 @@ class Appengine {
      */
     this.projects.locations.applications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.applications.services = {};
-
-    /**
-     * Updates the configuration of the specified service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {boolean} apiParams.migrateTraffic - Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified service and all enclosed versions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.applications.services.versions = {};
-
-    /**
-     * Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes an existing Version resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Exports a user image to Artifact Registry.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.applications.services.versions.instances = {};
-
-    /**
-     * Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.applications.authorizedDomains = {};
-
-    /**
-     * Lists all domains the user is authorized to administer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
-
     this.projects.locations.applications.authorizedCertificates = {};
-
-    /**
-     * Lists all SSL certificates the user is authorized to administer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {string} apiParams.view - Controls the set of fields returned in the LIST response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
 
     /**
      * Gets the specified SSL certificate.
@@ -745,7 +604,162 @@ class Appengine {
      */
     this.projects.locations.applications.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
 
+    /**
+     * Lists all SSL certificates the user is authorized to administer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} apiParams.view - Controls the set of fields returned in the LIST response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.applications.services = {};
+
+    /**
+     * Deletes the specified service and all enclosed versions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the configuration of the specified service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {boolean} apiParams.migrateTraffic - Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.applications.services.versions = {};
+
+    /**
+     * Updates the specified Version resource. You can specify the following fields depending on the App Engine environment and type of scaling that the version resource uses:Standard environment instance_class (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_cpu_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings) automaticScaling.standard_scheduler_settings.target_throughput_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status) manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)Flexible environment serving_status (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling) automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)manual scaling in the flexible environment: manual_scaling.instances (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#manualscaling)
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes an existing Version resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Exports a user image to Artifact Registry.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the App Engine version resource. Format: apps/{app}/services/{service}/versions/{version}
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.applications.services.versions.instances = {};
+
+    /**
+     * Enables debugging on a VM instance. This allows you to use the SSH command to connect to the virtual machine where the instance lives. While in "debug mode", the instance continues to serve live traffic. You should delete the instance when you are done debugging and then allow the system to take over and determine if another instance should be started.Only applicable for instances in App Engine flexible environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
+
+    /**
+     * Stops a running instance.The instance might be automatically recreated based on the scaling settings of the version. For more information, see "How Instances are Managed" (standard environment (https://cloud.google.com/appengine/docs/standard/python/how-instances-are-managed) | flexible environment (https://cloud.google.com/appengine/docs/flexible/python/how-instances-are-managed)).To ensure that instances are not re-created and avoid getting billed, you can stop all instances within the target version by changing the serving status of the version to STOPPED with the apps.services.versions.patch (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions/patch) method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.instancesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1.
+     * @param {string} apiParams.servicesId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.versionsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.applications.authorizedDomains = {};
+
+    /**
+     * Lists all domains the user is authorized to administer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
+
     this.projects.locations.applications.domainMappings = {};
+
+    /**
+     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists the domain mappings on an application.
@@ -802,19 +816,6 @@ class Appengine {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.applications.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
