@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Search API
  * Documentation URL: https://developers.google.com/workspace/cloud-search/docs/guides/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudsearch {
