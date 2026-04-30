@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Web Store API
  * Documentation URL: https://developer.chrome.com/docs/webstore/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Chromewebstore {
@@ -18,20 +19,20 @@ class Chromewebstore {
     this._servicePath = '';
 
 
-    this.publishers = {};
-
-    this.publishers.items = {};
-    this.publishers.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:publish', 'POST', apiParams, clientConfig);
-    this.publishers.items.fetchStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchStatus', 'GET', apiParams, clientConfig);
-    this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
-    this.publishers.items.setPublishedDeployPercentage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setPublishedDeployPercentage', 'POST', apiParams, clientConfig);
-
     this.media = {};
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v2/{+name}:upload' : 'v2/{+name}:upload';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+
+    this.publishers = {};
+
+    this.publishers.items = {};
+    this.publishers.items.setPublishedDeployPercentage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setPublishedDeployPercentage', 'POST', apiParams, clientConfig);
+    this.publishers.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:publish', 'POST', apiParams, clientConfig);
+    this.publishers.items.fetchStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchStatus', 'GET', apiParams, clientConfig);
+    this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
   }
 
 /**
