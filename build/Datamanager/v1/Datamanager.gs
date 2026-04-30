@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Data Manager API
  * Documentation URL: https://developers.google.com/data-manager
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Datamanager {
@@ -18,10 +19,6 @@ class Datamanager {
     this._servicePath = '';
 
 
-    this.audienceMembers = {};
-    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
-    this.audienceMembers.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:remove', 'POST', apiParams, clientConfig);
-
     this.events = {};
     this.events.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/events:ingest', 'POST', apiParams, clientConfig);
 
@@ -32,35 +29,39 @@ class Datamanager {
 
     this.accountTypes.accounts = {};
 
-    this.accountTypes.accounts.insights = {};
-    this.accountTypes.accounts.insights.retrieve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights:retrieve', 'POST', apiParams, clientConfig);
-
     this.accountTypes.accounts.partnerLinks = {};
     this.accountTypes.accounts.partnerLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/partnerLinks', 'POST', apiParams, clientConfig);
     this.accountTypes.accounts.partnerLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.accountTypes.accounts.partnerLinks.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/partnerLinks:search', 'GET', apiParams, clientConfig);
 
-    this.accountTypes.accounts.userListDirectLicenses = {};
-    this.accountTypes.accounts.userListDirectLicenses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListDirectLicenses', 'POST', apiParams, clientConfig);
-    this.accountTypes.accounts.userListDirectLicenses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.accountTypes.accounts.userListDirectLicenses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accountTypes.accounts.userListDirectLicenses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListDirectLicenses', 'GET', apiParams, clientConfig);
-
     this.accountTypes.accounts.userListGlobalLicenses = {};
-    this.accountTypes.accounts.userListGlobalLicenses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListGlobalLicenses', 'POST', apiParams, clientConfig);
-    this.accountTypes.accounts.userListGlobalLicenses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.accountTypes.accounts.userListGlobalLicenses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accountTypes.accounts.userListGlobalLicenses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListGlobalLicenses', 'GET', apiParams, clientConfig);
+    this.accountTypes.accounts.userListGlobalLicenses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListGlobalLicenses', 'POST', apiParams, clientConfig);
+    this.accountTypes.accounts.userListGlobalLicenses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accountTypes.accounts.userListGlobalLicenses.userListGlobalLicenseCustomerInfos = {};
     this.accountTypes.accounts.userListGlobalLicenses.userListGlobalLicenseCustomerInfos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListGlobalLicenseCustomerInfos', 'GET', apiParams, clientConfig);
 
+    this.accountTypes.accounts.insights = {};
+    this.accountTypes.accounts.insights.retrieve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights:retrieve', 'POST', apiParams, clientConfig);
+
+    this.accountTypes.accounts.userListDirectLicenses = {};
+    this.accountTypes.accounts.userListDirectLicenses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListDirectLicenses', 'POST', apiParams, clientConfig);
+    this.accountTypes.accounts.userListDirectLicenses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.accountTypes.accounts.userListDirectLicenses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userListDirectLicenses', 'GET', apiParams, clientConfig);
+    this.accountTypes.accounts.userListDirectLicenses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
     this.accountTypes.accounts.userLists = {};
     this.accountTypes.accounts.userLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accountTypes.accounts.userLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'GET', apiParams, clientConfig);
-    this.accountTypes.accounts.userLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'POST', apiParams, clientConfig);
-    this.accountTypes.accounts.userLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.accountTypes.accounts.userLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accountTypes.accounts.userLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accountTypes.accounts.userLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'POST', apiParams, clientConfig);
+
+    this.audienceMembers = {};
+    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
+    this.audienceMembers.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:remove', 'POST', apiParams, clientConfig);
   }
 
 /**
