@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:44:10 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:40:31 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:56:42 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:56:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:59 GMT
 
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1)*
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
 * **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
@@ -29,10 +29,10 @@ Lists information about the supported locations for this service. This method li
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -71,13 +71,13 @@ Deletes a backup.
 
 ### `projects.databases`
 
-#### `projects.databases.exportDocuments()`
+#### `projects.databases.restore()`
 
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For more details on export behavior and output format, refer to: https://cloud.google.com/firestore/docs/manage-data/export-import
+Creates a new database by restoring from an existing backup. The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup. The long-running operation can be used to track the progress of the restore, with the Operation's metadata field type being the RestoreDatabaseMetadata. The response type is the Database if the restore was successful. The new database is not readable or writeable until the LRO has completed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
+| `params.parent` | `string` | Yes | Required. The project to restore the database in. Format is `projects/{project_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.importDocuments()`
@@ -89,32 +89,15 @@ Imports documents into Google Cloud Firestore. Existing documents with the same 
 | `params.name` | `string` | Yes | Required. Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.databases.bulkDeleteDocuments()`
-
-Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created. For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.databases.create()`
 
 Create a database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}` |
 | `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if the database is Standard edition. |
+| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.get()`
-
-Gets information about a database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}` |
 
 #### `projects.databases.list()`
 
@@ -135,6 +118,32 @@ Updates a database.
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.databases.exportDocuments()`
+
+Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. For more details on export behavior and output format, refer to: https://cloud.google.com/firestore/docs/manage-data/export-import
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.get()`
+
+Gets information about a database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}` |
+
+#### `projects.databases.bulkDeleteDocuments()`
+
+Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created. For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.databases.delete()`
 
 Deletes a database.
@@ -143,15 +152,6 @@ Deletes a database.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}` |
 | `params.etag` | `string` | No | The current etag of the Database. If an etag is provided and does not match the current etag of the database, deletion will be blocked and a FAILED_PRECONDITION error will be returned. |
-
-#### `projects.databases.restore()`
-
-Creates a new database by restoring from an existing backup. The new database must be in the same cloud region or multi-region location as the existing backup. This behaves similar to FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created with the database type, index configuration, and documents from an existing backup. The long-running operation can be used to track the progress of the restore, with the Operation's metadata field type being the RestoreDatabaseMetadata. The response type is the Database if the restore was successful. The new database is not readable or writeable until the LRO has completed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project to restore the database in. Format is `projects/{project_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.clone()`
 
@@ -170,11 +170,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `projects.databases.operations.get()`
 
@@ -183,14 +183,6 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.databases.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 #### `projects.databases.operations.cancel()`
 
@@ -201,45 +193,268 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.databases.collectionGroups`
+#### `projects.databases.operations.delete()`
 
-### `projects.databases.collectionGroups.indexes`
-
-#### `projects.databases.collectionGroups.indexes.create()`
-
-Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+### `projects.databases.documents`
+
+#### `projects.databases.documents.batchGet()`
+
+Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.databases.collectionGroups.indexes.list()`
+#### `projects.databases.documents.executePipeline()`
 
-Lists composite indexes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
-| `params.filter` | `string` | No | The filter to apply to list results. |
-| `params.pageSize` | `integer` | No | The number of results to return. |
-| `params.pageToken` | `string` | No | A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results. |
-
-#### `projects.databases.collectionGroups.indexes.get()`
-
-Gets a composite index.
+Executes a pipeline query.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
+| `params.database` | `string` | Yes | Required. Database identifier, in the form `projects/{project}/databases/{database}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.databases.collectionGroups.indexes.delete()`
+#### `projects.databases.documents.write()`
 
-Deletes a composite index.
+Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is only required in the first message. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.listCollectionIds()`
+
+Lists all the collection IDs underneath a document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` Use `projects/{project_id}/databases/{database_id}/documents` to list top-level collections. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.commit()`
+
+Commits a transaction, while optionally updating documents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.list()`
+
+Lists documents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.readTime` | `string` | No | Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token. |
+| `params.collectionId` | `string` | Yes | Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. |
+| `params.showMissing` | `boolean` | No | If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
+| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.orderBy` | `string` | No | Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`. |
+| `params.transaction` | `string` | No | Perform the read as part of an already active transaction. |
+
+#### `projects.databases.documents.patch()`
+
+Updates or inserts a document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.updateMask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
+| `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
+| `params.name` | `string` | Yes | The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.get()`
+
+Gets a single document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.readTime` | `string` | No | Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
+| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.name` | `string` | Yes | Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
+| `params.transaction` | `string` | No | Reads the document in a transaction. |
+
+#### `projects.databases.documents.partitionQuery()`
+
+Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.delete()`
+
+Deletes a document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
+| `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
+| `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
+
+#### `projects.databases.documents.runQuery()`
+
+Runs a query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.batchWrite()`
+
+Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.createDocument()`
+
+Creates a new document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}` |
+| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.documentId` | `string` | No | The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service. |
+| `params.collectionId` | `string` | Yes | Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.rollback()`
+
+Rolls back a transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.listDocuments()`
+
+Lists documents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
+| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value. |
+| `params.orderBy` | `string` | No | Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`. |
+| `params.transaction` | `string` | No | Perform the read as part of an already active transaction. |
+| `params.readTime` | `string` | No | Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token. |
+| `params.collectionId` | `string` | Yes | Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. |
+| `params.showMissing` | `boolean` | No | If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`. |
+
+#### `projects.databases.documents.runAggregationQuery()`
+
+Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT
+
+* FROM k where a = true ); ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.beginTransaction()`
+
+Starts a new transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.documents.listen()`
+
+Listens to changes. This method is only available via gRPC or WebChannel (not REST).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.databases.userCreds`
+
+#### `projects.databases.userCreds.disable()`
+
+Disables a user creds. No-op if the user creds are already disabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.userCreds.create()`
+
+Create a user creds.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}` |
+| `params.userCredsId` | `string` | No | Required. The ID to use for the user creds, which will become the final component of the user creds's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.userCreds.list()`
+
+List all user creds in the database. Note that the returned resource does not contain the secret value itself.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. A parent database name of the form `projects/{project_id}/databases/{database_id}` |
+
+#### `projects.databases.userCreds.resetPassword()`
+
+Resets the password of a user creds.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.userCreds.enable()`
+
+Enables a user creds. No-op if the user creds are already enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.databases.userCreds.get()`
+
+Gets a user creds resource. Note that the returned resource does not contain the secret value itself.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+
+#### `projects.databases.userCreds.delete()`
+
+Deletes a user creds.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+
+### `projects.databases.collectionGroups`
 
 ### `projects.databases.collectionGroups.fields`
 
@@ -268,72 +483,47 @@ Lists the field configuration and metadata for this database. Currently, Firesto
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
-| `params.filter` | `string` | No | The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`. |
 | `params.pageSize` | `integer` | No | The number of results to return. |
+| `params.filter` | `string` | No | The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with a filter that includes `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`. |
 | `params.pageToken` | `string` | No | A page token, returned from a previous call to FirestoreAdmin.ListFields, that may be used to get the next page of results. |
 
-### `projects.databases.userCreds`
+### `projects.databases.collectionGroups.indexes`
 
-#### `projects.databases.userCreds.create()`
+#### `projects.databases.collectionGroups.indexes.create()`
 
-Create a user creds.
+Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}` |
-| `params.userCredsId` | `string` | No | Required. The ID to use for the user creds, which will become the final component of the user creds's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. |
+| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.databases.userCreds.get()`
+#### `projects.databases.collectionGroups.indexes.list()`
 
-Gets a user creds resource. Note that the returned resource does not contain the secret value itself.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-
-#### `projects.databases.userCreds.list()`
-
-List all user creds in the database. Note that the returned resource does not contain the secret value itself.
+Lists composite indexes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. A parent database name of the form `projects/{project_id}/databases/{database_id}` |
+| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
+| `params.pageSize` | `integer` | No | The number of results to return. |
+| `params.filter` | `string` | No | The filter to apply to list results. |
+| `params.pageToken` | `string` | No | A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results. |
 
-#### `projects.databases.userCreds.enable()`
+#### `projects.databases.collectionGroups.indexes.get()`
 
-Enables a user creds. No-op if the user creds are already enabled.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.userCreds.disable()`
-
-Disables a user creds. No-op if the user creds are already disabled.
+Gets a composite index.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
 
-#### `projects.databases.userCreds.resetPassword()`
+#### `projects.databases.collectionGroups.indexes.delete()`
 
-Resets the password of a user creds.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.userCreds.delete()`
-
-Deletes a user creds.
+Deletes a composite index.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
+| `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
 
 ### `projects.databases.backupSchedules`
 
@@ -345,14 +535,6 @@ Creates a backup schedule on a database. At most two backup schedules can be con
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent database. Format `projects/{project}/databases/{database}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.backupSchedules.get()`
-
-Gets information about a backup schedule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` |
 
 #### `projects.databases.backupSchedules.list()`
 
@@ -372,6 +554,14 @@ Updates a backup schedule.
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.databases.backupSchedules.get()`
+
+Gets information about a backup schedule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` |
+
 #### `projects.databases.backupSchedules.delete()`
 
 Deletes a backup schedule.
@@ -379,193 +569,3 @@ Deletes a backup schedule.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the backup schedule. Format `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` |
-
-### `projects.databases.documents`
-
-#### `projects.databases.documents.get()`
-
-Gets a single document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
-| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.transaction` | `string` | No | Reads the document in a transaction. |
-| `params.readTime` | `string` | No | Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
-
-#### `projects.databases.documents.list()`
-
-Lists documents.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.collectionId` | `string` | Yes | Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token. |
-| `params.orderBy` | `string` | No | Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`. |
-| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.transaction` | `string` | No | Perform the read as part of an already active transaction. |
-| `params.readTime` | `string` | No | Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
-| `params.showMissing` | `boolean` | No | If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`. |
-
-#### `projects.databases.documents.listDocuments()`
-
-Lists documents.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.collectionId` | `string` | Yes | Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token. |
-| `params.orderBy` | `string` | No | Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`. |
-| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.transaction` | `string` | No | Perform the read as part of an already active transaction. |
-| `params.readTime` | `string` | No | Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. |
-| `params.showMissing` | `boolean` | No | If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`. |
-
-#### `projects.databases.documents.patch()`
-
-Updates or inserts a document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
-| `params.updateMask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
-| `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.delete()`
-
-Deletes a document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. |
-| `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
-| `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
-
-#### `projects.databases.documents.batchGet()`
-
-Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.beginTransaction()`
-
-Starts a new transaction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.commit()`
-
-Commits a transaction, while optionally updating documents.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.rollback()`
-
-Rolls back a transaction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.runQuery()`
-
-Runs a query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.executePipeline()`
-
-Executes a pipeline query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. Database identifier, in the form `projects/{project}/databases/{database}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.runAggregationQuery()`
-
-Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT
-
-* FROM k where a = true ); ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.partitionQuery()`
-
-Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.write()`
-
-Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is only required in the first message. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.listen()`
-
-Listens to changes. This method is only available via gRPC or WebChannel (not REST).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.listCollectionIds()`
-
-Lists all the collection IDs underneath a document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.batchWrite()`
-
-Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.databases.documents.createDocument()`
-
-Creates a new document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}` |
-| `params.collectionId` | `string` | Yes | Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`. |
-| `params.documentId` | `string` | No | The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service. |
-| `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.requestBody` | `object` | Yes | The request body. |
