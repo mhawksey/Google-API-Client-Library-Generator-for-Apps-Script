@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Realtime Database Managem
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:43:19 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:44:24 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:55:36 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:55:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:24 GMT
 
 
@@ -27,9 +27,17 @@ Requests that a new DatabaseInstance be created. The state of a successfully cre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. |
-| `params.databaseId` | `string` | No | The globally unique identifier of the database instance. |
 | `params.validateOnly` | `boolean` | No | When set to true, the request will be validated but not submitted. |
+| `params.databaseId` | `string` | No | The globally unique identifier of the database instance. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.instances.delete()`
+
+Marks a DatabaseInstance to be deleted. The DatabaseInstance will be set to the DELETED state for 20 days, and will be purged within 30 days. The default database cannot be deleted. IDs for deleted database instances may never be recovered or re-used. The Database may only be deleted if it is already in a DISABLED state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
 
 #### `projects.locations.instances.get()`
 
@@ -46,17 +54,9 @@ Lists each DatabaseInstance associated with the specified parent project. The li
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project for which to list database instances, in the form: `projects/{project-number}/locations/{location-id}` To list across all locations, use a parent in the form: `projects/{project-number}/locations/-` |
+| `params.showDeleted` | `boolean` | No | Indicate that DatabaseInstances in the `DELETED` state should also be returned. |
 | `params.pageToken` | `string` | No | Token returned from a previous call to `ListDatabaseInstances` indicating where in the set of database instances to resume listing. |
 | `params.pageSize` | `integer` | No | The maximum number of database instances to return in the response. The server may return fewer than this at its discretion. If no value is specified (or too large a value is specified), then the server will impose its own limit. |
-| `params.showDeleted` | `boolean` | No | Indicate that DatabaseInstances in the `DELETED` state should also be returned. |
-
-#### `projects.locations.instances.delete()`
-
-Marks a DatabaseInstance to be deleted. The DatabaseInstance will be set to the DELETED state for 20 days, and will be purged within 30 days. The default database cannot be deleted. IDs for deleted database instances may never be recovered or re-used. The Database may only be deleted if it is already in a DISABLED state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
 
 #### `projects.locations.instances.undelete()`
 
@@ -67,18 +67,18 @@ Restores a DatabaseInstance that was previously marked to be deleted. After the 
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.disable()`
+#### `projects.locations.instances.reenable()`
 
-Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including view access in the Firebase console.
+Enables a DatabaseInstance. The database must have been disabled previously using DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.reenable()`
+#### `projects.locations.instances.disable()`
 
-Enables a DatabaseInstance. The database must have been disabled previously using DisableDatabaseInstance. The state of a successfully reenabled DatabaseInstance is ACTIVE.
+Disables a DatabaseInstance. The database can be re-enabled later using ReenableDatabaseInstance. When a database is disabled, all reads and writes are denied, including view access in the Firebase console.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
