@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:35:52 GMT
-- **Last Modified:** Tue, 31 Mar 2026 23:35:52 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:52:54 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:52:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:49 GMT
 
 
@@ -13,6 +13,28 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 ---
 
 ## API Reference
+
+### `billingAccounts`
+
+### `billingAccounts.billingAccountLicenseConfigs`
+
+#### `billingAccounts.billingAccountLicenseConfigs.retractLicenseConfig()`
+
+This method is called from the billing account side to retract the LicenseConfig from the given project back to the billing account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.billingAccountLicenseConfig` | `string` | Yes | Required. Full resource name of BillingAccountLicenseConfig. Format: `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `billingAccounts.billingAccountLicenseConfigs.distributeLicenseConfig()`
+
+Distributes a LicenseConfig from billing account level to project level.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.billingAccountLicenseConfig` | `string` | Yes | Required. Full resource name of BillingAccountLicenseConfig. Format: `billingAccounts/{billing_account}/billingAccountLicenseConfigs/{billing_account_license_config_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -25,46 +47,7 @@ Provisions the project resource. During the process, related systems will get pr
 | `params.name` | `string` | Yes | Required. Full resource name of a Project, such as `projects/{project_id_or_number}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.operations`
-
-#### `projects.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.filter` | `string` | No | The standard list filter. |
-
 ### `projects.locations`
-
-#### `projects.locations.getCmekConfig()`
-
-Gets the CmekConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
 
 #### `projects.locations.updateAclConfig()`
 
@@ -74,24 +57,6 @@ Default ACL configuration for use in a location of a customer's project. Updates
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The full resource name of the acl configuration. Format: `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.updateCmekConfig()`
-
-Provisions a CMEK key for use in a location of a customer's project. This method will also conduct location validation on the provided cmekConfig to make sure the key is valid and can be used in the selected location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. |
-| `params.setDefault` | `boolean` | No | Set the following CmekConfig as the default to be used for child resources if one is not specified. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.getAclConfig()`
-
-Gets the AclConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
 
 #### `projects.locations.setUpDataConnectorV2()`
 
@@ -104,188 +69,15 @@ Creates a Collection and sets up the DataConnector for it. To stop a DataConnect
 | `params.collectionDisplayName` | `string` | No | Required. The display name of the Collection. Should be human readable, used to display collections in the Console Dashboard. UTF-8 encoded string with limit of 1024 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.setUpDataConnector()`
+#### `projects.locations.getAclConfig()`
 
-Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the CollectionService.DeleteCollection method.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of Collection, in the format of `projects/{project}/locations/{location}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.identityMappingStores`
-
-#### `projects.locations.identityMappingStores.list()`
-
-Lists all Identity Mapping Stores.
+Gets the AclConfig.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the Identity Mapping Stores to list. Format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | Maximum number of IdentityMappingStores to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityMappingStores` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityMappingStores` must match the call that provided the page token. |
+| `params.name` | `string` | Yes | Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
 
-#### `projects.locations.identityMappingStores.importIdentityMappings()`
-
-Imports a list of Identity Mapping Entries to an Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to import Identity Mapping Entries to. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.identityMappingStores.create()`
-
-Creates a new Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent collection resource name, such as `projects/{project}/locations/{location}`. |
-| `params.identityMappingStoreId` | `string` | No | Required. The ID of the Identity Mapping Store to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 63 characters. |
-| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this Identity Mapping Store. |
-| `params.disableCmek` | `boolean` | No | Identity Mapping Store without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.identityMappingStores.purgeIdentityMappings()`
-
-Purges specified or all Identity Mapping Entries from an Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to purge Identity Mapping Entries from. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.identityMappingStores.delete()`
-
-Deletes the Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Identity Mapping Store to delete. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
-
-#### `projects.locations.identityMappingStores.get()`
-
-Gets the Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Identity Mapping Store to get. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
-
-#### `projects.locations.identityMappingStores.listIdentityMappings()`
-
-Lists Identity Mappings in an Identity Mapping Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of IdentityMappings to return. If unspecified, defaults to 2000. The maximum allowed value is 10000. Values above 10000 will be coerced to 10000. |
-| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to list Identity Mapping Entries in. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityMappings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityMappings` must match the call that provided the page token. |
-
-### `projects.locations.identityMappingStores.operations`
-
-#### `projects.locations.identityMappingStores.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.identityMappingStores.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-### `projects.locations.podcasts`
-
-### `projects.locations.podcasts.operations`
-
-#### `projects.locations.podcasts.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `projects.locations.userStores`
-
-#### `projects.locations.userStores.get()`
-
-Gets the User Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the User Store to get. Format: `projects/{project}/locations/{location}/userStores/{user_store_id}` |
-
-#### `projects.locations.userStores.batchUpdateUserLicenses()`
-
-Updates the User License. This method is used for batch assign/unassign licenses to users.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.userStores.patch()`
-
-Updates the User Store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The full resource name of the User Store, in the format of `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.userStores.licenseConfigsUsageStats`
-
-#### `projects.locations.userStores.licenseConfigsUsageStats.list()`
-
-Lists all the LicenseConfigUsageStatss associated with the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
-
-### `projects.locations.userStores.userLicenses`
-
-#### `projects.locations.userStores.userLicenses.list()`
-
-Lists the User Licenses.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListUserLicenses` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUserLicenses` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this field is negative, an INVALID_ARGUMENT error is returned. |
-| `params.orderBy` | `string` | No | Optional. The order in which the UserLicenses are listed. The value must be a comma-separated list of fields. Default sorting order is ascending. To specify descending order for a field, append a " desc" suffix. Redundant space characters in the syntax are insignificant. Supported fields (only `user_principal` is supported for now): * `user_principal` If not set, the default ordering is by `user_principal`. Examples: * `user_principal` to order by `user_principal` in ascending order. * `user_principal desc` to order by `user_principal` in descending order. |
-
-### `projects.locations.cmekConfigs`
-
-#### `projects.locations.cmekConfigs.delete()`
-
-De-provisions a CmekConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the CmekConfig to delete, such as `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. |
-
-#### `projects.locations.cmekConfigs.get()`
-
-Gets the CmekConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-
-#### `projects.locations.cmekConfigs.patch()`
+#### `projects.locations.updateCmekConfig()`
 
 Provisions a CMEK key for use in a location of a customer's project. This method will also conduct location validation on the provided cmekConfig to make sure the key is valid and can be used in the selected location.
 
@@ -295,23 +87,69 @@ Provisions a CMEK key for use in a location of a customer's project. This method
 | `params.setDefault` | `boolean` | No | Set the following CmekConfig as the default to be used for child resources if one is not specified. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.cmekConfigs.list()`
+#### `projects.locations.getCmekConfig()`
 
-Lists all the CmekConfigs with the project.
+Gets the CmekConfig.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list CmekConfigs under this location, regardless of whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned. |
+| `params.name` | `string` | Yes | Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.setUpDataConnector()`
+
+Creates a Collection and sets up the DataConnector for it. To stop a DataConnector after setup, use the CollectionService.DeleteCollection method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of Collection, in the format of `projects/{project}/locations/{location}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.groundingConfigs`
+
+#### `projects.locations.groundingConfigs.check()`
+
+Performs a grounding check.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.groundingConfig` | `string` | Yes | Required. The resource name of the grounding config, such as `projects/*/locations/global/groundingConfigs/default_grounding_config`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataStores`
 
-#### `projects.locations.dataStores.getSiteSearchEngine()`
+#### `projects.locations.dataStores.completeQuery()`
 
-Gets the SiteSearchEngine.
+Completes the specified user input with keyword suggestions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
+| `params.userPseudoId` | `string` | No | Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.dataStore` | `string` | Yes | Required. The parent data store resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. |
+| `params.query` | `string` | No | Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. |
+| `params.queryModel` | `string` | No | Specifies the autocomplete data model. This overrides any model specified in the Configuration > Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions generated from user-imported documents. * `search-history` - Using suggestions generated from the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. * `user-event` - Using suggestions generated from user-imported search events. * `document-completable` - Using suggestions taken directly from user-imported document fields marked as completable. Default values: * `document` is the default model for regular dataStores. * `search-history` is the default model for site search dataStores. |
+| `params.includeTailSuggestions` | `boolean` | No | Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even if set to true, if there are suggestions that match the full query, those are returned and no tail suggestions are returned. |
 
 #### `projects.locations.dataStores.get()`
 
@@ -321,53 +159,6 @@ Gets a DataStore.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. |
 
-#### `projects.locations.dataStores.completeQuery()`
-
-Completes the specified user input with keyword suggestions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataStore` | `string` | Yes | Required. The parent data store resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. |
-| `params.userPseudoId` | `string` | No | Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
-| `params.queryModel` | `string` | No | Specifies the autocomplete data model. This overrides any model specified in the Configuration > Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions generated from user-imported documents. * `search-history` - Using suggestions generated from the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. * `user-event` - Using suggestions generated from user-imported search events. * `document-completable` - Using suggestions taken directly from user-imported document fields marked as completable. Default values: * `document` is the default model for regular dataStores. * `search-history` is the default model for site search dataStores. |
-| `params.query` | `string` | No | Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. |
-| `params.includeTailSuggestions` | `boolean` | No | Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even if set to true, if there are suggestions that match the full query, those are returned and no tail suggestions are returned. |
-
-#### `projects.locations.dataStores.list()`
-
-Lists all the DataStores associated with the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not have permission to list DataStores under this location, regardless of whether or not this data store exists, a PERMISSION_DENIED error is returned. |
-| `params.filter` | `string` | No | Filter by solution type . For example: `filter = 'solution_type:SOLUTION_TYPE_SEARCH'` |
-| `params.pageSize` | `integer` | No | Maximum number of DataStores to return. If unspecified, defaults to 10. The maximum allowed value is 50. Values above 50 will be coerced to 50. If this field is negative, an INVALID_ARGUMENT is returned. |
-| `params.pageToken` | `string` | No | A page token ListDataStoresResponse.next_page_token, received from a previous DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DataStoreService.ListDataStores must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. |
-
-#### `projects.locations.dataStores.patch()`
-
-Updates a DataStore
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Identifier. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided DataStore to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.create()`
-
-Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.skipDefaultSchemaCreation` | `boolean` | No | A boolean flag indicating whether to skip the default schema creation for the data store. Only enable this flag if you are certain that the default schema is incompatible with your use case. If set to true, you must manually create a schema for the data store before any documents can be ingested. This flag cannot be specified if `data_store.starting_schema` is specified. |
-| `params.disableCmek` | `boolean` | No | DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
-| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this DataStore. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
-| `params.dataStoreId` | `string` | No | Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
-| `params.createAdvancedSiteSearch` | `boolean` | No | A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.dataStores.delete()`
 
 Deletes a DataStore.
@@ -376,182 +167,48 @@ Deletes a DataStore.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to delete the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error is returned. |
 
-### `projects.locations.dataStores.controls`
+#### `projects.locations.dataStores.list()`
 
-#### `projects.locations.dataStores.controls.create()`
-
-Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+Lists all the DataStores associated with the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not have permission to list DataStores under this location, regardless of whether or not this data store exists, a PERMISSION_DENIED error is returned. |
+| `params.pageSize` | `integer` | No | Maximum number of DataStores to return. If unspecified, defaults to 10. The maximum allowed value is 50. Values above 50 will be coerced to 50. If this field is negative, an INVALID_ARGUMENT is returned. |
+| `params.pageToken` | `string` | No | A page token ListDataStoresResponse.next_page_token, received from a previous DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DataStoreService.ListDataStores must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.filter` | `string` | No | Filter by solution type . For example: `filter = 'solution_type:SOLUTION_TYPE_SEARCH'` |
+
+#### `projects.locations.dataStores.patch()`
+
+Updates a DataStore
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Indicates which fields in the provided DataStore to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
+| `params.name` | `string` | Yes | Immutable. Identifier. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.controls.delete()`
+#### `projects.locations.dataStores.getSiteSearchEngine()`
 
-Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.dataStores.controls.patch()`
-
-Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
+Gets the SiteSearchEngine.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
+| `params.name` | `string` | Yes | Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.dataStores.create()`
+
+Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this DataStore. |
+| `params.dataStoreId` | `string` | No | Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.createAdvancedSiteSearch` | `boolean` | No | A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored. |
+| `params.disableCmek` | `boolean` | No | DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
+| `params.skipDefaultSchemaCreation` | `boolean` | No | A boolean flag indicating whether to skip the default schema creation for the data store. Only enable this flag if you are certain that the default schema is incompatible with your use case. If set to true, you must manually create a schema for the data store before any documents can be ingested. This flag cannot be specified if `data_store.starting_schema` is specified. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.controls.get()`
-
-Gets a Control.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.dataStores.controls.list()`
-
-Lists all Controls by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-
-### `projects.locations.dataStores.completionSuggestions`
-
-#### `projects.locations.dataStores.completionSuggestions.import()`
-
-Imports CompletionSuggestions for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import customer autocomplete suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.completionSuggestions.purge()`
-
-Permanently deletes all CompletionSuggestions for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.dataStores.schemas`
-
-#### `projects.locations.dataStores.schemas.delete()`
-
-Deletes a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
-
-#### `projects.locations.dataStores.schemas.create()`
-
-Creates a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. |
-| `params.schemaId` | `string` | No | Required. The ID to use for the Schema, which becomes the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.schemas.get()`
-
-Gets a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
-
-#### `projects.locations.dataStores.schemas.patch()`
-
-Updates a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.allowMissing` | `boolean` | No | If set to true, and the Schema is not found, a new Schema is created. In this situation, `update_mask` is ignored. |
-| `params.name` | `string` | Yes | Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.schemas.list()`
-
-Gets a list of Schemas.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. |
-| `params.pageSize` | `integer` | No | The maximum number of Schemas to return. The service may return fewer than this value. If unspecified, at most 100 Schemas are returned. The maximum value is 1000; values above 1000 are set to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous SchemaService.ListSchemas call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to SchemaService.ListSchemas must match the call that provided the page token. |
-
-### `projects.locations.dataStores.sessions`
-
-#### `projects.locations.dataStores.sessions.list()`
-
-Lists all Sessions by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
-
-#### `projects.locations.dataStores.sessions.create()`
-
-Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.sessions.delete()`
-
-Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-
-#### `projects.locations.dataStores.sessions.patch()`
-
-Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.sessions.get()`
-
-Gets a Session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
-
-### `projects.locations.dataStores.sessions.answers`
-
-#### `projects.locations.dataStores.sessions.answers.get()`
-
-Gets a Answer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
 
 ### `projects.locations.dataStores.widgetConfigs`
 
@@ -561,8 +218,8 @@ Gets a WidgetConfig.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.getWidgetConfigRequestOption.turnOffCollectionComponents` | `boolean` | No | Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission. |
 | `params.name` | `string` | Yes | Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}` |
+| `params.getWidgetConfigRequestOption.turnOffCollectionComponents` | `boolean` | No | Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission. |
 | `params.acceptCache` | `boolean` | No | Optional. Whether it's acceptable to load the widget config from cache. If set to true, recent changes on widget configs may take a few minutes to reflect on the end user's view. It's recommended to set to true for maturely developed widgets, as it improves widget performance. Set to false to see changes reflected in prod right away, if your widget is under development. |
 
 #### `projects.locations.dataStores.widgetConfigs.patch()`
@@ -571,11 +228,78 @@ Update a WidgetConfig.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
 | `params.name` | `string` | Yes | Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.dataStores.conversations`
+
+#### `projects.locations.dataStores.conversations.get()`
+
+Gets a Conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
+
+#### `projects.locations.dataStores.conversations.delete()`
+
+Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
+
+#### `projects.locations.dataStores.conversations.patch()`
+
+Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.conversations.list()`
+
+Lists all Conversations by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
+
+#### `projects.locations.dataStores.conversations.converse()`
+
+Converses a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.conversations.create()`
+
+Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataStores.siteSearchEngine`
+
+#### `projects.locations.dataStores.siteSearchEngine.enableAdvancedSiteSearch()`
+
+Upgrade from basic site search to advanced site search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataStores.siteSearchEngine.disableAdvancedSiteSearch()`
 
@@ -595,25 +319,23 @@ Request on-demand recrawl for a list of URIs.
 | `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.siteSearchEngine.enableAdvancedSiteSearch()`
-
-Upgrade from basic site search to advanced site search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.locations.dataStores.siteSearchEngine.targetSites`
 
-#### `projects.locations.dataStores.siteSearchEngine.targetSites.batchCreate()`
+#### `projects.locations.dataStores.siteSearchEngine.targetSites.get()`
 
-Creates TargetSite in a batch.
+Gets a TargetSite.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.dataStores.siteSearchEngine.targetSites.delete()`
+
+Deletes a TargetSite.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
 
 #### `projects.locations.dataStores.siteSearchEngine.targetSites.create()`
 
@@ -633,22 +355,6 @@ Updates a TargetSite.
 | `params.name` | `string` | Yes | Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.siteSearchEngine.targetSites.get()`
-
-Gets a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.dataStores.siteSearchEngine.targetSites.delete()`
-
-Deletes a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
-
 #### `projects.locations.dataStores.siteSearchEngine.targetSites.list()`
 
 Gets a list of TargetSites.
@@ -656,10 +362,28 @@ Gets a list of TargetSites.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. |
-| `params.parent` | `string` | Yes | Required. The parent site search engine resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to list TargetSites under this site search engine, regardless of whether or not this branch exists, a PERMISSION_DENIED error is returned. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListTargetSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargetSites` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent site search engine resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to list TargetSites under this site search engine, regardless of whether or not this branch exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.dataStores.siteSearchEngine.targetSites.batchCreate()`
+
+Creates TargetSite in a batch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataStores.siteSearchEngine.sitemaps`
+
+#### `projects.locations.dataStores.siteSearchEngine.sitemaps.fetch()`
+
+Fetch Sitemaps in a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matcher.urisMatcher.uris` | `string` | No | The Sitemap uris. |
+| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
 
 #### `projects.locations.dataStores.siteSearchEngine.sitemaps.create()`
 
@@ -670,15 +394,6 @@ Creates a Sitemap.
 | `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.siteSearchEngine.sitemaps.fetch()`
-
-Fetch Sitemaps in a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
-| `params.matcher.urisMatcher.uris` | `string` | No | The Sitemap uris. |
-
 #### `projects.locations.dataStores.siteSearchEngine.sitemaps.delete()`
 
 Deletes a Sitemap.
@@ -687,18 +402,189 @@ Deletes a Sitemap.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of Sitemap, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`. If the caller does not have permission to access the Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a NOT_FOUND error is returned. |
 
-### `projects.locations.dataStores.completionConfig`
+### `projects.locations.dataStores.operations`
 
-#### `projects.locations.dataStores.completionConfig.completeQuery()`
+#### `projects.locations.dataStores.operations.list()`
 
-Completes the user input with advanced keyword suggestions.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.dataStores.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.dataStores.controls`
+
+#### `projects.locations.dataStores.controls.get()`
+
+Gets a Control.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+#### `projects.locations.dataStores.controls.delete()`
+
+Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+#### `projects.locations.dataStores.controls.create()`
+
+Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.controls.patch()`
+
+Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.controls.list()`
+
+Lists all Controls by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+
+### `projects.locations.dataStores.schemas`
+
+#### `projects.locations.dataStores.schemas.get()`
+
+Gets a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
+
+#### `projects.locations.dataStores.schemas.delete()`
+
+Deletes a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
+
+#### `projects.locations.dataStores.schemas.create()`
+
+Creates a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. |
+| `params.schemaId` | `string` | No | Required. The ID to use for the Schema, which becomes the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.schemas.list()`
+
+Gets a list of Schemas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of Schemas to return. The service may return fewer than this value. If unspecified, at most 100 Schemas are returned. The maximum value is 1000; values above 1000 are set to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous SchemaService.ListSchemas call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to SchemaService.ListSchemas must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. |
+
+#### `projects.locations.dataStores.schemas.patch()`
+
+Updates a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.allowMissing` | `boolean` | No | If set to true, and the Schema is not found, a new Schema is created. In this situation, `update_mask` is ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.dataStores.models`
+
+### `projects.locations.dataStores.models.operations`
+
+#### `projects.locations.dataStores.models.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+
+#### `projects.locations.dataStores.models.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.dataStores.suggestionDenyListEntries`
+
+#### `projects.locations.dataStores.suggestionDenyListEntries.import()`
+
+Imports all SuggestionDenyListEntry for a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.suggestionDenyListEntries.purge()`
+
+Permanently deletes all SuggestionDenyListEntry for a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataStores.servingConfigs`
+
+#### `projects.locations.dataStores.servingConfigs.search()`
+
+Performs a search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.servingConfigs.create()`
+
+Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataStores.servingConfigs.get()`
 
@@ -707,6 +593,52 @@ Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
+#### `projects.locations.dataStores.servingConfigs.delete()`
+
+Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
+#### `projects.locations.dataStores.servingConfigs.patch()`
+
+Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.servingConfigs.list()`
+
+Lists all ServingConfigs linked to this dataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+
+#### `projects.locations.dataStores.servingConfigs.searchLite()`
+
+Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.servingConfigs.streamAnswer()`
+
+Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataStores.servingConfigs.recommend()`
 
@@ -723,95 +655,100 @@ Answer query method.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.servingConfigs.delete()`
+### `projects.locations.dataStores.completionSuggestions`
 
-Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+#### `projects.locations.dataStores.completionSuggestions.purge()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
-
-#### `projects.locations.dataStores.servingConfigs.searchLite()`
-
-Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security.
+Permanently deletes all CompletionSuggestions for a DataStore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.servingConfigs.create()`
+#### `projects.locations.dataStores.completionSuggestions.import()`
 
-Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+Imports CompletionSuggestions for a DataStore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
-| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import customer autocomplete suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.servingConfigs.streamAnswer()`
+### `projects.locations.dataStores.completionConfig`
 
-Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
+#### `projects.locations.dataStores.completionConfig.completeQuery()`
+
+Completes the user input with advanced keyword suggestions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.servingConfigs.list()`
+### `projects.locations.dataStores.sessions`
 
-Lists all ServingConfigs linked to this dataStore.
+#### `projects.locations.dataStores.sessions.get()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
-| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-
-#### `projects.locations.dataStores.servingConfigs.search()`
-
-Performs a search.
+Gets a Session.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
+| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
+
+#### `projects.locations.dataStores.sessions.delete()`
+
+Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
+
+#### `projects.locations.dataStores.sessions.patch()`
+
+Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.servingConfigs.patch()`
+#### `projects.locations.dataStores.sessions.list()`
 
-Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+Lists all Sessions by their parent DataStore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+
+#### `projects.locations.dataStores.sessions.create()`
+
+Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.sessionId` | `string` | No | Optional. The ID to use for the session, which will become the final component of the session's resource name. This value should be 1-63 characters, and valid characters are /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.dataStores.operations`
+### `projects.locations.dataStores.sessions.answers`
 
-#### `projects.locations.dataStores.operations.get()`
+#### `projects.locations.dataStores.sessions.answers.get()`
 
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.dataStores.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Gets a Answer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
 
 ### `projects.locations.dataStores.branches`
 
@@ -821,9 +758,9 @@ Gets index freshness metadata for Documents. Supported for website search only.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
-| `params.matcher.fhirMatcher.fhirResources` | `string` | No | Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} |
 | `params.matcher.urisMatcher.uris` | `string` | No | The exact URIs to match by. |
+| `params.matcher.fhirMatcher.fhirResources` | `string` | No | Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
 
 ### `projects.locations.dataStores.branches.documents`
 
@@ -846,17 +783,6 @@ Creates a Document.
 | `params.documentId` | `string` | No | Required. The ID to use for the Document, which becomes the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.branches.documents.patch()`
-
-Updates a Document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided imported 'document' to update. If not set, by default updates all fields. |
-| `params.allowMissing` | `boolean` | No | If set to `true` and the Document is not found, a new Document is be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.dataStores.branches.documents.list()`
 
 Gets a list of Documents.
@@ -867,13 +793,15 @@ Gets a list of Documents.
 | `params.pageToken` | `string` | No | A page token ListDocumentsResponse.next_page_token, received from a previous DocumentService.ListDocuments call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DocumentService.ListDocuments must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
 | `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Use `default_branch` as the branch ID, to list documents under the default branch. If the caller does not have permission to list Documents under this branch, regardless of whether or not this branch exists, a `PERMISSION_DENIED` error is returned. |
 
-#### `projects.locations.dataStores.branches.documents.import()`
+#### `projects.locations.dataStores.branches.documents.patch()`
 
-Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated.
+Updates a Document.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Requires create/update permission. |
+| `params.name` | `string` | Yes | Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.allowMissing` | `boolean` | No | If set to `true` and the Document is not found, a new Document is be created. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided imported 'document' to update. If not set, by default updates all fields. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataStores.branches.documents.get()`
@@ -892,19 +820,16 @@ Deletes a Document.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to delete the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not exist, a `NOT_FOUND` error is returned. |
 
-### `projects.locations.dataStores.branches.operations`
+#### `projects.locations.dataStores.branches.documents.import()`
 
-#### `projects.locations.dataStores.branches.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Requires create/update permission. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.dataStores.branches.operations`
 
 #### `projects.locations.dataStores.branches.operations.get()`
 
@@ -913,6 +838,18 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.dataStores.branches.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `projects.locations.dataStores.branches.operations.cancel()`
 
@@ -923,115 +860,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.dataStores.suggestionDenyListEntries`
-
-#### `projects.locations.dataStores.suggestionDenyListEntries.import()`
-
-Imports all SuggestionDenyListEntry for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.suggestionDenyListEntries.purge()`
-
-Permanently deletes all SuggestionDenyListEntry for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.dataStores.conversations`
-
-#### `projects.locations.dataStores.conversations.list()`
-
-Lists all Conversations by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
-
-#### `projects.locations.dataStores.conversations.delete()`
-
-Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.dataStores.conversations.converse()`
-
-Converses a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.conversations.get()`
-
-Gets a Conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.dataStores.conversations.create()`
-
-Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.conversations.patch()`
-
-Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.locations.dataStores.userEvents`
-
-#### `projects.locations.dataStores.userEvents.write()`
-
-Writes a single user event.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.writeAsync` | `boolean` | No | If set to true, the user event is written asynchronously after validation, and the API responds without waiting for the write. |
-| `params.parent` | `string` | Yes | Required. The parent resource name. If the write user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the write user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataStores.userEvents.collect()`
-
-Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
-| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
-| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
-| `params.uri` | `string` | No | The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for third-party requests. |
-
-#### `projects.locations.dataStores.userEvents.import()`
-
-Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataStores.userEvents.purge()`
 
@@ -1042,51 +871,35 @@ Deletes permanently all user events specified by the filter provided. Depending 
 | `params.parent` | `string` | Yes | Required. The resource name of the catalog under which the events are created. The format is `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.dataStores.models`
+#### `projects.locations.dataStores.userEvents.write()`
 
-### `projects.locations.dataStores.models.operations`
-
-#### `projects.locations.dataStores.models.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Writes a single user event.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. If the write user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the write user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
+| `params.writeAsync` | `boolean` | No | If set to true, the user event is written asynchronously after validation, and the API responds without waiting for the write. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataStores.models.operations.list()`
+#### `projects.locations.dataStores.userEvents.collect()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
+| `params.uri` | `string` | No | The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for third-party requests. |
+| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
+| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
 
-#### `projects.locations.operations.list()`
+#### `projects.locations.dataStores.userEvents.import()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.parent` | `string` | Yes | Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.userEvents`
 
@@ -1096,8 +909,8 @@ Writes a single user event.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.writeAsync` | `boolean` | No | If set to true, the user event is written asynchronously after validation, and the API responds without waiting for the write. |
 | `params.parent` | `string` | Yes | Required. The parent resource name. If the write user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the write user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
+| `params.writeAsync` | `boolean` | No | If set to true, the user event is written asynchronously after validation, and the API responds without waiting for the write. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.userEvents.collect()`
@@ -1107,9 +920,9 @@ Writes a single user event from the browser. This uses a GET request to due to b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
-| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
-| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
 | `params.uri` | `string` | No | The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for third-party requests. |
+| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
+| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
 
 #### `projects.locations.userEvents.import()`
 
@@ -1131,35 +944,41 @@ Ranks a list of text records based on the given input query.
 | `params.rankingConfig` | `string` | Yes | Required. The resource name of the rank service config, such as `projects/{project_num}/locations/{location}/rankingConfigs/default_ranking_config`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.licenseConfigs`
+### `projects.locations.cmekConfigs`
 
-#### `projects.locations.licenseConfigs.create()`
+#### `projects.locations.cmekConfigs.patch()`
 
-Creates a LicenseConfig This method should only be used for creating NotebookLm licenses or Gemini Enterprise free trial licenses.
+Provisions a CMEK key for use in a location of a customer's project. This method will also conduct location validation on the provided cmekConfig to make sure the key is valid and can be used in the selected location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.licenseConfigId` | `string` | No | Optional. The ID to use for the LicenseConfig, which will become the final component of the LicenseConfig's resource name. We are using the tier (product edition) name as the license config id such as `search` or `search_and_assistant`. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}`. |
+| `params.name` | `string` | Yes | Required. The name of the CmekConfig of the form `projects/{project}/locations/{location}/cmekConfig` or `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. |
+| `params.setDefault` | `boolean` | No | Set the following CmekConfig as the default to be used for child resources if one is not specified. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.licenseConfigs.get()`
+#### `projects.locations.cmekConfigs.list()`
 
-Gets a LicenseConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of LicenseConfig, such as `projects/{project}/locations/{location}/licenseConfigs/*`. If the caller does not have permission to access the LicenseConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested LicenseConfig does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.licenseConfigs.patch()`
-
-Updates the LicenseConfig
+Lists all the CmekConfigs with the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Identifier. The fully qualified resource name of the license config. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config}` |
-| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided LicenseConfig to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list CmekConfigs under this location, regardless of whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.cmekConfigs.get()`
+
+Gets the CmekConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of CmekConfig, such as `projects/*/locations/*/cmekConfig` or `projects/*/locations/*/cmekConfigs/*`. If the caller does not have permission to access the CmekConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.cmekConfigs.delete()`
+
+De-provisions a CmekConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the CmekConfig to delete, such as `projects/{project}/locations/{location}/cmekConfigs/{cmek_config}`. |
 
 ### `projects.locations.collections`
 
@@ -1171,14 +990,6 @@ Gets the DataConnector. DataConnector is a singleton resource for each Collectio
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of DataConnector, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataConnector`. If the caller does not have permission to access the DataConnector, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the requested DataConnector does not exist, a `NOT_FOUND` error is returned. |
 
-#### `projects.locations.collections.delete()`
-
-Deletes a Collection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the Collection, in the format of `projects/{project}/locations/{location}/collections/{collection}`. |
-
 #### `projects.locations.collections.updateDataConnector()`
 
 Updates a DataConnector.
@@ -1189,562 +1000,17 @@ Updates a DataConnector.
 | `params.name` | `string` | Yes | Identifier. The full resource name of the Data Connector. Format: `projects/*/locations/*/collections/*/dataConnector`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.collections.dataConnector`
+#### `projects.locations.collections.delete()`
 
-### `projects.locations.collections.dataConnector.operations`
-
-#### `projects.locations.collections.dataConnector.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Deletes a Collection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | Required. The full resource name of the Collection, in the format of `projects/{project}/locations/{location}/collections/{collection}`. |
 
-#### `projects.locations.collections.dataConnector.operations.get()`
+### `projects.locations.collections.operations`
 
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `projects.locations.collections.engines`
-
-#### `projects.locations.collections.engines.list()`
-
-Lists all the Engines associated with the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. |
-| `params.pageToken` | `string` | No | Optional. Not supported. |
-| `params.filter` | `string` | No | Optional. Filter by solution type. For example: solution_type=SOLUTION_TYPE_SEARCH |
-| `params.pageSize` | `integer` | No | Optional. Not supported. |
-
-#### `projects.locations.collections.engines.getIamPolicy()`
-
-Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.collections.engines.setIamPolicy()`
-
-Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. **Important:** When setting a policy directly on an Engine resource, the only recommended roles in the bindings are: `roles/discoveryengine.user` and `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a warning in logging.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.patch()`
-
-Updates an Engine
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Engine to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
-| `params.name` | `string` | Yes | Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a length limit of 1024 characters. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.delete()`
-
-Deletes an Engine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. If the caller does not have permission to delete the Engine, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Engine to delete does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.collections.engines.get()`
-
-Gets an Engine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-
-#### `projects.locations.collections.engines.create()`
-
-Creates an Engine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.engineId` | `string` | No | Required. The ID to use for the Engine, which will become the final component of the Engine's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.sessions`
-
-#### `projects.locations.collections.engines.sessions.list()`
-
-Lists all Sessions by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
-
-#### `projects.locations.collections.engines.sessions.create()`
-
-Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.sessions.delete()`
-
-Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-
-#### `projects.locations.collections.engines.sessions.get()`
-
-Gets a Session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
-
-#### `projects.locations.collections.engines.sessions.patch()`
-
-Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.sessions.answers`
-
-#### `projects.locations.collections.engines.sessions.answers.get()`
-
-Gets a Answer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
-
-### `projects.locations.collections.engines.servingConfigs`
-
-#### `projects.locations.collections.engines.servingConfigs.delete()`
-
-Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
-
-#### `projects.locations.collections.engines.servingConfigs.answer()`
-
-Answer query method.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.patch()`
-
-Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.list()`
-
-Lists all ServingConfigs linked to this dataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
-| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-
-#### `projects.locations.collections.engines.servingConfigs.searchLite()`
-
-Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.recommend()`
-
-Makes a recommendation, which requires a contextual user event.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.streamAnswer()`
-
-Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.search()`
-
-Performs a search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.create()`
-
-Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.servingConfigs.get()`
-
-Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
-
-### `projects.locations.collections.engines.completionConfig`
-
-#### `projects.locations.collections.engines.completionConfig.completeQuery()`
-
-Completes the user input with advanced keyword suggestions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.assistants`
-
-#### `projects.locations.collections.engines.assistants.streamAssist()`
-
-Assists the user with a query in a streaming fashion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.create()`
-
-Creates an Assistant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-| `params.assistantId` | `string` | No | Required. The ID to use for the Assistant, which will become the final component of the Assistant's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.get()`
-
-Gets an Assistant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` |
-
-#### `projects.locations.collections.engines.assistants.list()`
-
-Lists all Assistants under an Engine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token ListAssistantsResponse.next_page_token, received from a previous AssistantService.ListAssistants call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListAssistants must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | Maximum number of Assistants to return. If unspecified, defaults to 100. The maximum allowed value is 1000; anything above that will be coerced down to 1000. |
-| `params.parent` | `string` | Yes | Required. The parent resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-
-#### `projects.locations.collections.engines.assistants.patch()`
-
-Updates an Assistant
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Resource name of the assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` It must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.delete()`
-
-Deletes an Assistant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` If the caller does not have permission to delete the Assistant, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Assistant to delete does not exist, a NOT_FOUND error is returned. |
-
-### `projects.locations.collections.engines.assistants.agents`
-
-### `projects.locations.collections.engines.assistants.agents.a2a`
-
-### `projects.locations.collections.engines.assistants.agents.a2a.v1`
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.getCard()`
-
-GetAgentCard returns the agent card for the agent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-
-### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks`
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.cancel()`
-
-Cancel a task from the agent. If supported one should expect no more task updates for the task.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.name` | `string` | Yes | The resource name of the task to cancel. Format: tasks/{task_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.get()`
-
-Get the current state of a task from the agent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.historyLength` | `integer` | No | The number of most recent messages from the task's history to retrieve. |
-| `params.name` | `string` | Yes | Required. The resource name of the task. Format: tasks/{task_id} |
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.subscribe()`
-
-TaskSubscription is a streaming call that will return a stream of task update events. This attaches the stream to an existing in process task. If the task is complete the stream will return the completed task (like GetTask) and close the stream.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.name` | `string` | Yes | The resource name of the task to subscribe to. Format: tasks/{task_id} |
-
-### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs`
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.delete()`
-
-Delete a push notification config for a task.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.name` | `string` | Yes | The resource name of the config to delete. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.get()`
-
-Get a push notification config for a task.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the config to retrieve. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} |
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.create()`
-
-Set a push notification config for a task.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.configId` | `string` | No | Required. The ID for the new config. |
-| `params.parent` | `string` | Yes | Required. The parent task resource for this config. Format: tasks/{task_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.list()`
-
-Get a list of push notifications configured for a task.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.parent` | `string` | Yes | The parent task resource. Format: tasks/{task_id} |
-| `params.pageToken` | `string` | No | A page token received from a previous ListTaskPushNotificationConfigRequest call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTaskPushNotificationConfigRequest` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | For AIP-158 these fields are present. Usually not used/needed. The maximum number of configurations to return. If unspecified, all configs will be returned. |
-
-### `projects.locations.collections.engines.assistants.agents.a2a.v1.message`
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.message.send()`
-
-Send a message to the agent. This is a blocking call that will return the task once it is completed, or a LRO if requested.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.assistants.agents.a2a.v1.message.stream()`
-
-SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.assistants.agents.operations`
-
-#### `projects.locations.collections.engines.assistants.agents.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `projects.locations.collections.engines.controls`
-
-#### `projects.locations.collections.engines.controls.get()`
-
-Gets a Control.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.collections.engines.controls.list()`
-
-Lists all Controls by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-
-#### `projects.locations.collections.engines.controls.delete()`
-
-Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.collections.engines.controls.create()`
-
-Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.controls.patch()`
-
-Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
-| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.conversations`
-
-#### `projects.locations.collections.engines.conversations.delete()`
-
-Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.collections.engines.conversations.get()`
-
-Gets a Conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.collections.engines.conversations.create()`
-
-Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.conversations.list()`
-
-Lists all Conversations by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
-
-#### `projects.locations.collections.engines.conversations.converse()`
-
-Converses a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.conversations.patch()`
-
-Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.engines.operations`
-
-#### `projects.locations.collections.engines.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.collections.engines.operations.list()`
+#### `projects.locations.collections.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
@@ -1753,50 +1019,46 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 
-### `projects.locations.collections.engines.widgetConfigs`
+#### `projects.locations.collections.operations.get()`
 
-#### `projects.locations.collections.engines.widgetConfigs.patch()`
-
-Update a WidgetConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.engines.widgetConfigs.get()`
-
-Gets a WidgetConfig.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}` |
-| `params.acceptCache` | `boolean` | No | Optional. Whether it's acceptable to load the widget config from cache. If set to true, recent changes on widget configs may take a few minutes to reflect on the end user's view. It's recommended to set to true for maturely developed widgets, as it improves widget performance. Set to false to see changes reflected in prod right away, if your widget is under development. |
-| `params.getWidgetConfigRequestOption.turnOffCollectionComponents` | `boolean` | No | Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `projects.locations.collections.dataStores`
 
-#### `projects.locations.collections.dataStores.getSiteSearchEngine()`
+#### `projects.locations.collections.dataStores.delete()`
 
-Gets the SiteSearchEngine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-
-#### `projects.locations.collections.dataStores.patch()`
-
-Updates a DataStore
+Deletes a DataStore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Indicates which fields in the provided DataStore to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
-| `params.name` | `string` | Yes | Immutable. Identifier. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to delete the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.dataStores.get()`
+
+Gets a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.dataStores.completeQuery()`
+
+Completes the specified user input with keyword suggestions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.includeTailSuggestions` | `boolean` | No | Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even if set to true, if there are suggestions that match the full query, those are returned and no tail suggestions are returned. |
+| `params.userPseudoId` | `string` | No | Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.dataStore` | `string` | Yes | Required. The parent data store resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. |
+| `params.query` | `string` | No | Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. |
+| `params.queryModel` | `string` | No | Specifies the autocomplete data model. This overrides any model specified in the Configuration > Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions generated from user-imported documents. * `search-history` - Using suggestions generated from the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. * `user-event` - Using suggestions generated from user-imported search events. * `document-completable` - Using suggestions taken directly from user-imported document fields marked as completable. Default values: * `document` is the default model for regular dataStores. * `search-history` is the default model for site search dataStores. |
 
 #### `projects.locations.collections.dataStores.trainCustomModel()`
 
@@ -1807,13 +1069,19 @@ Trains a custom model.
 | `params.dataStore` | `string` | Yes | Required. The resource name of the Data Store, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. This field is used to identify the data store where to train the models. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.delete()`
+#### `projects.locations.collections.dataStores.create()`
 
-Deletes a DataStore.
+Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to delete the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the DataStore to delete does not exist, a NOT_FOUND error is returned. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
+| `params.skipDefaultSchemaCreation` | `boolean` | No | A boolean flag indicating whether to skip the default schema creation for the data store. Only enable this flag if you are certain that the default schema is incompatible with your use case. If set to true, you must manually create a schema for the data store before any documents can be ingested. This flag cannot be specified if `data_store.starting_schema` is specified. |
+| `params.disableCmek` | `boolean` | No | DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
+| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this DataStore. |
+| `params.dataStoreId` | `string` | No | Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.createAdvancedSiteSearch` | `boolean` | No | A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.collections.dataStores.list()`
 
@@ -1821,351 +1089,28 @@ Lists all the DataStores associated with the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not have permission to list DataStores under this location, regardless of whether or not this data store exists, a PERMISSION_DENIED error is returned. |
-| `params.pageToken` | `string` | No | A page token ListDataStoresResponse.next_page_token, received from a previous DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DataStoreService.ListDataStores must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. |
 | `params.filter` | `string` | No | Filter by solution type . For example: `filter = 'solution_type:SOLUTION_TYPE_SEARCH'` |
 | `params.pageSize` | `integer` | No | Maximum number of DataStores to return. If unspecified, defaults to 10. The maximum allowed value is 50. Values above 50 will be coerced to 50. If this field is negative, an INVALID_ARGUMENT is returned. |
+| `params.pageToken` | `string` | No | A page token ListDataStoresResponse.next_page_token, received from a previous DataStoreService.ListDataStores call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DataStoreService.ListDataStores must match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. If the caller does not have permission to list DataStores under this location, regardless of whether or not this data store exists, a PERMISSION_DENIED error is returned. |
 
-#### `projects.locations.collections.dataStores.get()`
+#### `projects.locations.collections.dataStores.patch()`
 
-Gets a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of DataStore, such as `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. If the caller does not have permission to access the DataStore, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested DataStore does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.collections.dataStores.create()`
-
-Creates a DataStore. DataStore is for storing Documents. To serve these documents for Search, or Recommendation use case, an Engine needs to be created separately.
+Updates a DataStore
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.skipDefaultSchemaCreation` | `boolean` | No | A boolean flag indicating whether to skip the default schema creation for the data store. Only enable this flag if you are certain that the default schema is incompatible with your use case. If set to true, you must manually create a schema for the data store before any documents can be ingested. This flag cannot be specified if `data_store.starting_schema` is specified. |
-| `params.createAdvancedSiteSearch` | `boolean` | No | A boolean flag indicating whether user want to directly create an advanced data store for site search. If the data store is not configured as site search (GENERIC vertical and PUBLIC_WEBSITE content_config), this flag will be ignored. |
-| `params.disableCmek` | `boolean` | No | DataStore without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
-| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this DataStore. |
-| `params.dataStoreId` | `string` | No | Required. The ID to use for the DataStore, which will become the final component of the DataStore's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
+| `params.name` | `string` | Yes | Immutable. Identifier. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided DataStore to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.completeQuery()`
+#### `projects.locations.collections.dataStores.getSiteSearchEngine()`
 
-Completes the specified user input with keyword suggestions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataStore` | `string` | Yes | Required. The parent data store resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. |
-| `params.includeTailSuggestions` | `boolean` | No | Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even if set to true, if there are suggestions that match the full query, those are returned and no tail suggestions are returned. |
-| `params.query` | `string` | No | Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters. |
-| `params.queryModel` | `string` | No | Specifies the autocomplete data model. This overrides any model specified in the Configuration > Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions generated from user-imported documents. * `search-history` - Using suggestions generated from the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. * `user-event` - Using suggestions generated from user-imported search events. * `document-completable` - Using suggestions taken directly from user-imported document fields marked as completable. Default values: * `document` is the default model for regular dataStores. * `search-history` is the default model for site search dataStores. |
-| `params.userPseudoId` | `string` | No | Optional. A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. This field should NOT have a fixed value such as `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
-
-### `projects.locations.collections.dataStores.conversations`
-
-#### `projects.locations.collections.dataStores.conversations.list()`
-
-Lists all Conversations by their parent DataStore.
+Gets the SiteSearchEngine.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-
-#### `projects.locations.collections.dataStores.conversations.delete()`
-
-Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.collections.dataStores.conversations.converse()`
-
-Converses a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.conversations.get()`
-
-Gets a Conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
-
-#### `projects.locations.collections.dataStores.conversations.patch()`
-
-Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.conversations.create()`
-
-Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.dataStores.suggestionDenyListEntries`
-
-#### `projects.locations.collections.dataStores.suggestionDenyListEntries.purge()`
-
-Permanently deletes all SuggestionDenyListEntry for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.suggestionDenyListEntries.import()`
-
-Imports all SuggestionDenyListEntry for a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.dataStores.sessions`
-
-#### `projects.locations.collections.dataStores.sessions.delete()`
-
-Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-
-#### `projects.locations.collections.dataStores.sessions.get()`
-
-Gets a Session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
-| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
-
-#### `projects.locations.collections.dataStores.sessions.patch()`
-
-Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.sessions.list()`
-
-Lists all Sessions by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
-| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-
-#### `projects.locations.collections.dataStores.sessions.create()`
-
-Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.dataStores.sessions.answers`
-
-#### `projects.locations.collections.dataStores.sessions.answers.get()`
-
-Gets a Answer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
-
-### `projects.locations.collections.dataStores.controls`
-
-#### `projects.locations.collections.dataStores.controls.delete()`
-
-Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.collections.dataStores.controls.get()`
-
-Gets a Control.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
-
-#### `projects.locations.collections.dataStores.controls.patch()`
-
-Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
-| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.controls.create()`
-
-Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.controls.list()`
-
-Lists all Controls by their parent DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
-| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
-| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
-
-### `projects.locations.collections.dataStores.branches`
-
-#### `projects.locations.collections.dataStores.branches.batchGetDocumentsMetadata()`
-
-Gets index freshness metadata for Documents. Supported for website search only.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.matcher.urisMatcher.uris` | `string` | No | The exact URIs to match by. |
-| `params.matcher.fhirMatcher.fhirResources` | `string` | No | Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} |
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
-
-### `projects.locations.collections.dataStores.branches.operations`
-
-#### `projects.locations.collections.dataStores.branches.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-
-#### `projects.locations.collections.dataStores.branches.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.collections.dataStores.branches.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.dataStores.branches.documents`
-
-#### `projects.locations.collections.dataStores.branches.documents.patch()`
-
-Updates a Document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.allowMissing` | `boolean` | No | If set to `true` and the Document is not found, a new Document is be created. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided imported 'document' to update. If not set, by default updates all fields. |
-| `params.name` | `string` | Yes | Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.branches.documents.import()`
-
-Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Requires create/update permission. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.branches.documents.get()`
-
-Gets a Document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to access the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not exist, a `NOT_FOUND` error is returned. |
-
-#### `projects.locations.collections.dataStores.branches.documents.delete()`
-
-Deletes a Document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to delete the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not exist, a `NOT_FOUND` error is returned. |
-
-#### `projects.locations.collections.dataStores.branches.documents.create()`
-
-Creates a Document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
-| `params.documentId` | `string` | No | Required. The ID to use for the Document, which becomes the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.branches.documents.purge()`
-
-Permanently deletes all selected Documents in a branch. This process is asynchronous. Depending on the number of Documents to be deleted, this operation can take hours to complete. Before the delete operation completes, some Documents might still be returned by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents to be deleted, set PurgeDocumentsRequest.force to false.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.branches.documents.list()`
-
-Gets a list of Documents.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of Documents to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 are set to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
-| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Use `default_branch` as the branch ID, to list documents under the default branch. If the caller does not have permission to list Documents under this branch, regardless of whether or not this branch exists, a `PERMISSION_DENIED` error is returned. |
-| `params.pageToken` | `string` | No | A page token ListDocumentsResponse.next_page_token, received from a previous DocumentService.ListDocuments call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DocumentService.ListDocuments must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
-
-### `projects.locations.collections.dataStores.customModels`
-
-#### `projects.locations.collections.dataStores.customModels.list()`
-
-Gets a list of all the custom models.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataStore` | `string` | Yes | Required. The resource name of the parent Data Store, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. This field is used to identify the data store where to fetch the models from. |
+| `params.name` | `string` | Yes | Required. Resource name of SiteSearchEngine, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to access the [SiteSearchEngine], regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
 
 ### `projects.locations.collections.dataStores.completionSuggestions`
 
@@ -2187,20 +1132,116 @@ Permanently deletes all CompletionSuggestions for a DataStore.
 | `params.parent` | `string` | Yes | Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.collections.dataStores.completionConfig`
+### `projects.locations.collections.dataStores.servingConfigs`
 
-#### `projects.locations.collections.dataStores.completionConfig.completeQuery()`
+#### `projects.locations.collections.dataStores.servingConfigs.answer()`
 
-Completes the user input with advanced keyword suggestions.
+Answer query method.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.collections.dataStores.operations`
+#### `projects.locations.collections.dataStores.servingConfigs.patch()`
 
-#### `projects.locations.collections.dataStores.operations.get()`
+Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.list()`
+
+Lists all ServingConfigs linked to this dataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+
+#### `projects.locations.collections.dataStores.servingConfigs.searchLite()`
+
+Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.streamAnswer()`
+
+Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.recommend()`
+
+Makes a recommendation, which requires a contextual user event.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.get()`
+
+Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
+#### `projects.locations.collections.dataStores.servingConfigs.delete()`
+
+Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
+#### `projects.locations.collections.dataStores.servingConfigs.create()`
+
+Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.search()`
+
+Performs a search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.models`
+
+### `projects.locations.collections.dataStores.models.operations`
+
+#### `projects.locations.collections.dataStores.models.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+
+#### `projects.locations.collections.dataStores.models.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
@@ -2208,28 +1249,157 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.collections.dataStores.operations.list()`
+### `projects.locations.collections.dataStores.suggestionDenyListEntries`
+
+#### `projects.locations.collections.dataStores.suggestionDenyListEntries.purge()`
+
+Permanently deletes all SuggestionDenyListEntry for a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.suggestionDenyListEntries.import()`
+
+Imports all SuggestionDenyListEntry for a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*/locations/*/collections/*/dataStores/*. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.branches`
+
+#### `projects.locations.collections.dataStores.branches.batchGetDocumentsMetadata()`
+
+Gets index freshness metadata for Documents. Supported for website search only.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.matcher.urisMatcher.uris` | `string` | No | The exact URIs to match by. |
+| `params.matcher.fhirMatcher.fhirResources` | `string` | No | Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
+
+### `projects.locations.collections.dataStores.branches.operations`
+
+#### `projects.locations.collections.dataStores.branches.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.branches.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
 | `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
 
-### `projects.locations.collections.dataStores.userEvents`
+#### `projects.locations.collections.dataStores.branches.operations.get()`
 
-#### `projects.locations.collections.dataStores.userEvents.purge()`
-
-Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the catalog under which the events are created. The format is `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.collections.dataStores.branches.documents`
+
+#### `projects.locations.collections.dataStores.branches.documents.list()`
+
+Gets a list of Documents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Maximum number of Documents to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 are set to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
+| `params.pageToken` | `string` | No | A page token ListDocumentsResponse.next_page_token, received from a previous DocumentService.ListDocuments call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to DocumentService.ListDocuments must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Use `default_branch` as the branch ID, to list documents under the default branch. If the caller does not have permission to list Documents under this branch, regardless of whether or not this branch exists, a `PERMISSION_DENIED` error is returned. |
+
+#### `projects.locations.collections.dataStores.branches.documents.patch()`
+
+Updates a Document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.allowMissing` | `boolean` | No | If set to `true` and the Document is not found, a new Document is be created. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided imported 'document' to update. If not set, by default updates all fields. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.branches.documents.create()`
+
+Creates a Document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
+| `params.documentId` | `string` | No | Required. The ID to use for the Document, which becomes the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 128 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.branches.documents.purge()`
+
+Permanently deletes all selected Documents in a branch. This process is asynchronous. Depending on the number of Documents to be deleted, this operation can take hours to complete. Before the delete operation completes, some Documents might still be returned by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents to be deleted, set PurgeDocumentsRequest.force to false.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.branches.documents.import()`
+
+Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items are created. Note: It is possible for a subset of the Documents to be successfully updated.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. Requires create/update permission. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.branches.documents.delete()`
+
+Deletes a Document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to delete the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not exist, a `NOT_FOUND` error is returned. |
+
+#### `projects.locations.collections.dataStores.branches.documents.get()`
+
+Gets a Document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Document, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`. If the caller does not have permission to access the Document, regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not exist, a `NOT_FOUND` error is returned. |
+
+### `projects.locations.collections.dataStores.userEvents`
+
+#### `projects.locations.collections.dataStores.userEvents.import()`
+
+Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.userEvents.collect()`
+
+Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
+| `params.uri` | `string` | No | The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for third-party requests. |
+| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
 
 #### `projects.locations.collections.dataStores.userEvents.write()`
 
@@ -2241,37 +1411,331 @@ Writes a single user event.
 | `params.writeAsync` | `boolean` | No | If set to true, the user event is written asynchronously after validation, and the API responds without waiting for the write. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.userEvents.collect()`
+#### `projects.locations.collections.dataStores.userEvents.purge()`
 
-Writes a single user event from the browser. This uses a GET request to due to browser restriction of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript pixel and Google Tag Manager. Users should not call this method directly.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userEvent` | `string` | No | Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters. |
-| `params.uri` | `string` | No | The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000 characters. This is often more useful than the referer URL, because many browsers only send the domain for third-party requests. |
-| `params.ets` | `string` | No | The event timestamp in milliseconds. This prevents browser caching of otherwise identical get requests. The name is abbreviated to reduce the payload bytes. |
-| `params.parent` | `string` | Yes | Required. The parent resource name. If the collect user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the collect user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. |
-
-#### `projects.locations.collections.dataStores.userEvents.import()`
-
-Bulk import of user events. Request processing might be synchronous. Events that already exist are skipped. Use this method for backfilling historical user events. Operation.response is of type ImportResponse. Note that it is possible for a subset of the items to be successfully inserted. Operation.metadata is of type ImportMetadata.
+Deletes permanently all user events specified by the filter provided. Depending on the number of events specified by the filter, this operation could take hours or days to complete. To test a filter, use the list command first.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` |
+| `params.parent` | `string` | Yes | Required. The resource name of the catalog under which the events are created. The format is `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.sessions`
+
+#### `projects.locations.collections.dataStores.sessions.patch()`
+
+Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.sessions.list()`
+
+Lists all Sessions by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+
+#### `projects.locations.collections.dataStores.sessions.create()`
+
+Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.sessionId` | `string` | No | Optional. The ID to use for the session, which will become the final component of the session's resource name. This value should be 1-63 characters, and valid characters are /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.sessions.get()`
+
+Gets a Session.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
+| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
+
+#### `projects.locations.collections.dataStores.sessions.delete()`
+
+Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
+
+### `projects.locations.collections.dataStores.sessions.answers`
+
+#### `projects.locations.collections.dataStores.sessions.answers.get()`
+
+Gets a Answer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
+
+### `projects.locations.collections.dataStores.completionConfig`
+
+#### `projects.locations.collections.dataStores.completionConfig.completeQuery()`
+
+Completes the user input with advanced keyword suggestions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.customModels`
+
+#### `projects.locations.collections.dataStores.customModels.list()`
+
+Gets a list of all the custom models.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataStore` | `string` | Yes | Required. The resource name of the parent Data Store, such as `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`. This field is used to identify the data store where to fetch the models from. |
+
+### `projects.locations.collections.dataStores.siteSearchEngine`
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.disableAdvancedSiteSearch()`
+
+Downgrade from advanced site search to basic site search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.batchVerifyTargetSites()`
+
+Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being verified. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.fetchDomainVerificationStatus()`
+
+Returns list of target sites with its domain verification status. This method can only be called under data store with BASIC_SITE_SEARCH state at the moment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `FetchDomainVerificationStatus` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchDomainVerificationStatus` must match the call that provided the page token. |
+| `params.siteSearchEngine` | `string` | Yes | Required. The site search engine resource under which we fetch all the domain verification status. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.enableAdvancedSiteSearch()`
+
+Upgrade from basic site search to advanced site search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.recrawlUris()`
+
+Request on-demand recrawl for a list of URIs.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.siteSearchEngine.operations`
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.collections.dataStores.siteSearchEngine.targetSites`
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.delete()`
+
+Deletes a TargetSite.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.get()`
+
+Gets a TargetSite.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.batchCreate()`
+
+Creates TargetSite in a batch.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.patch()`
+
+Updates a TargetSite.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.list()`
+
+Gets a list of TargetSites.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListTargetSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargetSites` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent site search engine resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to list TargetSites under this site search engine, regardless of whether or not this branch exists, a PERMISSION_DENIED error is returned. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.create()`
+
+Creates a TargetSite.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations`
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps`
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.fetch()`
+
+Fetch Sitemaps in a DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
+| `params.matcher.urisMatcher.uris` | `string` | No | The Sitemap uris. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.create()`
+
+Creates a Sitemap.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.delete()`
+
+Deletes a Sitemap.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Sitemap, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`. If the caller does not have permission to access the Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a NOT_FOUND error is returned. |
+
+### `projects.locations.collections.dataStores.conversations`
+
+#### `projects.locations.collections.dataStores.conversations.create()`
+
+Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.conversations.converse()`
+
+Converses a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.conversations.patch()`
+
+Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.conversations.list()`
+
+Lists all Conversations by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
+
+#### `projects.locations.collections.dataStores.conversations.delete()`
+
+Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
+
+#### `projects.locations.collections.dataStores.conversations.get()`
+
+Gets a Conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
 
 ### `projects.locations.collections.dataStores.widgetConfigs`
-
-#### `projects.locations.collections.dataStores.widgetConfigs.patch()`
-
-Update a WidgetConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.collections.dataStores.widgetConfigs.get()`
 
@@ -2280,8 +1744,67 @@ Gets a WidgetConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}` |
-| `params.acceptCache` | `boolean` | No | Optional. Whether it's acceptable to load the widget config from cache. If set to true, recent changes on widget configs may take a few minutes to reflect on the end user's view. It's recommended to set to true for maturely developed widgets, as it improves widget performance. Set to false to see changes reflected in prod right away, if your widget is under development. |
 | `params.getWidgetConfigRequestOption.turnOffCollectionComponents` | `boolean` | No | Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission. |
+| `params.acceptCache` | `boolean` | No | Optional. Whether it's acceptable to load the widget config from cache. If set to true, recent changes on widget configs may take a few minutes to reflect on the end user's view. It's recommended to set to true for maturely developed widgets, as it improves widget performance. Set to false to see changes reflected in prod right away, if your widget is under development. |
+
+#### `projects.locations.collections.dataStores.widgetConfigs.patch()`
+
+Update a WidgetConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
+| `params.name` | `string` | Yes | Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.dataStores.controls`
+
+#### `projects.locations.collections.dataStores.controls.get()`
+
+Gets a Control.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+#### `projects.locations.collections.dataStores.controls.delete()`
+
+Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+#### `projects.locations.collections.dataStores.controls.patch()`
+
+Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
+| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.controls.list()`
+
+Lists all Controls by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+
+#### `projects.locations.collections.dataStores.controls.create()`
+
+Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.collections.dataStores.schemas`
 
@@ -2294,22 +1817,6 @@ Creates a Schema.
 | `params.parent` | `string` | Yes | Required. The parent data store resource name, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. |
 | `params.schemaId` | `string` | No | Required. The ID to use for the Schema, which becomes the final component of the Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.schemas.delete()`
-
-Deletes a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
-
-#### `projects.locations.collections.dataStores.schemas.get()`
-
-Gets a Schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
 
 #### `projects.locations.collections.dataStores.schemas.list()`
 
@@ -2331,6 +1838,22 @@ Updates a Schema.
 | `params.allowMissing` | `boolean` | No | If set to true, and the Schema is not found, a new Schema is created. In this situation, `update_mask` is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.collections.dataStores.schemas.get()`
+
+Gets a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
+
+#### `projects.locations.collections.dataStores.schemas.delete()`
+
+Deletes a Schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. |
+
 ### `projects.locations.collections.dataStores.schemas.operations`
 
 #### `projects.locations.collections.dataStores.schemas.operations.list()`
@@ -2339,11 +1862,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
 
 #### `projects.locations.collections.dataStores.schemas.operations.get()`
 
@@ -2353,124 +1876,21 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-### `projects.locations.collections.dataStores.siteSearchEngine`
+### `projects.locations.collections.dataStores.operations`
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.batchVerifyTargetSites()`
-
-Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being verified. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.disableAdvancedSiteSearch()`
-
-Downgrade from advanced site search to basic site search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.recrawlUris()`
-
-Request on-demand recrawl for a list of URIs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.enableAdvancedSiteSearch()`
-
-Upgrade from basic site search to advanced site search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteSearchEngine` | `string` | Yes | Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.fetchDomainVerificationStatus()`
-
-Returns list of target sites with its domain verification status. This method can only be called under data store with BASIC_SITE_SEARCH state at the moment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. |
-| `params.siteSearchEngine` | `string` | Yes | Required. The site search engine resource under which we fetch all the domain verification status. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `FetchDomainVerificationStatus` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchDomainVerificationStatus` must match the call that provided the page token. |
-
-### `projects.locations.collections.dataStores.siteSearchEngine.targetSites`
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.get()`
-
-Gets a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.list()`
-
-Gets a list of TargetSites.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent site search engine resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. If the caller does not have permission to list TargetSites under this site search engine, regardless of whether or not this branch exists, a PERMISSION_DENIED error is returned. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. If this field is negative, an INVALID_ARGUMENT error is returned. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListTargetSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargetSites` must match the call that provided the page token. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.delete()`
-
-Deletes a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`. If the caller does not have permission to access the TargetSite, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested TargetSite does not exist, a NOT_FOUND error is returned. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.create()`
-
-Creates a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.batchCreate()`
-
-Creates TargetSite in a batch.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.patch()`
-
-Updates a TargetSite.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations`
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations.list()`
+#### `projects.locations.collections.dataStores.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.targetSites.operations.get()`
+#### `projects.locations.collections.dataStores.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
@@ -2478,49 +1898,76 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps`
+### `projects.locations.collections.engines`
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.create()`
+#### `projects.locations.collections.engines.patch()`
 
-Creates a Sitemap.
+Updates an Engine
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
+| `params.name` | `string` | Yes | Immutable. Identifier. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a length limit of 1024 characters. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` engine should be 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Engine to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.fetch()`
+#### `projects.locations.collections.engines.list()`
 
-Fetch Sitemaps in a DataStore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name of the SiteSearchEngine, such as `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`. |
-| `params.matcher.urisMatcher.uris` | `string` | No | The Sitemap uris. |
-
-#### `projects.locations.collections.dataStores.siteSearchEngine.sitemaps.delete()`
-
-Deletes a Sitemap.
+Lists all the Engines associated with the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Full resource name of Sitemap, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/sitemaps/{sitemap}`. If the caller does not have permission to access the Sitemap, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested Sitemap does not exist, a NOT_FOUND error is returned. |
+| `params.pageSize` | `integer` | No | Optional. Not supported. |
+| `params.pageToken` | `string` | No | Optional. Not supported. |
+| `params.filter` | `string` | No | Optional. Filter by solution type. For example: solution_type=SOLUTION_TYPE_SEARCH |
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection_id}`. |
 
-### `projects.locations.collections.dataStores.siteSearchEngine.operations`
+#### `projects.locations.collections.engines.create()`
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Creates an Engine.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}/collections/{collection}`. |
+| `params.engineId` | `string` | No | Required. The ID to use for the Engine, which will become the final component of the Engine's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.siteSearchEngine.operations.get()`
+#### `projects.locations.collections.engines.setIamPolicy()`
+
+Sets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. **Important:** When setting a policy directly on an Engine resource, the only recommended roles in the bindings are: `roles/discoveryengine.user` and `roles/discoveryengine.agentspaceUser`. Attempting to grant any other role will result in a warning in logging.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.delete()`
+
+Deletes an Engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. If the caller does not have permission to delete the Engine, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Engine to delete does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.engines.getIamPolicy()`
+
+Gets the IAM access control policy for an Engine. A `NOT_FOUND` error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.collections.engines.get()`
+
+Gets an Engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Engine, such as `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+
+### `projects.locations.collections.engines.operations`
+
+#### `projects.locations.collections.engines.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
@@ -2528,11 +1975,265 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-### `projects.locations.collections.dataStores.models`
+#### `projects.locations.collections.engines.operations.cancel()`
 
-### `projects.locations.collections.dataStores.models.operations`
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
-#### `projects.locations.collections.dataStores.models.operations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+
+### `projects.locations.collections.engines.widgetConfigs`
+
+#### `projects.locations.collections.engines.widgetConfigs.get()`
+
+Gets a WidgetConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full WidgetConfig resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}` |
+| `params.getWidgetConfigRequestOption.turnOffCollectionComponents` | `boolean` | No | Optional. Whether to turn off collection_components in WidgetConfig to reduce latency and data transmission. |
+| `params.acceptCache` | `boolean` | No | Optional. Whether it's acceptable to load the widget config from cache. If set to true, recent changes on widget configs may take a few minutes to reflect on the end user's view. It's recommended to set to true for maturely developed widgets, as it improves widget performance. Set to false to see changes reflected in prod right away, if your widget is under development. |
+
+#### `projects.locations.collections.engines.widgetConfigs.patch()`
+
+Update a WidgetConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The full resource name of the widget config. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided WidgetConfig to update. The following are the only supported fields: * WidgetConfig.enable_autocomplete If not set, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.engines.controls`
+
+#### `projects.locations.collections.engines.controls.create()`
+
+Creates a Control. By default 1000 controls are allowed for a data store. A request can be submitted to adjust this limit. If the Control to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value must be within 1-63 characters. Valid characters are /a-z-_/. |
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.controls.patch()`
+
+Updates a Control. Control action type cannot be changed. If the Control to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name * Control.solution_type If not set or empty, all supported fields are updated. |
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/dataStore/*/controls/*` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.controls.list()`
+
+Lists all Controls by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListControls` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to apply on the list results. Supported features: * List all the products under the parent branch if filter is unset. Currently this field is unsupported. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}` or `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}`. |
+
+#### `projects.locations.collections.engines.controls.delete()`
+
+Deletes a Control. If the Control to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to delete. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+#### `projects.locations.collections.engines.controls.get()`
+
+Gets a Control.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Control to get. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/controls/{control_id}` |
+
+### `projects.locations.collections.engines.assistants`
+
+#### `projects.locations.collections.engines.assistants.delete()`
+
+Deletes an Assistant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` If the caller does not have permission to delete the Assistant, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the Assistant to delete does not exist, a NOT_FOUND error is returned. |
+
+#### `projects.locations.collections.engines.assistants.get()`
+
+Gets an Assistant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` |
+
+#### `projects.locations.collections.engines.assistants.streamAssist()`
+
+Assists the user with a query in a streaming fashion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.create()`
+
+Creates an Assistant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.assistantId` | `string` | No | Required. The ID to use for the Assistant, which will become the final component of the Assistant's resource name. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with a length limit of 63 characters. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.patch()`
+
+Updates an Assistant
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The list of fields to update. |
+| `params.name` | `string` | Yes | Immutable. Resource name of the assistant. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}` It must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.list()`
+
+Lists all Assistants under an Engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.pageSize` | `integer` | No | Maximum number of Assistants to return. If unspecified, defaults to 100. The maximum allowed value is 1000; anything above that will be coerced down to 1000. |
+| `params.pageToken` | `string` | No | A page token ListAssistantsResponse.next_page_token, received from a previous AssistantService.ListAssistants call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to ListAssistants must match the call that provided the page token. |
+
+### `projects.locations.collections.engines.assistants.agents`
+
+### `projects.locations.collections.engines.assistants.agents.a2a`
+
+### `projects.locations.collections.engines.assistants.agents.a2a.v1`
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.getCard()`
+
+GetAgentCard returns the agent card for the agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+
+### `projects.locations.collections.engines.assistants.agents.a2a.v1.message`
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.message.stream()`
+
+SendStreamingMessage is a streaming call that will return a stream of task update events until the Task is in an interrupted or terminal state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.message.send()`
+
+Send a message to the agent. This is a blocking call that will return the task once it is completed, or a LRO if requested.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks`
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.get()`
+
+Get the current state of a task from the agent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.historyLength` | `integer` | No | The number of most recent messages from the task's history to retrieve. |
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.name` | `string` | Yes | Required. The resource name of the task. Format: tasks/{task_id} |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.cancel()`
+
+Cancel a task from the agent. If supported one should expect no more task updates for the task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.name` | `string` | Yes | The resource name of the task to cancel. Format: tasks/{task_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.subscribe()`
+
+TaskSubscription is a streaming call that will return a stream of task update events. This attaches the stream to an existing in process task. If the task is complete the stream will return the completed task (like GetTask) and close the stream.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.name` | `string` | Yes | The resource name of the task to subscribe to. Format: tasks/{task_id} |
+
+### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs`
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.list()`
+
+Get a list of push notifications configured for a task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | The parent task resource. Format: tasks/{task_id} |
+| `params.pageSize` | `integer` | No | For AIP-158 these fields are present. Usually not used/needed. The maximum number of configurations to return. If unspecified, all configs will be returned. |
+| `params.pageToken` | `string` | No | A page token received from a previous ListTaskPushNotificationConfigRequest call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTaskPushNotificationConfigRequest` must match the call that provided the page token. |
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.create()`
+
+Set a push notification config for a task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.parent` | `string` | Yes | Required. The parent task resource for this config. Format: tasks/{task_id} |
+| `params.configId` | `string` | No | Required. The ID for the new config. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.delete()`
+
+Delete a push notification config for a task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.name` | `string` | Yes | The resource name of the config to delete. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} |
+
+#### `projects.locations.collections.engines.assistants.agents.a2a.v1.tasks.pushNotificationConfigs.get()`
+
+Get a push notification config for a task.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tenant` | `string` | Yes | Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. |
+| `params.name` | `string` | Yes | The resource name of the config to retrieve. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} |
+
+### `projects.locations.collections.engines.assistants.agents.operations`
+
+#### `projects.locations.collections.engines.assistants.agents.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
@@ -2540,30 +2241,86 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.collections.dataStores.models.operations.list()`
+### `projects.locations.collections.engines.completionConfig`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+#### `projects.locations.collections.engines.completionConfig.completeQuery()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-### `projects.locations.collections.dataStores.servingConfigs`
-
-#### `projects.locations.collections.dataStores.servingConfigs.answer()`
-
-Answer query method.
+Completes the user input with advanced keyword suggestions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.completionConfig` | `string` | Yes | Required. The completion_config of the parent dataStore or engine resource name for which the completion is performed, such as `projects/*/locations/global/collections/default_collection/dataStores/*/completionConfig` `projects/*/locations/global/collections/default_collection/engines/*/completionConfig`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.delete()`
+### `projects.locations.collections.engines.conversations`
+
+#### `projects.locations.collections.engines.conversations.get()`
+
+Gets a Conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
+
+#### `projects.locations.collections.engines.conversations.delete()`
+
+Deletes a Conversation. If the Conversation to delete does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}` |
+
+#### `projects.locations.collections.engines.conversations.create()`
+
+Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.conversations.patch()`
+
+Updates a Conversation. Conversation action type cannot be changed. If the Conversation to update does not exist, a NOT_FOUND error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Conversation to update. The following are NOT supported: * Conversation.name If not set or empty, all supported fields are updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.conversations.list()`
+
+Lists all Conversations by their parent DataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListConversations` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | A filter to apply on the list results. The supported features are: user_pseudo_id, state. Example: "user_pseudo_id = some_id" |
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `conversation_name` Example: "update_time desc" "create_time" |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+
+#### `projects.locations.collections.engines.conversations.converse()`
+
+Converses a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Conversation to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`. Use `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/conversations/-` to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation session. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.collections.engines.servingConfigs`
+
+#### `projects.locations.collections.engines.servingConfigs.get()`
+
+Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
+#### `projects.locations.collections.engines.servingConfigs.delete()`
 
 Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
 
@@ -2571,7 +2328,27 @@ Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
 
-#### `projects.locations.collections.dataStores.servingConfigs.searchLite()`
+#### `projects.locations.collections.engines.servingConfigs.patch()`
+
+Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.servingConfigs.list()`
+
+Lists all ServingConfigs linked to this dataStore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+
+#### `projects.locations.collections.engines.servingConfigs.searchLite()`
 
 Performs a search. Similar to the SearchService.Search method, but a lite version that allows API key for authentication, where OAuth and IAM checks are not required. Only public website search is supported by this method. If data stores and engines not associated with public website search are specified, a `FAILED_PRECONDITION` error is returned. This method can be used for easy onboarding without having to implement an authentication backend. However, it is strongly recommended to use SearchService.Search instead with required OAuth and IAM checks to provide better data security.
 
@@ -2580,17 +2357,43 @@ Performs a search. Similar to the SearchService.Search method, but a lite versio
 | `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.list()`
+#### `projects.locations.collections.engines.servingConfigs.streamAnswer()`
 
-Lists all ServingConfigs linked to this dataStore.
+Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to retrieve the subsequent page. |
-| `params.parent` | `string` | Yes | Required. Full resource name of the parent resource. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value greater than 100 is provided, at most 100 results are returned. |
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.create()`
+#### `projects.locations.collections.engines.servingConfigs.recommend()`
+
+Makes a recommendation, which requires a contextual user event.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.servingConfigs.answer()`
+
+Answer query method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. Or the resource name of the agent engine serving config, such as: `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_agent_answer`. (use when `enable_agent_invocation` set to true, and you have custom `AI_MODE` agent engine configured) This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.servingConfigs.search()`
+
+Performs a search.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.servingConfigs.create()`
 
 Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
 
@@ -2600,66 +2403,97 @@ Creates a ServingConfig. Note: The Google Cloud console works only with the defa
 | `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.search()`
+### `projects.locations.collections.engines.sessions`
 
-Performs a search.
+#### `projects.locations.collections.engines.sessions.patch()`
+
+Updates a Session. Session action type cannot be changed. If the Session to update does not exist, a NOT_FOUND error is returned.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*` |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided Session to update. The following are NOT supported: * Session.name If not set or empty, all supported fields are updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.streamAnswer()`
+#### `projects.locations.collections.engines.sessions.list()`
 
-Answer query method (streaming). It takes one AnswerQueryRequest and returns multiple AnswerQueryResponse messages in a stream.
+Lists all Sessions by their parent DataStore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. The resource name of the Search serving config, such as `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`, or `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`. This field is used to identify the serving configuration name, set of models used to make the search. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
+| `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
+| `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` * `collaborative_project` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` * `collaborative_project = "projects/123/locations/global/collections/default_collection/engines/" "default_engine/collaborative_projects/cp1"` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
+
+#### `projects.locations.collections.engines.sessions.create()`
+
+Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent data store. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
+| `params.sessionId` | `string` | No | Optional. The ID to use for the session, which will become the final component of the session's resource name. This value should be 1-63 characters, and valid characters are /a-z0-9{0,61}[a-z0-9]/. If not specified, a unique ID will be generated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.recommend()`
+#### `projects.locations.collections.engines.sessions.get()`
 
-Makes a recommendation, which requires a contextual user event.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.collections.dataStores.servingConfigs.patch()`
-
-Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+Gets a Session.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}` |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The resource name of the Session to get. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
+| `params.includeAnswerDetails` | `boolean` | No | Optional. If set to true, the full session including all answer details will be returned. |
 
-#### `projects.locations.collections.dataStores.servingConfigs.get()`
+#### `projects.locations.collections.engines.sessions.delete()`
 
-Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+| `params.name` | `string` | Yes | Required. The resource name of the Session to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}` |
 
-### `projects.locations.collections.operations`
+### `projects.locations.collections.engines.sessions.answers`
 
-#### `projects.locations.collections.operations.list()`
+#### `projects.locations.collections.engines.sessions.answers.get()`
+
+Gets a Answer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Answer to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}` |
+
+### `projects.locations.collections.dataConnector`
+
+#### `projects.locations.collections.dataConnector.mcp()`
+
+ServeMcpDeleteRequest serves a MCP DELETE request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectsId` | `string` | Yes |  |
+| `params.locationsId` | `string` | Yes |  |
+| `params.contentType` | `string` | No | The HTTP Content-Type header value specifying the content type of the body. |
+| `params.collectionsId` | `string` | Yes |  |
+| `params.data` | `string` | No | The HTTP request/response body as raw binary. |
+| `params.extensions` | `object` | No | Application specific response metadata. Must be set in the first response for streaming APIs. |
+
+### `projects.locations.collections.dataConnector.operations`
+
+#### `projects.locations.collections.dataConnector.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
-#### `projects.locations.collections.operations.get()`
+#### `projects.locations.collections.dataConnector.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
@@ -2667,13 +2501,218 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-### `projects.locations.groundingConfigs`
+### `projects.locations.userStores`
 
-#### `projects.locations.groundingConfigs.check()`
+#### `projects.locations.userStores.patch()`
 
-Performs a grounding check.
+Updates the User Store.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.groundingConfig` | `string` | Yes | Required. The resource name of the grounding config, such as `projects/*/locations/global/groundingConfigs/default_grounding_config`. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.name` | `string` | Yes | Immutable. The full resource name of the User Store, in the format of `projects/{project}/locations/{location}/userStores/{user_store}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.userStores.get()`
+
+Gets the User Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the User Store to get. Format: `projects/{project}/locations/{location}/userStores/{user_store_id}` |
+
+#### `projects.locations.userStores.batchUpdateUserLicenses()`
+
+Updates the User License. This method is used for batch assign/unassign licenses to users.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.userStores.userLicenses`
+
+#### `projects.locations.userStores.userLicenses.list()`
+
+Lists the User Licenses.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Optional. The order in which the UserLicenses are listed. The value must be a comma-separated list of fields. Default sorting order is ascending. To specify descending order for a field, append a " desc" suffix. Redundant space characters in the syntax are insignificant. Supported fields (only `user_principal` is supported for now): * `user_principal` If not set, the default ordering is by `user_principal`. Examples: * `user_principal` to order by `user_principal` in ascending order. * `user_principal desc` to order by `user_principal` in descending order. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, defaults to 10. The maximum value is 50; values above 50 will be coerced to 50. If this field is negative, an INVALID_ARGUMENT error is returned. |
+| `params.parent` | `string` | Yes | Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
+| `params.filter` | `string` | No | Optional. Filter for the list request. Supported fields: * `license_assignment_state` * `user_principal` * Examples: * `license_assignment_state = ASSIGNED` to list assigned user licenses. * `license_assignment_state = NO_LICENSE` to list not licensed users. * `license_assignment_state = NO_LICENSE_ATTEMPTED_LOGIN` to list users who attempted login but no license assigned. * `license_assignment_state != NO_LICENSE_ATTEMPTED_LOGIN` to filter out users who attempted login but no license assigned. * `user_principal = user1@example.com` to list user license for `user1@example.com`. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListUserLicenses` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUserLicenses` must match the call that provided the page token. |
+
+### `projects.locations.userStores.licenseConfigsUsageStats`
+
+#### `projects.locations.userStores.licenseConfigsUsageStats.list()`
+
+Lists all the LicenseConfigUsageStatss associated with the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}/userStores/{user_store_id}`. |
+
+### `projects.locations.podcasts`
+
+### `projects.locations.podcasts.operations`
+
+#### `projects.locations.podcasts.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.licenseConfigs`
+
+#### `projects.locations.licenseConfigs.patch()`
+
+Updates the LicenseConfig
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Identifier. The fully qualified resource name of the license config. Format: `projects/{project}/locations/{location}/licenseConfigs/{license_config}` |
+| `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided LicenseConfig to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.licenseConfigs.create()`
+
+Creates a LicenseConfig This method should only be used for creating NotebookLm licenses or Gemini Enterprise free trial licenses.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}`. |
+| `params.licenseConfigId` | `string` | No | Optional. The ID to use for the LicenseConfig, which will become the final component of the LicenseConfig's resource name. We are using the tier (product edition) name as the license config id such as `search` or `search_and_assistant`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.licenseConfigs.get()`
+
+Gets a LicenseConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of LicenseConfig, such as `projects/{project}/locations/{location}/licenseConfigs/*`. If the caller does not have permission to access the LicenseConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. If the requested LicenseConfig does not exist, a NOT_FOUND error is returned. |
+
+### `projects.locations.identityMappingStores`
+
+#### `projects.locations.identityMappingStores.get()`
+
+Gets the Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Identity Mapping Store to get. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
+
+#### `projects.locations.identityMappingStores.delete()`
+
+Deletes the Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Identity Mapping Store to delete. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
+
+#### `projects.locations.identityMappingStores.listIdentityMappings()`
+
+Lists Identity Mappings in an Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to list Identity Mapping Entries in. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
+| `params.pageSize` | `integer` | No | Maximum number of IdentityMappings to return. If unspecified, defaults to 2000. The maximum allowed value is 10000. Values above 10000 will be coerced to 10000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityMappings` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityMappings` must match the call that provided the page token. |
+
+#### `projects.locations.identityMappingStores.create()`
+
+Creates a new Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.identityMappingStoreId` | `string` | No | Required. The ID of the Identity Mapping Store to create. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 63 characters. |
+| `params.cmekConfigName` | `string` | No | Resource name of the CmekConfig to use for protecting this Identity Mapping Store. |
+| `params.disableCmek` | `boolean` | No | Identity Mapping Store without CMEK protections. If a default CmekConfig is set for the project, setting this field will override the default CmekConfig as well. |
+| `params.parent` | `string` | Yes | Required. The parent collection resource name, such as `projects/{project}/locations/{location}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.identityMappingStores.importIdentityMappings()`
+
+Imports a list of Identity Mapping Entries to an Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to import Identity Mapping Entries to. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.identityMappingStores.purgeIdentityMappings()`
+
+Purges specified or all Identity Mapping Entries from an Identity Mapping Store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.identityMappingStore` | `string` | Yes | Required. The name of the Identity Mapping Store to purge Identity Mapping Entries from. Format: `projects/{project}/locations/{location}/identityMappingStores/{identityMappingStore}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.identityMappingStores.list()`
+
+Lists all Identity Mapping Stores.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the Identity Mapping Stores to list. Format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Maximum number of IdentityMappingStores to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityMappingStores` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityMappingStores` must match the call that provided the page token. |
+
+### `projects.locations.identityMappingStores.operations`
+
+#### `projects.locations.identityMappingStores.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.identityMappingStores.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.operations`
+
+#### `projects.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
