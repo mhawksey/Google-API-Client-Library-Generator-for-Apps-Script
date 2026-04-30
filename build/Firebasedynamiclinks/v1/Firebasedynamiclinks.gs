@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase Dynamic Links API
  * Documentation URL: https://firebase.google.com/docs/dynamic-links/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebasedynamiclinks {
