@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigQuery API (version: v2)** in Go
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:23:38 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:01:01 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:31:32 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:31:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:02 GMT
 
 
