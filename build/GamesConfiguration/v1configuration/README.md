@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services Publish
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:44:30 GMT
-- **Last Modified:** Tue, 31 Mar 2026 23:44:30 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:57:06 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:57:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:09 GMT
 
 
@@ -16,6 +16,14 @@ Auto-generated client library for using the **Google Play Games Services Publish
 
 ### `achievementConfigurations`
 
+#### `achievementConfigurations.delete()`
+
+Delete the achievement configuration with the given ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
+
 #### `achievementConfigurations.get()`
 
 Retrieves the metadata of the achievement configuration with the given ID.
@@ -23,6 +31,15 @@ Retrieves the metadata of the achievement configuration with the given ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
+
+#### `achievementConfigurations.insert()`
+
+Insert a new achievement configuration in this application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `achievementConfigurations.update()`
 
@@ -43,41 +60,7 @@ Returns a list of the achievement configurations in this application.
 | `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
 | `params.pageToken` | `string` | No | The token returned by the previous request. |
 
-#### `achievementConfigurations.insert()`
-
-Insert a new achievement configuration in this application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `achievementConfigurations.delete()`
-
-Delete the achievement configuration with the given ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
-
 ### `leaderboardConfigurations`
-
-#### `leaderboardConfigurations.delete()`
-
-Delete the leaderboard configuration with the given ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
-
-#### `leaderboardConfigurations.insert()`
-
-Insert a new leaderboard configuration in this application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `leaderboardConfigurations.list()`
 
@@ -89,13 +72,14 @@ Returns a list of the leaderboard configurations in this application.
 | `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
 | `params.pageToken` | `string` | No | The token returned by the previous request. |
 
-#### `leaderboardConfigurations.get()`
+#### `leaderboardConfigurations.insert()`
 
-Retrieves the metadata of the leaderboard configuration with the given ID.
+Insert a new leaderboard configuration in this application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `leaderboardConfigurations.update()`
 
@@ -105,3 +89,19 @@ Update the metadata of the leaderboard configuration with the given ID.
 |---|---|---|---|
 | `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `leaderboardConfigurations.delete()`
+
+Delete the leaderboard configuration with the given ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
+
+#### `leaderboardConfigurations.get()`
+
+Retrieves the metadata of the leaderboard configuration with the given ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
