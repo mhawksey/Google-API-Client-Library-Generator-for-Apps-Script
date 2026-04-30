@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the API Discovery Service
  * Documentation URL: https://developers.google.com/discovery/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Discovery {
@@ -19,8 +20,8 @@ class Discovery {
 
 
     this.apis = {};
-    this.apis.getRest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/{api}/{version}/rest', 'GET', apiParams, clientConfig);
     this.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis', 'GET', apiParams, clientConfig);
+    this.apis.getRest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/{api}/{version}/rest', 'GET', apiParams, clientConfig);
   }
 
 /**
