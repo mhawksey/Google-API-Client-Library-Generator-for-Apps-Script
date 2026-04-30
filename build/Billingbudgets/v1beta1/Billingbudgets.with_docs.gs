@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Billing Budget API
  * Documentation URL: https://cloud.google.com/billing/docs/how-to/budget-api-overview
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Billingbudgets {
@@ -23,15 +24,17 @@ class Billingbudgets {
     this.billingAccounts.budgets = {};
 
     /**
-     * Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
+     * Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the billing account to create the budget in. Values are of the form `billingAccounts/{billingAccountId}`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of budgets to return per page. The default and maximum value are 100.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListBudgetsResponse` which indicates that this is a continuation of a prior `ListBudgets` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. Name of billing account to list budgets under. Values are of the form `billingAccounts/{billingAccountId}`.
+     * @param {string} apiParams.scope - Optional. Set the scope of the budgets to be returned, in the format of the resource name. The scope of a budget is the cost that it tracks, such as costs for a single project, or the costs for all projects in a folder. Only project scope (in the format of "projects/project-id" or "projects/123") is supported in this field. When this field is set to a project's resource name, the budgets returned are tracking the costs for that project.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.billingAccounts.budgets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/budgets', 'POST', apiParams, clientConfig);
+    this.billingAccounts.budgets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/budgets', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a budget and returns the updated budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. Budget fields that are not exposed in this API will not be changed by this method.
@@ -45,6 +48,17 @@ class Billingbudgets {
     this.billingAccounts.budgets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The name of the billing account to create the budget in. Values are of the form `billingAccounts/{billingAccountId}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.billingAccounts.budgets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/budgets', 'POST', apiParams, clientConfig);
+
+    /**
      * Returns a budget. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of budget to get. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
@@ -53,19 +67,6 @@ class Billingbudgets {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.billingAccounts.budgets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a list of budgets for a billing account. WARNING: There are some fields exposed on the Google Cloud Console that aren't available on this API. When reading from the API, you will not see these fields in the return value, though they may have been set in the Cloud Console.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of budgets to return per page. The default and maximum value are 100.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListBudgetsResponse` which indicates that this is a continuation of a prior `ListBudgets` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. Name of billing account to list budgets under. Values are of the form `billingAccounts/{billingAccountId}`.
-     * @param {string} apiParams.scope - Optional. Set the scope of the budgets to be returned, in the format of the resource name. The scope of a budget is the cost that it tracks, such as costs for a single project, or the costs for all projects in a folder. Only project scope (in the format of "projects/project-id" or "projects/123") is supported in this field. When this field is set to a project's resource name, the budgets returned are tracking the costs for that project.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.billingAccounts.budgets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/budgets', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a budget. Returns successfully if already deleted.
