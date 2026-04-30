@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase App Hosting API
  * Documentation URL: https://firebase.google.com/docs/app-hosting
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseapphosting {
@@ -58,6 +59,9 @@ class Firebaseapphosting {
     this.projects.locations.backends.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/domains', 'POST', apiParams, clientConfig);
     this.projects.locations.backends.domains.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.backends.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.supportedRuntimes = {};
+    this.projects.locations.supportedRuntimes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/supportedRuntimes', 'GET', apiParams, clientConfig);
   }
 
 /**
