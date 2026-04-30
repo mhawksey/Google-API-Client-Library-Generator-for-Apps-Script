@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Asset API
  * Documentation URL: https://cloud.google.com/asset-inventory/docs/quickstart
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudasset {
@@ -18,11 +19,11 @@ class Cloudasset {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.v1p7beta1 = {};
     this.v1p7beta1.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
