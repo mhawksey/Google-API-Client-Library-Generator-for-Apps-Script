@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase App Distribution API
  * Documentation URL: https://firebase.google.com/products/app-distribution
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseappdistribution {
@@ -18,51 +19,51 @@ class Firebaseappdistribution {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.apps = {};
-    this.projects.apps.getAabInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.apps.releases = {};
-    this.projects.apps.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.apps.releases.distribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:distribute', 'POST', apiParams, clientConfig);
-    this.projects.apps.releases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases:batchDelete', 'POST', apiParams, clientConfig);
-
-    this.projects.apps.releases.operations = {};
-    this.projects.apps.releases.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.apps.releases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.apps.releases.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
-
-    this.projects.apps.releases.feedbackReports = {};
-    this.projects.apps.releases.feedbackReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.feedbackReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feedbackReports', 'GET', apiParams, clientConfig);
-    this.projects.apps.releases.feedbackReports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.testers = {};
-    this.projects.testers.batchAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchAdd', 'POST', apiParams, clientConfig);
-    this.projects.testers.batchRemove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchRemove', 'POST', apiParams, clientConfig);
-    this.projects.testers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testers', 'GET', apiParams, clientConfig);
-    this.projects.testers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.groups = {};
-    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
-    this.projects.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'POST', apiParams, clientConfig);
-    this.projects.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.groups.batchJoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:batchJoin', 'POST', apiParams, clientConfig);
-    this.projects.groups.batchLeave = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:batchLeave', 'POST', apiParams, clientConfig);
-
     this.media = {};
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v1/{+app}/releases:upload' : 'v1/{+app}/releases:upload';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+
+    this.projects = {};
+
+    this.projects.testers = {};
+    this.projects.testers.batchAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchAdd', 'POST', apiParams, clientConfig);
+    this.projects.testers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.testers.batchRemove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchRemove', 'POST', apiParams, clientConfig);
+    this.projects.testers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testers', 'GET', apiParams, clientConfig);
+
+    this.projects.groups = {};
+    this.projects.groups.batchLeave = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:batchLeave', 'POST', apiParams, clientConfig);
+    this.projects.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
+    this.projects.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'POST', apiParams, clientConfig);
+    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.groups.batchJoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:batchJoin', 'POST', apiParams, clientConfig);
+
+    this.projects.apps = {};
+    this.projects.apps.getAabInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.apps.releases = {};
+    this.projects.apps.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.distribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:distribute', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.apps.releases.operations = {};
+    this.projects.apps.releases.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.apps.releases.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
+
+    this.projects.apps.releases.feedbackReports = {};
+    this.projects.apps.releases.feedbackReports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.apps.releases.feedbackReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.feedbackReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feedbackReports', 'GET', apiParams, clientConfig);
   }
 
 /**
