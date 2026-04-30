@@ -4,8 +4,8 @@ Auto-generated client library for using the **Advisory Notifications API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:21:22 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:21:36 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:22:31 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:22:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:19 GMT
 
 
@@ -37,18 +37,6 @@ Update notification settings.
 
 ### `organizations.locations.notifications`
 
-#### `organizations.locations.notifications.list()`
-
-Lists notifications under a given parent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". |
-| `params.pageSize` | `integer` | No | The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
-| `params.pageToken` | `string` | No | A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. |
-| `params.view` | `string` | No | Specifies which parts of the notification resource should be returned in the response. |
-| `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
-
 #### `organizations.locations.notifications.get()`
 
 Gets a notification.
@@ -57,6 +45,18 @@ Gets a notification.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the notification to retrieve. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{projects}/locations/{location}/notifications/{notification}. |
 | `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
+
+#### `organizations.locations.notifications.list()`
+
+Lists notifications under a given parent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". |
+| `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
+| `params.pageSize` | `integer` | No | The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
+| `params.pageToken` | `string` | No | A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. |
+| `params.view` | `string` | No | Specifies which parts of the notification resource should be returned in the response. |
 
 ### `projects`
 
@@ -81,18 +81,6 @@ Update notification settings.
 
 ### `projects.locations.notifications`
 
-#### `projects.locations.notifications.list()`
-
-Lists notifications under a given parent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". |
-| `params.pageSize` | `integer` | No | The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
-| `params.pageToken` | `string` | No | A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. |
-| `params.view` | `string` | No | Specifies which parts of the notification resource should be returned in the response. |
-| `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
-
 #### `projects.locations.notifications.get()`
 
 Gets a notification.
@@ -101,3 +89,15 @@ Gets a notification.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the notification to retrieve. Format: organizations/{organization}/locations/{location}/notifications/{notification} or projects/{projects}/locations/{location}/notifications/{notification}. |
 | `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
+
+#### `projects.locations.notifications.list()`
+
+Lists notifications under a given parent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of notifications to return. The service may return fewer than this value. If unspecified or equal to 0, at most 50 notifications will be returned. The maximum value is 50; values above 50 will be coerced to 50. |
+| `params.pageToken` | `string` | No | A page token returned from a previous request. When paginating, all other parameters provided in the request must match the call that returned the page token. |
+| `params.view` | `string` | No | Specifies which parts of the notification resource should be returned in the response. |
+| `params.languageCode` | `string` | No | ISO code for requested localization language. If unset, will be interpereted as "en". If the requested language is valid, but not supported for this notification, English will be returned with an "Not applicable" LocalizationState. If the ISO code is invalid (i.e. not a real language), this RPC will throw an error. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of notifications. Must be of the form "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}". |
