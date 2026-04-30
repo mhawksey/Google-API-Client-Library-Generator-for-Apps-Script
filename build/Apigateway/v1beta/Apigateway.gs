@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the API Gateway API
  * Documentation URL: https://cloud.google.com/api-gateway/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Apigateway {
@@ -31,34 +32,34 @@ class Apigateway {
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.gateways = {};
-    this.projects.locations.gateways.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/gateways', 'GET', apiParams, clientConfig);
-    this.projects.locations.gateways.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.gateways.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.gateways.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/gateways', 'POST', apiParams, clientConfig);
     this.projects.locations.gateways.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.gateways.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gateways.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/gateways', 'GET', apiParams, clientConfig);
+    this.projects.locations.gateways.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.gateways.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.gateways.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.gateways.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.gateways.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apis = {};
+    this.projects.locations.apis.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apis', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apis', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apis', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.apis.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apis.configs = {};
+    this.projects.locations.apis.configs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.apis.configs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configs', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.configs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.configs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configs', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.configs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.configs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.apis.configs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.configs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.configs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.configs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.configs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.configs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configs', 'POST', apiParams, clientConfig);
   }
 
 /**
