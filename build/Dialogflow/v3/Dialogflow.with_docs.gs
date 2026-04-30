@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Dialogflow API
  * Documentation URL: https://cloud.google.com/dialogflow/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Dialogflow {
@@ -42,7 +43,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -51,7 +52,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
 
@@ -77,92 +78,36 @@ class Dialogflow {
      */
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - 
-     * @param {string} apiParams.name - (Required)
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {boolean} apiParams.returnPartialSuccess - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.securitySettings = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.securitySettings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/securitySettings', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.securitySettings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.securitySettings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.securitySettings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/securitySettings', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.securitySettings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.agents = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/agents', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.getGenerativeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -178,25 +123,6 @@ class Dialogflow {
     /**
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/agents', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
      * @param {string} apiParams.updateMask - 
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -207,12 +133,24 @@ class Dialogflow {
 
     /**
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
      * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.getValidationResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.updateGenerativeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -232,37 +170,37 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:restore', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.locations.agents.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:validate', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
      * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.getValidationResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:restore', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.tools = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.getGenerativeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.tools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -273,20 +211,28 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.updateGenerativeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.agents.flows = {};
+    this.projects.locations.agents.tools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tools', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required)
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.tools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tools', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -296,71 +242,9 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.tools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.train = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:train', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:validate', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.getValidationResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.tools.versions = {};
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -370,64 +254,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:export', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.flows.pages = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/pages', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.pages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/pages', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.agents.tools.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -437,66 +264,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.flows.transitionRouteGroups = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.transitionRouteGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.transitionRouteGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.transitionRouteGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.transitionRouteGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.transitionRouteGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.flows.versions = {};
+    this.projects.locations.agents.tools.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -507,46 +275,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.tools.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -556,31 +285,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.flows.versions.load = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:load', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.baseVersion - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.flows.versions.compareVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+baseVersion}:compareVersions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.changelogs = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.changelogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/changelogs', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.tools.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:restore', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -589,109 +294,19 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.changelogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.agents.entityTypes = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes:export', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.entityTypes.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.tools.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.agents.intents = {};
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.intentView - 
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
      * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.intents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/intents', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.intents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.intents.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/intents:export', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -703,18 +318,6 @@ class Dialogflow {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.agents.intents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/intents', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.intents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -737,152 +340,13 @@ class Dialogflow {
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.intents.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/intents:export', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.sessions = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.detectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:detectIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.serverStreamingDetectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:serverStreamingDetectIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.matchIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:matchIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.fulfillIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:fulfillIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.submitAnswerFeedback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:submitAnswerFeedback', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.sessions.entityTypes = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.sessions.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.transitionRouteGroups = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.transitionRouteGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.languageCode - 
      * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.transitionRouteGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.transitionRouteGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.intents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -894,486 +358,11 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.transitionRouteGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.agents.intents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.transitionRouteGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.testCases = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {string} apiParams.view - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:run', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.batchRun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:batchRun', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.agent - (Required)
-     * @param {string} apiParams.type - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.calculateCoverage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+agent}/testCases:calculateCoverage', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:export', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.testCases.results = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/results', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.testCases.results.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.agents.webhooks = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.webhooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/webhooks', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.webhooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.webhooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/webhooks', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.webhooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.webhooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/environments', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/environments', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.lookupEnvironmentHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:lookupEnvironmentHistory', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.environment - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.runContinuousTest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+environment}:runContinuousTest', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.environment - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.deployFlow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+environment}:deployFlow', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments.deployments = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/deployments', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments.sessions = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.detectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:detectIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.serverStreamingDetectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:serverStreamingDetectIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.matchIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:matchIntent', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.fulfillIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:fulfillIntent', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments.sessions.entityTypes = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.sessions.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments.continuousTestResults = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.continuousTestResults.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/continuousTestResults', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.agents.environments.experiments = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/experiments', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/experiments', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:start', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.environments.experiments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:stop', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents.generators = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.intentView - 
      * @param {string} apiParams.languageCode - 
      * @param {integer} apiParams.pageSize - 
      * @param {string} apiParams.pageToken - 
@@ -1382,52 +371,28 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.generators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/generators', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.generators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.generators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/generators', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - 
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.generators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.generators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.intents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/intents', 'GET', apiParams, clientConfig);
 
     this.projects.locations.agents.playbooks = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.playbooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.playbooks.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/playbooks:import', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1442,11 +407,12 @@ class Dialogflow {
     /**
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.playbooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.playbooks.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:export', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1462,35 +428,6 @@ class Dialogflow {
     /**
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.playbooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.playbooks.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:export', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.playbooks.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/playbooks:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
      * @param {string} apiParams.updateMask - 
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -1499,17 +436,16 @@ class Dialogflow {
      */
     this.projects.locations.agents.playbooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.agents.playbooks.examples = {};
-
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.playbooks.examples.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/examples', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.playbooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.playbooks.examples = {};
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1518,7 +454,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.playbooks.examples.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.playbooks.examples.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1535,15 +471,6 @@ class Dialogflow {
     /**
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.playbooks.examples.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
      * @param {string} apiParams.updateMask - 
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -1552,7 +479,14 @@ class Dialogflow {
      */
     this.projects.locations.agents.playbooks.examples.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.agents.playbooks.versions = {};
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.playbooks.examples.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1562,7 +496,9 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.playbooks.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.playbooks.examples.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/examples', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.playbooks.versions = {};
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1603,7 +539,131 @@ class Dialogflow {
      */
     this.projects.locations.agents.playbooks.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.agents.tools = {};
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.playbooks.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.generators = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.generators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.generators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.generators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/generators', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.generators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/generators', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.generators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.agents.transitionRouteGroups = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.transitionRouteGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.transitionRouteGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.transitionRouteGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.transitionRouteGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.transitionRouteGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.testCases = {};
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1613,27 +673,17 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tools', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.testCases.batchRun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:batchRun', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
      * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tools', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.tools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1644,19 +694,185 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.agents.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:run', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.agent - (Required)
+     * @param {string} apiParams.type - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.calculateCoverage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+agent}/testCases:calculateCoverage', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:import', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.agents.tools.versions = {};
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/testCases:export', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.testCases.results = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/results', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.testCases.results.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.sessions = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.fulfillIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:fulfillIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.submitAnswerFeedback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:submitAnswerFeedback', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.serverStreamingDetectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:serverStreamingDetectIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.detectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:detectIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.matchIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:matchIntent', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.sessions.entityTypes = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1667,7 +883,49 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.sessions.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.sessions.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.webhooks = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.webhooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.webhooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/webhooks', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.webhooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1677,16 +935,7 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.agents.tools.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.webhooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/webhooks', 'POST', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1696,7 +945,19 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.agents.webhooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.agents.flows = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -1706,7 +967,747 @@ class Dialogflow {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.agents.tools.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.agents.flows.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:validate', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:export', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.getValidationResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.train = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:train', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/flows:import', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.flows.pages = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.pages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/pages', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/pages', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.flows.transitionRouteGroups = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.transitionRouteGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.transitionRouteGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.transitionRouteGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.transitionRouteGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.transitionRouteGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/transitionRouteGroups', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.flows.versions = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.baseVersion - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.compareVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+baseVersion}:compareVersions', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.load = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:load', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/versions', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.flows.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.changelogs = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.changelogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/changelogs', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.changelogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/environments', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.lookupEnvironmentHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:lookupEnvironmentHistory', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.environment - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.runContinuousTest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+environment}:runContinuousTest', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.environment - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.deployFlow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+environment}:deployFlow', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/environments', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments.continuousTestResults = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.continuousTestResults.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/continuousTestResults', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments.experiments = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:stop', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/experiments', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:start', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/experiments', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.experiments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments.deployments = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/deployments', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments.sessions = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.fulfillIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:fulfillIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.detectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:detectIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.serverStreamingDetectIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:serverStreamingDetectIntent', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.matchIntent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+session}:matchIntent', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents.environments.sessions.entityTypes = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.environments.sessions.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.agents.entityTypes = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes:export', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - 
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.agents.entityTypes.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/entityTypes:import', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - 
+     * @param {string} apiParams.name - (Required)
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {boolean} apiParams.returnPartialSuccess - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.securitySettings = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.securitySettings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.securitySettings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/securitySettings', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.securitySettings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.securitySettings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/securitySettings', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.securitySettings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
