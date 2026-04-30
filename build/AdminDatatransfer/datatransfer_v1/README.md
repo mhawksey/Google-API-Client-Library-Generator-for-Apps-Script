@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: datatransf
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:21:05 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:21:10 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:21:56 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:21:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:51 GMT
 
 
@@ -13,6 +13,37 @@ Auto-generated client library for using the **Admin SDK API (version: datatransf
 ---
 
 ## API Reference
+
+### `transfers`
+
+#### `transfers.insert()`
+
+Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `transfers.get()`
+
+Retrieves a data transfer request by its resource ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataTransferId` | `string` | Yes | ID of the resource to be retrieved. This is returned in the response from the insert method. |
+
+#### `transfers.list()`
+
+Lists the transfers for a customer by source user, destination user, or status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.status` | `string` | No | Status of the transfer. |
+| `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
+| `params.pageToken` | `string` | No | Token to specify the next page in the list. |
+| `params.newOwnerUserId` | `string` | No | Destination user's profile ID. |
+| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
+| `params.oldOwnerUserId` | `string` | No | Source user's profile ID. |
 
 ### `applications`
 
@@ -30,37 +61,6 @@ Lists the applications available for data transfer for a customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
-| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
 | `params.pageToken` | `string` | No | Token to specify next page in the list. |
-
-### `transfers`
-
-#### `transfers.get()`
-
-Retrieves a data transfer request by its resource ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataTransferId` | `string` | Yes | ID of the resource to be retrieved. This is returned in the response from the insert method. |
-
-#### `transfers.insert()`
-
-Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `transfers.list()`
-
-Lists the transfers for a customer by source user, destination user, or status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
 | `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
-| `params.newOwnerUserId` | `string` | No | Destination user's profile ID. |
-| `params.oldOwnerUserId` | `string` | No | Source user's profile ID. |
-| `params.pageToken` | `string` | No | Token to specify the next page in the list. |
-| `params.status` | `string` | No | Status of the transfer. |
