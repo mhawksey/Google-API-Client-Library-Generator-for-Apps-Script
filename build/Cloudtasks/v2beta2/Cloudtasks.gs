@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Tasks API
  * Documentation URL: https://cloud.google.com/tasks/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudtasks {
@@ -25,6 +26,9 @@ class Cloudtasks {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.getCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.queues = {};
     this.projects.locations.queues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/queues', 'GET', apiParams, clientConfig);
