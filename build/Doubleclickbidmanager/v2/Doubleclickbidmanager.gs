@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the DoubleClick Bid Manager API
  * Documentation URL: https://developers.google.com/bid-manager/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Doubleclickbidmanager {
@@ -19,11 +20,11 @@ class Doubleclickbidmanager {
 
 
     this.queries = {};
-    this.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'POST', apiParams, clientConfig);
     this.queries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'DELETE', apiParams, clientConfig);
-    this.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'GET', apiParams, clientConfig);
     this.queries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'GET', apiParams, clientConfig);
+    this.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'GET', apiParams, clientConfig);
     this.queries.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}:run', 'POST', apiParams, clientConfig);
+    this.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'POST', apiParams, clientConfig);
 
     this.queries.reports = {};
     this.queries.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}/reports', 'GET', apiParams, clientConfig);
