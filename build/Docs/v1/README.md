@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:36:22 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:13:48 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:53:39 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:53:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:11 GMT
 
 
@@ -22,8 +22,8 @@ Gets the latest version of the specified document.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
 | `params.suggestionsViewMode` | `string` | No | The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. |
+| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
 | `params.includeTabsContent` | `boolean` | No | Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty. |
 
 #### `documents.create()`
