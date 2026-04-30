@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage for Firebase API (ve
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:43:58 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:40:16 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:56:23 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:56:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:50 GMT
 
 
@@ -34,6 +34,15 @@ Unlinks and deletes the default bucket.
 
 ### `projects.buckets`
 
+#### `projects.buckets.removeFirebase()`
+
+Unlinks a linked Google Cloud Storage bucket from a Firebase project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.buckets.get()`
 
 Gets a single linked storage bucket.
@@ -41,16 +50,6 @@ Gets a single linked storage bucket.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
-
-#### `projects.buckets.list()`
-
-Lists the linked storage buckets for a project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. |
-| `params.pageSize` | `integer` | No | The maximum number of buckets to return. If not set, the server will use a reasonable default. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token. |
 
 #### `projects.buckets.addFirebase()`
 
@@ -61,14 +60,15 @@ Links a Google Cloud Storage bucket to a Firebase project.
 | `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.buckets.removeFirebase()`
+#### `projects.buckets.list()`
 
-Unlinks a linked Google Cloud Storage bucket from a Firebase project.
+Lists the linked storage buckets for a project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | The maximum number of buckets to return. If not set, the server will use a reasonable default. |
 
 ### `projects.defaultBucket`
 
