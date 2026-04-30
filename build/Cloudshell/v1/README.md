@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Shell API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:31:44 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:27:39 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:35:26 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:35:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:44 GMT
 
 
