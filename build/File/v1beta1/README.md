@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Filestore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:42:41 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:44:05 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:54:53 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:54:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:00 GMT
 
 
@@ -18,22 +18,6 @@ Auto-generated client library for using the **Cloud Filestore API (version: v1be
 
 ### `projects.locations`
 
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service. This method can be called in two ways:
-
-* **List all public locations:** Use the path `GET /v1/locations`.
-
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -42,7 +26,32 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
+
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
+
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+
 ### `projects.locations.operations`
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.operations.list()`
 
@@ -50,11 +59,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
 
 #### `projects.locations.operations.get()`
 
@@ -72,28 +81,76 @@ Deletes a long-running operation. This method indicates that the client is no lo
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
-#### `projects.locations.operations.cancel()`
+### `projects.locations.backups`
 
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+#### `projects.locations.backups.list()`
+
+Lists all backups in a project for either a specified location or for all locations.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.filter` | `string` | No | List filter. |
+| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+| `params.parent` | `string` | Yes | Required. The project and location for which to retrieve backup information, in the format `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the `{location}` value. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+
+#### `projects.locations.backups.get()`
+
+Gets the details of a specific backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backups/{backup_id}`. |
+
+#### `projects.locations.backups.create()`
+
+Creates a backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.backupId` | `string` | No | Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
+| `params.parent` | `string` | Yes | Required. The backup's project and location, in the format `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backups.delete()`
+
+Deletes a backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backups/{backup_id}` |
+
+#### `projects.locations.backups.patch()`
+
+Updates the settings of a specific backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
-#### `projects.locations.instances.list()`
+#### `projects.locations.instances.patch()`
 
-Lists all instances in a project for either a specified location or for all locations.
+Updates the settings of a specific instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-" for the `{location}` value. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | List filter. |
+| `params.name` | `string` | Yes | Output only. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * "description" * "directory_services" * "file_shares" * "labels" * "performance_config" * "deletion_protection_enabled" * "deletion_protection_reason" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.instances.revert()`
+
+Revert an existing instance's file system to a specified snapshot.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.get()`
 
@@ -113,33 +170,14 @@ Creates an instance. When creating from a backup, the capacity of the new instan
 | `params.instanceId` | `string` | No | Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.patch()`
+#### `projects.locations.instances.delete()`
 
-Updates the settings of a specific instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * "description" * "directory_services" * "file_shares" * "labels" * "performance_config" * "deletion_protection_enabled" * "deletion_protection_reason" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.restore()`
-
-Restores an existing instance's file share from a backup. The capacity of the instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
+Deletes an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.revert()`
-
-Revert an existing instance's file system to a specified snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` |
+| `params.force` | `boolean` | No | If set to true, any snapshots of the instance will also be deleted. (Otherwise, the request will only work if the instance has no snapshots.) |
 
 #### `projects.locations.instances.promoteReplica()`
 
@@ -168,64 +206,25 @@ Resume the standby instance (replica). WARNING: Any data written to the standby 
 | `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.delete()`
+#### `projects.locations.instances.list()`
 
-Deletes an instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The instance resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.force` | `boolean` | No | If set to true, any snapshots of the instance will also be deleted. (Otherwise, the request will only work if the instance has no snapshots.) |
-
-### `projects.locations.instances.snapshots`
-
-#### `projects.locations.instances.snapshots.list()`
-
-Lists all snapshots in a project for either a specified location or for all locations.
+Lists all instances in a project for either a specified location or for all locations.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The instance for which to retrieve snapshot information, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.parent` | `string` | Yes | Required. The project and location for which to retrieve instance information, in the format `projects/{project_id}/locations/{location}`. In Cloud Filestore, locations map to Google Cloud zones, for example **us-west1-b**. To retrieve instance information for all locations, use "-" for the `{location}` value. |
 | `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
 | `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
 | `params.filter` | `string` | No | List filter. |
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
 
-#### `projects.locations.instances.snapshots.get()`
+#### `projects.locations.instances.restore()`
 
-Gets the details of a specific snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` |
-
-#### `projects.locations.instances.snapshots.create()`
-
-Creates a snapshot.
+Restores an existing instance's file share from a backup. The capacity of the instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Filestore Instance to create the snapshots of, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.snapshotId` | `string` | No | Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.snapshots.delete()`
-
-Deletes a snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` |
-
-#### `projects.locations.instances.snapshots.patch()`
-
-Updates the settings of a specific snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
+| `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances.shares`
@@ -236,11 +235,11 @@ Lists all shares for a specified instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The instance for which to retrieve share information, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
 | `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
 | `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
 | `params.filter` | `string` | No | List filter. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.parent` | `string` | Yes | Required. The instance for which to retrieve share information, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. |
 
 #### `projects.locations.instances.shares.get()`
 
@@ -278,52 +277,53 @@ Updates the settings of a specific share.
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * "description" * "capacity_gb" * "labels" * "nfs_export_options" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.backups`
+### `projects.locations.instances.snapshots`
 
-#### `projects.locations.backups.list()`
+#### `projects.locations.instances.snapshots.patch()`
 
-Lists all backups in a project for either a specified location or for all locations.
+Updates the settings of a specific snapshot.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project and location for which to retrieve backup information, in the format `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. To retrieve backup information for all locations, use "-" for the `{location}` value. |
+| `params.name` | `string` | Yes | Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.instances.snapshots.list()`
+
+Lists all snapshots in a project for either a specified location or for all locations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
+| `params.parent` | `string` | Yes | Required. The instance for which to retrieve snapshot information, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}`. |
 | `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
 | `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
 | `params.filter` | `string` | No | List filter. |
 
-#### `projects.locations.backups.get()`
+#### `projects.locations.instances.snapshots.get()`
 
-Gets the details of a specific backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backups/{backup_id}`. |
-
-#### `projects.locations.backups.create()`
-
-Creates a backup.
+Gets the details of a specific snapshot.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The backup's project and location, in the format `projects/{project_id}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. |
-| `params.backupId` | `string` | No | Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
+| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` |
+
+#### `projects.locations.instances.snapshots.create()`
+
+Creates a snapshot.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Filestore Instance to create the snapshots of, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` |
+| `params.snapshotId` | `string` | No | Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.backups.delete()`
+#### `projects.locations.instances.snapshots.delete()`
 
-Deletes a backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backups/{backup_id}` |
-
-#### `projects.locations.backups.patch()`
-
-Updates the settings of a specific backup.
+Deletes a snapshot.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}/snapshots/{snapshot_id}` |
