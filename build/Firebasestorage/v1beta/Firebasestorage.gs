@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Storage for Firebase API
  * Documentation URL: https://firebase.google.com/docs/storage
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebasestorage {
@@ -23,10 +24,10 @@ class Firebasestorage {
     this.projects.deleteDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.buckets = {};
-    this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
-    this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
     this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
+    this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
+    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
 
     this.projects.defaultBucket = {};
     this.projects.defaultBucket.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/defaultBucket', 'POST', apiParams, clientConfig);
