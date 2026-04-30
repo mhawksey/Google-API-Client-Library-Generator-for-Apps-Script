@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Cloud Support API
  * Documentation URL: https://cloud.google.com/support/docs/apis
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudsupport {
@@ -19,22 +20,22 @@ class Cloudsupport {
 
 
     this.media = {};
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:download', 'GET', apiParams, clientConfig);
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v2beta/{+parent}/attachments' : 'v2beta/{+parent}/attachments';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:download', 'GET', apiParams, clientConfig);
 
     this.cases = {};
-    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/cases', 'GET', apiParams, clientConfig);
+    this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:close', 'POST', apiParams, clientConfig);
+    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.cases.showFeed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}:showFeed', 'GET', apiParams, clientConfig);
     this.cases.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/cases:search', 'GET', apiParams, clientConfig);
     this.cases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/cases', 'POST', apiParams, clientConfig);
-    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:escalate', 'POST', apiParams, clientConfig);
-    this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:close', 'POST', apiParams, clientConfig);
-    this.cases.showFeed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}:showFeed', 'GET', apiParams, clientConfig);
 
     this.cases.attachments = {};
     this.cases.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/attachments', 'GET', apiParams, clientConfig);
