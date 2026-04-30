@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase Rules API
  * Documentation URL: https://firebase.google.com/docs/storage/security
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaserules {
