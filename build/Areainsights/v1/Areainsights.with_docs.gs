@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Places Aggregate API
  * Documentation URL: https://developers.google.com/maps/documentation/places-aggregate/overview
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Areainsights {
