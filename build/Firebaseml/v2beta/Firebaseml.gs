@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase ML API
  * Documentation URL: https://firebase.google.com
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebaseml {
@@ -26,8 +27,8 @@ class Firebaseml {
 
     this.projects.locations.publishers.models = {};
     this.projects.locations.publishers.models.countTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+endpoint}:countTokens', 'POST', apiParams, clientConfig);
-    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
     this.projects.locations.publishers.models.streamGenerateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:streamGenerateContent', 'POST', apiParams, clientConfig);
+    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
   }
 
 /**
