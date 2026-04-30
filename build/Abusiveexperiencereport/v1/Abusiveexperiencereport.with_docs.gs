@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Abusive Experience Report API
  * Documentation URL: https://developers.google.com/abusive-experience-report/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Abusiveexperiencereport {
