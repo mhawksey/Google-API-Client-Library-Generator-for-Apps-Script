@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Play Games Services Publishing API
  * Documentation URL: https://developers.google.com/games/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class GamesConfiguration {
@@ -21,6 +22,16 @@ class GamesConfiguration {
     this.achievementConfigurations = {};
 
     /**
+     * Delete the achievement configuration with the given ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievementConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/achievements/{achievementId}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Retrieves the metadata of the achievement configuration with the given ID.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
@@ -29,6 +40,17 @@ class GamesConfiguration {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.achievementConfigurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/achievements/{achievementId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Insert a new achievement configuration in this application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.achievementConfigurations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/achievements', 'POST', apiParams, clientConfig);
 
     /**
      * Update the metadata of the achievement configuration with the given ID.
@@ -53,49 +75,7 @@ class GamesConfiguration {
      */
     this.achievementConfigurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/achievements', 'GET', apiParams, clientConfig);
 
-    /**
-     * Insert a new achievement configuration in this application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievementConfigurations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/achievements', 'POST', apiParams, clientConfig);
-
-    /**
-     * Delete the achievement configuration with the given ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.achievementId - (Required) The ID of the achievement used by this method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.achievementConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/achievements/{achievementId}', 'DELETE', apiParams, clientConfig);
-
     this.leaderboardConfigurations = {};
-
-    /**
-     * Delete the leaderboard configuration with the given ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.leaderboardConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Insert a new leaderboard configuration in this application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.leaderboardConfigurations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/leaderboards', 'POST', apiParams, clientConfig);
 
     /**
      * Returns a list of the leaderboard configurations in this application.
@@ -110,14 +90,15 @@ class GamesConfiguration {
     this.leaderboardConfigurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/leaderboards', 'GET', apiParams, clientConfig);
 
     /**
-     * Retrieves the metadata of the leaderboard configuration with the given ID.
+     * Insert a new leaderboard configuration in this application.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
+     * @param {string} apiParams.applicationId - (Required) The application ID from the Google Play developer console.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.leaderboardConfigurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
+    this.leaderboardConfigurations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/leaderboards', 'POST', apiParams, clientConfig);
 
     /**
      * Update the metadata of the leaderboard configuration with the given ID.
@@ -129,6 +110,26 @@ class GamesConfiguration {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.leaderboardConfigurations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Delete the leaderboard configuration with the given ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.leaderboardConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieves the metadata of the leaderboard configuration with the given ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.leaderboardId - (Required) The ID of the leaderboard.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.leaderboardConfigurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
   }
 
 /**
