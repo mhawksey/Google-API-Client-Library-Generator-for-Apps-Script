@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:34:30 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:35:47 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:44:41 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:44:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:26 GMT
 
 
@@ -19,6 +19,26 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 #### `portabilityArchive.initiate()`
 
 Initiates a new Archive job for the Portability API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `authorization`
+
+#### `authorization.reset()`
+
+Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `accessType`
+
+#### `accessType.check()`
+
+Gets the access type of the token.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -50,24 +70,4 @@ Cancels a Portability Archive job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `authorization`
-
-#### `authorization.reset()`
-
-Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `accessType`
-
-#### `accessType.check()`
-
-Gets the access type of the token.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
