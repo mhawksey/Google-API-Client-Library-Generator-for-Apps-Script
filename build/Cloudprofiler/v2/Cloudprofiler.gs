@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Profiler API
  * Documentation URL: https://cloud.google.com/profiler/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudprofiler {
@@ -21,10 +22,10 @@ class Cloudprofiler {
     this.projects = {};
 
     this.projects.profiles = {};
-    this.projects.profiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/profiles', 'POST', apiParams, clientConfig);
     this.projects.profiles.createOffline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/profiles:createOffline', 'POST', apiParams, clientConfig);
-    this.projects.profiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.profiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/profiles', 'GET', apiParams, clientConfig);
+    this.projects.profiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/profiles', 'POST', apiParams, clientConfig);
+    this.projects.profiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
