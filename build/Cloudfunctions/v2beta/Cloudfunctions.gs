@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Functions API
  * Documentation URL: https://cloud.google.com/functions
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudfunctions {
@@ -23,31 +24,31 @@ class Cloudfunctions {
     this.projects.locations = {};
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.functions = {};
-    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.commitFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:commitFunctionUpgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.generateUploadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions:generateUploadUrl', 'POST', apiParams, clientConfig);
     this.projects.locations.functions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.functions.setupFunctionUpgradeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:setupFunctionUpgradeConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.rollbackFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:rollbackFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.functions.abortFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:abortFunctionUpgrade', 'POST', apiParams, clientConfig);
     this.projects.locations.functions.redirectFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:redirectFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.rollbackFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:rollbackFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.commitFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:commitFunctionUpgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.commitFunctionUpgradeAsGen2 = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:commitFunctionUpgradeAsGen2', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.functions.generateUploadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions:generateUploadUrl', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.generateDownloadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:generateDownloadUrl', 'POST', apiParams, clientConfig);
     this.projects.locations.functions.detachFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:detachFunction', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.functions.commitFunctionUpgradeAsGen2 = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:commitFunctionUpgradeAsGen2', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.functions.generateDownloadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:generateDownloadUrl', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/functions', 'GET', apiParams, clientConfig);
 
     this.projects.locations.runtimes = {};
     this.projects.locations.runtimes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/runtimes', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
