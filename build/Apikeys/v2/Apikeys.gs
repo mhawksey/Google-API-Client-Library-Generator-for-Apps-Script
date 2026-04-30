@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the API Keys API
  * Documentation URL: https://cloud.google.com/api-keys/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Apikeys {
@@ -18,8 +19,8 @@ class Apikeys {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.keys = {};
+    this.keys.lookupKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/keys:lookupKey', 'GET', apiParams, clientConfig);
 
     this.projects = {};
 
@@ -28,14 +29,14 @@ class Apikeys {
     this.projects.locations.keys = {};
     this.projects.locations.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'POST', apiParams, clientConfig);
     this.projects.locations.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'GET', apiParams, clientConfig);
+    this.projects.locations.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.keys.getKeyString = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/keyString', 'GET', apiParams, clientConfig);
-    this.projects.locations.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
 
-    this.keys = {};
-    this.keys.lookupKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/keys:lookupKey', 'GET', apiParams, clientConfig);
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
