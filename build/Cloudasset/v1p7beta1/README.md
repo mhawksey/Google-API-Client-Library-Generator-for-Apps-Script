@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Asset API (version: v1p7beta
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:24:42 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:20:33 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:33:26 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:33:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:01 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **Cloud Asset API (version: v1p7beta
 ---
 
 ## API Reference
-
-### `operations`
-
-#### `operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `v1p7beta1`
 
@@ -34,3 +24,13 @@ Exports assets with time and resource types to a given Cloud Storage location/Bi
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `operations`
+
+#### `operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
