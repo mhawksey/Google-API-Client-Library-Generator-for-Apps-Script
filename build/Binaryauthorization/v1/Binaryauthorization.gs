@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Binary Authorization API
  * Documentation URL: https://cloud.google.com/binary-authorization/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Binaryauthorization {
@@ -30,27 +31,27 @@ class Binaryauthorization {
     this.projects.platforms.gke.policies.evaluate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:evaluate', 'POST', apiParams, clientConfig);
 
     this.projects.platforms.policies = {};
-    this.projects.platforms.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'POST', apiParams, clientConfig);
     this.projects.platforms.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.platforms.policies.replacePlatformPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.platforms.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
     this.projects.platforms.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.attestors = {};
-    this.projects.attestors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attestors', 'POST', apiParams, clientConfig);
-    this.projects.attestors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.attestors.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.attestors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attestors', 'GET', apiParams, clientConfig);
-    this.projects.attestors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.attestors.validateAttestationOccurrence = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+attestor}:validateAttestationOccurrence', 'POST', apiParams, clientConfig);
-    this.projects.attestors.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.attestors.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.attestors.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.platforms.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
+    this.projects.platforms.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'POST', apiParams, clientConfig);
+    this.projects.platforms.policies.replacePlatformPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
 
     this.projects.policy = {};
     this.projects.policy.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.policy.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.policy.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.policy.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.attestors = {};
+    this.projects.attestors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.attestors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.attestors.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.attestors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attestors', 'POST', apiParams, clientConfig);
+    this.projects.attestors.validateAttestationOccurrence = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+attestor}:validateAttestationOccurrence', 'POST', apiParams, clientConfig);
+    this.projects.attestors.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.attestors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attestors', 'GET', apiParams, clientConfig);
+    this.projects.attestors.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.attestors.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     this.systempolicy = {};
     this.systempolicy.getPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
