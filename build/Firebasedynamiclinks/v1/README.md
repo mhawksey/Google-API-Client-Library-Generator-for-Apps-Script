@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Dynamic Links API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:43:31 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:20:45 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:55:49 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:55:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:32 GMT
 
 
@@ -42,9 +42,9 @@ Fetches analytics stats of a short Dynamic Link for a given duration. Metrics in
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
 | `params.dynamicLink` | `string` | Yes | Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz |
 | `params.durationDays` | `string` | No | The span of time requested in days. |
-| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
 
 #### `v1.installAttribution()`
 
