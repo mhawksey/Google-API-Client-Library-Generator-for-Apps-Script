@@ -4,8 +4,8 @@ Auto-generated client library for using the **AlloyDB API (version: v1beta)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:21:51 GMT
-- **Last Modified:** Tue, 31 Mar 2026 23:21:51 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:23:10 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:23:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:42 GMT
 
 
@@ -18,6 +18,22 @@ Auto-generated client library for using the **AlloyDB API (version: v1beta)** in
 
 ### `projects.locations`
 
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
+
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -26,83 +42,32 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-#### `projects.locations.list()`
+### `projects.locations.supportedDatabaseFlags`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+#### `projects.locations.supportedDatabaseFlags.list()`
 
-* **List all public locations:** Use the path `GET /v1/locations`.
-
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+Lists SupportedDatabaseFlags for a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-
-### `projects.locations.backups`
-
-#### `projects.locations.backups.list()`
-
-Lists Backups in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Hint for how to order the results |
-| `params.parent` | `string` | Yes | Required. Parent value for ListBackupsRequest |
-| `params.filter` | `string` | No | Filtering results |
-| `params.view` | `string` | No | Optional. The view of the backup to return. |
-
-#### `projects.locations.backups.get()`
-
-Gets details of a single Backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource |
-| `params.view` | `string` | No | Optional. The view of the backup to return. |
-
-#### `projects.locations.backups.create()`
-
-Creates a new Backup in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.backupId` | `string` | No | Required. ID of the requesting object. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backups.patch()`
-
-Updates the parameters of a single Backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Backup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.name` | `string` | Yes | Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id} where the cluster and backup ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the backup resource name is the name of the parent resource: * projects/{project}/locations/{region} |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if instance is not found. In that case, a new backup is created and `update_mask` is ignored. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backups.delete()`
-
-Deletes a single Backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.etag` | `string` | No | Optional. The current etag of the Backup. If an etag is provided and does not match the current etag of the Backup, deletion will be blocked and an ABORTED error will be returned. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.name` | `string` | Yes | Required. Name of the resource. For the required format, see the comment on the Backup.name field. |
+| `params.scope` | `string` | No | Optional. The scope for which supported flags are requested. If not specified, default is DATABASE. |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. The required format is: * projects/{project}/locations/{location} Regardless of the parent specified here, as long it is contains a valid project and location, the service will return a static list of supported flags resources. Note that we do not yet support region-specific flags. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 
 ### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.cancel()`
 
@@ -128,57 +93,136 @@ Deletes a long-running operation. This method indicates that the client is no lo
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
-#### `projects.locations.operations.list()`
+### `projects.locations.backups`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+#### `projects.locations.backups.get()`
+
+Gets details of a single Backup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.view` | `string` | No | Optional. The view of the backup to return. |
+| `params.name` | `string` | Yes | Required. Name of the resource |
+
+#### `projects.locations.backups.patch()`
+
+Updates the parameters of a single Backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Output only. The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id} where the cluster and backup ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the backup resource name is the name of the parent resource: * projects/{project}/locations/{region} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Backup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if instance is not found. In that case, a new backup is created and `update_mask` is ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backups.create()`
+
+Creates a new Backup in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.backupId` | `string` | No | Required. ID of the requesting object. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backups.delete()`
+
+Deletes a single Backup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. The current etag of the Backup. If an etag is provided and does not match the current etag of the Backup, deletion will be blocked and an ABORTED error will be returned. |
+| `params.name` | `string` | Yes | Required. Name of the resource. For the required format, see the comment on the Backup.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+
+#### `projects.locations.backups.list()`
+
+Lists Backups in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Hint for how to order the results |
+| `params.view` | `string` | No | Optional. The view of the backup to return. |
+| `params.parent` | `string` | Yes | Required. Parent value for ListBackupsRequest |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.filter` | `string` | No | Filtering results |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+
+### `projects.locations.endpoints`
+
+#### `projects.locations.endpoints.create()`
+
+Creates a new Endpoint in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location of the new endpoint. For the required format, see the comment on the Endpoint.name field. |
+| `params.endpointId` | `string` | No | Required. ID of the requesting object. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.endpoints.delete()`
+
+Deletes a single Endpoint.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Endpoint.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. The current etag of the Endpoint. If an etag is provided and does not match the current etag of the Endpoint, deletion will be blocked and an ABORTED error will be returned. |
+
+#### `projects.locations.endpoints.patch()`
+
+Updates the parameters of a single Endpoint.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.name` | `string` | Yes | Output only. Identifier. The name of the endpoint resource with the format: * projects/{project}/locations/{region}/endpoints/{endpoint_id} where the endpoint ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the endpoint resource name is the name of the parent resource: * projects/{project}/locations/{region} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if endpoint is not found. In that case, a new endpoint is created and `update_mask` is ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.endpoints.list()`
+
+Lists Endpoints in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Endpoint.name field. Additionally, you can perform an aggregated list operation by specifying a value with the following format: * projects/{project}/locations/- |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.filter` | `string` | No | Optional. Filtering results. This field is currently not supported, its value will be ignored if passed. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListEndpoints` call. This should be provided to retrieve the subsequent page. This field is currently not supported, its value will be ignored if passed. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+
+#### `projects.locations.endpoints.get()`
+
+Gets details of a single Endpoint.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Endpoint.name field. |
 
 ### `projects.locations.clusters`
 
-#### `projects.locations.clusters.list()`
+#### `projects.locations.clusters.createsecondary()`
 
-Lists Clusters in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filtering results |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. Additionally, you can perform an aggregated list operation by specifying a value with the following format: * projects/{project}/locations/- |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
-
-#### `projects.locations.clusters.switchover()`
-
-Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly promoted cluster.
+Creates a cluster of type SECONDARY in the given location using the primary cluster as the source.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.restore()`
-
-Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.import()`
-
-Imports data to the cluster. Imperative only.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the cluster. |
+| `params.clusterId` | `string` | No | Required. ID of the requesting object (the secondary cluster). |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.parent` | `string` | Yes | Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.upgrade()`
@@ -190,38 +234,55 @@ Upgrades a single Cluster. Imperative only.
 | `params.name` | `string` | Yes | Required. The resource name of the cluster. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.promote()`
+#### `projects.locations.clusters.switchover()`
 
-Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only.
+Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly promoted cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.patch()`
+#### `projects.locations.clusters.list()`
 
-Updates the parameters of a single Cluster.
+Lists Clusters in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if cluster is not found. In that case, a new cluster is created and `update_mask` is ignored. |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.name` | `string` | Yes | Output only. The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region} |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. Additionally, you can perform an aggregated list operation by specifying a value with the following format: * projects/{project}/locations/- |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.filter` | `string` | No | Optional. Filtering results |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+
+#### `projects.locations.clusters.import()`
+
+Imports data to the cluster. Imperative only.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the cluster. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.createsecondary()`
+#### `projects.locations.clusters.delete()`
 
-Creates a cluster of type SECONDARY in the given location using the primary cluster as the source.
+Deletes a single Cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field. |
-| `params.clusterId` | `string` | No | Required. ID of the requesting object (the secondary cluster). |
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.force` | `boolean` | No | Optional. Whether to cascade delete child instances for given cluster. |
+| `params.etag` | `string` | No | Optional. The current etag of the Cluster. If an etag is provided and does not match the current etag of the Cluster, deletion will be blocked and an ABORTED error will be returned. |
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field. |
+
+#### `projects.locations.clusters.export()`
+
+Exports data from the cluster. Imperative only.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the cluster. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.get()`
@@ -233,6 +294,27 @@ Gets details of a single Cluster.
 | `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field. |
 | `params.view` | `string` | No | Optional. The view of the cluster to return. Returns all default fields if not set. |
 
+#### `projects.locations.clusters.restore()`
+
+Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.clusters.create()`
+
+Creates a new Cluster in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.clusterId` | `string` | No | Required. ID of the requesting object. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.clusters.restoreFromCloudSQL()`
 
 Restores an AlloyDB cluster from a CloudSQL resource.
@@ -242,98 +324,29 @@ Restores an AlloyDB cluster from a CloudSQL resource.
 | `params.parent` | `string` | Yes | Required. The location of the new cluster. For the required format, see the comment on Cluster.name field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.create()`
+#### `projects.locations.clusters.patch()`
 
-Creates a new Cluster in a given project and location.
+Updates the parameters of a single Cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.clusterId` | `string` | No | Required. ID of the requesting object. |
-| `params.parent` | `string` | Yes | Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.name` | `string` | Yes | Output only. The name of the cluster resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id} where the cluster ID segment should satisfy the regex expression `[a-z0-9-]+`. For more details see https://google.aip.dev/122. The prefix of the cluster resource name is the name of the parent resource: * projects/{project}/locations/{region} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Cluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if cluster is not found. In that case, a new cluster is created and `update_mask` is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.delete()`
+#### `projects.locations.clusters.promote()`
 
-Deletes a single Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field. |
-| `params.force` | `boolean` | No | Optional. Whether to cascade delete child instances for given cluster. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.etag` | `string` | No | Optional. The current etag of the Cluster. If an etag is provided and does not match the current etag of the Cluster, deletion will be blocked and an ABORTED error will be returned. |
-
-#### `projects.locations.clusters.export()`
-
-Exports data from the cluster. Imperative only.
+Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the cluster. |
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Cluster.name field |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.clusters.instances`
-
-#### `projects.locations.clusters.instances.create()`
-
-Creates a new Instance in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.instanceId` | `string` | No | Required. ID of the requesting object. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.instances.patch()`
-
-Updates the parameters of a single Instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id} |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Instance resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if instance is not found. In that case, a new instance is created and `update_mask` is ignored. |
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.instances.createsecondary()`
-
-Creates a new SECONDARY Instance in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
-| `params.instanceId` | `string` | No | Required. ID of the requesting object. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.instances.injectFault()`
-
-Injects fault in an instance. Imperative only.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.instances.list()`
-
-Lists Instances in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filtering results |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. Additionally, you can perform an aggregated list operation by specifying a value with one of the following formats: * projects/{project}/locations/-/clusters/- * projects/{project}/locations/{region}/clusters/- |
 
 #### `projects.locations.clusters.instances.getConnectionInfo()`
 
@@ -341,23 +354,24 @@ Get instance metadata used for a connection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. The required format is: projects/{project}/locations/{location}/clusters/{cluster}/instances/{instance} |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. The required format is: projects/{project}/locations/{location}/clusters/{cluster}/instances/{instance} |
 
-#### `projects.locations.clusters.instances.delete()`
+#### `projects.locations.clusters.instances.createsecondary()`
 
-Deletes a single Instance.
+Creates a new SECONDARY Instance in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.etag` | `string` | No | Optional. The current etag of the Instance. If an etag is provided and does not match the current etag of the Instance, deletion will be blocked and an ABORTED error will be returned. |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.instanceId` | `string` | No | Required. ID of the requesting object. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.clusters.instances.failover()`
+#### `projects.locations.clusters.instances.injectFault()`
 
-Forces a Failover for a highly available instance. Failover promotes the HA standby instance as the new primary. Imperative only.
+Injects fault in an instance. Imperative only.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -373,6 +387,42 @@ Gets details of a single Instance.
 | `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
 | `params.view` | `string` | No | The view of the instance to return. |
 
+#### `projects.locations.clusters.instances.patch()`
+
+Updates the parameters of a single Instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.name` | `string` | Yes | Output only. The name of the instance resource with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id} where the cluster and instance ID segments should satisfy the regex expression `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`, e.g. 1-63 characters of lowercase letters, numbers, and dashes, starting with a letter, and ending with a letter or number. For more details see https://google.aip.dev/122. The prefix of the instance resource name is the name of the parent resource: * projects/{project}/locations/{region}/clusters/{cluster_id} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Instance resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, update succeeds even if instance is not found. In that case, a new instance is created and `update_mask` is ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.clusters.instances.create()`
+
+Creates a new Instance in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.instanceId` | `string` | No | Required. ID of the requesting object. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.clusters.instances.delete()`
+
+Deletes a single Instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. The current etag of the Instance. If an etag is provided and does not match the current etag of the Instance, deletion will be blocked and an ABORTED error will be returned. |
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request. |
+
 #### `projects.locations.clusters.instances.restart()`
 
 Restart an Instance in a cluster. Imperative only.
@@ -382,42 +432,28 @@ Restart an Instance in a cluster. Imperative only.
 | `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.clusters.instances.list()`
+
+Lists Instances in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. Additionally, you can perform an aggregated list operation by specifying a value with one of the following formats: * projects/{project}/locations/-/clusters/- * projects/{project}/locations/{region}/clusters/- |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.filter` | `string` | No | Optional. Filtering results |
+
+#### `projects.locations.clusters.instances.failover()`
+
+Forces a Failover for a highly available instance. Failover promotes the HA standby instance as the new primary. Imperative only.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the Instance.name field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.clusters.users`
-
-#### `projects.locations.clusters.users.delete()`
-
-Deletes a single User.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the User.name field. |
-
-#### `projects.locations.clusters.users.create()`
-
-Creates a new User in a given project, location, and cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.userId` | `string` | No | Required. ID of the requesting object. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.clusters.users.patch()`
-
-Updates the parameters of a single User.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. Allow missing fields in the update mask. |
-| `params.name` | `string` | Yes | Output only. Name of the resource in the form of projects/{project}/locations/{location}/cluster/{cluster}/users/{user}. |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the User resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.users.get()`
 
@@ -427,27 +463,49 @@ Gets details of a single User.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the User.name field. |
 
+#### `projects.locations.clusters.users.create()`
+
+Creates a new User in a given project, location, and cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.userId` | `string` | No | Required. ID of the requesting object. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.clusters.users.delete()`
+
+Deletes a single User.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The name of the resource. For the required format, see the comment on the User.name field. |
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+
+#### `projects.locations.clusters.users.patch()`
+
+Updates the parameters of a single User.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | Optional. If set, the backend validates the request, but doesn't actually execute it. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Output only. Name of the resource in the form of projects/{project}/locations/{location}/cluster/{cluster}/users/{user}. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the User resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.allowMissing` | `boolean` | No | Optional. Allow missing fields in the update mask. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.clusters.users.list()`
 
 Lists Users in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
 | `params.parent` | `string` | Yes | Required. Parent value for ListUsersRequest |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.filter` | `string` | No | Optional. Filtering results |
-
-### `projects.locations.supportedDatabaseFlags`
-
-#### `projects.locations.supportedDatabaseFlags.list()`
-
-Lists SupportedDatabaseFlags for a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. The required format is: * projects/{project}/locations/{location} Regardless of the parent specified here, as long it is contains a valid project and location, the service will return a static list of supported flags resources. Note that we do not yet support region-specific flags. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.scope` | `string` | No | Optional. The scope for which supported flags are requested. If not specified, default is DATABASE. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
