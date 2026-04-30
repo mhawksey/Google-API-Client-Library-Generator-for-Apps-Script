@@ -4,8 +4,8 @@ Auto-generated client library for using the **DoubleClick Bid Manager API (versi
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:36:36 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:14:08 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:54:02 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:54:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:28 GMT
 
 
@@ -16,14 +16,6 @@ Auto-generated client library for using the **DoubleClick Bid Manager API (versi
 
 ### `queries`
 
-#### `queries.create()`
-
-Creates a new query.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `queries.delete()`
 
 Deletes an existing query as well as its generated reports.
@@ -31,6 +23,16 @@ Deletes an existing query as well as its generated reports.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.queryId` | `string` | Yes | Required. The ID of the query to delete. |
+
+#### `queries.list()`
+
+Lists queries created by the current user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Field to sort the list by. Accepts the following values: * `queryId` (default) * `metadata.title` The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `queryId desc`. |
+| `params.pageToken` | `string` | No | A token identifying which page of results the server should return. Typically, this is the value of nextPageToken, returned from the previous call to the `queries.list` method. If unspecified, the first page of results is returned. |
+| `params.pageSize` | `integer` | No | Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified. |
 
 #### `queries.get()`
 
@@ -40,16 +42,6 @@ Retrieves a query.
 |---|---|---|---|
 | `params.queryId` | `string` | Yes | Required. The ID of the query to retrieve. |
 
-#### `queries.list()`
-
-Lists queries created by the current user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of results per page. Must be between `1` and `100`. Defaults to `100` if unspecified. |
-| `params.pageToken` | `string` | No | A token identifying which page of results the server should return. Typically, this is the value of nextPageToken, returned from the previous call to the `queries.list` method. If unspecified, the first page of results is returned. |
-| `params.orderBy` | `string` | No | Field to sort the list by. Accepts the following values: * `queryId` (default) * `metadata.title` The default sorting order is ascending. To specify descending order for a field, add the suffix `desc` to the field name. For example, `queryId desc`. |
-
 #### `queries.run()`
 
 Runs an existing query to generate a report.
@@ -58,6 +50,14 @@ Runs an existing query to generate a report.
 |---|---|---|---|
 | `params.queryId` | `string` | Yes | Required. The ID of the query to run. |
 | `params.synchronous` | `boolean` | No | Whether the query should be run synchronously. When `true`, the request won't return until the resulting report has finished running. This parameter is `false` by default. Setting this parameter to `true` is **not recommended**. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `queries.create()`
+
+Creates a new query.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `queries.reports`
@@ -79,5 +79,5 @@ Retrieves a report.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.queryId` | `string` | Yes | Required. The ID of the query that generated the report. |
 | `params.reportId` | `string` | Yes | Required. The ID of the query to retrieve. |
+| `params.queryId` | `string` | Yes | Required. The ID of the query that generated the report. |
