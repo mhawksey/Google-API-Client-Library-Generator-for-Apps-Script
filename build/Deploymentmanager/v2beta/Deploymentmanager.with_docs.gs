@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Deployment Manager V2 API
  * Documentation URL: https://cloud.google.com/deployment-manager
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Deploymentmanager {
