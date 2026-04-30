@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Civic Information API
  * Documentation URL: https://developers.google.com/civic-information/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Civicinfo {
