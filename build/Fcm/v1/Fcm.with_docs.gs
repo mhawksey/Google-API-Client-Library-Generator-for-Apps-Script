@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase Cloud Messaging API
  * Documentation URL: https://firebase.google.com/docs/cloud-messaging
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Fcm {
