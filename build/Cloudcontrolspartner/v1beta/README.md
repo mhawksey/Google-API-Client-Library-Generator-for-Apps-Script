@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Controls Partner API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:25:03 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:31:49 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:33:59 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:33:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:29 GMT
 
 
@@ -28,13 +28,13 @@ Get details of a Partner.
 
 ### `organizations.locations.customers`
 
-#### `organizations.locations.customers.get()`
+#### `organizations.locations.customers.delete()`
 
-Gets details of a single customer
+Delete details of a single customer
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` |
+| `params.name` | `string` | Yes | Required. name of the resource to be deleted format: name=organizations/*/locations/*/customers/* |
 
 #### `organizations.locations.customers.list()`
 
@@ -42,10 +42,10 @@ Lists customers of a partner identified by its Google Cloud organization ID
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}` |
-| `params.pageSize` | `integer` | No | The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListCustomers` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | Optional. Filtering results |
+| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}` |
+| `params.pageSize` | `integer` | No | The maximum number of Customers to return. The service may return fewer than this value. If unspecified, at most 500 Customers will be returned. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
 
 #### `organizations.locations.customers.create()`
@@ -68,15 +68,27 @@ Update details of a single customer
 | `params.updateMask` | `string` | No | Optional. The list of fields to update |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.locations.customers.delete()`
+#### `organizations.locations.customers.get()`
 
-Delete details of a single customer
+Gets details of a single customer
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. name of the resource to be deleted format: name=organizations/*/locations/*/customers/* |
+| `params.name` | `string` | Yes | Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}` |
 
 ### `organizations.locations.customers.workloads`
+
+#### `organizations.locations.customers.workloads.list()`
+
+Lists customer workloads for a given customer org id
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of workloads to return. The service may return fewer than this value. If unspecified, at most 500 workloads will be returned. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` |
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkloads` call. Provide this to retrieve the subsequent page. |
 
 #### `organizations.locations.customers.workloads.get()`
 
@@ -85,18 +97,6 @@ Gets details of a single workload
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` |
-
-#### `organizations.locations.customers.workloads.list()`
-
-Lists customer workloads for a given customer org id
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}` |
-| `params.pageSize` | `integer` | No | The maximum number of workloads to return. The service may return fewer than this value. If unspecified, at most 500 workloads will be returned. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkloads` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | Optional. Filtering results. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
 
 #### `organizations.locations.customers.workloads.getEkmConnections()`
 
@@ -122,11 +122,11 @@ Deprecated: Only returns access approval requests directly associated with an as
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+| `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` |
 
 ### `organizations.locations.customers.workloads.violations`
 
@@ -136,13 +136,13 @@ Lists Violations for a workload Callers may also choose to read across multiple 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource Format `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListViolations` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | Optional. Filtering results |
+| `params.parent` | `string` | Yes | Required. Parent resource Format `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}` |
+| `params.interval.endTime` | `string` | No | Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of customers row to return. The service may return fewer than this value. If unspecified, at most 10 customers will be returned. |
 | `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
 | `params.interval.startTime` | `string` | No | Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. |
-| `params.interval.endTime` | `string` | No | Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. |
 
 #### `organizations.locations.customers.workloads.violations.get()`
 
