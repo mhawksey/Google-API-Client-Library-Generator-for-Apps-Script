@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Infrastructure Manager API
  * Documentation URL: https://cloud.google.com/infrastructure-manager/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Config {
