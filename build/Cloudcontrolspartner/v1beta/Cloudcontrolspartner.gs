@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Controls Partner API
  * Documentation URL: https://cloud.google.com/sovereign-controls-by-partners/docs/sovereign-partners/reference/rest
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudcontrolspartner {
@@ -24,15 +25,15 @@ class Cloudcontrolspartner {
     this.organizations.locations.getPartner = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.customers = {};
-    this.organizations.locations.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.customers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.locations.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customers', 'GET', apiParams, clientConfig);
     this.organizations.locations.customers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customers', 'POST', apiParams, clientConfig);
     this.organizations.locations.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.customers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.customers.workloads = {};
-    this.organizations.locations.customers.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.customers.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/workloads', 'GET', apiParams, clientConfig);
+    this.organizations.locations.customers.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.customers.workloads.getEkmConnections = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.customers.workloads.getPartnerPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
