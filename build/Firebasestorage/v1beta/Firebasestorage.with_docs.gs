@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Storage for Firebase API
  * Documentation URL: https://firebase.google.com/docs/storage
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebasestorage {
@@ -43,6 +44,17 @@ class Firebasestorage {
     this.projects.buckets = {};
 
     /**
+     * Unlinks a linked Google Cloud Storage bucket from a Firebase project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
+
+    /**
      * Gets a single linked storage bucket.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.
@@ -51,18 +63,6 @@ class Firebasestorage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the linked storage buckets for a project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of buckets to return. If not set, the server will use a reasonable default.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
 
     /**
      * Links a Google Cloud Storage bucket to a Firebase project.
@@ -76,15 +76,16 @@ class Firebasestorage {
     this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
 
     /**
-     * Unlinks a linked Google Cloud Storage bucket from a Firebase project.
+     * Lists the linked storage buckets for a project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.bucket - (Required) Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - The maximum number of buckets to return. If not set, the server will use a reasonable default.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
+    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
 
     this.projects.defaultBucket = {};
 
