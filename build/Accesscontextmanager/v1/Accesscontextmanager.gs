@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Access Context Manager API
  * Documentation URL: https://cloud.google.com/access-context-manager/docs/reference/rest/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Accesscontextmanager {
