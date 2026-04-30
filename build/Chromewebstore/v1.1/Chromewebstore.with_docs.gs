@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Web Store API
  * Documentation URL: https://developer.chrome.com/docs/webstore/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Chromewebstore {
@@ -21,17 +22,6 @@ class Chromewebstore {
     this.items = {};
 
     /**
-     * Gets your own Chrome Web Store item.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.itemId - (Required) Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme.
-     * @param {string} apiParams.projection - Determines which subset of the item information to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.items.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Inserts a new item.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.publisherEmail - The email of the publisher who owns the items. Defaults to the caller's email address.
@@ -44,6 +34,17 @@ class Chromewebstore {
       const path = apiParams.media ? '/upload/chromewebstore/v1.1/items' : 'chromewebstore/v1.1/items';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+
+    /**
+     * Gets your own Chrome Web Store item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.itemId - (Required) Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme.
+     * @param {string} apiParams.projection - Determines which subset of the item information to return.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.items.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}', 'GET', apiParams, clientConfig);
 
     /**
      * Publishes an item.
