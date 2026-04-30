@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Campaign Manager 360 API
  * Documentation URL: https://developers.google.com/doubleclick-advertisers/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Dfareporting {
