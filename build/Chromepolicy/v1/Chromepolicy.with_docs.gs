@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Policy API
  * Documentation URL: http://developers.google.com/chrome/policy
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Chromepolicy {
@@ -18,23 +19,6 @@ class Chromepolicy {
     this._servicePath = '';
 
 
-    this.media = {};
-
-    /**
-     * Creates an enterprise file from the content provided by user. Returns a public download url for end user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer for which the file upload will apply.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+customer}/policies/files:uploadPolicyFile' : 'v1/{+customer}/policies/files:uploadPolicyFile';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
     this.customers = {};
 
     this.customers.policies = {};
@@ -49,6 +33,52 @@ class Chromepolicy {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.policies.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies:resolve', 'POST', apiParams, clientConfig);
+
+    this.customers.policies.groups = {};
+
+    /**
+     * Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.policies.groups.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchModify', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.policies.groups.listGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:listGroupPriorityOrdering', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.policies.groups.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchDelete', 'POST', apiParams, clientConfig);
+
+    /**
+     * Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.policies.groups.updateGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:updateGroupPriorityOrdering', 'POST', apiParams, clientConfig);
 
     this.customers.policies.orgunits = {};
 
@@ -74,64 +104,7 @@ class Chromepolicy {
      */
     this.customers.policies.orgunits.batchInherit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/orgunits:batchInherit', 'POST', apiParams, clientConfig);
 
-    this.customers.policies.groups = {};
-
-    /**
-     * Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.policies.groups.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchModify', 'POST', apiParams, clientConfig);
-
-    /**
-     * Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.policies.groups.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchDelete', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.policies.groups.listGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:listGroupPriorityOrdering', 'POST', apiParams, clientConfig);
-
-    /**
-     * Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.policies.groups.updateGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:updateGroupPriorityOrdering', 'POST', apiParams, clientConfig);
-
     this.customers.policies.networks = {};
-
-    /**
-     * Creates a certificate at a specified OU for a customer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer for which the certificate will apply.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.policies.networks.defineCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineCertificate', 'POST', apiParams, clientConfig);
 
     /**
      * Remove an existing certificate by guid.
@@ -166,6 +139,17 @@ class Chromepolicy {
      */
     this.customers.policies.networks.defineNetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineNetwork', 'POST', apiParams, clientConfig);
 
+    /**
+     * Creates a certificate at a specified OU for a customer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer for which the certificate will apply.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.policies.networks.defineCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineCertificate', 'POST', apiParams, clientConfig);
+
     this.customers.policySchemas = {};
 
     /**
@@ -190,6 +174,23 @@ class Chromepolicy {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.policySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policySchemas', 'GET', apiParams, clientConfig);
+
+    this.media = {};
+
+    /**
+     * Creates an enterprise file from the content provided by user. Returns a public download url for end user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer for which the file upload will apply.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+customer}/policies/files:uploadPolicyFile' : 'v1/{+customer}/policies/files:uploadPolicyFile';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
   }
 
 /**
