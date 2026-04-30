@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Search Ads 360 API
  * Documentation URL: https://developers.google.com/search-ads
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Doubleclicksearch {
@@ -18,7 +19,30 @@ class Doubleclicksearch {
     this._servicePath = '';
 
 
+    this.savedColumns = {};
+
+    /**
+     * Retrieve the list of saved columns for a specified advertiser.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) DS ID of the advertiser.
+     * @param {string} apiParams.agencyId - (Required) DS ID of the agency.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.savedColumns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns', 'GET', apiParams, clientConfig);
+
     this.conversion = {};
+
+    /**
+     * Updates a batch of conversions in DoubleClick Search.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.conversion.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'PUT', apiParams, clientConfig);
 
     /**
      * Retrieves a list of conversions from a DoubleClick Search engine account.
@@ -42,6 +66,16 @@ class Doubleclicksearch {
     this.conversion.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', 'GET', apiParams, clientConfig);
 
     /**
+     * Inserts a batch of new conversions into DoubleClick Search.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
+
+    /**
      * Retrieves a list of conversions from a DoubleClick Search engine account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.adGroupId - Numeric ID of the ad group.
@@ -63,26 +97,6 @@ class Doubleclicksearch {
     this.conversion.getByCustomerId = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/customer/{customerId}/conversion', 'GET', apiParams, clientConfig);
 
     /**
-     * Inserts a batch of new conversions into DoubleClick Search.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a batch of conversions in DoubleClick Search.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.conversion.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'PUT', apiParams, clientConfig);
-
-    /**
      * Updates the availabilities of a batch of floodlight activities in DoubleClick Search.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -95,16 +109,6 @@ class Doubleclicksearch {
     this.reports = {};
 
     /**
-     * Generates and returns a report immediately.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
-
-    /**
      * Polls for the status of a report request.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.reportId - (Required) ID of the report request being polled.
@@ -113,17 +117,6 @@ class Doubleclicksearch {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Downloads a report file encoded in UTF-8.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.reportFragment - (Required) The index of the report fragment to download.
-     * @param {string} apiParams.reportId - (Required) ID of the report.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.reports.getFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}', 'GET', apiParams, clientConfig);
 
     /**
      * Downloads a csv file(encoded in UTF-8) that contains ID mappings between legacy SA360 and new SA360. The file includes all children entities of the given advertiser(e.g. engine accounts, campaigns, ad groups, etc.) that exist in both legacy SA360 and new SA360.
@@ -137,6 +130,27 @@ class Doubleclicksearch {
     this.reports.getIdMappingFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping', 'GET', apiParams, clientConfig);
 
     /**
+     * Downloads a report file encoded in UTF-8.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.reportFragment - (Required) The index of the report fragment to download.
+     * @param {string} apiParams.reportId - (Required) ID of the report.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.reports.getFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates and returns a report immediately.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
+
+    /**
      * Inserts a report request into the reporting system.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -145,19 +159,6 @@ class Doubleclicksearch {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.reports.request = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports', 'POST', apiParams, clientConfig);
-
-    this.savedColumns = {};
-
-    /**
-     * Retrieve the list of saved columns for a specified advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) DS ID of the advertiser.
-     * @param {string} apiParams.agencyId - (Required) DS ID of the agency.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.savedColumns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns', 'GET', apiParams, clientConfig);
   }
 
 /**
