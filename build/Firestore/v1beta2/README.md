@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:44:06 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:40:26 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:56:36 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:56:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:56 GMT
 
 
@@ -18,15 +18,6 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1be
 
 ### `projects.databases`
 
-#### `projects.databases.exportDocuments()`
-
-Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.databases.importDocuments()`
 
 Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.
@@ -36,18 +27,26 @@ Imports documents into Google Cloud Firestore. Existing documents with the same 
 | `params.name` | `string` | Yes | Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.databases.exportDocuments()`
+
+Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.databases.collectionGroups`
 
 ### `projects.databases.collectionGroups.indexes`
 
-#### `projects.databases.collectionGroups.indexes.create()`
+#### `projects.databases.collectionGroups.indexes.delete()`
 
-Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+Deletes a composite index.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
 
 #### `projects.databases.collectionGroups.indexes.list()`
 
@@ -55,8 +54,8 @@ Lists composite indexes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
 | `params.filter` | `string` | No | The filter to apply to list results. |
+| `params.parent` | `string` | Yes | A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
 | `params.pageSize` | `integer` | No | The number of results to return. |
 | `params.pageToken` | `string` | No | A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results. |
 
@@ -68,13 +67,14 @@ Gets a composite index.
 |---|---|---|---|
 | `params.name` | `string` | Yes | A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
 
-#### `projects.databases.collectionGroups.indexes.delete()`
+#### `projects.databases.collectionGroups.indexes.create()`
 
-Deletes a composite index.
+Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}` |
+| `params.parent` | `string` | Yes | A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.databases.collectionGroups.fields`
 
@@ -104,5 +104,5 @@ Lists the field configuration and metadata for this database. Currently, Firesto
 |---|---|---|---|
 | `params.parent` | `string` | Yes | A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
 | `params.filter` | `string` | No | The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to `indexConfig.usesAncestorConfig:false`. |
-| `params.pageSize` | `integer` | No | The number of results to return. |
 | `params.pageToken` | `string` | No | A page token, returned from a previous call to FirestoreAdmin.ListFields, that may be used to get the next page of results. |
+| `params.pageSize` | `integer` | No | The number of results to return. |
