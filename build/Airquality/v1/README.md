@@ -4,8 +4,8 @@ Auto-generated client library for using the **Air Quality API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:21:41 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:21:52 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:22:57 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:22:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:31 GMT
 
 
@@ -54,7 +54,7 @@ Returns a bytes array containing the data of the tile PNG image.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mapType` | `string` | Yes | Required. The type of the air quality heatmap. Defines the pollutant that the map will graphically represent. Allowed values: - UAQI_RED_GREEN (UAQI, red-green palette) - UAQI_INDIGO_PERSIAN (UAQI, indigo-persian palette) - PM25_INDIGO_PERSIAN - GBR_DEFRA - DEU_UBA - CAN_EC - FRA_ATMO - US_AQI |
 | `params.zoom` | `integer` | Yes | Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. Zoom level 0 is the entire world in a single tile. Zoom level 1 is the entire world in 4 tiles. Zoom level 2 is the entire world in 16 tiles. Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16 |
 | `params.x` | `integer` | Yes | Required. Defines the east-west point in the requested tile. |
+| `params.mapType` | `string` | Yes | Required. The type of the air quality heatmap. Defines the pollutant that the map will graphically represent. Allowed values: - UAQI_RED_GREEN (UAQI, red-green palette) - UAQI_INDIGO_PERSIAN (UAQI, indigo-persian palette) - PM25_INDIGO_PERSIAN - GBR_DEFRA - DEU_UBA - CAN_EC - FRA_ATMO - US_AQI |
 | `params.y` | `integer` | Yes | Required. Defines the north-south point in the requested tile. |
