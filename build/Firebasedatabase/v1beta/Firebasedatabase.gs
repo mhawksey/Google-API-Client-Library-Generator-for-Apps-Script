@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Firebase Realtime Database Management API
  * Documentation URL: https://firebase.google.com/docs/reference/rest/database/database-management/rest/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Firebasedatabase {
@@ -24,12 +25,12 @@ class Firebasedatabase {
 
     this.projects.locations.instances = {};
     this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.instances.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:disable', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.reenable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:reenable', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:disable', 'POST', apiParams, clientConfig);
   }
 
 /**
