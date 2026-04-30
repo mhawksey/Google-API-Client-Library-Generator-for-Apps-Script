@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Datastore API
  * Documentation URL: https://cloud.google.com/datastore/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Datastore {
