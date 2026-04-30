@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Hosting API (version:
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:43:12 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:44:21 GMT
+- **Last Checked:** Thu, 30 Apr 2026 23:55:26 GMT
+- **Last Modified:** Thu, 30 Apr 2026 23:55:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:18 GMT
 
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **Firebase App Hosting API (version:
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
 * **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
@@ -32,7 +32,7 @@ Lists information about the supported locations for this service. This method li
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -301,3 +301,14 @@ Deletes a single domain.
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
 | `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources. |
+
+### `projects.locations.supportedRuntimes`
+
+#### `projects.locations.supportedRuntimes.list()`
+
+Lists the runtimes supported by the backend. The list of runtimes may vary across projects and locations, for example, during staged rollouts of new runtime support.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of SupportedRuntime. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The suggested number of runtimes to return. This field is ignored. We return all runtimes in a single page regardless of the page size. |
