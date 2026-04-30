@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Location Finder API
  * Documentation URL: https://cloud.google.com/location-finder/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Cloudlocationfinder {
