@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Gmail API
  * Documentation URL: https://developers.google.com/workspace/gmail/api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Gmail {
@@ -21,17 +22,7 @@ class Gmail {
     this.users = {};
 
     /**
-     * Gets the current user's Gmail profile.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.getProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/profile', 'GET', apiParams, clientConfig);
-
-    /**
-     * Set up or update a push notification watch on the given user mailbox.
+     * Set up or update a push notification watch on the given user mailbox. For more information, see [Configure push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
@@ -42,7 +33,17 @@ class Gmail {
     this.users.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/watch', 'POST', apiParams, clientConfig);
 
     /**
-     * Stop receiving push notifications for the given user mailbox.
+     * Gets the current user's Gmail profile.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.getProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/profile', 'GET', apiParams, clientConfig);
+
+    /**
+     * Turn off push notification delivery for the given user mailbox. For more information, see [Configure push notifications in Gmail API](https://developers.google.com/workspace/gmail/api/guides/push).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -51,131 +52,7 @@ class Gmail {
      */
     this.users.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/stop', 'POST', apiParams, clientConfig);
 
-    this.users.drafts = {};
-
-    /**
-     * Immediately and permanently deletes the specified draft. Does not simply trash it.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the draft to delete.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new draft with the `DRAFT` label.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.create = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts' : 'gmail/v1/users/{userId}/drafts';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
-    /**
-     * Gets the specified draft.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.format - The format to return the draft in.
-     * @param {string} apiParams.id - (Required) The ID of the draft to retrieve.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the drafts in the user's mailbox.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeSpamTrash - Include drafts from `SPAM` and `TRASH` in the results.
-     * @param {integer} apiParams.maxResults - Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500.
-     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
-     * @param {string} apiParams.q - Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts', 'GET', apiParams, clientConfig);
-
-    /**
-     * Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.send = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/send' : 'gmail/v1/users/{userId}/drafts/send';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
-    /**
-     * Replaces a draft's content.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the draft to update.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.drafts.update = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/{id}' : 'gmail/v1/users/{userId}/drafts/{id}';
-      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
-    };
-
-    this.users.history = {};
-
-    /**
-     * Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.historyTypes - History types to be returned by the function
-     * @param {string} apiParams.labelId - Only return messages with a label matching the ID.
-     * @param {integer} apiParams.maxResults - Maximum number of history records to return. This field defaults to 100. The maximum allowed value for this field is 500.
-     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
-     * @param {string} apiParams.startHistoryId - Required. Returns history records after the specified `startHistoryId`. The supplied `startHistoryId` should be obtained from the `historyId` of a message, thread, or previous `list` response. History IDs increase chronologically but are not contiguous with random gaps in between valid IDs. Supplying an invalid or out of date `startHistoryId` typically returns an `HTTP 404` error code. A `historyId` is typically valid for at least a week, but in some rare circumstances may be valid for only a few hours. If you receive an `HTTP 404` error response, your application should perform a full sync. If you receive no `nextPageToken` in the response, there are no updates to retrieve and you can store the returned `historyId` for a future request.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.history.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/history', 'GET', apiParams, clientConfig);
-
     this.users.messages = {};
-
-    /**
-     * Moves the specified message to the trash.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the message to Trash.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.messages.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/trash', 'POST', apiParams, clientConfig);
-
-    /**
-     * Removes the specified message from the trash.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the message to remove from Trash.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.messages.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/untrash', 'POST', apiParams, clientConfig);
 
     /**
      * Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead.
@@ -200,7 +77,7 @@ class Gmail {
     this.users.messages.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/batchDelete', 'POST', apiParams, clientConfig);
 
     /**
-     * Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message. Note that the maximum size of the message is 150MB.
+     * Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message. Note that the maximum size of the message is 150 MB.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.deleted - Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts.
      * @param {string} apiParams.internalDateSource - Source for Gmail's internal date of the message.
@@ -219,21 +96,27 @@ class Gmail {
     };
 
     /**
-     * Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message.
+     * Moves the specified message to the trash.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.deleted - Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts.
-     * @param {string} apiParams.internalDateSource - Source for Gmail's internal date of the message.
+     * @param {string} apiParams.id - (Required) The ID of the message to Trash.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.messages.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/trash', 'POST', apiParams, clientConfig);
+
+    /**
+     * Modifies the labels on the specified message.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the message to modify.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.messages.insert = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages' : 'gmail/v1/users/{userId}/messages';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.users.messages.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/modify', 'POST', apiParams, clientConfig);
 
     /**
      * Gets the specified message.
@@ -249,22 +132,18 @@ class Gmail {
     this.users.messages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}', 'GET', apiParams, clientConfig);
 
     /**
-     * Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage, see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+     * Removes the specified message from the trash.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the message to remove from Trash.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.messages.send = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/send' : 'gmail/v1/users/{userId}/messages/send';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.users.messages.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/untrash', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists the messages in the user's mailbox. For example usage, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
+     * Lists the messages in the user's mailbox. For more information, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.includeSpamTrash - Include messages from `SPAM` and `TRASH` in the results.
      * @param {string} apiParams.labelIds - Only return messages with labels that match all of the specified label IDs. Messages in a thread might have labels that other messages in the same thread don't have. To learn more, see [Manage labels on messages and threads](https://developers.google.com/workspace/gmail/api/guides/labels#manage_labels_on_messages_threads).
@@ -279,16 +158,36 @@ class Gmail {
     this.users.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages', 'GET', apiParams, clientConfig);
 
     /**
-     * Modifies the labels on the specified message.
+     * Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For more information, see [Create and send email messages](https://developers.google.com/workspace/gmail/api/guides/sending).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the message to modify.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.messages.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/modify', 'POST', apiParams, clientConfig);
+    this.users.messages.send = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/send' : 'gmail/v1/users/{userId}/messages/send';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    /**
+     * Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message. For more information, see [Create and send email messages](https://developers.google.com/workspace/gmail/api/guides/sending).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.deleted - Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts.
+     * @param {string} apiParams.internalDateSource - Source for Gmail's internal date of the message.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.messages.insert = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages' : 'gmail/v1/users/{userId}/messages';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     /**
      * Modifies the labels on the specified messages.
@@ -318,18 +217,19 @@ class Gmail {
     this.users.labels = {};
 
     /**
-     * Creates a new label.
+     * Patch the specified label. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the label to update.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'POST', apiParams, clientConfig);
+    this.users.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.
+     * Immediately and permanently deletes the specified label and removes it from any messages and threads that it's applied to. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The ID of the label to delete.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -340,7 +240,17 @@ class Gmail {
     this.users.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Gets the specified label.
+     * Lists all labels in the user's mailbox. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the specified label. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The ID of the label to retrieve.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -351,17 +261,7 @@ class Gmail {
     this.users.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists all labels in the user's mailbox.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified label.
+     * Updates the specified label. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The ID of the label to update.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -373,96 +273,20 @@ class Gmail {
     this.users.labels.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Patch the specified label.
+     * Creates a label. For more information, see [Manage labels](https://developers.google.com/workspace/gmail/api/guides/labels).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the label to update.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PATCH', apiParams, clientConfig);
-
-    this.users.threads = {};
-
-    /**
-     * Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the thread to Trash.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/trash', 'POST', apiParams, clientConfig);
-
-    /**
-     * Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the thread to remove from Trash.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/untrash', 'POST', apiParams, clientConfig);
-
-    /**
-     * Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) ID of the Thread to delete.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets the specified thread.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.format - The format to return the messages in.
-     * @param {string} apiParams.id - (Required) The ID of the thread to retrieve.
-     * @param {string} apiParams.metadataHeaders - When given and format is METADATA, only include headers specified.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the threads in the user's mailbox.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeSpamTrash - Include threads from `SPAM` and `TRASH` in the results.
-     * @param {string} apiParams.labelIds - Only return threads with labels that match all of the specified label IDs.
-     * @param {integer} apiParams.maxResults - Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500.
-     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
-     * @param {string} apiParams.q - Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads', 'GET', apiParams, clientConfig);
-
-    /**
-     * Modifies the labels applied to the thread. This applies to all messages in the thread.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the thread to modify.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.threads.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/modify', 'POST', apiParams, clientConfig);
+    this.users.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'POST', apiParams, clientConfig);
 
     this.users.settings = {};
 
     /**
-     * Gets IMAP settings.
+     * Gets IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -472,39 +296,7 @@ class Gmail {
     this.users.settings.getImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates IMAP settings.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.updateImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets POP settings.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.getPop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates POP settings.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.updatePop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets vacation responder settings.
+     * Gets vacation responder settings. For more information, see [Manage vacation settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -514,7 +306,7 @@ class Gmail {
     this.users.settings.getVacation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/vacation', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates vacation responder settings.
+     * Updates vacation responder settings. For more information, see [Manage vacation settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/vacation_settings).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
@@ -525,38 +317,7 @@ class Gmail {
     this.users.settings.updateVacation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/vacation', 'PUT', apiParams, clientConfig);
 
     /**
-     * Gets language settings.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.getLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.updateLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets the auto-forwarding setting for the specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.getAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
@@ -566,54 +327,84 @@ class Gmail {
      */
     this.users.settings.updateAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'PUT', apiParams, clientConfig);
 
+    /**
+     * Gets language settings. For more information, see [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.getLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates IMAP settings. For more information, see [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.updateImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Gets POP settings. For more information, see [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.getPop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the auto-forwarding setting for the specified account. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.getAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates POP settings. For more information, see [Configure POP and IMAP settings with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/pop_imap_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.updatePop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Updates language settings. For more information, see [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.updateLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'PUT', apiParams, clientConfig);
+
     this.users.settings.sendAs = {};
 
     /**
-     * Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom "from" aliases.
+     * Deletes the specified send-as alias. Revokes any verification that may have been required for using it. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be deleted.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.settings.sendAs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'GET', apiParams, clientConfig);
+    this.users.settings.sendAs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a member of the collection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be retrieved.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.sendAs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.sendAs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be updated.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.sendAs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Patch the specified send-as alias.
+     * Patch the specified send-as alias. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be updated.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -625,18 +416,51 @@ class Gmail {
     this.users.settings.sendAs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be deleted.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.sendAs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the specified send-as alias. Fails with an HTTP 404 error if the specified address is not a member of the collection. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be retrieved.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.settings.sendAs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.sendAs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'GET', apiParams, clientConfig);
 
     /**
-     * Sends a verification email to the specified send-as alias address. The verification status must be `pending`. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be updated.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.sendAs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Lists the send-as aliases for the specified account. The result includes the primary send-as address associated with the account as well as any custom "from" aliases. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.sendAs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Sends a verification email to the specified send-as alias address. The verification status must be `pending`. For more information, see [Manage aliases and signatures with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/alias_and_signature_settings). This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.sendAsEmail - (Required) The send-as alias to be verified.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -649,30 +473,7 @@ class Gmail {
     this.users.settings.sendAs.smimeInfo = {};
 
     /**
-     * Lists S/MIME configs for the specified send-as alias.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.sendAs.smimeInfo.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the specified S/MIME config for the specified send-as alias.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The immutable ID for the SmimeInfo.
-     * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
-     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.sendAs.smimeInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.
+     * Insert (upload) the given S/MIME config for the specified send-as alias. Note that `pkcs12` format is required for the key. For more information, see [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
      * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
@@ -684,7 +485,19 @@ class Gmail {
     this.users.settings.sendAs.smimeInfo.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the specified S/MIME config for the specified send-as alias.
+     * Sets the default S/MIME config for the specified send-as alias. For more information, see [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The immutable ID for the SmimeInfo.
+     * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.sendAs.smimeInfo.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified S/MIME config for the specified send-as alias. For more information, see [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The immutable ID for the SmimeInfo.
      * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
@@ -696,7 +509,7 @@ class Gmail {
     this.users.settings.sendAs.smimeInfo.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Sets the default S/MIME config for the specified send-as alias.
+     * Gets the specified S/MIME config for the specified send-as alias. For more information, see [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The immutable ID for the SmimeInfo.
      * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
@@ -705,7 +518,18 @@ class Gmail {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.settings.sendAs.smimeInfo.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', 'POST', apiParams, clientConfig);
+    this.users.settings.sendAs.smimeInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists S/MIME configs for the specified send-as alias. For more information, see [Manage S/MIME certificates with the Gmail API](https://developers.google.com/workspace/gmail/api/guides/smime_certs).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sendAsEmail - (Required) The email address that appears in the "From:" header for mail sent using this alias.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.sendAs.smimeInfo.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'GET', apiParams, clientConfig);
 
     this.users.settings.cse = {};
 
@@ -721,17 +545,6 @@ class Gmail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.settings.cse.identities.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a client-side encryption identity. The authenticated user can no longer use the identity to send encrypted messages. You cannot restore the identity after you delete it. Instead, use the CreateCseIdentity method to create another identity with the same configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.cseEmailAddress - (Required) The primary email address associated with the client-side encryption identity configuration that's removed.
-     * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.cse.identities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Retrieves a client-side encryption identity configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
@@ -757,6 +570,17 @@ class Gmail {
     this.users.settings.cse.identities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'GET', apiParams, clientConfig);
 
     /**
+     * Deletes a client-side encryption identity. The authenticated user can no longer use the identity to send encrypted messages. You cannot restore the identity after you delete it. Instead, use the CreateCseIdentity method to create another identity with the same configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.cseEmailAddress - (Required) The primary email address associated with the client-side encryption identity configuration that's removed.
+     * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.cse.identities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Associates a different key pair with an existing client-side encryption identity. The updated key pair must validate against Google's [S/MIME certificate profiles](https://support.google.com/a/answer/7300887). For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.emailAddress - (Required) The email address of the client-side encryption identity to update.
@@ -771,17 +595,6 @@ class Gmail {
     this.users.settings.cse.keypairs = {};
 
     /**
-     * Creates and uploads a client-side encryption S/MIME public key certificate chain and private key metadata for the authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.cse.keypairs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'POST', apiParams, clientConfig);
-
-    /**
      * Turns off a client-side encryption key pair. The authenticated user can no longer use the key pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.keyPairId - (Required) The identifier of the key pair to turn off.
@@ -792,6 +605,18 @@ class Gmail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.settings.cse.keypairs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:disable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a client-side encryption key pair permanently and immediately. You can only permanently delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by an obliterated key. Authenticated users and Google Workspace administrators lose access to reading the encrypted messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.keyPairId - (Required) The identifier of the key pair to obliterate.
+     * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.cse.keypairs.obliterate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:obliterate', 'POST', apiParams, clientConfig);
 
     /**
      * Turns on a client-side encryption key pair that was turned off. The key pair becomes active again for any associated client-side encryption identities. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
@@ -806,15 +631,15 @@ class Gmail {
     this.users.settings.cse.keypairs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:enable', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves an existing client-side encryption key pair. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+     * Creates and uploads a client-side encryption S/MIME public key certificate chain and private key metadata for the authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.keyPairId - (Required) The identifier of the key pair to retrieve.
      * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.settings.cse.keypairs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}', 'GET', apiParams, clientConfig);
+    this.users.settings.cse.keypairs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'POST', apiParams, clientConfig);
 
     /**
      * Lists client-side encryption key pairs for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
@@ -829,76 +654,20 @@ class Gmail {
     this.users.settings.cse.keypairs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a client-side encryption key pair permanently and immediately. You can only permanently delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by an obliterated key. Authenticated users and Google Workspace administrators lose access to reading the encrypted messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+     * Retrieves an existing client-side encryption key pair. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.keyPairId - (Required) The identifier of the key pair to obliterate.
+     * @param {string} apiParams.keyPairId - (Required) The identifier of the key pair to retrieve.
      * @param {string} apiParams.userId - (Required) The requester's primary email address. To indicate the authenticated user, you can use the special value `me`.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.settings.cse.keypairs.obliterate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:obliterate', 'POST', apiParams, clientConfig);
-
-    this.users.settings.filters = {};
-
-    /**
-     * Lists the message filters of a Gmail user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.filters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a filter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the filter to be fetched.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.filters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a filter. Note: you can only create a maximum of 1,000 filters.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.filters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'POST', apiParams, clientConfig);
-
-    /**
-     * Immediately and permanently deletes the specified filter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The ID of the filter to be deleted.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.filters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.cse.keypairs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}', 'GET', apiParams, clientConfig);
 
     this.users.settings.forwardingAddresses = {};
 
     /**
-     * Lists the forwarding addresses for the specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.forwardingAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the specified forwarding address.
+     * Gets the specified forwarding address. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.forwardingEmail - (Required) The forwarding address to be retrieved.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -909,18 +678,7 @@ class Gmail {
     this.users.settings.forwardingAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.forwardingAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Deletes the specified forwarding address and revokes any verification that may have been required. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.forwardingEmail - (Required) The forwarding address to be deleted.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -930,31 +688,76 @@ class Gmail {
      */
     this.users.settings.forwardingAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}', 'DELETE', apiParams, clientConfig);
 
+    /**
+     * Lists the forwarding addresses for the specified account. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.forwardingAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. For more information, see [Manage email forwarding](https://developers.google.com/workspace/gmail/api/guides/forwarding_settings). This method is only available to service account clients that have been delegated domain-wide authority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.forwardingAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'POST', apiParams, clientConfig);
+
+    this.users.settings.filters = {};
+
+    /**
+     * Creates a filter. Note: you can only create a maximum of 1,000 filters. For more information, see [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.filters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a filter. For more information, see [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the filter to be fetched.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.filters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Immediately and permanently deletes the specified filter. For more information, see [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the filter to be deleted.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.filters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists the message filters of a Gmail user. For more information, see [Manage Gmail filters](https://developers.google.com/workspace/gmail/api/guides/filter_settings).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.filters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'GET', apiParams, clientConfig);
+
     this.users.settings.delegates = {};
 
     /**
-     * Lists the delegates for the specified account. This method is only available to service account clients that have been delegated domain-wide authority.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.delegates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the specified delegate. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.delegateEmail - (Required) The email address of the user whose delegate relationship is to be retrieved.
-     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.settings.delegates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Adds a delegate with its verification status set directly to `accepted`, without sending any verification email. The delegate user must be a member of the same Google Workspace organization as the delegator user. Gmail imposes limitations on the number of delegates and delegators each user in a Google Workspace organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators. Note that a delegate user must be referred to by their primary email address, and not an email alias. Also note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Adds a delegate with its verification status set directly to `accepted`, without sending any verification email. The delegate user must be a member of the same Google Workspace organization as the delegator user. For more information, see [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). Gmail imposes limitations on the number of delegates and delegators each user in a Google Workspace organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators. A delegate user must be referred to by their primary email address, and not an email alias. When a new delegate is created, there may be up to a one minute delay before the new delegate is available for use. This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
      * @param {object} apiParams.requestBody - The request body.
@@ -965,7 +768,28 @@ class Gmail {
     this.users.settings.delegates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'POST', apiParams, clientConfig);
 
     /**
-     * Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
+     * Lists the delegates for the specified account. For more information, see [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). This method is only available to service account clients that have been delegated domain-wide authority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.delegates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the specified delegate. For more information, see [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.delegateEmail - (Required) The email address of the user whose delegate relationship is to be retrieved.
+     * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.settings.delegates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. For more information, see [Manage delegates](https://developers.google.com/workspace/gmail/api/guides/delegate_settings). A delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.delegateEmail - (Required) The email address of the user to be removed as a delegate.
      * @param {string} apiParams.userId - (Required) User's email address. The special value "me" can be used to indicate the authenticated user.
@@ -974,6 +798,183 @@ class Gmail {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.settings.delegates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'DELETE', apiParams, clientConfig);
+
+    this.users.history = {};
+
+    /**
+     * Lists the history of all changes to the given mailbox. History results are returned in chronological order (increasing `historyId`). For more information, see [Synchronize clients with Gmail](https://developers.google.com/workspace/gmail/api/guides/sync).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.historyTypes - History types to be returned by the function
+     * @param {string} apiParams.labelId - Only return messages with a label matching the ID.
+     * @param {integer} apiParams.maxResults - Maximum number of history records to return. This field defaults to 100. The maximum allowed value for this field is 500.
+     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
+     * @param {string} apiParams.startHistoryId - Required. Returns history records after the specified `startHistoryId`. The supplied `startHistoryId` should be obtained from the `historyId` of a message, thread, or previous `list` response. History IDs increase chronologically but are not contiguous with random gaps in between valid IDs. Supplying an invalid or out of date `startHistoryId` typically returns an `HTTP 404` error code. A `historyId` is typically valid for at least a week, but in some rare circumstances may be valid for only a few hours. If you receive an `HTTP 404` error response, your application should perform a full sync. If you receive no `nextPageToken` in the response, there are no updates to retrieve and you can store the returned `historyId` for a future request.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.history.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/history', 'GET', apiParams, clientConfig);
+
+    this.users.drafts = {};
+
+    /**
+     * Immediately and permanently deletes the specified draft. Does not simply trash it. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the draft to delete.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.send = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/send' : 'gmail/v1/users/{userId}/drafts/send';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    /**
+     * Lists the drafts in the user's mailbox. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.includeSpamTrash - Include drafts from `SPAM` and `TRASH` in the results.
+     * @param {integer} apiParams.maxResults - Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500.
+     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
+     * @param {string} apiParams.q - Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the specified draft. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.format - The format to return the draft in.
+     * @param {string} apiParams.id - (Required) The ID of the draft to retrieve.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Replaces a draft's content. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the draft to update.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.update = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/{id}' : 'gmail/v1/users/{userId}/drafts/{id}';
+      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
+    };
+
+    /**
+     * Creates a draft with the `DRAFT` label. For more information, see [Create and send draft emails](https://developers.google.com/workspace/gmail/api/guides/drafts).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.drafts.create = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts' : 'gmail/v1/users/{userId}/drafts';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    this.users.threads = {};
+
+    /**
+     * Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the thread to remove from Trash.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/untrash', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the threads in the user's mailbox. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.includeSpamTrash - Include threads from `SPAM` and `TRASH` in the results.
+     * @param {string} apiParams.labelIds - Only return threads with labels that match all of the specified label IDs.
+     * @param {integer} apiParams.maxResults - Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500.
+     * @param {string} apiParams.pageToken - Page token to retrieve a specific page of results in the list.
+     * @param {string} apiParams.q - Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the specified thread. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.format - The format to return the messages in.
+     * @param {string} apiParams.id - (Required) The ID of the thread to retrieve.
+     * @param {string} apiParams.metadataHeaders - When given and format is METADATA, only include headers specified.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the thread to Trash.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/trash', 'POST', apiParams, clientConfig);
+
+    /**
+     * Modifies the labels applied to the thread. This applies to all messages in the thread. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The ID of the thread to modify.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/modify', 'POST', apiParams, clientConfig);
+
+    /**
+     * Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead. For more information, see [Manage threads](https://developers.google.com/workspace/gmail/api/guides/threads).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) ID of the Thread to delete.
+     * @param {string} apiParams.userId - (Required) The user's email address. The special value `me` can be used to indicate the authenticated user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.threads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
