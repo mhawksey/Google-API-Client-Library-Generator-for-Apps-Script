@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Marketing Platform Admin API
  * Documentation URL: https://developers.google.com/analytics/devguides/config/gmp/v1
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Marketingplatformadmin {
@@ -20,9 +21,9 @@ class Marketingplatformadmin {
 
     this.organizations = {};
     this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
     this.organizations.findSalesPartnerManagedClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:findSalesPartnerManagedClients', 'POST', apiParams, clientConfig);
     this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
+    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
 
     this.organizations.analyticsAccountLinks = {};
     this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
