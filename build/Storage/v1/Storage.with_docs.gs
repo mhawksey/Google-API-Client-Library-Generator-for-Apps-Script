@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Storage JSON API
  * Documentation URL: https://developers.google.com/storage/docs/json_api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Storage {
@@ -32,7 +33,7 @@ class Storage {
     this.anywhereCaches.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+     * Updates the config of an Anywhere Cache instance.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.anywhereCacheId - (Required) The ID of requested Anywhere Cache instance.
      * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
