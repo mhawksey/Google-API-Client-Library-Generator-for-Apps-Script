@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Play Grouping API
  * Documentation URL: https://cloud.google.com/playgrouping/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Playgrouping {
