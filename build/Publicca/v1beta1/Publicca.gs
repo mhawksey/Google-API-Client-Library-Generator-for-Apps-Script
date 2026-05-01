@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Public Certificate Authority API
  * Documentation URL: https://cloud.google.com/public-certificate-authority/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Publicca {
