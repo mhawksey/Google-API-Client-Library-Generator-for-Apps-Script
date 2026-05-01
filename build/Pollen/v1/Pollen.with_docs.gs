@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Pollen API
  * Documentation URL: https://developers.google.com/maps/documentation/pollen
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Pollen {
