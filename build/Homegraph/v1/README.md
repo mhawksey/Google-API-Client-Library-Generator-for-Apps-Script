@@ -4,8 +4,8 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:45:46 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:46:09 GMT
+- **Last Checked:** Fri, 01 May 2026 00:04:17 GMT
+- **Last Modified:** Fri, 01 May 2026 00:04:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:58 GMT
 
 
@@ -14,15 +14,18 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ## API Reference
 
-### `devices`
+### `agentUsers`
 
-#### `devices.requestSync()`
+#### `agentUsers.delete()`
 
-Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project.
+Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.agentUserId` | `string` | Yes | Required. Third-party user ID. |
+| `params.requestId` | `string` | No | Request ID used for debugging. |
+
+### `devices`
 
 #### `devices.reportStateAndNotification()`
 
@@ -40,6 +43,14 @@ Gets the current states in Home Graph for the given set of the third-party user'
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `devices.requestSync()`
+
+Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `devices.sync()`
 
 Gets all the devices associated with the given third-party user. The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be authorized using service account credentials from your Actions console project.
@@ -47,14 +58,3 @@ Gets all the devices associated with the given third-party user. The third-party
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `agentUsers`
-
-#### `agentUsers.delete()`
-
-Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.agentUserId` | `string` | Yes | Required. Third-party user ID. |
-| `params.requestId` | `string` | No | Request ID used for debugging. |
