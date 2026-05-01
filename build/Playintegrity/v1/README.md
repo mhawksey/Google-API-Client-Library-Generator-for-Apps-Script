@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Integrity API (version
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:56:29 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:04:42 GMT
+- **Last Checked:** Fri, 01 May 2026 00:18:18 GMT
+- **Last Modified:** Fri, 01 May 2026 00:18:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:27 GMT
 
 
