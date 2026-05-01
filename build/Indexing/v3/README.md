@@ -4,8 +4,8 @@ Auto-generated client library for using the **Web Search Indexing API (version: 
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:46:42 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:54:06 GMT
+- **Last Checked:** Fri, 01 May 2026 00:05:05 GMT
+- **Last Modified:** Fri, 01 May 2026 00:05:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:28 GMT
 
 
