@@ -4,8 +4,8 @@ Auto-generated client library for using the **Looker (Google Cloud core) API (ve
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:53:02 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:49:25 GMT
+- **Last Checked:** Fri, 01 May 2026 00:06:02 GMT
+- **Last Modified:** Fri, 01 May 2026 00:06:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:00 GMT
 
 
@@ -18,22 +18,6 @@ Auto-generated client library for using the **Looker (Google Cloud core) API (ve
 
 ### `projects.locations`
 
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service. This method can be called in two ways:
-
-* **List all public locations:** Use the path `GET /v1/locations`.
-
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -41,6 +25,22 @@ Gets information about a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
+
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
+
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 ### `projects.locations.operations`
 
@@ -50,11 +50,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 
 #### `projects.locations.operations.get()`
 
@@ -83,42 +83,14 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `projects.locations.instances`
 
-#### `projects.locations.instances.list()`
+#### `projects.locations.instances.restore()`
 
-Lists Instances in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | The maximum number of instances to return. If unspecified at most 256 will be returned. The maximum possible value is 2048. |
-| `params.pageToken` | `string` | No | A page token received from a previous ListInstancesRequest. |
-
-#### `projects.locations.instances.get()`
-
-Gets details of a single Instance.
+Restore Looker instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-
-#### `projects.locations.instances.create()`
-
-Creates a new Instance in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}`. |
-| `params.instanceId` | `string` | No | Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum. |
+| `params.name` | `string` | Yes | Required. Instance being restored Format: projects/{project}/locations/{location}/instances/{instance} |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.delete()`
-
-Delete instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-| `params.force` | `boolean` | No | Whether to force cascading delete. |
 
 #### `projects.locations.instances.patch()`
 
@@ -139,23 +111,24 @@ Restart instance.
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.restore()`
+#### `projects.locations.instances.create()`
 
-Restore Looker instance.
+Creates a new Instance in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Instance being restored Format: projects/{project}/locations/{location}/instances/{instance} |
+| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}`. |
+| `params.instanceId` | `string` | No | Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.import()`
+#### `projects.locations.instances.delete()`
 
-Import instance.
+Delete instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.force` | `boolean` | No | Whether to force cascading delete. |
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.export()`
 
@@ -166,23 +139,34 @@ Export instance.
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.instances.get()`
+
+Gets details of a single Instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
+
+#### `projects.locations.instances.list()`
+
+Lists Instances in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of instances to return. If unspecified at most 256 will be returned. The maximum possible value is 2048. |
+| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}`. |
+| `params.pageToken` | `string` | No | A page token received from a previous ListInstancesRequest. |
+
+#### `projects.locations.instances.import()`
+
+Import instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.instances.backups`
-
-#### `projects.locations.instances.backups.list()`
-
-List backups of Looker instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location}/instances/{instance}. |
-| `params.pageSize` | `integer` | No | The maximum number of instances to return. |
-| `params.pageToken` | `string` | No | A page token received from a previous ListInstances request. |
-| `params.orderBy` | `string` | No | Sort results. Default order is "create_time desc". Other supported fields are "state" and "expire_time". https://google.aip.dev/132#ordering |
-
-#### `projects.locations.instances.backups.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`. |
 
 #### `projects.locations.instances.backups.create()`
 
@@ -200,3 +184,19 @@ Delete backup.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} |
+
+#### `projects.locations.instances.backups.list()`
+
+List backups of Looker instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of instances to return. |
+| `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location}/instances/{instance}. |
+| `params.pageToken` | `string` | No | A page token received from a previous ListInstances request. |
+| `params.orderBy` | `string` | No | Sort results. Default order is "create_time desc". Other supported fields are "state" and "expire_time". https://google.aip.dev/132#ordering |
+
+#### `projects.locations.instances.backups.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`. |
