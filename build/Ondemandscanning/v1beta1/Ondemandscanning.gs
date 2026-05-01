@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the On-Demand Scanning API
  * Documentation URL: https://cloud.google.com/container-analysis/docs/on-demand-scanning/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Ondemandscanning {
@@ -23,11 +24,11 @@ class Ondemandscanning {
     this.projects.locations = {};
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:wait', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.scans = {};
     this.projects.locations.scans.analyzePackages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/scans:analyzePackages', 'POST', apiParams, clientConfig);
