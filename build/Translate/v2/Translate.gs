@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Cloud Translation API
  * Documentation URL: https://code.google.com/apis/language/translate/v2/getting_started.html
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Translate {
@@ -18,16 +19,16 @@ class Translate {
     this._servicePath = 'language/translate/';
 
 
-    this.languages = {};
-    this.languages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/languages', 'GET', apiParams, clientConfig);
+    this.detections = {};
+    this.detections.detect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'POST', apiParams, clientConfig);
+    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
 
     this.translations = {};
     this.translations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2', 'GET', apiParams, clientConfig);
     this.translations.translate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2', 'POST', apiParams, clientConfig);
 
-    this.detections = {};
-    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
-    this.detections.detect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'POST', apiParams, clientConfig);
+    this.languages = {};
+    this.languages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/languages', 'GET', apiParams, clientConfig);
   }
 
 /**
