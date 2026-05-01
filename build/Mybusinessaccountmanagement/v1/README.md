@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Account Management API
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:54:39 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:51:30 GMT
+- **Last Checked:** Fri, 01 May 2026 00:14:24 GMT
+- **Last Modified:** Fri, 01 May 2026 00:14:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:26 GMT
 
 
@@ -27,14 +27,6 @@ Moves a location from an account that the user owns to another account that the 
 
 ### `locations.admins`
 
-#### `locations.admins.list()`
-
-Lists all of the admins for the specified location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the location to list admins of. `locations/{location_id}/admins`. |
-
 #### `locations.admins.create()`
 
 Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation.
@@ -52,6 +44,14 @@ Removes the specified admin as a manager of the specified location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the admin to remove from the location. |
 
+#### `locations.admins.list()`
+
+Lists all of the admins for the specified location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the location to list admins of. `locations/{location_id}/admins`. |
+
 #### `locations.admins.patch()`
 
 Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated.
@@ -64,6 +64,17 @@ Updates the Admin for the specified location. Only the AdminRole of the Admin ca
 
 ### `accounts`
 
+#### `accounts.patch()`
+
+Updates the specified business account. Personal accounts cannot be updated using this method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name, in the format `accounts/{account_id}`. |
+| `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is `accountName`. |
+| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the account. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.list()`
 
 Lists all of the accounts for the authenticated user. This includes all accounts that the user owns, as well as any accounts for which the user has management rights.
@@ -71,9 +82,9 @@ Lists all of the accounts for the authenticated user. This includes all accounts
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parentAccount` | `string` | No | Optional. The resource name of the account for which the list of directly accessible accounts is to be retrieved. This only makes sense for Organizations and User Groups. If empty, will return `ListAccounts` for the authenticated user. `accounts/{account_id}`. |
-| `params.pageSize` | `integer` | No | Optional. How many accounts to fetch per page. The default and maximum is 20. |
 | `params.pageToken` | `string` | No | Optional. If specified, the next page of accounts is retrieved. The `pageToken` is returned when a call to `accounts.list` returns more results than can fit into the requested page size. |
 | `params.filter` | `string` | No | Optional. A filter constraining the accounts to return. The response includes only entries that match the filter. If `filter` is empty, then no constraints are applied and all accounts (paginated) are retrieved for the requested account. For example, a request with the filter `type=USER_GROUP` will only return user groups. The `type` field is the only supported filter. |
+| `params.pageSize` | `integer` | No | Optional. How many accounts to fetch per page. The default and maximum is 20. |
 
 #### `accounts.get()`
 
@@ -91,27 +102,7 @@ Creates an account with the specified name and type under the given parent. - Pe
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.patch()`
-
-Updates the specified business account. Personal accounts cannot be updated using this method.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name, in the format `accounts/{account_id}`. |
-| `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is `accountName`. |
-| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the account. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `accounts.invitations`
-
-#### `accounts.invitations.accept()`
-
-Accepts the specified invitation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.invitations.decline()`
 
@@ -120,6 +111,15 @@ Declines the specified invitation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.invitations.accept()`
+
+Accepts the specified invitation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.invitations.list()`
@@ -132,14 +132,6 @@ Lists pending invitations for the specified account.
 | `params.filter` | `string` | No | Optional. Filtering the response is supported via the Invitation.target_type field. |
 
 ### `accounts.admins`
-
-#### `accounts.admins.list()`
-
-Lists the admins for the specified account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`. |
 
 #### `accounts.admins.create()`
 
@@ -157,6 +149,14 @@ Removes the specified admin from the specified account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the admin to remove from the account. `accounts/{account_id}/admins/{admin_id}`. |
+
+#### `accounts.admins.list()`
+
+Lists the admins for the specified account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`. |
 
 #### `accounts.admins.patch()`
 
