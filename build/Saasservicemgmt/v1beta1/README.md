@@ -1,11 +1,11 @@
-# SaaS Runtime API - Apps Script Client Library
+# App Lifecycle Manager API - Apps Script Client Library
 
-Auto-generated client library for using the **SaaS Runtime API (version: v1beta1)** in Google Apps Script.
+Auto-generated client library for using the **App Lifecycle Manager API (version: v1beta1)** in Google Apps Script.
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:03:23 GMT
-- **Last Modified:** Tue, 31 Mar 2026 07:26:12 GMT
+- **Last Checked:** Fri, 01 May 2026 00:26:52 GMT
+- **Last Modified:** Fri, 01 May 2026 00:26:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:07 GMT
 
 
@@ -18,22 +18,6 @@ Auto-generated client library for using the **SaaS Runtime API (version: v1beta1
 
 ### `projects.locations`
 
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service. This method can be called in two ways:
-
-* **List all public locations:** Use the path `GET /v1/locations`.
-
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -42,247 +26,34 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.saas`
+#### `projects.locations.list()`
 
-#### `projects.locations.saas.list()`
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
-Retrieve a collection of saas.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the saas. |
-| `params.pageSize` | `integer` | No | The maximum number of saas to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
-
-#### `projects.locations.saas.get()`
-
-Retrieve a single saas.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-
-#### `projects.locations.saas.create()`
-
-Create a new saas.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the saas. |
-| `params.saasId` | `string` | No | Required. The ID value for the new saas. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.saas.patch()`
-
-Update a single saas.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saas/{saas}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Saas resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Saas will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.saas.delete()`
-
-Delete a single saas.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the saas. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the saas. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.tenants`
-
-#### `projects.locations.tenants.list()`
-
-Retrieve a collection of tenants.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the tenant. |
-| `params.pageSize` | `integer` | No | The maximum number of tenants to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
-
-#### `projects.locations.tenants.get()`
-
-Retrieve a single tenant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-
-#### `projects.locations.tenants.create()`
-
-Create a new tenant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the tenant. |
-| `params.tenantId` | `string` | No | Required. The ID value for the new tenant. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.tenants.patch()`
-
-Update a single tenant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/tenants/{tenant}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Tenant resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Tenant will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.tenants.delete()`
-
-Delete a single tenant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the tenant. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the tenant. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.unitKinds`
-
-#### `projects.locations.unitKinds.list()`
-
-Retrieve a collection of unit kinds.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit kind. |
-| `params.pageSize` | `integer` | No | The maximum number of unit kinds to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
-
-#### `projects.locations.unitKinds.get()`
-
-Retrieve a single unit kind.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-
-#### `projects.locations.unitKinds.create()`
-
-Create a new unit kind.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit kind. |
-| `params.unitKindId` | `string` | No | Required. The ID value for the new unit kind. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.unitKinds.patch()`
-
-Update a single unit kind.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitKinds/{unitKind}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the UnitKind resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the UnitKind will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.unitKinds.delete()`
-
-Delete a single unit kind.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.units`
-
-#### `projects.locations.units.list()`
-
-Retrieve a collection of units.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit. |
-| `params.pageSize` | `integer` | No | The maximum number of units to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
-
-#### `projects.locations.units.get()`
-
-Retrieve a single unit.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-
-#### `projects.locations.units.create()`
-
-Create a new unit.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit. |
-| `params.unitId` | `string` | No | Required. The ID value for the new unit. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.units.patch()`
-
-Update a single unit.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/units/{unit}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Unit resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Unit will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.units.delete()`
-
-Delete a single unit.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 ### `projects.locations.unitOperations`
 
-#### `projects.locations.unitOperations.list()`
+#### `projects.locations.unitOperations.delete()`
 
-Retrieve a collection of unit operations.
+Delete a single unit operation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit operation. |
-| `params.pageSize` | `integer` | No | The maximum number of unit operations to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit operation. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit operation. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
 
 #### `projects.locations.unitOperations.get()`
 
@@ -292,15 +63,27 @@ Retrieve a single unit operation.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
 
+#### `projects.locations.unitOperations.list()`
+
+Retrieve a collection of unit operations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.pageSize` | `integer` | No | The maximum number of unit operations to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.parent` | `string` | Yes | Required. The parent of the unit operation. |
+
 #### `projects.locations.unitOperations.create()`
 
 Create a new unit operation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the unit operation. |
 | `params.unitOperationId` | `string` | No | Required. The ID value for the new unit operation. |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.parent` | `string` | Yes | Required. The parent of the unit operation. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -312,42 +95,68 @@ Update a single unit operation.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitOperations/{unitOperation}" |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the UnitOperation resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the UnitOperation will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.unitOperations.delete()`
+### `projects.locations.units`
 
-Delete a single unit operation.
+#### `projects.locations.units.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit operation. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit operation. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.releases`
-
-#### `projects.locations.releases.list()`
-
-Retrieve a collection of releases.
+Retrieve a collection of units.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the release. |
-| `params.pageSize` | `integer` | No | The maximum number of releases to send per page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.pageSize` | `integer` | No | The maximum number of units to send per page. |
 | `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
 | `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.parent` | `string` | Yes | Required. The parent of the unit. |
 
-#### `projects.locations.releases.get()`
+#### `projects.locations.units.get()`
 
-Retrieve a single release.
+Retrieve a single unit.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.units.delete()`
+
+Delete a single unit.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+
+#### `projects.locations.units.create()`
+
+Create a new unit.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the unit. |
+| `params.unitId` | `string` | No | Required. The ID value for the new unit. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.units.patch()`
+
+Update a single unit.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Unit resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Unit will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/units/{unit}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.releases`
 
 #### `projects.locations.releases.create()`
 
@@ -357,8 +166,8 @@ Create a new release.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the release. |
 | `params.releaseId` | `string` | No | Required. The ID value for the new release. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.releases.patch()`
@@ -369,8 +178,8 @@ Update a single release.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/releases/{release}" |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Release resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Release will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.releases.delete()`
@@ -379,81 +188,146 @@ Delete a single release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
 | `params.etag` | `string` | No | The etag known to the client for the expected state of the release. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the release. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
-### `projects.locations.rollouts`
+#### `projects.locations.releases.list()`
 
-#### `projects.locations.rollouts.list()`
-
-Retrieve a collection of rollouts.
+Retrieve a collection of releases.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the rollout. |
-| `params.pageSize` | `integer` | No | The maximum number of rollouts to send per page. |
+| `params.pageSize` | `integer` | No | The maximum number of releases to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.parent` | `string` | Yes | Required. The parent of the release. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+
+#### `projects.locations.releases.get()`
+
+Retrieve a single release.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+### `projects.locations.unitKinds`
+
+#### `projects.locations.unitKinds.create()`
+
+Create a new unit kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.unitKindId` | `string` | No | Required. The ID value for the new unit kind. |
+| `params.parent` | `string` | Yes | Required. The parent of the unit kind. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.unitKinds.patch()`
+
+Update a single unit kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the UnitKind resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the UnitKind will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitKinds/{unitKind}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.unitKinds.get()`
+
+Retrieve a single unit kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.unitKinds.list()`
+
+Retrieve a collection of unit kinds.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.parent` | `string` | Yes | Required. The parent of the unit kind. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.pageSize` | `integer` | No | The maximum number of unit kinds to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+
+#### `projects.locations.unitKinds.delete()`
+
+Delete a single unit kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the unit kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the unit kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+### `projects.locations.flagReleases`
+
+#### `projects.locations.flagReleases.get()`
+
+Retrieve a single flag release.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.flagReleases.list()`
+
+Retrieve a collection of flag releases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.pageSize` | `integer` | No | The maximum number of flag releases to send per page. |
 | `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
 | `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.parent` | `string` | Yes | Required. The parent of the flag release. |
 
-#### `projects.locations.rollouts.get()`
+#### `projects.locations.flagReleases.delete()`
 
-Retrieve a single rollout.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-
-#### `projects.locations.rollouts.create()`
-
-Create a new rollout.
+Delete a single flag release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the rollout. |
-| `params.rolloutId` | `string` | No | Required. The ID value for the new rollout. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the flag release. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the flag release. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+#### `projects.locations.flagReleases.create()`
+
+Create a new flag release.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.parent` | `string` | Yes | Required. The parent of the flag release. |
+| `params.flagReleaseId` | `string` | No | Required. The ID value for the new flag release. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.rollouts.patch()`
+#### `projects.locations.flagReleases.patch()`
 
-Update a single rollout.
+Update a single flag release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rollout/{rollout_id}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Rollout resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Rollout will be overwritten. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FlagRelease resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the FlagRelease will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagReleases/{flag_release_id}" |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.rollouts.delete()`
-
-Delete a single rollout.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
-| `params.etag` | `string` | No | The etag known to the client for the expected state of the rollout. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the rollout. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 ### `projects.locations.rolloutKinds`
-
-#### `projects.locations.rolloutKinds.list()`
-
-Retrieve a collection of rollout kinds.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of the rollout kind. |
-| `params.pageSize` | `integer` | No | The maximum number of rollout kinds to send per page. |
-| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
-| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
 
 #### `projects.locations.rolloutKinds.get()`
 
@@ -463,29 +337,17 @@ Retrieve a single rollout kind.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
 
-#### `projects.locations.rolloutKinds.create()`
+#### `projects.locations.rolloutKinds.list()`
 
-Create a new rollout kind.
+Retrieve a collection of rollout kinds.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of rollout kinds to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
 | `params.parent` | `string` | Yes | Required. The parent of the rollout kind. |
-| `params.rolloutKindId` | `string` | No | Required. The ID value for the new rollout kind. |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.rolloutKinds.patch()`
-
-Update a single rollout kind.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}" |
-| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
-| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the RolloutKind resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the RolloutKind will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
 
 #### `projects.locations.rolloutKinds.delete()`
 
@@ -497,3 +359,369 @@ Delete a single rollout kind.
 | `params.etag` | `string` | No | The etag known to the client for the expected state of the rollout kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the rollout kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.rolloutKinds.create()`
+
+Create a new rollout kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.parent` | `string` | Yes | Required. The parent of the rollout kind. |
+| `params.rolloutKindId` | `string` | No | Required. The ID value for the new rollout kind. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.rolloutKinds.patch()`
+
+Update a single rollout kind.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the RolloutKind resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the RolloutKind will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.flags`
+
+#### `projects.locations.flags.list()`
+
+Retrieve a collection of flags.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of flags to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.parent` | `string` | Yes | Required. The parent of the flag. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+
+#### `projects.locations.flags.get()`
+
+Retrieve a single flag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.flags.delete()`
+
+Delete a single flag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the flag. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the flag. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+#### `projects.locations.flags.create()`
+
+Create a new flag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the flag. |
+| `params.flagId` | `string` | No | Required. The ID value for the new flag. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.flags.patch()`
+
+Update a single flag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Flag resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Flag will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flags/{flag_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.rollouts`
+
+#### `projects.locations.rollouts.delete()`
+
+Delete a single rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the rollout. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the rollout. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+#### `projects.locations.rollouts.get()`
+
+Retrieve a single rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.rollouts.list()`
+
+Retrieve a collection of rollouts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the rollout. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.pageSize` | `integer` | No | The maximum number of rollouts to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+
+#### `projects.locations.rollouts.create()`
+
+Create a new rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.rolloutId` | `string` | No | Required. The ID value for the new rollout. |
+| `params.parent` | `string` | Yes | Required. The parent of the rollout. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.rollouts.patch()`
+
+Update a single rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Rollout resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Rollout will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rollout/{rollout_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.saas`
+
+#### `projects.locations.saas.list()`
+
+Retrieve a collection of saas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the saas. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.pageSize` | `integer` | No | The maximum number of saas to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+
+#### `projects.locations.saas.get()`
+
+Retrieve a single saas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.saas.delete()`
+
+Delete a single saas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the saas. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the saas. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+
+#### `projects.locations.saas.create()`
+
+Create a new saas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the saas. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.saasId` | `string` | No | Required. The ID value for the new saas. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.saas.patch()`
+
+Update a single saas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saas/{saas}" |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Saas resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Saas will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.tenants`
+
+#### `projects.locations.tenants.create()`
+
+Create a new tenant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the tenant. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.tenantId` | `string` | No | Required. The ID value for the new tenant. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.tenants.patch()`
+
+Update a single tenant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Tenant resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the Tenant will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/tenants/{tenant}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.tenants.delete()`
+
+Delete a single tenant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the tenant. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the tenant. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+#### `projects.locations.tenants.get()`
+
+Retrieve a single tenant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.tenants.list()`
+
+Retrieve a collection of tenants.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the tenant. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.pageSize` | `integer` | No | The maximum number of tenants to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+
+### `projects.locations.flagAttributes`
+
+#### `projects.locations.flagAttributes.create()`
+
+Create a new flag attribute.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.flagAttributeId` | `string` | No | Required. The ID value for the new flag attribute. |
+| `params.parent` | `string` | Yes | Required. The parent of the flag attribute. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.flagAttributes.patch()`
+
+Update a single flag attribute.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FlagAttribute resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the FlagAttribute will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.flagAttributes.get()`
+
+Retrieve a single flag attribute.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.flagAttributes.list()`
+
+Retrieve a collection of flag attributes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the flag attribute. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.pageSize` | `integer` | No | The maximum number of flag attributes to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+
+#### `projects.locations.flagAttributes.delete()`
+
+Delete a single flag attribute.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the flag attribute. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the flag attribute. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.flagRevisions`
+
+#### `projects.locations.flagRevisions.delete()`
+
+Delete a single flag revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the flag revision. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the flag revision. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+
+#### `projects.locations.flagRevisions.list()`
+
+Retrieve a collection of flag revisions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of flag revisions to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+| `params.parent` | `string` | Yes | Required. The parent of the flag revision. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+
+#### `projects.locations.flagRevisions.get()`
+
+Retrieve a single flag revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.flagRevisions.create()`
+
+Create a new flag revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the flag revision. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.flagRevisionId` | `string` | No | Required. The ID value for the new flag revision. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.flagRevisions.patch()`
+
+Update a single flag revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FlagRevision resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the FlagRevision will be overwritten. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
