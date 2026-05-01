@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Talent Solution API
  * Documentation URL: https://cloud.google.com/talent-solution/job-search/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Jobs {
@@ -21,28 +22,28 @@ class Jobs {
     this.projects = {};
     this.projects.complete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}:complete', 'GET', apiParams, clientConfig);
 
-    this.projects.jobs = {};
-    this.projects.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-    this.projects.jobs.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:batchDelete', 'POST', apiParams, clientConfig);
-    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs', 'GET', apiParams, clientConfig);
-    this.projects.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.jobs.searchForAlert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:searchForAlert', 'POST', apiParams, clientConfig);
-    this.projects.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
-
-    this.projects.companies = {};
-    this.projects.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.companies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.companies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/companies', 'GET', apiParams, clientConfig);
-    this.projects.companies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/companies', 'POST', apiParams, clientConfig);
-
     this.projects.operations = {};
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.clientEvents = {};
     this.projects.clientEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/clientEvents', 'POST', apiParams, clientConfig);
+
+    this.projects.companies = {};
+    this.projects.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/companies', 'POST', apiParams, clientConfig);
+    this.projects.companies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.companies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/companies', 'GET', apiParams, clientConfig);
+    this.projects.companies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.jobs = {};
+    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.jobs.searchForAlert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:searchForAlert', 'POST', apiParams, clientConfig);
+    this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs', 'POST', apiParams, clientConfig);
+    this.projects.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.jobs.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3p1beta1/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
   }
 
 /**
