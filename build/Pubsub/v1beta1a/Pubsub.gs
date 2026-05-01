@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Pub/Sub API
  * Documentation URL: https://cloud.google.com/pubsub/docs
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Pubsub {
@@ -18,24 +19,24 @@ class Pubsub {
     this._servicePath = '';
 
 
-    this.topics = {};
-    this.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'POST', apiParams, clientConfig);
-    this.topics.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publish', 'POST', apiParams, clientConfig);
-    this.topics.publishBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publishBatch', 'POST', apiParams, clientConfig);
-    this.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'GET', apiParams, clientConfig);
-    this.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'GET', apiParams, clientConfig);
-    this.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'DELETE', apiParams, clientConfig);
-
     this.subscriptions = {};
-    this.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'POST', apiParams, clientConfig);
-    this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'GET', apiParams, clientConfig);
+    this.subscriptions.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/acknowledge', 'POST', apiParams, clientConfig);
     this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'GET', apiParams, clientConfig);
-    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'DELETE', apiParams, clientConfig);
+    this.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'POST', apiParams, clientConfig);
     this.subscriptions.modifyPushConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/modifyPushConfig', 'POST', apiParams, clientConfig);
-    this.subscriptions.pull = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pull', 'POST', apiParams, clientConfig);
     this.subscriptions.pullBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pullBatch', 'POST', apiParams, clientConfig);
     this.subscriptions.modifyAckDeadline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/modifyAckDeadline', 'POST', apiParams, clientConfig);
-    this.subscriptions.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/acknowledge', 'POST', apiParams, clientConfig);
+    this.subscriptions.pull = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pull', 'POST', apiParams, clientConfig);
+    this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'GET', apiParams, clientConfig);
+    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'DELETE', apiParams, clientConfig);
+
+    this.topics = {};
+    this.topics.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publish', 'POST', apiParams, clientConfig);
+    this.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'GET', apiParams, clientConfig);
+    this.topics.publishBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publishBatch', 'POST', apiParams, clientConfig);
+    this.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'POST', apiParams, clientConfig);
+    this.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'GET', apiParams, clientConfig);
+    this.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
