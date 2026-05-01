@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Keep API
  * Documentation URL: https://developers.google.com/workspace/keep/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Keep {
@@ -19,14 +20,14 @@ class Keep {
 
 
     this.notes = {};
-    this.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'POST', apiParams, clientConfig);
     this.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'GET', apiParams, clientConfig);
     this.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'POST', apiParams, clientConfig);
 
     this.notes.permissions = {};
-    this.notes.permissions.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchCreate', 'POST', apiParams, clientConfig);
     this.notes.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
+    this.notes.permissions.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchCreate', 'POST', apiParams, clientConfig);
 
     this.media = {};
     this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
