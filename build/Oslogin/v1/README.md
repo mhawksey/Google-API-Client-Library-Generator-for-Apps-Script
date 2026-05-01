@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:55:58 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:58:59 GMT
+- **Last Checked:** Fri, 01 May 2026 00:17:17 GMT
+- **Last Modified:** Fri, 01 May 2026 00:17:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:54 GMT
 
 
@@ -45,9 +45,9 @@ Adds an SSH public key and returns the profile information. Default POSIX accoun
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
-| `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
 | `params.regions` | `string` | No | Optional. The regions to which to assert that the key was written. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. |
+| `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
+| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.sshPublicKeys`
@@ -89,14 +89,6 @@ Updates an SSH public key and returns the profile information. This method suppo
 
 ### `users.projects`
 
-#### `users.projects.delete()`
-
-Deletes a POSIX account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
-
 #### `users.projects.provisionPosixAccount()`
 
 Adds a POSIX account and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.
@@ -105,3 +97,11 @@ Adds a POSIX account and returns the profile information. Default POSIX account 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}/projects/{project}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.projects.delete()`
+
+Deletes a POSIX account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
