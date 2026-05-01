@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Local Services API
  * Documentation URL: https://ads.google.com/local-services-ads/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Localservices {
