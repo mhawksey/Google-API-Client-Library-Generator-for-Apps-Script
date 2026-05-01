@@ -4,6 +4,8 @@
   "runtimeVersion": "V8",
   "oauthScopes": [
     "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/redis.read-only",
+    "https://www.googleapis.com/auth/redis.read-write",
     "https://www.googleapis.com/auth/script.external_request"
   ]
 }
