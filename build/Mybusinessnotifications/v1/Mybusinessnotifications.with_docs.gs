@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the My Business Notifications API
  * Documentation URL: https://developers.google.com/my-business/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Mybusinessnotifications {
