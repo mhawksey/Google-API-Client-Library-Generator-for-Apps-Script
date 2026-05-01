@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -21,12 +22,12 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.conversionSources = {};
-    this.accounts.conversionSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'POST', apiParams, clientConfig);
-    this.accounts.conversionSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.conversionSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.accounts.conversionSources.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.accounts.conversionSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.conversionSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'GET', apiParams, clientConfig);
+    this.accounts.conversionSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'POST', apiParams, clientConfig);
+    this.accounts.conversionSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.conversionSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
