@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Policy Simulator API
  * Documentation URL: https://cloud.google.com/iam/docs/simulating-access
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Policysimulator {
@@ -22,55 +23,30 @@ class Policysimulator {
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.orgPolicyViolationsPreviews = {};
-
-    this.projects.locations.orgPolicyViolationsPreviews.operations = {};
-    this.projects.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.accessPolicySimulations = {};
-
-    this.projects.locations.accessPolicySimulations.operations = {};
-    this.projects.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.replays = {};
-    this.projects.locations.replays.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.replays.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replays', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.replays.operations = {};
-    this.projects.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.replays.results = {};
-    this.projects.locations.replays.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/results', 'GET', apiParams, clientConfig);
-
     this.folders = {};
 
     this.folders.locations = {};
-
-    this.folders.locations.orgPolicyViolationsPreviews = {};
-
-    this.folders.locations.orgPolicyViolationsPreviews.operations = {};
-    this.folders.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.folders.locations.accessPolicySimulations = {};
 
     this.folders.locations.accessPolicySimulations.operations = {};
     this.folders.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.folders.locations.orgPolicyViolationsPreviews = {};
+
+    this.folders.locations.orgPolicyViolationsPreviews.operations = {};
+    this.folders.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.folders.locations.replays = {};
     this.folders.locations.replays.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.folders.locations.replays.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replays', 'POST', apiParams, clientConfig);
 
-    this.folders.locations.replays.operations = {};
-    this.folders.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.folders.locations.replays.results = {};
     this.folders.locations.replays.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/results', 'GET', apiParams, clientConfig);
+
+    this.folders.locations.replays.operations = {};
+    this.folders.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
@@ -81,10 +57,21 @@ class Policysimulator {
     this.organizations.locations.accessPolicySimulations.operations = {};
     this.organizations.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.organizations.locations.replays = {};
+    this.organizations.locations.replays.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.replays.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replays', 'POST', apiParams, clientConfig);
+
+    this.organizations.locations.replays.operations = {};
+    this.organizations.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.replays.results = {};
+    this.organizations.locations.replays.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/results', 'GET', apiParams, clientConfig);
+
     this.organizations.locations.orgPolicyViolationsPreviews = {};
-    this.organizations.locations.orgPolicyViolationsPreviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/orgPolicyViolationsPreviews', 'GET', apiParams, clientConfig);
-    this.organizations.locations.orgPolicyViolationsPreviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.orgPolicyViolationsPreviews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/orgPolicyViolationsPreviews', 'POST', apiParams, clientConfig);
+    this.organizations.locations.orgPolicyViolationsPreviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.orgPolicyViolationsPreviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/orgPolicyViolationsPreviews', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.orgPolicyViolationsPreviews.operations = {};
     this.organizations.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -92,16 +79,30 @@ class Policysimulator {
     this.organizations.locations.orgPolicyViolationsPreviews.orgPolicyViolations = {};
     this.organizations.locations.orgPolicyViolationsPreviews.orgPolicyViolations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/orgPolicyViolations', 'GET', apiParams, clientConfig);
 
-    this.organizations.locations.replays = {};
-    this.organizations.locations.replays.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.replays.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replays', 'POST', apiParams, clientConfig);
+    this.projects = {};
 
-    this.organizations.locations.replays.operations = {};
-    this.organizations.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations = {};
 
-    this.organizations.locations.replays.results = {};
-    this.organizations.locations.replays.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/results', 'GET', apiParams, clientConfig);
+    this.projects.locations.accessPolicySimulations = {};
+
+    this.projects.locations.accessPolicySimulations.operations = {};
+    this.projects.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.replays = {};
+    this.projects.locations.replays.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replays', 'POST', apiParams, clientConfig);
+    this.projects.locations.replays.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.replays.operations = {};
+    this.projects.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.replays.results = {};
+    this.projects.locations.replays.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/results', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.orgPolicyViolationsPreviews = {};
+
+    this.projects.locations.orgPolicyViolationsPreviews.operations = {};
+    this.projects.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
