@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Web Search Indexing API
  * Documentation URL: https://developers.google.com/search/apis/indexing-api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Indexing {
