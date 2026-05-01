@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:53:45 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:50:29 GMT
+- **Last Checked:** Fri, 01 May 2026 00:07:17 GMT
+- **Last Modified:** Fri, 01 May 2026 00:07:17 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:42 GMT
 
 
@@ -15,27 +15,6 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1)** i
 ## API Reference
 
 ### `accounts`
-
-### `accounts.lfpInventories`
-
-#### `accounts.lfpInventories.insert()`
-
-Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The LFP provider account. Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `accounts.lfpMerchantStates`
-
-#### `accounts.lfpMerchantStates.get()`
-
-Gets the LFP state of a merchant
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. |
 
 ### `accounts.lfpSales`
 
@@ -81,7 +60,28 @@ Lists the stores of the target merchant, specified by the filter in `ListLfpStor
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The LFP partner. Format: `accounts/{account}` |
-| `params.targetAccount` | `string` | No | Required. The Merchant Center id of the merchant to list stores for. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. |
+| `params.targetAccount` | `string` | No | Required. The Merchant Center id of the merchant to list stores for. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. |
+| `params.parent` | `string` | Yes | Required. The LFP partner. Format: `accounts/{account}` |
+
+### `accounts.lfpInventories`
+
+#### `accounts.lfpInventories.insert()`
+
+Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The LFP provider account. Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `accounts.lfpMerchantStates`
+
+#### `accounts.lfpMerchantStates.get()`
+
+Gets the LFP state of a merchant
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`. |
