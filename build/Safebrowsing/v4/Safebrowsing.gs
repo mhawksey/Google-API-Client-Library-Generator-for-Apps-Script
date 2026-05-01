@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Safe Browsing API
  * Documentation URL: https://developers.google.com/safe-browsing/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Safebrowsing {
@@ -18,26 +19,26 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.threatMatches = {};
-    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
-
-    this.threatListUpdates = {};
-    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
-
-    this.encodedUpdates = {};
-    this.encodedUpdates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedUpdates/{encodedRequest}', 'GET', apiParams, clientConfig);
+    this.threatLists = {};
+    this.threatLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatLists', 'GET', apiParams, clientConfig);
 
     this.fullHashes = {};
     this.fullHashes.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/fullHashes:find', 'POST', apiParams, clientConfig);
 
-    this.encodedFullHashes = {};
-    this.encodedFullHashes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedFullHashes/{encodedRequest}', 'GET', apiParams, clientConfig);
+    this.threatListUpdates = {};
+    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
 
     this.threatHits = {};
     this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
 
-    this.threatLists = {};
-    this.threatLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatLists', 'GET', apiParams, clientConfig);
+    this.encodedUpdates = {};
+    this.encodedUpdates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedUpdates/{encodedRequest}', 'GET', apiParams, clientConfig);
+
+    this.threatMatches = {};
+    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
+
+    this.encodedFullHashes = {};
+    this.encodedFullHashes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedFullHashes/{encodedRequest}', 'GET', apiParams, clientConfig);
   }
 
 /**
