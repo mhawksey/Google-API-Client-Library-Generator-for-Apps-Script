@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Video Intelligence API
  * Documentation URL: https://cloud.google.com/video-intelligence/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Videointelligence {
@@ -23,10 +24,10 @@ class Videointelligence {
     this.projects.locations = {};
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.operations = {};
 
@@ -36,8 +37,8 @@ class Videointelligence {
 
     this.operations.projects.locations.operations = {};
     this.operations.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}', 'DELETE', apiParams, clientConfig);
     this.operations.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.operations.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.videos = {};
     this.videos.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/videos:annotate', 'POST', apiParams, clientConfig);
