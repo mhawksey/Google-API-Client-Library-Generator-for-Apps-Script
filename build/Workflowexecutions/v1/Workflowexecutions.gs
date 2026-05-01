@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Workflow Executions API
  * Documentation URL: https://cloud.google.com/workflows
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Workflowexecutions {
