@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Policy Analyzer API
  * Documentation URL: https://www.google.com
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Policyanalyzer {
@@ -17,15 +18,6 @@ class Policyanalyzer {
     this._rootUrl = 'https://policyanalyzer.googleapis.com/';
     this._servicePath = '';
 
-
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.activityTypes = {};
-
-    this.projects.locations.activityTypes.activities = {};
-    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
@@ -44,6 +36,15 @@ class Policyanalyzer {
 
     this.folders.locations.activityTypes.activities = {};
     this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.activityTypes = {};
+
+    this.projects.locations.activityTypes.activities = {};
+    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
   }
 
 /**
