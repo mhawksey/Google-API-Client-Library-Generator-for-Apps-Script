@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Talent Solution API
  * Documentation URL: https://cloud.google.com/talent-solution/job-search/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Jobs {
@@ -24,34 +25,34 @@ class Jobs {
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.tenants = {};
-    this.projects.tenants.completeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+tenant}:completeQuery', 'GET', apiParams, clientConfig);
     this.projects.tenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/tenants', 'GET', apiParams, clientConfig);
+    this.projects.tenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/tenants', 'POST', apiParams, clientConfig);
     this.projects.tenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.tenants.completeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+tenant}:completeQuery', 'GET', apiParams, clientConfig);
     this.projects.tenants.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.tenants.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.tenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/tenants', 'POST', apiParams, clientConfig);
-
-    this.projects.tenants.companies = {};
-    this.projects.tenants.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.tenants.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/companies', 'POST', apiParams, clientConfig);
-    this.projects.tenants.companies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.tenants.companies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/companies', 'GET', apiParams, clientConfig);
-    this.projects.tenants.companies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.tenants.clientEvents = {};
     this.projects.tenants.clientEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/clientEvents', 'POST', apiParams, clientConfig);
 
     this.projects.tenants.jobs = {};
-    this.projects.tenants.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs', 'GET', apiParams, clientConfig);
-    this.projects.tenants.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs', 'POST', apiParams, clientConfig);
     this.projects.tenants.jobs.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:batchUpdate', 'POST', apiParams, clientConfig);
-    this.projects.tenants.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
-    this.projects.tenants.jobs.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:batchCreate', 'POST', apiParams, clientConfig);
-    this.projects.tenants.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.tenants.jobs.searchForAlert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:searchForAlert', 'POST', apiParams, clientConfig);
+    this.projects.tenants.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.tenants.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.tenants.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs', 'POST', apiParams, clientConfig);
     this.projects.tenants.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.tenants.jobs.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:batchCreate', 'POST', apiParams, clientConfig);
     this.projects.tenants.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
     this.projects.tenants.jobs.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.tenants.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
+
+    this.projects.tenants.companies = {};
+    this.projects.tenants.companies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.tenants.companies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/companies', 'GET', apiParams, clientConfig);
+    this.projects.tenants.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/companies', 'POST', apiParams, clientConfig);
+    this.projects.tenants.companies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.tenants.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
