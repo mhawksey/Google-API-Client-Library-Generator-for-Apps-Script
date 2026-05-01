@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Storage JSON API
  * Documentation URL: https://developers.google.com/storage/docs/json_api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Storage {
