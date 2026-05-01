@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Play Custom App Publishing API
  * Documentation URL: https://developers.google.com/android/work/play/custom-app-api/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Playcustomapp {
