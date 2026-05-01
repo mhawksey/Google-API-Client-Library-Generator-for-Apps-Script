@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:52:46 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:49:02 GMT
+- **Last Checked:** Fri, 01 May 2026 00:05:33 GMT
+- **Last Modified:** Fri, 01 May 2026 00:05:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:49 GMT
 
 
@@ -15,6 +15,14 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 ## API Reference
 
 ### `documents`
+
+#### `documents.analyzeEntitySentiment()`
+
+Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.analyzeSentiment()`
 
@@ -32,14 +40,6 @@ Finds named entities (currently proper names and common nouns) in the text along
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntitySentiment()`
-
-Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `documents.analyzeSyntax()`
 
 Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
@@ -48,9 +48,9 @@ Analyzes the syntax of the text and provides sentence boundaries and tokenizatio
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.classifyText()`
+#### `documents.annotateText()`
 
-Classifies a document into categories.
+A convenience method that provides all syntax, sentiment, entity, and classification features in one call.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -64,9 +64,9 @@ Moderates a document for harmful and sensitive categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.annotateText()`
+#### `documents.classifyText()`
 
-A convenience method that provides all syntax, sentiment, entity, and classification features in one call.
+Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
