@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Video Intelligence API
  * Documentation URL: https://cloud.google.com/video-intelligence/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Videointelligence {
