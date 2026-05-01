@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Service Control API
  * Documentation URL: https://cloud.google.com/service-control/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Servicecontrol {
