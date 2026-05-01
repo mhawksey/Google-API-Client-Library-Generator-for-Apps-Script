@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Solar API
  * Documentation URL: https://developers.google.com/maps/documentation/solar
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Solar {
@@ -18,14 +19,14 @@ class Solar {
     this._servicePath = '';
 
 
-    this.buildingInsights = {};
-    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
-
     this.dataLayers = {};
     this.dataLayers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/dataLayers:get', 'GET', apiParams, clientConfig);
 
     this.geoTiff = {};
     this.geoTiff.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/geoTiff:get', 'GET', apiParams, clientConfig);
+
+    this.buildingInsights = {};
+    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
   }
 
 /**
