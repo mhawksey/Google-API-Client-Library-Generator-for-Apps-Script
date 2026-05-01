@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Gmail Postmaster Tools API
  * Documentation URL: https://developers.google.com/workspace/gmail/postmaster
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Gmailpostmastertools {
@@ -23,8 +24,8 @@ class Gmailpostmastertools {
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/domains', 'GET', apiParams, clientConfig);
 
     this.domains.trafficStats = {};
-    this.domains.trafficStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.domains.trafficStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/trafficStats', 'GET', apiParams, clientConfig);
+    this.domains.trafficStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
