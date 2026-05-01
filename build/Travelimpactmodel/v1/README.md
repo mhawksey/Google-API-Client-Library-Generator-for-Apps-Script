@@ -4,8 +4,8 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:05:32 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:18:01 GMT
+- **Last Checked:** Fri, 01 May 2026 00:36:38 GMT
+- **Last Modified:** Fri, 01 May 2026 00:36:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:25 GMT
 
 
