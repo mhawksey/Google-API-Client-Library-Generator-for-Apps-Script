@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Library Agent API
  * Documentation URL: https://cloud.google.com/docs/quota
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Libraryagent {
@@ -21,16 +22,6 @@ class Libraryagent {
     this.shelves = {};
 
     /**
-     * Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the shelf to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.shelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists shelves. The order is unspecified but deterministic. Newly created shelves will not necessarily be added to the end of this list.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer shelves than requested. If unspecified, server will pick an appropriate default.
@@ -40,6 +31,16 @@ class Libraryagent {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.shelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shelves', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a shelf. Returns NOT_FOUND if the shelf does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the shelf to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.shelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.shelves.books = {};
 
@@ -52,18 +53,6 @@ class Libraryagent {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.shelves.books.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method.
-     * @param {string} apiParams.parent - (Required) Required. The name of the shelf whose books we'd like to list.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
 
     /**
      * Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.
@@ -84,6 +73,18 @@ class Libraryagent {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.shelves.books.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:return', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists books in a shelf. The order is unspecified but deterministic. Newly created books will not necessarily be added to the end of this list. Returns NOT_FOUND if the shelf does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method.
+     * @param {string} apiParams.parent - (Required) Required. The name of the shelf whose books we'd like to list.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
   }
 
 /**
