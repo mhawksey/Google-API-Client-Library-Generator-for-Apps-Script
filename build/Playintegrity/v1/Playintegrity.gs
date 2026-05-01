@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Play Integrity API
  * Documentation URL: https://developer.android.com/google/play/integrity
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Playintegrity {
