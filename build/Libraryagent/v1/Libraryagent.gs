@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Library Agent API
  * Documentation URL: https://cloud.google.com/docs/quota
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Libraryagent {
@@ -19,14 +20,14 @@ class Libraryagent {
 
 
     this.shelves = {};
-    this.shelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.shelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shelves', 'GET', apiParams, clientConfig);
+    this.shelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.shelves.books = {};
     this.shelves.books.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
     this.shelves.books.borrow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:borrow', 'POST', apiParams, clientConfig);
     this.shelves.books.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:return', 'POST', apiParams, clientConfig);
+    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
   }
 
 /**
