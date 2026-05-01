@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Transcoder API
  * Documentation URL: https://cloud.google.com/transcoder/docs/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Transcoder {
@@ -22,17 +23,17 @@ class Transcoder {
 
     this.projects.locations = {};
 
+    this.projects.locations.jobTemplates = {};
+    this.projects.locations.jobTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.jobTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.jobs = {};
     this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
     this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
     this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.jobTemplates = {};
-    this.projects.locations.jobTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
