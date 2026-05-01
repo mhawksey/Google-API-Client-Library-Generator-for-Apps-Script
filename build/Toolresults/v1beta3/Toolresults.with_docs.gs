@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Tool Results API
  * Documentation URL: https://firebase.google.com/docs/test-lab/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Toolresults {
@@ -43,18 +44,6 @@ class Toolresults {
     this.projects.histories = {};
 
     /**
-     * Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) A Project id. Required.
-     * @param {string} apiParams.requestId - A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories', 'POST', apiParams, clientConfig);
-
-    /**
      * Gets a History. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the History does not exist
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.historyId - (Required) A History id. Required.
@@ -78,12 +67,9 @@ class Toolresults {
      */
     this.projects.histories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories', 'GET', apiParams, clientConfig);
 
-    this.projects.histories.executions = {};
-
     /**
-     * Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
+     * Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.historyId - (Required) A History id. Required.
      * @param {string} apiParams.projectId - (Required) A Project id. Required.
      * @param {string} apiParams.requestId - A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
      * @param {object} apiParams.requestBody - The request body.
@@ -91,7 +77,9 @@ class Toolresults {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.histories.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'POST', apiParams, clientConfig);
+    this.projects.histories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories', 'POST', apiParams, clientConfig);
+
+    this.projects.histories.executions = {};
 
     /**
      * Lists Executions for a given History. The executions are sorted by creation_time in descending order. The execution_id key will be used to order the executions with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
@@ -105,6 +93,19 @@ class Toolresults {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.histories.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.historyId - (Required) A History id. Required.
+     * @param {string} apiParams.projectId - (Required) A Project id. Required.
+     * @param {string} apiParams.requestId - A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'POST', apiParams, clientConfig);
 
     /**
      * Gets an Execution. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Execution does not exist
@@ -135,6 +136,20 @@ class Toolresults {
     this.projects.histories.executions.steps = {};
 
     /**
+     * Publish xml files to an existing Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g. try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executionId - (Required) A Execution id. Required.
+     * @param {string} apiParams.historyId - (Required) A History id. Required.
+     * @param {string} apiParams.projectId - (Required) A Project id. Required.
+     * @param {string} apiParams.stepId - (Required) A Step id. Note: This step must include a TestExecutionStep. Required.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.steps.publishXunitXmlFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists accessibility clusters for a given Step May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if the locale format is incorrect - NOT_FOUND - if the containing Step does not exist
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.locale - The accepted format is the canonical Unicode format with hyphen as a delimiter. Language must be lowercase, Language Script - Capitalized, Region - UPPERCASE. See http://www.unicode.org/reports/tr35/#Unicode_locale_identifier for details. Required.
@@ -144,6 +159,33 @@ class Toolresults {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.histories.executions.steps.accessibilityClusters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/{+name}:accessibilityClusters', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Steps for a given Execution. The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executionId - (Required) A Execution id. Required.
+     * @param {string} apiParams.historyId - (Required) A History id. Required.
+     * @param {integer} apiParams.pageSize - The maximum number of Steps to fetch. Default value: 25. The server will use this default if the field is not set or has a value of 0. Optional.
+     * @param {string} apiParams.pageToken - A continuation token to resume the query at the next item. Optional.
+     * @param {string} apiParams.projectId - (Required) A Project id. Required.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.steps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves a PerfMetricsSummary. May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executionId - (Required) A tool results execution ID.
+     * @param {string} apiParams.historyId - (Required) A tool results history ID.
+     * @param {string} apiParams.projectId - (Required) The cloud project
+     * @param {string} apiParams.stepId - (Required) A tool results step ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.steps.getPerfMetricsSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist
@@ -173,20 +215,6 @@ class Toolresults {
     this.projects.histories.executions.steps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists Steps for a given Execution. The steps are sorted by creation_time in descending order. The step_id key will be used to order the steps with the same creation_time. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if an argument in the request happens to be invalid; e.g. if an attempt is made to list the children of a nonexistent Step - NOT_FOUND - if the containing Execution does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executionId - (Required) A Execution id. Required.
-     * @param {string} apiParams.historyId - (Required) A History id. Required.
-     * @param {integer} apiParams.pageSize - The maximum number of Steps to fetch. Default value: 25. The server will use this default if the field is not set or has a value of 0. Optional.
-     * @param {string} apiParams.pageToken - A continuation token to resume the query at the next item. Optional.
-     * @param {string} apiParams.projectId - (Required) A Project id. Required.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.executions.steps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', 'GET', apiParams, clientConfig);
-
-    /**
      * Updates an existing Step with the supplied partial entity. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal (e.g try to upload a duplicate xml file), if the updated step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.executionId - (Required) A Execution id. Required.
@@ -200,33 +228,6 @@ class Toolresults {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.histories.executions.steps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Publish xml files to an existing Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the requested state transition is illegal, e.g. try to upload a duplicate xml file or a file too large. - NOT_FOUND - if the containing Execution does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executionId - (Required) A Execution id. Required.
-     * @param {string} apiParams.historyId - (Required) A History id. Required.
-     * @param {string} apiParams.projectId - (Required) A Project id. Required.
-     * @param {string} apiParams.stepId - (Required) A Step id. Note: This step must include a TestExecutionStep. Required.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.executions.steps.publishXunitXmlFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieves a PerfMetricsSummary. May return any of the following error code(s): - NOT_FOUND - The specified PerfMetricsSummary does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executionId - (Required) A tool results execution ID.
-     * @param {string} apiParams.historyId - (Required) A tool results history ID.
-     * @param {string} apiParams.projectId - (Required) The cloud project
-     * @param {string} apiParams.stepId - (Required) A tool results step ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.executions.steps.getPerfMetricsSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'GET', apiParams, clientConfig);
 
     this.projects.histories.executions.steps.testCases = {};
 
@@ -259,23 +260,6 @@ class Toolresults {
      */
     this.projects.histories.executions.steps.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases', 'GET', apiParams, clientConfig);
 
-    this.projects.histories.executions.steps.thumbnails = {};
-
-    /**
-     * Lists thumbnails of images attached to a step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images do not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executionId - (Required) An Execution id. Required.
-     * @param {string} apiParams.historyId - (Required) A History id. Required.
-     * @param {integer} apiParams.pageSize - The maximum number of thumbnails to fetch. Default value: 50. The server will use this default if the field is not set or has a value of 0. Optional.
-     * @param {string} apiParams.pageToken - A continuation token to resume the query at the next item. Optional.
-     * @param {string} apiParams.projectId - (Required) A Project id. Required.
-     * @param {string} apiParams.stepId - (Required) A Step id. Required.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.executions.steps.thumbnails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', 'GET', apiParams, clientConfig);
-
     this.projects.histories.executions.steps.perfMetricsSummary = {};
 
     /**
@@ -293,6 +277,20 @@ class Toolresults {
     this.projects.histories.executions.steps.perfMetricsSummary.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'POST', apiParams, clientConfig);
 
     this.projects.histories.executions.steps.perfSampleSeries = {};
+
+    /**
+     * Lists PerfSampleSeries for a given Step. The request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executionId - (Required) A tool results execution ID.
+     * @param {string} apiParams.filter - Specify one or more PerfMetricType values such as CPU to filter the result
+     * @param {string} apiParams.historyId - (Required) A tool results history ID.
+     * @param {string} apiParams.projectId - (Required) The cloud project
+     * @param {string} apiParams.stepId - (Required) A tool results step ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.steps.perfSampleSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
@@ -321,20 +319,6 @@ class Toolresults {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.histories.executions.steps.perfSampleSeries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists PerfSampleSeries for a given Step. The request provides an optional filter which specifies one or more PerfMetricsType to include in the result; if none returns all. The resulting PerfSampleSeries are sorted by ids. May return any of the following canonical error codes: - NOT_FOUND - The containing Step does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executionId - (Required) A tool results execution ID.
-     * @param {string} apiParams.filter - Specify one or more PerfMetricType values such as CPU to filter the result
-     * @param {string} apiParams.historyId - (Required) A tool results history ID.
-     * @param {string} apiParams.projectId - (Required) The cloud project
-     * @param {string} apiParams.stepId - (Required) A tool results step ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.histories.executions.steps.perfSampleSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', 'GET', apiParams, clientConfig);
 
     this.projects.histories.executions.steps.perfSampleSeries.samples = {};
 
@@ -368,6 +352,23 @@ class Toolresults {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.histories.executions.steps.perfSampleSeries.samples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples', 'GET', apiParams, clientConfig);
+
+    this.projects.histories.executions.steps.thumbnails = {};
+
+    /**
+     * Lists thumbnails of images attached to a step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read from the project, or from any of the images - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the step does not exist, or if any of the images do not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executionId - (Required) An Execution id. Required.
+     * @param {string} apiParams.historyId - (Required) A History id. Required.
+     * @param {integer} apiParams.pageSize - The maximum number of thumbnails to fetch. Default value: 50. The server will use this default if the field is not set or has a value of 0. Optional.
+     * @param {string} apiParams.pageToken - A continuation token to resume the query at the next item. Optional.
+     * @param {string} apiParams.projectId - (Required) A Project id. Required.
+     * @param {string} apiParams.stepId - (Required) A Step id. Required.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.histories.executions.steps.thumbnails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', 'GET', apiParams, clientConfig);
 
     this.projects.histories.executions.clusters = {};
 
