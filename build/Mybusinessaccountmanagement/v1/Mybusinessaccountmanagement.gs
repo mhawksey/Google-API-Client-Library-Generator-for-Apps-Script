@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the My Business Account Management API
  * Documentation URL: https://developers.google.com/my-business/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Mybusinessaccountmanagement {
@@ -22,26 +23,26 @@ class Mybusinessaccountmanagement {
     this.locations.transfer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:transfer', 'POST', apiParams, clientConfig);
 
     this.locations.admins = {};
-    this.locations.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
     this.locations.admins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'POST', apiParams, clientConfig);
     this.locations.admins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
     this.locations.admins.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts = {};
+    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts', 'POST', apiParams, clientConfig);
-    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts.invitations = {};
-    this.accounts.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
     this.accounts.invitations.decline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decline', 'POST', apiParams, clientConfig);
+    this.accounts.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
     this.accounts.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/invitations', 'GET', apiParams, clientConfig);
 
     this.accounts.admins = {};
-    this.accounts.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
     this.accounts.admins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'POST', apiParams, clientConfig);
     this.accounts.admins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
     this.accounts.admins.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
