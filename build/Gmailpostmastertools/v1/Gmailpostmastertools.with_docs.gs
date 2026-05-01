@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Gmail Postmaster Tools API
  * Documentation URL: https://developers.google.com/workspace/gmail/postmaster
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Gmailpostmastertools {
