@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud OS Login API
  * Documentation URL: https://cloud.google.com/compute/docs/oslogin/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Oslogin {
@@ -36,19 +37,6 @@ class Oslogin {
     this.users = {};
 
     /**
-     * Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The unique ID for the user in format `users/{user}`.
-     * @param {string} apiParams.projectId - Required. The project ID of the Google Cloud Platform project.
-     * @param {string} apiParams.systemId - Optional. A system ID for filtering the results of the request.
-     * @param {string} apiParams.view - The view configures whether to retrieve security keys information.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.getLoginProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/loginProfile', 'GET', apiParams, clientConfig);
-
-    /**
      * Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) The unique ID for the user in format `users/{user}`.
@@ -62,38 +50,20 @@ class Oslogin {
      */
     this.users.importSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:importSshPublicKey', 'POST', apiParams, clientConfig);
 
+    /**
+     * Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The unique ID for the user in format `users/{user}`.
+     * @param {string} apiParams.projectId - Required. The project ID of the Google Cloud Platform project.
+     * @param {string} apiParams.systemId - Optional. A system ID for filtering the results of the request.
+     * @param {string} apiParams.view - The view configures whether to retrieve security keys information.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.getLoginProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/loginProfile', 'GET', apiParams, clientConfig);
+
     this.users.sshPublicKeys = {};
-
-    /**
-     * Create an SSH public key
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The unique ID for the user in format `users/{user}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sshPublicKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/sshPublicKeys', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes an SSH public key.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sshPublicKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Retrieves an SSH public key.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sshPublicKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates an SSH public key and returns the profile information. This method supports patch semantics.
@@ -107,17 +77,38 @@ class Oslogin {
      */
     this.users.sshPublicKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.users.projects = {};
-
     /**
-     * Deletes a POSIX account.
+     * Deletes an SSH public key.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.
+     * @param {string} apiParams.name - (Required) Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.users.sshPublicKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Create an SSH public key
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The unique ID for the user in format `users/{user}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.sshPublicKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/sshPublicKeys', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves an SSH public key.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.sshPublicKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    this.users.projects = {};
 
     /**
      * Create a POSIX account if it doesn't exist.
@@ -129,6 +120,16 @@ class Oslogin {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.projects.provisionPosixAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a POSIX account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.users.projects.zones = {};
 
