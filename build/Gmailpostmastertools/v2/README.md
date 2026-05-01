@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gmail Postmaster Tools API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:45:24 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:22:08 GMT
+- **Last Checked:** Fri, 01 May 2026 00:03:48 GMT
+- **Last Modified:** Fri, 01 May 2026 00:03:48 GMT
 - **Created:** Wed, 18 Mar 2026 21:47:41 GMT
 
 
@@ -13,6 +13,16 @@ Auto-generated client library for using the **Gmail Postmaster Tools API (versio
 ---
 
 ## API Reference
+
+### `domainStats`
+
+#### `domainStats.batchQuery()`
+
+Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `domains`
 
@@ -50,14 +60,4 @@ Retrieves a list of domain statistics for a given domain and time period. Return
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the stats are queried. Format: domains/{domain} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `domainStats`
-
-#### `domainStats.batchQuery()`
-
-Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
