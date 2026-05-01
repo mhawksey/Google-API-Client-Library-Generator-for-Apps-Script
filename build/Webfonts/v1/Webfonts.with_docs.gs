@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Web Fonts Developer API
  * Documentation URL: https://developers.google.com/fonts/docs/developer_api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Webfonts {
