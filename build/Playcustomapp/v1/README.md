@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Custom App Publishing 
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:56:21 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:07:21 GMT
+- **Last Checked:** Fri, 01 May 2026 00:17:56 GMT
+- **Last Modified:** Fri, 01 May 2026 00:17:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:17 GMT
 
 
