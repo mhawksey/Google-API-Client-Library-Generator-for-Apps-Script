@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Security Command Center API
  * Documentation URL: https://cloud.google.com/security-command-center
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Securitycenter {
@@ -19,23 +20,29 @@ class Securitycenter {
 
 
     this.organizations = {};
-    this.organizations.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.getEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.getSubscription = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.getContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.updateContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.getEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.updateEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.getSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.getWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations.containerThreatDetectionSettings = {};
     this.organizations.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.organizations.rapidVulnerabilityDetectionSettings = {};
+    this.organizations.rapidVulnerabilityDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.organizations.webSecurityScannerSettings = {};
+    this.organizations.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
 
     this.organizations.eventThreatDetectionSettings = {};
     this.organizations.eventThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
@@ -46,59 +53,35 @@ class Securitycenter {
     this.organizations.virtualMachineThreatDetectionSettings = {};
     this.organizations.virtualMachineThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
 
-    this.organizations.rapidVulnerabilityDetectionSettings = {};
-    this.organizations.rapidVulnerabilityDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.organizations.webSecurityScannerSettings = {};
-    this.organizations.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders = {};
-    this.folders.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.getContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.folders.containerThreatDetectionSettings = {};
-    this.folders.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders.eventThreatDetectionSettings = {};
-    this.folders.eventThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders.securityHealthAnalyticsSettings = {};
-    this.folders.securityHealthAnalyticsSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders.virtualMachineThreatDetectionSettings = {};
-    this.folders.virtualMachineThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders.rapidVulnerabilityDetectionSettings = {};
-    this.folders.rapidVulnerabilityDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.folders.webSecurityScannerSettings = {};
-    this.folders.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
     this.projects = {};
-    this.projects.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.getContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.getEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.getContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.getWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.updateContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.updateEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.getSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.getWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.securityHealthAnalyticsSettings = {};
+    this.projects.securityHealthAnalyticsSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.projects.virtualMachineThreatDetectionSettings = {};
+    this.projects.virtualMachineThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.projects.eventThreatDetectionSettings = {};
+    this.projects.eventThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.projects.webSecurityScannerSettings = {};
+    this.projects.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.projects.containerThreatDetectionSettings = {};
+    this.projects.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
 
@@ -109,23 +92,41 @@ class Securitycenter {
     this.projects.locations.clusters.containerThreatDetectionSettings = {};
     this.projects.locations.clusters.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
 
-    this.projects.containerThreatDetectionSettings = {};
-    this.projects.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.projects.eventThreatDetectionSettings = {};
-    this.projects.eventThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.projects.securityHealthAnalyticsSettings = {};
-    this.projects.securityHealthAnalyticsSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
-    this.projects.virtualMachineThreatDetectionSettings = {};
-    this.projects.virtualMachineThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
-
     this.projects.rapidVulnerabilityDetectionSettings = {};
     this.projects.rapidVulnerabilityDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
 
-    this.projects.webSecurityScannerSettings = {};
-    this.projects.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+    this.folders = {};
+    this.folders.getVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.updateRapidVulnerabilityDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.updateWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.updateVirtualMachineThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.getSecurityCenterSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.updateContainerThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.updateEventThreatDetectionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.getSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getWebSecurityScannerSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.updateSecurityHealthAnalyticsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.folders.eventThreatDetectionSettings = {};
+    this.folders.eventThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.folders.securityHealthAnalyticsSettings = {};
+    this.folders.securityHealthAnalyticsSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.folders.virtualMachineThreatDetectionSettings = {};
+    this.folders.virtualMachineThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.folders.containerThreatDetectionSettings = {};
+    this.folders.containerThreatDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.folders.rapidVulnerabilityDetectionSettings = {};
+    this.folders.rapidVulnerabilityDetectionSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
+
+    this.folders.webSecurityScannerSettings = {};
+    this.folders.webSecurityScannerSettings.calculate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:calculate', 'GET', apiParams, clientConfig);
   }
 
 /**
