@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
