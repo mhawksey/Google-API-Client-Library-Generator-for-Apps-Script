@@ -4,8 +4,8 @@ Auto-generated client library for using the **Storage Transfer API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:04:46 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:09:36 GMT
+- **Last Checked:** Fri, 01 May 2026 00:35:04 GMT
+- **Last Modified:** Fri, 01 May 2026 00:35:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:16 GMT
 
 
@@ -16,17 +16,35 @@ Auto-generated client library for using the **Storage Transfer API (version: v1)
 
 ### `transferOperations`
 
+#### `transferOperations.resume()`
+
+Resumes a transfer operation that is paused.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the transfer operation. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `transferOperations.pause()`
+
+Pauses a transfer operation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the transfer operation. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `transferOperations.list()`
 
 Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the type being listed; must be `transferOperations`. |
-| `params.filter` | `string` | Yes | Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern", "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern", "minCreationTime": "min_creation_time", "maxCreationTime": "max_creation_time", "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses` support multiple values, they must be specified with array notation. `projectId` is the only argument that is required. If specified, `jobNamePattern` and `operationNamePattern` must match the full job or operation name respectively. '*' is a wildcard matching 0 or more characters. `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED. |
-| `params.pageSize` | `integer` | No | The list page size. The max allowed value is 256. |
 | `params.pageToken` | `string` | No | The list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The list page size. The max allowed value is 256. |
+| `params.filter` | `string` | Yes | Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern", "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern", "minCreationTime": "min_creation_time", "maxCreationTime": "max_creation_time", "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses` support multiple values, they must be specified with array notation. `projectId` is the only argument that is required. If specified, `jobNamePattern` and `operationNamePattern` must match the full job or operation name respectively. '*' is a wildcard matching 0 or more characters. `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED. |
+| `params.name` | `string` | Yes | Required. The name of the type being listed; must be `transferOperations`. |
 
 #### `transferOperations.get()`
 
@@ -43,24 +61,6 @@ Cancels a transfer. Use the transferOperations.get method to check if the cancel
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `transferOperations.pause()`
-
-Pauses a transfer operation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the transfer operation. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `transferOperations.resume()`
-
-Resumes a transfer operation that is paused.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the transfer operation. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `googleServiceAccounts`
@@ -83,14 +83,14 @@ Creates a transfer job that runs periodically.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `transferJobs.patch()`
+#### `transferJobs.delete()`
 
-Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).
+Deletes a transfer job. Deleting a transfer job sets its status to DELETED.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.jobName` | `string` | Yes | Required. The name of job to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.jobName` | `string` | Yes | Required. The job to delete. |
+| `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the job. |
 
 #### `transferJobs.get()`
 
@@ -100,6 +100,24 @@ Gets a transfer job.
 |---|---|---|---|
 | `params.jobName` | `string` | Yes | Required. The job to get. |
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the job. |
+
+#### `transferJobs.run()`
+
+Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.jobName` | `string` | Yes | Required. The name of the transfer job. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `transferJobs.patch()`
+
+Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.jobName` | `string` | Yes | Required. The name of job to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferJobs.list()`
 
@@ -111,24 +129,6 @@ Lists transfer jobs.
 | `params.pageSize` | `integer` | No | The list page size. The max allowed value is 256. |
 | `params.pageToken` | `string` | No | The list page token. |
 
-#### `transferJobs.run()`
-
-Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.jobName` | `string` | Yes | Required. The name of the transfer job. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `transferJobs.delete()`
-
-Deletes a transfer job. Deleting a transfer job sets its status to DELETED.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.jobName` | `string` | Yes | Required. The job to delete. |
-| `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the job. |
-
 ### `projects`
 
 ### `projects.agentPools`
@@ -139,9 +139,25 @@ Creates an agent pool resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the agent pool. |
 | `params.agentPoolId` | `string` | No | Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`. |
+| `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the agent pool. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agentPools.delete()`
+
+Deletes an agent pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the agent pool to delete. |
+
+#### `projects.agentPools.get()`
+
+Gets an agent pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the agent pool to get. |
 
 #### `projects.agentPools.patch()`
 
@@ -153,29 +169,13 @@ Updates an existing agent pool resource.
 | `params.updateMask` | `string` | No | The [field mask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf) of the fields in `agentPool` to update in this request. The following `agentPool` fields can be updated: * display_name * bandwidth_limit |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agentPools.get()`
-
-Gets an agent pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the agent pool to get. |
-
 #### `projects.agentPools.list()`
 
 Lists agent pools.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | The list page token. |
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the job. |
 | `params.filter` | `string` | No | An optional list of query parameters specified as JSON text in the form of: `{"agentPoolNames":["agentpool1","agentpool2",...]}` Since `agentPoolNames` support multiple values, its values must be specified with array notation. When the filter is either empty or not provided, the list returns all agent pools for the project. |
 | `params.pageSize` | `integer` | No | The list page size. The max allowed value is `256`. |
-| `params.pageToken` | `string` | No | The list page token. |
-
-#### `projects.agentPools.delete()`
-
-Deletes an agent pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the agent pool to delete. |
