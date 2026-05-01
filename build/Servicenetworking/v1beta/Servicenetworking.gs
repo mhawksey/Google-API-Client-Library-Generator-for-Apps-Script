@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Service Networking API
  * Documentation URL: https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Servicenetworking {
@@ -27,8 +28,8 @@ class Servicenetworking {
     this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:searchRange', 'POST', apiParams, clientConfig);
 
     this.services.connections = {};
-    this.services.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'GET', apiParams, clientConfig);
     this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'POST', apiParams, clientConfig);
+    this.services.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'GET', apiParams, clientConfig);
   }
 
 /**
