@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Cloud Natural Language API
  * Documentation URL: https://cloud.google.com/natural-language/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Language {
@@ -21,14 +22,34 @@ class Language {
     this.documents = {};
 
     /**
-     * Analyzes the sentiment of the provided text.
+     * Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.documents.analyzeSentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:analyzeSentiment', 'POST', apiParams, clientConfig);
+    this.documents.analyzeEntitySentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:analyzeEntitySentiment', 'POST', apiParams, clientConfig);
+
+    /**
+     * Moderates a document for harmful and sensitive categories.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.documents.moderateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:moderateText', 'POST', apiParams, clientConfig);
+
+    /**
+     * A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.documents.annotateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:annotateText', 'POST', apiParams, clientConfig);
 
     /**
      * Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
@@ -39,16 +60,6 @@ class Language {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.documents.analyzeEntities = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:analyzeEntities', 'POST', apiParams, clientConfig);
-
-    /**
-     * Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.documents.analyzeEntitySentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:analyzeEntitySentiment', 'POST', apiParams, clientConfig);
 
     /**
      * Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
@@ -71,24 +82,14 @@ class Language {
     this.documents.classifyText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:classifyText', 'POST', apiParams, clientConfig);
 
     /**
-     * Moderates a document for harmful and sensitive categories.
+     * Analyzes the sentiment of the provided text.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.documents.moderateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:moderateText', 'POST', apiParams, clientConfig);
-
-    /**
-     * A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.documents.annotateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:annotateText', 'POST', apiParams, clientConfig);
+    this.documents.analyzeSentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:analyzeSentiment', 'POST', apiParams, clientConfig);
   }
 
 /**
