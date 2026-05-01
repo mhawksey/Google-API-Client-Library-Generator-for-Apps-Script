@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Service Usage API
  * Documentation URL: https://cloud.google.com/service-usage/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Serviceusage {
@@ -18,19 +19,19 @@ class Serviceusage {
     this._servicePath = '';
 
 
+    this.services = {};
+    this.services.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
+    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.services.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services:batchGet', 'GET', apiParams, clientConfig);
+
     this.operations = {};
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.services = {};
-    this.services.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
-    this.services.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services:batchGet', 'GET', apiParams, clientConfig);
   }
 
 /**
