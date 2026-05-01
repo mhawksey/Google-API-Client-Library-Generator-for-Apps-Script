@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Web Security Scanner API
  * Documentation URL: https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Websecurityscanner {
@@ -21,21 +22,21 @@ class Websecurityscanner {
     this.projects = {};
 
     this.projects.scanConfigs = {};
-    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.scanConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.scanConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.scanConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanConfigs', 'GET', apiParams, clientConfig);
-    this.projects.scanConfigs.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:start', 'POST', apiParams, clientConfig);
     this.projects.scanConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanConfigs', 'POST', apiParams, clientConfig);
+    this.projects.scanConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanConfigs', 'GET', apiParams, clientConfig);
+    this.projects.scanConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.scanConfigs.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:start', 'POST', apiParams, clientConfig);
+    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns = {};
-    this.projects.scanConfigs.scanRuns.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:stop', 'POST', apiParams, clientConfig);
     this.projects.scanConfigs.scanRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scanRuns', 'GET', apiParams, clientConfig);
     this.projects.scanConfigs.scanRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.scanConfigs.scanRuns.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:stop', 'POST', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.findings = {};
-    this.projects.scanConfigs.scanRuns.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.scanConfigs.scanRuns.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/findings', 'GET', apiParams, clientConfig);
+    this.projects.scanConfigs.scanRuns.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.crawledUrls = {};
     this.projects.scanConfigs.scanRuns.crawledUrls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/crawledUrls', 'GET', apiParams, clientConfig);
