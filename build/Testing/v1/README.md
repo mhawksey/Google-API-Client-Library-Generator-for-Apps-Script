@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:04:59 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:09:58 GMT
+- **Last Checked:** Fri, 01 May 2026 00:35:36 GMT
+- **Last Modified:** Fri, 01 May 2026 00:35:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:39 GMT
 
 
@@ -16,6 +16,55 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ### `projects`
 
+### `projects.deviceSessions`
+
+#### `projects.deviceSessions.create()`
+
+POST /v1/projects/{project_id}/deviceSessions
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deviceSessions.get()`
+
+GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
+
+#### `projects.deviceSessions.cancel()`
+
+POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or listed by the user until they expire based on the 28 day deletion policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deviceSessions.list()`
+
+GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
+| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
+| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
+| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
+
+#### `projects.deviceSessions.patch()`
+
+PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
+| `params.updateMask` | `string` | No | Required. The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.testMatrices`
 
 #### `projects.testMatrices.create()`
@@ -24,8 +73,8 @@ Creates and runs a matrix of tests according to the given specifications. Unsupp
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectId` | `string` | Yes | The GCE project under which this job will run. |
 | `params.requestId` | `string` | No | A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended. |
+| `params.projectId` | `string` | Yes | The GCE project under which this job will run. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testMatrices.get()`
@@ -45,55 +94,6 @@ Cancels unfinished test executions in a test matrix. This call returns immediate
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Cloud project that owns the test. |
 | `params.testMatrixId` | `string` | Yes | Test matrix that will be canceled. |
-
-### `projects.deviceSessions`
-
-#### `projects.deviceSessions.create()`
-
-POST /v1/projects/{project_id}/deviceSessions
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deviceSessions.list()`
-
-GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
-| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
-| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
-
-#### `projects.deviceSessions.get()`
-
-GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-
-#### `projects.deviceSessions.cancel()`
-
-POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or listed by the user until they expire based on the 28 day deletion policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deviceSessions.patch()`
-
-PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-| `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `applicationDetailService`
 
@@ -115,5 +115,5 @@ Gets the catalog of supported test environments. May return any of the following
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environmentType` | `string` | Yes | Required. The type of environment that should be listed. |
-| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
 | `params.includeViewableModels` | `boolean` | No | Optional. Whether to include viewable only models in the response. This is only applicable for Android models. |
+| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
