@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -34,16 +35,6 @@ class Merchantapi {
     this.accounts.promotions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+parent}/promotions:insert', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves the promotion from your Merchant Center account. After inserting or updating a promotion input, it may take several minutes before the updated promotion can be retrieved.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the promotion to retrieve. Format: `accounts/{account}/promotions/{promotions}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.promotions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists the promotions in your Merchant Center account. The response might contain fewer items than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested. After inserting or updating a promotion, it may take several minutes before the updated processed promotion can be retrieved.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned.
@@ -54,6 +45,16 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.promotions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+parent}/promotions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves the promotion from your Merchant Center account. After inserting or updating a promotion input, it may take several minutes before the updated promotion can be retrieved.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the promotion to retrieve. Format: `accounts/{account}/promotions/{promotions}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.promotions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
