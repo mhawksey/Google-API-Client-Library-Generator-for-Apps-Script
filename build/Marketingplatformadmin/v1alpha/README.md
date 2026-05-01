@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Marketing Platform Admin AP
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:53:15 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:49:44 GMT
+- **Last Checked:** Fri, 01 May 2026 00:06:24 GMT
+- **Last Modified:** Fri, 01 May 2026 00:06:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:16 GMT
 
 
@@ -23,15 +23,6 @@ Looks up a single organization.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Organization to retrieve. Format: organizations/{org_id} |
-
-#### `organizations.list()`
-
-Returns a list of organizations that the user has access to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of organizations to return in one call. The service may return fewer than this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListOrganizations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOrganizations` must match the call that provided the page token. |
 
 #### `organizations.findSalesPartnerManagedClients()`
 
@@ -51,6 +42,15 @@ Gets the usage and billing data for properties within the organization for the s
 | `params.organization` | `string` | Yes | Required. Specifies the organization whose property usage will be listed. Format: organizations/{org_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `organizations.list()`
+
+Returns a list of organizations that the user has access to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of organizations to return in one call. The service may return fewer than this value. If unspecified, at most 50 organizations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListOrganizations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListOrganizations` must match the call that provided the page token. |
+
 ### `organizations.analyticsAccountLinks`
 
 #### `organizations.analyticsAccountLinks.list()`
@@ -59,8 +59,8 @@ Lists the Google Analytics accounts link to the specified Google Marketing Platf
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id} |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of Analytics account links to return in one call. The service may return fewer than this value. If unspecified, at most 50 Analytics account links will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id} |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token. |
 
 #### `organizations.analyticsAccountLinks.create()`
