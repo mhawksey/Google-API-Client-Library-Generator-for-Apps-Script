@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Identity Toolkit API
  * Documentation URL: https://cloud.google.com/identity-platform
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Identitytoolkit {
@@ -66,6 +67,64 @@ class Identitytoolkit {
      */
     this.projects.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
+    this.projects.defaultSupportedIdpConfigs = {};
+
+    /**
+     * Update a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {string} apiParams.updateMask - The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Retrieve a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Delete a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Create a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.idpId - The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
+     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
+
+    /**
+     * List all default supported Idp configurations for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
+
     this.projects.oauthIdpConfigs = {};
 
     /**
@@ -91,18 +150,6 @@ class Identitytoolkit {
     this.projects.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Create an Oidc Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.oauthIdpConfigId - The id to use for this config.
-     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
-
-    /**
      * Retrieve an Oidc Idp configuration for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The resource name of the config, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.
@@ -123,6 +170,18 @@ class Identitytoolkit {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Create an Oidc Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.oauthIdpConfigId - The id to use for this config.
+     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
 
     this.projects.inboundSamlConfigs = {};
 
@@ -149,16 +208,14 @@ class Identitytoolkit {
     this.projects.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * List all inbound SAML configurations for an Identity Toolkit project.
+     * Delete an inbound SAML configuration for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
+     * @param {string} apiParams.name - (Required) The resource name of the config to be deleted, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
+    this.projects.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Create an inbound SAML configuration for an Identity Toolkit project.
@@ -173,16 +230,28 @@ class Identitytoolkit {
     this.projects.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
 
     /**
-     * Delete an inbound SAML configuration for an Identity Toolkit project.
+     * List all inbound SAML configurations for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config to be deleted, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
 
     this.projects.tenants = {};
+
+    /**
+     * Get a tenant. Requires read permission on the Tenant resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Resource name of the tenant to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Delete a tenant. Requires write permission on the Agent project.
@@ -206,6 +275,18 @@ class Identitytoolkit {
     this.projects.tenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'POST', apiParams, clientConfig);
 
     /**
+     * List tenants under the given agent project. Requires read permission on the Agent project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of results to return, capped at 1000. If not specified, the default value is 20.
+     * @param {string} apiParams.pageToken - The pagination token from the response of a previous request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name to list tenants for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'GET', apiParams, clientConfig);
+
+    /**
      * Sets the access control policy for a resource. If the policy exists, it is replaced. Caller must have the right Google IAM permission on the resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
@@ -217,26 +298,15 @@ class Identitytoolkit {
     this.projects.tenants.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
-     * Get a tenant. Requires read permission on the Tenant resource.
+     * Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Resource name of the tenant to retrieve.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.tenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List tenants under the given agent project. Requires read permission on the Agent project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of results to return, capped at 1000. If not specified, the default value is 20.
-     * @param {string} apiParams.pageToken - The pagination token from the response of a previous request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name to list tenants for.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'GET', apiParams, clientConfig);
+    this.projects.tenants.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Returns the caller's permissions on a resource. An error is returned if the resource does not exist. A caller is not required to have Google IAM permission to make this request.
@@ -261,17 +331,6 @@ class Identitytoolkit {
      */
     this.projects.tenants.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
-    /**
-     * Gets the access control policy for a resource. An error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it. Caller must have the right Google IAM permission on the resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-
     this.projects.tenants.inboundSamlConfigs = {};
 
     /**
@@ -287,28 +346,6 @@ class Identitytoolkit {
     this.projects.tenants.inboundSamlConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Create an inbound SAML configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.inboundSamlConfigId - The id to use for this config.
-     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve an inbound SAML configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * List all inbound SAML configurations for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - The maximum number of items to return.
@@ -321,6 +358,18 @@ class Identitytoolkit {
     this.projects.tenants.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
 
     /**
+     * Create an inbound SAML configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.inboundSamlConfigId - The id to use for this config.
+     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
+
+    /**
      * Delete an inbound SAML configuration for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The resource name of the config to be deleted, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.
@@ -329,6 +378,74 @@ class Identitytoolkit {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.tenants.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieve an inbound SAML configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the config, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.tenants.defaultSupportedIdpConfigs = {};
+
+    /**
+     * List all default supported Idp configurations for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Create a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.idpId - The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
+     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieve a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update a default supported Idp configuration for an Identity Toolkit project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
+     * @param {string} apiParams.updateMask - The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.tenants.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.tenants.oauthIdpConfigs = {};
 
@@ -345,16 +462,14 @@ class Identitytoolkit {
     this.projects.tenants.oauthIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Create an Oidc Idp configuration for an Identity Toolkit project.
+     * Delete an Oidc Idp configuration for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.oauthIdpConfigId - The id to use for this config.
-     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) The resource name of the config to be deleted, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.tenants.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
+    this.projects.tenants.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Retrieve an Oidc Idp configuration for an Identity Toolkit project.
@@ -379,130 +494,16 @@ class Identitytoolkit {
     this.projects.tenants.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
 
     /**
-     * Delete an Oidc Idp configuration for an Identity Toolkit project.
+     * Create an Oidc Idp configuration for an Identity Toolkit project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config to be deleted, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.tenants.defaultSupportedIdpConfigs = {};
-
-    /**
-     * Create a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.idpId - The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
+     * @param {string} apiParams.oauthIdpConfigId - The id to use for this config.
      * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.tenants.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List all default supported Idp configurations for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Delete a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Update a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {string} apiParams.updateMask - The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.tenants.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.defaultSupportedIdpConfigs = {};
-
-    /**
-     * Update a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {string} apiParams.updateMask - The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Retrieve a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List all default supported Idp configurations for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) The parent resource name, for example, "projects/my-awesome-project".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Create a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.idpId - The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps.
-     * @param {string} apiParams.parent - (Required) The parent resource name where the config to be created, for example: "projects/my-awesome-project"
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Delete a default supported Idp configuration for an Identity Toolkit project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the config, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.tenants.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
 
     this.projects.identityPlatform = {};
 
@@ -545,16 +546,6 @@ class Identitytoolkit {
     this.accounts.mfaEnrollment = {};
 
     /**
-     * Step one of the MFA enrollment process. In SMS case, this sends an SMS verification code to the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.mfaEnrollment.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:start', 'POST', apiParams, clientConfig);
-
-    /**
      * Finishes enrolling a second factor for the user.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -574,17 +565,17 @@ class Identitytoolkit {
      */
     this.accounts.mfaEnrollment.withdraw = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:withdraw', 'POST', apiParams, clientConfig);
 
-    this.accounts.mfaSignIn = {};
-
     /**
-     * Verifies the MFA challenge and performs sign-in
+     * Step one of the MFA enrollment process. In SMS case, this sends an SMS verification code to the user.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.mfaSignIn.finalize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaSignIn:finalize', 'POST', apiParams, clientConfig);
+    this.accounts.mfaEnrollment.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:start', 'POST', apiParams, clientConfig);
+
+    this.accounts.mfaSignIn = {};
 
     /**
      * Sends the MFA challenge
@@ -595,6 +586,16 @@ class Identitytoolkit {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.mfaSignIn.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaSignIn:start', 'POST', apiParams, clientConfig);
+
+    /**
+     * Verifies the MFA challenge and performs sign-in
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.mfaSignIn.finalize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaSignIn:finalize', 'POST', apiParams, clientConfig);
   }
 
 /**
