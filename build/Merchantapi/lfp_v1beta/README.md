@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1beta)
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:53:47 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:50:32 GMT
+- **Last Checked:** Fri, 01 May 2026 00:07:21 GMT
+- **Last Modified:** Fri, 01 May 2026 00:07:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:42 GMT
 
 
@@ -15,6 +15,44 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1beta)
 ## API Reference
 
 ### `accounts`
+
+### `accounts.lfpStores`
+
+#### `accounts.lfpStores.insert()`
+
+Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The LFP provider account Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.lfpStores.delete()`
+
+Deletes a store for a target merchant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` |
+
+#### `accounts.lfpStores.get()`
+
+Retrieves information about a store.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` |
+
+#### `accounts.lfpStores.list()`
+
+Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.targetAccount` | `string` | No | Required. The Merchant Center id of the merchant to list stores for. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. |
+| `params.parent` | `string` | Yes | Required. The LFP partner. Format: `accounts/{account}` |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. |
 
 ### `accounts.lfpInventories`
 
@@ -47,41 +85,3 @@ Inserts a `LfpSale` for the given merchant.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The LFP provider account. Format: `accounts/{lfp_partner}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `accounts.lfpStores`
-
-#### `accounts.lfpStores.get()`
-
-Retrieves information about a store.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` |
-
-#### `accounts.lfpStores.insert()`
-
-Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The LFP provider account Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.lfpStores.delete()`
-
-Deletes a store for a target merchant.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}` |
-
-#### `accounts.lfpStores.list()`
-
-Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The LFP partner. Format: `accounts/{account}` |
-| `params.targetAccount` | `string` | No | Required. The Merchant Center id of the merchant to list stores for. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request. |
