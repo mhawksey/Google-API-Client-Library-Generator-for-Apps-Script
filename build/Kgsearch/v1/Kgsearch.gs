@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Knowledge Graph Search API
  * Documentation URL: https://developers.google.com/knowledge-graph/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Kgsearch {
