@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Vision API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:05:54 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:11:04 GMT
+- **Last Checked:** Fri, 01 May 2026 00:37:28 GMT
+- **Last Modified:** Fri, 01 May 2026 00:37:28 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:38 GMT
 
 
@@ -15,26 +15,6 @@ Auto-generated client library for using the **Cloud Vision API (version: v1)** i
 ## API Reference
 
 ### `operations`
-
-#### `operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `operations.delete()`
 
@@ -53,17 +33,45 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects`
+#### `operations.list()`
 
-### `projects.operations`
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
-#### `projects.operations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+
+#### `operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `images`
+
+#### `images.annotate()`
+
+Run image detection and annotation for a batch of images.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `images.asyncBatchAnnotate()`
+
+Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects`
 
 ### `projects.locations`
 
@@ -77,108 +85,49 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-### `projects.locations.productSets`
+### `projects.locations.images`
 
-#### `projects.locations.productSets.create()`
+#### `projects.locations.images.annotate()`
 
-Creates and returns a new ProductSet resource. Possible errors:
-
-* Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
+Run image detection and annotation for a batch of images.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
-| `params.productSetId` | `string` | No | A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`. |
+| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.productSets.list()`
+#### `projects.locations.images.asyncBatchAnnotate()`
 
-Lists ProductSets in an unspecified order. Possible errors:
-
-* Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1.
+Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project from which ProductSets should be listed. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
-| `params.pageToken` | `string` | No | The next_page_token returned from a previous List request, if any. |
-
-#### `projects.locations.productSets.get()`
-
-Gets information associated with a ProductSet. Possible errors:
-
-* Returns NOT_FOUND if the ProductSet does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the ProductSet to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
-
-#### `projects.locations.productSets.patch()`
-
-Makes changes to a ProductSet resource. Only display_name can be updated currently. Possible errors:
-
-* Returns NOT_FOUND if the ProductSet does not exist.
-
-* Returns INVALID_ARGUMENT if display_name is present in update_mask but missing from the request or longer than 4096 characters.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet. |
-| `params.updateMask` | `string` | No | The FieldMask that specifies which fields to update. If update_mask isn't specified, all mutable fields are to be updated. Valid mask path is `display_name`. |
+| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.productSets.delete()`
+### `projects.locations.products`
 
-Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not deleted. The actual image files are not deleted from Google Cloud Storage.
+#### `projects.locations.products.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the ProductSet to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
-
-#### `projects.locations.productSets.addProduct()`
-
-Adds a Product to the specified ProductSet. If the Product is already present, no change is made. One Product can be added to at most 100 ProductSets. Possible errors:
-
-* Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.productSets.removeProduct()`
-
-Removes a Product from the specified ProductSet.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.productSets.import()`
-
-Asynchronous API that imports a list of reference images to specified product sets based on a list of image information. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response` contains `ImportProductSetsResponse`. (results) The input source of this method is a csv file on Google Cloud Storage. For the format of the csv file please see ImportProductSetsGcsSource.csv_file_uri.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project in which the ProductSets should be imported. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.productSets.products`
-
-#### `projects.locations.productSets.products.list()`
-
-Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not exist, the products field of the response will be empty. Possible errors:
+Lists products in an unspecified order. Possible errors:
 
 * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The ProductSet resource for which to retrieve Products. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
 | `params.pageToken` | `string` | No | The next_page_token returned from a previous List request, if any. |
+| `params.parent` | `string` | Yes | Required. The project OR ProductSet from which Products should be listed. Format: `projects/PROJECT_ID/locations/LOC_ID` |
 
-### `projects.locations.products`
+#### `projects.locations.products.get()`
+
+Gets information associated with a Product. Possible errors:
+
+* Returns NOT_FOUND if the Product does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Product to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` |
 
 #### `projects.locations.products.create()`
 
@@ -192,31 +141,17 @@ Creates and returns a new product resource. Possible errors:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
 | `params.productId` | `string` | No | A user-supplied resource id for this Product. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`. |
+| `params.parent` | `string` | Yes | Required. The project in which the Product should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.products.list()`
+#### `projects.locations.products.delete()`
 
-Lists products in an unspecified order. Possible errors:
-
-* Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
+Permanently deletes a product and its reference images. Metadata of the product and all its images will be deleted right away, but search queries against ProductSets containing the product may still work until all related caches are refreshed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project OR ProductSet from which Products should be listed. Format: `projects/PROJECT_ID/locations/LOC_ID` |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
-| `params.pageToken` | `string` | No | The next_page_token returned from a previous List request, if any. |
-
-#### `projects.locations.products.get()`
-
-Gets information associated with a Product. Possible errors:
-
-* Returns NOT_FOUND if the Product does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Product to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` |
+| `params.name` | `string` | Yes | Required. Resource name of product to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` |
 
 #### `projects.locations.products.patch()`
 
@@ -232,17 +167,9 @@ Makes changes to a Product resource. Only the `display_name`, `description`, and
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product. |
 | `params.updateMask` | `string` | No | The FieldMask that specifies which fields to update. If update_mask isn't specified, all mutable fields are to be updated. Valid mask paths include `product_labels`, `display_name`, and `description`. |
+| `params.name` | `string` | Yes | The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.products.delete()`
-
-Permanently deletes a product and its reference images. Metadata of the product and all its images will be deleted right away, but search queries against ProductSets containing the product may still work until all related caches are refreshed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of product to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID` |
 
 #### `projects.locations.products.purge()`
 
@@ -291,9 +218,9 @@ Lists reference images. Possible errors:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the product containing the reference images. Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
 | `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This is the value of `nextPageToken` returned in a previous reference image list request. Defaults to the first page if not specified. |
+| `params.parent` | `string` | Yes | Required. Resource name of the product containing the reference images. Format is `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. |
 
 #### `projects.locations.products.referenceImages.get()`
 
@@ -304,26 +231,6 @@ Gets information associated with a ReferenceImage. Possible errors:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ReferenceImage to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. |
-
-### `projects.locations.images`
-
-#### `projects.locations.images.annotate()`
-
-Run image detection and annotation for a batch of images.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.images.asyncBatchAnnotate()`
-
-Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.files`
 
@@ -345,25 +252,106 @@ Run asynchronous image detection and annotation for a list of generic files, suc
 | `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.images`
+### `projects.locations.productSets`
 
-#### `projects.images.annotate()`
+#### `projects.locations.productSets.patch()`
 
-Run image detection and annotation for a batch of images.
+Makes changes to a ProductSet resource. Only display_name can be updated currently. Possible errors:
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+* Returns NOT_FOUND if the ProductSet does not exist.
 
-#### `projects.images.asyncBatchAnnotate()`
-
-Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+* Returns INVALID_ARGUMENT if display_name is present in update_mask but missing from the request or longer than 4096 characters.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
+| `params.name` | `string` | Yes | The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet. |
+| `params.updateMask` | `string` | No | The FieldMask that specifies which fields to update. If update_mask isn't specified, all mutable fields are to be updated. Valid mask path is `display_name`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.productSets.import()`
+
+Asynchronous API that imports a list of reference images to specified product sets based on a list of image information. The google.longrunning.Operation API can be used to keep track of the progress and results of the request. `Operation.metadata` contains `BatchOperationMetadata`. (progress) `Operation.response` contains `ImportProductSetsResponse`. (results) The input source of this method is a csv file on Google Cloud Storage. For the format of the csv file please see ImportProductSetsGcsSource.csv_file_uri.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project in which the ProductSets should be imported. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.productSets.create()`
+
+Creates and returns a new ProductSet resource. Possible errors:
+
+* Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project in which the ProductSet should be created. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
+| `params.productSetId` | `string` | No | A user-supplied resource id for this ProductSet. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.productSets.delete()`
+
+Permanently deletes a ProductSet. Products and ReferenceImages in the ProductSet are not deleted. The actual image files are not deleted from Google Cloud Storage.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the ProductSet to delete. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
+
+#### `projects.locations.productSets.list()`
+
+Lists ProductSets in an unspecified order. Possible errors:
+
+* Returns INVALID_ARGUMENT if page_size is greater than 100, or less than 1.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project from which ProductSets should be listed. Format is `projects/PROJECT_ID/locations/LOC_ID`. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
+| `params.pageToken` | `string` | No | The next_page_token returned from a previous List request, if any. |
+
+#### `projects.locations.productSets.get()`
+
+Gets information associated with a ProductSet. Possible errors:
+
+* Returns NOT_FOUND if the ProductSet does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the ProductSet to get. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
+
+#### `projects.locations.productSets.addProduct()`
+
+Adds a Product to the specified ProductSet. If the Product is already present, no change is made. One Product can be added to at most 100 ProductSets. Possible errors:
+
+* Returns NOT_FOUND if the Product or the ProductSet doesn't exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.productSets.removeProduct()`
+
+Removes a Product from the specified ProductSet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name for the ProductSet to modify. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.productSets.products`
+
+#### `projects.locations.productSets.products.list()`
+
+Lists the Products in a ProductSet, in an unspecified order. If the ProductSet does not exist, the products field of the response will be empty. Possible errors:
+
+* Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The next_page_token returned from a previous List request, if any. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. Default 10, maximum 100. |
+| `params.name` | `string` | Yes | Required. The ProductSet resource for which to retrieve Products. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID` |
 
 ### `projects.files`
 
@@ -385,6 +373,36 @@ Run asynchronous image detection and annotation for a list of generic files, suc
 | `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+### `projects.operations`
+
+#### `projects.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.images`
+
+#### `projects.images.annotate()`
+
+Run image detection and annotation for a batch of images.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.images.asyncBatchAnnotate()`
+
+Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `locations`
 
 ### `locations.operations`
@@ -396,24 +414,6 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `images`
-
-#### `images.annotate()`
-
-Run image detection and annotation for a batch of images.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `images.asyncBatchAnnotate()`
-
-Run asynchronous image detection and annotation for a list of images. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateImagesResponse` (results). This service will write image annotation outputs to json files in customer GCS bucket, each json file containing BatchAnnotateImagesResponse proto.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `files`
 
