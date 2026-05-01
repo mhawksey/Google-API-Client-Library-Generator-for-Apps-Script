@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the versionhistory.googleapis.com API
  * Documentation URL: https://developer.chrome.com/docs/web-platform/versionhistory/guide
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Versionhistory {
