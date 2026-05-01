@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the PageSpeed Insights API
  * Documentation URL: https://developers.google.com/speed/docs/insights/v5/about
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Pagespeedonline {
