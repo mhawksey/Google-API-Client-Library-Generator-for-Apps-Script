@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -23,37 +24,14 @@ class Merchantapi {
     this.accounts.dataSources = {};
 
     /**
-     * Retrieves the data source configuration for the given account.
+     * Deletes a data source from your Merchant Center account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {string} apiParams.name - (Required) Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the configurations for data sources for the given account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The account to list data sources for. Format: `accounts/{account}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates the new data source configuration for the given account. This method always creates a new data source.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The account where this data source will be created. Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.dataSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'POST', apiParams, clientConfig);
+    this.accounts.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted.
@@ -68,14 +46,37 @@ class Merchantapi {
     this.accounts.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a data source from your Merchant Center account.
+     * Lists the configurations for data sources for the given account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The account to list data sources for. Format: `accounts/{account}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves the data source configuration for the given account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates the new data source configuration for the given account. This method always creates a new data source.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The account where this data source will be created. Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.dataSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'POST', apiParams, clientConfig);
 
     /**
      * Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
