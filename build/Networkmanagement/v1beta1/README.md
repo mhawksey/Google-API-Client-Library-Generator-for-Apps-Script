@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:55:06 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:52:02 GMT
+- **Last Checked:** Fri, 01 May 2026 00:15:21 GMT
+- **Last Modified:** Fri, 01 May 2026 00:15:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:58 GMT
 
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **Network Management API (version: v
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
 * **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
@@ -32,7 +32,7 @@ Lists information about the supported locations for this service. This method li
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -268,7 +268,7 @@ ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations 
 
 #### `organizations.locations.list()`
 
-Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
 * **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
@@ -280,7 +280,7 @@ Lists information about the supported locations for this service. This method li
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `organizations.locations.get()`
 
