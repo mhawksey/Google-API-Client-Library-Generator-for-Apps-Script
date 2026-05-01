@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Q&A API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:54:50 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:51:42 GMT
+- **Last Checked:** Fri, 01 May 2026 00:14:46 GMT
+- **Last Modified:** Fri, 01 May 2026 00:14:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:40 GMT
 
 
@@ -17,19 +17,6 @@ Auto-generated client library for using the **My Business Q&A API (version: v1)*
 ### `locations`
 
 ### `locations.questions`
-
-#### `locations.questions.list()`
-
-Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the location to fetch questions for. |
-| `params.pageSize` | `integer` | No | Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10. |
-| `params.pageToken` | `string` | No | Optional. If specified, the next page of questions is retrieved. |
-| `params.answersPerQuestion` | `integer` | No | Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. |
-| `params.filter` | `string` | No | Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" |
-| `params.orderBy` | `string` | No | Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
 
 #### `locations.questions.create()`
 
@@ -50,6 +37,19 @@ Updates a specific question written by the current user.
 | `params.updateMask` | `string` | No | Required. The specific fields to update. Only question text can be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `locations.questions.list()`
+
+Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10. |
+| `params.orderBy` | `string` | No | Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
+| `params.pageToken` | `string` | No | Optional. If specified, the next page of questions is retrieved. |
+| `params.parent` | `string` | Yes | Required. The name of the location to fetch questions for. |
+| `params.filter` | `string` | No | Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" |
+| `params.answersPerQuestion` | `integer` | No | Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. |
+
 #### `locations.questions.delete()`
 
 Deletes a specific question written by the current user.
@@ -67,9 +67,9 @@ Returns the paginated list of answers for a specified question.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the question to fetch answers for. |
-| `params.pageSize` | `integer` | No | Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. |
 | `params.pageToken` | `string` | No | Optional. If specified, the next page of answers is retrieved. |
 | `params.orderBy` | `string` | No | Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
+| `params.pageSize` | `integer` | No | Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. |
 
 #### `locations.questions.answers.upsert()`
 
