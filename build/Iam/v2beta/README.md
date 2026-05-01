@@ -4,8 +4,8 @@ Auto-generated client library for using the **Identity and Access Management (IA
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:45:53 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:48:06 GMT
+- **Last Checked:** Fri, 01 May 2026 00:04:24 GMT
+- **Last Modified:** Fri, 01 May 2026 00:04:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:01 GMT
 
 
@@ -15,6 +15,15 @@ Auto-generated client library for using the **Identity and Access Management (IA
 ## API Reference
 
 ### `policies`
+
+#### `policies.update()`
+
+Updates the specified policy. You can update only the rules and the display name for the policy. To update a policy, you should use a read-modify-write loop: 1. Use GetPolicy to read the current version of the policy. 2. Modify the policy as needed. 3. Use `UpdatePolicy` to write the updated policy. This pattern helps prevent conflicts between concurrent updates.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `policies.listPolicies()`
 
@@ -26,14 +35,6 @@ Retrieves the policies of the specified kind that are attached to a resource. Th
 | `params.pageSize` | `integer` | No | The maximum number of policies to return. IAM ignores this value and uses the value 1000. |
 | `params.pageToken` | `string` | No | A page token received in a ListPoliciesResponse. Provide this token to retrieve the next page. |
 
-#### `policies.get()`
-
-Gets a policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the policy to retrieve. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. |
-
 #### `policies.createPolicy()`
 
 Creates a policy.
@@ -44,14 +45,13 @@ Creates a policy.
 | `params.policyId` | `string` | No | The ID to use for this policy, which will become the final component of the policy's resource name. The ID must contain 3 to 63 characters. It can contain lowercase letters and numbers, as well as dashes (`-`) and periods (`.`). The first character must be a lowercase letter. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `policies.update()`
+#### `policies.get()`
 
-Updates the specified policy. You can update only the rules and the display name for the policy. To update a policy, you should use a read-modify-write loop: 1. Use GetPolicy to read the current version of the policy. 2. Modify the policy as needed. 3. Use `UpdatePolicy` to write the updated policy. This pattern helps prevent conflicts between concurrent updates.
+Gets a policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The resource name of the policy to retrieve. Format: `policies/{attachment_point}/denypolicies/{policy_id}` Use the URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, you can use the alphanumeric or the numeric ID. |
 
 #### `policies.delete()`
 
