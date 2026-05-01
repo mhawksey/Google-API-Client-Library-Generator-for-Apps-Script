@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE Hub API (version: v2)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:45:05 GMT
-- **Last Modified:** Mon, 30 Mar 2026 20:21:54 GMT
+- **Last Checked:** Fri, 01 May 2026 00:03:26 GMT
+- **Last Modified:** Fri, 01 May 2026 00:03:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:34 GMT
 
 
@@ -18,22 +18,6 @@ Auto-generated client library for using the **GKE Hub API (version: v2)** in Goo
 
 ### `projects.locations`
 
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field:
-
-* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
-
-* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -42,19 +26,23 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.operations`
+#### `projects.locations.list()`
 
-#### `projects.locations.operations.list()`
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
+
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+
+### `projects.locations.operations`
 
 #### `projects.locations.operations.get()`
 
@@ -73,40 +61,21 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
 ### `projects.locations.memberships`
 
 ### `projects.locations.memberships.features`
-
-#### `projects.locations.memberships.features.get()`
-
-========= MembershipFeature Services ========= Gets details of a membershipFeature.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The MembershipFeature resource name in the format `projects/*/locations/*/memberships/*/features/*`. |
-
-#### `projects.locations.memberships.features.list()`
-
-Lists MembershipFeatures in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent where the MembershipFeature will be listed. In the format: `projects/*/locations/*/memberships/*`. |
-| `params.pageSize` | `integer` | No | When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
-| `params.filter` | `string` | No | Lists MembershipFeatures that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "helloworld" in project "foo-proj" and membership "member-bar": name = "projects/foo-proj/locations/global/memberships/member-bar/features/helloworld" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar |
-| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
-
-#### `projects.locations.memberships.features.create()`
-
-Creates membershipFeature under a given parent.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
-| `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.featureId` | `string` | No | Required. The ID of the membership_feature to create. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.memberships.features.delete()`
 
@@ -117,14 +86,45 @@ Removes a membershipFeature.
 | `params.name` | `string` | Yes | Required. The name of the membershipFeature to be deleted. Specified in the format `projects/*/locations/*/memberships/*/features/*`. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
 
+#### `projects.locations.memberships.features.list()`
+
+Lists MembershipFeatures in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.pageSize` | `integer` | No | When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.filter` | `string` | No | Lists MembershipFeatures that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "helloworld" in project "foo-proj" and membership "member-bar": name = "projects/foo-proj/locations/global/memberships/member-bar/features/helloworld" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar |
+| `params.pageToken` | `string` | No | Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
+| `params.parent` | `string` | Yes | Required. The parent where the MembershipFeature will be listed. In the format: `projects/*/locations/*/memberships/*`. |
+
+#### `projects.locations.memberships.features.get()`
+
+========= MembershipFeature Services ========= Gets details of a membershipFeature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The MembershipFeature resource name in the format `projects/*/locations/*/memberships/*/features/*`. |
+
+#### `projects.locations.memberships.features.create()`
+
+Creates membershipFeature under a given parent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Idempotent request UUID. |
+| `params.parent` | `string` | Yes | Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
+| `params.featureId` | `string` | No | Required. The ID of the membership_feature to create. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.memberships.features.patch()`
 
 Updates an existing MembershipFeature.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the membershipFeature, in the format: `projects/{project}/locations/{location}/memberships/{membership}/features/{feature}`. Note that `membershipFeatures` is shortened to `features` in the resource name. (see http://go/aip/122#collection-identifiers) |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
+| `params.name` | `string` | Yes | Output only. The resource name of the membershipFeature, in the format: `projects/{project}/locations/{location}/memberships/{membership}/features/{feature}`. Note that `membershipFeatures` is shortened to `features` in the resource name. (see http://go/aip/122#collection-identifiers) |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored. |
 | `params.requestBody` | `object` | Yes | The request body. |
