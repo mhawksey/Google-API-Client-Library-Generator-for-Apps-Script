@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Verified Access API
  * Documentation URL: https://developers.google.com/chrome/verified-access
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Verifiedaccess {
@@ -19,8 +20,8 @@ class Verifiedaccess {
 
 
     this.challenge = {};
-    this.challenge.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge', 'POST', apiParams, clientConfig);
     this.challenge.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge:verify', 'POST', apiParams, clientConfig);
+    this.challenge.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge', 'POST', apiParams, clientConfig);
   }
 
 /**
