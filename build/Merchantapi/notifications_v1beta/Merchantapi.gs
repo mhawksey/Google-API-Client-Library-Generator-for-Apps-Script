@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -21,11 +22,11 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.notificationsubscriptions = {};
-    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.notificationsubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+parent}/notificationsubscriptions', 'POST', apiParams, clientConfig);
-    this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
