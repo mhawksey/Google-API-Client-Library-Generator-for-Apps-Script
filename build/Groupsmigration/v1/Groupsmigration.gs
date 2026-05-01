@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Groups Migration API
  * Documentation URL: https://developers.google.com/google-apps/groups-migration/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Groupsmigration {
