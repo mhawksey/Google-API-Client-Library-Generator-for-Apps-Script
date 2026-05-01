@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Manufacturer Center API
  * Documentation URL: https://developers.google.com/manufacturers/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Manufacturers {
@@ -21,6 +22,17 @@ class Manufacturers {
     this.accounts = {};
 
     this.accounts.products = {};
+
+    /**
+     * Deletes the product from a Manufacturer Center account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.
+     * @param {string} apiParams.parent - (Required) Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists all the products in a Manufacturer Center account.
@@ -59,20 +71,19 @@ class Manufacturers {
      */
     this.accounts.products.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'PUT', apiParams, clientConfig);
 
+    this.accounts.languages = {};
+
+    this.accounts.languages.productCertifications = {};
+
     /**
-     * Deletes the product from a Manufacturer Center account.
+     * Gets a product certification by its name. This method can only be called by certification bodies.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id.
-     * @param {string} apiParams.parent - (Required) Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account.
+     * @param {string} apiParams.name - (Required) Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.languages = {};
-
-    this.accounts.languages.productCertifications = {};
+    this.accounts.languages.productCertifications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates (or creates if allow_missing = true) a product certification which links certifications with products. This method can only be called by certification bodies.
@@ -97,16 +108,6 @@ class Manufacturers {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.languages.productCertifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productCertifications', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a product certification by its name. This method can only be called by certification bodies.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.languages.productCertifications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a product certification by its name. This method can only be called by certification bodies.
