@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Serverless VPC Access API
  * Documentation URL: https://cloud.google.com/vpc/docs/configure-serverless-vpc-access
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Vpcaccess {
@@ -29,10 +30,10 @@ class Vpcaccess {
 
     this.projects.locations.connectors = {};
     this.projects.locations.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
     this.projects.locations.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
