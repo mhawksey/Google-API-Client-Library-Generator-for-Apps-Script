@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflows API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:06:28 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:11:46 GMT
+- **Last Checked:** Fri, 01 May 2026 00:38:34 GMT
+- **Last Modified:** Fri, 01 May 2026 00:38:34 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:19 GMT
 
 
@@ -20,19 +20,19 @@ Auto-generated client library for using the **Workflows API (version: v1)** in G
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service. This method can be called in two ways:
+Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
 
-* **List all public locations:** Use the path `GET /v1/locations`.
+* **Global locations**: If `name` is empty, the method lists the public locations available to all projects.
 
-* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+* **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -43,18 +43,6 @@ Gets information about a location.
 | `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -72,46 +60,19 @@ Deletes a long-running operation. This method indicates that the client is no lo
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+
 ### `projects.locations.workflows`
-
-#### `projects.locations.workflows.list()`
-
-Lists workflows in a given project and location. The default order is not specified.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service might return fewer than this value even if not at the end of the collection. If a value is not specified, a default value of 500 is used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` |
-| `params.orderBy` | `string` | No | Comma-separated list of fields that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a "desc" suffix. If not specified, the results are returned in an unspecified order. |
-
-#### `projects.locations.workflows.get()`
-
-Gets details of a single workflow.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} |
-| `params.revisionId` | `string` | No | Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. |
-
-#### `projects.locations.workflows.create()`
-
-Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location} |
-| `params.workflowId` | `string` | No | Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.workflows.delete()`
-
-Deletes a workflow with the specified name. This method also cancels and deletes all running executions of the workflow.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the workflow to be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow} |
 
 #### `projects.locations.workflows.patch()`
 
@@ -123,6 +84,25 @@ Updates an existing workflow. Running this method has no impact on already runni
 | `params.updateMask` | `string` | No | List of fields to be updated. If not present, the entire workflow will be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.workflows.create()`
+
+Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.workflowId` | `string` | No | Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location. |
+| `params.parent` | `string` | Yes | Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.workflows.get()`
+
+Gets details of a single workflow.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.revisionId` | `string` | No | Optional. The revision of the workflow to retrieve. If the revision_id is empty, the latest revision is retrieved. The format is "000001-a4d", where the first six characters define the zero-padded decimal revision number. They are followed by a hyphen and three hexadecimal characters. |
+| `params.name` | `string` | Yes | Required. Name of the workflow for which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} |
+
 #### `projects.locations.workflows.listRevisions()`
 
 Lists revisions for a given workflow.
@@ -132,3 +112,23 @@ Lists revisions for a given workflow.
 | `params.name` | `string` | Yes | Required. Workflow for which the revisions should be listed. Format: projects/{project}/locations/{location}/workflows/{workflow} |
 | `params.pageSize` | `integer` | No | The maximum number of revisions to return per page. If a value is not specified, a default value of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to 100. |
 | `params.pageToken` | `string` | No | The page token, received from a previous ListWorkflowRevisions call. Provide this to retrieve the subsequent page. |
+
+#### `projects.locations.workflows.list()`
+
+Lists workflows in a given project and location. The default order is not specified.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Comma-separated list of fields that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a "desc" suffix. If not specified, the results are returned in an unspecified order. |
+| `params.filter` | `string` | No | Filter to restrict results to specific workflows. For details, see AIP-160. For example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or `createTime>"2023-08-01" AND state="FAILED"` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service might return fewer than this value even if not at the end of the collection. If a value is not specified, a default value of 500 is used. The maximum permitted value is 1000 and values greater than 1000 are coerced down to 1000. |
+
+#### `projects.locations.workflows.delete()`
+
+Deletes a workflow with the specified name. This method also cancels and deletes all running executions of the workflow.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the workflow to be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow} |
