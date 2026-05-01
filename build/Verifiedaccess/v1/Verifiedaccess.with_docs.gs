@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Verified Access API
  * Documentation URL: https://developers.google.com/chrome/verified-access
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Verifiedaccess {
@@ -21,16 +22,6 @@ class Verifiedaccess {
     this.challenge = {};
 
     /**
-     * CreateChallenge API
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.challenge.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge', 'POST', apiParams, clientConfig);
-
-    /**
      * VerifyChallengeResponse API
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -39,6 +30,16 @@ class Verifiedaccess {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.challenge.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge:verify', 'POST', apiParams, clientConfig);
+
+    /**
+     * CreateChallenge API
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.challenge.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/challenge', 'POST', apiParams, clientConfig);
   }
 
 /**
