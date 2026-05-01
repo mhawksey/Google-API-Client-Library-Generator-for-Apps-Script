@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:55:53 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:58:51 GMT
+- **Last Checked:** Fri, 01 May 2026 00:17:05 GMT
+- **Last Modified:** Fri, 01 May 2026 00:17:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:49 GMT
 
 
@@ -29,40 +29,31 @@ Signs an SSH public key for a user to authenticate to a virtual machine on Googl
 
 ### `users`
 
-#### `users.getLoginProfile()`
-
-Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
-| `params.projectId` | `string` | No | Required. The project ID of the Google Cloud Platform project. |
-| `params.systemId` | `string` | No | Optional. A system ID for filtering the results of the request. |
-| `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
-| `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
-
 #### `users.importSshPublicKey()`
 
 Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
 | `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
+| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
 | `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
 | `params.regions` | `string` | No | Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.sshPublicKeys`
+#### `users.getLoginProfile()`
 
-#### `users.sshPublicKeys.create()`
-
-Create an SSH public key
+Retrieves the profile information used for logging in to a virtual machine on Google Compute Engine.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
+| `params.systemId` | `string` | No | Optional. A system ID for filtering the results of the request. |
+| `params.projectId` | `string` | No | Required. The project ID of the Google Cloud Platform project. |
+| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
+| `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
+
+### `users.sshPublicKeys`
 
 #### `users.sshPublicKeys.delete()`
 
@@ -90,16 +81,16 @@ Updates an SSH public key and returns the profile information. This method suppo
 | `params.updateMask` | `string` | No | Optional. Mask to control which fields get updated. Updates all if not present. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.projects`
+#### `users.sshPublicKeys.create()`
 
-#### `users.projects.delete()`
-
-Deletes a POSIX account.
+Create an SSH public key
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
-| `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
+| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.projects`
 
 #### `users.projects.provisionPosixAccount()`
 
@@ -110,9 +101,18 @@ Create a POSIX account if it doesn't exist.
 | `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}/projects/{project}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.projects.zones`
+#### `users.projects.delete()`
 
-#### `users.projects.zones.signSshPublicKey()`
+Deletes a POSIX account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
+| `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
+
+### `users.projects.locations`
+
+#### `users.projects.locations.signSshPublicKey()`
 
 Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
 
@@ -121,9 +121,9 @@ Signs an SSH public key for a user to authenticate to a virtual machine on Googl
 | `params.parent` | `string` | Yes | Required. The parent project and region for the signing request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.projects.locations`
+### `users.projects.zones`
 
-#### `users.projects.locations.signSshPublicKey()`
+#### `users.projects.zones.signSshPublicKey()`
 
 Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
 
