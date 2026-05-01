@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the My Business Q&A API
  * Documentation URL: https://developers.google.com/my-business/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Mybusinessqanda {
@@ -21,21 +22,6 @@ class Mybusinessqanda {
     this.locations = {};
 
     this.locations.questions = {};
-
-    /**
-     * Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.answersPerQuestion - Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10.
-     * @param {string} apiParams.filter - Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true"
-     * @param {string} apiParams.orderBy - Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'.
-     * @param {integer} apiParams.pageSize - Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10.
-     * @param {string} apiParams.pageToken - Optional. If specified, the next page of questions is retrieved.
-     * @param {string} apiParams.parent - (Required) Required. The name of the location to fetch questions for.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.questions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'GET', apiParams, clientConfig);
 
     /**
      * Adds a question for the specified location.
@@ -59,6 +45,21 @@ class Mybusinessqanda {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.questions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.answersPerQuestion - Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10.
+     * @param {string} apiParams.filter - Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true"
+     * @param {string} apiParams.orderBy - Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'.
+     * @param {integer} apiParams.pageSize - Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10.
+     * @param {string} apiParams.pageToken - Optional. If specified, the next page of questions is retrieved.
+     * @param {string} apiParams.parent - (Required) Required. The name of the location to fetch questions for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.questions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a specific question written by the current user.
