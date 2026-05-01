@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Security Token Service API
  * Documentation URL: http://cloud.google.com/iam/docs/workload-identity-federation
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Sts {
