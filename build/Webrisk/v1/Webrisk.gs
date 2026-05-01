@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Web Risk API
  * Documentation URL: https://cloud.google.com/web-risk/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Webrisk {
@@ -18,25 +19,25 @@ class Webrisk {
     this._servicePath = '';
 
 
+    this.uris = {};
+    this.uris.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/uris:search', 'GET', apiParams, clientConfig);
+
+    this.threatLists = {};
+    this.threatLists.computeDiff = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/threatLists:computeDiff', 'GET', apiParams, clientConfig);
+
+    this.hashes = {};
+    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/hashes:search', 'GET', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.operations = {};
-    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.submissions = {};
     this.projects.submissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/submissions', 'POST', apiParams, clientConfig);
-
-    this.threatLists = {};
-    this.threatLists.computeDiff = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/threatLists:computeDiff', 'GET', apiParams, clientConfig);
-
-    this.uris = {};
-    this.uris.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/uris:search', 'GET', apiParams, clientConfig);
-
-    this.hashes = {};
-    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/hashes:search', 'GET', apiParams, clientConfig);
   }
 
 /**
