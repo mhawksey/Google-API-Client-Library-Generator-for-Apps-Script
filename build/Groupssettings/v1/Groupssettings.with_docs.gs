@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Groups Settings API
  * Documentation URL: https://developers.google.com/google-apps/groups-settings/get_started
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Groupssettings {
@@ -21,16 +22,6 @@ class Groupssettings {
     this.groups = {};
 
     /**
-     * Gets one resource by id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.groupUniqueId - (Required) The group's email address.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Updates an existing resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.groupUniqueId - (Required) The group's email address.
@@ -40,6 +31,16 @@ class Groupssettings {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Gets one resource by id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.groupUniqueId - (Required) The group's email address.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates an existing resource. This method supports patch semantics.
