@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -19,31 +20,6 @@ class Merchantapi {
 
 
     this.accounts = {};
-
-    this.accounts.lfpInventories = {};
-
-    /**
-     * Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The LFP provider account. Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpInventories:insert', 'POST', apiParams, clientConfig);
-
-    this.accounts.lfpMerchantStates = {};
-
-    /**
-     * Gets the LFP state of a merchant
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpMerchantStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.accounts.lfpSales = {};
 
@@ -103,6 +79,31 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
+
+    this.accounts.lfpInventories = {};
+
+    /**
+     * Inserts a `LfpInventory` resource for the given target merchant account. If the resource already exists, it will be replaced. The inventory automatically expires after 30 days.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The LFP provider account. Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpInventories:insert', 'POST', apiParams, clientConfig);
+
+    this.accounts.lfpMerchantStates = {};
+
+    /**
+     * Gets the LFP state of a merchant
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the state to retrieve. Format: `accounts/{account}/lfpMerchantStates/{target_merchant}`. For example, `accounts/123456/lfpMerchantStates/567890`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpMerchantStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
