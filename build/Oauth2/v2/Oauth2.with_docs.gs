@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google OAuth2 API
  * Documentation URL: https://developers.google.com/identity/protocols/oauth2/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Oauth2 {
