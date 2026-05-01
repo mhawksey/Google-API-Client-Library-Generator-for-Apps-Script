@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Chrome Verified Access API
  * Documentation URL: https://developers.google.com/chrome/verified-access
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Verifiedaccess {
