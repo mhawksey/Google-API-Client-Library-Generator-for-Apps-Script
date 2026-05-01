@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Safe Browsing API
  * Documentation URL: https://developers.google.com/safe-browsing/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Safebrowsing {
@@ -18,18 +19,18 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.hashes = {};
-    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
-
     this.urls = {};
     this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
 
-    this.hashList = {};
-    this.hashList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashList/{name}', 'GET', apiParams, clientConfig);
+    this.hashes = {};
+    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
 
     this.hashLists = {};
     this.hashLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists', 'GET', apiParams, clientConfig);
     this.hashLists.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists:batchGet', 'GET', apiParams, clientConfig);
+
+    this.hashList = {};
+    this.hashList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashList/{name}', 'GET', apiParams, clientConfig);
   }
 
 /**
