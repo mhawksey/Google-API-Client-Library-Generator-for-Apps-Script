@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Translation API (vers
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:05:28 GMT
-- **Last Modified:** Wed, 01 Apr 2026 00:05:28 GMT
+- **Last Checked:** Fri, 01 May 2026 00:36:31 GMT
+- **Last Modified:** Fri, 01 May 2026 00:36:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:18 GMT
 
 
@@ -14,17 +14,24 @@ Auto-generated client library for using the **Google Cloud Translation API (vers
 
 ## API Reference
 
-### `languages`
+### `detections`
 
-#### `languages.list()`
+#### `detections.detect()`
 
-Returns a list of supported languages for translation.
+Detects the language of text within a request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.target` | `string` | No | The language to use to return localized, human readable names of supported
-languages. |
-| `params.model` | `string` | No | The model type for which supported languages should be returned. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `detections.list()`
+
+Detects the language of text within a request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.q` | `string` | Yes | The input text upon which to perform language detection. Repeat this
+parameter to perform language detection on multiple text inputs. |
 
 ### `translations`
 
@@ -40,13 +47,13 @@ attempt to identify the source language automatically and return it within
 the response. |
 | `params.target` | `string` | Yes | The language to use for translation of the input text, set to one of the
 language codes listed in Language Support. |
-| `params.model` | `string` | No | The `model` type requested for this translation. Valid values are
-listed in public documentation. |
 | `params.cid` | `string` | No | The customization id for translate |
-| `params.format` | `string` | No | The format of the source text, in either HTML (default) or plain-text. A
-value of "html" indicates HTML and a value of "text" indicates plain-text. |
 | `params.q` | `string` | Yes | The input text to translate. Repeat this parameter to perform translation
 operations on multiple text inputs. |
+| `params.model` | `string` | No | The `model` type requested for this translation. Valid values are
+listed in public documentation. |
+| `params.format` | `string` | No | The format of the source text, in either HTML (default) or plain-text. A
+value of "html" indicates HTML and a value of "text" indicates plain-text. |
 
 #### `translations.translate()`
 
@@ -56,21 +63,14 @@ Translates input text, returning translated text.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `detections`
+### `languages`
 
-#### `detections.list()`
+#### `languages.list()`
 
-Detects the language of text within a request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.q` | `string` | Yes | The input text upon which to perform language detection. Repeat this
-parameter to perform language detection on multiple text inputs. |
-
-#### `detections.detect()`
-
-Detects the language of text within a request.
+Returns a list of supported languages for translation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.target` | `string` | No | The language to use to return localized, human readable names of supported
+languages. |
+| `params.model` | `string` | No | The model type for which supported languages should be returned. |
