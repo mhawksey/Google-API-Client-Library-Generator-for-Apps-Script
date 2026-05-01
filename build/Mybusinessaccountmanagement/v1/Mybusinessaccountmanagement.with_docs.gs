@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the My Business Account Management API
  * Documentation URL: https://developers.google.com/my-business/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Mybusinessaccountmanagement {
@@ -34,16 +35,6 @@ class Mybusinessaccountmanagement {
     this.locations.admins = {};
 
     /**
-     * Lists all of the admins for the specified location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the location to list admins of. `locations/{location_id}/admins`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
-
-    /**
      * Invites the specified user to become an administrator for the specified location. The invitee must accept the invitation in order to be granted access to the location. See AcceptInvitation to programmatically accept an invitation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`.
@@ -65,6 +56,16 @@ class Mybusinessaccountmanagement {
     this.locations.admins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Lists all of the admins for the specified location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The name of the location to list admins of. `locations/{location_id}/admins`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates the Admin for the specified location. Only the AdminRole of the Admin can be updated.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation.
@@ -77,6 +78,19 @@ class Mybusinessaccountmanagement {
     this.locations.admins.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts = {};
+
+    /**
+     * Updates the specified business account. Personal accounts cannot be updated using this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Immutable. The resource name, in the format `accounts/{account_id}`.
+     * @param {string} apiParams.updateMask - Required. The specific fields that should be updated. The only editable field is `accountName`.
+     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually updating the account.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists all of the accounts for the authenticated user. This includes all accounts that the user owns, as well as any accounts for which the user has management rights.
@@ -111,31 +125,7 @@ class Mybusinessaccountmanagement {
      */
     this.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts', 'POST', apiParams, clientConfig);
 
-    /**
-     * Updates the specified business account. Personal accounts cannot be updated using this method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Immutable. The resource name, in the format `accounts/{account_id}`.
-     * @param {string} apiParams.updateMask - Required. The specific fields that should be updated. The only editable field is `accountName`.
-     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually updating the account.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.accounts.invitations = {};
-
-    /**
-     * Accepts the specified invitation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
 
     /**
      * Declines the specified invitation.
@@ -149,6 +139,17 @@ class Mybusinessaccountmanagement {
     this.accounts.invitations.decline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decline', 'POST', apiParams, clientConfig);
 
     /**
+     * Accepts the specified invitation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists pending invitations for the specified account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. Filtering the response is supported via the Invitation.target_type field.
@@ -160,16 +161,6 @@ class Mybusinessaccountmanagement {
     this.accounts.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/invitations', 'GET', apiParams, clientConfig);
 
     this.accounts.admins = {};
-
-    /**
-     * Lists the admins for the specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
 
     /**
      * Invites the specified user to become an administrator for the specified account. The invitee must accept the invitation in order to be granted access to the account. See AcceptInvitation to programmatically accept an invitation.
@@ -191,6 +182,16 @@ class Mybusinessaccountmanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.admins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists the admins for the specified account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The name of the account from which to retrieve a list of admins. `accounts/{account_id}/admins`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.admins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/admins', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the Admin for the specified Account Admin.
