@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -21,6 +22,28 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.notificationsubscriptions = {};
+
+    /**
+     * Deletes a notification subscription for a merchant.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the notification subscription to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets all the notification subscriptions for a merchant.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
+     * @param {string} apiParams.pageToken - Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
 
     /**
      * Gets notification subscriptions for an account.
@@ -54,28 +77,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a notification subscription for a merchant.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the notification subscription to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets all the notification subscriptions for a merchant.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
-     * @param {string} apiParams.pageToken - Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
   }
 
 /**
