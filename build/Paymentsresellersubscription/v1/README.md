@@ -4,8 +4,8 @@ Auto-generated client library for using the **Payments Reseller Subscription API
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:56:11 GMT
-- **Last Modified:** Wed, 18 Mar 2026 21:59:14 GMT
+- **Last Checked:** Fri, 01 May 2026 00:17:40 GMT
+- **Last Modified:** Fri, 01 May 2026 00:17:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:08 GMT
 
 
@@ -16,7 +16,47 @@ Auto-generated client library for using the **Payments Reseller Subscription API
 
 ### `partners`
 
+### `partners.promotions`
+
+#### `partners.promotions.findEligible()`
+
+Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `partners.promotions.list()`
+
+Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id` |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
 ### `partners.subscriptions`
+
+#### `partners.subscriptions.resume()`
+
+Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should be called directly by the partner using service accounts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the subscription resource to be resumed. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `partners.subscriptions.suspend()`
+
+Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.create()`
 
@@ -28,16 +68,25 @@ Used by partners to create a subscription for their customers. The created subsc
 | `params.subscriptionId` | `string` | No | Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `partners.subscriptions.cancel()`
+
+Cancels a subscription service either immediately or by the end of the current billing cycle for their customers. It should be called directly by the partner using service accounts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the subscription resource to be cancelled. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `partners.subscriptions.provision()`
 
 Used by partners to provision a subscription for their customers. This creates a subscription without associating it with the end user account. EntitleSubscription must be called separately using OAuth in order for the end user account to be associated with the subscription. It should be called directly by the partner using service accounts.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}". |
 | `params.subscriptionId` | `string` | No | Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription with the same ID already exists, the creation fails with an `ALREADY_EXISTS` error. |
 | `params.cycleOptions.initialCycleDuration.unit` | `string` | No | The unit used for the duration |
 | `params.cycleOptions.initialCycleDuration.count` | `integer` | No | number of duration units to be included. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.get()`
@@ -66,15 +115,6 @@ Entitles a previously provisioned subscription to the current end user. The end 
 | `params.name` | `string` | Yes | Required. The name of the subscription resource to be extended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}". |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `partners.subscriptions.cancel()`
-
-Cancels a subscription service either immediately or by the end of the current billing cycle for their customers. It should be called directly by the partner using service accounts.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the subscription resource to be cancelled. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `partners.subscriptions.undoCancel()`
 
 Currently, it is used by **Google One, Play Pass** partners. Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled, the request will fail. It should be called directly by the partner using service accounts.
@@ -82,24 +122,6 @@ Currently, it is used by **Google One, Play Pass** partners. Revokes the pending
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource whose pending cancellation needs to be undone. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `partners.subscriptions.suspend()`
-
-Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `partners.subscriptions.resume()`
-
-Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should be called directly by the partner using service accounts.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the subscription resource to be resumed. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `partners.subscriptions.lineItems`
@@ -122,32 +144,10 @@ Currently, it doesn't support **YouTube** products. Retrieves the products that 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
 | `params.filter` | `string` | No | Optional. Specifies the filters for the product results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of products to return. The service may return fewer than this value. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token. |
-
-### `partners.promotions`
-
-#### `partners.promotions.findEligible()`
-
-Currently, it is only enabled for **YouTube**. Finds eligible promotions for the current user. The API requires user authorization via OAuth. The bare minimum oauth scope `openid` is sufficient, which will skip the consent screen.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `partners.promotions.list()`
-
-Currently, it doesn't support **YouTube** promotions. Retrieves the promotions, such as free trial, that can be used by the partner. It should be authenticated with a service account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
-| `params.filter` | `string` | No | Optional. Specifies the filters for the promotion results. The syntax is defined in https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above, other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 promotions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of products to return. The service may return fewer than this value. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 
 ### `partners.userSessions`
 
