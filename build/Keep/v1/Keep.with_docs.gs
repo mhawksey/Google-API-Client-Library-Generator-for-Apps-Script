@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Keep API
  * Documentation URL: https://developers.google.com/workspace/keep/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Keep {
@@ -19,16 +20,6 @@ class Keep {
 
 
     this.notes = {};
-
-    /**
-     * Creates a new note.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a note.
@@ -62,18 +53,17 @@ class Keep {
      */
     this.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.notes.permissions = {};
-
     /**
-     * Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If adding any permission fails, then the entire request fails and no changes are made.
+     * Creates a new note.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.notes.permissions.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchCreate', 'POST', apiParams, clientConfig);
+    this.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'POST', apiParams, clientConfig);
+
+    this.notes.permissions = {};
 
     /**
      * Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note.
@@ -85,6 +75,17 @@ class Keep {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.notes.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates one or more permissions on the note. Only permissions with the `WRITER` role may be created. If adding any permission fails, then the entire request fails and no changes are made.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.notes.permissions.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchCreate', 'POST', apiParams, clientConfig);
 
     this.media = {};
 
