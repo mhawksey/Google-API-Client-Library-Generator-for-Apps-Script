@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Vision API (version: v1p2bet
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:05:52 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:11:01 GMT
+- **Last Checked:** Fri, 01 May 2026 00:37:24 GMT
+- **Last Modified:** Fri, 01 May 2026 00:37:24 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:36 GMT
 
 
