@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Traffic Director API
  * Documentation URL: https://cloud.google.com/traffic-director
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Trafficdirector {
