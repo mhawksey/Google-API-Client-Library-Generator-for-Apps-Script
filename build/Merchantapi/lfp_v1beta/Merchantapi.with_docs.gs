@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Merchant API
  * Documentation URL: https://developers.google.com/merchant/api
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Merchantapi {
@@ -19,6 +20,52 @@ class Merchantapi {
 
 
     this.accounts = {};
+
+    this.accounts.lfpStores = {};
+
+    /**
+     * Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The LFP provider account Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a store for a target merchant.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieves information about a store.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request.
+     * @param {string} apiParams.parent - (Required) Required. The LFP partner. Format: `accounts/{account}`
+     * @param {string} apiParams.targetAccount - Required. The Merchant Center id of the merchant to list stores for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
 
     this.accounts.lfpInventories = {};
 
@@ -57,52 +104,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.lfpSales.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpSales:insert', 'POST', apiParams, clientConfig);
-
-    this.accounts.lfpStores = {};
-
-    /**
-     * Retrieves information about a store.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The LFP provider account Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a store for a target merchant.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the store to delete for the target merchant account. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of `LfpStore` resources for the given account to return. The service returns fewer than this value if the number of stores for the given account is less than the `pageSize`. The default value is 250. The maximum value is 1000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLfpStoresRequest` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLfpStoresRequest` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request.
-     * @param {string} apiParams.parent - (Required) Required. The LFP partner. Format: `accounts/{account}`
-     * @param {string} apiParams.targetAccount - Required. The Merchant Center id of the merchant to list stores for.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
   }
 
 /**
