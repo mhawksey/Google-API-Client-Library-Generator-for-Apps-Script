@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Groups Settings API
  * Documentation URL: https://developers.google.com/google-apps/groups-settings/get_started
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Groupssettings {
@@ -19,8 +20,8 @@ class Groupssettings {
 
 
     this.groups = {};
-    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
     this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PUT', apiParams, clientConfig);
+    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
     this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PATCH', apiParams, clientConfig);
   }
 
