@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Secret Manager API
  * Documentation URL: https://cloud.google.com/secret-manager/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Secretmanager {
@@ -23,9 +24,9 @@ class Secretmanager {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -49,15 +50,16 @@ class Secretmanager {
     this.projects.locations.secrets = {};
 
     /**
-     * Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+     * Updates metadata of an existing Secret.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
+     * @param {string} apiParams.name - (Required) Output only. The resource name of the Secret in the format `projects/*\/secrets/*`.
+     * @param {string} apiParams.updateMask - Required. Specifies the fields to be updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}:addVersion', 'POST', apiParams, clientConfig);
+    this.projects.locations.secrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -69,6 +71,28 @@ class Secretmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.secrets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}:addVersion', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a new Secret containing no SecretVersions.
@@ -83,16 +107,6 @@ class Secretmanager {
     this.projects.locations.secrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/secrets', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets metadata for a given Secret.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.secrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Deletes a Secret.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.etag - Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored secret object. If the etag is omitted, the request succeeds.
@@ -104,38 +118,14 @@ class Secretmanager {
     this.projects.locations.secrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+     * Gets metadata for a given Secret.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates metadata of an existing Secret.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Output only. The resource name of the Secret in the format `projects/*\/secrets/*`.
-     * @param {string} apiParams.updateMask - Required. Specifies the fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.secrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.secrets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.secrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists Secrets.
@@ -150,28 +140,18 @@ class Secretmanager {
      */
     this.projects.locations.secrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/secrets', 'GET', apiParams, clientConfig);
 
+    /**
+     * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.secrets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
     this.projects.locations.secrets.versions = {};
-
-    /**
-     * Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:access', 'GET', apiParams, clientConfig);
-
-    /**
-     * Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to destroy in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.secrets.versions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:destroy', 'POST', apiParams, clientConfig);
 
     /**
      * Lists SecretVersions. This call does not return secret data.
@@ -187,15 +167,14 @@ class Secretmanager {
     this.projects.locations.secrets.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/versions', 'GET', apiParams, clientConfig);
 
     /**
-     * Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
+     * Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.locations.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:access', 'GET', apiParams, clientConfig);
 
     /**
      * Gets metadata for a SecretVersion. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
@@ -218,6 +197,28 @@ class Secretmanager {
      */
     this.projects.locations.secrets.versions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:disable', 'POST', apiParams, clientConfig);
 
+    /**
+     * Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:enable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to destroy in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.secrets.versions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:destroy', 'POST', apiParams, clientConfig);
+
     this.projects.secrets = {};
 
     /**
@@ -233,15 +234,70 @@ class Secretmanager {
     this.projects.secrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
+     * Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.secrets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.secrets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}:addVersion', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new Secret containing no SecretVersions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to associate with the Secret, in the format `projects/*` or `projects/*\/locations/*`.
+     * @param {string} apiParams.secretId - Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/secrets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored secret object. If the etag is omitted, the request succeeds.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets metadata for a given Secret.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists Secrets.
@@ -257,72 +313,28 @@ class Secretmanager {
     this.projects.secrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/secrets', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+     * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}:addVersion', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a Secret.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored secret object. If the etag is omitted, the request succeeds.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret to delete in the format `projects/*\/secrets/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates a new Secret containing no SecretVersions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to associate with the Secret, in the format `projects/*` or `projects/*\/locations/*`.
-     * @param {string} apiParams.secretId - Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/secrets', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets metadata for a given Secret.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Secret, in the format `projects/*\/secrets/*` or `projects/*\/locations/*\/secrets/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.secrets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     this.projects.secrets.versions = {};
+
+    /**
+     * Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:enable', 'POST', apiParams, clientConfig);
 
     /**
      * Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
@@ -336,14 +348,15 @@ class Secretmanager {
     this.projects.secrets.versions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:destroy', 'POST', apiParams, clientConfig);
 
     /**
-     * Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
+     * Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to disable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:access', 'GET', apiParams, clientConfig);
+    this.projects.secrets.versions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:disable', 'POST', apiParams, clientConfig);
 
     /**
      * Gets metadata for a SecretVersion. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
@@ -354,17 +367,6 @@ class Secretmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.secrets.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to disable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.secrets.versions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:disable', 'POST', apiParams, clientConfig);
 
     /**
      * Lists SecretVersions. This call does not return secret data.
@@ -380,15 +382,14 @@ class Secretmanager {
     this.projects.secrets.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/versions', 'GET', apiParams, clientConfig);
 
     /**
-     * Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
+     * Accesses a SecretVersion. This call returns the secret data. `projects/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion to enable in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the SecretVersion in the format `projects/*\/secrets/*\/versions/*` or `projects/*\/locations/*\/secrets/*\/versions/*`. `projects/*\/secrets/*\/versions/latest` or `projects/*\/locations/*\/secrets/*\/versions/latest` is an alias to the most recently created SecretVersion.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:access', 'GET', apiParams, clientConfig);
   }
 
 /**
