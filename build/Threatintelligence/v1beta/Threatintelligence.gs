@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Threat Intelligence API
  * Documentation URL: https://docs.cloud.google.com/threatintelligence/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Threatintelligence {
@@ -21,35 +22,35 @@ class Threatintelligence {
     this.projects = {};
     this.projects.generateOrgProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateOrgProfile', 'POST', apiParams, clientConfig);
 
+    this.projects.alerts = {};
+    this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.alerts.trackExternally = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:trackExternally', 'POST', apiParams, clientConfig);
+    this.projects.alerts.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.projects.alerts.duplicate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:duplicate', 'POST', apiParams, clientConfig);
+    this.projects.alerts.triage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:triage', 'POST', apiParams, clientConfig);
+    this.projects.alerts.benign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:benign', 'POST', apiParams, clientConfig);
+    this.projects.alerts.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resolve', 'POST', apiParams, clientConfig);
+    this.projects.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/alerts', 'GET', apiParams, clientConfig);
+    this.projects.alerts.enumerateFacets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/alerts:enumerateFacets', 'GET', apiParams, clientConfig);
+    this.projects.alerts.falsePositive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:falsePositive', 'POST', apiParams, clientConfig);
+    this.projects.alerts.notActionable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:notActionable', 'POST', apiParams, clientConfig);
+    this.projects.alerts.read = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:read', 'POST', apiParams, clientConfig);
+
+    this.projects.alerts.documents = {};
+    this.projects.alerts.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.configurations = {};
+    this.projects.configurations.upsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations:upsert', 'POST', apiParams, clientConfig);
     this.projects.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations', 'GET', apiParams, clientConfig);
-    this.projects.configurations.upsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations:upsert', 'POST', apiParams, clientConfig);
 
     this.projects.configurations.revisions = {};
     this.projects.configurations.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/revisions', 'GET', apiParams, clientConfig);
 
     this.projects.findings = {};
-    this.projects.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings', 'GET', apiParams, clientConfig);
+    this.projects.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.findings.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings:search', 'GET', apiParams, clientConfig);
-
-    this.projects.alerts = {};
-    this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/alerts', 'GET', apiParams, clientConfig);
-    this.projects.alerts.enumerateFacets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/alerts:enumerateFacets', 'GET', apiParams, clientConfig);
-    this.projects.alerts.read = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:read', 'POST', apiParams, clientConfig);
-    this.projects.alerts.triage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:triage', 'POST', apiParams, clientConfig);
-    this.projects.alerts.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:escalate', 'POST', apiParams, clientConfig);
-    this.projects.alerts.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resolve', 'POST', apiParams, clientConfig);
-    this.projects.alerts.falsePositive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:falsePositive', 'POST', apiParams, clientConfig);
-    this.projects.alerts.notActionable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:notActionable', 'POST', apiParams, clientConfig);
-    this.projects.alerts.benign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:benign', 'POST', apiParams, clientConfig);
-    this.projects.alerts.trackExternally = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:trackExternally', 'POST', apiParams, clientConfig);
-    this.projects.alerts.duplicate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:duplicate', 'POST', apiParams, clientConfig);
-
-    this.projects.alerts.documents = {};
-    this.projects.alerts.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
