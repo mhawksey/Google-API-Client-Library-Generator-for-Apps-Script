@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Networking API (version: v
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:04:11 GMT
-- **Last Modified:** Tue, 31 Mar 2026 07:27:11 GMT
+- **Last Checked:** Fri, 01 May 2026 00:28:42 GMT
+- **Last Modified:** Fri, 01 May 2026 00:28:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:23 GMT
 
 
@@ -32,9 +32,9 @@ Updates the allocated ranges that are assigned to a connection. The response fro
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`. |
 | `params.updateMask` | `string` | No | The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. |
 | `params.force` | `boolean` | No | If a previously defined allocated range is removed, force flag must be set to true. |
+| `params.name` | `string` | Yes | The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.addSubnetwork()`
@@ -57,15 +57,6 @@ Service producers can use this method to find a currently unused range within co
 
 ### `services.connections`
 
-#### `services.connections.list()`
-
-List the private connections that are configured in a service consumer's VPC network.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. If you specify `-` as the parameter value, all configured public peering services are listed. |
-| `params.network` | `string` | No | The name of service consumer's VPC network that's connected with service producer network through a private connection. The network name must be in the following format: `projects/{project}/global/networks/{network}`. {project} is a project number, such as in `12345` that includes the VPC service consumer's VPC network. {network} is the name of the service consumer's VPC network. |
-
 #### `services.connections.create()`
 
 Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
@@ -74,3 +65,12 @@ Creates a private connection that establishes a VPC Network Peering connection t
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `services.connections.list()`
+
+List the private connections that are configured in a service consumer's VPC network.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. If you specify `-` as the parameter value, all configured public peering services are listed. |
+| `params.network` | `string` | No | The name of service consumer's VPC network that's connected with service producer network through a private connection. The network name must be in the following format: `projects/{project}/global/networks/{network}`. {project} is a project number, such as in `12345` that includes the VPC service consumer's VPC network. {network} is the name of the service consumer's VPC network. |
