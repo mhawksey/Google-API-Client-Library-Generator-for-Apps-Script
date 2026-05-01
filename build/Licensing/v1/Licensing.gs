@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Enterprise License Manager API
  * Documentation URL: https://developers.google.com/workspace/admin/licensing/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Licensing {
@@ -20,12 +21,12 @@ class Licensing {
 
     this.licenseAssignments = {};
     this.licenseAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'DELETE', apiParams, clientConfig);
-    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
+    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
     this.licenseAssignments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user', 'POST', apiParams, clientConfig);
     this.licenseAssignments.listForProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/users', 'GET', apiParams, clientConfig);
-    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
-    this.licenseAssignments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PUT', apiParams, clientConfig);
     this.licenseAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PATCH', apiParams, clientConfig);
+    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
+    this.licenseAssignments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PUT', apiParams, clientConfig);
   }
 
 /**
