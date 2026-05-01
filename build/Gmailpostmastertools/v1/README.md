@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gmail Postmaster Tools API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 31 Mar 2026 23:45:20 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:45:54 GMT
+- **Last Checked:** Fri, 01 May 2026 00:03:44 GMT
+- **Last Modified:** Fri, 01 May 2026 00:03:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:45 GMT
 
 
@@ -49,12 +49,12 @@ List traffic statistics for all available days. Returns PERMISSION_DENIED if use
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | The resource name of the domain whose traffic statistics we'd like to list. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name. |
 | `params.startDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
-| `params.startDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
+| `params.endDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
 | `params.startDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
 | `params.endDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
-| `params.endDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
-| `params.endDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer TrafficStats than requested. If unspecified, server will pick an appropriate default. |
+| `params.startDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
+| `params.parent` | `string` | Yes | The resource name of the domain whose traffic statistics we'd like to list. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name. |
 | `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. This is the value of ListTrafficStatsResponse.next_page_token returned from the previous call to `ListTrafficStats` method. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer TrafficStats than requested. If unspecified, server will pick an appropriate default. |
+| `params.endDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
