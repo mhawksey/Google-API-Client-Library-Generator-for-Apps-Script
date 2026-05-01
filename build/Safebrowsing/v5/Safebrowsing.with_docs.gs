@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Safe Browsing API
  * Documentation URL: https://developers.google.com/safe-browsing/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Safebrowsing {
@@ -18,18 +19,6 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.hashes = {};
-
-    /**
-     * Searches for full hashes matching the specified prefixes. This is a custom method as defined by https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's general API development nomenclature; it does not refer to using a custom HTTP method).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.hashPrefixes - Required. The hash prefixes to be looked up. Clients MUST NOT send more than 1000 hash prefixes. However, following the URL processing procedure, clients SHOULD NOT need to send more than 30 hash prefixes. Currently each hash prefix is required to be exactly 4 bytes long. This MAY be relaxed in the future.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
-
     this.urls = {};
 
     /**
@@ -42,20 +31,17 @@ class Safebrowsing {
      */
     this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
 
-    this.hashList = {};
+    this.hashes = {};
 
     /**
-     * Gets the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such as the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP method is also GET.
+     * Searches for full hashes matching the specified prefixes. This is a custom method as defined by https://google.aip.dev/136 (the custom method refers to this method having a custom name within Google's general API development nomenclature; it does not refer to using a custom HTTP method).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of this particular hash list. It may be a threat list, or it may be the Global Cache.
-     * @param {integer} apiParams.sizeConstraints.maxDatabaseEntries - Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set.
-     * @param {integer} apiParams.sizeConstraints.maxUpdateEntries - The maximum size in number of entries. The update will not contain more entries than this value, but it is possible that the update will contain fewer entries than this value. This MUST be at least 1024. If omitted or zero, no update size limit is set.
-     * @param {string} apiParams.version - The version of the hash list that the client already has. If this is the first time the client is fetching the hash list, this field MUST be left empty. Otherwise, the client SHOULD supply the version previously received from the server. The client MUST NOT manipulate those bytes. **What's new in V5**: in V4 of the API, this was called `states`; it is now renamed to `version` for clarity.
+     * @param {string} apiParams.hashPrefixes - Required. The hash prefixes to be looked up. Clients MUST NOT send more than 1000 hash prefixes. However, following the URL processing procedure, clients SHOULD NOT need to send more than 30 hash prefixes. Currently each hash prefix is required to be exactly 4 bytes long. This MAY be relaxed in the future.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.hashList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashList/{name}', 'GET', apiParams, clientConfig);
+    this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
 
     this.hashLists = {};
 
@@ -82,6 +68,21 @@ class Safebrowsing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.hashLists.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists:batchGet', 'GET', apiParams, clientConfig);
+
+    this.hashList = {};
+
+    /**
+     * Gets the latest contents of a hash list. A hash list may either by a threat list or a non-threat list such as the Global Cache. This is a standard Get method as defined by https://google.aip.dev/131 and the HTTP method is also GET.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of this particular hash list. It may be a threat list, or it may be the Global Cache.
+     * @param {integer} apiParams.sizeConstraints.maxDatabaseEntries - Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set.
+     * @param {integer} apiParams.sizeConstraints.maxUpdateEntries - The maximum size in number of entries. The update will not contain more entries than this value, but it is possible that the update will contain fewer entries than this value. This MUST be at least 1024. If omitted or zero, no update size limit is set.
+     * @param {string} apiParams.version - The version of the hash list that the client already has. If this is the first time the client is fetching the hash list, this field MUST be left empty. Otherwise, the client SHOULD supply the version previously received from the server. The client MUST NOT manipulate those bytes. **What's new in V5**: in V4 of the API, this was called `states`; it is now renamed to `version` for clarity.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.hashList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashList/{name}', 'GET', apiParams, clientConfig);
   }
 
 /**
