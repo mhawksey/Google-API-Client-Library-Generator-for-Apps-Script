@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Apr 2026 00:04:43 GMT
-- **Last Modified:** Wed, 18 Mar 2026 22:09:30 GMT
+- **Last Checked:** Fri, 01 May 2026 00:34:56 GMT
+- **Last Modified:** Fri, 01 May 2026 00:34:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -27,7 +27,7 @@ Creates an Anywhere Cache instance.
 
 #### `anywhereCaches.update()`
 
-Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
+Updates the config of an Anywhere Cache instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
