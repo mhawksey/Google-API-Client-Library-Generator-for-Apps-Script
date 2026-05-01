@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Street View Publish API
  * Documentation URL: https://developers.google.com/streetview/publish/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Streetviewpublish {
@@ -19,11 +20,14 @@ class Streetviewpublish {
 
 
     this.photo = {};
-    this.photo.startUpload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo:startUpload', 'POST', apiParams, clientConfig);
-    this.photo.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo', 'POST', apiParams, clientConfig);
     this.photo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo/{photoId}', 'GET', apiParams, clientConfig);
+    this.photo.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo', 'POST', apiParams, clientConfig);
     this.photo.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo/{id}', 'PUT', apiParams, clientConfig);
     this.photo.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo/{photoId}', 'DELETE', apiParams, clientConfig);
+    this.photo.startUpload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photo:startUpload', 'POST', apiParams, clientConfig);
+
+    this.photoSequences = {};
+    this.photoSequences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequences', 'GET', apiParams, clientConfig);
 
     this.photos = {};
     this.photos.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photos:batchGet', 'GET', apiParams, clientConfig);
@@ -32,13 +36,10 @@ class Streetviewpublish {
     this.photos.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photos:batchDelete', 'POST', apiParams, clientConfig);
 
     this.photoSequence = {};
-    this.photoSequence.startUpload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence:startUpload', 'POST', apiParams, clientConfig);
     this.photoSequence.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence', 'POST', apiParams, clientConfig);
-    this.photoSequence.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence/{sequenceId}', 'GET', apiParams, clientConfig);
     this.photoSequence.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence/{sequenceId}', 'DELETE', apiParams, clientConfig);
-
-    this.photoSequences = {};
-    this.photoSequences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequences', 'GET', apiParams, clientConfig);
+    this.photoSequence.startUpload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence:startUpload', 'POST', apiParams, clientConfig);
+    this.photoSequence.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/photoSequence/{sequenceId}', 'GET', apiParams, clientConfig);
   }
 
 /**
