@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the KMS Inventory API
  * Documentation URL: https://cloud.google.com/kms/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Kmsinventory {
