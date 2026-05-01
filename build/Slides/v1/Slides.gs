@@ -2,6 +2,7 @@
 /**
  * Google Apps Script client library for the Google Slides API
  * Documentation URL: https://developers.google.com/workspace/slides/
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
 class Slides {
@@ -19,13 +20,13 @@ class Slides {
 
 
     this.presentations = {};
-    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
     this.presentations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations', 'POST', apiParams, clientConfig);
+    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
     this.presentations.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}:batchUpdate', 'POST', apiParams, clientConfig);
 
     this.presentations.pages = {};
-    this.presentations.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}', 'GET', apiParams, clientConfig);
     this.presentations.pages.getThumbnail = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', 'GET', apiParams, clientConfig);
+    this.presentations.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}', 'GET', apiParams, clientConfig);
   }
 
 /**
