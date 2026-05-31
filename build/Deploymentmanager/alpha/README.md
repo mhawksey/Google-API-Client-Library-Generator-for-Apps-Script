@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Deployment Manager V2 API (v
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:45:15 GMT
+- **Last Checked:** Sun, 31 May 2026 23:43:33 GMT
 - **Last Modified:** Thu, 30 Apr 2026 23:45:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:06 GMT
 
