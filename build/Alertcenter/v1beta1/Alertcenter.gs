@@ -20,13 +20,13 @@ class Alertcenter {
 
 
     this.alerts = {};
-    this.alerts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts:batchDelete', 'POST', apiParams, clientConfig);
-    this.alerts.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/metadata', 'GET', apiParams, clientConfig);
-    this.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'GET', apiParams, clientConfig);
-    this.alerts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}:undelete', 'POST', apiParams, clientConfig);
-    this.alerts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'DELETE', apiParams, clientConfig);
-    this.alerts.batchUndelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts:batchUndelete', 'POST', apiParams, clientConfig);
     this.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts', 'GET', apiParams, clientConfig);
+    this.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'GET', apiParams, clientConfig);
+    this.alerts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'DELETE', apiParams, clientConfig);
+    this.alerts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}:undelete', 'POST', apiParams, clientConfig);
+    this.alerts.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/metadata', 'GET', apiParams, clientConfig);
+    this.alerts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts:batchDelete', 'POST', apiParams, clientConfig);
+    this.alerts.batchUndelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts:batchUndelete', 'POST', apiParams, clientConfig);
 
     this.alerts.feedback = {};
     this.alerts.feedback.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/feedback', 'POST', apiParams, clientConfig);
