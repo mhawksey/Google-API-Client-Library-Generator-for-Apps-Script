@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services Publish
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:57:06 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:57:06 GMT
+- **Last Checked:** Sun, 31 May 2026 23:54:30 GMT
+- **Last Modified:** Sun, 31 May 2026 23:54:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:09 GMT
 
 
@@ -41,6 +41,16 @@ Insert a new achievement configuration in this application.
 | `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `achievementConfigurations.list()`
+
+Returns a list of the achievement configurations in this application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.maxResults` | `integer` | No | The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. |
+| `params.pageToken` | `string` | No | The token returned by the previous request. |
+
 #### `achievementConfigurations.update()`
 
 Update the metadata of the achievement configuration with the given ID.
@@ -50,45 +60,7 @@ Update the metadata of the achievement configuration with the given ID.
 | `params.achievementId` | `string` | Yes | The ID of the achievement used by this method. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `achievementConfigurations.list()`
-
-Returns a list of the achievement configurations in this application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. |
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.pageToken` | `string` | No | The token returned by the previous request. |
-
 ### `leaderboardConfigurations`
-
-#### `leaderboardConfigurations.list()`
-
-Returns a list of the leaderboard configurations in this application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. |
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.pageToken` | `string` | No | The token returned by the previous request. |
-
-#### `leaderboardConfigurations.insert()`
-
-Insert a new leaderboard configuration in this application.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `leaderboardConfigurations.update()`
-
-Update the metadata of the leaderboard configuration with the given ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `leaderboardConfigurations.delete()`
 
@@ -105,3 +77,31 @@ Retrieves the metadata of the leaderboard configuration with the given ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
+
+#### `leaderboardConfigurations.insert()`
+
+Insert a new leaderboard configuration in this application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `leaderboardConfigurations.list()`
+
+Returns a list of the leaderboard configurations in this application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.applicationId` | `string` | Yes | The application ID from the Google Play developer console. |
+| `params.maxResults` | `integer` | No | The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified `maxResults`. |
+| `params.pageToken` | `string` | No | The token returned by the previous request. |
+
+#### `leaderboardConfigurations.update()`
+
+Update the metadata of the leaderboard configuration with the given ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.leaderboardId` | `string` | Yes | The ID of the leaderboard. |
+| `params.requestBody` | `object` | Yes | The request body. |
