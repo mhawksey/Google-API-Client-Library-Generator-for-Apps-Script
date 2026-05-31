@@ -28,20 +28,22 @@ class Cloudsupport {
     this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:download', 'GET', apiParams, clientConfig);
 
     this.cases = {};
-    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'GET', apiParams, clientConfig);
     this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:escalate', 'POST', apiParams, clientConfig);
-    this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:close', 'POST', apiParams, clientConfig);
+    this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'GET', apiParams, clientConfig);
     this.cases.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases:search', 'GET', apiParams, clientConfig);
     this.cases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'POST', apiParams, clientConfig);
+    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:close', 'POST', apiParams, clientConfig);
 
     this.cases.attachments = {};
     this.cases.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/attachments', 'GET', apiParams, clientConfig);
+    this.cases.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.cases.comments = {};
     this.cases.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/comments', 'GET', apiParams, clientConfig);
     this.cases.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/comments', 'POST', apiParams, clientConfig);
+    this.cases.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.caseClassifications = {};
     this.caseClassifications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/caseClassifications:search', 'GET', apiParams, clientConfig);
