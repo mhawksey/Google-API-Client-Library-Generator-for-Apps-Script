@@ -19,11 +19,11 @@ class Appsmarket {
     this._servicePath = '';
 
 
-    this.userLicense = {};
-    this.userLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/userLicense/{applicationId}/{userId}', 'GET', apiParams, clientConfig);
-
     this.customerLicense = {};
     this.customerLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/customerLicense/{applicationId}/{customerId}', 'GET', apiParams, clientConfig);
+
+    this.userLicense = {};
+    this.userLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/userLicense/{applicationId}/{userId}', 'GET', apiParams, clientConfig);
   }
 
 /**
