@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Policy API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:32:59 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:32:59 GMT
+- **Last Checked:** Sun, 31 May 2026 23:32:12 GMT
+- **Last Modified:** Sun, 31 May 2026 23:32:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:14 GMT
 
 
@@ -13,6 +13,17 @@ Auto-generated client library for using the **Chrome Policy API (version: v1)** 
 ---
 
 ## API Reference
+
+### `media`
+
+#### `media.upload()`
+
+Creates an enterprise file from the content provided by user. Returns a public download url for end user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. The customer for which the file upload will apply. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers`
 
@@ -25,44 +36,6 @@ Gets the resolved policy values for a list of policies that match a search query
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `customers.policies.groups`
-
-#### `customers.policies.groups.batchModify()`
-
-Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.policies.groups.listGroupPriorityOrdering()`
-
-Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.policies.groups.batchDelete()`
-
-Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.policies.groups.updateGroupPriorityOrdering()`
-
-Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policies.orgunits`
@@ -85,7 +58,54 @@ Modify multiple policy values that are applied to a specific org unit so that th
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+### `customers.policies.groups`
+
+#### `customers.policies.groups.batchModify()`
+
+Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.batchDelete()`
+
+Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.listGroupPriorityOrdering()`
+
+Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.updateGroupPriorityOrdering()`
+
+Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `customers.policies.networks`
+
+#### `customers.policies.networks.defineCertificate()`
+
+Creates a certificate at a specified OU for a customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. The customer for which the certificate will apply. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.networks.removeCertificate()`
 
@@ -114,15 +134,6 @@ Define a new network.
 | `params.customer` | `string` | Yes | Required. The customer who will own this new network. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.policies.networks.defineCertificate()`
-
-Creates a certificate at a specified OU for a customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. The customer for which the certificate will apply. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `customers.policySchemas`
 
 #### `customers.policySchemas.get()`
@@ -139,18 +150,7 @@ Gets a list of policy schemas that match a specified filter value for a given cu
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`. |
-| `params.pageToken` | `string` | No | The page token used to retrieve a specific page of the listing request. |
-| `params.pageSize` | `integer` | No | The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000. |
 | `params.parent` | `string` | Yes | Required. The customer for which the listing request will apply. |
-
-### `media`
-
-#### `media.upload()`
-
-Creates an enterprise file from the content provided by user. Returns a public download url for end user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. The customer for which the file upload will apply. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.filter` | `string` | No | The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`. |
+| `params.pageSize` | `integer` | No | The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000. |
+| `params.pageToken` | `string` | No | The page token used to retrieve a specific page of the listing request. |
