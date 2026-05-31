@@ -24,16 +24,6 @@ class Certificatemanager {
     this.projects.locations = {};
 
     /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Resource name for the location.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
@@ -47,268 +37,17 @@ class Certificatemanager {
      */
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.certificateIssuanceConfigs = {};
-
     /**
-     * Gets details of a single CertificateIssuanceConfig.
+     * Gets information about a location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the certificate issuance config to describe. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
+     * @param {string} apiParams.name - (Required) Resource name for the location.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.certificateIssuanceConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a CertificateIssuanceConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
-     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateIssuanceConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a single CertificateIssuanceConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the certificate issuance config to delete. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateIssuanceConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new CertificateIssuanceConfig in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.certificateIssuanceConfigId - Required. A user-provided name of the certificate config.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate issuance config. Must be in the format `projects/*\/locations/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateIssuanceConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists CertificateIssuanceConfigs in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates Configs returned.
-     * @param {string} apiParams.orderBy - Optional. A list of Certificate Config field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate configs to return per call.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateIssuanceConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.trustConfigs = {};
-
-    /**
-     * Lists TrustConfigs in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the TrustConfigs returned.
-     * @param {string} apiParams.orderBy - Optional. A list of TrustConfig field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of TrustConfigs to return per call.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a continuation of a prior `ListTrustConfigs` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project and location from which the TrustConfigs should be listed, specified in the format `projects/*\/locations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.trustConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new TrustConfig in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the TrustConfig. Must be in the format `projects/*\/locations/*`.
-     * @param {string} apiParams.trustConfigId - Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.trustConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single TrustConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the TrustConfig. If an etag is provided and does not match the current etag of the resource, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. A name of the TrustConfig to delete. Must be in the format `projects/*\/locations/*\/trustConfigs/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.trustConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single TrustConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the TrustConfig to describe. Must be in the format `projects/*\/locations/*\/trustConfigs/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.trustConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a TrustConfig.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*\/locations/*\/trustConfigs/*`.
-     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.trustConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.certificates = {};
-
-    /**
-     * Gets details of a single Certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the certificate to describe. Must be in the format `projects/*\/locations/*\/certificates/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a Certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*\/locations/*\/certificates/*`.
-     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates a new Certificate in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.certificateId - Required. A user-provided name of the certificate.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate. Must be in the format `projects/*\/locations/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single Certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the certificate to delete. Must be in the format `projects/*\/locations/*\/certificates/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists Certificates in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates returned.
-     * @param {string} apiParams.orderBy - Optional. A list of Certificate field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificates to return per call.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificatesResponse`. Indicates that this is a continuation of a prior `ListCertificates` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.dnsAuthorizations = {};
-
-    /**
-     * Lists DnsAuthorizations in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Dns Authorizations returned.
-     * @param {string} apiParams.orderBy - Optional. A list of Dns Authorization field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of dns authorizations to return per call.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is a continuation of a prior `ListDnsAuthorizations` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project and location from which the dns authorizations should be listed, specified in the format `projects/*\/locations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dnsAuthorizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new DnsAuthorization in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dnsAuthorizationId - Required. A user-provided name of the dns authorization.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the dns authorization. Must be in the format `projects/*\/locations/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dnsAuthorizations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single DnsAuthorization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the dns authorization to delete. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dnsAuthorizations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single DnsAuthorization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. A name of the dns authorization to describe. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dnsAuthorizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a DnsAuthorization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*\/locations/*\/dnsAuthorizations/*`.
-     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dnsAuthorizations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -325,6 +64,26 @@ class Certificatemanager {
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
 
     /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -335,7 +94,81 @@ class Certificatemanager {
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.certificates = {};
+
+    /**
+     * Lists Certificates in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates returned.
+     * @param {string} apiParams.orderBy - Optional. A list of Certificate field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificates to return per call.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificatesResponse`. Indicates that this is a continuation of a prior `ListCertificates` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the certificate to describe. Must be in the format `projects/*\/locations/*\/certificates/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new Certificate in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.certificateId - Required. A user-provided name of the certificate.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate. Must be in the format `projects/*\/locations/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a Certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*\/locations/*\/certificates/*`.
+     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a single Certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the certificate to delete. Must be in the format `projects/*\/locations/*\/certificates/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.locations.certificateMaps = {};
+
+    /**
+     * Lists CertificateMaps in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates Maps returned.
+     * @param {string} apiParams.orderBy - Optional. A list of Certificate Map field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate maps to return per call.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a continuation of a prior `ListCertificateMaps` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate maps should be listed, specified in the format `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'GET', apiParams, clientConfig);
 
     /**
      * Gets details of a single CertificateMap.
@@ -346,6 +179,18 @@ class Certificatemanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.certificateMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new CertificateMap in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.certificateMapId - Required. A user-provided name of the certificate map.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate map. Must be in the format `projects/*\/locations/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a CertificateMap.
@@ -369,33 +214,21 @@ class Certificatemanager {
      */
     this.projects.locations.certificateMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    /**
-     * Creates a new CertificateMap in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.certificateMapId - Required. A user-provided name of the certificate map.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate map. Must be in the format `projects/*\/locations/*`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists CertificateMaps in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates Maps returned.
-     * @param {string} apiParams.orderBy - Optional. A list of Certificate Map field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate maps to return per call.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateMapsResponse`. Indicates that this is a continuation of a prior `ListCertificateMaps` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate maps should be listed, specified in the format `projects/*\/locations/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.certificateMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'GET', apiParams, clientConfig);
-
     this.projects.locations.certificateMaps.certificateMapEntries = {};
+
+    /**
+     * Lists CertificateMapEntries in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the returned Certificate Map Entries.
+     * @param {string} apiParams.orderBy - Optional. A list of Certificate Map Entry field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate map entries to return. The service may return fewer than this value. If unspecified, at most 50 certificate map entries will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that this is a continuation of a prior `ListCertificateMapEntries` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project, location and certificate map from which the certificate map entries should be listed, specified in the format `projects/*\/locations/*\/certificateMaps/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateMaps.certificateMapEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'GET', apiParams, clientConfig);
 
     /**
      * Gets details of a single CertificateMapEntry.
@@ -406,6 +239,18 @@ class Certificatemanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.certificateMaps.certificateMapEntries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new CertificateMapEntry in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.certificateMapEntryId - Required. A user-provided name of the certificate map entry.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate map entry. Must be in the format `projects/*\/locations/*\/certificateMaps/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateMaps.certificateMapEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a CertificateMapEntry.
@@ -429,31 +274,186 @@ class Certificatemanager {
      */
     this.projects.locations.certificateMaps.certificateMapEntries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.projects.locations.dnsAuthorizations = {};
+
     /**
-     * Creates a new CertificateMapEntry in a given project and location.
+     * Lists DnsAuthorizations in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.certificateMapEntryId - Required. A user-provided name of the certificate map entry.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate map entry. Must be in the format `projects/*\/locations/*\/certificateMaps/*`.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Dns Authorizations returned.
+     * @param {string} apiParams.orderBy - Optional. A list of Dns Authorization field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of dns authorizations to return per call.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListDnsAuthorizationsResponse`. Indicates that this is a continuation of a prior `ListDnsAuthorizations` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project and location from which the dns authorizations should be listed, specified in the format `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dnsAuthorizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single DnsAuthorization.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the dns authorization to describe. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dnsAuthorizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new DnsAuthorization in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dnsAuthorizationId - Required. A user-provided name of the dns authorization.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the dns authorization. Must be in the format `projects/*\/locations/*`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.certificateMaps.certificateMapEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'POST', apiParams, clientConfig);
+    this.projects.locations.dnsAuthorizations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists CertificateMapEntries in a given project and location.
+     * Updates a DnsAuthorization.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter expression to restrict the returned Certificate Map Entries.
-     * @param {string} apiParams.orderBy - Optional. A list of Certificate Map Entry field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate map entries to return. The service may return fewer than this value. If unspecified, at most 50 certificate map entries will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateMapEntriesResponse`. Indicates that this is a continuation of a prior `ListCertificateMapEntries` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. The project, location and certificate map from which the certificate map entries should be listed, specified in the format `projects/*\/locations/*\/certificateMaps/*`.
+     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*\/locations/*\/dnsAuthorizations/*`.
+     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.certificateMaps.certificateMapEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'GET', apiParams, clientConfig);
+    this.projects.locations.dnsAuthorizations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a single DnsAuthorization.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the dns authorization to delete. Must be in the format `projects/*\/locations/*\/dnsAuthorizations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dnsAuthorizations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.certificateIssuanceConfigs = {};
+
+    /**
+     * Lists CertificateIssuanceConfigs in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the Certificates Configs returned.
+     * @param {string} apiParams.orderBy - Optional. A list of Certificate Config field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of certificate configs to return per call.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListCertificateIssuanceConfigsResponse`. Indicates that this is a continuation of a prior `ListCertificateIssuanceConfigs` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project and location from which the certificate should be listed, specified in the format `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateIssuanceConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single CertificateIssuanceConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the certificate issuance config to describe. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateIssuanceConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new CertificateIssuanceConfig in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.certificateIssuanceConfigId - Required. A user-provided name of the certificate config.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the certificate issuance config. Must be in the format `projects/*\/locations/*`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateIssuanceConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a CertificateIssuanceConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
+     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateIssuanceConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a single CertificateIssuanceConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the certificate issuance config to delete. Must be in the format `projects/*\/locations/*\/certificateIssuanceConfigs/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.certificateIssuanceConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.trustConfigs = {};
+
+    /**
+     * Lists TrustConfigs in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to restrict the TrustConfigs returned.
+     * @param {string} apiParams.orderBy - Optional. A list of TrustConfig field names used to specify the order of the returned results. The default sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of TrustConfigs to return per call.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListTrustConfigsResponse`. Indicates that this is a continuation of a prior `ListTrustConfigs` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The project and location from which the TrustConfigs should be listed, specified in the format `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.trustConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single TrustConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. A name of the TrustConfig to describe. Must be in the format `projects/*\/locations/*\/trustConfigs/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.trustConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new TrustConfig in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the TrustConfig. Must be in the format `projects/*\/locations/*`.
+     * @param {string} apiParams.trustConfigId - Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.trustConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a TrustConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*\/locations/*\/trustConfigs/*`.
+     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.trustConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a single TrustConfig.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the TrustConfig. If an etag is provided and does not match the current etag of the resource, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. A name of the TrustConfig to delete. Must be in the format `projects/*\/locations/*\/trustConfigs/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.trustConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
