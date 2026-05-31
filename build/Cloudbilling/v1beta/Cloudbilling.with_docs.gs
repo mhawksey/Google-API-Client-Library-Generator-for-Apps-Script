@@ -33,30 +33,6 @@ class Cloudbilling {
 
     this.billingAccounts = {};
 
-    this.billingAccounts.services = {};
-
-    /**
-     * Lists services visible to a billing account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Maximum number of billing account service to return. Results may return fewer than this value. Default value is 50 and maximum value is 5000.
-     * @param {string} apiParams.pageToken - Page token received from a previous ListBillingAccountServices call to retrieve the next page of results. If this field is empty, the first page is returned.
-     * @param {string} apiParams.parent - (Required) Required. The billing account to list billing account service from. Format: billingAccounts/{billing_account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.billingAccounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a Google Cloud service visible to a billing account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the billing account service to retrieve. Format: billingAccounts/{billing_account}/services/{service}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.billingAccounts.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
     this.billingAccounts.skuGroups = {};
 
     /**
@@ -108,6 +84,16 @@ class Cloudbilling {
     this.billingAccounts.skus = {};
 
     /**
+     * Gets a SKU visible to a billing account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the billing account SKU to retrieve. Format: billingAccounts/{billing_account}/skus/{sku}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.billingAccounts.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists SKUs visible to a billing account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Options for how to filter the billing account SKUs. Currently, only filter on `billing_account_service` is supported. Only !=, = operators are supported. Examples: - billing_account_service = "billingAccounts/012345-567890-ABCDEF/services/DA34-426B-A397"
@@ -119,16 +105,6 @@ class Cloudbilling {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.billingAccounts.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a SKU visible to a billing account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the billing account SKU to retrieve. Format: billingAccounts/{billing_account}/skus/{sku}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.billingAccounts.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.billingAccounts.skus.price = {};
 
@@ -157,6 +133,30 @@ class Cloudbilling {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.billingAccounts.skus.prices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/prices', 'GET', apiParams, clientConfig);
+
+    this.billingAccounts.services = {};
+
+    /**
+     * Gets a Google Cloud service visible to a billing account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the billing account service to retrieve. Format: billingAccounts/{billing_account}/services/{service}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.billingAccounts.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists services visible to a billing account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Maximum number of billing account service to return. Results may return fewer than this value. Default value is 50 and maximum value is 5000.
+     * @param {string} apiParams.pageToken - Page token received from a previous ListBillingAccountServices call to retrieve the next page of results. If this field is empty, the first page is returned.
+     * @param {string} apiParams.parent - (Required) Required. The billing account to list billing account service from. Format: billingAccounts/{billing_account}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.billingAccounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
 
     this.skus = {};
 
@@ -191,6 +191,16 @@ class Cloudbilling {
     this.skuGroups = {};
 
     /**
+     * Gets a publicly listed SKU group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the SKU group to retrieve. Format: skuGroups/{sku_group}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.skuGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists all publicly listed SKU groups.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Maximum number of SKU groups to return. Results may return fewer than this value. Default value is 50 and maximum value is 5000.
@@ -201,17 +211,17 @@ class Cloudbilling {
      */
     this.skuGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/skuGroups', 'GET', apiParams, clientConfig);
 
+    this.skuGroups.skus = {};
+
     /**
-     * Gets a publicly listed SKU group.
+     * Gets a publicly listed SKU that is part of a publicly listed SKU group.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the SKU group to retrieve. Format: skuGroups/{sku_group}
+     * @param {string} apiParams.name - (Required) Required. The name of the SKU group SKU to retrieve. Format: skuGroups/{sku_group}/skus/{sku}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.skuGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.skuGroups.skus = {};
+    this.skuGroups.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all publicly listed SKUs contained by a publicly listed SKU group.
@@ -224,16 +234,6 @@ class Cloudbilling {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.skuGroups.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a publicly listed SKU that is part of a publicly listed SKU group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the SKU group SKU to retrieve. Format: skuGroups/{sku_group}/skus/{sku}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.skuGroups.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
