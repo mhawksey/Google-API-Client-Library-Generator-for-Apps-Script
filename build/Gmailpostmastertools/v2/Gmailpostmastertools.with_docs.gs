@@ -19,18 +19,6 @@ class Gmailpostmastertools {
     this._servicePath = '';
 
 
-    this.domainStats = {};
-
-    /**
-     * Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
-
     this.domains = {};
 
     /**
@@ -76,6 +64,18 @@ class Gmailpostmastertools {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.domains.domainStats.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/domainStats:query', 'POST', apiParams, clientConfig);
+
+    this.domainStats = {};
+
+    /**
+     * Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
   }
 
 /**
