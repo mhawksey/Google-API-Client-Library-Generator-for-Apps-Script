@@ -4,7 +4,7 @@ Auto-generated client library for using the **BigQuery Data Transfer API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:25:51 GMT
+- **Last Checked:** Sun, 31 May 2026 23:31:10 GMT
 - **Last Modified:** Sun, 31 May 2026 23:25:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:15 GMT
 
