@@ -4,7 +4,7 @@ Auto-generated client library for using the **BigQuery Connection API (version: 
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:31:35 GMT
+- **Last Checked:** Sun, 31 May 2026 23:25:35 GMT
 - **Last Modified:** Thu, 30 Apr 2026 23:31:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:05 GMT
 
