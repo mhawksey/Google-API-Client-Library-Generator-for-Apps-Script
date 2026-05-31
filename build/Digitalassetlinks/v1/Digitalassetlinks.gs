@@ -20,8 +20,8 @@ class Digitalassetlinks {
 
 
     this.assetlinks = {};
-    this.assetlinks.bulkCheck = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/assetlinks:bulkCheck', 'POST', apiParams, clientConfig);
     this.assetlinks.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/assetlinks:check', 'GET', apiParams, clientConfig);
+    this.assetlinks.bulkCheck = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/assetlinks:bulkCheck', 'POST', apiParams, clientConfig);
 
     this.statements = {};
     this.statements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/statements:list', 'GET', apiParams, clientConfig);
