@@ -4,8 +4,8 @@ Auto-generated client library for using the **Fitness API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:56:48 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:56:48 GMT
+- **Last Checked:** Sun, 31 May 2026 23:54:19 GMT
+- **Last Modified:** Sun, 31 May 2026 23:54:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:01 GMT
 
 
@@ -15,51 +15,6 @@ Auto-generated client library for using the **Fitness API (version: v1)** in Goo
 ## API Reference
 
 ### `users`
-
-### `users.dataset`
-
-#### `users.dataset.aggregate()`
-
-Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `users.sessions`
-
-#### `users.sessions.delete()`
-
-Deletes a session specified by the given session ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.sessionId` | `string` | Yes | The ID of the session to be deleted. |
-| `params.userId` | `string` | Yes | Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-
-#### `users.sessions.update()`
-
-Updates or insert a given session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.sessionId` | `string` | Yes | The ID of the session to be created. |
-| `params.userId` | `string` | Yes | Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.sessions.list()`
-
-Lists sessions previously created.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.includeDeleted` | `boolean` | No | If true, and if both startTime and endTime are omitted, session deletions will be returned. |
-| `params.activityType` | `integer` | No | If non-empty, only sessions with these activity types should be returned. |
-| `params.userId` | `string` | Yes | List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.startTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned. |
-| `params.endTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. |
-| `params.pageToken` | `string` | No | The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned. |
 
 ### `users.dataSources`
 
@@ -71,24 +26,6 @@ Creates a new data source that is unique across all data sources belonging to th
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Create the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.dataSources.get()`
-
-Returns the specified data source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to retrieve. |
-| `params.userId` | `string` | Yes | Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-
-#### `users.dataSources.delete()`
-
-Deletes the specified data source. The request will fail if the data source contains any data points.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to delete. |
-| `params.userId` | `string` | Yes | Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
 
 #### `users.dataSources.list()`
 
@@ -105,33 +42,29 @@ Updates the specified data source. The dataStreamId, dataType, type, dataStreamN
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to update. |
 | `params.userId` | `string` | Yes | Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `users.dataSources.get()`
+
+Returns the specified data source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to retrieve. |
+
+#### `users.dataSources.delete()`
+
+Deletes the specified data source. The request will fail if the data source contains any data points.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to delete. |
+
 ### `users.dataSources.datasets`
-
-#### `users.dataSources.datasets.get()`
-
-Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.datasetId` | `string` | Yes | Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. |
-| `params.pageToken` | `string` | No | The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response. |
-| `params.limit` | `integer` | No | If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned. |
-| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
-
-#### `users.dataSources.datasets.delete()`
-
-Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.datasetId` | `string` | Yes | Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. |
-| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
 
 #### `users.dataSources.datasets.patch()`
 
@@ -140,9 +73,31 @@ Adds data points to a dataset. The dataset need not be previously created. All p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.datasetId` | `string` | Yes | This field is not used, and can be safely omitted. |
 | `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
+| `params.datasetId` | `string` | Yes | This field is not used, and can be safely omitted. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.dataSources.datasets.get()`
+
+Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
+| `params.datasetId` | `string` | Yes | Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. |
+| `params.pageToken` | `string` | No | The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response. |
+| `params.limit` | `integer` | No | If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned. |
+
+#### `users.dataSources.datasets.delete()`
+
+Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
+| `params.datasetId` | `string` | Yes | Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers. |
 
 ### `users.dataSources.dataPointChanges`
 
@@ -156,3 +111,48 @@ Queries for user's data point changes for a particular data source.
 | `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
 | `params.pageToken` | `string` | No | The continuation token, which is used to page through large result sets. To get the next page of results, set this parameter to the value of nextPageToken from the previous response. |
 | `params.limit` | `integer` | No | If specified, no more than this many data point changes will be included in the response. |
+
+### `users.dataset`
+
+#### `users.dataset.aggregate()`
+
+Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.sessions`
+
+#### `users.sessions.update()`
+
+Updates or insert a given session.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.sessionId` | `string` | Yes | The ID of the session to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.sessions.list()`
+
+Lists sessions previously created.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.startTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned. |
+| `params.endTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. |
+| `params.includeDeleted` | `boolean` | No | If true, and if both startTime and endTime are omitted, session deletions will be returned. |
+| `params.pageToken` | `string` | No | The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned. |
+| `params.activityType` | `integer` | No | If non-empty, only sessions with these activity types should be returned. |
+
+#### `users.sessions.delete()`
+
+Deletes a session specified by the given session ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
+| `params.sessionId` | `string` | Yes | The ID of the session to be deleted. |
