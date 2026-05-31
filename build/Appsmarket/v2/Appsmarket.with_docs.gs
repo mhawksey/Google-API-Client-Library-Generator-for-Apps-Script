@@ -19,19 +19,6 @@ class Appsmarket {
     this._servicePath = '';
 
 
-    this.userLicense = {};
-
-    /**
-     * Gets the user's licensing status to determine if they have permission to use a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) The ID of the application.
-     * @param {string} apiParams.userId - (Required) The ID of the user.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/userLicense/{applicationId}/{userId}', 'GET', apiParams, clientConfig);
-
     this.customerLicense = {};
 
     /**
@@ -44,6 +31,19 @@ class Appsmarket {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customerLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/customerLicense/{applicationId}/{customerId}', 'GET', apiParams, clientConfig);
+
+    this.userLicense = {};
+
+    /**
+     * Gets the user's licensing status to determine if they have permission to use a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - (Required) The ID of the application.
+     * @param {string} apiParams.userId - (Required) The ID of the user.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userLicense.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('appsmarket/v2/userLicense/{applicationId}/{userId}', 'GET', apiParams, clientConfig);
   }
 
 /**
