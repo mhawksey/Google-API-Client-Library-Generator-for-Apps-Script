@@ -24,16 +24,6 @@ class Gkehub {
     this.projects.locations = {};
 
     /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Resource name for the location.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
@@ -46,6 +36,16 @@ class Gkehub {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets information about a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Resource name for the location.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
 
@@ -89,6 +89,16 @@ class Gkehub {
     this.projects.locations.memberships.features = {};
 
     /**
+     * ========= MembershipFeature Services ========= Gets details of a membershipFeature.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The MembershipFeature resource name in the format `projects/*\/locations/*\/memberships/*\/features/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists MembershipFeatures in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Lists MembershipFeatures that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "helloworld" in project "foo-proj" and membership "member-bar": name = "projects/foo-proj/locations/global/memberships/member-bar/features/helloworld" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar
@@ -103,14 +113,17 @@ class Gkehub {
     this.projects.locations.memberships.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'GET', apiParams, clientConfig);
 
     /**
-     * ========= MembershipFeature Services ========= Gets details of a membershipFeature.
+     * Creates membershipFeature under a given parent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The MembershipFeature resource name in the format `projects/*\/locations/*\/memberships/*\/features/*`.
+     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
+     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'POST', apiParams, clientConfig);
 
     /**
      * Removes a membershipFeature.
@@ -136,19 +149,6 @@ class Gkehub {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.memberships.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates membershipFeature under a given parent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
-     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'POST', apiParams, clientConfig);
   }
 
 /**
