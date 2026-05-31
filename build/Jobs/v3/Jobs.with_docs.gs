@@ -38,52 +38,7 @@ class Jobs {
      */
     this.projects.complete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:complete', 'GET', apiParams, clientConfig);
 
-    this.projects.clientEvents = {};
-
-    /**
-     * Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Parent project name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.clientEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/clientEvents', 'POST', apiParams, clientConfig);
-
     this.projects.jobs = {};
-
-    /**
-     * Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project".
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
-
-    /**
-     * Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project".
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.jobs.searchForAlert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs:searchForAlert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates specified job. Typically, updated contents become visible in search results within 10 seconds, but it may take up to 5 minutes.
@@ -97,18 +52,26 @@ class Jobs {
     this.projects.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Lists jobs by filter.
+     * Searches for jobs using the provided SearchJobsRequest. This API call is intended for the use case of targeting passive job seekers (for example, job seekers who have signed up to receive email alerts about potential job opportunities), and has different algorithmic adjustments that are targeted to passive job seekers. This call constrains the visibility of jobs present in the database, and only returns jobs the caller has permission to search against.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/api-test-project/companies/123" * companyName = "projects/api-test-project/companies/123" AND requisitionId = "req-1" * companyName = "projects/api-test-project/companies/123" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED"
-     * @param {string} apiParams.jobView - Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified.
-     * @param {string} apiParams.pageToken - Optional. The starting point of a query result.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project".
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.jobs.searchForAlert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs:searchForAlert', 'POST', apiParams, clientConfig);
+
+    /**
+     * Searches for jobs using the provided SearchJobsRequest. This call constrains the visibility of jobs present in the database, and only returns jobs that the caller has permission to search against.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the project to search within. The format is "projects/{project_id}", for example, "projects/api-test-project".
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.jobs.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs:search', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes the specified job. Typically, the job becomes unsearchable within 10 seconds, but it may take up to 5 minutes.
@@ -132,6 +95,30 @@ class Jobs {
     this.projects.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs', 'POST', apiParams, clientConfig);
 
     /**
+     * Lists jobs by filter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Required. The filter string specifies the jobs to be enumerated. Supported operator: =, AND The fields eligible for filtering are: * `companyName` * `requisitionId` * `status` Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified. At least one of `companyName` and `requisitionId` must present or an INVALID_ARGUMENT error is thrown. Sample Query: * companyName = "projects/api-test-project/companies/123" * companyName = "projects/api-test-project/companies/123" AND requisitionId = "req-1" * companyName = "projects/api-test-project/companies/123" AND status = "EXPIRED" * requisitionId = "req-1" * requisitionId = "req-1" AND status = "EXPIRED"
+     * @param {string} apiParams.jobView - Optional. The desired job attributes returned for jobs in the search response. Defaults to JobView.JOB_VIEW_FULL if no value is specified.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of jobs to be returned per page of results. If job_view is set to JobView.JOB_VIEW_ID_ONLY, the maximum allowed page size is 1000. Otherwise, the maximum allowed page size is 100. Default is 100 if empty or a number < 1 is specified.
+     * @param {string} apiParams.pageToken - Optional. The starting point of a query result.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves the specified job, whose status is OPEN or recently EXPIRED within the last 90 days.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the job to retrieve. The format is "projects/{project_id}/jobs/{job_id}", for example, "projects/api-test-project/jobs/1234".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Deletes a list of Jobs by filter.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The resource name of the project under which the job is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
@@ -142,17 +129,20 @@ class Jobs {
      */
     this.projects.jobs.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/jobs:batchDelete', 'POST', apiParams, clientConfig);
 
-    this.projects.companies = {};
+    this.projects.clientEvents = {};
 
     /**
-     * Retrieves specified company.
+     * Report events issued when end user interacts with customer's application that uses Cloud Talent Solution. You may inspect the created events in [self service tools](https://console.cloud.google.com/talent-solution/overview). [Learn more](https://cloud.google.com/talent-solution/docs/management-tools) about self service tools.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo".
+     * @param {string} apiParams.parent - (Required) Parent project name.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.clientEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/clientEvents', 'POST', apiParams, clientConfig);
+
+    this.projects.companies = {};
 
     /**
      * Deletes specified company. Prerequisite: The company has no jobs associated with it.
@@ -163,6 +153,17 @@ class Jobs {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.companies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a new company entity.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/companies', 'POST', apiParams, clientConfig);
 
     /**
      * Lists all companies associated with the service account.
@@ -178,6 +179,16 @@ class Jobs {
     this.projects.companies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/companies', 'GET', apiParams, clientConfig);
 
     /**
+     * Retrieves specified company.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the company to be retrieved. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.companies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates specified company. Company names can't be updated. To update a company name, delete the company and all jobs associated with it, and only then re-create them.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required during company update. The resource name for a company. This is generated by the service when a company is created. The format is "projects/{project_id}/companies/{company_id}", for example, "projects/api-test-project/companies/foo".
@@ -187,17 +198,6 @@ class Jobs {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.companies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates a new company entity.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the project under which the company is created. The format is "projects/{project_id}", for example, "projects/api-test-project".
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.companies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/companies', 'POST', apiParams, clientConfig);
   }
 
 /**
