@@ -28,15 +28,15 @@ class Assuredworkloads {
     this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.workloads = {};
-    this.organizations.locations.workloads.enableComplianceUpdates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enableComplianceUpdates', 'PUT', apiParams, clientConfig);
-    this.organizations.locations.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.workloads.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workloads', 'POST', apiParams, clientConfig);
     this.organizations.locations.workloads.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.workloads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.workloads.enableResourceMonitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enableResourceMonitoring', 'POST', apiParams, clientConfig);
     this.organizations.locations.workloads.restrictAllowedResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restrictAllowedResources', 'POST', apiParams, clientConfig);
-    this.organizations.locations.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workloads', 'GET', apiParams, clientConfig);
+    this.organizations.locations.workloads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.workloads.analyzeWorkloadMove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+target}:analyzeWorkloadMove', 'GET', apiParams, clientConfig);
+    this.organizations.locations.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workloads', 'GET', apiParams, clientConfig);
+    this.organizations.locations.workloads.enableResourceMonitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enableResourceMonitoring', 'POST', apiParams, clientConfig);
+    this.organizations.locations.workloads.enableComplianceUpdates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enableComplianceUpdates', 'PUT', apiParams, clientConfig);
 
     this.organizations.locations.workloads.violations = {};
     this.organizations.locations.workloads.violations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/violations', 'GET', apiParams, clientConfig);
@@ -46,6 +46,10 @@ class Assuredworkloads {
     this.organizations.locations.workloads.updates = {};
     this.organizations.locations.workloads.updates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/updates', 'GET', apiParams, clientConfig);
     this.organizations.locations.workloads.updates.apply = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:apply', 'POST', apiParams, clientConfig);
+
+    this.assuredworkloads = {};
+    this.assuredworkloads.archiveResourceEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/assuredworkloads:archiveResourceEvents', 'POST', apiParams, clientConfig);
+    this.assuredworkloads.revertArchivedResourceEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/assuredworkloads:revertArchivedResourceEvents', 'POST', apiParams, clientConfig);
   }
 
 /**
