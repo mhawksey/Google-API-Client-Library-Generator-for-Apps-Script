@@ -4,8 +4,8 @@ Auto-generated client library for using the **Manufacturer Center API (version: 
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:06:20 GMT
-- **Last Modified:** Fri, 01 May 2026 00:06:20 GMT
+- **Last Checked:** Sun, 31 May 2026 23:57:36 GMT
+- **Last Modified:** Sun, 31 May 2026 23:57:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:13 GMT
 
 
@@ -18,24 +18,15 @@ Auto-generated client library for using the **Manufacturer Center API (version: 
 
 ### `accounts.products`
 
-#### `accounts.products.delete()`
-
-Deletes the product from a Manufacturer Center account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
-| `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
-
 #### `accounts.products.list()`
 
 Lists all the products in a Manufacturer Center account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The token returned by the previous request. |
 | `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
 | `params.pageSize` | `integer` | No | Maximum number of product statuses to return in the response, used for paging. |
+| `params.pageToken` | `string` | No | The token returned by the previous request. |
 | `params.include` | `string` | No | The information to be included in the response. Only sections listed here will be returned. |
 
 #### `accounts.products.get()`
@@ -45,8 +36,8 @@ Gets the product from a Manufacturer Center account, including product issues. A
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
-| `params.include` | `string` | No | The information to be included in the response. Only sections listed here will be returned. |
 | `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
+| `params.include` | `string` | No | The information to be included in the response. Only sections listed here will be returned. |
 
 #### `accounts.products.update()`
 
@@ -54,21 +45,22 @@ Inserts or updates the attributes of the product in a Manufacturer Center accoun
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
 | `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
+| `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.products.delete()`
+
+Deletes the product from a Manufacturer Center account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
+| `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
 
 ### `accounts.languages`
 
 ### `accounts.languages.productCertifications`
-
-#### `accounts.languages.productCertifications.get()`
-
-Gets a product certification by its name. This method can only be called by certification bodies.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} |
 
 #### `accounts.languages.productCertifications.patch()`
 
@@ -86,9 +78,17 @@ Lists product certifications from a specified certification body. This method ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListProductCertifications` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductCertifications` must match the call that provided the page token. Required if requesting the second or higher page. |
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of product certifications. Format: accounts/{account}/languages/{language_code} |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of product certifications to return. The service may return fewer than this value. If unspecified, at most 50 product certifications will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListProductCertifications` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductCertifications` must match the call that provided the page token. Required if requesting the second or higher page. |
+
+#### `accounts.languages.productCertifications.get()`
+
+Gets a product certification by its name. This method can only be called by certification bodies.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the product certification to get. Format: accounts/{account}/languages/{language_code}/productCertifications/{id} |
 
 #### `accounts.languages.productCertifications.delete()`
 
