@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v2beta)*
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:56:11 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:56:11 GMT
+- **Last Checked:** Sun, 31 May 2026 23:53:54 GMT
+- **Last Modified:** Sun, 31 May 2026 23:53:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:43 GMT
 
 
@@ -31,18 +31,18 @@ Perform a token counting.
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.publishers.models.streamGenerateContent()`
+#### `projects.locations.publishers.models.generateContent()`
 
-Generate content with multimodal inputs with streaming support.
+Generate content with multimodal inputs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.publishers.models.generateContent()`
+#### `projects.locations.publishers.models.streamGenerateContent()`
 
-Generate content with multimodal inputs.
+Generate content with multimodal inputs with streaming support.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
