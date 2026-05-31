@@ -19,11 +19,12 @@ class Cloudsearch {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.operations.lro = {};
-    this.operations.lro.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/lro', 'GET', apiParams, clientConfig);
+    this.media = {};
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/media/{+resourceName}' : 'v1/media/{+resourceName}';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     this.debug = {};
 
@@ -38,73 +39,34 @@ class Cloudsearch {
 
     this.debug.identitysources = {};
 
-    this.debug.identitysources.unmappedids = {};
-    this.debug.identitysources.unmappedids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/debug/{+parent}/unmappedids', 'GET', apiParams, clientConfig);
-
     this.debug.identitysources.items = {};
     this.debug.identitysources.items.listForunmappedidentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/debug/{+parent}/items:forunmappedidentity', 'GET', apiParams, clientConfig);
 
-    this.settings = {};
-    this.settings.getCustomer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/customer', 'GET', apiParams, clientConfig);
-    this.settings.updateCustomer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/customer', 'PATCH', apiParams, clientConfig);
-
-    this.settings.searchapplications = {};
-    this.settings.searchapplications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/searchapplications', 'GET', apiParams, clientConfig);
-    this.settings.searchapplications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'GET', apiParams, clientConfig);
-    this.settings.searchapplications.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/searchapplications', 'POST', apiParams, clientConfig);
-    this.settings.searchapplications.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PUT', apiParams, clientConfig);
-    this.settings.searchapplications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PATCH', apiParams, clientConfig);
-    this.settings.searchapplications.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'DELETE', apiParams, clientConfig);
-    this.settings.searchapplications.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}:reset', 'POST', apiParams, clientConfig);
-
-    this.settings.datasources = {};
-    this.settings.datasources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/datasources', 'POST', apiParams, clientConfig);
-    this.settings.datasources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'DELETE', apiParams, clientConfig);
-    this.settings.datasources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'GET', apiParams, clientConfig);
-    this.settings.datasources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PUT', apiParams, clientConfig);
-    this.settings.datasources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PATCH', apiParams, clientConfig);
-    this.settings.datasources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/datasources', 'GET', apiParams, clientConfig);
+    this.debug.identitysources.unmappedids = {};
+    this.debug.identitysources.unmappedids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/debug/{+parent}/unmappedids', 'GET', apiParams, clientConfig);
 
     this.v1 = {};
     this.v1.initializeCustomer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:initializeCustomer', 'POST', apiParams, clientConfig);
 
-    this.indexing = {};
-
-    this.indexing.datasources = {};
-    this.indexing.datasources.updateSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'PUT', apiParams, clientConfig);
-    this.indexing.datasources.getSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'GET', apiParams, clientConfig);
-    this.indexing.datasources.deleteSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'DELETE', apiParams, clientConfig);
-
-    this.indexing.datasources.items = {};
-    this.indexing.datasources.items.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}', 'DELETE', apiParams, clientConfig);
-    this.indexing.datasources.items.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}', 'GET', apiParams, clientConfig);
-    this.indexing.datasources.items.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items', 'GET', apiParams, clientConfig);
-    this.indexing.datasources.items.index = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:index', 'POST', apiParams, clientConfig);
-    this.indexing.datasources.items.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:upload', 'POST', apiParams, clientConfig);
-    this.indexing.datasources.items.poll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:poll', 'POST', apiParams, clientConfig);
-    this.indexing.datasources.items.push = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:push', 'POST', apiParams, clientConfig);
-    this.indexing.datasources.items.unreserve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:unreserve', 'POST', apiParams, clientConfig);
-    this.indexing.datasources.items.deleteQueueItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:deleteQueueItems', 'POST', apiParams, clientConfig);
-
     this.query = {};
-    this.query.suggest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/suggest', 'POST', apiParams, clientConfig);
     this.query.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/search', 'POST', apiParams, clientConfig);
+    this.query.suggest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/suggest', 'POST', apiParams, clientConfig);
     this.query.removeActivity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query:removeActivity', 'POST', apiParams, clientConfig);
 
     this.query.sources = {};
     this.query.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/sources', 'GET', apiParams, clientConfig);
 
     this.stats = {};
+    this.stats.getSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/session', 'GET', apiParams, clientConfig);
+    this.stats.getUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/user', 'GET', apiParams, clientConfig);
     this.stats.getIndex = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/index', 'GET', apiParams, clientConfig);
     this.stats.getQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/query', 'GET', apiParams, clientConfig);
-    this.stats.getUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/user', 'GET', apiParams, clientConfig);
-    this.stats.getSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/session', 'GET', apiParams, clientConfig);
     this.stats.getSearchapplication = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/searchapplication', 'GET', apiParams, clientConfig);
 
-    this.stats.index = {};
+    this.stats.session = {};
 
-    this.stats.index.datasources = {};
-    this.stats.index.datasources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/index/{+name}', 'GET', apiParams, clientConfig);
+    this.stats.session.searchapplications = {};
+    this.stats.session.searchapplications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/session/{+name}', 'GET', apiParams, clientConfig);
 
     this.stats.query = {};
 
@@ -116,17 +78,55 @@ class Cloudsearch {
     this.stats.user.searchapplications = {};
     this.stats.user.searchapplications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/user/{+name}', 'GET', apiParams, clientConfig);
 
-    this.stats.session = {};
+    this.stats.index = {};
 
-    this.stats.session.searchapplications = {};
-    this.stats.session.searchapplications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/session/{+name}', 'GET', apiParams, clientConfig);
+    this.stats.index.datasources = {};
+    this.stats.index.datasources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/stats/index/{+name}', 'GET', apiParams, clientConfig);
 
-    this.media = {};
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/media/{+resourceName}' : 'v1/media/{+resourceName}';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.indexing = {};
+
+    this.indexing.datasources = {};
+    this.indexing.datasources.updateSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'PUT', apiParams, clientConfig);
+    this.indexing.datasources.getSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'GET', apiParams, clientConfig);
+    this.indexing.datasources.deleteSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/schema', 'DELETE', apiParams, clientConfig);
+
+    this.indexing.datasources.items = {};
+    this.indexing.datasources.items.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items', 'GET', apiParams, clientConfig);
+    this.indexing.datasources.items.index = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:index', 'POST', apiParams, clientConfig);
+    this.indexing.datasources.items.deleteQueueItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:deleteQueueItems', 'POST', apiParams, clientConfig);
+    this.indexing.datasources.items.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}', 'GET', apiParams, clientConfig);
+    this.indexing.datasources.items.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:upload', 'POST', apiParams, clientConfig);
+    this.indexing.datasources.items.unreserve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:unreserve', 'POST', apiParams, clientConfig);
+    this.indexing.datasources.items.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}', 'DELETE', apiParams, clientConfig);
+    this.indexing.datasources.items.poll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}/items:poll', 'POST', apiParams, clientConfig);
+    this.indexing.datasources.items.push = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/indexing/{+name}:push', 'POST', apiParams, clientConfig);
+
+    this.settings = {};
+    this.settings.getCustomer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/customer', 'GET', apiParams, clientConfig);
+    this.settings.updateCustomer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/customer', 'PATCH', apiParams, clientConfig);
+
+    this.settings.searchapplications = {};
+    this.settings.searchapplications.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/searchapplications', 'POST', apiParams, clientConfig);
+    this.settings.searchapplications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'GET', apiParams, clientConfig);
+    this.settings.searchapplications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PATCH', apiParams, clientConfig);
+    this.settings.searchapplications.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'DELETE', apiParams, clientConfig);
+    this.settings.searchapplications.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PUT', apiParams, clientConfig);
+    this.settings.searchapplications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/searchapplications', 'GET', apiParams, clientConfig);
+    this.settings.searchapplications.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}:reset', 'POST', apiParams, clientConfig);
+
+    this.settings.datasources = {};
+    this.settings.datasources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/datasources', 'GET', apiParams, clientConfig);
+    this.settings.datasources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PUT', apiParams, clientConfig);
+    this.settings.datasources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'DELETE', apiParams, clientConfig);
+    this.settings.datasources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'GET', apiParams, clientConfig);
+    this.settings.datasources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/{+name}', 'PATCH', apiParams, clientConfig);
+    this.settings.datasources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/settings/datasources', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.operations.lro = {};
+    this.operations.lro.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/lro', 'GET', apiParams, clientConfig);
   }
 
 /**
