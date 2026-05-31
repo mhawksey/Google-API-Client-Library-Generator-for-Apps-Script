@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Keep API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:05:23 GMT
-- **Last Modified:** Fri, 01 May 2026 00:05:23 GMT
+- **Last Checked:** Sun, 31 May 2026 23:56:40 GMT
+- **Last Modified:** Sun, 31 May 2026 23:56:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:41 GMT
 
 
@@ -15,6 +15,14 @@ Auto-generated client library for using the **Google Keep API (version: v1)** in
 ## API Reference
 
 ### `notes`
+
+#### `notes.create()`
+
+Creates a new note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `notes.get()`
 
@@ -30,9 +38,9 @@ Lists notes. Every list call returns a page of results with `page_size` as the u
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering spec](https://aip.dev/160). |
-| `params.pageToken` | `string` | No | The previous page's `next_page_token` field. |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. |
+| `params.pageToken` | `string` | No | The previous page's `next_page_token` field. |
+| `params.filter` | `string` | No | Filter for list results. If no filter is supplied, the `trashed` filter is applied by default. Valid fields to filter by are: `create_time`, `update_time`, `trash_time`, and `trashed`. Filter syntax follows the [Google AIP filtering spec](https://aip.dev/160). |
 
 #### `notes.delete()`
 
@@ -42,24 +50,7 @@ Deletes a note. Caller must have the `OWNER` role on the note to delete. Deletin
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the note to delete. |
 
-#### `notes.create()`
-
-Creates a new note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `notes.permissions`
-
-#### `notes.permissions.batchDelete()`
-
-Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `notes.permissions.batchCreate()`
 
@@ -68,6 +59,15 @@ Creates one or more permissions on the note. Only permissions with the `WRITER` 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `notes.permissions.batchDelete()`
+
+Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
