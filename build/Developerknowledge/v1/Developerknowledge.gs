@@ -20,8 +20,8 @@ class Developerknowledge {
 
 
     this.documents = {};
-    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.documents.searchDocumentChunks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:searchDocumentChunks', 'GET', apiParams, clientConfig);
+    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:batchGet', 'GET', apiParams, clientConfig);
   }
 
