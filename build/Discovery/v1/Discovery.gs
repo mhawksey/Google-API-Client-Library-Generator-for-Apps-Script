@@ -20,8 +20,8 @@ class Discovery {
 
 
     this.apis = {};
-    this.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis', 'GET', apiParams, clientConfig);
     this.apis.getRest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/{api}/{version}/rest', 'GET', apiParams, clientConfig);
+    this.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis', 'GET', apiParams, clientConfig);
   }
 
 /**
