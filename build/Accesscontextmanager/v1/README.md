@@ -4,7 +4,7 @@ Auto-generated client library for using the **Access Context Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:21:39 GMT
+- **Last Checked:** Sun, 31 May 2026 23:20:58 GMT
 - **Last Modified:** Thu, 30 Apr 2026 23:21:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:36 GMT
 
@@ -119,7 +119,7 @@ Gets the IAM policy for the specified Access Context Manager access policy.
 
 #### `accessPolicies.testIamPermissions()`
 
-Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -186,7 +186,7 @@ Replaces all existing access levels in an access policy with the access levels p
 
 #### `accessPolicies.accessLevels.testIamPermissions()`
 
-Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -242,7 +242,7 @@ Deletes a service perimeter based on the resource name. The long-running operati
 
 #### `accessPolicies.servicePerimeters.replaceAll()`
 
-Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacement are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
+Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacements are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -260,7 +260,7 @@ Commits the dry-run specification for all the service perimeters in an access po
 
 #### `accessPolicies.servicePerimeters.testIamPermissions()`
 
-Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -318,16 +318,16 @@ Deletes an authorized orgs desc based on the resource name. The long-running ope
 
 #### `services.list()`
 
-Lists all VPC-SC supported services.
+Lists all VPC-SC supported services. **IAM Permissions**: Requires the following IAM permissions to use this method: - `serviceusage.services.use` on the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | This flag specifies the maximum number of services to return per page. Default is 100. |
-| `params.pageToken` | `string` | No | Token to start on a later page. Default is the first page. |
+| `params.pageSize` | `integer` | No | This flag specifies the maximum number of services to return per page. Default value is 100. |
+| `params.pageToken` | `string` | No | Use this token to retrieve a specific page of results. Default is the first page. |
 
 #### `services.get()`
 
-Returns a VPC-SC supported service based on the service name.
+Returns a VPC-SC supported service based on the service name. **IAM Permissions**: Requires the following IAM permissions to use this method: - `serviceusage.services.use` on the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -387,9 +387,9 @@ Deletes a GcpUserAccessBinding. Completion of this long-running operation does n
 
 #### `permissions.list()`
 
-Lists all supported permissions in VPCSC Granular Controls.
+Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. This flag specifies the maximum number of services to return per page. Default is 100. |
-| `params.pageToken` | `string` | No | Optional. Token to start on a later page. Default is the first page. |
+| `params.pageSize` | `integer` | No | Optional. This flag specifies the maximum number of services to return per page. Default value is 100. |
+| `params.pageToken` | `string` | No | Optional. Use this token to retrieve a specific page of results. Default is the first page. |
