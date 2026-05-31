@@ -145,7 +145,7 @@ class Accesscontextmanager {
     this.accessPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
@@ -226,7 +226,7 @@ class Accesscontextmanager {
     this.accessPolicies.accessLevels.replaceAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accessLevels:replaceAll', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
@@ -294,7 +294,7 @@ class Accesscontextmanager {
     this.accessPolicies.servicePerimeters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacement are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
+     * Replace all existing service perimeters in an access policy with the service perimeters provided. This is done atomically. The long-running operation from this RPC has a successful status after all replacements propagate to long-lasting storage. Replacements containing errors result in an error response for the first error encountered. Upon an error, replacements are cancelled and existing service perimeters are not affected. The Operation.response field contains ReplaceServicePerimetersResponse.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Resource name for the access policy which owns these Service Perimeters. Format: `accessPolicies/{policy_id}`
      * @param {object} apiParams.requestBody - The request body.
@@ -316,7 +316,7 @@ class Accesscontextmanager {
     this.accessPolicies.servicePerimeters.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/servicePerimeters:commit', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources.
+     * Returns the IAM permissions that the caller has on the specified Access Context Manager resource. The resource can be an AccessPolicy, AccessLevel, or ServicePerimeter. This method does not support other resources. **IAM Permissions**: No specific IAM permission is required to call this method. It returns the subset of the requested permissions that the caller possesses.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
@@ -386,10 +386,10 @@ class Accesscontextmanager {
     this.services = {};
 
     /**
-     * Lists all VPC-SC supported services.
+     * Lists all VPC-SC supported services. **IAM Permissions**: Requires the following IAM permissions to use this method: - `serviceusage.services.use` on the project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - This flag specifies the maximum number of services to return per page. Default is 100.
-     * @param {string} apiParams.pageToken - Token to start on a later page. Default is the first page.
+     * @param {integer} apiParams.pageSize - This flag specifies the maximum number of services to return per page. Default value is 100.
+     * @param {string} apiParams.pageToken - Use this token to retrieve a specific page of results. Default is the first page.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -397,7 +397,7 @@ class Accesscontextmanager {
     this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'GET', apiParams, clientConfig);
 
     /**
-     * Returns a VPC-SC supported service based on the service name.
+     * Returns a VPC-SC supported service based on the service name. **IAM Permissions**: Requires the following IAM permissions to use this method: - `serviceusage.services.use` on the project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the service to get information about. The names must be in the same format as used in defining a service perimeter, for example, `storage.googleapis.com`.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -469,10 +469,10 @@ class Accesscontextmanager {
     this.permissions = {};
 
     /**
-     * Lists all supported permissions in VPCSC Granular Controls.
+     * Lists all supported permissions in VPC Service Controls ingress and egress rules for Granular Controls.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. This flag specifies the maximum number of services to return per page. Default is 100.
-     * @param {string} apiParams.pageToken - Optional. Token to start on a later page. Default is the first page.
+     * @param {integer} apiParams.pageSize - Optional. This flag specifies the maximum number of services to return per page. Default value is 100.
+     * @param {string} apiParams.pageToken - Optional. Use this token to retrieve a specific page of results. Default is the first page.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
