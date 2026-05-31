@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Resource Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 30 Apr 2026 23:35:06 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:35:06 GMT
+- **Last Checked:** Sun, 31 May 2026 23:33:57 GMT
+- **Last Modified:** Sun, 31 May 2026 23:33:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:26 GMT
 
 
@@ -26,6 +26,17 @@ Gets the latest state of a long-running operation. Clients can use this method t
 
 ### `folders`
 
+#### `folders.list()`
+
+Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | No | Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this listing should continue from. |
+| `params.showDeleted` | `boolean` | No | Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false. |
+
 #### `folders.search()`
 
 Search for folders that match specific filter criteria. Search provides an eventually consistent view of the folders a user has access to which meet the specified filter criteria. This will only return folders on which the caller has the permission `resourcemanager.folders.get`.
@@ -34,16 +45,22 @@ Search for folders that match specific filter criteria. Search provides an event
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `folders.list()`
+#### `folders.get()`
 
-Lists the Folders that are direct descendants of supplied parent resource. List provides a strongly consistent view of the Folders underneath the specified parent resource. List returns Folders sorted based upon the (ascending) lexical ordering of their display_name. The caller must have `resourcemanager.folders.list` permission on the identified parent.
+Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A pagination token returned from a previous call to `ListFolders` that indicates where this listing should continue from. |
-| `params.showDeleted` | `boolean` | No | Optional. Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of Folders to return in the response. The server can return fewer folders than requested. If unspecified, server picks an appropriate default. |
-| `params.parent` | `string` | No | Required. The resource name of the Organization or Folder whose Folders are being listed. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is controlled by checking the `resourcemanager.folders.list` permission on the `parent`. |
+| `params.name` | `string` | Yes | Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. |
+
+#### `folders.create()`
+
+Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | No | Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.patch()`
 
@@ -64,14 +81,13 @@ Moves a Folder under a new resource parent. Returns an Operation which can be us
 | `params.name` | `string` | Yes | Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `folders.create()`
+#### `folders.delete()`
 
-Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
+Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | No | Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`. |
 
 #### `folders.undelete()`
 
@@ -82,23 +98,6 @@ Cancels the deletion request for a Folder. This method may only be called on a F
 | `params.name` | `string` | Yes | Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `folders.testIamPermissions()`
-
-Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's resource name, e.g. "folders/1234". There are no permissions required for making this API call.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `folders.get()`
-
-Retrieves a Folder identified by the supplied resource name. Valid Folder resource names have the format `folders/{folder_id}` (for example, `folders/1234`). The caller must have `resourcemanager.folders.get` permission on the identified folder.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Folder to retrieve. Must be of the form `folders/{folder_id}`. |
-
 #### `folders.getIamPolicy()`
 
 Gets the access control policy for a Folder. The returned policy may be empty if no such policy or resource exists. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.getIamPolicy` permission on the identified folder.
@@ -108,14 +107,6 @@ Gets the access control policy for a Folder. The returned policy may be empty if
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `folders.delete()`
-
-Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller must have `resourcemanager.folders.delete` permission on the identified folder.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. the resource name of the Folder to be deleted. Must be of the form `folders/{folder_id}`. |
-
 #### `folders.setIamPolicy()`
 
 Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
@@ -123,4 +114,13 @@ Sets the access control policy on a Folder, replacing any existing policy. The `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `folders.testIamPermissions()`
+
+Returns permissions that a caller has on the specified Folder. The `resource` field should be the Folder's resource name, e.g. "folders/1234". There are no permissions required for making this API call.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
