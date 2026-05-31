@@ -24,17 +24,6 @@ class Firestore {
     this.projects.databases = {};
 
     /**
-     * Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:importDocuments', 'POST', apiParams, clientConfig);
-
-    /**
      * Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`.
@@ -45,19 +34,31 @@ class Firestore {
      */
     this.projects.databases.exportDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:exportDocuments', 'POST', apiParams, clientConfig);
 
+    /**
+     * Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:importDocuments', 'POST', apiParams, clientConfig);
+
     this.projects.databases.collectionGroups = {};
 
     this.projects.databases.collectionGroups.indexes = {};
 
     /**
-     * Deletes a composite index.
+     * Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
 
     /**
      * Lists composite indexes.
@@ -83,15 +84,14 @@ class Firestore {
     this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+     * Deletes a composite index.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.databases.collectionGroups.fields = {};
 
