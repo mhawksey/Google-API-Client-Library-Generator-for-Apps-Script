@@ -4,7 +4,7 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:36:38 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:24:03 GMT
 - **Last Modified:** Fri, 01 May 2026 00:36:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:25 GMT
 
@@ -18,7 +18,7 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 
 #### `flights.computeFlightEmissions()`
 
-Stateless method to retrieve emission estimates. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model) The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include:
+Stateless method to retrieve emission estimates. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include:
 
 * The flight is unknown to the server.
 
