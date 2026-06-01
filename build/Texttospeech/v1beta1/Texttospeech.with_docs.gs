@@ -19,18 +19,6 @@ class Texttospeech {
     this._servicePath = '';
 
 
-    this.voices = {};
-
-    /**
-     * Returns a list of Voice supported for synthesis.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/voices', 'GET', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
@@ -71,6 +59,18 @@ class Texttospeech {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.voices = {};
+
+    /**
+     * Returns a list of Voice supported for synthesis.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/voices', 'GET', apiParams, clientConfig);
 
     this.text = {};
 
