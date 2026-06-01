@@ -4,8 +4,8 @@ Auto-generated client library for using the **Oracle Database@Google Cloud API (
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:16:29 GMT
-- **Last Modified:** Fri, 01 May 2026 00:16:29 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:05:45 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:05:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:30 GMT
 
 
@@ -28,11 +28,11 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 
 #### `projects.locations.get()`
 
@@ -41,90 +41,6 @@ Gets information about a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
-
-### `projects.locations.exascaleDbStorageVaults`
-
-#### `projects.locations.exascaleDbStorageVaults.list()`
-
-Lists all the ExascaleDB Storage Vaults for the given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. Order results as specified in https://google.aip.dev/132. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Filter the list as specified in https://google.aip.dev/160. |
-| `params.parent` | `string` | Yes | Required. The parent value for ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ExascaleDbStorageVaults will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-
-#### `projects.locations.exascaleDbStorageVaults.get()`
-
-Gets details of a single ExascaleDB Storage Vault.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}. |
-
-#### `projects.locations.exascaleDbStorageVaults.create()`
-
-Creates a new ExascaleDB Storage Vault resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The value for parent of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}. |
-| `params.exascaleDbStorageVaultId` | `string` | No | Required. The ID of the ExascaleDbStorageVault to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.exascaleDbStorageVaults.delete()`
-
-Deletes a single ExascaleDB Storage Vault.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. The name of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}. |
-
-### `projects.locations.dbSystems`
-
-#### `projects.locations.dbSystems.list()`
-
-Lists all the DbSystems for the given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
-| `params.parent` | `string` | Yes | Required. The parent value for DbSystems in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 DbSystems will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-
-#### `projects.locations.dbSystems.get()`
-
-Gets details of a single DbSystem.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the DbSystem in the following format: projects/{project}/locations/{location}/dbSystems/{db_system}. |
-
-#### `projects.locations.dbSystems.create()`
-
-Creates a new DbSystem in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.dbSystemId` | `string` | No | Required. The ID of the DbSystem to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
-| `params.parent` | `string` | Yes | Required. The value for parent of the DbSystem in the following format: projects/{project}/locations/{location}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dbSystems.delete()`
-
-Deletes a single DbSystem.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the DbSystem in the following format: projects/{project}/locations/{location}/dbSystems/{db_system}. |
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 ### `projects.locations.operations`
 
@@ -165,152 +81,6 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.pluggableDatabases`
-
-#### `projects.locations.pluggableDatabases.list()`
-
-Lists all the PluggableDatabases for the given project, location and Container Database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of PluggableDatabases. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of PluggableDatabases to return. The service may return fewer than this value. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPluggableDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPluggableDatabases` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. List for pluggable databases is supported only with a valid container database (full resource name) filter in this format: `database="projects/{project}/locations/{location}/databases/{database}"` |
-
-#### `projects.locations.pluggableDatabases.get()`
-
-Gets details of a single PluggableDatabase.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the PluggableDatabase resource in the following format: projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database} |
-
-### `projects.locations.exadbVmClusters`
-
-#### `projects.locations.exadbVmClusters.delete()`
-
-Deletes a single Exadb (Exascale) VM Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.exadbVmClusters.list()`
-
-Lists all the Exadb (Exascale) VM Clusters for the given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
-| `params.parent` | `string` | Yes | Required. The parent value for ExadbVmClusters in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ExadbVmClusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-
-#### `projects.locations.exadbVmClusters.get()`
-
-Gets details of a single Exadb (Exascale) VM Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
-
-#### `projects.locations.exadbVmClusters.create()`
-
-Creates a new Exadb (Exascale) VM Cluster resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The value for parent of the ExadbVmCluster in the following format: projects/{project}/locations/{location}. |
-| `params.exadbVmClusterId` | `string` | No | Required. The ID of the ExadbVmCluster to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.exadbVmClusters.removeVirtualMachine()`
-
-Removes virtual machines from an existing exadb vm cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.exadbVmClusters.patch()`
-
-Updates a single Exadb (Exascale) VM Cluster. To add virtual machines to existing exadb vm cluster, only pass the node count.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. A mask specifying which fields in th VM Cluster should be updated. A field specified in the mask is overwritten. If a mask isn't provided then all the fields in the VM Cluster are overwritten. |
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Identifier. The name of the ExadbVmCluster resource in the following format: projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.exadbVmClusters.dbNodes`
-
-#### `projects.locations.exadbVmClusters.dbNodes.list()`
-
-Lists the database nodes of a VM Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent value for database node in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. . |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 db nodes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the node should return. |
-
-### `projects.locations.giVersions`
-
-#### `projects.locations.giVersions.list()`
-
-Lists all the valid Oracle Grid Infrastructure (GI) versions for the given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the shape, gcp_oracle_zone and gi_version fields are supported in this format: `shape="{shape}"`. |
-| `params.parent` | `string` | Yes | Required. The parent value for Grid Infrastructure Version in the following format: Format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 Oracle Grid Infrastructure (GI) versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
-
-### `projects.locations.giVersions.minorVersions`
-
-#### `projects.locations.giVersions.minorVersions.list()`
-
-Lists all the valid minor versions for the given project, location, gi version and shape family.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only shapeFamily and gcp_oracle_zone_id are supported in this format: `shape_family="{shapeFamily}" AND gcp_oracle_zone_id="{gcp_oracle_zone_id}"`. |
-| `params.parent` | `string` | Yes | Required. The parent value for the MinorVersion resource with the format: projects/{project}/locations/{location}/giVersions/{gi_version} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
-
-### `projects.locations.autonomousDatabaseCharacterSets`
-
-#### `projects.locations.autonomousDatabaseCharacterSets.list()`
-
-Lists Autonomous Database Character Sets in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **character_set_type** field is supported in the following format: `character_set_type="{characterSetType}"`. Accepted values include `DATABASE` and `NATIONAL`. |
-| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Character Sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
-### `projects.locations.autonomousDbVersions`
-
-#### `projects.locations.autonomousDbVersions.list()`
-
-Lists all the available Autonomous Database versions for a project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Versions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-
 ### `projects.locations.cloudExadataInfrastructures`
 
 #### `projects.locations.cloudExadataInfrastructures.list()`
@@ -319,11 +89,11 @@ Lists Exadata Infrastructures in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 | `params.parent` | `string` | Yes | Required. The parent value for CloudExadataInfrastructure in the following format: projects/{project}/locations/{location}. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Exadata infrastructures will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
 
 #### `projects.locations.cloudExadataInfrastructures.get()`
 
@@ -339,9 +109,9 @@ Creates a new Exadata Infrastructure in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for CloudExadataInfrastructure in the following format: projects/{project}/locations/{location}. |
 | `params.cloudExadataInfrastructureId` | `string` | No | Required. The ID of the Exadata Infrastructure to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
 | `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The parent value for CloudExadataInfrastructure in the following format: projects/{project}/locations/{location}. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.cloudExadataInfrastructures.delete()`
@@ -366,52 +136,59 @@ Lists the database servers of an Exadata Infrastructure instance.
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 db servers will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
-### `projects.locations.dbSystemShapes`
+### `projects.locations.cloudVmClusters`
 
-#### `projects.locations.dbSystemShapes.list()`
+#### `projects.locations.cloudVmClusters.list()`
 
-Lists the database system shapes available for the project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the gcp_oracle_zone_id field is supported in this format: `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`. |
-| `params.parent` | `string` | Yes | Required. The parent value for Database System Shapes in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 database system shapes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
-### `projects.locations.autonomousDatabaseBackups`
-
-#### `projects.locations.autonomousDatabaseBackups.list()`
-
-Lists the long-term and automatic backups of an Autonomous Database.
+Lists the VM Clusters in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent value for ListAutonomousDatabaseBackups in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Backups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **autonomous_database_id** field is supported in the following format: `autonomous_database_id="{autonomous_database_id}"`. The accepted values must be a valid Autonomous Database ID, limited to the naming restrictions of the ID: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). The ID must start with a letter, end with a letter or a number, and be a maximum of 63 characters. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The number of VM clusters to return. If unspecified, at most 50 VM clusters will be returned. The maximum value is 1,000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying the page of results the server returns. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 
-### `projects.locations.databases`
+#### `projects.locations.cloudVmClusters.get()`
 
-#### `projects.locations.databases.list()`
-
-Lists all the Databases for the given project, location and DbSystem.
+Gets details of a single VM Cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. list for container databases is supported only with a valid dbSystem (full resource name) filter in this format: `dbSystem="projects/{project}/locations/{location}/dbSystems/{dbSystemId}"` |
-| `params.parent` | `string` | Yes | Required. The parent resource name in the following format: projects/{project}/locations/{region} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 Databases will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.name` | `string` | Yes | Required. The name of the Cloud VM Cluster in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}. |
 
-#### `projects.locations.databases.get()`
+#### `projects.locations.cloudVmClusters.create()`
 
-Gets details of a single Database.
+Creates a new VM Cluster in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Database resource in the following format: projects/{project}/locations/{region}/databases/{database} |
+| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
+| `params.cloudVmClusterId` | `string` | No | Required. The ID of the VM Cluster to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.cloudVmClusters.delete()`
+
+Deletes a single VM Cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Cloud VM Cluster in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to true, all child resources for the VM Cluster will be deleted. A VM Cluster can only be deleted once all its child resources have been deleted. |
+
+### `projects.locations.cloudVmClusters.dbNodes`
+
+#### `projects.locations.cloudVmClusters.dbNodes.list()`
+
+Lists the database nodes of a VM Cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for database node in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. . |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 db nodes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the node should return. |
 
 ### `projects.locations.entitlements`
 
@@ -425,33 +202,88 @@ Lists the entitlements in a given project.
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 entitlements will be returned. The maximum value is 1000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
-### `projects.locations.dbVersions`
+### `projects.locations.giVersions`
 
-#### `projects.locations.dbVersions.list()`
+#### `projects.locations.giVersions.list()`
 
-List DbVersions for the given project and location.
+Lists all the valid Oracle Grid Infrastructure (GI) versions for the given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for Grid Infrastructure Version in the following format: Format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 Oracle Grid Infrastructure (GI) versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the shape, gcp_oracle_zone and gi_version fields are supported in this format: `shape="{shape}"`. |
+
+### `projects.locations.giVersions.minorVersions`
+
+#### `projects.locations.giVersions.minorVersions.list()`
+
+Lists all the valid minor versions for the given project, location, gi version and shape family.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the MinorVersion resource with the format: projects/{project}/locations/{location}/giVersions/{gi_version} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 System Versions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
-| `params.filter` | `string` | No | Optional. Filter expression that matches a subset of the DbVersions to show. The supported filter for dbSystem creation is `db_system_shape = {db_system_shape} AND storage_management = {storage_management}`. If no filter is provided, all DbVersions will be returned. |
-| `params.parent` | `string` | Yes | Required. The parent value for the DbVersion resource with the format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbVersions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only shapeFamily and gcp_oracle_zone_id are supported in this format: `shape_family="{shapeFamily}" AND gcp_oracle_zone_id="{gcp_oracle_zone_id}"`. |
 
-### `projects.locations.databaseCharacterSets`
+### `projects.locations.dbSystemShapes`
 
-#### `projects.locations.databaseCharacterSets.list()`
+#### `projects.locations.dbSystemShapes.list()`
 
-List DatabaseCharacterSets for the given project and location.
+Lists the database system shapes available for the project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDatabaseCharacterSets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabaseCharacterSets` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **character_set_type** field is supported in the following format: `character_set_type="{characterSetType}"`. Accepted values include `DATABASE` and `NATIONAL`. |
-| `params.parent` | `string` | Yes | Required. The parent value for DatabaseCharacterSets in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of DatabaseCharacterSets to return. The service may return fewer than this value. If unspecified, at most 50 DatabaseCharacterSets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent value for Database System Shapes in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 database system shapes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the gcp_oracle_zone_id field is supported in this format: `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`. |
 
 ### `projects.locations.autonomousDatabases`
+
+#### `projects.locations.autonomousDatabases.list()`
+
+Lists the Autonomous Databases in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous Database will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
+
+#### `projects.locations.autonomousDatabases.get()`
+
+Gets the details of a single Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
+
+#### `projects.locations.autonomousDatabases.create()`
+
+Creates a new Autonomous Database in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
+| `params.autonomousDatabaseId` | `string` | No | Required. The ID of the Autonomous Database to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autonomousDatabases.patch()`
+
+Updates the parameters of a single Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the Autonomous Database resource in the following format: projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autonomousDatabases.delete()`
 
@@ -459,12 +291,30 @@ Deletes a single Autonomous Database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Required. The name of the resource in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.autonomousDatabases.restore()`
+
+Restores a single Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autonomousDatabases.generateWallet()`
 
 Generates a wallet for an Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autonomousDatabases.stop()`
+
+Stops an Autonomous Database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -480,67 +330,9 @@ Starts an Autonomous Database.
 | `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.autonomousDatabases.list()`
-
-Lists the Autonomous Databases in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
-| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous Database will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
-
-#### `projects.locations.autonomousDatabases.get()`
-
-Gets the details of a single Autonomous Database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
-
-#### `projects.locations.autonomousDatabases.stop()`
-
-Stops an Autonomous Database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.autonomousDatabases.restart()`
 
 Restarts an Autonomous Database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.autonomousDatabases.failover()`
-
-Initiates a failover to target autonomous database from the associated primary database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.autonomousDatabases.patch()`
-
-Updates the parameters of a single Autonomous Database.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Identifier. The name of the Autonomous Database resource in the following format: projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.autonomousDatabases.restore()`
-
-Restores a single Autonomous Database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -556,28 +348,52 @@ Initiates a switchover of specified autonomous database to the associated peer d
 | `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.autonomousDatabases.create()`
+#### `projects.locations.autonomousDatabases.failover()`
 
-Creates a new Autonomous Database in a given project and location.
+Initiates a failover to target autonomous database from the associated primary database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.autonomousDatabaseId` | `string` | No | Required. The ID of the Autonomous Database to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
-| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
+| `params.name` | `string` | Yes | Required. The name of the Autonomous Database in the following format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.dbSystemInitialStorageSizes`
+### `projects.locations.autonomousDbVersions`
 
-#### `projects.locations.dbSystemInitialStorageSizes.list()`
+#### `projects.locations.autonomousDbVersions.list()`
 
-Lists all the DbSystemInitialStorageSizes for the given project and location.
+Lists all the available Autonomous Database versions for a project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
-| `params.parent` | `string` | Yes | Required. The parent value for the DbSystemInitialStorageSize resource with the format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbSystemInitialStorageSizes will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Versions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+### `projects.locations.autonomousDatabaseCharacterSets`
+
+#### `projects.locations.autonomousDatabaseCharacterSets.list()`
+
+Lists Autonomous Database Character Sets in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the Autonomous Database in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Character Sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **character_set_type** field is supported in the following format: `character_set_type="{characterSetType}"`. Accepted values include `DATABASE` and `NATIONAL`. |
+
+### `projects.locations.autonomousDatabaseBackups`
+
+#### `projects.locations.autonomousDatabaseBackups.list()`
+
+Lists the long-term and automatic backups of an Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for ListAutonomousDatabaseBackups in the following format: projects/{project}/locations/{location}. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **autonomous_database_id** field is supported in the following format: `autonomous_database_id="{autonomous_database_id}"`. The accepted values must be a valid Autonomous Database ID, limited to the naming restrictions of the ID: ^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). The ID must start with a letter, end with a letter or a number, and be a maximum of 63 characters. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 Autonomous DB Backups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
 ### `projects.locations.odbNetworks`
 
@@ -587,10 +403,10 @@ Lists the ODB Networks in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 | `params.parent` | `string` | Yes | Required. The parent value for the ODB Network in the following format: projects/{project}/locations/{location}. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ODB Networks will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 | `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
 
 #### `projects.locations.odbNetworks.get()`
@@ -607,9 +423,9 @@ Creates a new ODB Network in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.parent` | `string` | Yes | Required. The parent value for the OdbNetwork in the following format: projects/{project}/locations/{location}. |
 | `params.odbNetworkId` | `string` | No | Required. The ID of the OdbNetwork to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.odbNetworks.delete()`
@@ -618,8 +434,8 @@ Deletes a single ODB Network.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Required. The name of the resource in the following format: projects/{project}/locations/{location}/odbNetworks/{odb_network}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 ### `projects.locations.odbNetworks.odbSubnets`
 
@@ -629,10 +445,10 @@ Lists all the ODB Subnets in a given ODB Network.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 | `params.parent` | `string` | Yes | Required. The parent value for the OdbSubnet in the following format: projects/{project}/locations/{location}/odbNetworks/{odb_network}. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ODB Networks will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
 | `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
 
 #### `projects.locations.odbNetworks.odbSubnets.get()`
@@ -660,54 +476,74 @@ Deletes a single ODB Subnet.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Required. The name of the resource in the following format: projects/{project}/locations/{region}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}. |
-
-### `projects.locations.cloudVmClusters`
-
-#### `projects.locations.cloudVmClusters.list()`
-
-Lists the VM Clusters in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying the page of results the server returns. |
-| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
-| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
-| `params.pageSize` | `integer` | No | Optional. The number of VM clusters to return. If unspecified, at most 50 VM clusters will be returned. The maximum value is 1,000. |
-
-#### `projects.locations.cloudVmClusters.get()`
-
-Gets details of a single VM Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Cloud VM Cluster in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}. |
-
-#### `projects.locations.cloudVmClusters.create()`
-
-Creates a new VM Cluster in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.cloudVmClusterId` | `string` | No | Required. The ID of the VM Cluster to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
-| `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
+
+### `projects.locations.exadbVmClusters`
+
+#### `projects.locations.exadbVmClusters.list()`
+
+Lists all the Exadb (Exascale) VM Clusters for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for ExadbVmClusters in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ExadbVmClusters will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
+
+#### `projects.locations.exadbVmClusters.get()`
+
+Gets details of a single Exadb (Exascale) VM Cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
+
+#### `projects.locations.exadbVmClusters.create()`
+
+Creates a new Exadb (Exascale) VM Cluster resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The value for parent of the ExadbVmCluster in the following format: projects/{project}/locations/{location}. |
+| `params.exadbVmClusterId` | `string` | No | Required. The ID of the ExadbVmCluster to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.cloudVmClusters.delete()`
+#### `projects.locations.exadbVmClusters.delete()`
 
-Deletes a single VM Cluster.
+Deletes a single Exadb (Exascale) VM Cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Cloud VM Cluster in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}. |
+| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
 | `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.force` | `boolean` | No | Optional. If set to true, all child resources for the VM Cluster will be deleted. A VM Cluster can only be deleted once all its child resources have been deleted. |
 
-### `projects.locations.cloudVmClusters.dbNodes`
+#### `projects.locations.exadbVmClusters.patch()`
 
-#### `projects.locations.cloudVmClusters.dbNodes.list()`
+Updates a single Exadb (Exascale) VM Cluster. To add virtual machines to existing exadb vm cluster, only pass the node count.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the ExadbVmCluster resource in the following format: projects/{project}/locations/{region}/exadbVmClusters/{exadb_vm_cluster} |
+| `params.updateMask` | `string` | No | Optional. A mask specifying which fields in th VM Cluster should be updated. A field specified in the mask is overwritten. If a mask isn't provided then all the fields in the VM Cluster are overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.exadbVmClusters.removeVirtualMachine()`
+
+Removes virtual machines from an existing exadb vm cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ExadbVmCluster in the following format: projects/{project}/locations/{location}/exadbVmClusters/{exadb_vm_cluster}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.exadbVmClusters.dbNodes`
+
+#### `projects.locations.exadbVmClusters.dbNodes.list()`
 
 Lists the database nodes of a VM Cluster.
 
@@ -716,3 +552,404 @@ Lists the database nodes of a VM Cluster.
 | `params.parent` | `string` | Yes | Required. The parent value for database node in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}. . |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 db nodes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the node should return. |
+
+### `projects.locations.exascaleDbStorageVaults`
+
+#### `projects.locations.exascaleDbStorageVaults.list()`
+
+Lists all the ExascaleDB Storage Vaults for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 ExascaleDbStorageVaults will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Filter the list as specified in https://google.aip.dev/160. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. Order results as specified in https://google.aip.dev/132. |
+
+#### `projects.locations.exascaleDbStorageVaults.get()`
+
+Gets details of a single ExascaleDB Storage Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}. |
+
+#### `projects.locations.exascaleDbStorageVaults.create()`
+
+Creates a new ExascaleDB Storage Vault resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The value for parent of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}. |
+| `params.exascaleDbStorageVaultId` | `string` | No | Required. The ID of the ExascaleDbStorageVault to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.exascaleDbStorageVaults.delete()`
+
+Deletes a single ExascaleDB Storage Vault.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ExascaleDbStorageVault in the following format: projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.dbSystemInitialStorageSizes`
+
+#### `projects.locations.dbSystemInitialStorageSizes.list()`
+
+Lists all the DbSystemInitialStorageSizes for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the DbSystemInitialStorageSize resource with the format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbSystemInitialStorageSizes will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
+
+### `projects.locations.databases`
+
+#### `projects.locations.databases.list()`
+
+Lists all the Databases for the given project, location and DbSystem.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name in the following format: projects/{project}/locations/{region} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 Databases will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. list for container databases is supported only with a valid dbSystem (full resource name) filter in this format: `dbSystem="projects/{project}/locations/{location}/dbSystems/{dbSystemId}"` |
+
+#### `projects.locations.databases.get()`
+
+Gets details of a single Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Database resource in the following format: projects/{project}/locations/{region}/databases/{database} |
+
+### `projects.locations.pluggableDatabases`
+
+#### `projects.locations.pluggableDatabases.list()`
+
+Lists all the PluggableDatabases for the given project, location and Container Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of PluggableDatabases. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of PluggableDatabases to return. The service may return fewer than this value. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPluggableDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPluggableDatabases` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. List for pluggable databases is supported only with a valid container database (full resource name) filter in this format: `database="projects/{project}/locations/{location}/databases/{database}"` |
+
+#### `projects.locations.pluggableDatabases.get()`
+
+Gets details of a single PluggableDatabase.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the PluggableDatabase resource in the following format: projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database} |
+
+### `projects.locations.dbSystems`
+
+#### `projects.locations.dbSystems.list()`
+
+Lists all the DbSystems for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for DbSystems in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 DbSystems will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
+
+#### `projects.locations.dbSystems.get()`
+
+Gets details of a single DbSystem.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the DbSystem in the following format: projects/{project}/locations/{location}/dbSystems/{db_system}. |
+
+#### `projects.locations.dbSystems.create()`
+
+Creates a new DbSystem in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The value for parent of the DbSystem in the following format: projects/{project}/locations/{location}. |
+| `params.dbSystemId` | `string` | No | Required. The ID of the DbSystem to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dbSystems.delete()`
+
+Deletes a single DbSystem.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the DbSystem in the following format: projects/{project}/locations/{location}/dbSystems/{db_system}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.goldengateDeployments`
+
+#### `projects.locations.goldengateDeployments.list()`
+
+Lists all the GoldengateDeployments for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for GoldengateDeployments in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 GoldengateDeployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListGoldengateDeployments call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
+
+#### `projects.locations.goldengateDeployments.get()`
+
+Gets details of a single GoldengateDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateDeployment in the following format: projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}. |
+
+#### `projects.locations.goldengateDeployments.create()`
+
+Creates a new GoldengateDeployment in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The value for parent of the GoldengateDeployment in the following format: projects/{project}/locations/{location}. |
+| `params.goldengateDeploymentId` | `string` | No | Required. The ID of the GoldengateDeployment to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.goldengateDeployments.delete()`
+
+Deletes a single GoldengateDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateDeployment in the following format: projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.goldengateDeployments.stop()`
+
+Stops a single GoldengateDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Goldengate Deployment in the following format: projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.goldengateDeployments.start()`
+
+Starts a single GoldengateDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Goldengate Deployment in the following format: projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.goldengateConnections`
+
+#### `projects.locations.goldengateConnections.list()`
+
+Lists all the GoldengateConnections for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for GoldengateConnections in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 GoldengateConnections will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListGoldengateConnections call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. |
+| `params.orderBy` | `string` | No | Optional. An expression for ordering the results of the request. |
+
+#### `projects.locations.goldengateConnections.get()`
+
+Gets details of a single GoldengateConnection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateConnection in the following format: projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}. |
+
+#### `projects.locations.goldengateConnections.create()`
+
+Creates a new GoldengateConnection in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The value for parent of the GoldengateConnection in the following format: projects/{project}/locations/{location}. |
+| `params.goldengateConnectionId` | `string` | No | Required. The ID of the GoldengateConnection to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.goldengateConnections.delete()`
+
+Deletes a single GoldengateConnection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateConnection in the following format: projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.goldengateDeploymentVersions`
+
+#### `projects.locations.goldengateDeploymentVersions.get()`
+
+Gets details of a single GoldengateDeploymentVersion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateDeploymentVersion to retrieve. Format: projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version} |
+
+#### `projects.locations.goldengateDeploymentVersions.list()`
+
+Lists GoldengateDeploymentVersions in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListGoldengateDeploymentVersionsRequest Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Either the deployment_id and deployment_type fields must be specified in the format: `deployment_id="id"` or `deployment_type="DATABASE_ORACLE"`. |
+
+### `projects.locations.goldengateDeploymentTypes`
+
+#### `projects.locations.goldengateDeploymentTypes.get()`
+
+Gets details of a single GoldenGateDeploymentType.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateDeploymentType to retrieve. Format: projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type} |
+
+#### `projects.locations.goldengateDeploymentTypes.list()`
+
+Lists GoldenGateDeploymentTypes in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Either the deployment_type and ogg_version fields must be specified in the format: `deployment_type="DATABASE_ORACLE"` or `ogg_version="version"`. Allowed values for deployment_type are: `DATABASE_ORACLE`, `BIGDATA`, `DATABASE_MICROSOFT_SQLSERVER`, `DATABASE_MYSQL`, `DATABASE_POSTGRESQL`, `DATABASE_DB2ZOS`, `DATABASE_DB2I`, `GGSA`, `DATA_TRANSFORMS`. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+
+### `projects.locations.goldengateDeploymentEnvironments`
+
+#### `projects.locations.goldengateDeploymentEnvironments.get()`
+
+Gets details of a single GoldengateDeploymentEnvironment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource with the format: projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment} |
+
+#### `projects.locations.goldengateDeploymentEnvironments.list()`
+
+Lists GoldengateDeploymentEnvironments in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of GoldengateDeploymentEnvironments. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, at most 50 deployment environments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+### `projects.locations.goldengateConnectionTypes`
+
+#### `projects.locations.goldengateConnectionTypes.get()`
+
+Gets details of a single GoldengateConnectionType.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type} |
+
+#### `projects.locations.goldengateConnectionTypes.list()`
+
+Lists GoldengateConnectionTypes in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListGoldengateConnectionTypesRequest Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. The connection_type field must be specified in the format: `connection_type="ORACLE"`. |
+
+### `projects.locations.dbVersions`
+
+#### `projects.locations.dbVersions.list()`
+
+List DbVersions for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the DbVersion resource with the format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If unspecified, a maximum of 50 DbVersions will be returned. The maximum value is 1000; values above 1000 will be reset to 1000. |
+| `params.pageToken` | `string` | No | Optional. A token identifying the requested page of results to return. All fields except the filter should remain the same as in the request that provided this page token. |
+| `params.filter` | `string` | No | Optional. Filter expression that matches a subset of the DbVersions to show. The supported filter for dbSystem creation is `db_system_shape = {db_system_shape} AND storage_management = {storage_management}`. If no filter is provided, all DbVersions will be returned. |
+
+### `projects.locations.databaseCharacterSets`
+
+#### `projects.locations.databaseCharacterSets.list()`
+
+List DatabaseCharacterSets for the given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for DatabaseCharacterSets in the following format: projects/{project}/locations/{location}. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of DatabaseCharacterSets to return. The service may return fewer than this value. If unspecified, at most 50 DatabaseCharacterSets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDatabaseCharacterSets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabaseCharacterSets` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. An expression for filtering the results of the request. Only the **character_set_type** field is supported in the following format: `character_set_type="{characterSetType}"`. Accepted values include `DATABASE` and `NATIONAL`. |
+
+### `projects.locations.goldengateConnectionAssignments`
+
+#### `projects.locations.goldengateConnectionAssignments.list()`
+
+Lists GoldengateConnectionAssignments in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent value for the GoldengateConnectionAssignments. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of GoldengateConnectionAssignments to return. The service may return fewer than this value. If unspecified, at most 50 GoldengateConnectionAssignments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListGoldengateConnectionAssignments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGoldengateConnectionAssignments` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. A filter expression that filters GoldengateConnectionAssignments listed in the response. |
+| `params.orderBy` | `string` | No | Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "DESC" after a field name for descending. |
+
+#### `projects.locations.goldengateConnectionAssignments.get()`
+
+Gets details of a single GoldengateConnectionAssignment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateConnectionAssignment to retrieve. Format: projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment} |
+
+#### `projects.locations.goldengateConnectionAssignments.create()`
+
+Creates a new GoldengateConnectionAssignment in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this GoldengateConnectionAssignment will be created. Format: projects/{project}/locations/{location} |
+| `params.goldengateConnectionAssignmentId` | `string` | No | Required. The ID of the GoldengateConnectionAssignment to create. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.goldengateConnectionAssignments.delete()`
+
+Deletes a single GoldengateConnectionAssignment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the GoldengateConnectionAssignment to delete. Format: projects/{project}/locations/{location}/goldengateConnectionAssignments/{goldengate_connection_assignment} |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.goldengateConnectionAssignments.test()`
+
+Tests a single GoldengateConnectionAssignment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the connection assignment for which to test connection. projects/{project}/locations/{region}/goldengateConnectionAssignments/{goldengate_connection_assignment} |
+| `params.requestBody` | `object` | Yes | The request body. |
