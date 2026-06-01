@@ -24,9 +24,9 @@ class Vpcaccess {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the [ListLocationsRequest.name] field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -66,26 +66,6 @@ class Vpcaccess {
     this.projects.locations.connectors = {};
 
     /**
-     * Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of a Serverless VPC Access connector to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of a Serverless VPC Access connector to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Creates a Serverless VPC Access connector, returns an operation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.connectorId - Required. The ID to use for this connector.
@@ -110,6 +90,16 @@ class Vpcaccess {
     this.projects.locations.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Gets a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of a Serverless VPC Access connector to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists Serverless VPC Access connectors.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Maximum number of functions to return per call.
@@ -120,6 +110,16 @@ class Vpcaccess {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectors', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a Serverless VPC Access connector. Returns NOT_FOUND if the resource does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of a Serverless VPC Access connector to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
