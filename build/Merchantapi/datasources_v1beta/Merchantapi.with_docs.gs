@@ -24,26 +24,14 @@ class Merchantapi {
     this.accounts.dataSources = {};
 
     /**
-     * Deletes a data source from your Merchant Center account.
+     * Retrieves the data source configuration for the given account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {string} apiParams.name - (Required) Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
-     * @param {string} apiParams.updateMask - Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the configurations for data sources for the given account.
@@ -58,16 +46,6 @@ class Merchantapi {
     this.accounts.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'GET', apiParams, clientConfig);
 
     /**
-     * Retrieves the data source configuration for the given account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Creates the new data source configuration for the given account. This method always creates a new data source.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The account where this data source will be created. Format: `accounts/{account}`
@@ -77,6 +55,28 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.dataSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {string} apiParams.updateMask - Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a data source from your Merchant Center account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
