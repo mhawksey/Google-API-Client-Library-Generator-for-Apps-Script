@@ -19,11 +19,11 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.urls = {};
-    this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
-
     this.hashes = {};
     this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
+
+    this.urls = {};
+    this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
 
     this.hashLists = {};
     this.hashLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists', 'GET', apiParams, clientConfig);
