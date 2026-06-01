@@ -36,14 +36,16 @@ class Monitoring {
     this.projects.dashboards = {};
 
     /**
-     * Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
+     * Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID] (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] (for custom dashboards).
+     * @param {string} apiParams.parent - (Required) Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
+     * @param {boolean} apiParams.validateOnly - If set, validate the request and preview the review, but do not actually save it.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.dashboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.dashboards.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'POST', apiParams, clientConfig);
 
     /**
      * Lists the existing dashboards.This method requires the monitoring.dashboards.list permission on the specified project. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
@@ -58,6 +60,16 @@ class Monitoring {
     this.projects.dashboards.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'GET', apiParams, clientConfig);
 
     /**
+     * Fetches a specific dashboard.This method requires the monitoring.dashboards.get permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID] (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] (for custom dashboards).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.dashboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Deletes an existing custom dashboard.This method requires the monitoring.dashboards.delete permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the Dashboard. The format is: projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID]
@@ -66,18 +78,6 @@ class Monitoring {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.dashboards.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name.
-     * @param {boolean} apiParams.validateOnly - If set, validate the request and preview the review, but do not actually save it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.dashboards.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'POST', apiParams, clientConfig);
 
     /**
      * Replaces an existing custom dashboard with a new definition.This method requires the monitoring.dashboards.update permission on the specified dashboard. For more information, see Cloud Identity and Access Management (https://cloud.google.com/iam).
@@ -100,7 +100,7 @@ class Monitoring {
     this.projects.location.prometheus.api.v1 = {};
 
     /**
-     * Lists exemplars relevant to a given PromQL query,
+     * Evaluate a PromQL query at a single point in time.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.location - (Required) Location of the resource information. Has to be "global" now.
      * @param {string} apiParams.name - (Required) Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine.
@@ -109,19 +109,7 @@ class Monitoring {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.location.prometheus.api.v1.query_exemplars = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/query_exemplars', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists labels for metrics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.location - (Required) Location of the resource information. Has to be "global" now.
-     * @param {string} apiParams.name - (Required) Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.location.prometheus.api.v1.labels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/labels', 'POST', apiParams, clientConfig);
+    this.projects.location.prometheus.api.v1.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/query', 'POST', apiParams, clientConfig);
 
     /**
      * Evaluate a PromQL query with start, end time range.
@@ -136,6 +124,18 @@ class Monitoring {
     this.projects.location.prometheus.api.v1.query_range = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/query_range', 'POST', apiParams, clientConfig);
 
     /**
+     * Lists labels for metrics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.location - (Required) Location of the resource information. Has to be "global" now.
+     * @param {string} apiParams.name - (Required) Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.location.prometheus.api.v1.labels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/labels', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists metadata for metrics.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.location - (Required) Location of the resource information. Has to be "global" for now.
@@ -148,7 +148,7 @@ class Monitoring {
     this.projects.location.prometheus.api.v1.series = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/series', 'POST', apiParams, clientConfig);
 
     /**
-     * Evaluate a PromQL query at a single point in time.
+     * Lists exemplars relevant to a given PromQL query,
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.location - (Required) Location of the resource information. Has to be "global" now.
      * @param {string} apiParams.name - (Required) Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine.
@@ -157,7 +157,7 @@ class Monitoring {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.location.prometheus.api.v1.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/query', 'POST', apiParams, clientConfig);
+    this.projects.location.prometheus.api.v1.query_exemplars = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/location/{location}/prometheus/api/v1/query_exemplars', 'POST', apiParams, clientConfig);
 
     this.projects.location.prometheus.api.v1.label = {};
 
@@ -198,16 +198,6 @@ class Monitoring {
     this.locations.global.metricsScopes = {};
 
     /**
-     * Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The metrics scope representing the specified monitored project will always be the first entry in the response.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.monitoredResourceContainer - Required. The resource name of the Monitored Project being requested. Example: projects/{MONITORED_PROJECT_ID_OR_NUMBER}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.global.metricsScopes.listMetricsScopesByMonitoredProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/locations/global/metricsScopes:listMetricsScopesByMonitoredProject', 'GET', apiParams, clientConfig);
-
-    /**
      * Returns a specific Metrics Scope, including the list of projects monitored by the specified Metrics Scope.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the Metrics Scope. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
@@ -217,17 +207,17 @@ class Monitoring {
      */
     this.locations.global.metricsScopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.locations.global.metricsScopes.projects = {};
-
     /**
-     * Deletes a MonitoredProject from the specified Metrics Scope.
+     * Returns a list of every Metrics Scope that a specific MonitoredProject has been added to. The metrics scope representing the specified monitored project will always be the first entry in the response.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the MonitoredProject. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}Authorization requires the following Google IAM (https://cloud.google.com/iam) permissions on both the Metrics Scope and on the MonitoredProject: monitoring.metricsScopes.link
+     * @param {string} apiParams.monitoredResourceContainer - Required. The resource name of the Monitored Project being requested. Example: projects/{MONITORED_PROJECT_ID_OR_NUMBER}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.locations.global.metricsScopes.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.global.metricsScopes.listMetricsScopesByMonitoredProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/locations/global/metricsScopes:listMetricsScopesByMonitoredProject', 'GET', apiParams, clientConfig);
+
+    this.locations.global.metricsScopes.projects = {};
 
     /**
      * Adds a MonitoredProject with the given project ID to the specified Metrics Scope.
@@ -239,6 +229,16 @@ class Monitoring {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.global.metricsScopes.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/projects', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a MonitoredProject from the specified Metrics Scope.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the MonitoredProject. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}Authorization requires the following Google IAM (https://cloud.google.com/iam) permissions on both the Metrics Scope and on the MonitoredProject: monitoring.metricsScopes.link
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.global.metricsScopes.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
