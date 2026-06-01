@@ -19,18 +19,6 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.urls = {};
-
-    /**
-     * Searches for URLs matching known threats. Each URL and it's host-suffix and path-prefix expressions (up to a limited depth) are checked. This means that the response may contain URLs that were not included in the request, but are expressions of the requested URLs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.urls - Required. The URLs to be looked up. Clients MUST NOT send more than 50 URLs.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
-
     this.hashes = {};
 
     /**
@@ -42,6 +30,18 @@ class Safebrowsing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
+
+    this.urls = {};
+
+    /**
+     * Searches for URLs matching known threats. Each URL and it's host-suffix and path-prefix expressions (up to a limited depth) are checked. This means that the response may contain URLs that were not included in the request, but are expressions of the requested URLs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.urls - Required. The URLs to be looked up. Clients MUST NOT send more than 50 URLs.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
 
     this.hashLists = {};
 
