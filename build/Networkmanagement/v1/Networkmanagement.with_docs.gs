@@ -200,6 +200,193 @@ class Networkmanagement {
      */
     this.projects.locations.global.connectivityTests.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.networkMonitoringProviders = {};
+
+    /**
+     * Lists NetworkMonitoringProviders for a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkMonitoringProviders', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the NetworkMonitoringProvider resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a NetworkMonitoringProvider resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkMonitoringProviderId - Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final component of the NetworkMonitoringProvider resource's name.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for CreateNetworkMonitoringProviderRequest. Format: projects/{project}/locations/{location}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkMonitoringProviders', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a NetworkMonitoringProvider resource and all of its child resources.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - Optional. If set to true, any nested MonitoringPoints, NetworkPaths and WebPaths resources from this NetworkMonitoringProvider will also be deleted. Otherwise, the request will only work if there are no nested resources.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Generates a provider access token for a given Google access token. Provider access token is a short-lived token that is used to access resources in the provider's platform.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.gcpAccessToken - Required. Google access token.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.generateProviderAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateProviderAccessToken', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates Monitoring Point configuration of a NetworkMonitoringProvider resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {boolean} apiParams.privateConnectivityEnabled - Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.generateMonitoringPointConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateMonitoringPointConfig', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.monitoringPoints = {};
+
+    /**
+     * Downloads an install script for MonitoringPoints for a given network monitoring provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams._password - Optional. Password for logging into the MonitoringPoint.
+     * @param {string} apiParams.hostname - Required. The hostname of the MonitoringPoint, e.g. "test-vm"
+     * @param {string} apiParams.monitoringPointType - Required. The type of the monitoring point.
+     * @param {string} apiParams.ntpServerAddress - Optional. Network Time Protocol a user can configure. If the user omits the field, the default is either NTP servers provided in the DHCP lease or a set of well-known NTP servers pre-configured on the monitoring point. This field can be an IP address or FQDN.
+     * @param {string} apiParams.ntpServerSecondaryAddress - Optional. Second NTP server.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for DownloadInstallScriptRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {boolean} apiParams.privateConnectivityEnabled - Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs.
+     * @param {string} apiParams.staticIpAddress.dnsServerAddress - Required. DNS server.
+     * @param {string} apiParams.staticIpAddress.dnsServerSecondaryAddress - Optional. Second DNS server.
+     * @param {string} apiParams.staticIpAddress.domain - Optional. Domain name of the MonitoringPoint.
+     * @param {string} apiParams.staticIpAddress.gatewayAddress - Required. Gateway IP address. Example: "100.80.40.1".
+     * @param {string} apiParams.staticIpAddress.ipAddress - Required. IP address of the MonitoringPoint.
+     * @param {string} apiParams.staticIpAddress.netmask - Optional. Networkmask and CIDR range. Example: "255.255.255.0/24"
+     * @param {string} apiParams.timeZone.id - IANA Time Zone Database time zone. For example "America/New_York".
+     * @param {string} apiParams.timeZone.version - Optional. IANA Time Zone Database version number. For example "2019a".
+     * @param {boolean} apiParams.useDhcp - Optional. Dynamic Host Configuration Protocol, is a network management protocol that automatically assigns IP addresses and other network configuration parameters to devices connecting to a network.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints:downloadInstallScript', 'GET', apiParams, clientConfig);
+
+    /**
+     * Downloads an install script for a specific Container MonitoringPoint.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.hostname - Optional. The hostname of the MonitoringPoint, e.g. "test-vm"
+     * @param {string} apiParams.name - (Required) Required. Resource name of the MonitoringPoint. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadRecreateInstallScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:downloadRecreateInstallScript', 'GET', apiParams, clientConfig);
+
+    /**
+     * Downloads the server connect configuration for a given network monitoring provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for DownloadServerConnectConfigRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadServerConnectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints:downloadServerConnectConfig', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists MonitoringPoints for a given network monitoring provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListMonitoringPointsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the MonitoringPoint resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.networkPaths = {};
+
+    /**
+     * Lists NetworkPaths for a given network monitoring provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of network paths to return. The service may return fewer than this value. If unspecified, at most 20 network pathswill be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListNetworkPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNetworkPaths` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListNetworkPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.networkPaths.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPaths', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the NetworkPath resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.networkPaths.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.webPaths = {};
+
+    /**
+     * Lists WebPaths for a given network monitoring provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of web paths to return. The service may return fewer than this value. If unspecified, at most 20 web paths will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListWebPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWebPaths` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListWebPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.webPaths.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webPaths', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the WebPath resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource.. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.networkMonitoringProviders.webPaths.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.vpcFlowLogsConfigs = {};
 
     /**
