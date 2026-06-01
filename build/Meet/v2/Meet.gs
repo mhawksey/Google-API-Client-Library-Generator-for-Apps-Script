@@ -20,9 +20,9 @@ class Meet {
 
 
     this.spaces = {};
-    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/spaces', 'POST', apiParams, clientConfig);
     this.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.spaces.endActiveConference = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:endActiveConference', 'POST', apiParams, clientConfig);
 
     this.conferenceRecords = {};
