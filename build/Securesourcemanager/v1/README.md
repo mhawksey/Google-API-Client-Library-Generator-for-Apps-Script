@@ -4,8 +4,8 @@ Auto-generated client library for using the **Secure Source Manager API (version
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:27:47 GMT
-- **Last Modified:** Fri, 01 May 2026 00:27:47 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:15:10 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:15:10 GMT
 - **Created:** Mon, 04 Aug 2025 20:45:42 GMT
 
 
@@ -18,14 +18,6 @@ Auto-generated client library for using the **Secure Source Manager API (version
 
 ### `projects.locations`
 
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
 #### `projects.locations.list()`
 
 Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
@@ -37,10 +29,18 @@ Lists information about the supported locations for this service. This method li
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+
+#### `projects.locations.get()`
+
+Gets information about a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.instances`
 
@@ -53,44 +53,14 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.list()`
-
-Lists Instances in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListInstancesRequest. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
-| `params.filter` | `string` | No | Optional. Filter for filtering results. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-
-#### `projects.locations.instances.get()`
-
-Gets details of a single instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
 #### `projects.locations.instances.getIamPolicy()`
 
 Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-
-#### `projects.locations.instances.delete()`
-
-Deletes a single instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.force` | `boolean` | No | Optional. If set to true, will force the deletion of the instance. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
 
 #### `projects.locations.instances.testIamPermissions()`
 
@@ -100,6 +70,26 @@ Returns permissions that a caller has on the specified resource. If the resource
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.instances.list()`
+
+Lists Instances in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListInstancesRequest. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. Filter for filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+
+#### `projects.locations.instances.get()`
+
+Gets details of a single instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
 
 #### `projects.locations.instances.create()`
 
@@ -112,15 +102,29 @@ Creates a new instance in a given project and location.
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.operations`
+#### `projects.locations.instances.delete()`
 
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+Deletes a single instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to true, will force the deletion of the instance. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -130,17 +134,13 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.operations.list()`
+#### `projects.locations.operations.delete()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 #### `projects.locations.operations.cancel()`
 
@@ -153,34 +153,34 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `projects.locations.repositories`
 
-#### `projects.locations.repositories.fetchBlob()`
-
-Fetches a blob from a repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.repository` | `string` | Yes | Required. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. Specifies the repository containing the blob. |
-| `params.sha` | `string` | No | Required. The SHA-1 hash of the blob to retrieve. |
-
 #### `projects.locations.repositories.list()`
 
 Lists Repositories in a given project and location. The instance field is required in the query parameter for requests using the securesourcemanager.googleapis.com endpoint.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
 | `params.parent` | `string` | Yes | Required. Parent value for ListRepositoriesRequest. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 | `params.filter` | `string` | No | Optional. Filter results. |
 | `params.instance` | `string` | No | Optional. The name of the instance in which the repository is hosted, formatted as `projects/{project_number}/locations/{location_id}/instances/{instance_id}`. When listing repositories via securesourcemanager.googleapis.com, this field is required. When listing repositories via *.sourcemanager.dev, this field is ignored. |
 
-#### `projects.locations.repositories.setIamPolicy()`
+#### `projects.locations.repositories.get()`
 
-Set IAM policy on a repository.
+Gets metadata of a repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.name` | `string` | Yes | Required. Name of the repository to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. |
+
+#### `projects.locations.repositories.create()`
+
+Creates a new repository in a given project and location. The Repository.Instance field is required in the request body for requests using the securesourcemanager.googleapis.com endpoint.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project in which to create the repository. Values are of the form `projects/{project_number}/locations/{location_id}` |
+| `params.repositoryId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.patch()`
@@ -200,17 +200,25 @@ Deletes a Repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the repository is not found, the request will succeed but no action will be taken on the server. |
 | `params.name` | `string` | Yes | Required. Name of the repository to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the repository is not found, the request will succeed but no action will be taken on the server. |
 
-#### `projects.locations.repositories.create()`
+#### `projects.locations.repositories.getIamPolicy()`
 
-Creates a new repository in a given project and location. The Repository.Instance field is required in the request body for requests using the securesourcemanager.googleapis.com endpoint.
+Get IAM policy for a repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.repositoryId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
-| `params.parent` | `string` | Yes | Required. The project in which to create the repository. Values are of the form `projects/{project_number}/locations/{location_id}` |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.repositories.setIamPolicy()`
+
+Set IAM policy on a repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.testIamPermissions()`
@@ -228,30 +236,80 @@ Fetches a tree from a repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, at most 10,000 items will be returned. |
-| `params.ref` | `string` | No | Optional. `ref` can be a SHA-1 hash, a branch name, or a tag. Specifies which tree to fetch. If not specified, the default branch will be used. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.recursive` | `boolean` | No | Optional. If true, include all subfolders and their files in the response. If false, only the immediate children are returned. |
 | `params.repository` | `string` | Yes | Required. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. Specifies the repository to fetch the tree from. |
+| `params.ref` | `string` | No | Optional. `ref` can be a SHA-1 hash, a branch name, or a tag. Specifies which tree to fetch. If not specified, the default branch will be used. |
+| `params.recursive` | `boolean` | No | Optional. If true, include all subfolders and their files in the response. If false, only the immediate children are returned. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, at most 10,000 items will be returned. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
-#### `projects.locations.repositories.get()`
+#### `projects.locations.repositories.fetchBlob()`
 
-Gets metadata of a repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the repository to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. |
-
-#### `projects.locations.repositories.getIamPolicy()`
-
-Get IAM policy for a repository.
+Fetches a blob from a repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.repository` | `string` | Yes | Required. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}`. Specifies the repository containing the blob. |
+| `params.sha` | `string` | No | Required. The SHA-1 hash of the blob to retrieve. |
+
+### `projects.locations.repositories.hooks`
+
+#### `projects.locations.repositories.hooks.list()`
+
+Lists hooks in a given repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListHooksRequest. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+#### `projects.locations.repositories.hooks.get()`
+
+Gets metadata of a hook.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the hook to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. |
+
+#### `projects.locations.repositories.hooks.create()`
+
+Creates a new hook in a given repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The repository in which to create the hook. Values are of the form `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
+| `params.hookId` | `string` | No | Required. The ID to use for the hook, which will become the final component of the hook's resource name. This value restricts to lower-case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.repositories.hooks.patch()`
+
+Updates the metadata of a hook.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. A unique identifier for a Hook. The name should be of the format: `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}` |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the hook resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The special value "*" means full replacement. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.repositories.hooks.delete()`
+
+Deletes a Hook.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the hook to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. |
 
 ### `projects.locations.repositories.branchRules`
+
+#### `projects.locations.repositories.branchRules.create()`
+
+CreateBranchRule creates a branch rule in a given repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.branchRuleId` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.branchRules.list()`
 
@@ -259,18 +317,9 @@ ListBranchRules lists branch rules in a given repository.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
 | `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-
-#### `projects.locations.repositories.branchRules.delete()`
-
-DeleteBranchRule deletes a branch rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the branch rule is not found, the request will succeed but no action will be taken on the server. |
 
 #### `projects.locations.repositories.branchRules.get()`
 
@@ -291,17 +340,25 @@ UpdateBranchRule updates a branch rule.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the branchRule resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The special value "*" means full replacement. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.repositories.branchRules.create()`
+#### `projects.locations.repositories.branchRules.delete()`
 
-CreateBranchRule creates a branch rule in a given repository.
+DeleteBranchRule deletes a branch rule.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.branchRuleId` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes |  |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the branch rule is not found, the request will succeed but no action will be taken on the server. |
 
 ### `projects.locations.repositories.pullRequests`
+
+#### `projects.locations.repositories.pullRequests.create()`
+
+Creates a pull request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The repository that the pull request is created from. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.pullRequests.get()`
 
@@ -310,6 +367,16 @@ Gets a pull request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the pull request to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/pullRequests/{pull_request}`. |
+
+#### `projects.locations.repositories.pullRequests.list()`
+
+Lists pull requests in a repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The repository in which to list pull requests. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
 #### `projects.locations.repositories.pullRequests.patch()`
 
@@ -321,25 +388,14 @@ Updates a pull request.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the pull request resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The special value "*" means full replacement. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.repositories.pullRequests.list()`
+#### `projects.locations.repositories.pullRequests.merge()`
 
-Lists pull requests in a repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The repository in which to list pull requests. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
-
-#### `projects.locations.repositories.pullRequests.listFileDiffs()`
-
-Lists a pull request's file diffs.
+Merges a pull request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
-| `params.name` | `string` | Yes | Required. The pull request to list file diffs for. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
+| `params.name` | `string` | Yes | Required. The pull request to merge. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.pullRequests.open()`
 
@@ -348,24 +404,6 @@ Opens a pull request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The pull request to open. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.pullRequests.create()`
-
-Creates a pull request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The repository that the pull request is created from. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.pullRequests.merge()`
-
-Merges a pull request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The pull request to merge. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.pullRequests.close()`
@@ -377,26 +415,17 @@ Closes a pull request without merging.
 | `params.name` | `string` | Yes | Required. The pull request to close. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.repositories.pullRequests.pullRequestComments`
+#### `projects.locations.repositories.pullRequests.listFileDiffs()`
 
-#### `projects.locations.repositories.pullRequests.pullRequestComments.batchCreate()`
-
-Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request.
+Lists a pull request's file diffs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The pull request in which to create the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.pullRequests.pullRequestComments.list()`
-
-Lists pull request comments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The pull request in which to list pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.name` | `string` | Yes | Required. The pull request to list file diffs for. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+### `projects.locations.repositories.pullRequests.pullRequestComments`
 
 #### `projects.locations.repositories.pullRequests.pullRequestComments.get()`
 
@@ -405,6 +434,25 @@ Gets a pull request comment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the pull request comment to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}`. |
+
+#### `projects.locations.repositories.pullRequests.pullRequestComments.list()`
+
+Lists pull request comments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The pull request in which to list pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+
+#### `projects.locations.repositories.pullRequests.pullRequestComments.create()`
+
+Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The pull request in which to create the pull request comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.pullRequests.pullRequestComments.patch()`
 
@@ -416,6 +464,23 @@ Updates a pull request comment.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the pull request comment resource by the update. Updatable fields are `body`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.repositories.pullRequests.pullRequestComments.delete()`
+
+Deletes a pull request comment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the pull request comment to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}`. |
+
+#### `projects.locations.repositories.pullRequests.pullRequestComments.batchCreate()`
+
+Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The pull request in which to create the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.repositories.pullRequests.pullRequestComments.resolve()`
 
 Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved.
@@ -425,14 +490,6 @@ Resolves pull request comments. A list of PullRequestComment names must be provi
 | `params.parent` | `string` | Yes | Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.repositories.pullRequests.pullRequestComments.delete()`
-
-Deletes a pull request comment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the pull request comment to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}/pullRequestComments/{comment_id}`. |
-
 #### `projects.locations.repositories.pullRequests.pullRequestComments.unresolve()`
 
 Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved.
@@ -440,63 +497,6 @@ Unresolves pull request comments. A list of PullRequestComment names must be pro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.pullRequests.pullRequestComments.create()`
-
-Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The pull request in which to create the pull request comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.repositories.hooks`
-
-#### `projects.locations.repositories.hooks.list()`
-
-Lists hooks in a given repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListHooksRequest. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
-
-#### `projects.locations.repositories.hooks.get()`
-
-Gets metadata of a hook.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the hook to retrieve. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. |
-
-#### `projects.locations.repositories.hooks.patch()`
-
-Updates the metadata of a hook.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. A unique identifier for a Hook. The name should be of the format: `projects/{project}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}` |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the hook resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The special value "*" means full replacement. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.hooks.delete()`
-
-Deletes a Hook.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the hook to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/hooks/{hook_id}`. |
-
-#### `projects.locations.repositories.hooks.create()`
-
-Creates a new hook in a given repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The repository in which to create the hook. Values are of the form `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
-| `params.hookId` | `string` | No | Required. The ID to use for the hook, which will become the final component of the hook's resource name. This value restricts to lower-case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.issues`
@@ -510,44 +510,6 @@ Creates an issue.
 | `params.parent` | `string` | Yes | Required. The repository in which to create the issue. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.repositories.issues.close()`
-
-Closes an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the issue to close. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.issues.open()`
-
-Opens an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the issue to open. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.issues.list()`
-
-Lists issues in a repository.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. Used to filter the resulting issues list. |
-| `params.parent` | `string` | Yes | Required. The repository in which to list issues. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
-
-#### `projects.locations.repositories.issues.delete()`
-
-Deletes an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.etag` | `string` | No | Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, deletion will be blocked and an ABORTED error will be returned. |
-| `params.name` | `string` | Yes | Required. Name of the issue to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
-
 #### `projects.locations.repositories.issues.get()`
 
 Gets an issue.
@@ -555,6 +517,17 @@ Gets an issue.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the issue to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}`. |
+
+#### `projects.locations.repositories.issues.list()`
+
+Lists issues in a repository.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The repository in which to list issues. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}` |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Optional. Used to filter the resulting issues list. |
 
 #### `projects.locations.repositories.issues.patch()`
 
@@ -566,17 +539,43 @@ Updates a issue.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the issue resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The special value "*" means full replacement. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.repositories.issues.issueComments`
+#### `projects.locations.repositories.issues.delete()`
 
-#### `projects.locations.repositories.issues.issueComments.list()`
-
-Lists comments in an issue.
+Deletes an issue.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The issue in which to list the comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}` |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.name` | `string` | Yes | Required. Name of the issue to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
+| `params.etag` | `string` | No | Optional. The current etag of the issue. If the etag is provided and does not match the current etag of the issue, deletion will be blocked and an ABORTED error will be returned. |
+
+#### `projects.locations.repositories.issues.open()`
+
+Opens an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the issue to open. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.repositories.issues.close()`
+
+Closes an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the issue to close. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.repositories.issues.issueComments`
+
+#### `projects.locations.repositories.issues.issueComments.create()`
+
+Creates an issue comment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The issue in which to create the issue comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.issues.issueComments.get()`
 
@@ -585,6 +584,16 @@ Gets an issue comment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the issue comment to retrieve. The format is `projects/{project}/locations/{location}/repositories/{repository}/issues/{issue_id}/issueComments/{comment_id}`. |
+
+#### `projects.locations.repositories.issues.issueComments.list()`
+
+Lists comments in an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The issue in which to list the comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}` |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. If unspecified, a default size of 30 will be used. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
 
 #### `projects.locations.repositories.issues.issueComments.patch()`
 
@@ -603,12 +612,3 @@ Deletes an issue comment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the issue comment to delete. The format is `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}/issueComments/{comment_id}`. |
-
-#### `projects.locations.repositories.issues.issueComments.create()`
-
-Creates an issue comment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The issue in which to create the issue comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/issues/{issue_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
