@@ -4,8 +4,8 @@ Auto-generated client library for using the **On-Demand Scanning API (version: v
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:16:19 GMT
-- **Last Modified:** Fri, 01 May 2026 00:16:19 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:05:39 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:05:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:25 GMT
 
 
@@ -19,6 +19,34 @@ Auto-generated client library for using the **On-Demand Scanning API (version: v
 ### `projects.locations`
 
 ### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 #### `projects.locations.operations.cancel()`
 
@@ -34,36 +62,8 @@ Waits until the specified long-running operation is done or reaches at most a sp
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
 ### `projects.locations.scans`
 
@@ -85,5 +85,5 @@ Lists vulnerabilities resulting from a successfully completed scan.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the collection of Vulnerabilities being requested. Format: projects/[project_name]/locations/[location]/scans/[scan_id] |
-| `params.pageToken` | `string` | No | The page token, resulting from a previous call to ListVulnerabilities. |
 | `params.pageSize` | `integer` | No | The number of vulnerabilities to retrieve. |
+| `params.pageToken` | `string` | No | The page token, resulting from a previous call to ListVulnerabilities. |
