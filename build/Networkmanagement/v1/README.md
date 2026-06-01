@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:15:26 GMT
-- **Last Modified:** Fri, 01 May 2026 00:15:26 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:05:08 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:05:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:01 GMT
 
 
@@ -168,6 +168,163 @@ Returns permissions that a caller has on the specified resource. If the resource
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.networkMonitoringProviders`
+
+#### `projects.locations.networkMonitoringProviders.list()`
+
+Lists NetworkMonitoringProviders for a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. |
+
+#### `projects.locations.networkMonitoringProviders.get()`
+
+Gets the NetworkMonitoringProvider resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}` |
+
+#### `projects.locations.networkMonitoringProviders.create()`
+
+Creates a NetworkMonitoringProvider resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for CreateNetworkMonitoringProviderRequest. Format: projects/{project}/locations/{location} |
+| `params.networkMonitoringProviderId` | `string` | No | Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final component of the NetworkMonitoringProvider resource's name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.networkMonitoringProviders.delete()`
+
+Deletes a NetworkMonitoringProvider resource and all of its child resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.force` | `boolean` | No | Optional. If set to true, any nested MonitoringPoints, NetworkPaths and WebPaths resources from this NetworkMonitoringProvider will also be deleted. Otherwise, the request will only work if there are no nested resources. |
+
+#### `projects.locations.networkMonitoringProviders.generateProviderAccessToken()`
+
+Generates a provider access token for a given Google access token. Provider access token is a short-lived token that is used to access resources in the provider's platform.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.gcpAccessToken` | `string` | No | Required. Google access token. |
+
+#### `projects.locations.networkMonitoringProviders.generateMonitoringPointConfig()`
+
+Generates Monitoring Point configuration of a NetworkMonitoringProvider resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.privateConnectivityEnabled` | `boolean` | No | Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. |
+
+### `projects.locations.networkMonitoringProviders.monitoringPoints`
+
+#### `projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript()`
+
+Downloads an install script for MonitoringPoints for a given network monitoring provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for DownloadInstallScriptRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.monitoringPointType` | `string` | No | Required. The type of the monitoring point. |
+| `params.hostname` | `string` | No | Required. The hostname of the MonitoringPoint, e.g. "test-vm" |
+| `params._password` | `string` | No | Optional. Password for logging into the MonitoringPoint. |
+| `params.timeZone.id` | `string` | No | IANA Time Zone Database time zone. For example "America/New_York". |
+| `params.timeZone.version` | `string` | No | Optional. IANA Time Zone Database version number. For example "2019a". |
+| `params.privateConnectivityEnabled` | `boolean` | No | Optional. For Google Cloud MPs, this field indicates whether the Monitoring Point is deployed in a Private Service Connect deployment. Not used for non-Google Cloud MPs. |
+| `params.useDhcp` | `boolean` | No | Optional. Dynamic Host Configuration Protocol, is a network management protocol that automatically assigns IP addresses and other network configuration parameters to devices connecting to a network. |
+| `params.staticIpAddress.ipAddress` | `string` | No | Required. IP address of the MonitoringPoint. |
+| `params.staticIpAddress.netmask` | `string` | No | Optional. Networkmask and CIDR range. Example: "255.255.255.0/24" |
+| `params.staticIpAddress.gatewayAddress` | `string` | No | Required. Gateway IP address. Example: "100.80.40.1". |
+| `params.staticIpAddress.dnsServerAddress` | `string` | No | Required. DNS server. |
+| `params.staticIpAddress.dnsServerSecondaryAddress` | `string` | No | Optional. Second DNS server. |
+| `params.staticIpAddress.domain` | `string` | No | Optional. Domain name of the MonitoringPoint. |
+| `params.ntpServerAddress` | `string` | No | Optional. Network Time Protocol a user can configure. If the user omits the field, the default is either NTP servers provided in the DHCP lease or a set of well-known NTP servers pre-configured on the monitoring point. This field can be an IP address or FQDN. |
+| `params.ntpServerSecondaryAddress` | `string` | No | Optional. Second NTP server. |
+
+#### `projects.locations.networkMonitoringProviders.monitoringPoints.downloadRecreateInstallScript()`
+
+Downloads an install script for a specific Container MonitoringPoint.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the MonitoringPoint. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point} |
+| `params.hostname` | `string` | No | Optional. The hostname of the MonitoringPoint, e.g. "test-vm" |
+
+#### `projects.locations.networkMonitoringProviders.monitoringPoints.downloadServerConnectConfig()`
+
+Downloads the server connect configuration for a given network monitoring provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for DownloadServerConnectConfigRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+
+#### `projects.locations.networkMonitoringProviders.monitoringPoints.list()`
+
+Lists MonitoringPoints for a given network monitoring provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListMonitoringPointsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. |
+
+#### `projects.locations.networkMonitoringProviders.monitoringPoints.get()`
+
+Gets the MonitoringPoint resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point} |
+
+### `projects.locations.networkMonitoringProviders.networkPaths`
+
+#### `projects.locations.networkMonitoringProviders.networkPaths.list()`
+
+Lists NetworkPaths for a given network monitoring provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListNetworkPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of network paths to return. The service may return fewer than this value. If unspecified, at most 20 network pathswill be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListNetworkPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListNetworkPaths` must match the call that provided the page token. |
+
+#### `projects.locations.networkMonitoringProviders.networkPaths.get()`
+
+Gets the NetworkPath resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path} |
+
+### `projects.locations.networkMonitoringProviders.webPaths`
+
+#### `projects.locations.networkMonitoringProviders.webPaths.list()`
+
+Lists WebPaths for a given network monitoring provider.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for ListWebPathsRequest. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of web paths to return. The service may return fewer than this value. If unspecified, at most 20 web paths will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListWebPaths` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWebPaths` must match the call that provided the page token. |
+
+#### `projects.locations.networkMonitoringProviders.webPaths.get()`
+
+Gets the WebPath resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource.. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path} |
 
 ### `projects.locations.vpcFlowLogsConfigs`
 
