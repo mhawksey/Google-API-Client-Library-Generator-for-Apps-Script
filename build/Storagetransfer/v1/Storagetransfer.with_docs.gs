@@ -22,28 +22,6 @@ class Storagetransfer {
     this.transferOperations = {};
 
     /**
-     * Resumes a transfer operation that is paused.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the transfer operation.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.transferOperations.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
-
-    /**
-     * Pauses a transfer operation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the transfer operation.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.transferOperations.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
-
-    /**
      * Lists transfer operations. Operations are ordered by their creation time in reverse chronological order.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - (Required) Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern", "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern", "minCreationTime": "min_creation_time", "maxCreationTime": "max_creation_time", "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses` support multiple values, they must be specified with array notation. `projectId` is the only argument that is required. If specified, `jobNamePattern` and `operationNamePattern` must match the full job or operation name respectively. '*' is a wildcard matching 0 or more characters. `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.
@@ -78,6 +56,28 @@ class Storagetransfer {
      */
     this.transferOperations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
+    /**
+     * Pauses a transfer operation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the transfer operation.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.transferOperations.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
+
+    /**
+     * Resumes a transfer operation that is paused.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the transfer operation.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.transferOperations.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+
     this.googleServiceAccounts = {};
 
     /**
@@ -103,15 +103,15 @@ class Storagetransfer {
     this.transferJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a transfer job. Deleting a transfer job sets its status to DELETED.
+     * Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobName - (Required) Required. The job to delete.
-     * @param {string} apiParams.projectId - (Required) Required. The ID of the Google Cloud project that owns the job.
+     * @param {string} apiParams.jobName - (Required) Required. The name of job to update.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.transferJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'DELETE', apiParams, clientConfig);
+    this.transferJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Gets a transfer job.
@@ -125,6 +125,18 @@ class Storagetransfer {
     this.transferJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'GET', apiParams, clientConfig);
 
     /**
+     * Lists transfer jobs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - (Required) Required. A list of query parameters specified as JSON text in the form of: ``` { "projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobStatuses":["status1","status2",...], "dataBackend":"QUERY_REPLICATION_CONFIGS", "sourceBucket":"source-bucket-name", "sinkBucket":"sink-bucket-name", } ``` The JSON formatting in the example is for display only; provide the query parameters without spaces or line breaks. * `projectId` is required. * Since `jobNames` and `jobStatuses` support multiple values, their values must be specified with array notation. `jobNames` and `jobStatuses` are optional. Valid values are case-insensitive: * ENABLED * DISABLED * DELETED * Specify `"dataBackend":"QUERY_REPLICATION_CONFIGS"` to return a list of cross-bucket replication jobs. * Limit the results to jobs from a particular bucket with `sourceBucket` and/or to a particular bucket with `sinkBucket`.
+     * @param {integer} apiParams.pageSize - The list page size. The max allowed value is 256.
+     * @param {string} apiParams.pageToken - The list page token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.transferJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'GET', apiParams, clientConfig);
+
+    /**
      * Starts a new operation for the specified transfer job. A `TransferJob` has a maximum of one active `TransferOperation`. If this method is called while a `TransferOperation` is active, an error is returned.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.jobName - (Required) Required. The name of the transfer job.
@@ -136,27 +148,15 @@ class Storagetransfer {
     this.transferJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}:run', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates a transfer job. Updating a job's transfer spec does not affect transfer operations that are running already. **Note:** The job's status field can be modified using this RPC (for example, to set a job's status to DELETED, DISABLED, or ENABLED).
+     * Deletes a transfer job. Deleting a transfer job sets its status to DELETED.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobName - (Required) Required. The name of job to update.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.jobName - (Required) Required. The job to delete.
+     * @param {string} apiParams.projectId - (Required) Required. The ID of the Google Cloud project that owns the job.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.transferJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists transfer jobs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - (Required) Required. A list of query parameters specified as JSON text in the form of: ``` { "projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobStatuses":["status1","status2",...], "dataBackend":"QUERY_REPLICATION_CONFIGS", "sourceBucket":"source-bucket-name", "sinkBucket":"sink-bucket-name", } ``` The JSON formatting in the example is for display only; provide the query parameters without spaces or line breaks. * `projectId` is required. * Since `jobNames` and `jobStatuses` support multiple values, their values must be specified with array notation. `jobNames` and `jobStatuses` are optional. Valid values are case-insensitive: * ENABLED * DISABLED * DELETED * Specify `"dataBackend":"QUERY_REPLICATION_CONFIGS"` to return a list of cross-bucket replication jobs. * Limit the results to jobs from a particular bucket with `sourceBucket` and/or to a particular bucket with `sinkBucket`.
-     * @param {integer} apiParams.pageSize - The list page size. The max allowed value is 256.
-     * @param {string} apiParams.pageToken - The list page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.transferJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'GET', apiParams, clientConfig);
+    this.transferJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'DELETE', apiParams, clientConfig);
 
     this.projects = {};
 
@@ -175,26 +175,6 @@ class Storagetransfer {
     this.projects.agentPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+projectId}/agentPools', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes an agent pool.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the agent pool to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.agentPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets an agent pool.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the agent pool to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.agentPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Updates an existing agent pool resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
@@ -205,6 +185,16 @@ class Storagetransfer {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.agentPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets an agent pool.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the agent pool to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.agentPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists agent pools.
@@ -218,6 +208,16 @@ class Storagetransfer {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.agentPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+projectId}/agentPools', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes an agent pool.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the agent pool to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.agentPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
