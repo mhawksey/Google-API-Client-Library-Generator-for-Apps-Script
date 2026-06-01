@@ -25,10 +25,10 @@ class Serviceconsumermanagement {
     this.services = {};
 
     this.services.consumerQuotaMetrics = {};
+    this.services.consumerQuotaMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.importProducerOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerOverrides', 'POST', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.importProducerQuotaPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', 'POST', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', apiParams, clientConfig);
 
     this.services.consumerQuotaMetrics.limits = {};
     this.services.consumerQuotaMetrics.limits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
