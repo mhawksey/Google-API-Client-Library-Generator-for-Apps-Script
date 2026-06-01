@@ -4,8 +4,8 @@ Auto-generated client library for using the **Search Ads 360 Reporting API (vers
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:27:21 GMT
-- **Last Modified:** Fri, 01 May 2026 00:27:21 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:14:47 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:14:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:27 GMT
 
 
@@ -41,6 +41,17 @@ Returns resource names of customers directly accessible by the user authenticati
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
+### `customers.searchAds360`
+
+#### `customers.searchAds360.search()`
+
+Returns all rows that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customerId` | `string` | Yes | Required. The ID of the customer being queried. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `customers.customColumns`
 
 #### `customers.customColumns.get()`
@@ -58,14 +69,3 @@ Returns all the custom columns associated with the customer in full detail.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Required. The ID of the customer to apply the CustomColumn list operation to. |
-
-### `customers.searchAds360`
-
-#### `customers.searchAds360.search()`
-
-Returns all rows that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customerId` | `string` | Yes | Required. The ID of the customer being queried. |
-| `params.requestBody` | `object` | Yes | The request body. |
