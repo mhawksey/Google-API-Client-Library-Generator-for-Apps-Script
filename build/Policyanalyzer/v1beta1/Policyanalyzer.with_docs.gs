@@ -19,13 +19,13 @@ class Policyanalyzer {
     this._servicePath = '';
 
 
-    this.folders = {};
+    this.projects = {};
 
-    this.folders.locations = {};
+    this.projects.locations = {};
 
-    this.folders.locations.activityTypes = {};
+    this.projects.locations.activityTypes = {};
 
-    this.folders.locations.activityTypes.activities = {};
+    this.projects.locations.activityTypes.activities = {};
 
     /**
      * Queries policy activities on GCP resources.
@@ -38,7 +38,7 @@ class Policyanalyzer {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
@@ -61,13 +61,13 @@ class Policyanalyzer {
      */
     this.organizations.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
+    this.folders = {};
 
-    this.projects.locations = {};
+    this.folders.locations = {};
 
-    this.projects.locations.activityTypes = {};
+    this.folders.locations.activityTypes = {};
 
-    this.projects.locations.activityTypes.activities = {};
+    this.folders.locations.activityTypes.activities = {};
 
     /**
      * Queries policy activities on GCP resources.
@@ -80,7 +80,7 @@ class Policyanalyzer {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+    this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
   }
 
 /**
