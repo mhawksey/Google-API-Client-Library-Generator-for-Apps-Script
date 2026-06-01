@@ -32,6 +32,100 @@ class Threatintelligence {
      */
     this.projects.generateOrgProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateOrgProfile', 'POST', apiParams, clientConfig);
 
+    this.projects.configurations = {};
+
+    /**
+     * Get a configuration by name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the configuration to get. Format: vaults/{vault}/configurations/{configuration}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a list of configurations that meet the filter criteria.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter criteria.
+     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
+     * @param {integer} apiParams.pageSize - Optional. Page size.
+     * @param {string} apiParams.pageToken - Optional. Page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent of the configuration. Format: vaults/{vault}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates or updates a configuration.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Parent of the configuration.
+     * @param {string} apiParams.publishTime - Optional. Time that the configuration should be considered to have been published. This is an advanced feature used when onboarding and bulk loading data from other systems. Do not set this field without consulting with the API team.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.configurations.upsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations:upsert', 'POST', apiParams, clientConfig);
+
+    this.projects.configurations.revisions = {};
+
+    /**
+     * List configuration revisions that meet the filter criteria.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. An AIP-160 filter string
+     * @param {string} apiParams.orderBy - Optional. Specify ordering of response
+     * @param {integer} apiParams.pageSize - Optional. Page Size
+     * @param {string} apiParams.pageToken - Optional. A page token provided by the API
+     * @param {string} apiParams.parent - (Required) Required. The name of the Configuration to retrieve Revisions for
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.configurations.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/revisions', 'GET', apiParams, clientConfig);
+
+    this.projects.findings = {};
+
+    /**
+     * Get a finding by name. The `name` field should have the format: `projects/{project}/findings/{finding}`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the finding to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a list of findings that meet the filter criteria. The `parent` field in ListFindingsRequest should have the format: projects/{project}
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter criteria.
+     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
+     * @param {integer} apiParams.pageSize - Optional. Page size.
+     * @param {string} apiParams.pageToken - Optional. Page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent of the findings.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings', 'GET', apiParams, clientConfig);
+
+    /**
+     * SearchFindings is a more powerful version of ListFindings that supports complex queries like "findings for alerts" using functions such as `has_alert` in the query string. The `parent` field in SearchFindingsRequest should have the format: projects/{project} Example to search for findings for a specific issue: `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
+     * @param {integer} apiParams.pageSize - Optional. Page size.
+     * @param {string} apiParams.pageToken - Optional. Page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent of the findings. Format: vaults/{vault}
+     * @param {string} apiParams.query - Optional. Query on what findings will be returned. This supports the same filter criteria as FindingService.ListFindings as well as the following relationship query `has_alert`. Example: - `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.findings.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings:search', 'GET', apiParams, clientConfig);
+
     this.projects.alerts = {};
 
     /**
@@ -43,72 +137,6 @@ class Threatintelligence {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Marks an alert as tracked externally - TRACKED_EXTERNALLY.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as tracked externally. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.trackExternally = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:trackExternally', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks an alert as escalated - ESCALATED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as escalated. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:escalate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks an alert as a duplicate of another alert. - DUPLICATE.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a duplicate. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.duplicate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:duplicate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks an alert as triaged - TRIAGED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a triaged. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.triage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:triage', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks an alert as benign - BENIGN.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a benign. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.benign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:benign', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks an alert to closed state - RESOLVED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as resolved. Format: projects/{project}/alerts/{alert}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.alerts.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resolve', 'POST', apiParams, clientConfig);
 
     /**
      * Get a list of alerts that meet the filter criteria.
@@ -136,6 +164,50 @@ class Threatintelligence {
     this.projects.alerts.enumerateFacets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/alerts:enumerateFacets', 'GET', apiParams, clientConfig);
 
     /**
+     * Marks an alert as read - READ.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as read. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.read = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:read', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks an alert as triaged - TRIAGED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a triaged. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.triage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:triage', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks an alert as escalated - ESCALATED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as escalated. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:escalate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks an alert to closed state - RESOLVED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as resolved. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resolve', 'POST', apiParams, clientConfig);
+
+    /**
      * Marks an alert as a false positive - FALSE_POSITIVE.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a false positive. Format: projects/{project}/alerts/{alert}
@@ -158,15 +230,37 @@ class Threatintelligence {
     this.projects.alerts.notActionable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:notActionable', 'POST', apiParams, clientConfig);
 
     /**
-     * Marks an alert as read - READ.
+     * Marks an alert as benign - BENIGN.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as read. Format: projects/{project}/alerts/{alert}
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a benign. Format: projects/{project}/alerts/{alert}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.alerts.read = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:read', 'POST', apiParams, clientConfig);
+    this.projects.alerts.benign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:benign', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks an alert as tracked externally - TRACKED_EXTERNALLY.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as tracked externally. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.trackExternally = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:trackExternally', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks an alert as a duplicate of another alert. - DUPLICATE.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the alert to mark as a duplicate. Format: projects/{project}/alerts/{alert}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.duplicate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:duplicate', 'POST', apiParams, clientConfig);
 
     this.projects.alerts.documents = {};
 
@@ -179,100 +273,6 @@ class Threatintelligence {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.alerts.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.configurations = {};
-
-    /**
-     * Creates or updates a configuration.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Parent of the configuration.
-     * @param {string} apiParams.publishTime - Optional. Time that the configuration should be considered to have been published. This is an advanced feature used when onboarding and bulk loading data from other systems. Do not set this field without consulting with the API team.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.configurations.upsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations:upsert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Get a configuration by name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the configuration to get. Format: vaults/{vault}/configurations/{configuration}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a list of configurations that meet the filter criteria.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter criteria.
-     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
-     * @param {integer} apiParams.pageSize - Optional. Page size.
-     * @param {string} apiParams.pageToken - Optional. Page token.
-     * @param {string} apiParams.parent - (Required) Required. Parent of the configuration. Format: vaults/{vault}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/configurations', 'GET', apiParams, clientConfig);
-
-    this.projects.configurations.revisions = {};
-
-    /**
-     * List configuration revisions that meet the filter criteria.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. An AIP-160 filter string
-     * @param {string} apiParams.orderBy - Optional. Specify ordering of response
-     * @param {integer} apiParams.pageSize - Optional. Page Size
-     * @param {string} apiParams.pageToken - Optional. A page token provided by the API
-     * @param {string} apiParams.parent - (Required) Required. The name of the Configuration to retrieve Revisions for
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.configurations.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/revisions', 'GET', apiParams, clientConfig);
-
-    this.projects.findings = {};
-
-    /**
-     * Get a list of findings that meet the filter criteria. The `parent` field in ListFindingsRequest should have the format: projects/{project}
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter criteria.
-     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
-     * @param {integer} apiParams.pageSize - Optional. Page size.
-     * @param {string} apiParams.pageToken - Optional. Page token.
-     * @param {string} apiParams.parent - (Required) Required. Parent of the findings.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a finding by name. The `name` field should have the format: `projects/{project}/findings/{finding}`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the finding to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * SearchFindings is a more powerful version of ListFindings that supports complex queries like "findings for alerts" using functions such as `has_alert` in the query string. The `parent` field in SearchFindingsRequest should have the format: projects/{project} Example to search for findings for a specific issue: `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.orderBy - Optional. Order by criteria in the csv format: "field1,field2 desc" or "field1,field2" or "field1 asc, field2".
-     * @param {integer} apiParams.pageSize - Optional. Page size.
-     * @param {string} apiParams.pageToken - Optional. Page token.
-     * @param {string} apiParams.parent - (Required) Required. Parent of the findings. Format: vaults/{vault}
-     * @param {string} apiParams.query - Optional. Query on what findings will be returned. This supports the same filter criteria as FindingService.ListFindings as well as the following relationship query `has_alert`. Example: - `has_alert("name=\"projects/gti-12345/alerts/alert-12345\"")`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.findings.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/findings:search', 'GET', apiParams, clientConfig);
   }
 
 /**
