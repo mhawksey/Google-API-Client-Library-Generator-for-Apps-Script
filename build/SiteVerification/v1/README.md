@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:34:14 GMT
-- **Last Modified:** Fri, 01 May 2026 00:34:14 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:16:14 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:16:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -24,15 +24,6 @@ Relinquish ownership of a website or domain.
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
 
-#### `webResource.patch()`
-
-Modify the list of owners for your website or domain. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `webResource.get()`
 
 Get the most current data for a website or domain.
@@ -40,20 +31,6 @@ Get the most current data for a website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.list()`
-
-Get the list of your verified websites and domains.
-
-
-#### `webResource.update()`
-
-Modify the list of owners for your website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webResource.getToken()`
 
@@ -70,4 +47,27 @@ Attempt verification of a website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.verificationMethod` | `string` | Yes | The method to use for verifying a site or domain. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.list()`
+
+Get the list of your verified websites and domains.
+
+
+#### `webResource.patch()`
+
+Modify the list of owners for your website or domain. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.update()`
+
+Modify the list of owners for your website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
