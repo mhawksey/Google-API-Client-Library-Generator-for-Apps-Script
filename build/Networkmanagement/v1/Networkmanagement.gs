@@ -44,6 +44,29 @@ class Networkmanagement {
     this.projects.locations.global.connectivityTests.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.global.connectivityTests.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.networkMonitoringProviders = {};
+    this.projects.locations.networkMonitoringProviders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkMonitoringProviders', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkMonitoringProviders', 'POST', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.generateProviderAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateProviderAccessToken', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.generateMonitoringPointConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateMonitoringPointConfig', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.monitoringPoints = {};
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadInstallScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints:downloadInstallScript', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadRecreateInstallScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:downloadRecreateInstallScript', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.downloadServerConnectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints:downloadServerConnectConfig', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/monitoringPoints', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.monitoringPoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.networkPaths = {};
+    this.projects.locations.networkMonitoringProviders.networkPaths.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPaths', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.networkPaths.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networkMonitoringProviders.webPaths = {};
+    this.projects.locations.networkMonitoringProviders.webPaths.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webPaths', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkMonitoringProviders.webPaths.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.vpcFlowLogsConfigs = {};
     this.projects.locations.vpcFlowLogsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
     this.projects.locations.vpcFlowLogsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
