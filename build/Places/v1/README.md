@@ -4,8 +4,8 @@ Auto-generated client library for using the **Places API (New) (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:17:51 GMT
-- **Last Modified:** Fri, 01 May 2026 00:17:51 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:06:41 GMT
+- **Last Modified:** Mon, 01 Jun 2026 00:06:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:14 GMT
 
 
@@ -16,25 +16,17 @@ Auto-generated client library for using the **Places API (New) (version: v1)** i
 
 ### `places`
 
-#### `places.searchText()`
-
-Text query based place search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `places.autocomplete()`
-
-Returns predictions for the given input.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `places.searchNearby()`
 
 Search for places near locations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `places.searchText()`
+
+Text query based place search.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -48,8 +40,16 @@ Get the details of a place based on its resource name, which is a string in the 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of a place, in the `places/{place_id}` format. |
 | `params.languageCode` | `string` | No | Optional. Place details will be displayed with the preferred language if available. Current list of supported languages: https://developers.google.com/maps/faq#languagesupport. |
-| `params.sessionToken` | `string` | No | Optional. A string which identifies an Autocomplete session for billing purposes. Must be a URL and filename safe base64 string with at most 36 ASCII characters in length. Otherwise an INVALID_ARGUMENT error is returned. The session begins when the user starts typing a query, and concludes when they select a place and a call to Place Details or Address Validation is made. Each session can have multiple queries, followed by one Place Details or Address Validation request. The credentials used for each request within a session must belong to the same Google Cloud Console project. Once a session has concluded, the token is no longer valid; your app must generate a fresh token for each session. If the `session_token` parameter is omitted, or if you reuse a session token, the session is charged as if no session token was provided (each request is billed separately). We recommend the following guidelines: * Use session tokens for all Place Autocomplete calls. * Generate a fresh token for each session. Using a version 4 UUID is recommended. * Ensure that the credentials used for all Place Autocomplete, Place Details, and Address Validation requests within a session belong to the same Cloud Console project. * Be sure to pass a unique session token for each new session. Using the same token for more than one session will result in each request being billed individually. |
 | `params.regionCode` | `string` | No | Optional. The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported. |
+| `params.sessionToken` | `string` | No | Optional. A string which identifies an Autocomplete session for billing purposes. Must be a URL and filename safe base64 string with at most 36 ASCII characters in length. Otherwise an INVALID_ARGUMENT error is returned. The session begins when the user starts typing a query, and concludes when they select a place and a call to Place Details or Address Validation is made. Each session can have multiple queries, followed by one Place Details or Address Validation request. The credentials used for each request within a session must belong to the same Google Cloud Console project. Once a session has concluded, the token is no longer valid; your app must generate a fresh token for each session. If the `session_token` parameter is omitted, or if you reuse a session token, the session is charged as if no session token was provided (each request is billed separately). We recommend the following guidelines: * Use session tokens for all Place Autocomplete calls. * Generate a fresh token for each session. Using a version 4 UUID is recommended. * Ensure that the credentials used for all Place Autocomplete, Place Details, and Address Validation requests within a session belong to the same Cloud Console project. * Be sure to pass a unique session token for each new session. Using the same token for more than one session will result in each request being billed individually. |
+
+#### `places.autocomplete()`
+
+Returns predictions for the given input.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `places.photos`
 
