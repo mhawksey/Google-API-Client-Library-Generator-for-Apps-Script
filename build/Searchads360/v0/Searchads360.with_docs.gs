@@ -52,6 +52,19 @@ class Searchads360 {
      */
     this.customers.listAccessibleCustomers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers:listAccessibleCustomers', 'GET', apiParams, clientConfig);
 
+    this.customers.searchAds360 = {};
+
+    /**
+     * Returns all rows that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerId - (Required) Required. The ID of the customer being queried.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
+
     this.customers.customColumns = {};
 
     /**
@@ -73,19 +86,6 @@ class Searchads360 {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.customColumns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/customColumns', 'GET', apiParams, clientConfig);
-
-    this.customers.searchAds360 = {};
-
-    /**
-     * Returns all rows that match the search query. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [ChangeEventError]() [ChangeStatusError]() [ClickViewError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customerId - (Required) Required. The ID of the customer being queried.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
   }
 
 /**
