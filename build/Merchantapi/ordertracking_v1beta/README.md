@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: ordertracki
 
 ## Metadata
 
-- **Last Checked:** Fri, 01 May 2026 00:07:35 GMT
+- **Last Checked:** Mon, 01 Jun 2026 00:03:37 GMT
 - **Last Modified:** Fri, 01 May 2026 00:07:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:47 GMT
 
