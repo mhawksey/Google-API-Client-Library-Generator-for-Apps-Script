@@ -19,13 +19,6 @@ class Cloudasset {
     this._servicePath = '';
 
 
-    this.projects = {};
-    this.projects.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
-    this.projects.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
-
-    this.projects.operations = {};
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.folders = {};
     this.folders.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
 
@@ -38,6 +31,13 @@ class Cloudasset {
 
     this.organizations.operations = {};
     this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+    this.projects.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+    this.projects.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
+
+    this.projects.operations = {};
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
