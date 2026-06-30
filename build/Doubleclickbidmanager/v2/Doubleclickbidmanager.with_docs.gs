@@ -22,16 +22,6 @@ class Doubleclickbidmanager {
     this.queries = {};
 
     /**
-     * Creates a new query.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'POST', apiParams, clientConfig);
-
-    /**
      * Deletes an existing query as well as its generated reports.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.queryId - (Required) Required. The ID of the query to delete.
@@ -40,16 +30,6 @@ class Doubleclickbidmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.queries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Retrieves a query.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.queryId - (Required) Required. The ID of the query to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists queries created by the current user.
@@ -62,6 +42,26 @@ class Doubleclickbidmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.queries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves a query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.queryId - (Required) Required. The ID of the query to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('queries/{queryId}', 'GET', apiParams, clientConfig);
 
     /**
      * Runs an existing query to generate a report.
