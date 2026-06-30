@@ -4,8 +4,8 @@ Auto-generated client library for using the **Search Ads 360 API (version: v2)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:46:43 GMT
-- **Last Modified:** Sun, 31 May 2026 23:46:43 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:52:15 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:52:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:30 GMT
 
 
@@ -16,55 +16,9 @@ Auto-generated client library for using the **Search Ads 360 API (version: v2)**
 
 ### `conversion`
 
-#### `conversion.get()`
-
-Retrieves a list of conversions from a DoubleClick Search engine account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.agencyId` | `string` | Yes | Numeric ID of the agency. |
-| `params.advertiserId` | `string` | Yes | Numeric ID of the advertiser. |
-| `params.engineAccountId` | `string` | Yes | Numeric ID of the engine account. |
-| `params.adGroupId` | `string` | No | Numeric ID of the ad group. |
-| `params.adId` | `string` | No | Numeric ID of the ad. |
-| `params.campaignId` | `string` | No | Numeric ID of the campaign. |
-| `params.criterionId` | `string` | No | Numeric ID of the criterion. |
-| `params.endDate` | `integer` | Yes | Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
-| `params.rowCount` | `integer` | Yes | The number of conversions to return per call. |
-| `params.startDate` | `integer` | Yes | First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
-| `params.startRow` | `integer` | Yes | The 0-based starting index for retrieving conversions results. |
-| `params.customerId` | `string` | No | Customer ID of a client account in the new Search Ads 360 experience. |
-
-#### `conversion.getByCustomerId()`
-
-Retrieves a list of conversions from a DoubleClick Search engine account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customerId` | `string` | Yes | Customer ID of a client account in the new Search Ads 360 experience. |
-| `params.adGroupId` | `string` | No | Numeric ID of the ad group. |
-| `params.adId` | `string` | No | Numeric ID of the ad. |
-| `params.advertiserId` | `string` | No | Numeric ID of the advertiser. |
-| `params.agencyId` | `string` | No | Numeric ID of the agency. |
-| `params.campaignId` | `string` | No | Numeric ID of the campaign. |
-| `params.criterionId` | `string` | No | Numeric ID of the criterion. |
-| `params.endDate` | `integer` | Yes | Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
-| `params.engineAccountId` | `string` | No | Numeric ID of the engine account. |
-| `params.rowCount` | `integer` | Yes | The number of conversions to return per call. |
-| `params.startDate` | `integer` | Yes | First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
-| `params.startRow` | `integer` | Yes | The 0-based starting index for retrieving conversions results. |
-
 #### `conversion.insert()`
 
 Inserts a batch of new conversions into DoubleClick Search.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `conversion.update()`
-
-Updates a batch of conversions in DoubleClick Search.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -78,15 +32,53 @@ Updates the availabilities of a batch of floodlight activities in DoubleClick Se
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `reports`
+#### `conversion.getByCustomerId()`
 
-#### `reports.generate()`
+Retrieves a list of conversions from a DoubleClick Search engine account.
 
-Generates and returns a report immediately.
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.criterionId` | `string` | No | Numeric ID of the criterion. |
+| `params.engineAccountId` | `string` | No | Numeric ID of the engine account. |
+| `params.startRow` | `integer` | Yes | The 0-based starting index for retrieving conversions results. |
+| `params.endDate` | `integer` | Yes | Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
+| `params.adGroupId` | `string` | No | Numeric ID of the ad group. |
+| `params.startDate` | `integer` | Yes | First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
+| `params.adId` | `string` | No | Numeric ID of the ad. |
+| `params.campaignId` | `string` | No | Numeric ID of the campaign. |
+| `params.rowCount` | `integer` | Yes | The number of conversions to return per call. |
+| `params.customerId` | `string` | Yes | Customer ID of a client account in the new Search Ads 360 experience. |
+| `params.advertiserId` | `string` | No | Numeric ID of the advertiser. |
+| `params.agencyId` | `string` | No | Numeric ID of the agency. |
+
+#### `conversion.update()`
+
+Updates a batch of conversions in DoubleClick Search.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `conversion.get()`
+
+Retrieves a list of conversions from a DoubleClick Search engine account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.agencyId` | `string` | Yes | Numeric ID of the agency. |
+| `params.advertiserId` | `string` | Yes | Numeric ID of the advertiser. |
+| `params.customerId` | `string` | No | Customer ID of a client account in the new Search Ads 360 experience. |
+| `params.adId` | `string` | No | Numeric ID of the ad. |
+| `params.campaignId` | `string` | No | Numeric ID of the campaign. |
+| `params.rowCount` | `integer` | Yes | The number of conversions to return per call. |
+| `params.adGroupId` | `string` | No | Numeric ID of the ad group. |
+| `params.startDate` | `integer` | Yes | First date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
+| `params.engineAccountId` | `string` | Yes | Numeric ID of the engine account. |
+| `params.startRow` | `integer` | Yes | The 0-based starting index for retrieving conversions results. |
+| `params.endDate` | `integer` | Yes | Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd. |
+| `params.criterionId` | `string` | No | Numeric ID of the criterion. |
+
+### `reports`
 
 #### `reports.get()`
 
@@ -95,6 +87,14 @@ Polls for the status of a report request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.reportId` | `string` | Yes | ID of the report request being polled. |
+
+#### `reports.generate()`
+
+Generates and returns a report immediately.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reports.getFile()`
 
