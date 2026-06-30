@@ -50,6 +50,17 @@ class Firebaseapphosting {
     this.projects.locations.operations = {};
 
     /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The standard list filter.
@@ -83,33 +94,7 @@ class Firebaseapphosting {
      */
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.backends = {};
-
-    /**
-     * Lists backends in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160).
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return. If not set, the service selects a default.
-     * @param {string} apiParams.pageToken - Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. A parent name of the form `projects/{project}/locations/{locationId}`.
-     * @param {boolean} apiParams.showDeleted - Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backends', 'GET', apiParams, clientConfig);
 
     /**
      * Gets information about a backend.
@@ -120,20 +105,6 @@ class Firebaseapphosting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.backends.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new backend in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.backendId - Required. Id of the backend. Also used as the service ID for Cloud Run, and as part of the default domain name.
-     * @param {string} apiParams.parent - (Required) Required. A parent name of the form `projects/{project}/locations/{locationId}`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backends', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the information for a single backend.
@@ -164,85 +135,34 @@ class Firebaseapphosting {
      */
     this.projects.locations.backends.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.backends.traffic = {};
-
     /**
-     * Gets information about a backend's traffic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.traffic.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a backend's traffic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name of the backend's traffic. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the traffic resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
-     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated, without persisting the request or updating any resources.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.traffic.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.backends.builds = {};
-
-    /**
-     * Lists builds in a given project, location, and backend.
+     * Lists backends in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160).
      * @param {string} apiParams.orderBy - Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix.
      * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return. If not set, the service selects a default.
      * @param {string} apiParams.pageToken - Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The parent backend in the form `projects/{project}/locations/{locationId}/backends/{backendId}`.
+     * @param {string} apiParams.parent - (Required) Required. A parent name of the form `projects/{project}/locations/{locationId}`.
      * @param {boolean} apiParams.showDeleted - Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.backends.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'GET', apiParams, clientConfig);
+    this.projects.locations.backends.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backends', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets information about a build.
+     * Creates a new backend in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new build for a backend.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.buildId - Required. Desired ID of the build being created.
-     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.backendId - Required. Id of the backend. Also used as the service ID for Cloud Run, and as part of the default domain name.
+     * @param {string} apiParams.parent - (Required) Required. A parent name of the form `projects/{project}/locations/{locationId}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.backends.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single build.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.builds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backends.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backends', 'POST', apiParams, clientConfig);
 
     this.projects.locations.backends.rollouts = {};
 
@@ -288,21 +208,6 @@ class Firebaseapphosting {
     this.projects.locations.backends.domains = {};
 
     /**
-     * Lists domains of a backend.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160).
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return. If not set, the service selects a default.
-     * @param {string} apiParams.pageToken - Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
-     * @param {boolean} apiParams.showDeleted - Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domains', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets information about a domain.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`.
@@ -311,20 +216,6 @@ class Firebaseapphosting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.backends.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Links a new domain to a backend.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.domainId - Required. Id of the domain to create. Must be a valid domain name.
-     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backends.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domains', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the information for a single domain.
@@ -353,6 +244,115 @@ class Firebaseapphosting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.backends.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists domains of a backend.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160).
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return. If not set, the service selects a default.
+     * @param {string} apiParams.pageToken - Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
+     * @param {boolean} apiParams.showDeleted - Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domains', 'GET', apiParams, clientConfig);
+
+    /**
+     * Links a new domain to a backend.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.domainId - Required. Id of the domain to create. Must be a valid domain name.
+     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domains', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.backends.traffic = {};
+
+    /**
+     * Gets information about a backend's traffic.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.traffic.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a backend's traffic.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the backend's traffic. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the traffic resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated, without persisting the request or updating any resources.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.traffic.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.backends.builds = {};
+
+    /**
+     * Creates a new build for a backend.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.buildId - Required. Desired ID of the build being created.
+     * @param {string} apiParams.parent - (Required) Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists builds in a given project, location, and backend.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160).
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return. If not set, the service selects a default.
+     * @param {string} apiParams.pageToken - Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent backend in the form `projects/{project}/locations/{locationId}/backends/{backendId}`.
+     * @param {boolean} apiParams.showDeleted - Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets information about a build.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a single build.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backends.builds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
