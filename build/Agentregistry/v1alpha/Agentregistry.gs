@@ -25,40 +25,40 @@ class Agentregistry {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.agents = {};
-    this.projects.locations.agents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/agents', 'GET', apiParams, clientConfig);
-    this.projects.locations.agents.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/agents:search', 'POST', apiParams, clientConfig);
-    this.projects.locations.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.endpoints = {};
     this.projects.locations.endpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/endpoints', 'GET', apiParams, clientConfig);
     this.projects.locations.endpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.mcpServers = {};
-    this.projects.locations.mcpServers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/mcpServers', 'GET', apiParams, clientConfig);
-    this.projects.locations.mcpServers.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/mcpServers:search', 'POST', apiParams, clientConfig);
-    this.projects.locations.mcpServers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.services = {};
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/services', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.bindings = {};
-    this.projects.locations.bindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/bindings', 'GET', apiParams, clientConfig);
-    this.projects.locations.bindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.bindings.fetchAvailable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/bindings:fetchAvailable', 'GET', apiParams, clientConfig);
     this.projects.locations.bindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/bindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.bindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.bindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.bindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bindings.fetchAvailable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/bindings:fetchAvailable', 'GET', apiParams, clientConfig);
+    this.projects.locations.bindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/bindings', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.services = {};
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/services', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.agents = {};
+    this.projects.locations.agents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/agents', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agents.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/agents:search', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.mcpServers = {};
+    this.projects.locations.mcpServers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.mcpServers.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/mcpServers:search', 'POST', apiParams, clientConfig);
+    this.projects.locations.mcpServers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/mcpServers', 'GET', apiParams, clientConfig);
   }
 
 /**
