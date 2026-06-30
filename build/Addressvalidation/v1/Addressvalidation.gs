@@ -20,8 +20,8 @@ class Addressvalidation {
 
 
     this.v1 = {};
-    this.v1.validateAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:validateAddress', 'POST', apiParams, clientConfig);
     this.v1.provideValidationFeedback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:provideValidationFeedback', 'POST', apiParams, clientConfig);
+    this.v1.validateAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:validateAddress', 'POST', apiParams, clientConfig);
   }
 
 /**
