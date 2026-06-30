@@ -50,6 +50,20 @@ class Cloudlocationfinder {
     this.projects.locations.cloudLocations = {};
 
     /**
+     * Searches for cloud locations from a given source location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of cloud locations. Format: projects/{project}/locations/{location}
+     * @param {string} apiParams.query - Optional. The query string in search query syntax. While filter is used to filter the search results by attributes, query is used to specify the search requirements.
+     * @param {string} apiParams.sourceCloudLocation - Required. The source cloud location to search from. Example search can be searching nearby cloud locations from the source cloud location by latency.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.cloudLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloudLocations:search', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists cloud locations under a given project and location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. A filter expression that filters resources listed in the response. The expression is in the form of field=value. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION'. Multiple filter queries are space-separated. For example, 'cloud_location_type=CLOUD_LOCATION_TYPE_REGION territory_code="US"' By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly.
@@ -71,20 +85,6 @@ class Cloudlocationfinder {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.cloudLocations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Searches for cloud locations from a given source location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of cloud locations. Format: projects/{project}/locations/{location}
-     * @param {string} apiParams.query - Optional. The query string in search query syntax. While filter is used to filter the search results by attributes, query is used to specify the search requirements.
-     * @param {string} apiParams.sourceCloudLocation - Required. The source cloud location to search from. Example search can be searching nearby cloud locations from the source cloud location by latency.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.cloudLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloudLocations:search', 'GET', apiParams, clientConfig);
   }
 
 /**
