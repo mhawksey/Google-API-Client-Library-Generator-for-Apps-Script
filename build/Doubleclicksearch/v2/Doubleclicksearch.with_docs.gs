@@ -22,25 +22,24 @@ class Doubleclicksearch {
     this.conversion = {};
 
     /**
-     * Retrieves a list of conversions from a DoubleClick Search engine account.
+     * Inserts a batch of new conversions into DoubleClick Search.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - Numeric ID of the ad group.
-     * @param {string} apiParams.adId - Numeric ID of the ad.
-     * @param {string} apiParams.advertiserId - (Required) Numeric ID of the advertiser.
-     * @param {string} apiParams.agencyId - (Required) Numeric ID of the agency.
-     * @param {string} apiParams.campaignId - Numeric ID of the campaign.
-     * @param {string} apiParams.criterionId - Numeric ID of the criterion.
-     * @param {string} apiParams.customerId - Customer ID of a client account in the new Search Ads 360 experience.
-     * @param {integer} apiParams.endDate - (Required) Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-     * @param {string} apiParams.engineAccountId - (Required) Numeric ID of the engine account.
-     * @param {integer} apiParams.rowCount - (Required) The number of conversions to return per call.
-     * @param {integer} apiParams.startDate - (Required) First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
-     * @param {integer} apiParams.startRow - (Required) The 0-based starting index for retrieving conversions results.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.conversion.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', 'GET', apiParams, clientConfig);
+    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the availabilities of a batch of floodlight activities in DoubleClick Search.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.conversion.updateAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion/updateAvailability', 'POST', apiParams, clientConfig);
 
     /**
      * Retrieves a list of conversions from a DoubleClick Search engine account.
@@ -64,16 +63,6 @@ class Doubleclicksearch {
     this.conversion.getByCustomerId = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/customer/{customerId}/conversion', 'GET', apiParams, clientConfig);
 
     /**
-     * Inserts a batch of new conversions into DoubleClick Search.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates a batch of conversions in DoubleClick Search.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -84,26 +73,27 @@ class Doubleclicksearch {
     this.conversion.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'PUT', apiParams, clientConfig);
 
     /**
-     * Updates the availabilities of a batch of floodlight activities in DoubleClick Search.
+     * Retrieves a list of conversions from a DoubleClick Search engine account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.adGroupId - Numeric ID of the ad group.
+     * @param {string} apiParams.adId - Numeric ID of the ad.
+     * @param {string} apiParams.advertiserId - (Required) Numeric ID of the advertiser.
+     * @param {string} apiParams.agencyId - (Required) Numeric ID of the agency.
+     * @param {string} apiParams.campaignId - Numeric ID of the campaign.
+     * @param {string} apiParams.criterionId - Numeric ID of the criterion.
+     * @param {string} apiParams.customerId - Customer ID of a client account in the new Search Ads 360 experience.
+     * @param {integer} apiParams.endDate - (Required) Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
+     * @param {string} apiParams.engineAccountId - (Required) Numeric ID of the engine account.
+     * @param {integer} apiParams.rowCount - (Required) The number of conversions to return per call.
+     * @param {integer} apiParams.startDate - (Required) First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.
+     * @param {integer} apiParams.startRow - (Required) The 0-based starting index for retrieving conversions results.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.conversion.updateAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion/updateAvailability', 'POST', apiParams, clientConfig);
+    this.conversion.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', 'GET', apiParams, clientConfig);
 
     this.reports = {};
-
-    /**
-     * Generates and returns a report immediately.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
 
     /**
      * Polls for the status of a report request.
@@ -114,6 +104,16 @@ class Doubleclicksearch {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates and returns a report immediately.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
 
     /**
      * Downloads a report file encoded in UTF-8.
