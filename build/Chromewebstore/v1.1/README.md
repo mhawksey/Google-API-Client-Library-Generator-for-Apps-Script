@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Web Store API (version: v1.
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:32:19 GMT
-- **Last Modified:** Sun, 31 May 2026 23:32:19 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:32:21 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:32:21 GMT
 - **Created:** Sat, 01 Nov 2025 00:25:37 GMT
 
 
@@ -33,6 +33,15 @@ Inserts a new item.
 |---|---|---|---|
 | `params.publisherEmail` | `string` | No | The email of the publisher who owns the items. Defaults to the caller's email address. |
 
+#### `items.update()`
+
+Updates an existing item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | Yes | The ID of the item to upload. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `items.publish()`
 
 Publishes an item.
@@ -43,13 +52,4 @@ Publishes an item.
 | `params.deployPercentage` | `integer` | No | The deploy percentage you want to set for your item. Valid values are [0, 100]. If set to any number less than 100, only that many percentage of users will be allowed to get the update. |
 | `params.publishTarget` | `string` | No | Provide defined publishTarget in URL (case sensitive): publishTarget="trustedTesters" or publishTarget="default". Defaults to publishTarget="default". |
 | `params.reviewExemption` | `boolean` | No | Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `items.update()`
-
-Updates an existing item.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.itemId` | `string` | Yes | The ID of the item to upload. |
 | `params.requestBody` | `object` | Yes | The request body. |
