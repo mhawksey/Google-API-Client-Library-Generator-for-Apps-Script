@@ -4,7 +4,7 @@ Auto-generated client library for using the **API Discovery Service (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:44:54 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:45:29 GMT
 - **Last Modified:** Sun, 31 May 2026 23:44:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:40 GMT
 
@@ -31,5 +31,5 @@ Retrieve the list of APIs supported at this endpoint.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | No | Only include APIs with the given name. |
 | `params.preferred` | `boolean` | No | Return only the preferred version of an API. |
+| `params.name` | `string` | No | Only include APIs with the given name. |
