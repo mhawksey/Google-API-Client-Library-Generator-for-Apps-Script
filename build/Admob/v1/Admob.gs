@@ -26,11 +26,11 @@ class Admob {
     this.accounts.networkReport = {};
     this.accounts.networkReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkReport:generate', 'POST', apiParams, clientConfig);
 
-    this.accounts.mediationReport = {};
-    this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
-
     this.accounts.apps = {};
     this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
+
+    this.accounts.mediationReport = {};
+    this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
 
     this.accounts.adUnits = {};
     this.accounts.adUnits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/adUnits', 'GET', apiParams, clientConfig);
