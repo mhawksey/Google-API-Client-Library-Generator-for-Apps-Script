@@ -22,41 +22,41 @@ class Health {
     this.projects = {};
 
     this.projects.subscribers = {};
+    this.projects.subscribers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.subscribers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/subscribers', 'POST', apiParams, clientConfig);
     this.projects.subscribers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/subscribers', 'GET', apiParams, clientConfig);
-    this.projects.subscribers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.subscribers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.subscribers.subscriptions = {};
     this.projects.subscribers.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
     this.projects.subscribers.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
-    this.projects.subscribers.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.subscribers.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.subscribers.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.users = {};
-    this.users.getProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
     this.users.updateProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
+    this.users.getProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
     this.users.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
-    this.users.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
     this.users.getIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
     this.users.getIrnProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
+    this.users.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.users.dataTypes = {};
 
     this.users.dataTypes.dataPoints = {};
     this.users.dataTypes.dataPoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
-    this.users.dataTypes.dataPoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints', 'GET', apiParams, clientConfig);
-    this.users.dataTypes.dataPoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints', 'POST', apiParams, clientConfig);
     this.users.dataTypes.dataPoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'PATCH', apiParams, clientConfig);
+    this.users.dataTypes.dataPoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints', 'POST', apiParams, clientConfig);
     this.users.dataTypes.dataPoints.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints:batchDelete', 'POST', apiParams, clientConfig);
-    this.users.dataTypes.dataPoints.reconcile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints:reconcile', 'GET', apiParams, clientConfig);
+    this.users.dataTypes.dataPoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints', 'GET', apiParams, clientConfig);
     this.users.dataTypes.dataPoints.rollUp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints:rollUp', 'POST', apiParams, clientConfig);
+    this.users.dataTypes.dataPoints.reconcile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints:reconcile', 'GET', apiParams, clientConfig);
     this.users.dataTypes.dataPoints.dailyRollUp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/dataPoints:dailyRollUp', 'POST', apiParams, clientConfig);
     this.users.dataTypes.dataPoints.exportExerciseTcx = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}:exportExerciseTcx', 'GET', apiParams, clientConfig);
 
     this.users.pairedDevices = {};
-    this.users.pairedDevices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
     this.users.pairedDevices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+parent}/pairedDevices', 'GET', apiParams, clientConfig);
+    this.users.pairedDevices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
