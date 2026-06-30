@@ -26,12 +26,12 @@ class Chromewebstore {
       const path = apiParams.media ? '/upload/chromewebstore/v1.1/items' : 'chromewebstore/v1.1/items';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}/publish', 'POST', apiParams, clientConfig);
     this.items.update = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/chromewebstore/v1.1/items/{itemId}' : 'chromewebstore/v1.1/items/{itemId}';
       return this._makeRequest(path, 'PUT', apiParams, clientConfig);
     };
+    this.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}/publish', 'POST', apiParams, clientConfig);
   }
 
 /**
