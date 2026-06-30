@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Play Games Services API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:54:27 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:55:03 GMT
 - **Last Modified:** Sun, 31 May 2026 23:54:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:07 GMT
 
