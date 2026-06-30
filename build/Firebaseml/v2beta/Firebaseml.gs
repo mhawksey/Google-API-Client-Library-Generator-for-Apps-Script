@@ -26,9 +26,9 @@ class Firebaseml {
     this.projects.locations.publishers = {};
 
     this.projects.locations.publishers.models = {};
-    this.projects.locations.publishers.models.countTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+endpoint}:countTokens', 'POST', apiParams, clientConfig);
-    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
     this.projects.locations.publishers.models.streamGenerateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:streamGenerateContent', 'POST', apiParams, clientConfig);
+    this.projects.locations.publishers.models.generateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+model}:generateContent', 'POST', apiParams, clientConfig);
+    this.projects.locations.publishers.models.countTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+endpoint}:countTokens', 'POST', apiParams, clientConfig);
   }
 
 /**
