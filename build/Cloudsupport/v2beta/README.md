@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Support API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:34:14 GMT
-- **Last Modified:** Sun, 31 May 2026 23:34:14 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:41:29 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:41:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:47 GMT
 
 
@@ -14,7 +14,86 @@ Auto-generated client library for using the **Google Cloud Support API (version:
 
 ## API Reference
 
+### `caseClassifications`
+
+#### `caseClassifications.search()`
+
+Retrieve valid classifications to use when creating a support case. Classifications are hierarchical. Each classification is a string containing all levels of the hierarchy separated by `" > "`. For example, `"Technical Issue > Compute > Compute Engine"`. Classification IDs returned by this endpoint are valid for at least six months. When a classification is deactivated, this endpoint immediately stops returning it. After six months, `case.create` requests using the classification will fail. EXAMPLES: cURL: ```shell curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ 'https://cloudsupport.googleapis.com/v2beta/caseClassifications:search?query=display_name:"*Compute%20Engine*"' ``` Python: ```python import googleapiclient.discovery supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version="v2beta", discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version=v2", ) request = supportApiService.caseClassifications().search( query='display_name:"*Compute Engine*"' ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of classifications fetched with each request. |
+| `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
+| `params.query` | `string` | No | An expression used to filter case classifications. If it's an empty string, then no filtering happens. Otherwise, case classifications will be returned that match the filter. |
+| `params.product.productLine` | `string` | No | The product line of the Product. |
+
+### `supportEventSubscriptions`
+
+#### `supportEventSubscriptions.list()`
+
+Lists support event subscriptions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filter expression based on AIP-160. Supported fields: - pub_sub_topic - state Examples: - `pub_sub_topic="projects/example-project/topics/example-topic"` - `state=WORKING` - `pub_sub_topic="projects/example-project/topics/example-topic" AND state=WORKING` |
+| `params.pageToken` | `string` | No | Optional. A token identifying the page of results to return. If unspecified, the first page is retrieved. When paginating, all other parameters provided to `ListSupportEventSubscriptions` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The fully qualified name of the Cloud resource to list support event subscriptions under. Format: organizations/{organization_id} |
+| `params.showDeleted` | `boolean` | No | Optional. Whether to show deleted subscriptions. By default, deleted subscriptions are not returned. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of support event subscriptions to return. |
+
+#### `supportEventSubscriptions.create()`
+
+Creates a support event subscription for an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the support event subscription will be created. Format: organizations/{organization_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `supportEventSubscriptions.undelete()`
+
+Undeletes a support event subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the support event subscription to undelete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `supportEventSubscriptions.patch()`
+
+Updates a support event subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the support event subscription. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. The only supported value is pub_sub_topic. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `supportEventSubscriptions.delete()`
+
+Soft deletes a support event subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the support event subscription to delete. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} |
+
+#### `supportEventSubscriptions.get()`
+
+Gets a support event subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the support event subscription to retrieve. Format: organizations/{organization_id}/supportEventSubscriptions/{subscription_id} |
+
 ### `media`
+
+#### `media.download()`
+
+Download a file attached to a case. When this endpoint is called, no "response body" will be returned. Instead, the attachment's blob will be returned. Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL: ```shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$name:download?alt=media" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.media().download( name="projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri = request.uri.split("?")[0] + "?alt=media" print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the file attachment to download. |
 
 #### `media.upload()`
 
@@ -25,23 +104,18 @@ Create a file attachment on a case or Cloud resource. The attachment must have t
 | `params.parent` | `string` | Yes | Required. The name of the case or Cloud resource to which the attachment should be attached. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `media.download()`
-
-Download a file attached to a case. When this endpoint is called, no "response body" will be returned. Instead, the attachment's blob will be returned. Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL: ```shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$name:download?alt=media" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.media().download( name="projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri = request.uri.split("?")[0] + "?alt=media" print(request.execute()) ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the file attachment to download. |
-
 ### `cases`
 
-#### `cases.get()`
+#### `cases.showFeed()`
 
-Retrieve a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute()) ```
+Show items in the feed of this case, including case emails, attachments, and comments.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full name of a case to be retrieved. |
+| `params.orderBy` | `string` | No | Optional. Field to order feed items by, followed by `asc` or `desc` postfix. The only valid field is `creation_time`. This list is case-insensitive, default sorting order is ascending, and the redundant space characters are insignificant. Example: `creation_time desc` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feed items fetched with each request. |
+| `params.pageToken` | `string` | No | Optional. A token identifying the page of results to return. If unspecified, it retrieves the first page. |
+| `params.parent` | `string` | Yes | Required. The resource name of the case for which feed items should be listed. |
 
 #### `cases.list()`
 
@@ -49,11 +123,29 @@ Retrieve all cases under a parent, but not its children. For example, listing ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of a parent to list cases under. |
 | `params.filter` | `string` | No | An expression used to filter cases. If it's an empty string, then no filtering happens. Otherwise, the endpoint returns the cases that match the filter. Expressions use the following fields separated by `AND` and specified with `=`: - `state`: Can be `OPEN` or `CLOSED`. - `priority`: Can be `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address of the case creator. EXAMPLES: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` - `state=OPEN AND (priority=P0 OR priority=P1)` |
-| `params.pageSize` | `integer` | No | The maximum number of cases fetched with each request. Defaults to 10. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
 | `params.productLine` | `string` | No | The product line to request cases for. If unspecified, only Google Cloud cases will be returned. |
+| `params.parent` | `string` | Yes | Required. The name of a parent to list cases under. |
+| `params.pageSize` | `integer` | No | The maximum number of cases fetched with each request. Defaults to 10. |
+
+#### `cases.escalate()`
+
+Escalate a case, starting the Google Cloud Support escalation management process. This operation is only available for some support services. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which ones let you do that. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \ "https://cloudsupport.googleapis.com/v2beta/$case:escalate" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().escalate( name="projects/some-project/cases/43595344", body={ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation.", }, }, ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the case to be escalated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `cases.create()`
+
+Create a new case and associate it with a parent. It must have the following fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API and don't want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL: ```shell parent="projects/some-project" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to close", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case", "description": "This is a test case.", "testCase": True, "priority": "P2", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, }, ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent under which the case should be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `cases.search()`
 
@@ -66,15 +158,6 @@ Search for cases using a query. EXAMPLES: cURL: ```shell parent="projects/some-p
 | `params.pageSize` | `integer` | No | The maximum number of cases fetched with each request. The default page size is 10. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
 
-#### `cases.create()`
-
-Create a new case and associate it with a parent. It must have the following fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API and don't want to route your case to an agent, set `testCase=true`. EXAMPLES: cURL: ```shell parent="projects/some-project" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to close", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase": true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2beta/$parent/cases" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().create( parent="projects/some-project", body={ "displayName": "A Test Case", "description": "This is a test case.", "testCase": True, "priority": "P2", "classification": { "id": "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8" }, }, ) print(request.execute()) ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent under which the case should be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `cases.patch()`
 
 Update a case. Only some fields can be updated. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "priority": "P1" }' \ "https://cloudsupport.googleapis.com/v2beta/$case?updateMask=priority" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().patch( name="projects/some-project/cases/43112854", body={ "displayName": "This is Now a New Title", "priority": "P2", }, ) print(request.execute()) ```
@@ -83,15 +166,6 @@ Update a case. Only some fields can be updated. EXAMPLES: cURL: ```shell case="p
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for the case. |
 | `params.updateMask` | `string` | No | A list of attributes of the case that should be updated. Supported values are `priority`, `display_name`, and `subscriber_email_addresses`. If no fields are specified, all supported fields are updated. Be careful - if you do not provide a field mask, then you might accidentally clear some fields. For example, if you leave the field mask empty and do not provide a value for `subscriber_email_addresses`, then `subscriber_email_addresses` is updated to empty. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `cases.escalate()`
-
-Escalate a case, starting the Google Cloud Support escalation management process. This operation is only available for some support services. Go to https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find out which ones let you do that. EXAMPLES: cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \ "https://cloudsupport.googleapis.com/v2beta/$case:escalate" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().escalate( name="projects/some-project/cases/43595344", body={ "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation.", }, }, ) print(request.execute()) ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the case to be escalated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `cases.close()`
@@ -103,28 +177,15 @@ Close a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/4359534
 | `params.name` | `string` | Yes | Required. The name of the case to close. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `cases.showFeed()`
+#### `cases.get()`
 
-Show items in the feed of this case, including case emails, attachments, and comments.
+Retrieve a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().get( name="projects/some-project/cases/43595344", ) print(request.execute()) ```
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the case for which feed items should be listed. |
-| `params.orderBy` | `string` | No | Optional. Field to order feed items by, followed by `asc` or `desc` postfix. The only valid field is `creation_time`. This list is case-insensitive, default sorting order is ascending, and the redundant space characters are insignificant. Example: `creation_time desc` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feed items fetched with each request. |
-| `params.pageToken` | `string` | No | Optional. A token identifying the page of results to return. If unspecified, it retrieves the first page. |
+| `params.name` | `string` | Yes | Required. The full name of a case to be retrieved. |
 
 ### `cases.attachments`
-
-#### `cases.attachments.list()`
-
-List all the attachments associated with a support case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/attachments" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .attachments() .list(parent="projects/some-project/cases/43595344") ) print(request.execute()) ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the case for which attachments should be listed. |
-| `params.pageSize` | `integer` | No | The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100. The size of each page can be smaller than the requested page size and can include zero. For example, you could request 100 attachments on one page, receive 0, and then on the next page, receive 90. |
-| `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
 
 #### `cases.attachments.get()`
 
@@ -134,6 +195,16 @@ Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```shell 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the attachment to get. |
 
+#### `cases.attachments.list()`
+
+List all the attachments associated with a support case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2beta/$case/attachments" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .attachments() .list(parent="projects/some-project/cases/43595344") ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100. The size of each page can be smaller than the requested page size and can include zero. For example, you could request 100 attachments on one page, receive 0, and then on the next page, receive 90. |
+| `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
+| `params.parent` | `string` | Yes | Required. The name of the case for which attachments should be listed. |
+
 ### `cases.comments`
 
 #### `cases.comments.list()`
@@ -142,9 +213,9 @@ List all the comments associated with a case. EXAMPLES: cURL: ```shell case="pro
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the case for which to list comments. |
 | `params.pageSize` | `integer` | No | The maximum number of comments to fetch. Defaults to 10. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is returned. |
+| `params.parent` | `string` | Yes | Required. The name of the case for which to list comments. |
 
 #### `cases.comments.create()`
 
@@ -162,16 +233,3 @@ Retrieve a comment. EXAMPLES: cURL: ```shell comment="projects/some-project/case
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the comment to retrieve. |
-
-### `caseClassifications`
-
-#### `caseClassifications.search()`
-
-Retrieve valid classifications to use when creating a support case. Classifications are hierarchical. Each classification is a string containing all levels of the hierarchy separated by `" > "`. For example, `"Technical Issue > Compute > Compute Engine"`. Classification IDs returned by this endpoint are valid for at least six months. When a classification is deactivated, this endpoint immediately stops returning it. After six months, `case.create` requests using the classification will fail. EXAMPLES: cURL: ```shell curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ 'https://cloudsupport.googleapis.com/v2beta/caseClassifications:search?query=display_name:"*Compute%20Engine*"' ``` Python: ```python import googleapiclient.discovery supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version="v2beta", discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version=v2", ) request = supportApiService.caseClassifications().search( query='display_name:"*Compute Engine*"' ) print(request.execute()) ```
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.query` | `string` | No | An expression used to filter case classifications. If it's an empty string, then no filtering happens. Otherwise, case classifications will be returned that match the filter. |
-| `params.pageSize` | `integer` | No | The maximum number of classifications fetched with each request. |
-| `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
-| `params.product.productLine` | `string` | No | The product line of the Product. |
