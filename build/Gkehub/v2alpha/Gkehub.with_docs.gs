@@ -64,16 +64,6 @@ class Gkehub {
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}/operations', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -83,6 +73,16 @@ class Gkehub {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.memberships = {};
 
@@ -99,6 +99,19 @@ class Gkehub {
     this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
+     * Creates membershipFeature under a given parent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
+     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/features', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists MembershipFeatures in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Lists MembershipFeatures that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "helloworld" in project "foo-proj" and membership "member-bar": name = "projects/foo-proj/locations/global/memberships/member-bar/features/helloworld" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar
@@ -113,30 +126,6 @@ class Gkehub {
     this.projects.locations.memberships.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/features', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates membershipFeature under a given parent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
-     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+parent}/features', 'POST', apiParams, clientConfig);
-
-    /**
-     * Removes a membershipFeature.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the membershipFeature to be deleted. Specified in the format `projects/*\/locations/*\/memberships/*\/features/*`.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.memberships.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Updates an existing MembershipFeature.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored.
@@ -149,6 +138,17 @@ class Gkehub {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.memberships.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Removes a membershipFeature.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the membershipFeature to be deleted. Specified in the format `projects/*\/locations/*\/memberships/*\/features/*`.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.memberships.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
