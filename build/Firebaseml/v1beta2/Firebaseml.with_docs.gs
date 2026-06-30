@@ -24,6 +24,16 @@ class Firebaseml {
     this.projects.models = {};
 
     /**
+     * Deletes a model
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Gets Download information for a model. This is meant for downloading model resources onto devices. It gives very limited information about the model.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}`
@@ -43,6 +53,19 @@ class Firebaseml {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the models
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc"
+     * @param {integer} apiParams.pageSize - The maximum number of items to return
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}'
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a model. The longrunning operation will eventually return a Model.
@@ -65,29 +88,6 @@ class Firebaseml {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the models
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc"
-     * @param {integer} apiParams.pageSize - The maximum number of items to return
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}'
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a model
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.operations = {};
 
