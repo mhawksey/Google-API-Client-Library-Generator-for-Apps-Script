@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Scheduler API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:34:05 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:35:18 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:41:17 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:41:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:37 GMT
 
 
@@ -28,11 +28,11 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -62,26 +62,6 @@ Gets the Scheduler config in the project/region.
 
 ### `projects.locations.operations`
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
 #### `projects.locations.operations.delete()`
 
 Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -99,25 +79,27 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
 ### `projects.locations.jobs`
-
-#### `projects.locations.jobs.list()`
-
-Lists jobs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. |
-| `params.pageSize` | `integer` | No | Requested page size. The maximum page size is 500. If unspecified, the page size will be the maximum. Fewer jobs than requested might be returned, even if more jobs exist; use next_page_token to determine if more jobs exist. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server will return. To request the first page results, page_token must be empty. To request the next page of results, page_token must be the value of next_page_token returned from the previous call to ListJobs. |
-
-#### `projects.locations.jobs.get()`
-
-Gets a job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
 
 #### `projects.locations.jobs.create()`
 
@@ -128,16 +110,6 @@ Creates a job.
 | `params.parent` | `string` | Yes | Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.jobs.patch()`
-
-Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters. |
-| `params.updateMask` | `string` | No | A mask used to specify which fields of the job are being updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.jobs.delete()`
 
 Deletes a job.
@@ -145,6 +117,33 @@ Deletes a job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
+
+#### `projects.locations.jobs.resume()`
+
+Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.jobs.get()`
+
+Gets a job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
+
+#### `projects.locations.jobs.patch()`
+
+Updates a job. If successful, the updated Job is returned. If the job does not exist, `NOT_FOUND` is returned. If UpdateJob does not successfully return, it is possible for the job to be in an Job.State.UPDATE_FAILED state. A job in this state may not be executed. If this happens, retry the UpdateJob request until a successful response is received.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | A mask used to specify which fields of the job are being updated. |
+| `params.name` | `string` | Yes | Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling [locations.list](/scheduler/docs/reference/rest/v1/projects.locations/list). For more information, see [Cloud Scheduler locations](/scheduler/docs/locations). * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.pause()`
 
@@ -155,14 +154,15 @@ Pauses a job. If a job is paused then the system will stop executing the job unt
 | `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.jobs.resume()`
+#### `projects.locations.jobs.list()`
 
-Resume a job. This method reenables a job after it has been Job.State.PAUSED. The state of a job is stored in Job.state; after calling this method it will be set to Job.State.ENABLED. A job must be in Job.State.PAUSED to be resumed.
+Lists jobs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. |
+| `params.pageSize` | `integer` | No | Requested page size. The maximum page size is 500. If unspecified, the page size will be the maximum. Fewer jobs than requested might be returned, even if more jobs exist; use next_page_token to determine if more jobs exist. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server will return. To request the first page results, page_token must be empty. To request the next page of results, page_token must be the value of next_page_token returned from the previous call to ListJobs. |
 
 #### `projects.locations.jobs.run()`
 
