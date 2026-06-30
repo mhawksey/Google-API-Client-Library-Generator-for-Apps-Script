@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Channel API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:32:53 GMT
-- **Last Modified:** Sun, 31 May 2026 23:32:53 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:33:33 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:33:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:26 GMT
 
 
@@ -16,18 +16,6 @@ Auto-generated client library for using the **Cloud Channel API (version: v1)** 
 
 ### `operations`
 
-#### `operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
 #### `operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
@@ -36,13 +24,17 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `operations.delete()`
+#### `operations.list()`
 
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `operations.cancel()`
 
@@ -52,6 +44,14 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
 ### `accounts`
 
@@ -89,6 +89,63 @@ List TransferableSkus of a customer based on the Cloud Identity ID or Customer N
 | `params.parent` | `string` | Yes | Required. The reseller account's resource name. Parent uses the format: accounts/{account_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `accounts.listSubscribers()`
+
+Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: The topic resource doesn't exist.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: A list of service email addresses.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of service accounts to return. The service may return fewer than this value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will coerce values above 1000. |
+| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. |
+| `params.integrator` | `string` | No | Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. |
+
+#### `accounts.unregister()`
+
+Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. If there are no service accounts left with subscriber privileges, this deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: The topic resource doesn't exist.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email address. Returns a success response if the service email address wasn't registered with the topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.register()`
+
+Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name with the registered service email address.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.listTransferableOffers()`
 
 List TransferableOffers of a customer based on Cloud Identity ID or Customer Name in the request. Use this method when a reseller gets the entitlement information of an unowned customer. The reseller should provide the customer's Cloud Identity ID or Customer Name. Possible error codes:
@@ -110,122 +167,23 @@ List TransferableOffers of a customer based on Cloud Identity ID or Customer Nam
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller's account. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.register()`
-
-Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name with the registered service email address.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.unregister()`
-
-Unregisters a service account with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. If there are no service accounts left with subscriber privileges, this deletes the topic. You can call ListSubscribers to check for these accounts. Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: The topic resource doesn't exist.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email address. Returns a success response if the service email address wasn't registered with the topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.listSubscribers()`
-
-Lists service accounts with subscriber privileges on the Pub/Sub topic created for this Channel Services account or integrator. Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: The topic resource doesn't exist.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: A list of service email addresses.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.account` | `string` | Yes | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of service accounts to return. The service may return fewer than this value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will coerce values above 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. |
-| `params.integrator` | `string` | No | Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. |
-
-### `accounts.reports`
-
-#### `accounts.reports.run()`
-
-Begins generation of data for a given report. The report identifier is a UID (for example, `613bf59q`). Possible error codes:
-
-* PERMISSION_DENIED: The user doesn't have access to this report.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: The report identifier was not found.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata. To get the results of report generation, call CloudChannelReportsService.FetchReportResults with the RunReportJobResponse.report_job. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.reports.list()`
-
-Lists the reports that RunReportJob can run. These reports include an ID, a description, and the list of columns that will be in the result. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the partner account to list available reports for. Parent uses the format: accounts/{account_id} |
-| `params.pageSize` | `integer` | No | Optional. Requested page size of the report. The server might return fewer results than requested. If unspecified, returns 20 reports. The maximum value is 100. |
-| `params.pageToken` | `string` | No | Optional. A token that specifies a page of results beyond the first page. Obtained through ListReportsResponse.next_page_token of the previous CloudChannelReportsService.ListReports call. |
-| `params.languageCode` | `string` | No | Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". |
-
-### `accounts.reportJobs`
-
-#### `accounts.reportJobs.fetchReportResults()`
-
-Retrieves data generated by CloudChannelReportsService.RunReportJob. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.reportJob` | `string` | Yes | Required. The report job created by CloudChannelReportsService.RunReportJob. Report_job uses the format: accounts/{account_id}/reportJobs/{report_job_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `accounts.customers`
 
-#### `accounts.customers.list()`
+#### `accounts.customers.patch()`
 
-List Customers. Possible error codes:
+Updates an existing Customer resource for the reseller or distributor. Possible error codes:
 
 * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
 
-* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers.
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. |
-| `params.filter` | `string` | No | Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. |
+| `params.name` | `string` | Yes | Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
+| `params.updateMask` | `string` | No | The update mask that applies to the resource. Optional. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.get()`
 
@@ -260,84 +218,6 @@ Creates a new Customer resource under the reseller or distributor account. Possi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.patch()`
-
-Updates an existing Customer resource for the reseller or distributor. Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
-| `params.updateMask` | `string` | No | The update mask that applies to the resource. Optional. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.delete()`
-
-Deletes the given Customer permanently. Possible error codes:
-
-* PERMISSION_DENIED: The account making the request does not own this customer.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* FAILED_PRECONDITION: The customer has existing entitlements.
-
-* NOT_FOUND: No Customer resource found for the name in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the customer to delete. |
-
-#### `accounts.customers.import()`
-
-Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true, it will update that Customer's data. Possible error codes:
-
-* PERMISSION_DENIED:
-
-* The reseller account making the request is different from the reseller account in the API request.
-
-* You are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265
-
-* NOT_FOUND: Cloud Identity doesn't exist or was deleted.
-
-* INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or invalid.
-
-* ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires an overwrite. Return value: The Customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.provisionCloudIdentity()`
-
-Creates a Cloud Identity for the given customer using the customer's information, or the information provided here. Possible error codes:
-
-* PERMISSION_DENIED:
-
-* The customer doesn't belong to the reseller.
-
-* You are not authorized to provision cloud identity id. See https://support.google.com/channelservices/answer/9759265
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: The customer was not found.
-
-* ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the customer's primary contact email.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.transferEntitlements()`
@@ -377,6 +257,124 @@ Transfers customer entitlements to new reseller. Possible error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller's customer account that will receive transferred entitlements. Parent uses the format: accounts/{account_id}/customers/{customer_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.customers.queryEligibleBillingAccounts()`
+
+Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible error codes:
+
+* PERMISSION_DENIED: The customer doesn't belong to the reseller.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs, returns a list of SKU groups that must be purchased using the same billing account and the billing accounts eligible to purchase each SKU group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. The resource name of the customer to list eligible billing accounts for. Format: accounts/{account_id}/customers/{customer_id}. |
+| `params.skus` | `string` | No | Required. List of SKUs to list eligible billing accounts for. At least one SKU is required. Format: products/{product_id}/skus/{sku_id}. |
+
+#### `accounts.customers.provisionCloudIdentity()`
+
+Creates a Cloud Identity for the given customer using the customer's information, or the information provided here. Possible error codes:
+
+* PERMISSION_DENIED:
+
+* The customer doesn't belong to the reseller.
+
+* You are not authorized to provision cloud identity id. See https://support.google.com/channelservices/answer/9759265
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: The customer was not found.
+
+* ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the customer's primary contact email.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.customers.delete()`
+
+Deletes the given Customer permanently. Possible error codes:
+
+* PERMISSION_DENIED: The account making the request does not own this customer.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* FAILED_PRECONDITION: The customer has existing entitlements.
+
+* NOT_FOUND: No Customer resource found for the name in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the customer to delete. |
+
+#### `accounts.customers.list()`
+
+List Customers. Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: List of Customers, or an empty list if there are no customers.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. |
+| `params.filter` | `string` | No | Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. |
+| `params.parent` | `string` | Yes | Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. |
+
+#### `accounts.customers.listPurchasableOffers()`
+
+Lists the following:
+
+* Offers that you can purchase for a customer.
+
+* Offers that you can change for an entitlement. Possible error codes:
+
+* PERMISSION_DENIED:
+
+* The customer doesn't belong to the reseller
+
+* The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Offers. The maximum value is 1000; the server will coerce values above 1000. |
+| `params.createEntitlementPurchase.billingAccount` | `string` | No | Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. |
+| `params.changeOfferPurchase.billingAccount` | `string` | No | Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. |
+| `params.changeOfferPurchase.entitlement` | `string` | No | Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.changeOfferPurchase.newSku` | `string` | No | Optional. Resource name of the new target SKU. Provide this SKU when upgrading or downgrading an entitlement. Format: products/{product_id}/skus/{sku_id} |
+| `params.createEntitlementPurchase.sku` | `string` | No | Required. SKU that the result should be restricted to. Format: products/{product_id}/skus/{sku_id}. |
+| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
+| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
+| `params.customer` | `string` | Yes | Required. The resource name of the customer to list Offers for. Format: accounts/{account_id}/customers/{customer_id}. |
+
+#### `accounts.customers.import()`
+
+Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true, it will update that Customer's data. Possible error codes:
+
+* PERMISSION_DENIED:
+
+* The reseller account making the request is different from the reseller account in the API request.
+
+* You are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265
+
+* NOT_FOUND: Cloud Identity doesn't exist or was deleted.
+
+* INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or invalid.
+
+* ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires an overwrite. Return value: The Customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.transferEntitlementsToGoogle()`
@@ -427,69 +425,35 @@ Lists the following:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The resource name of the customer to list SKUs for. Format: accounts/{account_id}/customers/{customer_id}. |
-| `params.createEntitlementPurchase.product` | `string` | No | Required. List SKUs belonging to this Product. Format: products/{product_id}. Supports products/- to retrieve SKUs for all products. |
 | `params.changeOfferPurchase.entitlement` | `string` | No | Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
+| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
 | `params.changeOfferPurchase.changeType` | `string` | No | Required. Change Type for the entitlement. |
+| `params.createEntitlementPurchase.product` | `string` | No | Required. List SKUs belonging to this Product. Format: products/{product_id}. Supports products/- to retrieve SKUs for all products. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. |
-| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
-| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
-
-#### `accounts.customers.listPurchasableOffers()`
-
-Lists the following:
-
-* Offers that you can purchase for a customer.
-
-* Offers that you can change for an entitlement. Possible error codes:
-
-* PERMISSION_DENIED:
-
-* The customer doesn't belong to the reseller
-
-* The reseller is not authorized to transact on this Product. See https://support.google.com/channelservices/answer/9759265
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. The resource name of the customer to list Offers for. Format: accounts/{account_id}/customers/{customer_id}. |
-| `params.createEntitlementPurchase.sku` | `string` | No | Required. SKU that the result should be restricted to. Format: products/{product_id}/skus/{sku_id}. |
-| `params.createEntitlementPurchase.billingAccount` | `string` | No | Optional. Billing account that the result should be restricted to. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. |
-| `params.changeOfferPurchase.entitlement` | `string` | No | Required. Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
-| `params.changeOfferPurchase.newSku` | `string` | No | Optional. Resource name of the new target SKU. Provide this SKU when upgrading or downgrading an entitlement. Format: products/{product_id}/skus/{sku_id} |
-| `params.changeOfferPurchase.billingAccount` | `string` | No | Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting up billing for a trial subscription. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency accounts. It should be left empty for single currency accounts. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Offers. The maximum value is 1000; the server will coerce values above 1000. |
-| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
-| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
-
-#### `accounts.customers.queryEligibleBillingAccounts()`
-
-Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible error codes:
-
-* PERMISSION_DENIED: The customer doesn't belong to the reseller.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs, returns a list of SKU groups that must be purchased using the same billing account and the billing accounts eligible to purchase each SKU group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. The resource name of the customer to list eligible billing accounts for. Format: accounts/{account_id}/customers/{customer_id}. |
-| `params.skus` | `string` | No | Required. List of SKUs to list eligible billing accounts for. At least one SKU is required. Format: products/{product_id}/skus/{sku_id}. |
 
 ### `accounts.customers.entitlements`
 
-#### `accounts.customers.entitlements.list()`
+#### `accounts.customers.entitlements.startPaidService()`
 
-Lists Entitlements belonging to a customer. Possible error codes:
+Starts paid service for a trial entitlement. Starts paid service for a trial entitlement immediately. This method is only applicable if a plan is set up for a trial entitlement but has some trial days remaining. Possible error codes:
 
 * PERMISSION_DENIED: The customer doesn't belong to the reseller.
 
-* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's Entitlements.
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: Entitlement resource not found.
+
+* FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on trial plans.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the reseller's customer account to list entitlements for. Parent uses the format: accounts/{account_id}/customers/{customer_id} |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, return at most 50 entitlements. The maximum value is 100; the server will coerce values above 100. |
-| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. Obtained using ListEntitlementsResponse.next_page_token of the previous CloudChannelService.ListEntitlements call. |
+| `params.name` | `string` | Yes | Required. The name of the entitlement to start a paid service for. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.entitlements.get()`
 
@@ -552,45 +516,19 @@ Creates an entitlement for a customer. Possible error codes:
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller's customer account in which to create the entitlement. Parent uses the format: accounts/{account_id}/customers/{customer_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.customers.entitlements.changeParameters()`
+#### `accounts.customers.entitlements.lookupOffer()`
 
-Change parameters of the entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes:
+Returns the requested Offer resource. Possible error codes:
 
-* PERMISSION_DENIED: The customer doesn't belong to the reseller.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid. For example, the number of seats being changed is greater than the allowed number of max seats, or decreasing seats for a commitment based plan.
-
-* NOT_FOUND: Entitlement resource not found.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.entitlements.changeRenewalSettings()`
-
-Updates the renewal settings for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes:
-
-* PERMISSION_DENIED: The customer doesn't belong to the reseller.
+* PERMISSION_DENIED: The entitlement doesn't belong to the reseller.
 
 * INVALID_ARGUMENT: Required request parameters are missing or invalid.
 
-* NOT_FOUND: Entitlement resource not found.
-
-* NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment plan. Can't enable or disable renewals for non-commitment plans.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
+* NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.entitlement` | `string` | Yes | Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
 
 #### `accounts.customers.entitlements.changeOffer()`
 
@@ -609,48 +547,6 @@ Updates the Offer for an existing customer entitlement. An entitlement update is
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.entitlements.startPaidService()`
-
-Starts paid service for a trial entitlement. Starts paid service for a trial entitlement immediately. This method is only applicable if a plan is set up for a trial entitlement but has some trial days remaining. Possible error codes:
-
-* PERMISSION_DENIED: The customer doesn't belong to the reseller.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: Entitlement resource not found.
-
-* FAILED_PRECONDITION/NOT_IN_TRIAL: This method only works for entitlement on trial plans.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the entitlement to start a paid service for. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.customers.entitlements.suspend()`
-
-Suspends a previously fulfilled entitlement. An entitlement suspension is a long-running operation. Possible error codes:
-
-* PERMISSION_DENIED: The customer doesn't belong to the reseller.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: Entitlement resource not found.
-
-* NOT_ACTIVE: Entitlement is not active.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the entitlement to suspend. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.entitlements.cancel()`
@@ -676,6 +572,20 @@ Cancels a previously fulfilled entitlement. An entitlement cancellation is a lon
 | `params.name` | `string` | Yes | Required. The resource name of the entitlement to cancel. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `accounts.customers.entitlements.list()`
+
+Lists Entitlements belonging to a customer. Possible error codes:
+
+* PERMISSION_DENIED: The customer doesn't belong to the reseller.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid. Return value: A list of the customer's Entitlements.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the reseller's customer account to list entitlements for. Parent uses the format: accounts/{account_id}/customers/{customer_id} |
+| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. Obtained using ListEntitlementsResponse.next_page_token of the previous CloudChannelService.ListEntitlements call. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, return at most 50 entitlements. The maximum value is 100; the server will coerce values above 100. |
+
 #### `accounts.customers.entitlements.activate()`
 
 Activates a previously suspended entitlement. Entitlements suspended for pending ToS acceptance can't be activated using this method. An entitlement activation is a long-running operation and it updates the state of the customer entitlement. Possible error codes:
@@ -699,19 +609,26 @@ Activates a previously suspended entitlement. Entitlements suspended for pending
 | `params.name` | `string` | Yes | Required. The resource name of the entitlement to activate. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.customers.entitlements.lookupOffer()`
+#### `accounts.customers.entitlements.changeRenewalSettings()`
 
-Returns the requested Offer resource. Possible error codes:
+Updates the renewal settings for an existing customer entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes:
 
-* PERMISSION_DENIED: The entitlement doesn't belong to the reseller.
+* PERMISSION_DENIED: The customer doesn't belong to the reseller.
 
 * INVALID_ARGUMENT: Required request parameters are missing or invalid.
 
-* NOT_FOUND: Entitlement or offer was not found. Return value: The Offer resource.
+* NOT_FOUND: Entitlement resource not found.
+
+* NOT_COMMITMENT_PLAN: Renewal Settings are only applicable for a commitment plan. Can't enable or disable renewals for non-commitment plans.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.entitlement` | `string` | Yes | Required. The resource name of the entitlement to retrieve the Offer. Entitlement uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.name` | `string` | Yes | Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.customers.entitlements.listEntitlementChanges()`
 
@@ -730,9 +647,49 @@ List entitlement history. Possible error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the entitlement for which to list entitlement changes. The `-` wildcard may be used to match entitlements across a customer. Formats: * accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} * accounts/{account_id}/customers/{customer_id}/entitlements/- |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of entitlement changes to return. The service may return fewer than this value. If unspecified, returns at most 10 entitlement changes. The maximum value is 50; the server will coerce values above 50. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous CloudChannelService.ListEntitlementChanges call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to CloudChannelService.ListEntitlementChanges must match the call that provided the page token. |
 | `params.filter` | `string` | No | Optional. Filters applied to the list results. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of entitlement changes to return. The service may return fewer than this value. If unspecified, returns at most 10 entitlement changes. The maximum value is 50; the server will coerce values above 50. |
+
+#### `accounts.customers.entitlements.changeParameters()`
+
+Change parameters of the entitlement. An entitlement update is a long-running operation and it updates the entitlement as a result of fulfillment. Possible error codes:
+
+* PERMISSION_DENIED: The customer doesn't belong to the reseller.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid. For example, the number of seats being changed is greater than the allowed number of max seats, or decreasing seats for a commitment based plan.
+
+* NOT_FOUND: Entitlement resource not found.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the entitlement to update. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.customers.entitlements.suspend()`
+
+Suspends a previously fulfilled entitlement. An entitlement suspension is a long-running operation. Possible error codes:
+
+* PERMISSION_DENIED: The customer doesn't belong to the reseller.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: Entitlement resource not found.
+
+* NOT_ACTIVE: Entitlement is not active.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata will contain an instance of OperationMetadata.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the entitlement to suspend. Name uses the format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.customers.customerRepricingConfigs`
 
@@ -749,31 +706,6 @@ Gets information about how a Reseller modifies their bill before sending it to a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. |
-
-#### `accounts.customers.customerRepricingConfigs.list()`
-
-Lists information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes:
-
-* PERMISSION_DENIED: If the account making the request and the account being queried are different.
-
-* NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not associated with the given account.
-
-* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order of:
-
-* Customer ID
-
-* RepricingConfig.EntitlementGranularity.entitlement
-
-* RepricingConfig.effective_invoice_month
-
-* CustomerRepricingConfig.update_time If unsuccessful, returns an error.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the customer. Parent uses the format: accounts/{account_id}/customers/{customer_id}. Supports accounts/{account_id}/customers/- to retrieve configs for all customers. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results beyond the first page. Obtained through ListCustomerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListCustomerRepricingConfigs call. |
-| `params.filter` | `string` | No | Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs] results (customer only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/customers/-`. Example: customer = accounts/account_id/customers/c1 OR customer = accounts/account_id/customers/c2. |
 
 #### `accounts.customers.customerRepricingConfigs.create()`
 
@@ -799,6 +731,31 @@ Creates a CustomerRepricingConfig. Call this method to set modifications for a s
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the customer that will receive this repricing config. Parent uses the format: accounts/{account_id}/customers/{customer_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.customers.customerRepricingConfigs.list()`
+
+Lists information about how a Reseller modifies their bill before sending it to a Customer. Possible Error Codes:
+
+* PERMISSION_DENIED: If the account making the request and the account being queried are different.
+
+* NOT_FOUND: The CustomerRepricingConfig specified does not exist or is not associated with the given account.
+
+* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the CustomerRepricingConfig resources. The data for each resource is displayed in the ascending order of:
+
+* Customer ID
+
+* RepricingConfig.EntitlementGranularity.entitlement
+
+* RepricingConfig.effective_invoice_month
+
+* CustomerRepricingConfig.update_time If unsuccessful, returns an error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the customer. Parent uses the format: accounts/{account_id}/customers/{customer_id}. Supports accounts/{account_id}/customers/- to retrieve configs for all customers. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results beyond the first page. Obtained through ListCustomerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListCustomerRepricingConfigs call. |
+| `params.filter` | `string` | No | Optional. A filter for [CloudChannelService.ListCustomerRepricingConfigs] results (customer only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/customers/-`. Example: customer = accounts/account_id/customers/c1 OR customer = accounts/account_id/customers/c2. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. |
 
 #### `accounts.customers.customerRepricingConfigs.patch()`
 
@@ -835,6 +792,66 @@ Deletes the given CustomerRepricingConfig permanently. You can only delete confi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the customer repricing config rule to delete. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. |
 
+### `accounts.reports`
+
+#### `accounts.reports.run()`
+
+Begins generation of data for a given report. The report identifier is a UID (for example, `613bf59q`). Possible error codes:
+
+* PERMISSION_DENIED: The user doesn't have access to this report.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: The report identifier was not found.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of OperationMetadata. To get the results of report generation, call CloudChannelReportsService.FetchReportResults with the RunReportJobResponse.report_job. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.reports.list()`
+
+Lists the reports that RunReportJob can run. These reports include an ID, a description, and the list of columns that will be in the result. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the partner account to list available reports for. Parent uses the format: accounts/{account_id} |
+| `params.pageToken` | `string` | No | Optional. A token that specifies a page of results beyond the first page. Obtained through ListReportsResponse.next_page_token of the previous CloudChannelReportsService.ListReports call. |
+| `params.languageCode` | `string` | No | Optional. The BCP-47 language code, such as "en-US". If specified, the response is localized to the corresponding language code if the original data sources support it. Default is "en-US". |
+| `params.pageSize` | `integer` | No | Optional. Requested page size of the report. The server might return fewer results than requested. If unspecified, returns 20 reports. The maximum value is 100. |
+
+### `accounts.offers`
+
+#### `accounts.offers.list()`
+
+Lists the Offers the reseller can sell. Possible error codes:
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
+| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
+| `params.showFutureOffers` | `boolean` | No | Optional. A boolean flag that determines if a response returns future offers 30 days from now. If the show_future_offers is true, the response will only contain offers that are scheduled to be available 30 days from now. |
+| `params.parent` | `string` | Yes | Required. The resource name of the reseller account from which to list Offers. Parent uses the format: accounts/{account_id}. |
+| `params.filter` | `string` | No | Optional. The expression to filter results by name (name of the Offer), sku.name (name of the SKU), or sku.product.name (name of the Product). Example 1: sku.product.name=products/p1 AND sku.name!=products/p1/skus/s1 Example 2: name=accounts/a1/offers/o1 |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 500 Offers. The maximum value is 1000; the server will coerce values above 1000. |
+
+### `accounts.reportJobs`
+
+#### `accounts.reportJobs.fetchReportResults()`
+
+Retrieves data generated by CloudChannelReportsService.RunReportJob. Deprecated: Please use [Export Channel Services data to BigQuery](https://cloud.google.com/channel/docs/rebilling/export-data-to-bigquery) instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.reportJob` | `string` | Yes | Required. The report job created by CloudChannelReportsService.RunReportJob. Report_job uses the format: accounts/{account_id}/reportJobs/{report_job_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `accounts.channelPartnerLinks`
 
 #### `accounts.channelPartnerLinks.list()`
@@ -849,8 +866,33 @@ List ChannelPartnerLinks belonging to a distributor. You must be a distributor t
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller account for listing channel partner links. Parent uses the format: accounts/{account_id} |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, server will pick a default size (25). The maximum value is 200; the server will coerce values above 200. |
-| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. Obtained using ListChannelPartnerLinksResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerLinks call. |
 | `params.view` | `string` | No | Optional. The level of granularity the ChannelPartnerLink will display. |
+| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. Obtained using ListChannelPartnerLinksResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerLinks call. |
+
+#### `accounts.channelPartnerLinks.patch()`
+
+Updates a channel partner link. Distributors call this method to change a link's status. For example, to suspend a partner link. You must be a distributor to call this method. Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
+
+* INVALID_ARGUMENT:
+
+* Required request parameters are missing or invalid.
+
+* Link state cannot change from invited to active or suspended.
+
+* Cannot send reseller_cloud_identity_id, invite_url, or name in update mask.
+
+* NOT_FOUND: ChannelPartnerLink resource not found.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The updated ChannelPartnerLink resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the channel partner link to cancel. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.channelPartnerLinks.get()`
 
@@ -888,31 +930,6 @@ Initiates a channel partner link between a distributor and a reseller, or betwee
 | `params.parent` | `string` | Yes | Required. Create a channel partner link for the provided reseller account's resource name. Parent uses the format: accounts/{account_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.channelPartnerLinks.patch()`
-
-Updates a channel partner link. Distributors call this method to change a link's status. For example, to suspend a partner link. You must be a distributor to call this method. Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
-
-* INVALID_ARGUMENT:
-
-* Required request parameters are missing or invalid.
-
-* Link state cannot change from invited to active or suspended.
-
-* Cannot send reseller_cloud_identity_id, invite_url, or name in update mask.
-
-* NOT_FOUND: ChannelPartnerLink resource not found.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The updated ChannelPartnerLink resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the channel partner link to cancel. Name uses the format: accounts/{account_id}/channelPartnerLinks/{id} where {id} is the Cloud Identity ID of the partner. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `accounts.channelPartnerLinks.customers`
 
 #### `accounts.channelPartnerLinks.customers.list()`
@@ -926,9 +943,25 @@ List Customers. Possible error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller account to list customers from. Parent uses the format: accounts/{account_id}. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results other than the first page. Obtained through ListCustomersResponse.next_page_token of the previous CloudChannelService.ListCustomers call. |
 | `params.filter` | `string` | No | Optional. Filters applied to the [CloudChannelService.ListCustomers] results. See https://cloud.google.com/channel/docs/concepts/google-cloud/filter-customers for more information. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of customers to return. The service may return fewer than this value. If unspecified, returns at most 10 customers. The maximum value is 50. |
+
+#### `accounts.channelPartnerLinks.customers.patch()`
+
+Updates an existing Customer resource for the reseller or distributor. Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
+| `params.updateMask` | `string` | No | The update mask that applies to the resource. Optional. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.channelPartnerLinks.customers.get()`
 
@@ -965,38 +998,6 @@ Creates a new Customer resource under the reseller or distributor account. Possi
 | `params.parent` | `string` | Yes | Required. The resource name of reseller account in which to create the customer. Parent uses the format: accounts/{account_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.channelPartnerLinks.customers.patch()`
-
-Updates an existing Customer resource for the reseller or distributor. Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* NOT_FOUND: No Customer resource found for the name in the request. Return value: The updated Customer resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} |
-| `params.updateMask` | `string` | No | The update mask that applies to the resource. Optional. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.channelPartnerLinks.customers.delete()`
-
-Deletes the given Customer permanently. Possible error codes:
-
-* PERMISSION_DENIED: The account making the request does not own this customer.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* FAILED_PRECONDITION: The customer has existing entitlements.
-
-* NOT_FOUND: No Customer resource found for the name in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the customer to delete. |
-
 #### `accounts.channelPartnerLinks.customers.import()`
 
 Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true, it will update that Customer's data. Possible error codes:
@@ -1018,21 +1019,39 @@ Imports a Customer from the Cloud Identity associated with the provided Cloud Id
 | `params.parent` | `string` | Yes | Required. The resource name of the reseller's account. Parent takes the format: accounts/{account_id} or accounts/{account_id}/channelPartnerLinks/{channel_partner_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs`
+#### `accounts.channelPartnerLinks.customers.delete()`
 
-#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.get()`
+Deletes the given Customer permanently. Possible error codes:
 
-Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes:
+* PERMISSION_DENIED: The account making the request does not own this customer.
 
-* PERMISSION_DENIED: If the account making the request and the account being queried are different.
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
 
-* NOT_FOUND: The ChannelPartnerRepricingConfig was not found.
+* FAILED_PRECONDITION: The customer has existing entitlements.
 
-* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
+* NOT_FOUND: No Customer resource found for the name in the request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ChannelPartnerRepricingConfig Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. |
+| `params.name` | `string` | Yes | Required. The resource name of the customer to delete. |
+
+### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs`
+
+#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.delete()`
+
+Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes:
+
+* PERMISSION_DENIED: The account making the request does not own this customer.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* FAILED_PRECONDITION: The ChannelPartnerRepricingConfig is active or in the past.
+
+* NOT_FOUND: No ChannelPartnerRepricingConfig found for the name in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the channel partner repricing config rule to delete. |
 
 #### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.list()`
 
@@ -1056,6 +1075,39 @@ Lists information about how a Reseller modifies their bill before sending it to 
 | `params.pageSize` | `integer` | No | Optional. The maximum number of repricing configs to return. The service may return fewer than this value. If unspecified, returns a maximum of 50 rules. The maximum value is 100; values above 100 will be coerced to 100. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results beyond the first page. Obtained through ListChannelPartnerRepricingConfigsResponse.next_page_token of the previous CloudChannelService.ListChannelPartnerRepricingConfigs call. |
 | `params.filter` | `string` | No | Optional. A filter for [CloudChannelService.ListChannelPartnerRepricingConfigs] results (channel_partner_link only). You can use this filter when you support a BatchGet-like query. To use the filter, you must set `parent=accounts/{account_id}/channelPartnerLinks/-`. Example: `channel_partner_link = accounts/account_id/channelPartnerLinks/c1` OR `channel_partner_link = accounts/account_id/channelPartnerLinks/c2`. |
+
+#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.patch()`
+
+Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config in the future:
+
+* This config must already exist. Possible Error Codes:
+
+* PERMISSION_DENIED: If the account making the request and the account being queried are different.
+
+* INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months.
+
+* NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account.
+
+* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.get()`
+
+Gets information about how a Distributor modifies their bill before sending it to a ChannelPartner. Possible Error Codes:
+
+* PERMISSION_DENIED: If the account making the request and the account being queried are different.
+
+* NOT_FOUND: The ChannelPartnerRepricingConfig was not found.
+
+* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the ChannelPartnerRepricingConfig resource, otherwise returns an error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ChannelPartnerRepricingConfig Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. |
 
 #### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.create()`
 
@@ -1081,41 +1133,6 @@ Creates a ChannelPartnerRepricingConfig. Call this method to set modifications f
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ChannelPartner that will receive the repricing config. Parent uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.patch()`
-
-Updates a ChannelPartnerRepricingConfig. Call this method to set modifications for a specific ChannelPartner's bill. This method overwrites the existing CustomerRepricingConfig. You can only update configs if the RepricingConfig.effective_invoice_month is a future month. To make changes to configs for the current month, use CreateChannelPartnerRepricingConfig, taking note of its restrictions. You cannot update the RepricingConfig.effective_invoice_month. When updating a config in the future:
-
-* This config must already exist. Possible Error Codes:
-
-* PERMISSION_DENIED: If the account making the request and the account being queried are different.
-
-* INVALID_ARGUMENT: Missing or invalid required parameters in the request. Also displays if the updated config is for the current month or past months.
-
-* NOT_FOUND: The ChannelPartnerRepricingConfig specified does not exist or is not associated with the given account.
-
-* INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud Channel support. Return Value: If successful, the updated ChannelPartnerRepricingConfig resource, otherwise returns an error.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.channelPartnerLinks.channelPartnerRepricingConfigs.delete()`
-
-Deletes the given ChannelPartnerRepricingConfig permanently. You can only delete configs if their RepricingConfig.effective_invoice_month is set to a date after the current month. Possible error codes:
-
-* PERMISSION_DENIED: The account making the request does not own this customer.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* FAILED_PRECONDITION: The ChannelPartnerRepricingConfig is active or in the past.
-
-* NOT_FOUND: No ChannelPartnerRepricingConfig found for the name in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the channel partner repricing config rule to delete. |
 
 ### `accounts.skuGroups`
 
@@ -1149,23 +1166,6 @@ Lists the Billable SKUs in a given SKU group. Possible error codes: PERMISSION_D
 | `params.pageSize` | `integer` | No | Optional. The maximum number of SKUs to return. The service may return fewer than this value. If unspecified, returns a maximum of 100000 SKUs. The maximum value is 100000; values above 100000 will be coerced to 100000. |
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results beyond the first page. Obtained through ListSkuGroupBillableSkusResponse.next_page_token of the previous CloudChannelService.ListSkuGroupBillableSkus call. |
 
-### `accounts.offers`
-
-#### `accounts.offers.list()`
-
-Lists the Offers the reseller can sell. Possible error codes:
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the reseller account from which to list Offers. Parent uses the format: accounts/{account_id}. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 500 Offers. The maximum value is 1000; the server will coerce values above 1000. |
-| `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
-| `params.filter` | `string` | No | Optional. The expression to filter results by name (name of the Offer), sku.name (name of the SKU), or sku.product.name (name of the Product). Example 1: sku.product.name=products/p1 AND sku.name!=products/p1/skus/s1 Example 2: name=accounts/a1/offers/o1 |
-| `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
-| `params.showFutureOffers` | `boolean` | No | Optional. A boolean flag that determines if a response returns future offers 30 days from now. If the show_future_offers is true, the response will only contain offers that are scheduled to be available 30 days from now. |
-
 ### `products`
 
 #### `products.list()`
@@ -1177,9 +1177,9 @@ Lists the Products the reseller is authorized to sell. Possible error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.account` | `string` | No | Required. The resource name of the reseller account. Format: accounts/{account_id}. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Products. The maximum value is 1000; the server will coerce values above 1000. |
 | `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. |
 | `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 Products. The maximum value is 1000; the server will coerce values above 1000. |
 
 ### `products.skus`
 
@@ -1191,30 +1191,13 @@ Lists the SKUs for a product the reseller is authorized to sell. Possible error 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Product to list SKUs for. Parent uses the format: products/{product_id}. Supports products/- to retrieve SKUs for all products. |
-| `params.account` | `string` | No | Required. Resource name of the reseller. Format: accounts/{account_id}. |
 | `params.pageSize` | `integer` | No | Optional. Requested page size. Server might return fewer results than requested. If unspecified, returns at most 100 SKUs. The maximum value is 1000; the server will coerce values above 1000. |
+| `params.account` | `string` | No | Required. Resource name of the reseller. Format: accounts/{account_id}. |
+| `params.parent` | `string` | Yes | Required. The resource name of the Product to list SKUs for. Parent uses the format: products/{product_id}. Supports products/- to retrieve SKUs for all products. |
 | `params.pageToken` | `string` | No | Optional. A token for a page of results other than the first page. Optional. |
 | `params.languageCode` | `string` | No | Optional. The BCP-47 language code. For example, "en-US". The response will localize in the corresponding language code, if specified. The default value is "en-US". |
 
 ### `integrators`
-
-#### `integrators.registerSubscriber()`
-
-Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible error codes:
-
-* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
-
-* INVALID_ARGUMENT: Required request parameters are missing or invalid.
-
-* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
-
-* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name with the registered service email address.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.integrator` | `string` | Yes | Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `integrators.unregisterSubscriber()`
 
@@ -1229,6 +1212,23 @@ Unregisters a service account with subscriber privileges on the Pub/Sub topic cr
 * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
 
 * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name that unregistered the service email address. Returns a success response if the service email address wasn't registered with the topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.integrator` | `string` | Yes | Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `integrators.registerSubscriber()`
+
+Registers a service account with subscriber privileges on the Pub/Sub topic for this Channel Services account or integrator. After you create a subscriber, you get the events through SubscriberEvent Possible error codes:
+
+* PERMISSION_DENIED: The reseller account making the request and the provided reseller account are different, or the impersonated user is not a super admin.
+
+* INVALID_ARGUMENT: Required request parameters are missing or invalid.
+
+* INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+
+* UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The topic name with the registered service email address.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1253,5 +1253,5 @@ Lists service accounts with subscriber privileges on the Pub/Sub topic created f
 |---|---|---|---|
 | `params.integrator` | `string` | Yes | Optional. Resource name of the integrator. Required if account is not provided. Otherwise, leave this field empty/unset. |
 | `params.account` | `string` | No | Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of service accounts to return. The service may return fewer than this value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will coerce values above 1000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of service accounts to return. The service may return fewer than this value. If unspecified, returns at most 100 service accounts. The maximum value is 1000; the server will coerce values above 1000. |
