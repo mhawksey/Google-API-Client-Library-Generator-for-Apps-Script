@@ -19,121 +19,577 @@ class Adexchangebuyer2 {
     this._servicePath = '';
 
 
+    this.buyers = {};
+
+    this.buyers.filterSets = {};
+
+    /**
+     * Creates the specified filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves the requested filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all filter sets for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the requested filter set from the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids = {};
+
+    /**
+     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids.details = {};
+
+    /**
+     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids.creatives = {};
+
+    /**
+     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidResponseErrors = {};
+
+    /**
+     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.losingBids = {};
+
+    /**
+     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of bids.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.impressionMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of impressions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBidRequests = {};
+
+    /**
+     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidResponsesWithoutBids = {};
+
+    /**
+     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.nonBillableWinningBids = {};
+
+    /**
+     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buyers.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+
+    this.bidders = {};
+
+    this.bidders.accounts = {};
+
+    this.bidders.accounts.filterSets = {};
+
+    /**
+     * Creates the specified filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves the requested filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all filter sets for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the requested filter set from the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.nonBillableWinningBids = {};
+
+    /**
+     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.filteredBidRequests = {};
+
+    /**
+     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.bidResponsesWithoutBids = {};
+
+    /**
+     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.bidMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of bids.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.impressionMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of impressions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.filteredBids = {};
+
+    /**
+     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.filteredBids.details = {};
+
+    /**
+     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.filteredBids.creatives = {};
+
+    /**
+     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.bidResponseErrors = {};
+
+    /**
+     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
+
+    this.bidders.accounts.filterSets.losingBids = {};
+
+    /**
+     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.accounts.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets = {};
+
+    /**
+     * Creates the specified filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves the requested filter set for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all filter sets for the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the requested filter set from the account with the given account ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.bidders.filterSets.bidResponsesWithoutBids = {};
+
+    /**
+     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.filteredBidRequests = {};
+
+    /**
+     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.nonBillableWinningBids = {};
+
+    /**
+     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.bidResponseErrors = {};
+
+    /**
+     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.losingBids = {};
+
+    /**
+     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.filteredBids = {};
+
+    /**
+     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.filteredBids.details = {};
+
+    /**
+     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.filteredBids.creatives = {};
+
+    /**
+     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.impressionMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of impressions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+
+    this.bidders.filterSets.bidMetrics = {};
+
+    /**
+     * Lists all metrics that are measured in terms of number of bids.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.bidders.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+
     this.accounts = {};
-
-    this.accounts.creatives = {};
-
-    /**
-     * Creates a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account that this creative belongs to. Can be used to filter the response of the creatives.list method.
-     * @param {string} apiParams.duplicateIdMode - Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID per creative).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account that this creative belongs to. Can be used to filter the response of the creatives.list method.
-     * @param {string} apiParams.creativeId - (Required) The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) The ID of the creative to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists creatives.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account to list the creatives from. Specify "-" to list all creatives the current user has access to.
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available through another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method.
-     * @param {string} apiParams.query - An optional query string to filter creatives. If no filter is specified, all active creatives will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsStatus: {approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus: {approved, conditionally_approved, disapproved, not_checked} - attribute: {a numeric attribute from the list of attributes} - disapprovalReason: {a reason from DisapprovalReason} Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content) OR attribute:47'
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'GET', apiParams, clientConfig);
-
-    /**
-     * Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account of the creative to watch.
-     * @param {string} apiParams.creativeId - (Required) The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:watch', 'POST', apiParams, clientConfig);
-
-    /**
-     * Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account of the creative to stop notifications for.
-     * @param {string} apiParams.creativeId - (Required) The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.stopWatching = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching', 'POST', apiParams, clientConfig);
-
-    this.accounts.creatives.dealAssociations = {};
-
-    /**
-     * Associate an existing deal with a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) The ID of the creative associated with the deal.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.dealAssociations.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', 'POST', apiParams, clientConfig);
-
-    /**
-     * Remove the association between a deal and a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) The ID of the creative associated with the deal.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.dealAssociations.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove', 'POST', apiParams, clientConfig);
-
-    /**
-     * List all creative-deal associations.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The account to list the associations from. Specify "-" to list all creatives the current user has access to.
-     * @param {string} apiParams.creativeId - (Required) The creative ID to list the associations from. Specify "-" to list all creatives under the above account.
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer associations than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method.
-     * @param {string} apiParams.query - An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved'
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.creatives.dealAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', 'GET', apiParams, clientConfig);
 
     this.accounts.clients = {};
 
@@ -263,7 +719,97 @@ class Adexchangebuyer2 {
      */
     this.accounts.clients.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', 'GET', apiParams, clientConfig);
 
+    this.accounts.finalizedProposals = {};
+
+    /**
+     * Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.proposalId - (Required) The proposal_id of the proposal containing the deals.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.finalizedProposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
+
+    /**
+     * List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.filter - An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.
+     * @param {string} apiParams.filterSyntax - Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER.
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - The page token as returned from ListProposalsResponse.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.finalizedProposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.proposalId - (Required) The proposal_id of the proposal containing the deals.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.finalizedProposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
+
+    this.accounts.products = {};
+
+    /**
+     * Gets the requested product by ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.productId - (Required) The ID for the product to get the head revision for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products/{productId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * List all products visible to the buyer (optionally filtered by the specified PQL query).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.filter - An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - The page token as returned from ListProductsResponse.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products', 'GET', apiParams, clientConfig);
+
     this.accounts.proposals = {};
+
+    /**
+     * You can opt-in to manually update proposals to indicate that setup is complete. By default, proposal setup is automatically completed after their deals are finalized. Contact your Technical Account Manager to opt in. Buyers can call this method when the proposal has been finalized, and all the required creatives have been uploaded using the Creatives API. This call updates the `is_setup_completed` field on the deals in the proposal, and notifies the seller. The server then advances the revision number of the most recent proposal. To mark an individual deal as ready to serve, call `buyers.finalizedDeals.setReadyToServe` in the Marketplace API.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to mark as setup completed.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.proposals.completeSetup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup', 'POST', apiParams, clientConfig);
+
+    /**
+     * Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to cancel negotiation for.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a proposal given its ID. The proposal is returned at its head revision.
@@ -314,30 +860,6 @@ class Adexchangebuyer2 {
     this.accounts.proposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals', 'GET', apiParams, clientConfig);
 
     /**
-     * Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to attach the note to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote', 'POST', apiParams, clientConfig);
-
-    /**
-     * Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to cancel negotiation for.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation', 'POST', apiParams, clientConfig);
-
-    /**
      * Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
@@ -348,18 +870,6 @@ class Adexchangebuyer2 {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.proposals.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:accept', 'POST', apiParams, clientConfig);
-
-    /**
-     * You can opt-in to manually update proposals to indicate that setup is complete. By default, proposal setup is automatically completed after their deals are finalized. Contact your Technical Account Manager to opt in. Buyers can call this method when the proposal has been finalized, and all the required creatives have been uploaded using the Creatives API. This call updates the `is_setup_completed` field on the deals in the proposal, and notifies the seller. The server then advances the revision number of the most recent proposal. To mark an individual deal as ready to serve, call `buyers.finalizedDeals.setReadyToServe` in the Marketplace API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to mark as setup completed.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.proposals.completeSetup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup', 'POST', apiParams, clientConfig);
 
     /**
      * Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating.
@@ -374,6 +884,18 @@ class Adexchangebuyer2 {
     this.accounts.proposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
 
     /**
+     * Create a new note and attach it to the proposal. The note is assigned a unique ID by the server. The proposal revision number will not increase when associated with a new note.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
+     * @param {string} apiParams.proposalId - (Required) The ID of the proposal to attach the note to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote', 'POST', apiParams, clientConfig);
+
+    /**
      * Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
@@ -384,72 +906,6 @@ class Adexchangebuyer2 {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.proposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
-
-    this.accounts.finalizedProposals = {};
-
-    /**
-     * List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.filter - An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered.
-     * @param {string} apiParams.filterSyntax - Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER.
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - The page token as returned from ListProposalsResponse.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.finalizedProposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals', 'GET', apiParams, clientConfig);
-
-    /**
-     * Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.proposalId - (Required) The proposal_id of the proposal containing the deals.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.finalizedProposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
-
-    /**
-     * Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.proposalId - (Required) The proposal_id of the proposal containing the deals.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.finalizedProposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
-
-    this.accounts.products = {};
-
-    /**
-     * Gets the requested product by ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.productId - (Required) The ID for the product to get the head revision for.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products/{productId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List all products visible to the buyer (optionally filtered by the specified PQL query).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) Account ID of the buyer.
-     * @param {string} apiParams.filter - An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered.
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - The page token as returned from ListProductsResponse.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products', 'GET', apiParams, clientConfig);
 
     this.accounts.publisherProfiles = {};
 
@@ -476,575 +932,119 @@ class Adexchangebuyer2 {
      */
     this.accounts.publisherProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/publisherProfiles', 'GET', apiParams, clientConfig);
 
-    this.bidders = {};
-
-    this.bidders.accounts = {};
-
-    this.bidders.accounts.filterSets = {};
+    this.accounts.creatives = {};
 
     /**
-     * Creates the specified filter set for the account with the given account ID.
+     * Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {string} apiParams.accountId - (Required) The account of the creative to watch.
+     * @param {string} apiParams.creativeId - (Required) The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.bidders.accounts.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:watch', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves the requested filter set for the account with the given account ID.
+     * Creates a creative.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all filter sets for the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes the requested filter set from the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.impressionMetrics = {};
-
-    /**
-     * Lists all metrics that are measured in terms of number of impressions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidMetrics = {};
-
-    /**
-     * Lists all metrics that are measured in terms of number of bids.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBidRequests = {};
-
-    /**
-     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidResponseErrors = {};
-
-    /**
-     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidResponsesWithoutBids = {};
-
-    /**
-     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids = {};
-
-    /**
-     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids.details = {};
-
-    /**
-     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids.creatives = {};
-
-    /**
-     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.losingBids = {};
-
-    /**
-     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.nonBillableWinningBids = {};
-
-    /**
-     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.accounts.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets = {};
-
-    /**
-     * Creates the specified filter set for the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {string} apiParams.accountId - (Required) The account that this creative belongs to. Can be used to filter the response of the creatives.list method.
+     * @param {string} apiParams.duplicateIdMode - Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID per creative).
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.bidders.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves the requested filter set for the account with the given account ID.
+     * Updates a creative.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all filter sets for the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes the requested filter set from the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.bidders.filterSets.impressionMetrics = {};
-
-    /**
-     * Lists all metrics that are measured in terms of number of impressions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.bidMetrics = {};
-
-    /**
-     * Lists all metrics that are measured in terms of number of bids.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.filteredBidRequests = {};
-
-    /**
-     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.bidResponseErrors = {};
-
-    /**
-     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.bidResponsesWithoutBids = {};
-
-    /**
-     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.filteredBids = {};
-
-    /**
-     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.filteredBids.details = {};
-
-    /**
-     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.filteredBids.creatives = {};
-
-    /**
-     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.losingBids = {};
-
-    /**
-     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.nonBillableWinningBids = {};
-
-    /**
-     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.bidders.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
-
-    this.buyers = {};
-
-    this.buyers.filterSets = {};
-
-    /**
-     * Creates the specified filter set for the account with the given account ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.isTransient - Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
+     * @param {string} apiParams.accountId - (Required) The account that this creative belongs to. Can be used to filter the response of the creatives.list method.
+     * @param {string} apiParams.creativeId - (Required) The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Retrieves the requested filter set for the account with the given account ID.
+     * Gets a creative.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) The ID of the creative to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists all filter sets for the account with the given account ID.
+     * Lists creatives.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.ownerName - (Required) Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method.
+     * @param {string} apiParams.accountId - (Required) The account to list the creatives from. Specify "-" to list all creatives the current user has access to.
+     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available through another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method.
+     * @param {string} apiParams.query - An optional query string to filter creatives. If no filter is specified, all active creatives will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsStatus: {approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus: {approved, conditionally_approved, disapproved, not_checked} - attribute: {a numeric attribute from the list of attributes} - disapprovalReason: {a reason from DisapprovalReason} Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content) OR attribute:47'
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+    this.accounts.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes the requested filter set from the account with the given account ID.
+     * Stops watching a creative. Will stop push notifications being sent to the topics when the creative changes status.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
+     * @param {string} apiParams.accountId - (Required) The account of the creative to stop notifications for.
+     * @param {string} apiParams.creativeId - (Required) The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.creatives.stopWatching = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching', 'POST', apiParams, clientConfig);
 
-    this.buyers.filterSets.impressionMetrics = {};
+    this.accounts.creatives.dealAssociations = {};
 
     /**
-     * Lists all metrics that are measured in terms of number of impressions.
+     * Associate an existing deal with a creative.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method.
+     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) The ID of the creative associated with the deal.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.bidMetrics = {};
+    this.accounts.creatives.dealAssociations.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all metrics that are measured in terms of number of bids.
+     * Remove the association between a deal and a creative.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method.
+     * @param {string} apiParams.accountId - (Required) The account the creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) The ID of the creative associated with the deal.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.filteredBidRequests = {};
+    this.accounts.creatives.dealAssociations.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove', 'POST', apiParams, clientConfig);
 
     /**
-     * List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+     * List all creative-deal associations.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method.
+     * @param {string} apiParams.accountId - (Required) The account to list the associations from. Specify "-" to list all creatives the current user has access to.
+     * @param {string} apiParams.creativeId - (Required) The creative ID to list the associations from. Specify "-" to list all creatives under the above account.
+     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer associations than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method.
+     * @param {string} apiParams.query - An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved'
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.buyers.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.bidResponseErrors = {};
-
-    /**
-     * List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.bidResponsesWithoutBids = {};
-
-    /**
-     * List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.filteredBids = {};
-
-    /**
-     * List all reasons for which bids were filtered, with the number of bids filtered for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.filteredBids.details = {};
-
-    /**
-     * List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.filteredBids.creatives = {};
-
-    /**
-     * List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.creativeStatusId - (Required) The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.losingBids = {};
-
-    /**
-     * List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
-
-    this.buyers.filterSets.nonBillableWinningBids = {};
-
-    /**
-     * List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filterSetName - (Required) Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc`
-     * @param {integer} apiParams.pageSize - Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buyers.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+    this.accounts.creatives.dealAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', 'GET', apiParams, clientConfig);
   }
 
 /**
