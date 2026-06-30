@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:43:06 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:44:33 GMT
 - **Last Modified:** Thu, 30 Apr 2026 23:44:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:33 GMT
 
