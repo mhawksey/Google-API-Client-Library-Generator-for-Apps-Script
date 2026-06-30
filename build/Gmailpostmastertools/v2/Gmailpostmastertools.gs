@@ -19,16 +19,27 @@ class Gmailpostmastertools {
     this._servicePath = '';
 
 
+    this.domainStats = {};
+    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
+
     this.domains = {};
-    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'GET', apiParams, clientConfig);
+    this.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.domains.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:verify', 'POST', apiParams, clientConfig);
+    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.domains.getComplianceStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.domains.getVerificationToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'POST', apiParams, clientConfig);
+
+    this.domains.users = {};
+    this.domains.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/users', 'POST', apiParams, clientConfig);
+    this.domains.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.domains.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.domains.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/users', 'GET', apiParams, clientConfig);
+    this.domains.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.domains.domainStats = {};
     this.domains.domainStats.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/domainStats:query', 'POST', apiParams, clientConfig);
-
-    this.domainStats = {};
-    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
   }
 
 /**
