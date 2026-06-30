@@ -36,16 +36,6 @@ class Cloudcontrolspartner {
     this.organizations.locations.customers = {};
 
     /**
-     * Gets details of a single customer
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists customers of a partner identified by its Google Cloud organization ID
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. Filtering results
@@ -60,6 +50,18 @@ class Cloudcontrolspartner {
     this.organizations.locations.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'GET', apiParams, clientConfig);
 
     /**
+     * Update details of a single customer
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}`
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
      * Creates a new customer.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - Required. The customer id to use for the customer, which will become the final component of the customer's resource name. The specified value must be a valid Google cloud organization id.
@@ -72,16 +74,14 @@ class Cloudcontrolspartner {
     this.organizations.locations.customers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'POST', apiParams, clientConfig);
 
     /**
-     * Update details of a single customer
+     * Gets details of a single customer
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}`
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.locations.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Delete details of a single customer
@@ -96,16 +96,6 @@ class Cloudcontrolspartner {
     this.organizations.locations.customers.workloads = {};
 
     /**
-     * Gets details of a single workload
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.customers.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists customer workloads for a given customer org id
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. Filtering results.
@@ -118,6 +108,16 @@ class Cloudcontrolspartner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.locations.customers.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloads', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single workload
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.customers.workloads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Gets the EKM connections associated with a workload
@@ -138,22 +138,6 @@ class Cloudcontrolspartner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.locations.customers.workloads.getPartnerPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.locations.customers.workloads.accessApprovalRequests = {};
-
-    /**
-     * Deprecated: Only returns access approval requests directly associated with an assured workload folder.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results.
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.customers.workloads.accessApprovalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accessApprovalRequests', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.customers.workloads.violations = {};
 
@@ -182,6 +166,22 @@ class Cloudcontrolspartner {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.locations.customers.workloads.violations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.customers.workloads.accessApprovalRequests = {};
+
+    /**
+     * Deprecated: Only returns access approval requests directly associated with an assured workload folder.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of access requests to return. The service may return fewer than this value. If unspecified, at most 500 access requests will be returned.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAccessApprovalRequests` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. Parent resource Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.customers.workloads.accessApprovalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accessApprovalRequests', 'GET', apiParams, clientConfig);
   }
 
 /**
