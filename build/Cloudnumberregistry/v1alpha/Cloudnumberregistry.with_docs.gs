@@ -97,34 +97,10 @@ class Cloudnumberregistry {
     this.projects.locations.ipamAdminScopes = {};
 
     /**
-     * List all IPAM admin scopes in a given project and location.
+     * Checks the availability of IpamAdminScopes in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListIpamAdminScopesRequest
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.ipamAdminScopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single IpamAdminScope.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.ipamAdminScopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Checks the availability of IPAM admin scopes in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for the IpamAdminScopes.
-     * @param {string} apiParams.scopes - Required. The scopes of the IpamAdminScopes to look for.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
+     * @param {string} apiParams.scopes - Required. The administrative scopes to check for availability.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -132,22 +108,9 @@ class Cloudnumberregistry {
     this.projects.locations.ipamAdminScopes.checkAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes:checkAvailability', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new IpamAdminScope in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.ipamAdminScopeId - Required. Id of the requesting object.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.ipamAdminScopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates the parameters of a single IpamAdminScope.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Identifier. name of resource
+     * @param {string} apiParams.name - (Required) Required. Identifier. The resource name of the IpamAdminScope.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the IpamAdminScope resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
      * @param {object} apiParams.requestBody - The request body.
@@ -161,7 +124,7 @@ class Cloudnumberregistry {
      * Deletes a single IpamAdminScope.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.force - Optional. If set to true, all associated resources will be deleted.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the IpamAdminScope to delete.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -172,7 +135,7 @@ class Cloudnumberregistry {
     /**
      * Disables a single IpamAdminScope.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the IpamAdminScope to disable.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -183,7 +146,7 @@ class Cloudnumberregistry {
     /**
      * Cleans up a single IpamAdminScope.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the IpamAdminScope to clean up.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -191,62 +154,61 @@ class Cloudnumberregistry {
      */
     this.projects.locations.ipamAdminScopes.cleanup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cleanup', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.registryBooks = {};
-
     /**
-     * Lists RegistryBooks in a given project and location.
+     * Gets details of a single IpamAdminScope.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListRegistryBooksRequest
-     * @param {string} apiParams.view - Optional. The view of the RegistryBook.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the IpamAdminScope to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.registryBooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'GET', apiParams, clientConfig);
+    this.projects.locations.ipamAdminScopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets details of a single RegistryBook.
+     * Creates a new IpamAdminScope in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.view - Optional. The view of the RegistryBook.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.registryBooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Searches IP resources in a given RegistryBook.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the RegistryBook to search in.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.registryBooks.searchIpResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:searchIpResources', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates a new RegistryBook in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.registryBookId - Required. Id of the requesting object.
+     * @param {string} apiParams.ipamAdminScopeId - Required. The ID to use for the IpamAdminScope, which will become the final segment of the resource name.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the IpamAdminScope will be created.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.registryBooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'POST', apiParams, clientConfig);
+    this.projects.locations.ipamAdminScopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists IpamAdminScopes in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to filter the results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.ipamAdminScopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.registryBooks = {};
+
+    /**
+     * Deletes a single RegistryBook.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - Optional. If set to true, all associated resources will be deleted.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the RegistryBook to delete.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.registryBooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single RegistryBook.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Identifier. name of resource
+     * @param {string} apiParams.name - (Required) Required. Identifier. The resource name of the RegistryBook.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the RegistryBook resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
      * @param {object} apiParams.requestBody - The request body.
@@ -257,103 +219,148 @@ class Cloudnumberregistry {
     this.projects.locations.registryBooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a single RegistryBook.
+     * Lists RegistryBooks in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to filter the results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
+     * @param {string} apiParams.view - Optional. The view of the RegistryBook to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.registryBooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'GET', apiParams, clientConfig);
+
+    /**
+     * Searches IP resources in a given RegistryBook.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the RegistryBook to search in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.registryBooks.searchIpResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:searchIpResources', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new RegistryBook in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the RegistryBook will be created.
+     * @param {string} apiParams.registryBookId - Required. The ID to use for the RegistryBook, which will become the final segment of the resource name.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.registryBooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single RegistryBook.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the RegistryBook to retrieve.
+     * @param {string} apiParams.view - Optional. The view of the RegistryBook to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.registryBooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.customRanges = {};
+
+    /**
+     * Finds free IP ranges in a single CustomRange.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.cidrPrefixLength - Required. The prefix length of the free IP ranges to find.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CustomRange to search within.
+     * @param {integer} apiParams.rangeCount - Optional. The number of free IP ranges to find.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customRanges.findFreeIpRanges = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:findFreeIpRanges', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the parameters of a single CustomRange.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Identifier. The resource name of the CustomRange, in the format `projects/{project}/locations/{location}/customRanges/{custom_range}`.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the CustomRange resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets the details of a single CustomRange and its utilization.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CustomRange.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a single CustomRange.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.force - Optional. If set to true, all associated resources will be deleted.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CustomRange to delete.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.registryBooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.realms = {};
+    this.projects.locations.customRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Lists Realms in a given project and location.
+     * Gets details of a single CustomRange.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CustomRange to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new CustomRange in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customRangeId - Required. The ID to use for the CustomRange, which will become the final segment of the resource name.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the CustomRange will be created.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.customRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists CustomRanges in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to filter the results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
      * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListRealmsRequest
-     * @param {string} apiParams.view - Optional. The view of the Realm.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.realms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single Realm.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.view - Optional. The view of the Realm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.realms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Realm in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.realmId - Required. Id of the requesting object.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.realms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the parameters of a single Realm.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Identifier. Unique name/ID of the realm
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the Realm resource by the update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.realms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a single Realm.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - Optional. If set to true, all associated resources will be deleted.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.realms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.customRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'GET', apiParams, clientConfig);
 
     this.projects.locations.discoveredRanges = {};
 
     /**
-     * Lists DiscoveredRanges in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results.
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListDiscoveredRangesRequest
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.discoveredRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/discoveredRanges', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets details of a single DiscoveredRange.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the DiscoveredRange to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -364,7 +371,7 @@ class Cloudnumberregistry {
      * Finds free IP ranges in a single DiscoveredRange.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.cidrPrefixLength - Required. The prefix length of the free IP ranges to find.
-     * @param {string} apiParams.name - (Required) Required. Name of the DiscoveredRange.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the DiscoveredRange to search within.
      * @param {integer} apiParams.rangeCount - Optional. The number of free IP ranges to find.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -376,99 +383,92 @@ class Cloudnumberregistry {
     /**
      * Gets the details of a single DiscoveredRange and its utilization.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
+     * @param {string} apiParams.name - (Required) Required. The resource name of the DiscoveredRange.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.discoveredRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.customRanges = {};
-
     /**
-     * Lists CustomRanges in a given project and location.
+     * Lists DiscoveredRanges in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results.
+     * @param {string} apiParams.filter - Optional. Filter expression to filter the results.
      * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
      * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListCustomRangesRequest
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.customRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveredRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/discoveredRanges', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.realms = {};
 
     /**
-     * Gets details of a single CustomRange.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the details of a single CustomRange and its utilization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
-
-    /**
-     * Finds free IP ranges in a single CustomRange.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.cidrPrefixLength - Required. The prefix length of the free IP ranges to find.
-     * @param {string} apiParams.name - (Required) Required. Name of the CustomRange.
-     * @param {integer} apiParams.rangeCount - Optional. The number of free IP ranges to find.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customRanges.findFreeIpRanges = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:findFreeIpRanges', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new CustomRange in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customRangeId - Required. Id of the requesting object.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the parameters of a single CustomRange.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Identifier. name of resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the CustomRange resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.customRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a single CustomRange.
+     * Deletes a single Realm.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.force - Optional. If set to true, all associated resources will be deleted.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Realm to delete.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.customRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.realms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the parameters of a single Realm.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Identifier. The resource name of the Realm.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the Realm resource by the update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.realms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists Realms in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression to filter the results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, for example `projects/*\/locations/*`.
+     * @param {string} apiParams.view - Optional. The view of the Realm to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.realms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new Realm in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the Realm will be created.
+     * @param {string} apiParams.realmId - Required. The ID to use for the Realm, which will become the final segment of the resource name.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.realms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Realm.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Realm to retrieve.
+     * @param {string} apiParams.view - Optional. The view of the Realm to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.realms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
