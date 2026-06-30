@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:35:22 GMT
-- **Last Modified:** Sun, 31 May 2026 23:35:22 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:42:39 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:42:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:58 GMT
 
 
@@ -18,13 +18,49 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ### `projects.locations`
 
-#### `projects.locations.diagnoseConversations()`
+#### `projects.locations.queryPerformanceOverview()`
 
-Analyzes conversation data using specialized agentic workflows, such as ReAct, to diagnose issues and provide insights.
+Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where the analysis will be performed. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.queryMetrics()`
+
+Query metrics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.bulkUploadFeedbackLabels()`
+
+Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.generativeInsights()`
+
+Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.testCorrelationConfig()`
+
+Tests correlation config on a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location to test correlation config. Format: projects/{project}/locations/{location} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.getCorrelationConfig()`
@@ -45,23 +81,6 @@ Updates correlation config.
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.testCorrelationConfig()`
-
-Tests correlation config on a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.location` | `string` | Yes | Required. The location to test correlation config. Format: projects/{project}/locations/{location} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.getSettings()`
-
-Gets project-level settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the settings resource to get. |
-
 #### `projects.locations.updateSettings()`
 
 Updates project-level settings.
@@ -72,41 +91,6 @@ Updates project-level settings.
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.getEncryptionSpec()`
-
-Gets location-level encryption key specification.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the encryption spec resource to get. |
-
-#### `projects.locations.queryMetrics()`
-
-Query metrics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.generativeInsights()`
-
-Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.queryPerformanceOverview()`
-
-Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.listAllFeedbackLabels()`
 
 List all feedback labels by project number.
@@ -114,18 +98,17 @@ List all feedback labels by project number.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of all feedback labels per project. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
 | `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
 
-#### `projects.locations.bulkUploadFeedbackLabels()`
+#### `projects.locations.getSettings()`
 
-Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
+Gets project-level settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the settings resource to get. |
 
 #### `projects.locations.bulkDownloadFeedbackLabels()`
 
@@ -136,6 +119,14 @@ Download feedback labels in bulk from an external source. Currently supports exp
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.getEncryptionSpec()`
+
+Gets location-level encryption key specification.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the encryption spec resource to get. |
+
 #### `projects.locations.bulkDeleteFeedbackLabels()`
 
 Delete feedback labels in bulk using a filter.
@@ -145,116 +136,7 @@ Delete feedback labels in bulk using a filter.
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-
 ### `projects.locations.conversations`
-
-#### `projects.locations.conversations.create()`
-
-Creates a conversation. Note that this method does not support audio transcription or redaction. Use `conversations.upload` instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
-| `params.conversationId` | `string` | No | A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.upload()`
-
-Create a long-running conversation upload operation. This method differs from `CreateConversation` by allowing audio transcription and optional DLP redaction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.patch()`
-
-Updates a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} |
-| `params.updateMask` | `string` | No | The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or * `data_source.dialogflow_source.audio_uri` * `data_source.screen_recordings` |
-| `params.allowMissing` | `boolean` | No | Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. |
-| `params.conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate` | `boolean` | No | Optional. If set to true, the conversation will be updated with auto labeling results. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.get()`
-
-Gets a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
-| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
-
-#### `projects.locations.conversations.list()`
-
-Lists conversations.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
-| `params.pageSize` | `integer` | No | The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
-| `params.orderBy` | `string` | No | Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). |
-| `params.view` | `string` | No | The level of details of the conversation. Default is `BASIC`. |
-
-#### `projects.locations.conversations.generateSignedAudio()`
-
-Gets the signed URI for the audio for the given conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to sign. |
-
-#### `projects.locations.conversations.delete()`
-
-Deletes a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
-| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
-
-#### `projects.locations.conversations.sample()`
-
-Samples conversations based on user configuration and handles the sampled conversations for different use cases.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.bulkAnalyze()`
 
@@ -274,13 +156,74 @@ Deletes multiple conversations in a single request.
 | `params.parent` | `string` | Yes | Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.conversations.ingest()`
+#### `projects.locations.conversations.patch()`
 
-Imports conversations and processes them according to the user's configuration.
+Updates a conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
+| `params.name` | `string` | Yes | Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} |
+| `params.updateMask` | `string` | No | The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or * `data_source.dialogflow_source.audio_uri` * `data_source.screen_recordings` |
+| `params.allowMissing` | `boolean` | No | Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. |
+| `params.conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate` | `boolean` | No | Optional. If set to true, the conversation will be updated with auto labeling results. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.delete()`
+
+Deletes a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
+| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
+
+#### `projects.locations.conversations.create()`
+
+Creates a conversation. Note that this method does not support audio transcription or redaction. Use `conversations.upload` instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversationId` | `string` | No | A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` |
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.list()`
+
+Lists conversations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
+| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
+| `params.pageSize` | `integer` | No | The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+| `params.orderBy` | `string` | No | Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). |
+| `params.view` | `string` | No | The level of details of the conversation. Default is `BASIC`. |
+
+#### `projects.locations.conversations.generateSignedAudio()`
+
+Gets the signed URI for the audio for the given conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the conversation to sign. |
+
+#### `projects.locations.conversations.sample()`
+
+Samples conversations based on user configuration and handles the sampled conversations for different use cases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.upload()`
+
+Create a long-running conversation upload operation. This method differs from `CreateConversation` by allowing audio transcription and optional DLP redaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.calculateStats()`
@@ -292,43 +235,23 @@ Gets conversation statistics.
 | `params.location` | `string` | Yes | Required. The location of the conversations. |
 | `params.filter` | `string` | No | A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. |
 
-### `projects.locations.conversations.analyses`
+#### `projects.locations.conversations.get()`
 
-#### `projects.locations.conversations.analyses.create()`
-
-Creates an analysis. The long running operation is done when the analysis has completed.
+Gets a conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the analysis. |
+| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
+| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
+
+#### `projects.locations.conversations.ingest()`
+
+Imports conversations and processes them according to the user's configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.analyses.get()`
-
-Gets an analysis.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the analysis to get. |
-
-#### `projects.locations.conversations.analyses.list()`
-
-Lists analyses.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the analyses. |
-| `params.pageSize` | `integer` | No | The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. |
-| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
-
-#### `projects.locations.conversations.analyses.delete()`
-
-Deletes an analysis.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the analysis to delete. |
 
 ### `projects.locations.conversations.segments`
 
@@ -343,6 +266,25 @@ Analyzes multiple conversations in a single request.
 
 ### `projects.locations.conversations.feedbackLabels`
 
+#### `projects.locations.conversations.feedbackLabels.get()`
+
+Get feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
+
+#### `projects.locations.conversations.feedbackLabels.list()`
+
+List feedback labels.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+
 #### `projects.locations.conversations.feedbackLabels.create()`
 
 Create feedback label.
@@ -353,33 +295,14 @@ Create feedback label.
 | `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.conversations.feedbackLabels.list()`
-
-List feedback labels.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
-
-#### `projects.locations.conversations.feedbackLabels.get()`
-
-Get feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
-
 #### `projects.locations.conversations.feedbackLabels.patch()`
 
 Update feedback label.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
+| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.feedbackLabels.delete()`
@@ -391,34 +314,6 @@ Delete feedback label.
 | `params.name` | `string` | Yes | Required. The name of the feedback label to delete. |
 
 ### `projects.locations.conversations.assessments`
-
-#### `projects.locations.conversations.assessments.create()`
-
-Create Assessment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.assessments.get()`
-
-Get Assessment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment to get. |
-
-#### `projects.locations.conversations.assessments.list()`
-
-List Assessments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. |
-| `params.pageSize` | `integer` | No | The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for |
 
 #### `projects.locations.conversations.assessments.delete()`
 
@@ -438,13 +333,13 @@ Publish an Assessment.
 | `params.name` | `string` | Yes | Required. The name of the assessment to publish. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.conversations.assessments.appeal()`
+#### `projects.locations.conversations.assessments.create()`
 
-Appeal an Assessment.
+Create Assessment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.finalize()`
@@ -456,16 +351,35 @@ Finalize an Assessment.
 | `params.name` | `string` | Yes | Required. The name of the assessment to finalize. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.conversations.assessments.notes`
+#### `projects.locations.conversations.assessments.list()`
 
-#### `projects.locations.conversations.assessments.notes.create()`
-
-Create Note.
+List Assessments.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the note. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+
+#### `projects.locations.conversations.assessments.appeal()`
+
+Appeal an Assessment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.assessments.get()`
+
+Get Assessment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment to get. |
+
+### `projects.locations.conversations.assessments.notes`
 
 #### `projects.locations.conversations.assessments.notes.list()`
 
@@ -473,9 +387,9 @@ List Notes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the notes. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
 | `params.pageToken` | `string` | No | Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the notes. |
 
 #### `projects.locations.conversations.assessments.notes.patch()`
 
@@ -483,8 +397,8 @@ Update Note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` |
+| `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.notes.delete()`
@@ -495,722 +409,65 @@ Deletes a Note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the note to delete. |
 
-### `projects.locations.datasets`
+#### `projects.locations.conversations.assessments.notes.create()`
 
-#### `projects.locations.datasets.create()`
-
-Creates a dataset.
+Create Note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
-| `params.datasetId` | `string` | No | Optional. The ID to use for the dataset. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the note. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.datasets.list()`
+### `projects.locations.conversations.analyses`
 
-List datasets matching the input.
+#### `projects.locations.conversations.analyses.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListDatasetsResponse`; indicates that this is a continuation of a prior `ListDatasets` call and the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Useful for querying datasets with specific properties. Supported fields include, for Q2 though we only support list by project: - `type` - `description` - `project_number` |
-
-#### `projects.locations.datasets.get()`
-
-Gets a dataset.
+Lists analyses.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the dataset to get. |
-
-#### `projects.locations.datasets.patch()`
-
-Updates a dataset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.delete()`
-
-Delete a dataset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the dataset to delete. |
-
-#### `projects.locations.datasets.listAllFeedbackLabels()`
-
-List all feedback labels by project number.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of all feedback labels per project. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
-
-#### `projects.locations.datasets.bulkUploadFeedbackLabels()`
-
-Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.bulkDownloadFeedbackLabels()`
-
-Download feedback labels in bulk from an external source. Currently supports exporting Quality AI example conversations with transcripts and question bodies.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.bulkDeleteFeedbackLabels()`
-
-Delete feedback labels in bulk using a filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.datasets.conversations`
-
-#### `projects.locations.datasets.conversations.get()`
-
-Gets a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
-| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
-
-#### `projects.locations.datasets.conversations.list()`
-
-Lists conversations.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
-| `params.pageSize` | `integer` | No | The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.pageToken` | `string` | No | The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the analyses. |
 | `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
-| `params.orderBy` | `string` | No | Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). |
-| `params.view` | `string` | No | The level of details of the conversation. Default is `BASIC`. |
 
-#### `projects.locations.datasets.conversations.generateSignedAudio()`
+#### `projects.locations.conversations.analyses.delete()`
 
-Gets the signed URI for the audio for the given conversation.
+Deletes an analysis.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to sign. |
+| `params.name` | `string` | Yes | Required. The name of the analysis to delete. |
 
-#### `projects.locations.datasets.conversations.delete()`
+#### `projects.locations.conversations.analyses.get()`
 
-Deletes a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
-| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
-
-#### `projects.locations.datasets.conversations.sample()`
-
-Samples conversations based on user configuration and handles the sampled conversations for different use cases.
+Gets an analysis.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
+| `params.name` | `string` | Yes | Required. The name of the analysis to get. |
+
+#### `projects.locations.conversations.analyses.create()`
+
+Creates an analysis. The long running operation is done when the analysis has completed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the analysis. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.conversations.bulkDelete()`
-
-Deletes multiple conversations in a single request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.conversations.ingest()`
-
-Imports conversations and processes them according to the user's configuration.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.conversations.calculateStats()`
-
-Gets conversation statistics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.location` | `string` | Yes | Required. The location of the conversations. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.datasets.conversations.feedbackLabels`
-
-#### `projects.locations.datasets.conversations.feedbackLabels.create()`
-
-Create feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
-| `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.conversations.feedbackLabels.list()`
-
-List feedback labels.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
-
-#### `projects.locations.datasets.conversations.feedbackLabels.get()`
-
-Get feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
-
-#### `projects.locations.datasets.conversations.feedbackLabels.patch()`
-
-Update feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
-| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.datasets.conversations.feedbackLabels.delete()`
-
-Delete feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the feedback label to delete. |
-
-### `projects.locations.datasets.insightsdata`
-
-#### `projects.locations.datasets.insightsdata.export()`
-
-Export insights data to a destination defined in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.insightsdata`
-
-#### `projects.locations.insightsdata.export()`
-
-Export insights data to a destination defined in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.diagnostics`
-
-#### `projects.locations.diagnostics.get()`
-
-Gets a diagnostic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the diagnostic to retrieve. |
-
-#### `projects.locations.diagnostics.list()`
-
-Lists diagnostics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the diagnostics. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of diagnostics to return. The service may return fewer than this value. If unspecified, at most 100 diagnostics will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDiagnostics` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | Optional. A filter to apply to the list (e.g. `create_time > "2023-01-01T00:00:00Z"`). |
-| `params.appId` | `string` | No | Optional. The CES App ID to filter diagnostics by. |
-| `params.appVersion` | `string` | No | Optional. The CES App version to filter diagnostics by. Setting to "-" filters to diagnostics created using "-" (the latest draft version). Note that reports created at different times may correspond to different draft instructions. Setting to "" (empty) retrieves all diagnostics for the app_id regardless of version. |
-
-#### `projects.locations.diagnostics.delete()`
-
-Deletes a diagnostic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the diagnostic to delete. |
-
-### `projects.locations.issueModels`
-
-#### `projects.locations.issueModels.create()`
-
-Creates an issue model.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.patch()`
-
-Updates an issue model.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.get()`
-
-Gets an issue model.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the issue model to get. |
-
-#### `projects.locations.issueModels.list()`
-
-Lists issue models.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
-
-#### `projects.locations.issueModels.delete()`
-
-Deletes an issue model.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the issue model to delete. |
-
-#### `projects.locations.issueModels.deploy()`
-
-Deploys an issue model. Returns an error if a model is already deployed. An issue model can only be used in analysis after it has been deployed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The issue model to deploy. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.undeploy()`
-
-Undeploys an issue model. An issue model can not be used in analysis after it has been undeployed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The issue model to undeploy. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.export()`
-
-Exports an issue model to the provided destination.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The issue model to export. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.import()`
-
-Imports an issue model from a Cloud Storage bucket.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.calculateIssueModelStats()`
-
-Gets an issue model's statistics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.issueModel` | `string` | Yes | Required. The resource name of the issue model to query against. |
-
-### `projects.locations.issueModels.issues`
-
-#### `projects.locations.issueModels.issues.get()`
-
-Gets an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the issue to get. |
-
-#### `projects.locations.issueModels.issues.list()`
-
-Lists issues.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the issue. |
-
-#### `projects.locations.issueModels.issues.patch()`
-
-Updates an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.issues.create()`
-
-Creates an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the issue. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.issueModels.issues.delete()`
-
-Deletes an issue.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the issue to delete. |
-
-### `projects.locations.phraseMatchers`
-
-#### `projects.locations.phraseMatchers.create()`
-
-Creates a phrase matcher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the phrase matcher. Required. The location to create a phrase matcher for. Format: `projects//locations/` or `projects//locations/` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.phraseMatchers.get()`
-
-Gets a phrase matcher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the phrase matcher to get. |
-
-#### `projects.locations.phraseMatchers.list()`
-
-Lists phrase matchers.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the phrase matcher. |
-| `params.pageSize` | `integer` | No | The maximum number of phrase matchers to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListPhraseMatchersResponse`. This value indicates that this is a continuation of a prior `ListPhraseMatchers` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying phrase matchers with specific properties. |
-
-#### `projects.locations.phraseMatchers.delete()`
-
-Deletes a phrase matcher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the phrase matcher to delete. |
-
-#### `projects.locations.phraseMatchers.patch()`
-
-Updates a phrase matcher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.analysisRules`
-
-#### `projects.locations.analysisRules.create()`
-
-Creates a analysis rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the analysis rule. Required. The location to create a analysis rule for. Format: `projects//locations/` or `projects//locations/` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.analysisRules.get()`
-
-Get a analysis rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the AnalysisRule to get. |
-
-#### `projects.locations.analysisRules.list()`
-
-Lists analysis rules.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the analysis rules. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of analysis rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAnalysisRulesResponse`; indicates that this is a continuation of a prior `ListAnalysisRules` call and the system should return the next page of data. |
-
-#### `projects.locations.analysisRules.patch()`
-
-Updates a analysis rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.analysisRules.delete()`
-
-Deletes a analysis rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the analysis rule to delete. |
-
-### `projects.locations.autoLabelingRules`
-
-#### `projects.locations.autoLabelingRules.list()`
-
-Lists auto labeling rules.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
-
-#### `projects.locations.autoLabelingRules.get()`
-
-Gets an auto labeling rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
-
-#### `projects.locations.autoLabelingRules.create()`
-
-Creates an auto labeling rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project and location to create the auto labeling rule in. Format: projects/{project}/locations/{location} |
-| `params.autoLabelingRuleId` | `string` | No | Required. The ID to use for the auto labeling rule, which will become the final component of the auto labeling rule's resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.autoLabelingRules.patch()`
-
-Updates an auto labeling rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.autoLabelingRules.delete()`
-
-Deletes an auto labeling rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
-
-#### `projects.locations.autoLabelingRules.test()`
-
-Tests auto labeling rules against a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent project and location. Format: projects/{project}/locations/{location} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.assessmentRules`
-
-#### `projects.locations.assessmentRules.create()`
-
-Creates an assessment rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessment rule. Required. The location to create a assessment rule for. Format: `projects//locations/` or `projects//locations/` |
-| `params.assessmentRuleId` | `string` | No | Optional. A unique ID for the new AssessmentRule. This ID will become the final component of the AssessmentRule's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.assessmentRules.get()`
-
-Get an assessment rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment rule to get. |
-
-#### `projects.locations.assessmentRules.list()`
-
-Lists assessment rules.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessment rules. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
-
-#### `projects.locations.assessmentRules.patch()`
-
-Updates an assessment rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.assessmentRules.delete()`
-
-Deletes an assessment rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment rule to delete. |
-
-### `projects.locations.encryptionSpec`
-
-#### `projects.locations.encryptionSpec.initialize()`
-
-Initializes a location-level encryption key specification. An error will result if the location has resources already created before the initialization. After the encryption specification is initialized at a location, it is immutable and all newly created resources under the location will be encrypted with the existing specification.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.views`
-
-#### `projects.locations.views.create()`
-
-Creates a view.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the view. Required. The location to create a view for. Format: `projects//locations/` or `projects//locations/` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.views.get()`
-
-Gets a view.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the view to get. |
-
-#### `projects.locations.views.list()`
-
-Lists views.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the views. |
-| `params.pageSize` | `integer` | No | The maximum number of views to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. |
-
-#### `projects.locations.views.patch()`
-
-Updates a view.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} |
-| `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.views.delete()`
-
-Deletes a view.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the view to delete. |
-
-### `projects.locations.qaQuestionTags`
-
-#### `projects.locations.qaQuestionTags.create()`
-
-Creates a QaQuestionTag.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestionTag. |
-| `params.qaQuestionTagId` | `string` | No | Optional. A unique ID for the new QaQuestionTag. This ID will become the final component of the QaQuestionTag's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.qaQuestionTags.get()`
-
-Gets a QaQuestionTag.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the QaQuestionTag to get. |
-
-#### `projects.locations.qaQuestionTags.patch()`
-
-Updates a QaQuestionTag.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. |
-| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list of questions the tag applies to |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.qaQuestionTags.delete()`
-
-Deletes a QaQuestionTag.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the QaQuestionTag to delete. |
-
-#### `projects.locations.qaQuestionTags.list()`
-
-Lists the question tags.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestionTags. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports conjunctions (ie. AND operators). Supported fields include the following: * `project_id` - id of the project to list tags for * `qa_scorecard_id` - id of the scorecard to list tags for * `revision_id` - id of the scorecard revision to list tags for` * `qa_question_id - id of the question to list tags for` |
 
 ### `projects.locations.qaScorecards`
 
-#### `projects.locations.qaScorecards.create()`
+#### `projects.locations.qaScorecards.list()`
 
-Create a QaScorecard.
+Lists QaScorecards.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecard. |
-| `params.qaScorecardId` | `string` | No | Optional. A unique ID for the new QaScorecard. This ID will become the final component of the QaScorecard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of scorecards to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecards` call and that the system should return the next page of data. |
+| `params.qaScorecardSources` | `string` | No | Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the scorecards. |
 
 #### `projects.locations.qaScorecards.get()`
 
@@ -1226,8 +483,8 @@ Updates a QaScorecard.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `description` * `display_name` |
+| `params.name` | `string` | Yes | Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.delete()`
@@ -1239,28 +496,29 @@ Deletes a QaScorecard.
 | `params.name` | `string` | Yes | Required. The name of the QaScorecard to delete. |
 | `params.force` | `boolean` | No | Optional. If set to true, all of this QaScorecard's child resources will also be deleted. Otherwise, the request will only succeed if it has none. |
 
-#### `projects.locations.qaScorecards.list()`
+#### `projects.locations.qaScorecards.create()`
 
-Lists QaScorecards.
+Create a QaScorecard.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the scorecards. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of scorecards to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecards` call and that the system should return the next page of data. |
-| `params.qaScorecardSources` | `string` | No | Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecard. |
+| `params.qaScorecardId` | `string` | No | Optional. A unique ID for the new QaScorecard. This ID will become the final component of the QaScorecard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.qaScorecards.revisions`
 
-#### `projects.locations.qaScorecards.revisions.create()`
+#### `projects.locations.qaScorecards.revisions.list()`
 
-Creates a QaScorecardRevision.
+Lists all revisions under the parent QaScorecard.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecardRevision. |
-| `params.qaScorecardRevisionId` | `string` | No | Optional. A unique ID for the new QaScorecardRevision. This ID will become the final component of the QaScorecardRevision's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the scorecard revisions. To list all revisions of all scorecards, substitute the QaScorecard ID with a '-' character. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Useful for querying scorecard revisions with specific properties. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.qaScorecardSources` | `string` | No | Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources. |
 
 #### `projects.locations.qaScorecards.revisions.get()`
 
@@ -1269,15 +527,6 @@ Gets a QaScorecardRevision.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QaScorecardRevision to get. |
-
-#### `projects.locations.qaScorecards.revisions.tuneQaScorecardRevision()`
-
-Fine tune one or more QaModels.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource for new fine tuning job instance. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.deploy()`
 
@@ -1306,17 +555,24 @@ Deletes a QaScorecardRevision.
 | `params.name` | `string` | Yes | Required. The name of the QaScorecardRevision to delete. |
 | `params.force` | `boolean` | No | Optional. If set to true, all of this QaScorecardRevision's child resources will also be deleted. Otherwise, the request will only succeed if it has none. |
 
-#### `projects.locations.qaScorecards.revisions.list()`
+#### `projects.locations.qaScorecards.revisions.create()`
 
-Lists all revisions under the parent QaScorecard.
+Creates a QaScorecardRevision.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the scorecard revisions. To list all revisions of all scorecards, substitute the QaScorecard ID with a '-' character. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Useful for querying scorecard revisions with specific properties. |
-| `params.qaScorecardSources` | `string` | No | Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecardRevision. |
+| `params.qaScorecardRevisionId` | `string` | No | Optional. A unique ID for the new QaScorecardRevision. This ID will become the final component of the QaScorecardRevision's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.qaScorecards.revisions.tuneQaScorecardRevision()`
+
+Fine tune one or more QaModels.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new fine tuning job instance. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.qaScorecards.revisions.qaQuestions`
 
@@ -1330,22 +586,14 @@ Create a QaQuestion.
 | `params.qaQuestionId` | `string` | No | Optional. A unique ID for the new question. This ID will become the final component of the question's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.qaScorecards.revisions.qaQuestions.get()`
-
-Gets a QaQuestion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the QaQuestion to get. |
-
 #### `projects.locations.qaScorecards.revisions.qaQuestions.patch()`
 
 Updates a QaQuestion.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `abbreviation` * `answer_choices` * `answer_instructions` * `order` * `question_body` * `tags` |
+| `params.name` | `string` | Yes | Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.qaQuestions.delete()`
@@ -1356,6 +604,14 @@ Deletes a QaQuestion.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QaQuestion to delete. |
 
+#### `projects.locations.qaScorecards.revisions.qaQuestions.get()`
+
+Gets a QaQuestion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the QaQuestion to get. |
+
 #### `projects.locations.qaScorecards.revisions.qaQuestions.list()`
 
 Lists QaQuestions.
@@ -1365,6 +621,278 @@ Lists QaQuestions.
 | `params.parent` | `string` | Yes | Required. The parent resource of the questions. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of questions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
 | `params.pageToken` | `string` | No | Optional. The value returned by the last `ListQaQuestionsResponse`. This value indicates that this is a continuation of a prior `ListQaQuestions` call and that the system should return the next page of data. |
+
+### `projects.locations.datasets`
+
+#### `projects.locations.datasets.bulkUploadFeedbackLabels()`
+
+Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.bulkDownloadFeedbackLabels()`
+
+Download feedback labels in bulk from an external source. Currently supports exporting Quality AI example conversations with transcripts and question bodies.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.get()`
+
+Gets a dataset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the dataset to get. |
+
+#### `projects.locations.datasets.patch()`
+
+Updates a dataset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.delete()`
+
+Delete a dataset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the dataset to delete. |
+
+#### `projects.locations.datasets.create()`
+
+Creates a dataset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.datasetId` | `string` | No | Optional. The ID to use for the dataset. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.bulkDeleteFeedbackLabels()`
+
+Delete feedback labels in bulk using a filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.list()`
+
+List datasets matching the input.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Useful for querying datasets with specific properties. Supported fields include, for Q2 though we only support list by project: - `type` - `description` - `project_number` |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListDatasetsResponse`; indicates that this is a continuation of a prior `ListDatasets` call and the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+
+#### `projects.locations.datasets.listAllFeedbackLabels()`
+
+List all feedback labels by project number.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+| `params.parent` | `string` | Yes | Required. The parent resource of all feedback labels per project. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
+
+### `projects.locations.datasets.conversations`
+
+#### `projects.locations.datasets.conversations.bulkDelete()`
+
+Deletes multiple conversations in a single request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.conversations.delete()`
+
+Deletes a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
+| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
+
+#### `projects.locations.datasets.conversations.get()`
+
+Gets a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
+| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
+
+#### `projects.locations.datasets.conversations.ingest()`
+
+Imports conversations and processes them according to the user's configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.conversations.calculateStats()`
+
+Gets conversation statistics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location of the conversations. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.conversations.list()`
+
+Lists conversations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
+| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
+| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
+| `params.view` | `string` | No | The level of details of the conversation. Default is `BASIC`. |
+| `params.pageSize` | `integer` | No | The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+| `params.orderBy` | `string` | No | Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). |
+
+#### `projects.locations.datasets.conversations.generateSignedAudio()`
+
+Gets the signed URI for the audio for the given conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the conversation to sign. |
+
+#### `projects.locations.datasets.conversations.sample()`
+
+Samples conversations based on user configuration and handles the sampled conversations for different use cases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.datasets.conversations.feedbackLabels`
+
+#### `projects.locations.datasets.conversations.feedbackLabels.get()`
+
+Get feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
+
+#### `projects.locations.datasets.conversations.feedbackLabels.list()`
+
+List feedback labels.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
+
+#### `projects.locations.datasets.conversations.feedbackLabels.create()`
+
+Create feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.conversations.feedbackLabels.patch()`
+
+Update feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
+| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.datasets.conversations.feedbackLabels.delete()`
+
+Delete feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the feedback label to delete. |
+
+### `projects.locations.datasets.insightsdata`
+
+#### `projects.locations.datasets.insightsdata.export()`
+
+Export insights data to a destination defined in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.phraseMatchers`
+
+#### `projects.locations.phraseMatchers.list()`
+
+Lists phrase matchers.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the phrase matcher. |
+| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying phrase matchers with specific properties. |
+| `params.pageSize` | `integer` | No | The maximum number of phrase matchers to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.pageToken` | `string` | No | The value returned by the last `ListPhraseMatchersResponse`. This value indicates that this is a continuation of a prior `ListPhraseMatchers` call and that the system should return the next page of data. |
+
+#### `projects.locations.phraseMatchers.get()`
+
+Gets a phrase matcher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the phrase matcher to get. |
+
+#### `projects.locations.phraseMatchers.delete()`
+
+Deletes a phrase matcher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the phrase matcher to delete. |
+
+#### `projects.locations.phraseMatchers.patch()`
+
+Updates a phrase matcher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} |
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.phraseMatchers.create()`
+
+Creates a phrase matcher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the phrase matcher. Required. The location to create a phrase matcher for. Format: `projects//locations/` or `projects//locations/` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.authorizedViewSets`
 
@@ -1377,26 +905,6 @@ Create AuthorizedViewSet
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViewSet. |
 | `params.authorizedViewSetId` | `string` | No | Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.get()`
-
-Get AuthorizedViewSet
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the AuthorizedViewSet to get. |
-
-#### `projects.locations.authorizedViewSets.list()`
-
-List AuthorizedViewSets
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViewSets. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of view sets to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. The filter expression to filter authorized view sets listed in the response. |
-| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized view sets listed in the response. |
 
 #### `projects.locations.authorizedViewSets.patch()`
 
@@ -1417,33 +925,47 @@ Deletes an AuthorizedViewSet.
 | `params.name` | `string` | Yes | Required. The name of the AuthorizedViewSet to delete. |
 | `params.force` | `boolean` | No | Optional. If set to true, all of this AuthorizedViewSet's child resources will also be deleted. Otherwise, the request will only succeed if it has none. |
 
+#### `projects.locations.authorizedViewSets.get()`
+
+Get AuthorizedViewSet
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the AuthorizedViewSet to get. |
+
+#### `projects.locations.authorizedViewSets.list()`
+
+List AuthorizedViewSets
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViewSets. |
+| `params.filter` | `string` | No | Optional. The filter expression to filter authorized view sets listed in the response. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of view sets to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized view sets listed in the response. |
+
 ### `projects.locations.authorizedViewSets.authorizedViews`
 
-#### `projects.locations.authorizedViewSets.authorizedViews.setIamPolicy()`
+#### `projects.locations.authorizedViewSets.authorizedViews.search()`
 
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+SearchAuthorizedViewSets
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. |
+| `params.query` | `string` | No | Optional. The query expression to search authorized views. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized views listed in the response. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.testIamPermissions()`
+#### `projects.locations.authorizedViewSets.authorizedViews.queryPerformanceOverview()`
 
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.queryMetrics()`
@@ -1455,6 +977,15 @@ Query metrics.
 | `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.authorizedViewSets.authorizedViews.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.authorizedViewSets.authorizedViews.generativeInsights()`
 
 Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
@@ -1462,25 +993,6 @@ Natural language based Insights which powers the next generation of dashboards i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.queryPerformanceOverview()`
-
-Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.create()`
-
-Create AuthorizedView
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedView. |
-| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.get()`
@@ -1491,29 +1003,14 @@ Get AuthorizedView
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the AuthorizedView to get. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.list()`
+#### `projects.locations.authorizedViewSets.authorizedViews.testIamPermissions()`
 
-List AuthorizedViewSets
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. The filter expression to filter authorized views listed in the response. |
-| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized views listed in the response. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.search()`
-
-SearchAuthorizedViewSets
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. |
-| `params.query` | `string` | No | Optional. The query expression to search authorized views. |
-| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized views listed in the response. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.patch()`
 
@@ -1533,46 +1030,38 @@ Deletes an AuthorizedView.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the AuthorizedView to delete. |
 
-### `projects.locations.authorizedViewSets.authorizedViews.operations`
+#### `projects.locations.authorizedViewSets.authorizedViews.create()`
 
-#### `projects.locations.authorizedViewSets.authorizedViews.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Create AuthorizedView
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedView. |
+| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.operations.get()`
+#### `projects.locations.authorizedViewSets.authorizedViews.getIamPolicy()`
 
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.operations.cancel()`
+#### `projects.locations.authorizedViewSets.authorizedViews.list()`
 
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+List AuthorizedViewSets
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.orderBy` | `string` | No | Optional. The order by expression to order authorized views listed in the response. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. |
+| `params.filter` | `string` | No | Optional. The filter expression to filter authorized views listed in the response. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAuthorizedViewsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViews` call and that the system should return the next page of data. |
 
 ### `projects.locations.authorizedViewSets.authorizedViews.conversations`
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.get()`
-
-Gets a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
-| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.list()`
 
@@ -1580,12 +1069,12 @@ Lists conversations.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
 | `params.pageSize` | `integer` | No | The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
-| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
 | `params.orderBy` | `string` | No | Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). |
 | `params.view` | `string` | No | The level of details of the conversation. Default is `BASIC`. |
+| `params.pageToken` | `string` | No | The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
+| `params.filter` | `string` | No | A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.generateSignedAudio()`
 
@@ -1594,15 +1083,6 @@ Gets the signed URI for the audio for the given conversation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the conversation to sign. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.delete()`
-
-Deletes a conversation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
-| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.calculateStats()`
 
@@ -1613,84 +1093,25 @@ Gets conversation statistics.
 | `params.location` | `string` | Yes | Required. The location of the conversations. |
 | `params.filter` | `string` | No | A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. |
 
-### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels`
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.get()`
 
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.create()`
-
-Create feedback label.
+Gets a conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
-| `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.view` | `string` | No | The level of details of the conversation. Default is `FULL`. |
+| `params.name` | `string` | Yes | Required. The name of the conversation to get. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.list()`
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.delete()`
 
-List feedback labels.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.get()`
-
-Get feedback label.
+Deletes a conversation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.patch()`
-
-Update feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
-| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.delete()`
-
-Delete feedback label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the feedback label to delete. |
+| `params.name` | `string` | Yes | Required. The name of the conversation to delete. |
+| `params.force` | `boolean` | No | If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. |
 
 ### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments`
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.create()`
-
-Create Assessment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.get()`
-
-Get Assessment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment to get. |
-
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.list()`
-
-List Assessments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. |
-| `params.pageSize` | `integer` | No | The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
-| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
-| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.delete()`
 
@@ -1710,13 +1131,13 @@ Publish an Assessment.
 | `params.name` | `string` | Yes | Required. The name of the assessment to publish. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.appeal()`
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.create()`
 
-Appeal an Assessment.
+Create Assessment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.finalize()`
@@ -1728,16 +1149,35 @@ Finalize an Assessment.
 | `params.name` | `string` | Yes | Required. The name of the assessment to finalize. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes`
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.list()`
 
-#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.create()`
-
-Create Note.
+List Assessments.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the note. |
+| `params.pageSize` | `integer` | No | The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.appeal()`
+
+Appeal an Assessment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.get()`
+
+Get Assessment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment to get. |
+
+### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes`
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.list()`
 
@@ -1745,9 +1185,9 @@ List Notes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the notes. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
 | `params.pageToken` | `string` | No | Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the notes. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.patch()`
 
@@ -1755,8 +1195,8 @@ Update Note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` |
+| `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.delete()`
@@ -1767,17 +1207,352 @@ Deletes a Note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the note to delete. |
 
-### `projects.locations.dashboards`
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.create()`
 
-#### `projects.locations.dashboards.create()`
-
-Creates a Dashboard.
+Create Note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dashboard. |
-| `params.dashboardId` | `string` | No | Optional. A unique ID for the new Dashboard. This ID will become the final component of the Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the note. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels`
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.get()`
+
+Get feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the feedback label to get. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.list()`
+
+List feedback labels.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the feedback labels. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.create()`
+
+Create feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
+| `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.patch()`
+
+Update feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
+| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.delete()`
+
+Delete feedback label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the feedback label to delete. |
+
+### `projects.locations.authorizedViewSets.authorizedViews.operations`
+
+#### `projects.locations.authorizedViewSets.authorizedViews.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.authorizedViewSets.authorizedViews.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+### `projects.locations.qaQuestionTags`
+
+#### `projects.locations.qaQuestionTags.patch()`
+
+Updates a QaQuestionTag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list of questions the tag applies to |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.qaQuestionTags.delete()`
+
+Deletes a QaQuestionTag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the QaQuestionTag to delete. |
+
+#### `projects.locations.qaQuestionTags.create()`
+
+Creates a QaQuestionTag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.qaQuestionTagId` | `string` | No | Optional. A unique ID for the new QaQuestionTag. This ID will become the final component of the QaQuestionTag's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestionTag. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.qaQuestionTags.list()`
+
+Lists the question tags.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestionTags. |
+| `params.filter` | `string` | No | Optional. A filter to reduce results to a specific subset. Supports conjunctions (ie. AND operators). Supported fields include the following: * `project_id` - id of the project to list tags for * `qa_scorecard_id` - id of the scorecard to list tags for * `revision_id` - id of the scorecard revision to list tags for` * `qa_question_id - id of the question to list tags for` |
+
+#### `projects.locations.qaQuestionTags.get()`
+
+Gets a QaQuestionTag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the QaQuestionTag to get. |
+
+### `projects.locations.analysisRules`
+
+#### `projects.locations.analysisRules.list()`
+
+Lists analysis rules.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the analysis rules. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAnalysisRulesResponse`; indicates that this is a continuation of a prior `ListAnalysisRules` call and the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of analysis rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+
+#### `projects.locations.analysisRules.get()`
+
+Get a analysis rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the AnalysisRule to get. |
+
+#### `projects.locations.analysisRules.patch()`
+
+Updates a analysis rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.analysisRules.delete()`
+
+Deletes a analysis rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the analysis rule to delete. |
+
+#### `projects.locations.analysisRules.create()`
+
+Creates a analysis rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the analysis rule. Required. The location to create a analysis rule for. Format: `projects//locations/` or `projects//locations/` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.autoLabelingRules`
+
+#### `projects.locations.autoLabelingRules.list()`
+
+Lists auto labeling rules.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location} |
+
+#### `projects.locations.autoLabelingRules.get()`
+
+Gets an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+
+#### `projects.locations.autoLabelingRules.patch()`
+
+Updates an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autoLabelingRules.delete()`
+
+Deletes an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+
+#### `projects.locations.autoLabelingRules.test()`
+
+Tests auto labeling rules against a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent project and location. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autoLabelingRules.create()`
+
+Creates an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location to create the auto labeling rule in. Format: projects/{project}/locations/{location} |
+| `params.autoLabelingRuleId` | `string` | No | Required. The ID to use for the auto labeling rule, which will become the final component of the auto labeling rule's resource name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.views`
+
+#### `projects.locations.views.list()`
+
+Lists views.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | The maximum number of views to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the views. |
+
+#### `projects.locations.views.get()`
+
+Gets a view.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the view to get. |
+
+#### `projects.locations.views.patch()`
+
+Updates a view.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} |
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.views.delete()`
+
+Deletes a view.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the view to delete. |
+
+#### `projects.locations.views.create()`
+
+Creates a view.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the view. Required. The location to create a view for. Format: `projects//locations/` or `projects//locations/` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.encryptionSpec`
+
+#### `projects.locations.encryptionSpec.initialize()`
+
+Initializes a location-level encryption key specification. An error will result if the location has resources already created before the initialization. After the encryption specification is initialized at a location, it is immutable and all newly created resources under the location will be encrypted with the existing specification.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.assessmentRules`
+
+#### `projects.locations.assessmentRules.create()`
+
+Creates an assessment rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessment rule. Required. The location to create a assessment rule for. Format: `projects//locations/` or `projects//locations/` |
+| `params.assessmentRuleId` | `string` | No | Optional. A unique ID for the new AssessmentRule. This ID will become the final component of the AssessmentRule's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.assessmentRules.patch()`
+
+Updates an assessment rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.assessmentRules.delete()`
+
+Deletes an assessment rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment rule to delete. |
+
+#### `projects.locations.assessmentRules.get()`
+
+Get an assessment rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assessment rule to get. |
+
+#### `projects.locations.assessmentRules.list()`
+
+Lists assessment rules.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the assessment rules. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. |
+
+### `projects.locations.dashboards`
 
 #### `projects.locations.dashboards.get()`
 
@@ -1793,11 +1568,21 @@ Lists Dashboards.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the dashboards. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100. |
 | `params.pageToken` | `string` | No | Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the dashboards. |
 | `params.filter` | `string` | No | Optional. The filter expression to filter dashboards listed in the response. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100. |
 | `params.orderBy` | `string` | No | Optional. The order by expression to order dashboards listed in the response. |
+
+#### `projects.locations.dashboards.create()`
+
+Creates a Dashboard.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dashboardId` | `string` | No | Optional. A unique ID for the new Dashboard. This ID will become the final component of the Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the dashboard. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dashboards.patch()`
 
@@ -1825,25 +1610,9 @@ Creates a Chart.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the chart. |
 | `params.chartId` | `string` | No | Optional. A unique ID for the new Chart. This ID will become the final component of the Chart's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.parent` | `string` | Yes | Required. The parent resource of the chart. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dashboards.charts.get()`
-
-Gets a Chart.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the chart to get. |
-
-#### `projects.locations.dashboards.charts.list()`
-
-Lists Charts.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the charts. |
 
 #### `projects.locations.dashboards.charts.patch()`
 
@@ -1862,3 +1631,194 @@ Deletes a Chart.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the chart to delete. |
+
+#### `projects.locations.dashboards.charts.get()`
+
+Gets a Chart.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the chart to get. |
+
+#### `projects.locations.dashboards.charts.list()`
+
+Lists Charts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the charts. |
+
+### `projects.locations.issueModels`
+
+#### `projects.locations.issueModels.get()`
+
+Gets an issue model.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the issue model to get. |
+
+#### `projects.locations.issueModels.calculateIssueModelStats()`
+
+Gets an issue model's statistics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.issueModel` | `string` | Yes | Required. The resource name of the issue model to query against. |
+
+#### `projects.locations.issueModels.export()`
+
+Exports an issue model to the provided destination.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The issue model to export. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.deploy()`
+
+Deploys an issue model. Returns an error if a model is already deployed. An issue model can only be used in analysis after it has been deployed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The issue model to deploy. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.undeploy()`
+
+Undeploys an issue model. An issue model can not be used in analysis after it has been undeployed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The issue model to undeploy. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.import()`
+
+Imports an issue model from a Cloud Storage bucket.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.list()`
+
+Lists issue models.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
+
+#### `projects.locations.issueModels.create()`
+
+Creates an issue model.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.patch()`
+
+Updates an issue model.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.name` | `string` | Yes | Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.delete()`
+
+Deletes an issue model.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the issue model to delete. |
+
+### `projects.locations.issueModels.issues`
+
+#### `projects.locations.issueModels.issues.create()`
+
+Creates an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the issue. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.issues.patch()`
+
+Updates an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The list of fields to be updated. |
+| `params.name` | `string` | Yes | Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.issueModels.issues.delete()`
+
+Deletes an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the issue to delete. |
+
+#### `projects.locations.issueModels.issues.get()`
+
+Gets an issue.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the issue to get. |
+
+#### `projects.locations.issueModels.issues.list()`
+
+Lists issues.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the issue. |
+
+### `projects.locations.insightsdata`
+
+#### `projects.locations.insightsdata.export()`
+
+Export insights data to a destination defined in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
