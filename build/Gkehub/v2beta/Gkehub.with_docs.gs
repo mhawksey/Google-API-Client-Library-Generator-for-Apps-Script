@@ -89,14 +89,31 @@ class Gkehub {
     this.projects.locations.memberships.features = {};
 
     /**
-     * ========= MembershipFeature Services ========= Gets details of a membershipFeature.
+     * Updates an existing MembershipFeature.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The MembershipFeature resource name in the format `projects/*\/locations/*\/memberships/*\/features/*`.
+     * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored.
+     * @param {string} apiParams.name - (Required) Output only. The resource name of the membershipFeature, in the format: `projects/{project}/locations/{location}/memberships/{membership}/features/{feature}`. Note that `membershipFeatures` is shortened to `features` in the resource name. (see http://go/aip/122#collection-identifiers)
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {string} apiParams.updateMask - Required. Mask of fields to update.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates membershipFeature under a given parent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
+     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'POST', apiParams, clientConfig);
 
     /**
      * Lists MembershipFeatures in a given project and location.
@@ -113,17 +130,14 @@ class Gkehub {
     this.projects.locations.memberships.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates membershipFeature under a given parent.
+     * ========= MembershipFeature Services ========= Gets details of a membershipFeature.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.featureId - Required. The ID of the membership_feature to create.
-     * @param {string} apiParams.parent - (Required) Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*\/locations/*\/memberships/*`.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The MembershipFeature resource name in the format `projects/*\/locations/*\/memberships/*\/features/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Removes a membershipFeature.
@@ -135,20 +149,6 @@ class Gkehub {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.memberships.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates an existing MembershipFeature.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored.
-     * @param {string} apiParams.name - (Required) Output only. The resource name of the membershipFeature, in the format: `projects/{project}/locations/{location}/memberships/{membership}/features/{feature}`. Note that `membershipFeatures` is shortened to `features` in the resource name. (see http://go/aip/122#collection-identifiers)
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {string} apiParams.updateMask - Required. Mask of fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.memberships.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
