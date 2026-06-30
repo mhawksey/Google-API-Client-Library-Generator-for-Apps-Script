@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Location Finder API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:33:37 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:34:46 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:35:00 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:35:00 GMT
 - **Created:** Sun, 21 Sep 2025 17:13:13 GMT
 
 
@@ -28,11 +28,11 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 
 #### `projects.locations.get()`
 
@@ -43,6 +43,18 @@ Gets information about a location.
 | `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.cloudLocations`
+
+#### `projects.locations.cloudLocations.search()`
+
+Searches for cloud locations from a given source location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.sourceCloudLocation` | `string` | No | Required. The source cloud location to search from. Example search can be searching nearby cloud locations from the source cloud location by latency. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of cloud locations. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token. |
+| `params.query` | `string` | No | Optional. The query string in search query syntax. While filter is used to filter the search results by attributes, query is used to specify the search requirements. |
 
 #### `projects.locations.cloudLocations.list()`
 
@@ -62,15 +74,3 @@ Retrieves a resource containing information about a cloud location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.cloudLocations.search()`
-
-Searches for cloud locations from a given source location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of cloud locations. Format: projects/{project}/locations/{location} |
-| `params.sourceCloudLocation` | `string` | No | Required. The source cloud location to search from. Example search can be searching nearby cloud locations from the source cloud location by latency. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of cloud locations to return. The service might return fewer cloud locations than this value. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. Provide Page token returned by a previous 'ListCloudLocations' call to retrieve the next page of results. When paginating, all other parameters provided to 'ListCloudLocations' must match the call that provided the page token. |
-| `params.query` | `string` | No | Optional. The query string in search query syntax. While filter is used to filter the search results by attributes, query is used to specify the search requirements. |
