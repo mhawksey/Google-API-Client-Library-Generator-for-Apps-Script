@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdMob API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:21:37 GMT
-- **Last Modified:** Sun, 31 May 2026 23:21:37 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:21:30 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:21:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:04 GMT
 
 
@@ -44,17 +44,6 @@ Generates an AdMob Network report based on the provided report specification. Re
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `accounts.mediationReport`
-
-#### `accounts.mediationReport.generate()`
-
-Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `accounts.apps`
 
 #### `accounts.apps.list()`
@@ -67,6 +56,17 @@ List the apps under the specified AdMob account.
 | `params.pageSize` | `integer` | No | The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000. |
 | `params.pageToken` | `string` | No | The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data. |
 
+### `accounts.mediationReport`
+
+#### `accounts.mediationReport.generate()`
+
+Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `accounts.adUnits`
 
 #### `accounts.adUnits.list()`
@@ -75,6 +75,6 @@ List the ad units under the specified AdMob account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a prior `ListAdUnits` call, and that the system should return the next page of data. |
 | `params.parent` | `string` | Yes | Required. Resource name of the account to list ad units for. Example: accounts/pub-9876543210987654 |
 | `params.pageSize` | `integer` | No | The maximum number of ad units to return. If unspecified or 0, at most 10,000 ad units will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000. |
-| `params.pageToken` | `string` | No | The value returned by the last `ListAdUnitsResponse`; indicates that this is a continuation of a prior `ListAdUnits` call, and that the system should return the next page of data. |
