@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage for Firebase API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:54:03 GMT
-- **Last Modified:** Sun, 31 May 2026 23:54:03 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:54:40 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:54:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:50 GMT
 
 
@@ -32,6 +32,17 @@ Unlinks and deletes the default bucket.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the default bucket to delete, `projects/{project_id_or_number}/defaultBucket`. |
 
+### `projects.defaultBucket`
+
+#### `projects.defaultBucket.create()`
+
+Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.buckets`
 
 #### `projects.buckets.get()`
@@ -42,16 +53,6 @@ Gets a single linked storage bucket.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
 
-#### `projects.buckets.list()`
-
-Lists the linked storage buckets for a project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. |
-| `params.pageSize` | `integer` | No | The maximum number of buckets to return. If not set, the server will use a reasonable default. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token. |
-
 #### `projects.buckets.addFirebase()`
 
 Links a Google Cloud Storage bucket to a Firebase project.
@@ -61,6 +62,16 @@ Links a Google Cloud Storage bucket to a Firebase project.
 | `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.buckets.list()`
+
+Lists the linked storage buckets for a project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of buckets to return. If not set, the server will use a reasonable default. |
+| `params.parent` | `string` | Yes | Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListBuckets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListBuckets` must match the call that provided the page token. |
+
 #### `projects.buckets.removeFirebase()`
 
 Unlinks a linked Google Cloud Storage bucket from a Firebase project.
@@ -68,15 +79,4 @@ Unlinks a linked Google Cloud Storage bucket from a Firebase project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.defaultBucket`
-
-#### `projects.defaultBucket.create()`
-
-Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
