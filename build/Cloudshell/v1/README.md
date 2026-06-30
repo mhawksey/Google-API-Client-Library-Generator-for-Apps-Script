@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Shell API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:34:11 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:35:26 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:41:25 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:41:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:44 GMT
 
 
@@ -28,6 +28,15 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
+#### `operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
@@ -44,36 +53,18 @@ Deletes a long-running operation. This method indicates that the client is no lo
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
-#### `operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `users`
 
 ### `users.environments`
 
-#### `users.environments.generateAccessToken()`
+#### `users.environments.removePublicKey()`
 
-Generates an access token for the user's environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.environment` | `string` | Yes | Required. The environment to generate the access token for. |
-| `params.expireTime` | `string` | No | Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. |
-| `params.ttl` | `string` | No | Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not specified, the token's lifetime will be set to a default value of 1 hour. |
-
-#### `users.environments.get()`
-
-Gets an environment. Returns NOT_FOUND if the environment does not exist.
+Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
+| `params.environment` | `string` | Yes | Environment this key should be removed from, e.g. `users/me/environments/default`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.environments.start()`
 
@@ -82,15 +73,6 @@ Starts an existing environment, allowing clients to connect to it. The returned 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.environments.authorize()`
-
-Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.environments.addPublicKey()`
@@ -102,11 +84,29 @@ Adds a public SSH key to an environment, allowing clients with the corresponding
 | `params.environment` | `string` | Yes | Environment this key should be added to, e.g. `users/me/environments/default`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.environments.removePublicKey()`
+#### `users.environments.generateAccessToken()`
 
-Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.
+Generates an access token for the user's environment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.environment` | `string` | Yes | Environment this key should be removed from, e.g. `users/me/environments/default`. |
+| `params.expireTime` | `string` | No | Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. |
+| `params.environment` | `string` | Yes | Required. The environment to generate the access token for. |
+| `params.ttl` | `string` | No | Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not specified, the token's lifetime will be set to a default value of 1 hour. |
+
+#### `users.environments.get()`
+
+Gets an environment. Returns NOT_FOUND if the environment does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
+
+#### `users.environments.authorize()`
+
+Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
 | `params.requestBody` | `object` | Yes | The request body. |
