@@ -46,16 +46,6 @@ class AdminDatatransfer {
     this.transfers = {};
 
     /**
-     * Retrieves a data transfer request by its resource ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataTransferId - (Required) ID of the resource to be retrieved. This is returned in the response from the insert method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.transfers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/transfers/{dataTransferId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Inserts a data transfer request. See the [Transfer parameters](https://developers.google.com/workspace/admin/data-transfer/v1/parameters) reference for specific application requirements.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -64,6 +54,16 @@ class AdminDatatransfer {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.transfers.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/transfers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves a data transfer request by its resource ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataTransferId - (Required) ID of the resource to be retrieved. This is returned in the response from the insert method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.transfers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/transfers/{dataTransferId}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the transfers for a customer by source user, destination user, or status.
