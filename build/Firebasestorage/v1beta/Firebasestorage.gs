@@ -23,14 +23,14 @@ class Firebasestorage {
     this.projects.getDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.deleteDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.buckets = {};
-    this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
-    this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
-    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
-
     this.projects.defaultBucket = {};
     this.projects.defaultBucket.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/defaultBucket', 'POST', apiParams, clientConfig);
+
+    this.projects.buckets = {};
+    this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
+    this.projects.buckets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/buckets', 'GET', apiParams, clientConfig);
+    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
   }
 
 /**
