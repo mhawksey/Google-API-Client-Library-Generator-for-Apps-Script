@@ -24,28 +24,6 @@ class Apim {
     this.projects.locations = {};
 
     /**
-     * ListApiObservationTags lists all extant tags on any observation in the given project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.listApiObservationTags = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:listApiObservationTags', 'GET', apiParams, clientConfig);
-
-    /**
-     * GetEntitlement returns the entitlement for the provided project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.getEntitlement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
@@ -68,6 +46,28 @@ class Apim {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * ListApiObservationTags lists all extant tags on any observation in the given project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.listApiObservationTags = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:listApiObservationTags', 'GET', apiParams, clientConfig);
+
+    /**
+     * GetEntitlement returns the entitlement for the provided project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.getEntitlement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
 
@@ -116,53 +116,6 @@ class Apim {
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.observationSources = {};
-
-    /**
-     * CreateObservationSource creates a new ObservationSource but does not affect any deployed infrastructure. It is a configuration that can be used in an Observation Job to collect data about APIs running in user's dataplane.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.observationSourceId - Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'POST', apiParams, clientConfig);
-
-    /**
-     * GetObservationSource retrieves a single ObservationSource by name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the ObservationSource to retrieve. Format: projects/{project}/locations/{location}/observationSources/{source}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * ListObservationSources gets all ObservationSources for a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of ObservationSources to return. The service may return fewer than this value. If unspecified, at most 10 ObservationSources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListObservationSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationSources` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of ObservationSources. Format: projects/{project}/locations/{location}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'GET', apiParams, clientConfig);
-
-    /**
-     * DeleteObservationSource deletes an observation source. This method will fail if the observation source is currently being used by any ObservationJob, even if not enabled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource Format: projects/{project}/locations/{location}/observationSources/{source}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.observationJobs = {};
 
     /**
@@ -177,6 +130,38 @@ class Apim {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.observationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationJobs', 'POST', apiParams, clientConfig);
+
+    /**
+     * DeleteObservationJob deletes an ObservationJob. This method will fail if the observation job is currently being used by any ObservationSource, even if not enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Disables the given ObservationJob.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationJobs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:disable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Enables the given ObservationJob.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationJobs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:enable', 'POST', apiParams, clientConfig);
 
     /**
      * GetObservationJob retrieves a single ObservationJob by name.
@@ -199,38 +184,6 @@ class Apim {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.observationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationJobs', 'GET', apiParams, clientConfig);
-
-    /**
-     * DeleteObservationJob deletes an ObservationJob. This method will fail if the observation job is currently being used by any ObservationSource, even if not enabled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Enables the given ObservationJob.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationJobs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:enable', 'POST', apiParams, clientConfig);
-
-    /**
-     * Disables the given ObservationJob.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.observationJobs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:disable', 'POST', apiParams, clientConfig);
 
     this.projects.locations.observationJobs.apiObservations = {};
 
@@ -290,6 +243,53 @@ class Apim {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.observationJobs.apiObservations.apiOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/apiOperations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.observationSources = {};
+
+    /**
+     * CreateObservationSource creates a new ObservationSource but does not affect any deployed infrastructure. It is a configuration that can be used in an Observation Job to collect data about APIs running in user's dataplane.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.observationSourceId - Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/.
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'POST', apiParams, clientConfig);
+
+    /**
+     * GetObservationSource retrieves a single ObservationSource by name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the ObservationSource to retrieve. Format: projects/{project}/locations/{location}/observationSources/{source}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * ListObservationSources gets all ObservationSources for a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of ObservationSources to return. The service may return fewer than this value. If unspecified, at most 10 ObservationSources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListObservationSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationSources` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of ObservationSources. Format: projects/{project}/locations/{location}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'GET', apiParams, clientConfig);
+
+    /**
+     * DeleteObservationSource deletes an observation source. This method will fail if the observation source is currently being used by any ObservationJob, even if not enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource Format: projects/{project}/locations/{location}/observationSources/{source}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.observationSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
