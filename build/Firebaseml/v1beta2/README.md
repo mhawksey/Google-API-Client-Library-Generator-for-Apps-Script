@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v1beta2)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:53:51 GMT
-- **Last Modified:** Sun, 31 May 2026 23:53:51 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:54:29 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:54:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:40 GMT
 
 
@@ -17,6 +17,14 @@ Auto-generated client library for using the **Firebase ML API (version: v1beta2)
 ### `projects`
 
 ### `projects.models`
+
+#### `projects.models.delete()`
+
+Deletes a model
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` |
 
 #### `projects.models.download()`
 
@@ -35,6 +43,17 @@ Creates a model in Firebase ML. The longrunning operation will eventually return
 | `params.parent` | `string` | Yes | Required. The parent project resource where the model is to be created. The parent must have the form `projects/{project_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.models.list()`
+
+Lists the models
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' |
+| `params.filter` | `string` | No | A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc" |
+| `params.pageSize` | `integer` | No | The maximum number of items to return |
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+
 #### `projects.models.patch()`
 
 Updates a model. The longrunning operation will eventually return a Model.
@@ -52,25 +71,6 @@ Gets a model resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model to get. The name must have the form `projects/{project_id}/models/{model_id}` |
-
-#### `projects.models.list()`
-
-Lists the models
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' |
-| `params.filter` | `string` | No | A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc" |
-| `params.pageSize` | `integer` | No | The maximum number of items to return |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-
-#### `projects.models.delete()`
-
-Deletes a model
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` |
 
 ### `projects.operations`
 
