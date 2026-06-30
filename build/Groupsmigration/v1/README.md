@@ -4,7 +4,7 @@ Auto-generated client library for using the **Groups Migration API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:55:22 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:55:59 GMT
 - **Last Modified:** Fri, 01 May 2026 00:03:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:47 GMT
 
