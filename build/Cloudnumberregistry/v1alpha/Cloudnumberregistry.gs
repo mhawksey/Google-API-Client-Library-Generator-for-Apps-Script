@@ -32,44 +32,44 @@ class Cloudnumberregistry {
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.ipamAdminScopes = {};
-    this.projects.locations.ipamAdminScopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'GET', apiParams, clientConfig);
-    this.projects.locations.ipamAdminScopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.ipamAdminScopes.checkAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes:checkAvailability', 'GET', apiParams, clientConfig);
-    this.projects.locations.ipamAdminScopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'POST', apiParams, clientConfig);
     this.projects.locations.ipamAdminScopes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.ipamAdminScopes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.ipamAdminScopes.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:disable', 'POST', apiParams, clientConfig);
     this.projects.locations.ipamAdminScopes.cleanup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cleanup', 'POST', apiParams, clientConfig);
+    this.projects.locations.ipamAdminScopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.ipamAdminScopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'POST', apiParams, clientConfig);
+    this.projects.locations.ipamAdminScopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/ipamAdminScopes', 'GET', apiParams, clientConfig);
 
     this.projects.locations.registryBooks = {};
+    this.projects.locations.registryBooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.registryBooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.registryBooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'GET', apiParams, clientConfig);
-    this.projects.locations.registryBooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.registryBooks.searchIpResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:searchIpResources', 'POST', apiParams, clientConfig);
     this.projects.locations.registryBooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/registryBooks', 'POST', apiParams, clientConfig);
-    this.projects.locations.registryBooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.registryBooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.registryBooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.realms = {};
-    this.projects.locations.realms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'GET', apiParams, clientConfig);
-    this.projects.locations.realms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.realms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'POST', apiParams, clientConfig);
-    this.projects.locations.realms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.realms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.customRanges = {};
+    this.projects.locations.customRanges.findFreeIpRanges = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:findFreeIpRanges', 'GET', apiParams, clientConfig);
+    this.projects.locations.customRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.customRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
+    this.projects.locations.customRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.customRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.customRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'POST', apiParams, clientConfig);
+    this.projects.locations.customRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'GET', apiParams, clientConfig);
 
     this.projects.locations.discoveredRanges = {};
-    this.projects.locations.discoveredRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/discoveredRanges', 'GET', apiParams, clientConfig);
     this.projects.locations.discoveredRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.discoveredRanges.findFreeIpRanges = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:findFreeIpRanges', 'GET', apiParams, clientConfig);
     this.projects.locations.discoveredRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveredRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/discoveredRanges', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.customRanges = {};
-    this.projects.locations.customRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'GET', apiParams, clientConfig);
-    this.projects.locations.customRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.customRanges.showUtilization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:showUtilization', 'GET', apiParams, clientConfig);
-    this.projects.locations.customRanges.findFreeIpRanges = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:findFreeIpRanges', 'GET', apiParams, clientConfig);
-    this.projects.locations.customRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/customRanges', 'POST', apiParams, clientConfig);
-    this.projects.locations.customRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.customRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.realms = {};
+    this.projects.locations.realms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.realms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.realms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'GET', apiParams, clientConfig);
+    this.projects.locations.realms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/realms', 'POST', apiParams, clientConfig);
+    this.projects.locations.realms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
