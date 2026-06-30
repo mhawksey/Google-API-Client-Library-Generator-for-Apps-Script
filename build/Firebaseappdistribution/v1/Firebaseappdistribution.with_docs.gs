@@ -19,6 +19,23 @@ class Firebaseappdistribution {
     this._servicePath = '';
 
 
+    this.media = {};
+
+    /**
+     * Uploads a binary. Uploading a binary can result in a new release being created, an update to an existing release, or a no-op if a release with the same binary already exists.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.app - (Required) Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+app}/releases:upload' : 'v1/{+app}/releases:upload';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
     this.projects = {};
 
     this.projects.apps = {};
@@ -46,18 +63,15 @@ class Firebaseappdistribution {
     this.projects.apps.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists releases. By default, sorts by `createTime` in descending order.
+     * Deletes releases. A maximum of 100 releases can be deleted per request.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
-     * @param {string} apiParams.orderBy - Optional. The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.apps.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
+    this.projects.apps.releases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a release.
@@ -83,17 +97,42 @@ class Firebaseappdistribution {
     this.projects.apps.releases.distribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:distribute', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes releases. A maximum of 100 releases can be deleted per request.
+     * Lists releases. By default, sorts by `createTime` in descending order.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+     * @param {string} apiParams.orderBy - Optional. The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
+
+    this.projects.apps.releases.operations = {};
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.apps.releases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.apps.releases.operations = {};
+    /**
+     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to wait on.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.releases.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -128,28 +167,6 @@ class Firebaseappdistribution {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.apps.releases.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.apps.releases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    /**
-     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to wait on.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.apps.releases.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
 
     this.projects.apps.releases.feedbackReports = {};
 
@@ -188,17 +205,6 @@ class Firebaseappdistribution {
     this.projects.testers = {};
 
     /**
-     * Batch adds testers. This call adds testers for the specified emails if they don't already exist. Returns all testers specified in the request, including newly created and previously existing testers. This action is idempotent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.project - (Required) Required. The name of the project resource. Format: `projects/{project_number}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.testers.batchAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchAdd', 'POST', apiParams, clientConfig);
-
-    /**
      * Batch removes testers. If found, this call deletes testers for the specified emails. Returns all deleted testers.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.project - (Required) Required. The name of the project resource. Format: `projects/{project_number}`
@@ -208,6 +214,29 @@ class Firebaseappdistribution {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.testers.batchRemove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchRemove', 'POST', apiParams, clientConfig);
+
+    /**
+     * Update a tester. If the testers joins a group they gain access to all releases that the group has access to.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}`
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.testers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Batch adds testers. This call adds testers for the specified emails if they don't already exist. Returns all testers specified in the request, including newly created and previously existing testers. This action is idempotent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Required. The name of the project resource. Format: `projects/{project_number}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.testers.batchAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/testers:batchAdd', 'POST', apiParams, clientConfig);
 
     /**
      * Lists testers and their resource ids.
@@ -222,29 +251,7 @@ class Firebaseappdistribution {
      */
     this.projects.testers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testers', 'GET', apiParams, clientConfig);
 
-    /**
-     * Update a tester. If the testers joins a group they gain access to all releases that the group has access to.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}`
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.testers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.projects.groups = {};
-
-    /**
-     * Get a group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the group resource to retrieve. Format: `projects/{project_number}/groups/{group_alias}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * List groups.
@@ -314,22 +321,15 @@ class Firebaseappdistribution {
      */
     this.projects.groups.batchLeave = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:batchLeave', 'POST', apiParams, clientConfig);
 
-    this.media = {};
-
     /**
-     * Uploads a binary. Uploading a binary can result in a new release being created, an update to an existing release, or a no-op if a release with the same binary already exists.
+     * Get a group.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.app - (Required) Required. The name of the app resource. Format: `projects/{project_number}/apps/{app}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the group resource to retrieve. Format: `projects/{project_number}/groups/{group_alias}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+app}/releases:upload' : 'v1/{+app}/releases:upload';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
