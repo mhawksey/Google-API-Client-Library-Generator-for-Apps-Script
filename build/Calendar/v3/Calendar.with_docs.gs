@@ -22,28 +22,6 @@ class Calendar {
     this.acl = {};
 
     /**
-     * Deletes an access control rule.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {string} apiParams.ruleId - (Required) ACL rule identifier.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.acl.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns an access control rule.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {string} apiParams.ruleId - (Required) ACL rule identifier.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.acl.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Creates an access control rule.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
@@ -73,6 +51,35 @@ class Calendar {
     this.acl.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl', 'GET', apiParams, clientConfig);
 
     /**
+     * Watch for changes to ACL resources.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
+     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
+     * @param {boolean} apiParams.showDeleted - Whether to include deleted ACLs in the result. Deleted ACLs are represented by role equal to "none". Deleted ACLs will always be included if syncToken is provided. Optional. The default is False.
+     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All entries deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False.
+    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
+    Learn more about incremental synchronization.
+    Optional. The default is to return all entries.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.acl.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/watch', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an access control rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {string} apiParams.ruleId - (Required) ACL rule identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.acl.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Updates an access control rule. This method supports patch semantics.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
@@ -99,140 +106,40 @@ class Calendar {
     this.acl.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Watch for changes to ACL resources.
+     * Returns an access control rule.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
-     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
-     * @param {boolean} apiParams.showDeleted - Whether to include deleted ACLs in the result. Deleted ACLs are represented by role equal to "none". Deleted ACLs will always be included if syncToken is provided. Optional. The default is False.
-     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. All entries deleted since the previous list request will always be in the result set and it is not allowed to set showDeleted to False.
-    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
-    Learn more about incremental synchronization.
-    Optional. The default is to return all entries.
+     * @param {string} apiParams.ruleId - (Required) ACL rule identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.acl.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'GET', apiParams, clientConfig);
+
+    this.freebusy = {};
+
+    /**
+     * Returns free/busy information for a set of calendars.
+     * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.acl.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/watch', 'POST', apiParams, clientConfig);
-
-    this.calendarList = {};
-
-    /**
-     * Removes a calendar from the user's calendar list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns a calendar from the user's calendar list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Inserts an existing calendar into the user's calendar list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns the calendars on the user's calendar list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
-     * @param {string} apiParams.minAccessRole - The minimum access role for the user in the returned entries. Optional. The default is no restriction.
-     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
-     * @param {boolean} apiParams.showDeleted - Whether to include deleted calendar list entries in the result. Optional. The default is False.
-     * @param {boolean} apiParams.showHidden - Whether to show hidden entries. Optional. The default is False.
-     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False.
-    To ensure client state consistency minAccessRole query parameter cannot be specified together with nextSyncToken.
-    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
-    Learn more about incremental synchronization.
-    Optional. The default is to return all entries.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an existing calendar on the user's calendar list. This method supports patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Updates an existing calendar on the user's calendar list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Watch for changes to CalendarList resources.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
-     * @param {string} apiParams.minAccessRole - The minimum access role for the user in the returned entries. Optional. The default is no restriction.
-     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
-     * @param {boolean} apiParams.showDeleted - Whether to include deleted calendar list entries in the result. Optional. The default is False.
-     * @param {boolean} apiParams.showHidden - Whether to show hidden entries. Optional. The default is False.
-     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False.
-    To ensure client state consistency minAccessRole query parameter cannot be specified together with nextSyncToken.
-    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
-    Learn more about incremental synchronization.
-    Optional. The default is to return all entries.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendarList.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/watch', 'POST', apiParams, clientConfig);
+    this.freebusy.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('freeBusy', 'POST', apiParams, clientConfig);
 
     this.calendars = {};
 
     /**
-     * Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account.
+     * Updates metadata for a calendar.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.calendars.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/clear', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendars.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'DELETE', apiParams, clientConfig);
+    this.calendars.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PUT', apiParams, clientConfig);
 
     /**
      * Returns metadata for a calendar.
@@ -243,6 +150,16 @@ class Calendar {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.calendars.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Clears a primary calendar. This operation deletes all events associated with the primary calendar of an account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendars.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/clear', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a secondary calendar.
@@ -258,6 +175,16 @@ class Calendar {
     this.calendars.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars', 'POST', apiParams, clientConfig);
 
     /**
+     * Deletes a secondary calendar. Use calendars.clear for clearing all events on primary calendars.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendars.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Updates metadata for a calendar. This method supports patch semantics.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
@@ -267,17 +194,6 @@ class Calendar {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.calendars.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Updates metadata for a calendar.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.calendars.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PUT', apiParams, clientConfig);
 
     this.channels = {};
 
@@ -291,61 +207,27 @@ class Calendar {
      */
     this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
 
-    this.colors = {};
-
-    /**
-     * Returns the color definitions for calendars and events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.colors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('colors', 'GET', apiParams, clientConfig);
-
     this.events = {};
 
     /**
-     * Deletes an event.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {string} apiParams.eventId - (Required) Event identifier.
-     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
-    
-    Whether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false.
-     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the deletion of the event.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the events.list method using the iCalUID parameter.
+     * Updates an event. This method supports patch semantics.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
      * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
      * @param {string} apiParams.eventId - (Required) Event identifier.
      * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
-     * @param {string} apiParams.timeZone - Time zone used in the response. Optional. The default is the time zone of the calendar.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only events with an eventType of default may be imported.
-     * Deprecated behavior: If a non-default event is imported, its type will be changed to default and any event-type-specific properties it may have will be dropped.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
+     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
+    
+    Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.
+     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the event update (for example, title changes, etc.).
      * @param {boolean} apiParams.supportsAttachments - Whether API client performing operation supports event attachments. Optional. The default is False.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.events.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/import', 'POST', apiParams, clientConfig);
+    this.events.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Creates an event.
@@ -364,26 +246,6 @@ class Calendar {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.events.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns instances of the specified recurring event.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {string} apiParams.eventId - (Required) Recurring event identifier.
-     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
-     * @param {integer} apiParams.maxResults - Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.
-     * @param {string} apiParams.originalStart - The original start time of the instance in the result. Optional.
-     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
-     * @param {boolean} apiParams.showDeleted - Whether to include deleted events (with status equals "cancelled") in the result. Cancelled instances of recurring events will still be included if singleEvents is False. Optional. The default is False.
-     * @param {string} apiParams.timeMax - Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset.
-     * @param {string} apiParams.timeMin - Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset.
-     * @param {string} apiParams.timeZone - Time zone used in the response. Optional. The default is the time zone of the calendar.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.instances = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/instances', 'GET', apiParams, clientConfig);
 
     /**
      * Returns events on the specified calendar.
@@ -440,6 +302,20 @@ class Calendar {
     this.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events', 'GET', apiParams, clientConfig);
 
     /**
+     * Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only events with an eventType of default may be imported.
+     * Deprecated behavior: If a non-default event is imported, its type will be changed to default and any event-type-specific properties it may have will be dropped.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
+     * @param {boolean} apiParams.supportsAttachments - Whether API client performing operation supports event attachments. Optional. The default is False.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/import', 'POST', apiParams, clientConfig);
+
+    /**
      * Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be moved; birthday, focusTime, fromGmail, outOfOffice and workingLocation events cannot be moved.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.calendarId - (Required) Calendar identifier of the source calendar where the event currently is on.
@@ -454,61 +330,6 @@ class Calendar {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.events.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/move', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an event. This method supports patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
-     * @param {string} apiParams.eventId - (Required) Event identifier.
-     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
-     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
-    
-    Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.
-     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the event update (for example, title changes, etc.).
-     * @param {boolean} apiParams.supportsAttachments - Whether API client performing operation supports event attachments. Optional. The default is False.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates an event based on a simple text string.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
-    
-    Whether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is false.
-     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the creation of the new event.
-     * @param {string} apiParams.text - (Required) The text describing the event to be created.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.quickAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/quickAdd', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an event.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
-     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
-     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
-     * @param {string} apiParams.eventId - (Required) Event identifier.
-     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
-     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
-    
-    Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.
-     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the event update (for example, title changes, etc.).
-     * @param {boolean} apiParams.supportsAttachments - Whether API client performing operation supports event attachments. Optional. The default is False.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.events.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PUT', apiParams, clientConfig);
 
     /**
      * Watch for changes to Events resources.
@@ -565,17 +386,196 @@ class Calendar {
      */
     this.events.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/watch', 'POST', apiParams, clientConfig);
 
-    this.freebusy = {};
+    /**
+     * Deletes an event.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {string} apiParams.eventId - (Required) Event identifier.
+     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
+    
+    Whether to send notifications about the deletion of the event. Note that some emails might still be sent even if you set the value to false. The default is false.
+     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the deletion of the event.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Returns free/busy information for a set of calendars.
+     * Returns an event based on its Google Calendar ID. To retrieve an event using its iCalendar ID, call the events.list method using the iCalUID parameter.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {string} apiParams.eventId - (Required) Event identifier.
+     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
+     * @param {string} apiParams.timeZone - Time zone used in the response. Optional. The default is the time zone of the calendar.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns instances of the specified recurring event.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {string} apiParams.eventId - (Required) Recurring event identifier.
+     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
+     * @param {integer} apiParams.maxResults - Maximum number of events returned on one result page. By default the value is 250 events. The page size can never be larger than 2500 events. Optional.
+     * @param {string} apiParams.originalStart - The original start time of the instance in the result. Optional.
+     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
+     * @param {boolean} apiParams.showDeleted - Whether to include deleted events (with status equals "cancelled") in the result. Cancelled instances of recurring events will still be included if singleEvents is False. Optional. The default is False.
+     * @param {string} apiParams.timeMax - Upper bound (exclusive) for an event's start time to filter by. Optional. The default is not to filter by start time. Must be an RFC3339 timestamp with mandatory time zone offset.
+     * @param {string} apiParams.timeMin - Lower bound (inclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset.
+     * @param {string} apiParams.timeZone - Time zone used in the response. Optional. The default is the time zone of the calendar.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.instances = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/instances', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an event.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.alwaysIncludeEmail - Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {integer} apiParams.conferenceDataVersion - Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0.
+     * @param {string} apiParams.eventId - (Required) Event identifier.
+     * @param {integer} apiParams.maxAttendees - The maximum number of attendees to include in the response. If there are more than the specified number of attendees, only the participant is returned. Optional.
+     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
+    
+    Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false.
+     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the event update (for example, title changes, etc.).
+     * @param {boolean} apiParams.supportsAttachments - Whether API client performing operation supports event attachments. Optional. The default is False.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.freebusy.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('freeBusy', 'POST', apiParams, clientConfig);
+    this.events.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Creates an event based on a simple text string.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {boolean} apiParams.sendNotifications - Deprecated. Please use sendUpdates instead.
+    
+    Whether to send notifications about the creation of the event. Note that some emails might still be sent even if you set the value to false. The default is false.
+     * @param {string} apiParams.sendUpdates - Guests who should receive notifications about the creation of the new event.
+     * @param {string} apiParams.text - (Required) The text describing the event to be created.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.events.quickAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/quickAdd', 'POST', apiParams, clientConfig);
+
+    this.colors = {};
+
+    /**
+     * Returns the color definitions for calendars and events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.colors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('colors', 'GET', apiParams, clientConfig);
+
+    this.calendarList = {};
+
+    /**
+     * Updates an existing calendar on the user's calendar list. This method supports patch semantics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Inserts an existing calendar into the user's calendar list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns the calendars on the user's calendar list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
+     * @param {string} apiParams.minAccessRole - The minimum access role for the user in the returned entries. Optional. The default is no restriction.
+     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
+     * @param {boolean} apiParams.showDeleted - Whether to include deleted calendar list entries in the result. Optional. The default is False.
+     * @param {boolean} apiParams.showHidden - Whether to show hidden entries. Optional. The default is False.
+     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False.
+    To ensure client state consistency minAccessRole query parameter cannot be specified together with nextSyncToken.
+    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
+    Learn more about incremental synchronization.
+    Optional. The default is to return all entries.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'GET', apiParams, clientConfig);
+
+    /**
+     * Watch for changes to CalendarList resources.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.maxResults - Maximum number of entries returned on one result page. By default the value is 100 entries. The page size can never be larger than 250 entries. Optional.
+     * @param {string} apiParams.minAccessRole - The minimum access role for the user in the returned entries. Optional. The default is no restriction.
+     * @param {string} apiParams.pageToken - Token specifying which result page to return. Optional.
+     * @param {boolean} apiParams.showDeleted - Whether to include deleted calendar list entries in the result. Optional. The default is False.
+     * @param {boolean} apiParams.showHidden - Whether to show hidden entries. Optional. The default is False.
+     * @param {string} apiParams.syncToken - Token obtained from the nextSyncToken field returned on the last page of results from the previous list request. It makes the result of this list request contain only entries that have changed since then. If only read-only fields such as calendar properties or ACLs have changed, the entry won't be returned. All entries deleted and hidden since the previous list request will always be in the result set and it is not allowed to set showDeleted neither showHidden to False.
+    To ensure client state consistency minAccessRole query parameter cannot be specified together with nextSyncToken.
+    If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
+    Learn more about incremental synchronization.
+    Optional. The default is to return all entries.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/watch', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes a calendar from the user's calendar list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a calendar from the user's calendar list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an existing calendar on the user's calendar list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.calendarId - (Required) Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword.
+     * @param {boolean} apiParams.colorRgbFormat - Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.calendarList.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PUT', apiParams, clientConfig);
 
     this.settings = {};
 
