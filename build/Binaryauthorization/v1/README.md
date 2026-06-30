@@ -4,8 +4,8 @@ Auto-generated client library for using the **Binary Authorization API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:31:31 GMT
-- **Last Modified:** Sun, 31 May 2026 23:31:31 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:25:42 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:25:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:36 GMT
 
 
@@ -50,15 +50,24 @@ Evaluates a Kubernetes object versus a GKE platform policy. Returns `NOT_FOUND` 
 
 ### `projects.platforms.policies`
 
-#### `projects.platforms.policies.create()`
+#### `projects.platforms.policies.list()`
 
-Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if the project or platform doesn't exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the policy already exists, and `INVALID_ARGUMENT` if the policy contains a platform-specific policy that does not match the platform value specified in the URL.
+Lists platform policies owned by a project in the specified platform. Returns `INVALID_ARGUMENT` if the project or the platform doesn't exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent of this platform policy. |
-| `params.policyId` | `string` | No | Required. The platform policy ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server picks an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListPlatformPoliciesResponse.next_page_token returned from the previous call to the `ListPlatformPolicies` method. |
+| `params.parent` | `string` | Yes | Required. The resource name of the platform associated with the platform policies using the format `projects/*/platforms/*`. |
+
+#### `projects.platforms.policies.delete()`
+
+Deletes a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the platform policy to delete, in the format `projects/*/platforms/*/policies/*`. |
+| `params.etag` | `string` | No | Optional. Used to prevent deleting the policy when another request has updated it since it was retrieved. |
 
 #### `projects.platforms.policies.get()`
 
@@ -77,26 +86,34 @@ Replaces a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the Binary Authorization platform policy, in the form of `projects/*/platforms/*/policies/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.platforms.policies.list()`
+#### `projects.platforms.policies.create()`
 
-Lists platform policies owned by a project in the specified platform. Returns `INVALID_ARGUMENT` if the project or the platform doesn't exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the platform associated with the platform policies using the format `projects/*/platforms/*`. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server picks an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListPlatformPoliciesResponse.next_page_token returned from the previous call to the `ListPlatformPolicies` method. |
-
-#### `projects.platforms.policies.delete()`
-
-Deletes a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.
+Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if the project or platform doesn't exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the policy already exists, and `INVALID_ARGUMENT` if the policy contains a platform-specific policy that does not match the platform value specified in the URL.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the platform policy to delete, in the format `projects/*/platforms/*/policies/*`. |
-| `params.etag` | `string` | No | Optional. Used to prevent deleting the policy when another request has updated it since it was retrieved. |
+| `params.parent` | `string` | Yes | Required. The parent of this platform policy. |
+| `params.policyId` | `string` | No | Required. The platform policy ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.attestors`
+
+#### `projects.attestors.get()`
+
+Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the attestor to retrieve, in the format `projects/*/attestors/*`. |
+
+#### `projects.attestors.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.create()`
 
@@ -108,13 +125,14 @@ Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND`
 | `params.attestorId` | `string` | No | Required. The attestors ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.attestors.get()`
+#### `projects.attestors.testIamPermissions()`
 
-Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the attestor to retrieve, in the format `projects/*/attestors/*`. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.update()`
 
@@ -125,24 +143,6 @@ Updates an attestor. Returns `NOT_FOUND` if the attestor does not exist.
 | `params.name` | `string` | Yes | Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.attestors.list()`
-
-Lists attestors. Returns `INVALID_ARGUMENT` if the project does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the attestors, in the format `projects/*`. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListAttestorsResponse.next_page_token returned from the previous call to the `ListAttestors` method. |
-
-#### `projects.attestors.delete()`
-
-Deletes an attestor. Returns `NOT_FOUND` if the attestor does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the attestors to delete, in the format `projects/*/attestors/*`. |
-
 #### `projects.attestors.validateAttestationOccurrence()`
 
 Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor`
@@ -152,14 +152,23 @@ Returns whether the given `Attestation` for the given image URI was signed by th
 | `params.attestor` | `string` | Yes | Required. The resource name of the Attestor of the occurrence, in the format `projects/*/attestors/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.attestors.setIamPolicy()`
+#### `projects.attestors.list()`
 
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+Lists attestors. Returns `INVALID_ARGUMENT` if the project does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListAttestorsResponse.next_page_token returned from the previous call to the `ListAttestors` method. |
+| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the attestors, in the format `projects/*`. |
+
+#### `projects.attestors.delete()`
+
+Deletes an attestor. Returns `NOT_FOUND` if the attestor does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the attestors to delete, in the format `projects/*/attestors/*`. |
 
 #### `projects.attestors.getIamPolicy()`
 
@@ -167,28 +176,10 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.attestors.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 
 ### `projects.policy`
-
-#### `projects.policy.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.policy.getIamPolicy()`
 
@@ -206,6 +197,15 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.policy.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `systempolicy`
