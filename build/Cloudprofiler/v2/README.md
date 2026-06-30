@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Profiler API (version: v2)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:33:44 GMT
-- **Last Modified:** Sun, 31 May 2026 23:33:44 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:35:21 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:35:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:13 GMT
 
 
@@ -17,6 +17,16 @@ Auto-generated client library for using the **Cloud Profiler API (version: v2)**
 ### `projects`
 
 ### `projects.profiles`
+
+#### `projects.profiles.patch()`
+
+UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Opaque, server-assigned, unique ID for this profile. |
+| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten. Currently only profile_bytes and labels fields are supported by UpdateProfile, so only those fields can be specified in the mask. When no mask is provided, all fields are overwritten. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.profiles.create()`
 
@@ -36,22 +46,12 @@ CreateOfflineProfile creates a new profile resource in the offline mode. The cli
 | `params.parent` | `string` | Yes | Parent project to create the profile in. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.profiles.patch()`
-
-UpdateProfile updates the profile bytes and labels on the profile resource created in the online mode. Updating the bytes for profiles created in the offline mode is currently not supported: the profile content must be provided at the time of the profile creation. _Direct use of this API is discouraged, please use a [supported profiler agent](https://cloud.google.com/profiler/docs/about-profiler#profiling_agent) instead for profile collection._
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Opaque, server-assigned, unique ID for this profile. |
-| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten. Currently only profile_bytes and labels fields are supported by UpdateProfile, so only those fields can be specified in the mask. When no mask is provided, all fields are overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.profiles.list()`
 
 Lists profiles which have been collected so far and for which the caller has permission to view.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. |
 | `params.pageToken` | `string` | No | Optional. The token to continue pagination and get profiles from a particular page. When paginating, all other parameters provided to `ListProfiles` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of profiles. Format: projects/{user_project_id} |
