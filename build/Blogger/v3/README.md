@@ -4,7 +4,7 @@ Auto-generated client library for using the **blogger API (version: v3)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:31:38 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:25:47 GMT
 - **Last Modified:** Sun, 31 May 2026 23:31:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:46 GMT
 
