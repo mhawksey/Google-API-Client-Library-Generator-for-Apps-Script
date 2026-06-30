@@ -47,20 +47,6 @@ class Chromewebstore {
     };
 
     /**
-     * Publishes an item.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.deployPercentage - The deploy percentage you want to set for your item. Valid values are [0, 100]. If set to any number less than 100, only that many percentage of users will be allowed to get the update.
-     * @param {string} apiParams.itemId - (Required) The ID of the item to publish.
-     * @param {string} apiParams.publishTarget - Provide defined publishTarget in URL (case sensitive): publishTarget="trustedTesters" or publishTarget="default". Defaults to publishTarget="default".
-     * @param {boolean} apiParams.reviewExemption - Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}/publish', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates an existing item.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.itemId - (Required) The ID of the item to upload.
@@ -74,6 +60,20 @@ class Chromewebstore {
       const path = apiParams.media ? '/upload/chromewebstore/v1.1/items/{itemId}' : 'chromewebstore/v1.1/items/{itemId}';
       return this._makeRequest(path, 'PUT', apiParams, clientConfig);
     };
+
+    /**
+     * Publishes an item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.deployPercentage - The deploy percentage you want to set for your item. Valid values are [0, 100]. If set to any number less than 100, only that many percentage of users will be allowed to get the update.
+     * @param {string} apiParams.itemId - (Required) The ID of the item to publish.
+     * @param {string} apiParams.publishTarget - Provide defined publishTarget in URL (case sensitive): publishTarget="trustedTesters" or publishTarget="default". Defaults to publishTarget="default".
+     * @param {boolean} apiParams.reviewExemption - Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('chromewebstore/v1.1/items/{itemId}/publish', 'POST', apiParams, clientConfig);
   }
 
 /**
