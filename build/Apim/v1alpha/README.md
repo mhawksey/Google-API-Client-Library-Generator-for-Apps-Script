@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Management API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 May 2026 23:23:55 GMT
-- **Last Modified:** Sun, 31 May 2026 23:23:55 GMT
+- **Last Checked:** Tue, 30 Jun 2026 23:23:39 GMT
+- **Last Modified:** Tue, 30 Jun 2026 23:23:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:47 GMT
 
 
@@ -18,24 +18,6 @@ Auto-generated client library for using the **API Management API (version: v1alp
 
 ### `projects.locations`
 
-#### `projects.locations.listApiObservationTags()`
-
-ListApiObservationTags lists all extant tags on any observation in the given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token. |
-
-#### `projects.locations.getEntitlement()`
-
-GetEntitlement returns the entitlement for the provided project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement |
-
 #### `projects.locations.list()`
 
 Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field:
@@ -46,11 +28,11 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -60,6 +42,24 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
+#### `projects.locations.listApiObservationTags()`
+
+ListApiObservationTags lists all extant tags on any observation in the given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of tags. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+#### `projects.locations.getEntitlement()`
+
+GetEntitlement returns the entitlement for the provided project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement |
+
 ### `projects.locations.operations`
 
 #### `projects.locations.operations.list()`
@@ -68,11 +68,11 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `projects.locations.operations.get()`
 
@@ -99,6 +99,112 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+### `projects.locations.observationJobs`
+
+#### `projects.locations.observationJobs.create()`
+
+CreateObservationJob creates a new ObservationJob but does not have any effecton its own. It is a configuration that can be used in an Observation Job to collect data about existing APIs.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.observationJobId` | `string` | No | Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.parent` | `string` | Yes | Required. The parent resource where this ObservationJob will be created. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.observationJobs.delete()`
+
+DeleteObservationJob deletes an ObservationJob. This method will fail if the observation job is currently being used by any ObservationSource, even if not enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
+
+#### `projects.locations.observationJobs.disable()`
+
+Disables the given ObservationJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.observationJobs.enable()`
+
+Enables the given ObservationJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.observationJobs.get()`
+
+GetObservationJob retrieves a single ObservationJob by name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ObservationJob to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{job} |
+
+#### `projects.locations.observationJobs.list()`
+
+ListObservationJobs gets all ObservationJobs for a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListObservationJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationJobs` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ObservationJobs. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of ObservationJobs to return. The service may return fewer than this value. If unspecified, at most 10 ObservationJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+### `projects.locations.observationJobs.apiObservations`
+
+#### `projects.locations.observationJobs.apiObservations.get()`
+
+GetApiObservation retrieves a single ApiObservation by name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ApiObservation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} |
+
+#### `projects.locations.observationJobs.apiObservations.list()`
+
+ListApiObservations gets all ApiObservations for a given project and location and ObservationJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiObservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservations` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+#### `projects.locations.observationJobs.apiObservations.batchEditTags()`
+
+BatchEditTagsApiObservations adds or removes Tags for ApiObservations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource shared by all ApiObservations being edited. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.observationJobs.apiObservations.apiOperations`
+
+#### `projects.locations.observationJobs.apiObservations.apiOperations.get()`
+
+GetApiOperation retrieves a single ApiOperation by name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ApiOperation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation}/apiOperation/{api_operation} |
+
+#### `projects.locations.observationJobs.apiObservations.apiOperations.list()`
+
+ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiApiOperations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiApiOperations` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ApiOperations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of ApiOperations to return. The service may return fewer than this value. If unspecified, at most 10 ApiOperations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
 ### `projects.locations.observationSources`
 
 #### `projects.locations.observationSources.create()`
@@ -107,9 +213,9 @@ CreateObservationSource creates a new ObservationSource but does not affect any 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.observationSourceId` | `string` | No | Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.observationSourceId` | `string` | No | Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/. |
+| `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.observationSources.get()`
@@ -137,109 +243,3 @@ DeleteObservationSource deletes an observation source. This method will fail if 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource Format: projects/{project}/locations/{location}/observationSources/{source} |
-
-### `projects.locations.observationJobs`
-
-#### `projects.locations.observationJobs.create()`
-
-CreateObservationJob creates a new ObservationJob but does not have any effecton its own. It is a configuration that can be used in an Observation Job to collect data about existing APIs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where this ObservationJob will be created. Format: projects/{project}/locations/{location} |
-| `params.observationJobId` | `string` | No | Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.observationJobs.get()`
-
-GetObservationJob retrieves a single ObservationJob by name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ObservationJob to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{job} |
-
-#### `projects.locations.observationJobs.list()`
-
-ListObservationJobs gets all ObservationJobs for a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ObservationJobs. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of ObservationJobs to return. The service may return fewer than this value. If unspecified, at most 10 ObservationJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListObservationJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationJobs` must match the call that provided the page token. |
-
-#### `projects.locations.observationJobs.delete()`
-
-DeleteObservationJob deletes an ObservationJob. This method will fail if the observation job is currently being used by any ObservationSource, even if not enabled.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
-
-#### `projects.locations.observationJobs.enable()`
-
-Enables the given ObservationJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.observationJobs.disable()`
-
-Disables the given ObservationJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.observationJobs.apiObservations`
-
-#### `projects.locations.observationJobs.apiObservations.get()`
-
-GetApiObservation retrieves a single ApiObservation by name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ApiObservation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} |
-
-#### `projects.locations.observationJobs.apiObservations.list()`
-
-ListApiObservations gets all ApiObservations for a given project and location and ObservationJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiObservations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservations` must match the call that provided the page token. |
-
-#### `projects.locations.observationJobs.apiObservations.batchEditTags()`
-
-BatchEditTagsApiObservations adds or removes Tags for ApiObservations.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource shared by all ApiObservations being edited. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.observationJobs.apiObservations.apiOperations`
-
-#### `projects.locations.observationJobs.apiObservations.apiOperations.get()`
-
-GetApiOperation retrieves a single ApiOperation by name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ApiOperation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation}/apiOperation/{api_operation} |
-
-#### `projects.locations.observationJobs.apiObservations.apiOperations.list()`
-
-ListApiOperations gets all ApiOperations for a given project and location and ObservationJob and ApiObservation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ApiOperations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of ApiOperations to return. The service may return fewer than this value. If unspecified, at most 10 ApiOperations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiApiOperations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiApiOperations` must match the call that provided the page token. |
