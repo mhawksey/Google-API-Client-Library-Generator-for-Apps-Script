@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:14:55 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:14:55 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:16:20 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:16:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
 
@@ -21,29 +21,6 @@ Auto-generated client library for using the **Google Search Console API (version
 #### `urlInspection.index.inspect()`
 
 Index inspection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `searchanalytics`
-
-#### `searchanalytics.query()`
-
-Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `urlTestingTools`
-
-### `urlTestingTools.mobileFriendlyTest`
-
-#### `urlTestingTools.mobileFriendlyTest.run()`
-
-Runs Mobile-Friendly Test for a given URL.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -69,15 +46,6 @@ Retrieves information about a specific sitemap.
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 
-#### `sitemaps.list()`
-
- Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
-
 #### `sitemaps.submit()`
 
 Submits a sitemap for a site.
@@ -87,7 +55,54 @@ Submits a sitemap for a site.
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 
+#### `sitemaps.list()`
+
+ Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
+
+### `searchanalytics`
+
+#### `searchanalytics.query()`
+
+Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `urlTestingTools`
+
+### `urlTestingTools.mobileFriendlyTest`
+
+#### `urlTestingTools.mobileFriendlyTest.run()`
+
+Runs Mobile-Friendly Test for a given URL.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `sites`
+
+#### `sites.list()`
+
+ Lists the user's Search Console sites.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+#### `sites.add()`
+
+ Adds a site to the set of the user's sites in Search Console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
 
 #### `sites.delete()`
 
@@ -104,18 +119,3 @@ Submits a sitemap for a site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
-
-#### `sites.list()`
-
- Lists the user's Search Console sites.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-#### `sites.add()`
-
- Adds a site to the set of the user's sites in Search Console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
