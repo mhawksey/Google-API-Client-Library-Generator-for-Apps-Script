@@ -19,6 +19,36 @@ class Sts {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.workloadIdentityPools = {};
+
+    this.projects.locations.workloadIdentityPools.well-known = {};
+
+    /**
+     * Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.well-known.getOpenid-configuration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/.well-known/openid-configuration', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.workloadIdentityPools.openid = {};
+
+    /**
+     * Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.workloadIdentityPools.openid.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/openid/jwks', 'GET', apiParams, clientConfig);
+
     this.v1 = {};
 
     /**
@@ -30,6 +60,36 @@ class Sts {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.v1.token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/token', 'POST', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.locations = {};
+
+    this.organizations.locations.workloadIdentityPools = {};
+
+    this.organizations.locations.workloadIdentityPools.well-known = {};
+
+    /**
+     * Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the pool whose OpenID provider configuration to retrieve. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example: 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloadIdentityPools.well-known.getOpenid-configuration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/.well-known/openid-configuration', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.workloadIdentityPools.openid = {};
+
+    /**
+     * Fetches the signing keys for an agentic or managed workload identity pool and returns them in JWKs format, defined in [RFC 7517](https://tools.ietf.org/html/rfc7517). For now, only agentic system pools are supported.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the pool whose JWKS needs to be retrieved. Format: 'organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' 'projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}' Example(s): 'organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog' 'projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog'
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloadIdentityPools.openid.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/openid/jwks', 'GET', apiParams, clientConfig);
   }
 
 /**
