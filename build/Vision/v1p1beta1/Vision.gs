@@ -40,8 +40,8 @@ class Vision {
     this.projects.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
 
     this.projects.files = {};
-    this.projects.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
     this.projects.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
 
     this.files = {};
     this.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p1beta1/files:annotate', 'POST', apiParams, clientConfig);
