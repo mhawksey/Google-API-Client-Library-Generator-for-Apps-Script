@@ -22,8 +22,8 @@ class Smartdevicemanagement {
     this.enterprises = {};
 
     this.enterprises.devices = {};
-    this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
+    this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.devices.executeCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeCommand', 'POST', apiParams, clientConfig);
 
     this.enterprises.structures = {};
@@ -31,8 +31,8 @@ class Smartdevicemanagement {
     this.enterprises.structures.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/structures', 'GET', apiParams, clientConfig);
 
     this.enterprises.structures.rooms = {};
-    this.enterprises.structures.rooms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.structures.rooms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rooms', 'GET', apiParams, clientConfig);
+    this.enterprises.structures.rooms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
