@@ -21,6 +21,19 @@ class Webcontentpublisher {
 
     this.publications = {};
     this.publications.checkFreeAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkFreeAccess', 'GET', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.publications = {};
+    this.organizations.publications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.publications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.publications.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publications', 'POST', apiParams, clientConfig);
+    this.organizations.publications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publications', 'GET', apiParams, clientConfig);
+
+    this.organizations.publications.ctas = {};
+    this.organizations.publications.ctas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.publications.ctas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ctas', 'POST', apiParams, clientConfig);
+    this.organizations.publications.ctas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ctas', 'GET', apiParams, clientConfig);
   }
 
 /**
