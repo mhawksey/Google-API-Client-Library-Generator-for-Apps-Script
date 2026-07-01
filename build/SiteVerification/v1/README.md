@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:16:14 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:16:14 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:17:32 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:17:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -15,30 +15,6 @@ Auto-generated client library for using the **Google Site Verification API (vers
 ## API Reference
 
 ### `webResource`
-
-#### `webResource.delete()`
-
-Relinquish ownership of a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.get()`
-
-Get the most current data for a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.getToken()`
-
-Get a verification token for placing on a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webResource.insert()`
 
@@ -71,3 +47,27 @@ Modify the list of owners for your website or domain.
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.getToken()`
+
+Get a verification token for placing on a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.delete()`
+
+Relinquish ownership of a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
+
+#### `webResource.get()`
+
+Get the most current data for a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
