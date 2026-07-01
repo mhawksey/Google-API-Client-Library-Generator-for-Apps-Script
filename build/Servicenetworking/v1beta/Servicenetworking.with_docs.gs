@@ -19,19 +19,18 @@ class Servicenetworking {
     this._servicePath = '';
 
 
-    this.operations = {};
+    this.services = {};
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). Operation
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {string} apiParams.parent - (Required) Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.services = {};
+    this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:searchRange', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
@@ -57,18 +56,18 @@ class Servicenetworking {
      */
     this.services.addSubnetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:addSubnetwork', 'POST', apiParams, clientConfig);
 
+    this.services.connections = {};
+
     /**
-     * Service producers can use this method to find a currently unused range within consumer allocated ranges. This returned range is not reserved, and not guaranteed to remain unused. It will validate previously provided allocated ranges, find non-conflicting sub-range of requested size (expressed in number of leading bits of ipv4 network mask, as in CIDR range notation). Operation
+     * Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'.
+     * @param {string} apiParams.parent - (Required) The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:searchRange', 'POST', apiParams, clientConfig);
-
-    this.services.connections = {};
+    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'POST', apiParams, clientConfig);
 
     /**
      * List the private connections that are configured in a service consumer's VPC network.
@@ -81,16 +80,17 @@ class Servicenetworking {
      */
     this.services.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'GET', apiParams, clientConfig);
 
+    this.operations = {};
+
     /**
-     * Creates a private connection that establishes a VPC Network Peering connection to a VPC network in the service producer's organization. The administrator of the service consumer's VPC network invokes this method. The administrator must assign one or more allocated IP ranges for provisioning subnetworks in the service producer's VPC network. This connection is used for all supported services in the service producer's organization, so it only needs to be invoked once. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connections', 'POST', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
