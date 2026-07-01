@@ -1074,27 +1074,6 @@ class Storage {
     this.objects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Watch for changes on all objects in a bucket.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.bucket - (Required) Name of the bucket in which to look for objects.
-     * @param {string} apiParams.delimiter - Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted.
-     * @param {string} apiParams.endOffset - Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).
-     * @param {boolean} apiParams.includeTrailingDelimiter - If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes.
-     * @param {integer} apiParams.maxResults - Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller.
-     * @param {string} apiParams.pageToken - A previously-returned page token representing part of the larger set of results to view.
-     * @param {string} apiParams.prefix - Filter results to objects whose names begin with this prefix.
-     * @param {string} apiParams.projection - Set of properties to return. Defaults to noAcl.
-     * @param {string} apiParams.startOffset - Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).
-     * @param {string} apiParams.userProject - The project to be billed for this request. Required for Requester Pays buckets.
-     * @param {boolean} apiParams.versions - If true, lists all versions of an object as distinct results. The default is false. For more information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.objects.watchAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/watch', 'POST', apiParams, clientConfig);
-
-    /**
      * Restores a soft-deleted object.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.bucket - (Required) Name of the bucket in which the object resides.
