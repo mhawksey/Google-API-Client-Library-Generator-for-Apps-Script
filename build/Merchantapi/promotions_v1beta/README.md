@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: promotions_
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:03:44 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:03:44 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:05:09 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:05:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:53 GMT
 
 
@@ -17,15 +17,6 @@ Auto-generated client library for using the **Merchant API (version: promotions_
 ### `accounts`
 
 ### `accounts.promotions`
-
-#### `accounts.promotions.insert()`
-
-Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account where the promotion will be inserted. Format: accounts/{account} |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.promotions.get()`
 
@@ -41,6 +32,15 @@ Lists the promotions in your Merchant Center account. The response might contain
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |
 | `params.parent` | `string` | Yes | Required. The account to list processed promotions for. Format: `accounts/{account}` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |
+
+#### `accounts.promotions.insert()`
+
+Inserts a promotion for your Merchant Center account. If the promotion already exists, then it updates the promotion instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The account where the promotion will be inserted. Format: accounts/{account} |
+| `params.requestBody` | `object` | Yes | The request body. |
