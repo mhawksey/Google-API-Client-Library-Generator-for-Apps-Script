@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:17:24 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:25:36 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:17:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:42 GMT
 
