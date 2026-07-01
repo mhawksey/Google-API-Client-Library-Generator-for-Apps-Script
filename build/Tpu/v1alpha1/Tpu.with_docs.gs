@@ -50,6 +50,36 @@ class Tpu {
     this.projects.locations.operations = {};
 
     /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The standard list filter.
@@ -63,35 +93,31 @@ class Tpu {
      */
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
 
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.acceleratorTypes = {};
 
     /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * Gets AcceleratorType.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.acceleratorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * Lists accelerator types supported by this API.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {string} apiParams.filter - List filter.
+     * @param {string} apiParams.orderBy - Sort results.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
 
     this.projects.locations.nodes = {};
 
@@ -108,27 +134,26 @@ class Tpu {
     this.projects.locations.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the details of a node.
+     * Reimages a node's OS.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a node.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.nodeId - The unqualified resource name.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {string} apiParams.name - (Required) The resource name.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:reimage', 'POST', apiParams, clientConfig);
+
+    /**
+     * Starts a node.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.nodes.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:start', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a node.
@@ -142,15 +167,14 @@ class Tpu {
     this.projects.locations.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Reimages a node's OS.
+     * Gets the details of a node.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.nodes.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:reimage', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Stops a node. This operation is only available with single TPU nodes.
@@ -164,15 +188,17 @@ class Tpu {
     this.projects.locations.nodes.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:stop', 'POST', apiParams, clientConfig);
 
     /**
-     * Starts a node.
+     * Creates a node.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name.
+     * @param {string} apiParams.nodeId - The unqualified resource name.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.nodes.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:start', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
 
     this.projects.locations.tensorflowVersions = {};
 
@@ -199,32 +225,6 @@ class Tpu {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.tensorflowVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.acceleratorTypes = {};
-
-    /**
-     * Lists accelerator types supported by this API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - List filter.
-     * @param {string} apiParams.orderBy - Sort results.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets AcceleratorType.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.acceleratorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
