@@ -21,6 +21,7 @@ class Policytroubleshooter {
 
     this.iam = {};
     this.iam.troubleshoot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta/iam:troubleshoot', 'POST', apiParams, clientConfig);
+    this.iam.troubleshootError = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3beta/iam:troubleshootError', 'POST', apiParams, clientConfig);
   }
 
 /**
