@@ -4,7 +4,7 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:13:27 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:14:53 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:13:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:07 GMT
 
