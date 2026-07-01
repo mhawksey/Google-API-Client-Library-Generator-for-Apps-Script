@@ -26,7 +26,7 @@ class Merchantapi {
     /**
      * Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Id of the account making the call. Must be a standalone account or an MCA subaccount. Format: accounts/{account}
+     * @param {string} apiParams.parent - (Required) Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced account. Format: accounts/{account}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
