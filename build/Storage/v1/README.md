@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:16:49 GMT
-- **Last Modified:** Fri, 01 May 2026 00:34:56 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:23:56 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:23:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -916,25 +916,6 @@ Updates an object's metadata.
 | `params.predefinedAcl` | `string` | No | Apply a predefined set of access controls to this object. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `objects.watchAll()`
-
-Watch for changes on all objects in a bucket.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.bucket` | `string` | Yes | Name of the bucket in which to look for objects. |
-| `params.delimiter` | `string` | No | Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted. |
-| `params.endOffset` | `string` | No | Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). |
-| `params.includeTrailingDelimiter` | `boolean` | No | If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes. |
-| `params.maxResults` | `integer` | No | Maximum number of items plus prefixes to return in a single page of responses. As duplicate prefixes are omitted, fewer total results may be returned than requested. The service will use this parameter or 1,000 items, whichever is smaller. |
-| `params.pageToken` | `string` | No | A previously-returned page token representing part of the larger set of results to view. |
-| `params.prefix` | `string` | No | Filter results to objects whose names begin with this prefix. |
-| `params.projection` | `string` | No | Set of properties to return. Defaults to noAcl. |
-| `params.startOffset` | `string` | No | Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). |
-| `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.versions` | `boolean` | No | If true, lists all versions of an object as distinct results. The default is false. For more information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.restore()`
