@@ -20,9 +20,9 @@ class Mybusinessverifications {
 
 
     this.locations = {};
+    this.locations.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verify', 'POST', apiParams, clientConfig);
     this.locations.getVoiceOfMerchantState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/VoiceOfMerchantState', 'GET', apiParams, clientConfig);
     this.locations.fetchVerificationOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchVerificationOptions', 'POST', apiParams, clientConfig);
-    this.locations.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verify', 'POST', apiParams, clientConfig);
 
     this.locations.verifications = {};
     this.locations.verifications.complete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:complete', 'POST', apiParams, clientConfig);
