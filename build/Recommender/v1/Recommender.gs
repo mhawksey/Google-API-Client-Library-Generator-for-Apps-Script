@@ -19,31 +19,6 @@ class Recommender {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.recommenders = {};
-    this.projects.locations.recommenders.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.recommenders.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.recommenders.recommendations = {};
-    this.projects.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
-    this.projects.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
-    this.projects.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
-    this.projects.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
-    this.projects.locations.recommenders.recommendations.markFailed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markFailed', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.insightTypes = {};
-    this.projects.locations.insightTypes.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.insightTypes.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.insightTypes.insights = {};
-    this.projects.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
-    this.projects.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.insightTypes.insights.markAccepted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markAccepted', 'POST', apiParams, clientConfig);
-
     this.billingAccounts = {};
 
     this.billingAccounts.locations = {};
@@ -53,11 +28,11 @@ class Recommender {
     this.billingAccounts.locations.recommenders.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.billingAccounts.locations.recommenders.recommendations = {};
-    this.billingAccounts.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
     this.billingAccounts.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.billingAccounts.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
-    this.billingAccounts.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
     this.billingAccounts.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
+    this.billingAccounts.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
+    this.billingAccounts.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
     this.billingAccounts.locations.recommenders.recommendations.markFailed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markFailed', 'POST', apiParams, clientConfig);
 
     this.billingAccounts.locations.insightTypes = {};
@@ -66,8 +41,33 @@ class Recommender {
 
     this.billingAccounts.locations.insightTypes.insights = {};
     this.billingAccounts.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
-    this.billingAccounts.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.billingAccounts.locations.insightTypes.insights.markAccepted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markAccepted', 'POST', apiParams, clientConfig);
+    this.billingAccounts.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.recommenders = {};
+    this.projects.locations.recommenders.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.recommenders.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.recommenders.recommendations = {};
+    this.projects.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
+    this.projects.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
+    this.projects.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
+    this.projects.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
+    this.projects.locations.recommenders.recommendations.markFailed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markFailed', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.insightTypes = {};
+    this.projects.locations.insightTypes.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.insightTypes.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.insightTypes.insights = {};
+    this.projects.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
+    this.projects.locations.insightTypes.insights.markAccepted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markAccepted', 'POST', apiParams, clientConfig);
+    this.projects.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.folders = {};
 
@@ -76,19 +76,19 @@ class Recommender {
     this.folders.locations.insightTypes = {};
 
     this.folders.locations.insightTypes.insights = {};
-    this.folders.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
     this.folders.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
     this.folders.locations.insightTypes.insights.markAccepted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markAccepted', 'POST', apiParams, clientConfig);
 
     this.folders.locations.recommenders = {};
 
     this.folders.locations.recommenders.recommendations = {};
-    this.folders.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
     this.folders.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.folders.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
     this.folders.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
     this.folders.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
     this.folders.locations.recommenders.recommendations.markFailed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markFailed', 'POST', apiParams, clientConfig);
+    this.folders.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
@@ -100,11 +100,11 @@ class Recommender {
 
     this.organizations.locations.recommenders.recommendations = {};
     this.organizations.locations.recommenders.recommendations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/recommendations', 'GET', apiParams, clientConfig);
-    this.organizations.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
-    this.organizations.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
-    this.organizations.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
     this.organizations.locations.recommenders.recommendations.markFailed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markFailed', 'POST', apiParams, clientConfig);
+    this.organizations.locations.recommenders.recommendations.markSucceeded = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markSucceeded', 'POST', apiParams, clientConfig);
+    this.organizations.locations.recommenders.recommendations.markClaimed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markClaimed', 'POST', apiParams, clientConfig);
+    this.organizations.locations.recommenders.recommendations.markDismissed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markDismissed', 'POST', apiParams, clientConfig);
+    this.organizations.locations.recommenders.recommendations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.insightTypes = {};
     this.organizations.locations.insightTypes.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -112,8 +112,8 @@ class Recommender {
 
     this.organizations.locations.insightTypes.insights = {};
     this.organizations.locations.insightTypes.insights.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insights', 'GET', apiParams, clientConfig);
-    this.organizations.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.insightTypes.insights.markAccepted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:markAccepted', 'POST', apiParams, clientConfig);
+    this.organizations.locations.insightTypes.insights.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
