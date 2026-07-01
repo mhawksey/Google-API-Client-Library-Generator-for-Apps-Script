@@ -19,6 +19,39 @@ class Pubsublite {
     this._servicePath = '';
 
 
+    this.cursor = {};
+
+    this.cursor.projects = {};
+
+    this.cursor.projects.locations = {};
+
+    this.cursor.projects.locations.subscriptions = {};
+
+    /**
+     * Updates the committed cursor.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.subscription - (Required) The subscription for which to update the cursor.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.cursor.projects.locations.subscriptions.commitCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/cursor/{+subscription}:commitCursor', 'POST', apiParams, clientConfig);
+
+    this.cursor.projects.locations.subscriptions.cursors = {};
+
+    /**
+     * Returns all committed cursor information for a subscription.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.cursor.projects.locations.subscriptions.cursors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/cursor/{+parent}/cursors', 'GET', apiParams, clientConfig);
+
     this.admin = {};
 
     this.admin.projects = {};
@@ -26,6 +59,16 @@ class Pubsublite {
     this.admin.projects.locations = {};
 
     this.admin.projects.locations.operations = {};
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -52,16 +95,6 @@ class Pubsublite {
     this.admin.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -72,112 +105,7 @@ class Pubsublite {
      */
     this.admin.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.admin.projects.locations.topics = {};
-
-    /**
-     * Creates a new topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`.
-     * @param {string} apiParams.topicId - Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns the topic configuration.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the topic whose configuration to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the partition information for the requested topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The topic whose partition information to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.getPartitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/partitions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the list of topics for the given project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates properties of the specified topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-     * @param {string} apiParams.updateMask - Required. A mask specifying the topic fields to change.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the topic to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.admin.projects.locations.topics.subscriptions = {};
-
-    /**
-     * Lists the subscriptions attached to the specified topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the topic whose subscriptions to list.
-     * @param {integer} apiParams.pageSize - The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.topics.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/subscriptions', 'GET', apiParams, clientConfig);
-
     this.admin.projects.locations.subscriptions = {};
-
-    /**
-     * Creates a new subscription.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
-     * @param {boolean} apiParams.skipBacklog - If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-     * @param {string} apiParams.subscriptionId - Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns the subscription configuration.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the subscription whose configuration to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Returns the list of subscriptions for the given project.
@@ -202,6 +130,29 @@ class Pubsublite {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.admin.projects.locations.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns the subscription configuration.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the subscription whose configuration to return.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new subscription.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`.
+     * @param {boolean} apiParams.skipBacklog - If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
+     * @param {string} apiParams.subscriptionId - Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes the specified subscription.
@@ -239,6 +190,16 @@ class Pubsublite {
     this.admin.projects.locations.reservations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/reservations', 'POST', apiParams, clientConfig);
 
     /**
+     * Deletes the specified reservation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Returns the reservation configuration.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the reservation whose configuration to return. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
@@ -272,16 +233,6 @@ class Pubsublite {
      */
     this.admin.projects.locations.reservations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
 
-    /**
-     * Deletes the specified reservation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.admin.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.admin.projects.locations.reservations.topics = {};
 
     /**
@@ -296,38 +247,87 @@ class Pubsublite {
      */
     this.admin.projects.locations.reservations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/topics', 'GET', apiParams, clientConfig);
 
-    this.cursor = {};
-
-    this.cursor.projects = {};
-
-    this.cursor.projects.locations = {};
-
-    this.cursor.projects.locations.subscriptions = {};
+    this.admin.projects.locations.topics = {};
 
     /**
-     * Updates the committed cursor.
+     * Deletes the specified topic.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.subscription - (Required) The subscription for which to update the cursor.
+     * @param {string} apiParams.name - (Required) Required. The name of the topic to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a new topic.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`.
+     * @param {string} apiParams.topicId - Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.cursor.projects.locations.subscriptions.commitCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/cursor/{+subscription}:commitCursor', 'POST', apiParams, clientConfig);
-
-    this.cursor.projects.locations.subscriptions.cursors = {};
+    this.admin.projects.locations.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns all committed cursor information for a subscription.
+     * Returns the partition information for the requested topic.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`.
+     * @param {string} apiParams.name - (Required) Required. The topic whose partition information to return.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.cursor.projects.locations.subscriptions.cursors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/cursor/{+parent}/cursors', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.topics.getPartitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/partitions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns the topic configuration.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the topic whose configuration to return.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns the list of topics for the given project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates properties of the specified topic.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
+     * @param {string} apiParams.updateMask - Required. A mask specifying the topic fields to change.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.admin.projects.locations.topics.subscriptions = {};
+
+    /**
+     * Lists the subscriptions attached to the specified topic.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the topic whose subscriptions to list.
+     * @param {integer} apiParams.pageSize - The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.admin.projects.locations.topics.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/subscriptions', 'GET', apiParams, clientConfig);
 
     this.topicStats = {};
 
@@ -349,17 +349,6 @@ class Pubsublite {
     this.topicStats.projects.locations.topics.computeMessageStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeMessageStats', 'POST', apiParams, clientConfig);
 
     /**
-     * Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.topic - (Required) Required. The topic for which we should compute the head cursor.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topicStats.projects.locations.topics.computeHeadCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeHeadCursor', 'POST', apiParams, clientConfig);
-
-    /**
      * Compute the corresponding cursor for a publish or event time in a topic partition.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.topic - (Required) Required. The topic for which we should compute the cursor.
@@ -369,6 +358,17 @@ class Pubsublite {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.topicStats.projects.locations.topics.computeTimeCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeTimeCursor', 'POST', apiParams, clientConfig);
+
+    /**
+     * Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.topic - (Required) Required. The topic for which we should compute the head cursor.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.topicStats.projects.locations.topics.computeHeadCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeHeadCursor', 'POST', apiParams, clientConfig);
   }
 
 /**
