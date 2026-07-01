@@ -4,8 +4,8 @@ Auto-generated client library for using the **Pub/Sub Lite API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:13:21 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:13:21 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:14:48 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:14:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:01 GMT
 
 
@@ -13,6 +13,35 @@ Auto-generated client library for using the **Pub/Sub Lite API (version: v1)** i
 ---
 
 ## API Reference
+
+### `cursor`
+
+### `cursor.projects`
+
+### `cursor.projects.locations`
+
+### `cursor.projects.locations.subscriptions`
+
+#### `cursor.projects.locations.subscriptions.commitCursor()`
+
+Updates the committed cursor.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.subscription` | `string` | Yes | The subscription for which to update the cursor. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `cursor.projects.locations.subscriptions.cursors`
+
+#### `cursor.projects.locations.subscriptions.cursors.list()`
+
+Returns all committed cursor information for a subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. |
 
 ### `admin`
 
@@ -22,16 +51,24 @@ Auto-generated client library for using the **Pub/Sub Lite API (version: v1)** i
 
 ### `admin.projects.locations.operations`
 
+#### `admin.projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
 #### `admin.projects.locations.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 | `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `admin.projects.locations.operations.get()`
@@ -42,14 +79,6 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `admin.projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
 #### `admin.projects.locations.operations.cancel()`
 
 Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
@@ -59,94 +88,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `admin.projects.locations.topics`
-
-#### `admin.projects.locations.topics.create()`
-
-Creates a new topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`. |
-| `params.topicId` | `string` | No | Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `admin.projects.locations.topics.get()`
-
-Returns the topic configuration.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the topic whose configuration to return. |
-
-#### `admin.projects.locations.topics.getPartitions()`
-
-Returns the partition information for the requested topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The topic whose partition information to return. |
-
-#### `admin.projects.locations.topics.list()`
-
-Returns the list of topics for the given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. |
-
-#### `admin.projects.locations.topics.patch()`
-
-Updates properties of the specified topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} |
-| `params.updateMask` | `string` | No | Required. A mask specifying the topic fields to change. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `admin.projects.locations.topics.delete()`
-
-Deletes the specified topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the topic to delete. |
-
-### `admin.projects.locations.topics.subscriptions`
-
-#### `admin.projects.locations.topics.subscriptions.list()`
-
-Lists the subscriptions attached to the specified topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the topic whose subscriptions to list. |
-| `params.pageSize` | `integer` | No | The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token. |
-
 ### `admin.projects.locations.subscriptions`
-
-#### `admin.projects.locations.subscriptions.create()`
-
-Creates a new subscription.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`. |
-| `params.subscriptionId` | `string` | No | Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`. |
-| `params.skipBacklog` | `boolean` | No | If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `admin.projects.locations.subscriptions.get()`
-
-Returns the subscription configuration.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the subscription whose configuration to return. |
 
 #### `admin.projects.locations.subscriptions.list()`
 
@@ -164,8 +106,27 @@ Updates properties of the specified subscription.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} |
 | `params.updateMask` | `string` | No | Required. A mask specifying the subscription fields to change. |
+| `params.name` | `string` | Yes | The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `admin.projects.locations.subscriptions.get()`
+
+Returns the subscription configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the subscription whose configuration to return. |
+
+#### `admin.projects.locations.subscriptions.create()`
+
+Creates a new subscription.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`. |
+| `params.skipBacklog` | `boolean` | No | If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false. |
+| `params.subscriptionId` | `string` | No | Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.subscriptions.delete()`
@@ -193,9 +154,17 @@ Creates a new reservation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`. |
 | `params.reservationId` | `string` | No | Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`. |
+| `params.parent` | `string` | Yes | Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `admin.projects.locations.reservations.delete()`
+
+Deletes the specified reservation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} |
 
 #### `admin.projects.locations.reservations.get()`
 
@@ -225,14 +194,6 @@ Updates properties of the specified reservation.
 | `params.updateMask` | `string` | No | Required. A mask specifying the reservation fields to change. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `admin.projects.locations.reservations.delete()`
-
-Deletes the specified reservation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the reservation to delete. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} |
-
 ### `admin.projects.locations.reservations.topics`
 
 #### `admin.projects.locations.reservations.topics.list()`
@@ -245,34 +206,73 @@ Lists the topics attached to the specified reservation.
 | `params.pageSize` | `integer` | No | The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the given reservation will be returned. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListReservationTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReservationTopics` must match the call that provided the page token. |
 
-### `cursor`
+### `admin.projects.locations.topics`
 
-### `cursor.projects`
+#### `admin.projects.locations.topics.delete()`
 
-### `cursor.projects.locations`
-
-### `cursor.projects.locations.subscriptions`
-
-#### `cursor.projects.locations.subscriptions.commitCursor()`
-
-Updates the committed cursor.
+Deletes the specified topic.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.subscription` | `string` | Yes | The subscription for which to update the cursor. |
+| `params.name` | `string` | Yes | Required. The name of the topic to delete. |
+
+#### `admin.projects.locations.topics.create()`
+
+Creates a new topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`. |
+| `params.topicId` | `string` | No | Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `cursor.projects.locations.subscriptions.cursors`
+#### `admin.projects.locations.topics.getPartitions()`
 
-#### `cursor.projects.locations.subscriptions.cursors.list()`
-
-Returns all committed cursor information for a subscription.
+Returns the partition information for the requested topic.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The subscription for which to retrieve cursors. Structured like `projects/{project_number}/locations/{location}/subscriptions/{subscription_id}`. |
-| `params.pageSize` | `integer` | No | The maximum number of cursors to return. The service may return fewer than this value. If unset or zero, all cursors for the parent will be returned. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListPartitionCursors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPartitionCursors` must match the call that provided the page token. |
+| `params.name` | `string` | Yes | Required. The topic whose partition information to return. |
+
+#### `admin.projects.locations.topics.get()`
+
+Returns the topic configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the topic whose configuration to return. |
+
+#### `admin.projects.locations.topics.list()`
+
+Returns the list of topics for the given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of topics to return. The service may return fewer than this value. If unset or zero, all topics for the parent will be returned. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent whose topics are to be listed. Structured like `projects/{project_number}/locations/{location}`. |
+
+#### `admin.projects.locations.topics.patch()`
+
+Updates properties of the specified topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} |
+| `params.updateMask` | `string` | No | Required. A mask specifying the topic fields to change. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `admin.projects.locations.topics.subscriptions`
+
+#### `admin.projects.locations.topics.subscriptions.list()`
+
+Lists the subscriptions attached to the specified topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the topic whose subscriptions to list. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListTopicSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopicSubscriptions` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | The maximum number of subscriptions to return. The service may return fewer than this value. If unset or zero, all subscriptions for the given topic will be returned. |
 
 ### `topicStats`
 
@@ -291,15 +291,6 @@ Compute statistics about a range of messages in a given topic and partition.
 | `params.topic` | `string` | Yes | Required. The topic for which we should compute message stats. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `topicStats.projects.locations.topics.computeHeadCursor()`
-
-Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.topic` | `string` | Yes | Required. The topic for which we should compute the head cursor. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `topicStats.projects.locations.topics.computeTimeCursor()`
 
 Compute the corresponding cursor for a publish or event time in a topic partition.
@@ -307,4 +298,13 @@ Compute the corresponding cursor for a publish or event time in a topic partitio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Required. The topic for which we should compute the cursor. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `topicStats.projects.locations.topics.computeHeadCursor()`
+
+Compute the head cursor for the partition. The head cursor's offset is guaranteed to be less than or equal to all messages which have not yet been acknowledged as published, and greater than the offset of any message whose publish has already been acknowledged. It is zero if there have never been messages in the partition.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.topic` | `string` | Yes | Required. The topic for which we should compute the head cursor. |
 | `params.requestBody` | `object` | Yes | The request body. |
