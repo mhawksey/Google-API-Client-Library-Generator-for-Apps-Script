@@ -32,6 +32,93 @@ class Webcontentpublisher {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.publications.checkFreeAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkFreeAccess', 'GET', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.publications = {};
+
+    /**
+     * Gets a publication.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the publication to retrieve. Format: `organizations/{organization}/publications/{publication}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a publication.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the publication. Format: organizations/{organization}/publications/{publication}
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a publication.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this publication will be created. Format: `organizations/{organization}`.
+     * @param {string} apiParams.publicationId - Optional. The unique identifier of the publication to create. If not specified, the server will generate a random publication ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publications', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists publications.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter expression to filter the publications returned.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of publications to return. The service may return fewer than this value. If unspecified, at most 50 publications will be returned.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListPublications` call, to retrieve the next page.
+     * @param {string} apiParams.parent - (Required) Required. The parent organization whose publications to list. Format: `organizations/{organization}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publications', 'GET', apiParams, clientConfig);
+
+    this.organizations.publications.ctas = {};
+
+    /**
+     * Gets a CTA.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CTA to retrieve. Format: `organizations/{organization}/publications/{publication}/ctas/{cta}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.ctas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a CTA.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.ctaId - Optional. The unique identifier of the CTA to create. If not specified, the server will generate a random CTA ID.
+     * @param {string} apiParams.parent - (Required) Required. The parent publication resource where this CTA will be created. Format: `organizations/{organization}/publications/{publication}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.ctas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ctas', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists CTAs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of CTAs to return. The service may return fewer than this value. If unspecified, at most 50 CTAs will be returned.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListCtas` call, to retrieve the next page.
+     * @param {string} apiParams.parent - (Required) Required. The parent publication resource whose CTAs to list. Format: `organizations/{organization}/publications/{publication}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.publications.ctas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ctas', 'GET', apiParams, clientConfig);
   }
 
 /**
