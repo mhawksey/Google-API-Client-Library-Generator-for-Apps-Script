@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Services API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:05:23 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:05:23 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:06:49 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:06:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:12 GMT
 
 
@@ -292,6 +292,112 @@ Deletes the specified `AuthzExtension` resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the `AuthzExtension` resource to delete. Must be in the format `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.multicastConsumerAssociations`
+
+#### `projects.locations.multicastConsumerAssociations.list()`
+
+Lists multicast consumer associations in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for which to list multicast consumer associations. Use the following format: `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of multicast consumer associations to return per call. |
+| `params.pageToken` | `string` | No | Optional. A page token from an earlier query, as returned in `next_page_token`. |
+| `params.filter` | `string` | No | Optional. A filter expression that filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by labels: * Resources that have a key named `foo` labels.foo:* * Resources that have a key named `foo` whose value is `bar` labels.foo = bar |
+| `params.orderBy` | `string` | No | Optional. A field used to sort the results by a certain order. |
+
+#### `projects.locations.multicastConsumerAssociations.get()`
+
+Gets details of a single multicast consumer association.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the multicast consumer association to get. Use the following format: `projects/*/locations/*/multicastConsumerAssociations/*`. |
+
+#### `projects.locations.multicastConsumerAssociations.create()`
+
+Creates a new multicast consumer association in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the multicast consumer association. Use the following format: `projects/*/locations/*`. |
+| `params.multicastConsumerAssociationId` | `string` | No | Required. A unique name for the multicast consumer association. The name is restricted to lower-case letters, numbers, and hyphen, with the first character a lower-case letter, and the last a letter or a number. The name must not exceed 48 characters. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicastConsumerAssociations.patch()`
+
+Updates the parameters of a single multicast consumer association.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the multicast consumer association. Use the following format: `projects/*/locations/*/multicastConsumerAssociations/*`. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the MulticastConsumerAssociation resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all mutable fields present in the request will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicastConsumerAssociations.delete()`
+
+Deletes a single multicast consumer association.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the multicast consumer association to delete. Use the following format: `projects/*/locations/*/multicastConsumerAssociations/*`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.multicastGroupConsumerActivations`
+
+#### `projects.locations.multicastGroupConsumerActivations.list()`
+
+Lists multicast group consumer activations in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource for which to list multicast group consumer activations. Use the following format: `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of multicast group consumer activations to return per call. |
+| `params.pageToken` | `string` | No | Optional. A page token from an earlier query, as returned in `next_page_token`. |
+| `params.filter` | `string` | No | Optional. A filter expression that filters the resources listed in the response. The expression must be of the form ` ` where operators: `<`, `>`, `<=`, `>=`, `!=`, `=`, `:` are supported (colon `:` represents a HAS operator which is roughly synonymous with equality). can refer to a proto or JSON field, or a synthetic field. Field names can be camelCase or snake_case. Examples: * Filter by name: name = "RESOURCE_NAME" * Filter by labels: * Resources that have a key named `foo` labels.foo:* * Resources that have a key named `foo` whose value is `bar` labels.foo = bar |
+| `params.orderBy` | `string` | No | Optional. A field used to sort the results by a certain order. |
+
+#### `projects.locations.multicastGroupConsumerActivations.get()`
+
+Gets details of a single multicast group consumer activation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the multicast group consumer activation to get. Use the following format: `projects/*/locations/*/multicastGroupConsumerActivations/*`. |
+
+#### `projects.locations.multicastGroupConsumerActivations.create()`
+
+Creates a new multicast group consumer activation in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the multicast group consumer activation. Use the following format: `projects/*/locations/*`. |
+| `params.multicastGroupConsumerActivationId` | `string` | No | Required. A unique name for the multicast group consumer activation. The name is restricted to lower-case letters, numbers, and hyphen, with the first character a lower-case letter, and the last a letter or a number. The name must not exceed 48 characters. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicastGroupConsumerActivations.patch()`
+
+Updates the parameters of a single multicast group consumer activation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the multicast group consumer activation. Use the following format: `projects/*/locations/*/multicastGroupConsumerActivations/*`. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the MulticastGroupConsumerActivation resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all mutable fields present in the request will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicastGroupConsumerActivations.delete()`
+
+Deletes a single multicast group consumer activation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the multicast group consumer activation to delete. Use the following format: `projects/*/locations/*/multicastGroupConsumerActivations/*`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 ### `projects.locations.endpointPolicies`
 
@@ -859,6 +965,56 @@ Deletes a single ServiceLbPolicy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the ServiceLbPolicy to delete. Must be in the format `projects/{project}/locations/{location}/serviceLbPolicies/*`. |
+
+### `projects.locations.agentGateways`
+
+#### `projects.locations.agentGateways.list()`
+
+Lists AgentGateways in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location from which the AgentGateways should be listed, specified in the format `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of AgentGateways to return per call. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListAgentGatewaysResponse` Indicates that this is a continuation of a prior `ListAgentGateways` call, and that the system should return the next page of data. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. Otherwise if one of the locations is down or unreachable, the Aggregated List request will fail. |
+
+#### `projects.locations.agentGateways.get()`
+
+Gets details of a single AgentGateway.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the AgentGateway to get. Must be in the format `projects/*/locations/*/agentGateways/*`. |
+
+#### `projects.locations.agentGateways.create()`
+
+Creates a new AgentGateway in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the AgentGateway. Must be in the format `projects/*/locations/*`. |
+| `params.agentGatewayId` | `string` | No | Required. Short name of the AgentGateway resource to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agentGateways.patch()`
+
+Updates the parameters of a single AgentGateway.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Name of the AgentGateway resource. It matches pattern `projects/*/locations/*/agentGateways/`. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the AgentGateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agentGateways.delete()`
+
+Deletes a single AgentGateway.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the AgentGateway to delete. Must be in the format `projects/*/locations/*/agentGateways/*`. |
+| `params.etag` | `string` | No | Optional. The etag of the AgentGateway to delete. |
 
 ### `projects.locations.edgeCacheKeysets`
 
