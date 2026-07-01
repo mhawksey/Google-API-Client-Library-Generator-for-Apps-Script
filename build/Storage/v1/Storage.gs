@@ -117,7 +117,6 @@ class Storage {
     this.objects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/iam', 'PUT', apiParams, clientConfig);
     this.objects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/iam/testPermissions', 'GET', apiParams, clientConfig);
     this.objects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}', 'PUT', apiParams, clientConfig);
-    this.objects.watchAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/watch', 'POST', apiParams, clientConfig);
     this.objects.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/restore', 'POST', apiParams, clientConfig);
     this.objects.bulkRestore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/bulkRestore', 'POST', apiParams, clientConfig);
 
