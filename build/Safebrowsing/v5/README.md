@@ -4,7 +4,7 @@ Auto-generated client library for using the **Safe Browsing API (version: v5)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:14:36 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:16:00 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:14:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:16 GMT
 
@@ -42,8 +42,8 @@ Lists hash lists. In the V5 API, Google will never remove a hash list that has e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of hash lists to return. The service may return fewer than this value. If unspecified, the server will choose a page size, which may be larger than the number of hash lists so that pagination is not necessary. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListHashLists` call. Provide this to retrieve the subsequent page. |
+| `params.pageSize` | `integer` | No | The maximum number of hash lists to return. The service may return fewer than this value. If unspecified, the server will choose a page size, which may be larger than the number of hash lists so that pagination is not necessary. |
 
 #### `hashLists.batchGet()`
 
@@ -65,6 +65,6 @@ Gets the latest contents of a hash list. A hash list may either by a threat list
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of this particular hash list. It may be a threat list, or it may be the Global Cache. |
-| `params.sizeConstraints.maxDatabaseEntries` | `integer` | No | Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set. |
 | `params.version` | `string` | No | The version of the hash list that the client already has. If this is the first time the client is fetching the hash list, this field MUST be left empty. Otherwise, the client SHOULD supply the version previously received from the server. The client MUST NOT manipulate those bytes. **What's new in V5**: in V4 of the API, this was called `states`; it is now renamed to `version` for clarity. |
 | `params.sizeConstraints.maxUpdateEntries` | `integer` | No | The maximum size in number of entries. The update will not contain more entries than this value, but it is possible that the update will contain fewer entries than this value. This MUST be at least 1024. If omitted or zero, no update size limit is set. |
+| `params.sizeConstraints.maxDatabaseEntries` | `integer` | No | Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set. |
