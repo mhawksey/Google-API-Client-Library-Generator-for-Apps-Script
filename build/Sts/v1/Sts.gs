@@ -19,8 +19,32 @@ class Sts {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.workloadIdentityPools = {};
+
+    this.projects.locations.workloadIdentityPools.well-known = {};
+    this.projects.locations.workloadIdentityPools.well-known.getOpenid-configuration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/.well-known/openid-configuration', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.workloadIdentityPools.openid = {};
+    this.projects.locations.workloadIdentityPools.openid.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/openid/jwks', 'GET', apiParams, clientConfig);
+
     this.v1 = {};
     this.v1.token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/token', 'POST', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.locations = {};
+
+    this.organizations.locations.workloadIdentityPools = {};
+
+    this.organizations.locations.workloadIdentityPools.well-known = {};
+    this.organizations.locations.workloadIdentityPools.well-known.getOpenid-configuration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/.well-known/openid-configuration', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.workloadIdentityPools.openid = {};
+    this.organizations.locations.workloadIdentityPools.openid.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/openid/jwks', 'GET', apiParams, clientConfig);
   }
 
 /**
