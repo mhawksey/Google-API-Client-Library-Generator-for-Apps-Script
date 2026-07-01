@@ -24,17 +24,7 @@ class Merchantapi {
     this.accounts.notificationsubscriptions = {};
 
     /**
-     * Gets notification subscriptions for an account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The `name` of the notification subscription.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
+     * Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For advanced accounts, the business can create a subscription for all managed accounts or for a specific subaccount. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}`
      * @param {object} apiParams.requestBody - The request body.
@@ -55,6 +45,16 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets notification subscriptions for an account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The `name` of the notification subscription.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a notification subscription for a merchant.
