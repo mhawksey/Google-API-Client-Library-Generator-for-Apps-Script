@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Vision API (version: v1p1bet
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:24:24 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:24:24 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:33:36 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:33:36 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:33 GMT
 
 
@@ -98,18 +98,18 @@ Run asynchronous image detection and annotation for a list of images. Progress a
 
 ### `projects.files`
 
-#### `projects.files.annotate()`
+#### `projects.files.asyncBatchAnnotate()`
 
-Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted.
+Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. Target project and location to make a call. Format: `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`: The European Union. Example: `projects/project-A/locations/eu`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.files.asyncBatchAnnotate()`
+#### `projects.files.annotate()`
 
-Run asynchronous image detection and annotation for a list of generic files, such as PDF files, which may contain multiple pages and multiple images per page. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `OperationMetadata` (metadata). `Operation.response` contains `AsyncBatchAnnotateFilesResponse` (results).
+Service that performs image detection and annotation for a batch of files. Now only "application/pdf", "image/tiff" and "image/gif" are supported. This service will extract at most 5 (customers can specify which 5 in AnnotateFileRequest.pages) frames (gif) or pages (pdf or tiff) from each file provided and perform detection and annotation for each image extracted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
