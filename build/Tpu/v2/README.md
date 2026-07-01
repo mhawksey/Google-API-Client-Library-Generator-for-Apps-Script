@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud TPU API (version: v2)** in G
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:17:49 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:17:49 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:26:55 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:26:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:02 GMT
 
 
@@ -28,19 +28,11 @@ Lists information about the supported locations for this service. This method ca
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.generateServiceIdentity()`
 
@@ -51,77 +43,69 @@ Generates the Cloud TPU service identity for the project.
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.operations`
+#### `projects.locations.get()`
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Gets information about a location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | Resource name for the location. |
 
-#### `projects.locations.operations.get()`
+### `projects.locations.queuedResources`
 
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+#### `projects.locations.queuedResources.list()`
+
+Lists queued resources.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. |
 
-#### `projects.locations.operations.delete()`
+#### `projects.locations.queuedResources.create()`
 
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-
-### `projects.locations.nodes`
-
-#### `projects.locations.nodes.list()`
-
-Lists nodes.
+Creates a QueuedResource TPU instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
+| `params.queuedResourceId` | `string` | No | Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.nodes.get()`
+#### `projects.locations.queuedResources.delete()`
 
-Gets the details of a node.
+Deletes a QueuedResource TPU instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
+| `params.force` | `boolean` | No | Optional. If set to true, all running nodes belonging to this queued resource will be deleted first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will only be deleted if its nodes have already been deleted or the queued resource is in the ACCEPTED, FAILED, or SUSPENDED state. |
+| `params.name` | `string` | Yes | Required. The resource name. |
+
+#### `projects.locations.queuedResources.reset()`
+
+Resets a QueuedResource TPU instance
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the queued resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.queuedResources.get()`
+
+Gets details of a queued resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
 
-#### `projects.locations.nodes.create()`
+### `projects.locations.nodes`
 
-Creates a node.
+#### `projects.locations.nodes.get()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.nodeId` | `string` | No | The unqualified resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.nodes.delete()`
-
-Deletes a node.
+Gets the details of a node.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -136,6 +120,14 @@ Stops a node. This operation is only available with single TPU nodes.
 | `params.name` | `string` | Yes | Required. The resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.nodes.delete()`
+
+Deletes a node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name. |
+
 #### `projects.locations.nodes.start()`
 
 Starts a node.
@@ -143,6 +135,16 @@ Starts a node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.nodes.create()`
+
+Creates a node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.nodeId` | `string` | No | The unqualified resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.patch()`
@@ -155,6 +157,16 @@ Updates the configurations of a node.
 | `params.updateMask` | `string` | No | Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips]. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.nodes.list()`
+
+Lists nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+
 #### `projects.locations.nodes.getGuestAttributes()`
 
 Retrieves the guest attributes for the node.
@@ -162,56 +174,6 @@ Retrieves the guest attributes for the node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.queuedResources`
-
-#### `projects.locations.queuedResources.list()`
-
-Lists queued resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
-
-#### `projects.locations.queuedResources.get()`
-
-Gets details of a queued resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name. |
-
-#### `projects.locations.queuedResources.create()`
-
-Creates a QueuedResource TPU instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.queuedResourceId` | `string` | No | Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. |
-| `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.queuedResources.delete()`
-
-Deletes a QueuedResource TPU instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name. |
-| `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
-| `params.force` | `boolean` | No | Optional. If set to true, all running nodes belonging to this queued resource will be deleted first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will only be deleted if its nodes have already been deleted or the queued resource is in the ACCEPTED, FAILED, or SUSPENDED state. |
-
-#### `projects.locations.queuedResources.reset()`
-
-Resets a QueuedResource TPU instance
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the queued resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.acceleratorTypes`
@@ -225,8 +187,8 @@ Lists accelerator types supported by this API.
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. |
 | `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-| `params.filter` | `string` | No | List filter. |
 | `params.orderBy` | `string` | No | Sort results. |
+| `params.filter` | `string` | No | List filter. |
 
 #### `projects.locations.acceleratorTypes.get()`
 
@@ -244,11 +206,11 @@ Lists runtime versions supported by this API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.filter` | `string` | No | List filter. |
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.orderBy` | `string` | No | Sort results. |
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-| `params.filter` | `string` | No | List filter. |
-| `params.orderBy` | `string` | No | Sort results. |
 
 #### `projects.locations.runtimeVersions.get()`
 
@@ -257,3 +219,41 @@ Gets a runtime version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
