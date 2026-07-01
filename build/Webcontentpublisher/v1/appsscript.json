@@ -3,6 +3,7 @@
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "oauthScopes": [
+    "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.manage",
     "https://www.googleapis.com/auth/subscribewithgoogle.publications.entitlements.readonly",
     "https://www.googleapis.com/auth/script.external_request"
   ]
