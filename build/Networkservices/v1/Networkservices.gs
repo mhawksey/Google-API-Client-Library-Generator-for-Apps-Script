@@ -59,6 +59,20 @@ class Networkservices {
     this.projects.locations.authzExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.authzExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.projects.locations.multicastConsumerAssociations = {};
+    this.projects.locations.multicastConsumerAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicastConsumerAssociations', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicastConsumerAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicastConsumerAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicastConsumerAssociations', 'POST', apiParams, clientConfig);
+    this.projects.locations.multicastConsumerAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.multicastConsumerAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.multicastGroupConsumerActivations = {};
+    this.projects.locations.multicastGroupConsumerActivations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicastGroupConsumerActivations', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicastGroupConsumerActivations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicastGroupConsumerActivations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicastGroupConsumerActivations', 'POST', apiParams, clientConfig);
+    this.projects.locations.multicastGroupConsumerActivations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.multicastGroupConsumerActivations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.locations.endpointPolicies = {};
     this.projects.locations.endpointPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointPolicies', 'GET', apiParams, clientConfig);
     this.projects.locations.endpointPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -142,6 +156,13 @@ class Networkservices {
     this.projects.locations.serviceLbPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceLbPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.serviceLbPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.serviceLbPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.agentGateways = {};
+    this.projects.locations.agentGateways.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/agentGateways', 'GET', apiParams, clientConfig);
+    this.projects.locations.agentGateways.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.agentGateways.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/agentGateways', 'POST', apiParams, clientConfig);
+    this.projects.locations.agentGateways.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.agentGateways.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.edgeCacheKeysets = {};
     this.projects.locations.edgeCacheKeysets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
