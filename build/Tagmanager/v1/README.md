@@ -4,8 +4,8 @@ Auto-generated client library for using the **Tag Manager API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:17:08 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:17:08 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:25:00 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:25:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:29 GMT
 
 
@@ -23,6 +23,16 @@ Lists all GTM Accounts that a user has access to.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 
+#### `accounts.update()`
+
+Updates a GTM Account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the account in storage. |
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.get()`
 
 Gets a GTM Account.
@@ -31,34 +41,17 @@ Gets a GTM Account.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 
-#### `accounts.update()`
-
-Updates a GTM Account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the account in storage. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `accounts.permissions`
 
-#### `accounts.permissions.create()`
+#### `accounts.permissions.update()`
 
-Creates a user's Account & Container Permissions.
+Updates a user's Account & Container Permissions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.permissionId` | `string` | Yes | The GTM User ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.permissions.list()`
-
-List all users that have access to the account along with Account and Container Permissions granted to each of them.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
 
 #### `accounts.permissions.get()`
 
@@ -69,14 +62,21 @@ Gets a user's Account & Container Permissions.
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.permissionId` | `string` | Yes | The GTM User ID. |
 
-#### `accounts.permissions.update()`
+#### `accounts.permissions.list()`
 
-Updates a user's Account & Container Permissions.
+List all users that have access to the account along with Account and Container Permissions granted to each of them.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.permissionId` | `string` | Yes | The GTM User ID. |
+
+#### `accounts.permissions.create()`
+
+Creates a user's Account & Container Permissions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.permissions.delete()`
@@ -89,6 +89,26 @@ Removes a user from the account, revoking access to it and all of its containers
 | `params.permissionId` | `string` | Yes | The GTM User ID. |
 
 ### `accounts.containers`
+
+#### `accounts.containers.update()`
+
+Updates a Container.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container in storage. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.containers.delete()`
+
+Deletes a Container.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
 
 #### `accounts.containers.create()`
 
@@ -116,47 +136,23 @@ Gets a Container.
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 
-#### `accounts.containers.update()`
+### `accounts.containers.move_folders`
 
-Updates a Container.
+#### `accounts.containers.move_folders.update()`
+
+Moves entities to a GTM Folder.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container in storage. |
+| `params.folderId` | `string` | Yes | The GTM Folder ID. |
+| `params.tagId` | `string` | No | The tags to be moved to the folder. |
+| `params.variableId` | `string` | No | The variables to be moved to the folder. |
+| `params.triggerId` | `string` | No | The triggers to be moved to the folder. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.delete()`
-
-Deletes a Container.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
 
 ### `accounts.containers.versions`
-
-#### `accounts.containers.versions.create()`
-
-Creates a Container Version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.versions.get()`
-
-Gets a Container Version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. Specify published to retrieve the currently published version. |
 
 #### `accounts.containers.versions.update()`
 
@@ -164,21 +160,11 @@ Updates a Container Version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container version in storage. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.versions.delete()`
-
-Deletes a Container Version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.versions.undelete()`
 
@@ -190,17 +176,6 @@ Undeletes a Container Version.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
 
-#### `accounts.containers.versions.publish()`
-
-Publishes a Container Version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container version in storage. |
-
 #### `accounts.containers.versions.restore()`
 
 Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version).
@@ -211,6 +186,16 @@ Restores a Container Version. This will overwrite the container's current config
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
 
+#### `accounts.containers.versions.get()`
+
+Gets a Container Version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. Specify published to retrieve the currently published version. |
+
 #### `accounts.containers.versions.list()`
 
 Lists all Container Versions of a GTM Container.
@@ -219,14 +204,12 @@ Lists all Container Versions of a GTM Container.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.headers` | `boolean` | No | Retrieve headers only when true. |
 | `params.includeDeleted` | `boolean` | No | Also retrieve deleted (archived) versions when true. |
+| `params.headers` | `boolean` | No | Retrieve headers only when true. |
 
-### `accounts.containers.variables`
+#### `accounts.containers.versions.create()`
 
-#### `accounts.containers.variables.create()`
-
-Creates a GTM Variable.
+Creates a Container Version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -234,14 +217,40 @@ Creates a GTM Variable.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.containers.variables.list()`
+#### `accounts.containers.versions.publish()`
 
-Lists all GTM Variables of a Container.
+Publishes a Container Version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container version in storage. |
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
+
+#### `accounts.containers.versions.delete()`
+
+Deletes a Container Version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
+
+### `accounts.containers.variables`
+
+#### `accounts.containers.variables.update()`
+
+Updates a GTM Variable.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the variable in storage. |
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.variableId` | `string` | Yes | The GTM Variable ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.variables.get()`
 
@@ -253,16 +262,23 @@ Gets a GTM Variable.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.variableId` | `string` | Yes | The GTM Variable ID. |
 
-#### `accounts.containers.variables.update()`
+#### `accounts.containers.variables.list()`
 
-Updates a GTM Variable.
+Lists all GTM Variables of a Container.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.variableId` | `string` | Yes | The GTM Variable ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the variable in storage. |
+
+#### `accounts.containers.variables.create()`
+
+Creates a GTM Variable.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.variables.delete()`
@@ -275,60 +291,19 @@ Deletes a GTM Variable.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.variableId` | `string` | Yes | The GTM Variable ID. |
 
-### `accounts.containers.triggers`
-
-#### `accounts.containers.triggers.create()`
-
-Creates a GTM Trigger.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.triggers.list()`
-
-Lists all GTM Triggers of a Container.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-
-#### `accounts.containers.triggers.get()`
-
-Gets a GTM Trigger.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
-
-#### `accounts.containers.triggers.update()`
-
-Updates a GTM Trigger.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the trigger in storage. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.triggers.delete()`
-
-Deletes a GTM Trigger.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
-
 ### `accounts.containers.tags`
+
+#### `accounts.containers.tags.update()`
+
+Updates a GTM Tag.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.tagId` | `string` | Yes | The GTM Tag ID. |
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the tag in storage. |
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.tags.create()`
 
@@ -340,12 +315,13 @@ Creates a GTM Tag.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.containers.tags.list()`
+#### `accounts.containers.tags.delete()`
 
-Lists all GTM Tags of a Container.
+Deletes a GTM Tag.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.tagId` | `string` | Yes | The GTM Tag ID. |
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 
@@ -359,29 +335,39 @@ Gets a GTM Tag.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.tagId` | `string` | Yes | The GTM Tag ID. |
 
-#### `accounts.containers.tags.update()`
+#### `accounts.containers.tags.list()`
 
-Updates a GTM Tag.
+Lists all GTM Tags of a Container.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.tagId` | `string` | Yes | The GTM Tag ID. |
-| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the tag in storage. |
+
+### `accounts.containers.reauthorize_environments`
+
+#### `accounts.containers.reauthorize_environments.update()`
+
+Re-generates the authorization code for a GTM Environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.environmentId` | `string` | Yes | The GTM Environment ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.containers.tags.delete()`
+### `accounts.containers.folders`
 
-Deletes a GTM Tag.
+#### `accounts.containers.folders.delete()`
+
+Deletes a GTM Folder.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.tagId` | `string` | Yes | The GTM Tag ID. |
-
-### `accounts.containers.folders`
+| `params.folderId` | `string` | Yes | The GTM Folder ID. |
 
 #### `accounts.containers.folders.create()`
 
@@ -424,16 +410,6 @@ Updates a GTM Folder.
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the folder in storage. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.containers.folders.delete()`
-
-Deletes a GTM Folder.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.folderId` | `string` | Yes | The GTM Folder ID. |
-
 ### `accounts.containers.folders.entities`
 
 #### `accounts.containers.folders.entities.list()`
@@ -446,23 +422,79 @@ List all entities in a GTM Folder.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.folderId` | `string` | Yes | The GTM Folder ID. |
 
-### `accounts.containers.move_folders`
+### `accounts.containers.triggers`
 
-#### `accounts.containers.move_folders.update()`
+#### `accounts.containers.triggers.update()`
 
-Moves entities to a GTM Folder.
+Updates a GTM Trigger.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.folderId` | `string` | Yes | The GTM Folder ID. |
-| `params.tagId` | `string` | No | The tags to be moved to the folder. |
-| `params.variableId` | `string` | No | The variables to be moved to the folder. |
-| `params.triggerId` | `string` | No | The triggers to be moved to the folder. |
+| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
+| `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the trigger in storage. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.containers.triggers.list()`
+
+Lists all GTM Triggers of a Container.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+
+#### `accounts.containers.triggers.get()`
+
+Gets a GTM Trigger.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
+
+#### `accounts.containers.triggers.delete()`
+
+Deletes a GTM Trigger.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
+
+#### `accounts.containers.triggers.create()`
+
+Creates a GTM Trigger.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.containers.environments`
+
+#### `accounts.containers.environments.get()`
+
+Gets a GTM Environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
+| `params.environmentId` | `string` | Yes | The GTM Environment ID. |
+
+#### `accounts.containers.environments.list()`
+
+Lists all GTM Environments of a GTM Container.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | The GTM Account ID. |
+| `params.containerId` | `string` | Yes | The GTM Container ID. |
 
 #### `accounts.containers.environments.create()`
 
@@ -474,18 +506,9 @@ Creates a GTM Environment.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.containers.environments.list()`
+#### `accounts.containers.environments.delete()`
 
-Lists all GTM Environments of a GTM Container.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-
-#### `accounts.containers.environments.get()`
-
-Gets a GTM Environment.
+Deletes a GTM Environment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -501,29 +524,6 @@ Updates a GTM Environment.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.environmentId` | `string` | Yes | The GTM Environment ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the environment in storage. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.containers.environments.delete()`
-
-Deletes a GTM Environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.environmentId` | `string` | Yes | The GTM Environment ID. |
-
-### `accounts.containers.reauthorize_environments`
-
-#### `accounts.containers.reauthorize_environments.update()`
-
-Re-generates the authorization code for a GTM Environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.environmentId` | `string` | Yes | The GTM Environment ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
