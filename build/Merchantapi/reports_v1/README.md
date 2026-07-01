@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: reports_v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:03:51 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:05:15 GMT
 - **Last Modified:** Fri, 01 May 2026 00:08:00 GMT
 - **Created:** Sun, 31 Aug 2025 23:44:19 GMT
 
@@ -24,5 +24,5 @@ Retrieves a report defined by a search query. The response might contain fewer r
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Id of the account making the call. Must be a standalone account or an MCA subaccount. Format: accounts/{account} |
+| `params.parent` | `string` | Yes | Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced account. Format: accounts/{account} |
 | `params.requestBody` | `object` | Yes | The request body. |
