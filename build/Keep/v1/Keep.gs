@@ -21,9 +21,9 @@ class Keep {
 
     this.notes = {};
     this.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'POST', apiParams, clientConfig);
-    this.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'GET', apiParams, clientConfig);
     this.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/notes', 'GET', apiParams, clientConfig);
+    this.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.notes.permissions = {};
     this.notes.permissions.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/permissions:batchCreate', 'POST', apiParams, clientConfig);
