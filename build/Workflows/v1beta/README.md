@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflows API (version: v1beta)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:25:13 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:25:13 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:34:34 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:34:34 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:16 GMT
 
 
@@ -28,9 +28,9 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
 
@@ -44,6 +44,14 @@ Gets information about a location.
 
 ### `projects.locations.operations`
 
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
 #### `projects.locations.operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -51,9 +59,9 @@ Lists operations that match the specified filter in the request. If the server d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
@@ -64,14 +72,6 @@ Gets the latest state of a long-running operation. Clients can use this method t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
 ### `projects.locations.workflows`
 
 #### `projects.locations.workflows.list()`
@@ -81,10 +81,10 @@ Lists Workflows in a given project and location. The default order is not specif
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service may return fewer than this value. If the value is not specified, a default value of 500 will be used. The maximum permitted value is 1000 and values greater than 1000 will be coerced down to 1000. |
+| `params.orderBy` | `string` | No | Comma-separated list of fields that that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a " desc" suffix. If not specified, the results will be returned in an unspecified order. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. |
 | `params.filter` | `string` | No | Filter to restrict results to specific workflows. |
-| `params.orderBy` | `string` | No | Comma-separated list of fields that that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a " desc" suffix. If not specified, the results will be returned in an unspecified order. |
+| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service may return fewer than this value. If the value is not specified, a default value of 500 will be used. The maximum permitted value is 1000 and values greater than 1000 will be coerced down to 1000. |
 
 #### `projects.locations.workflows.get()`
 
