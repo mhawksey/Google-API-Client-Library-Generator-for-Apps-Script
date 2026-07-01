@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Control API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:15:36 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:15:36 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:16:58 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:16:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:07 GMT
 
 
@@ -15,6 +15,15 @@ Auto-generated client library for using the **Service Control API (version: v1)*
 ## API Reference
 
 ### `services`
+
+#### `services.allocateQuota()`
+
+Attempts to allocate quota for the specified consumer. It should be called before the operation is executed. This method requires the `servicemanagement.services.quota` permission on the specified service. For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard dependency on the quota functionality.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.serviceName` | `string` | Yes | Name of the service as specified in the service configuration. For example, `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.check()`
 
@@ -32,13 +41,4 @@ Reports operation results to Google Service Control, such as logs and metrics. I
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `services.allocateQuota()`
-
-Attempts to allocate quota for the specified consumer. It should be called before the operation is executed. This method requires the `servicemanagement.services.quota` permission on the specified service. For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard dependency on the quota functionality.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.serviceName` | `string` | Yes | Name of the service as specified in the service configuration. For example, `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name. |
 | `params.requestBody` | `object` | Yes | The request body. |
