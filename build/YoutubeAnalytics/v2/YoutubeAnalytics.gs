@@ -19,16 +19,16 @@ class YoutubeAnalytics {
     this._servicePath = '';
 
 
-    this.groups = {};
-    this.groups.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'POST', apiParams, clientConfig);
-    this.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'GET', apiParams, clientConfig);
-    this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'PUT', apiParams, clientConfig);
-    this.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'DELETE', apiParams, clientConfig);
-
     this.groupItems = {};
     this.groupItems.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groupItems', 'POST', apiParams, clientConfig);
     this.groupItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groupItems', 'GET', apiParams, clientConfig);
     this.groupItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groupItems', 'DELETE', apiParams, clientConfig);
+
+    this.groups = {};
+    this.groups.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'POST', apiParams, clientConfig);
+    this.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'DELETE', apiParams, clientConfig);
+    this.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'GET', apiParams, clientConfig);
+    this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/groups', 'PUT', apiParams, clientConfig);
 
     this.reports = {};
     this.reports.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/reports', 'GET', apiParams, clientConfig);
