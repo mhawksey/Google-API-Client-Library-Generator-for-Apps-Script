@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: conversions
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:03:00 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:03:00 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:04:17 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:04:17 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:18 GMT
 
 
@@ -27,6 +27,15 @@ Creates a new conversion source.
 | `params.parent` | `string` | Yes | Required. The merchant account that will own the new conversion source. Format: `accounts/{account}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `accounts.conversionSources.undelete()`
+
+Re-enables an archived conversion source. Only Available for Merchant Center Destination conversion sources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the conversion source to be undeleted. Format: `accounts/{account}/conversionSources/{conversion_source}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.conversionSources.patch()`
 
 Updates information of an existing conversion source. Available only for Merchant Center Destination conversion sources.
@@ -45,14 +54,16 @@ Archives an existing conversion source. If the conversion source is a Merchant C
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}` |
 
-#### `accounts.conversionSources.undelete()`
+#### `accounts.conversionSources.list()`
 
-Re-enables an archived conversion source. Only Available for Merchant Center Destination conversion sources.
+Retrieves the list of conversion sources the caller has access to.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the conversion source to be undeleted. Format: `accounts/{account}/conversionSources/{conversion_source}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total. |
+| `params.pageToken` | `string` | No | Optional. Page token. |
+| `params.showDeleted` | `boolean` | No | Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned. |
+| `params.parent` | `string` | Yes | Required. The merchant account who owns the collection of conversion sources. Format: `accounts/{account}` |
 
 #### `accounts.conversionSources.get()`
 
@@ -61,14 +72,3 @@ Fetches a conversion source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the conversion source to be fetched. Format: `accounts/{account}/conversionSources/{conversion_source}` |
-
-#### `accounts.conversionSources.list()`
-
-Retrieves the list of conversion sources the caller has access to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The merchant account who owns the collection of conversion sources. Format: `accounts/{account}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total. |
-| `params.pageToken` | `string` | No | Optional. Page token. |
-| `params.showDeleted` | `boolean` | No | Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned. |
