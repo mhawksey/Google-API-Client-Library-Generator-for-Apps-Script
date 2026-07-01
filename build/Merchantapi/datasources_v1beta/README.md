@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: datasources
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:03:10 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:03:10 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:04:26 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:04:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:33 GMT
 
 
@@ -26,15 +26,25 @@ Retrieves the data source configuration for the given account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` |
 
+#### `accounts.dataSources.patch()`
+
+Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched. |
+| `params.name` | `string` | Yes | Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.dataSources.list()`
 
 Lists the configurations for data sources for the given account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account to list data sources for. Format: `accounts/{account}` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The account to list data sources for. Format: `accounts/{account}` |
 
 #### `accounts.dataSources.create()`
 
@@ -43,16 +53,6 @@ Creates the new data source configuration for the given account. This method alw
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where this data source will be created. Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.dataSources.patch()`
-
-Updates the existing data source configuration. The fields that are set in the update mask but not provided in the resource will be deleted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` |
-| `params.updateMask` | `string` | No | Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.delete()`
