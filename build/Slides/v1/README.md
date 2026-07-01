@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:16:19 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:16:19 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:17:36 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:17:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
 
@@ -15,14 +15,6 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 ## API Reference
 
 ### `presentations`
-
-#### `presentations.get()`
-
-Gets the latest version of the specified presentation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 
 #### `presentations.create()`
 
@@ -40,6 +32,14 @@ Applies one or more updates to the presentation. Each request is validated befor
 |---|---|---|---|
 | `params.presentationId` | `string` | Yes | The presentation to apply the updates to. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `presentations.get()`
+
+Gets the latest version of the specified presentation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 
 ### `presentations.pages`
 
