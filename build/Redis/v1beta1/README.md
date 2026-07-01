@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Cloud Memorystore for Redis
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:13:49 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:15:14 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:13:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:28 GMT
 
@@ -251,27 +251,27 @@ Removes a auth token for a user of a token based auth enabled instance.
 
 #### `projects.locations.aclPolicies.list()`
 
-Lists all ACL Policies owned by a project in either the specified location (region) or all locations. The location should have the following format:
+Lists all ACL policies owned by a project in either the specified location (region) or all locations. The location should have the following format:
 
 * `projects/{project_id}/locations/{location_id}` If `location_id` is specified as `-` (wildcard), then all regions available to the project are queried, and the results are aggregated.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. |
+| `params.parent` | `string` | Yes | Required. The resource name of the ACL policy location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more ACL policies left to be queried. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. The `next_page_token` value returned from a previous `ListAclPolicies` request, if any. |
 
 #### `projects.locations.aclPolicies.get()`
 
-Gets the details of a specific Redis Cluster ACL Policy.
+Gets the details of a specific Redis Cluster ACL policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Redis ACL Policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. |
+| `params.name` | `string` | Yes | Required. Redis ACL policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. |
 
 #### `projects.locations.aclPolicies.patch()`
 
-Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters. If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will contain the new ACL Policy object in the response field.
+Updates the ACL policy. The operation applies the updated ACL policy to all of the linked clusters. If Memorystore can apply the policy to all clusters, then the operation returns a SUCCESS status. If Memorystore can't apply the policy to all clusters, then to ensure eventual consistency, Memorystore uses reconciliation to apply the policy to the failed clusters. Completed longrunning.Operation will contain the new ACL policy object in the response field.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -282,22 +282,22 @@ Updates the ACL policy. The operation applies the updated ACL policy to all of t
 
 #### `projects.locations.aclPolicies.delete()`
 
-Deletes a specific Acl Policy. This action will delete the Acl Policy and all the rules associated with it. An ACL policy cannot be deleted if it is attached to a cluster.
+Deletes a specific ACL policy. This action will delete the ACL policy and all the rules associated with it. An ACL policy cannot be deleted if it is attached to a cluster.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Redis ACL Policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. |
+| `params.name` | `string` | Yes | Required. Redis ACL policy resource name using the form: `projects/{project_id}/locations/{location_id}/aclPolicies/{acl_policy_id}` where `location_id` refers to a GCP region. |
 | `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
 | `params.etag` | `string` | No | Optional. Etag of the ACL policy. If this is different from the server's etag, the request will fail with an ABORTED error. |
 
 #### `projects.locations.aclPolicies.create()`
 
-Creates an ACL Policy. The creation is executed synchronously and the policy is available for use immediately after the RPC returns.
+Creates an ACL policy. The creation is executed synchronously and the policy is available for use immediately after the RPC returns.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the cluster location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a Google Cloud region. |
-| `params.aclPolicyId` | `string` | No | Required. The logical name of the ACL Policy in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the customer project / location |
+| `params.aclPolicyId` | `string` | No | Required. The logical name of the ACL policy in the customer project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the customer project / location |
 | `params.requestId` | `string` | No | Optional. Idempotent request UUID. . |
 | `params.requestBody` | `object` | Yes | The request body. |
 
