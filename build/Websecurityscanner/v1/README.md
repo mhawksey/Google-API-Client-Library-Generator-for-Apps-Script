@@ -4,8 +4,8 @@ Auto-generated client library for using the **Web Security Scanner API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:25:07 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:25:07 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:34:24 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:34:24 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:08 GMT
 
 
@@ -18,6 +18,14 @@ Auto-generated client library for using the **Web Security Scanner API (version:
 
 ### `projects.scanConfigs`
 
+#### `projects.scanConfigs.delete()`
+
+Deletes an existing ScanConfig and its child resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. |
+
 #### `projects.scanConfigs.patch()`
 
 Updates a ScanConfig. This method support partial update of a ScanConfig.
@@ -28,32 +36,15 @@ Updates a ScanConfig. This method support partial update of a ScanConfig.
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.scanConfigs.create()`
-
-Creates a new ScanConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.scanConfigs.delete()`
-
-Deletes an existing ScanConfig and its child resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. |
-
 #### `projects.scanConfigs.list()`
 
 Lists ScanConfigs under a given project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'. |
 | `params.pageSize` | `integer` | No | The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'. |
+| `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
 
 #### `projects.scanConfigs.start()`
 
@@ -62,6 +53,15 @@ Start a ScanRun according to the given ScanConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.scanConfigs.create()`
+
+Creates a new ScanConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.scanConfigs.get()`
@@ -74,6 +74,14 @@ Gets a ScanConfig.
 
 ### `projects.scanConfigs.scanRuns`
 
+#### `projects.scanConfigs.scanRuns.get()`
+
+Gets a ScanRun.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
+
 #### `projects.scanConfigs.scanRuns.stop()`
 
 Stops a ScanRun. The stopped ScanRun is returned.
@@ -83,14 +91,6 @@ Stops a ScanRun. The stopped ScanRun is returned.
 | `params.name` | `string` | Yes | Required. The resource name of the ScanRun to be stopped. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.scanConfigs.scanRuns.get()`
-
-Gets a ScanRun.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
-
 #### `projects.scanConfigs.scanRuns.list()`
 
 Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.
@@ -98,8 +98,8 @@ Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop tim
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'. |
-| `params.pageSize` | `integer` | No | The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
 | `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
+| `params.pageSize` | `integer` | No | The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
 
 ### `projects.scanConfigs.scanRuns.crawledUrls`
 
@@ -109,22 +109,11 @@ List CrawledUrls under a given ScanRun.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
 | `params.pageSize` | `integer` | No | The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
 | `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
+| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
 
 ### `projects.scanConfigs.scanRuns.findings`
-
-#### `projects.scanConfigs.scanRuns.findings.list()`
-
-List Findings under a given ScanRun.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. |
-| `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
-| `params.pageSize` | `integer` | No | The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
 
 #### `projects.scanConfigs.scanRuns.findings.get()`
 
@@ -133,6 +122,17 @@ Gets a Finding.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'. |
+
+#### `projects.scanConfigs.scanRuns.findings.list()`
+
+List Findings under a given ScanRun.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'. |
+| `params.filter` | `string` | No | The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='. |
+| `params.pageToken` | `string` | No | A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned. |
+| `params.pageSize` | `integer` | No | The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value. |
 
 ### `projects.scanConfigs.scanRuns.findingTypeStats`
 
