@@ -36,17 +36,6 @@ class Testing {
     this.projects.testMatrices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices', 'POST', apiParams, clientConfig);
 
     /**
-     * Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Cloud project that owns the test matrix.
-     * @param {string} apiParams.testMatrixId - (Required) Unique test matrix id which was assigned by the service.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.testMatrices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.projectId - (Required) Cloud project that owns the test.
@@ -56,6 +45,17 @@ class Testing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.testMatrices.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Cloud project that owns the test matrix.
+     * @param {string} apiParams.testMatrixId - (Required) Unique test matrix id which was assigned by the service.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.testMatrices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}', 'GET', apiParams, clientConfig);
 
     this.projects.deviceSessions = {};
 
@@ -69,29 +69,6 @@ class Testing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.deviceSessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'POST', apiParams, clientConfig);
-
-    /**
-     * GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of DeviceSessions to return.
-     * @param {string} apiParams.pageToken - Optional. A continuation token for paging.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent to request, e.g. "projects/{project_id}"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.deviceSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'GET', apiParams, clientConfig);
-
-    /**
-     * GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.deviceSessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or listed by the user until they expire based on the 28 day deletion policy.
@@ -115,6 +92,29 @@ class Testing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.deviceSessions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of DeviceSessions to return.
+     * @param {string} apiParams.pageToken - Optional. A continuation token for paging.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent to request, e.g. "projects/{project_id}"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.deviceSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'GET', apiParams, clientConfig);
+
+    /**
+     * GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.deviceSessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.applicationDetailService = {};
 
