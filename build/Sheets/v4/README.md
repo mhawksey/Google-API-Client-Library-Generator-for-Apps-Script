@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Sheets API (version: v4)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:16:11 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:16:11 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:17:29 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:17:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:36 GMT
 
 
@@ -34,9 +34,9 @@ Returns the spreadsheet at the given ID. The caller must specify the spreadsheet
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.includeGridData` | `boolean` | No | True if grid data should be returned. This parameter is ignored if a field mask was set in the request. |
 | `params.spreadsheetId` | `string` | Yes | The spreadsheet to request. |
 | `params.ranges` | `string` | No | The ranges to retrieve from the spreadsheet. |
-| `params.includeGridData` | `boolean` | No | True if grid data should be returned. This parameter is ignored if a field mask was set in the request. |
 | `params.excludeTablesInBandedRanges` | `boolean` | No | True if tables should be excluded in the banded ranges. False if not set. |
 
 #### `spreadsheets.getByDataFilter()`
@@ -63,75 +63,17 @@ Applies one or more updates to the spreadsheet. Each request is validated before
 
 ### `spreadsheets.values`
 
-#### `spreadsheets.values.get()`
-
-Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
-| `params.range` | `string` | Yes | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. |
-| `params.majorDimension` | `string` | No | The major dimension that results should use. For example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. |
-| `params.valueRenderOption` | `string` | No | How values should be represented in the output. The default render option is FORMATTED_VALUE. |
-| `params.dateTimeRenderOption` | `string` | No | How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-
 #### `spreadsheets.values.update()`
 
 Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
+| `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
+| `params.valueInputOption` | `string` | No | How the input data should be interpreted. |
+| `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
 | `params.range` | `string` | Yes | The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to update. |
-| `params.valueInputOption` | `string` | No | How the input data should be interpreted. |
 | `params.includeValuesInResponse` | `boolean` | No | Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). |
-| `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
-| `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `spreadsheets.values.append()`
-
-Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.range` | `string` | Yes | The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a range to search for a logical table of data. Values are appended after the last row of the table. |
-| `params.valueInputOption` | `string` | No | How the input data should be interpreted. |
-| `params.insertDataOption` | `string` | No | How the input data should be inserted. |
-| `params.includeValuesInResponse` | `boolean` | No | Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values. |
-| `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
-| `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `spreadsheets.values.clear()`
-
-Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.range` | `string` | Yes | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `spreadsheets.values.batchGet()`
-
-Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
-| `params.ranges` | `string` | No | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. |
-| `params.majorDimension` | `string` | No | The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. |
-| `params.valueRenderOption` | `string` | No | How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE. |
-| `params.dateTimeRenderOption` | `string` | No | How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-
-#### `spreadsheets.values.batchUpdate()`
-
-Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -144,21 +86,13 @@ Clears one or more ranges of values from a spreadsheet. The caller must specify 
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `spreadsheets.values.batchGetByDataFilter()`
+#### `spreadsheets.values.clear()`
 
-Returns one or more ranges of values that match the specified data filters. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `spreadsheets.values.batchUpdateByDataFilter()`
-
-Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
+Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.range` | `string` | Yes | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear. |
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -171,24 +105,70 @@ Clears one or more ranges of values from a spreadsheet. For more information, se
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `spreadsheets.developerMetadata`
+#### `spreadsheets.values.batchUpdate()`
 
-#### `spreadsheets.developerMetadata.get()`
-
-Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve metadata from. |
-| `params.metadataId` | `integer` | Yes | The ID of the developer metadata to retrieve. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `spreadsheets.developerMetadata.search()`
+#### `spreadsheets.values.batchUpdateByDataFilter()`
 
-Returns all developer metadata matching the specified DataFilter. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all developer metadata associated with locations intersecting that region.
+Sets values in one or more ranges of a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve metadata from. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `spreadsheets.values.get()`
+
+Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
+| `params.majorDimension` | `string` | No | The major dimension that results should use. For example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. |
+| `params.range` | `string` | Yes | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. |
+| `params.valueRenderOption` | `string` | No | How values should be represented in the output. The default render option is FORMATTED_VALUE. |
+| `params.dateTimeRenderOption` | `string` | No | How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
+
+#### `spreadsheets.values.batchGet()`
+
+Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dateTimeRenderOption` | `string` | No | How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
+| `params.ranges` | `string` | No | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from. |
+| `params.majorDimension` | `string` | No | The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. |
+| `params.valueRenderOption` | `string` | No | How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE. |
+
+#### `spreadsheets.values.batchGetByDataFilter()`
+
+Returns one or more ranges of values that match the specified data filters. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `spreadsheets.values.append()`
+
+Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.includeValuesInResponse` | `boolean` | No | Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values. |
+| `params.range` | `string` | Yes | The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a range to search for a logical table of data. Values are appended after the last row of the table. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
+| `params.insertDataOption` | `string` | No | How the input data should be inserted. |
+| `params.valueInputOption` | `string` | No | How the input data should be interpreted. |
+| `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
+| `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `spreadsheets.sheets`
@@ -199,6 +179,26 @@ Copies a single sheet from a spreadsheet to another spreadsheet. Returns the pro
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet containing the sheet to copy. |
 | `params.sheetId` | `integer` | Yes | The ID of the sheet to copy. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet containing the sheet to copy. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `spreadsheets.developerMetadata`
+
+#### `spreadsheets.developerMetadata.get()`
+
+Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.metadataId` | `integer` | Yes | The ID of the developer metadata to retrieve. |
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve metadata from. |
+
+#### `spreadsheets.developerMetadata.search()`
+
+Returns all developer metadata matching the specified DataFilter. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it. If the DataFilter represents a location in a spreadsheet, this will return all developer metadata associated with locations intersecting that region.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve metadata from. |
 | `params.requestBody` | `object` | Yes | The request body. |
