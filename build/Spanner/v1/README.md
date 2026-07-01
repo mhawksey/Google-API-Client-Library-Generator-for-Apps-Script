@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Spanner API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:16:31 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:23:11 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:16:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:53 GMT
 
