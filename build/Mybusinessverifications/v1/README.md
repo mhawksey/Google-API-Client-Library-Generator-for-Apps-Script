@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:04:46 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:04:46 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:06:14 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:06:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -15,6 +15,15 @@ Auto-generated client library for using the **My Business Verifications API (ver
 ## API Reference
 
 ### `locations`
+
+#### `locations.verify()`
+
+Starts the verification process for a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.getVoiceOfMerchantState()`
 
@@ -31,15 +40,6 @@ Reports all eligible verification options for a location in a specific language.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location to verify. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `locations.verify()`
-
-Starts the verification process for a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.verifications`
