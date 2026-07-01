@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1bet
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:06:13 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:12:49 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:06:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:51 GMT
 
@@ -35,10 +35,10 @@ Retrieves the profile information used for logging in to a virtual machine on Go
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
 | `params.projectId` | `string` | No | Required. The project ID of the Google Cloud Platform project. |
-| `params.systemId` | `string` | No | Optional. A system ID for filtering the results of the request. |
 | `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
+| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
+| `params.systemId` | `string` | No | Optional. A system ID for filtering the results of the request. |
 
 #### `users.importSshPublicKey()`
 
@@ -46,9 +46,9 @@ Adds an SSH public key and returns the profile information. Default POSIX accoun
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
 | `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
 | `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
+| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
 | `params.regions` | `string` | No | Optional. The regions to which to assert that the key was written. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
