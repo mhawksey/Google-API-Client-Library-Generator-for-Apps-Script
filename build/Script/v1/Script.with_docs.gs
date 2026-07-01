@@ -22,6 +22,16 @@ class Script {
     this.projects = {};
 
     /**
+     * Creates a new, empty script project with no script files and a base manifest file.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
+
+    /**
      * Get metrics data for scripts, such as number of executions and active users.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.metricsFilter.deploymentId - Optional field indicating a specific deployment to retrieve metrics from.
@@ -34,14 +44,15 @@ class Script {
     this.projects.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/metrics', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new, empty script project with no script files and a base manifest file.
+     * Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
+    this.projects.updateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', apiParams, clientConfig);
 
     /**
      * Gets a script project's metadata.
@@ -64,29 +75,7 @@ class Script {
      */
     this.projects.getContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'GET', apiParams, clientConfig);
 
-    /**
-     * Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.updateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', apiParams, clientConfig);
-
     this.projects.deployments = {};
-
-    /**
-     * Creates a deployment of an Apps Script project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a deployment of an Apps Script project.
@@ -99,6 +88,17 @@ class Script {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Creates a deployment of an Apps Script project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a deployment of an Apps Script project.
