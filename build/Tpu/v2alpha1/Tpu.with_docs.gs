@@ -24,6 +24,16 @@ class Tpu {
     this.projects.locations = {};
 
     /**
+     * Gets information about a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Resource name for the location.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
@@ -38,16 +48,6 @@ class Tpu {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Resource name for the location.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Generates the Cloud TPU service identity for the project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The parent resource name.
@@ -58,53 +58,28 @@ class Tpu {
      */
     this.projects.locations.generateServiceIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}:generateServiceIdentity', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.nodes = {};
+
+    /**
+     * Deletes a node.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the details of a node.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists nodes.
@@ -119,14 +94,15 @@ class Tpu {
     this.projects.locations.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the details of a node.
+     * Retrieves the guest attributes for the node.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.nodes.getGuestAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:getGuestAttributes', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a node.
@@ -142,17 +118,6 @@ class Tpu {
     this.projects.locations.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a node.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Stops a node. This operation is only available with single TPU nodes.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name.
@@ -162,6 +127,17 @@ class Tpu {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.nodes.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:stop', 'POST', apiParams, clientConfig);
+
+    /**
+     * Perform manual maintenance on a node.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.nodes.performMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:performMaintenance', 'POST', apiParams, clientConfig);
 
     /**
      * Starts a node.
@@ -187,28 +163,6 @@ class Tpu {
     this.projects.locations.nodes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Perform manual maintenance on a node.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.nodes.performMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:performMaintenance', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieves the guest attributes for the node.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.nodes.getGuestAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:getGuestAttributes', 'POST', apiParams, clientConfig);
-
-    /**
      * Simulates a maintenance event.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name.
@@ -219,114 +173,17 @@ class Tpu {
      */
     this.projects.locations.nodes.simulateMaintenanceEvent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:simulateMaintenanceEvent', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.queuedResources = {};
-
-    /**
-     * Lists queued resources.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/queuedResources', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a queued resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a QueuedResource TPU instance.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
-     * @param {string} apiParams.queuedResourceId - The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/queuedResources', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a QueuedResource TPU instance.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - If set to true, all running nodes belonging to this queued resource will be deleted first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will only be deleted if its nodes have already been deleted or the queued resource is in the ACCEPTED, FAILED, or SUSPENDED state.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {string} apiParams.requestId - Idempotent request UUID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Resets a QueuedResource TPU instance
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the queued resource.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:reset', 'POST', apiParams, clientConfig);
-
-    /**
-     * Perform manual maintenance on specific nodes of a QueuedResource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the QueuedResource which holds the nodes to perform maintenance on.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.performMaintenanceQueuedResource = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:performMaintenanceQueuedResource', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the maintenance info for a queued resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The QueuedResource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.queuedResources.getMaintenanceInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:getMaintenanceInfo', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.acceleratorTypes = {};
-
-    /**
-     * Lists accelerator types supported by this API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - List filter.
-     * @param {string} apiParams.orderBy - Sort results.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets AcceleratorType.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.acceleratorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.runtimeVersions = {};
+
+    /**
+     * Gets a runtime version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.runtimeVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists runtime versions supported by this API.
@@ -342,15 +199,158 @@ class Tpu {
      */
     this.projects.locations.runtimeVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/runtimeVersions', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.queuedResources = {};
+
     /**
-     * Gets a runtime version.
+     * Perform manual maintenance on specific nodes of a QueuedResource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the QueuedResource which holds the nodes to perform maintenance on.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.performMaintenanceQueuedResource = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:performMaintenanceQueuedResource', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a queued resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.runtimeVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.queuedResources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a QueuedResource TPU instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - If set to true, all running nodes belonging to this queued resource will be deleted first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will only be deleted if its nodes have already been deleted or the queued resource is in the ACCEPTED, FAILED, or SUSPENDED state.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a QueuedResource TPU instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
+     * @param {string} apiParams.queuedResourceId - The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
+     * @param {string} apiParams.requestId - Idempotent request UUID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/queuedResources', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the maintenance info for a queued resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The QueuedResource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.getMaintenanceInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:getMaintenanceInfo', 'GET', apiParams, clientConfig);
+
+    /**
+     * Resets a QueuedResource TPU instance
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the queued resource.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:reset', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists queued resources.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/queuedResources', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.acceleratorTypes = {};
+
+    /**
+     * Gets AcceleratorType.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.acceleratorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists accelerator types supported by this API.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - List filter.
+     * @param {string} apiParams.orderBy - Sort results.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.reservations = {};
 
