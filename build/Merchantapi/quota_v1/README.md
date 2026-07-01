@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: quota_v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:03:48 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:05:11 GMT
 - **Last Modified:** Mon, 01 Jun 2026 00:03:48 GMT
 - **Created:** Sun, 31 Aug 2025 23:44:14 GMT
 
@@ -34,8 +34,8 @@ Lists the limits of an account.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent account. Format: `accounts/{account}` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of limits to return. The service may return fewer than this value. If unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be coerced to 100. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. |
 | `params.filter` | `string` | No | Required. A filter on the limit `type` is required, for example, `type = "products"`. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token. |
 
 ### `accounts.quotas`
 
@@ -45,6 +45,6 @@ Lists the daily call quota and usage per group for your Merchant Center account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The merchant account who owns the collection of method quotas Format: accounts/{account} |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The merchant account who owns the collection of method quotas Format: accounts/{account} |
