@@ -26,8 +26,8 @@ class Merchantapi {
 
     this.issueresolution = {};
     this.issueresolution.renderaccountissues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:renderaccountissues', 'POST', apiParams, clientConfig);
-    this.issueresolution.renderproductissues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:renderproductissues', 'POST', apiParams, clientConfig);
     this.issueresolution.triggeraction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:triggeraction', 'POST', apiParams, clientConfig);
+    this.issueresolution.renderproductissues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:renderproductissues', 'POST', apiParams, clientConfig);
   }
 
 /**
