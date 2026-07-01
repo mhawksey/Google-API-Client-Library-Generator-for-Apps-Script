@@ -35,6 +35,22 @@ class Kmsinventory {
      */
     this.projects.cryptoKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'GET', apiParams, clientConfig);
 
+    this.projects.protectedResources = {};
+
+    /**
+     * Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud organization/project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.cryptoKey - Required. The resource name of the CryptoKey.
+     * @param {integer} apiParams.pageSize - The maximum number of resources to return. The service may return fewer than this value. If unspecified, at most 500 resources will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+     * @param {string} apiParams.pageToken - A page token, received from a previous KeyTrackingService.SearchProtectedResources call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to KeyTrackingService.SearchProtectedResources must match the call that provided the page token.
+     * @param {string} apiParams.resourceTypes - Optional. A list of resource types that this request searches for. If empty, it will search all the [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types). Regular expressions are also supported. For example: * `compute.googleapis.com.*` snapshots resources whose type starts with `compute.googleapis.com`. * `.*Image` snapshots resources whose type ends with `Image`. * `.*Image.*` snapshots resources whose type contains `Image`. See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported resource type, an INVALID_ARGUMENT error will be returned.
+     * @param {string} apiParams.scope - (Required) Required. A scope can be an organization or a project. Resources protected by the crypto key in provided scope will be returned. The following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.protectedResources.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/protectedResources:search', 'GET', apiParams, clientConfig);
+
     this.projects.locations = {};
 
     this.projects.locations.keyRings = {};
@@ -51,22 +67,6 @@ class Kmsinventory {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.keyRings.cryptoKeys.getProtectedResourcesSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/protectedResourcesSummary', 'GET', apiParams, clientConfig);
-
-    this.projects.protectedResources = {};
-
-    /**
-     * Returns metadata about the resources protected by the given Cloud KMS CryptoKey in the given Cloud organization/project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.cryptoKey - Required. The resource name of the CryptoKey.
-     * @param {integer} apiParams.pageSize - The maximum number of resources to return. The service may return fewer than this value. If unspecified, at most 500 resources will be returned. The maximum value is 500; values above 500 will be coerced to 500.
-     * @param {string} apiParams.pageToken - A page token, received from a previous KeyTrackingService.SearchProtectedResources call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to KeyTrackingService.SearchProtectedResources must match the call that provided the page token.
-     * @param {string} apiParams.resourceTypes - Optional. A list of resource types that this request searches for. If empty, it will search all the [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types). Regular expressions are also supported. For example: * `compute.googleapis.com.*` snapshots resources whose type starts with `compute.googleapis.com`. * `.*Image` snapshots resources whose type ends with `Image`. * `.*Image.*` snapshots resources whose type contains `Image`. See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported resource type, an INVALID_ARGUMENT error will be returned.
-     * @param {string} apiParams.scope - (Required) Required. A scope can be an organization or a project. Resources protected by the crypto key in provided scope will be returned. The following values are allowed: * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/12345678") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678")
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.protectedResources.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/protectedResources:search', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
