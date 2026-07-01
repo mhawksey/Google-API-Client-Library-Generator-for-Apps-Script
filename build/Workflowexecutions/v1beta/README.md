@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflow Executions API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:25:08 GMT
-- **Last Modified:** Fri, 01 May 2026 00:38:21 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:34:27 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:34:27 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:11 GMT
 
 
@@ -33,6 +33,15 @@ Returns a list of executions which belong to the workflow with the given name. T
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListExecutions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListExecutions` must match the call that provided the page token. |
 | `params.view` | `string` | No | Optional. A view defining which fields should be filled in the returned executions. The API will default to the BASIC view. |
 
+#### `projects.locations.workflows.executions.cancel()`
+
+Cancels an execution of the given name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the execution to be cancelled. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.workflows.executions.create()`
 
 Creates a new execution using the latest revision of the given workflow.
@@ -50,12 +59,3 @@ Returns an execution of the given name.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the execution to be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} |
 | `params.view` | `string` | No | Optional. A view defining which fields should be filled in the returned execution. The API will default to the FULL view. |
-
-#### `projects.locations.workflows.executions.cancel()`
-
-Cancels an execution of the given name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the execution to be cancelled. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} |
-| `params.requestBody` | `object` | Yes | The request body. |
