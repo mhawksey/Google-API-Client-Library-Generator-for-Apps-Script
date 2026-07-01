@@ -26,12 +26,12 @@ class Searchads360 {
     this.customers = {};
     this.customers.listAccessibleCustomers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers:listAccessibleCustomers', 'GET', apiParams, clientConfig);
 
-    this.customers.searchAds360 = {};
-    this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
-
     this.customers.customColumns = {};
     this.customers.customColumns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/{+resourceName}', 'GET', apiParams, clientConfig);
     this.customers.customColumns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/customColumns', 'GET', apiParams, clientConfig);
+
+    this.customers.searchAds360 = {};
+    this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
   }
 
 /**
