@@ -4,8 +4,8 @@ Auto-generated client library for using the **YouTube Reporting API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Jun 2026 00:25:42 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:25:42 GMT
+- **Last Checked:** Wed, 01 Jul 2026 00:35:03 GMT
+- **Last Modified:** Wed, 01 Jul 2026 00:35:03 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:37 GMT
 
 
@@ -13,19 +13,6 @@ Auto-generated client library for using the **YouTube Reporting API (version: v1
 ---
 
 ## API Reference
-
-### `reportTypes`
-
-#### `reportTypes.list()`
-
-Lists report types.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method. |
-| `params.includeSystemManaged` | `boolean` | No | If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned. |
 
 ### `jobs`
 
@@ -49,15 +36,6 @@ Lists jobs.
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method. |
 | `params.includeSystemManaged` | `boolean` | No | If set to true, also system-managed jobs will be returned; otherwise only user-created jobs will be returned. System-managed jobs can neither be modified nor deleted. |
 
-#### `jobs.get()`
-
-Gets a job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.jobId` | `string` | Yes | The ID of the job to retrieve. |
-| `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
-
 #### `jobs.delete()`
 
 Deletes a job.
@@ -65,6 +43,15 @@ Deletes a job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.jobId` | `string` | Yes | The ID of the job to delete. |
+| `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
+
+#### `jobs.get()`
+
+Gets a job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.jobId` | `string` | Yes | The ID of the job to retrieve. |
 | `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
 
 ### `jobs.reports`
@@ -75,12 +62,12 @@ Lists reports created by a specific job. Returns NOT_FOUND if the job does not e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. |
 | `params.jobId` | `string` | Yes | The ID of the job. |
 | `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. |
+| `params.startTimeAtOrAfter` | `string` | No | If set, only reports whose start time is greater than or equal the specified date/time are returned. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListReportsResponse.next_page_token returned in response to the previous call to the `ListReports` method. |
 | `params.createdAfter` | `string` | No | If set, only reports created after the specified date/time are returned. |
-| `params.startTimeAtOrAfter` | `string` | No | If set, only reports whose start time is greater than or equal the specified date/time are returned. |
 | `params.startTimeBefore` | `string` | No | If set, only reports whose start time is smaller than the specified date/time are returned. |
 
 #### `jobs.reports.get()`
@@ -89,8 +76,21 @@ Gets the metadata of a specific report.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.jobId` | `string` | Yes | The ID of the job. |
 | `params.reportId` | `string` | Yes | The ID of the report to retrieve. |
+| `params.jobId` | `string` | Yes | The ID of the job. |
+| `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
+
+### `reportTypes`
+
+#### `reportTypes.list()`
+
+Lists report types.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.includeSystemManaged` | `boolean` | No | If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method. |
 | `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
 
 ### `media`
