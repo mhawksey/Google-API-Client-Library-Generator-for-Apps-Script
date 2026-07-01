@@ -22,36 +22,6 @@ class SiteVerification {
     this.webResource = {};
 
     /**
-     * Relinquish ownership of a website or domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Get the most current data for a website or domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.webResource.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a verification token for placing on a website or domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.webResource.getToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('token', 'POST', apiParams, clientConfig);
-
-    /**
      * Attempt verification of a website or domain.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.verificationMethod - (Required) The method to use for verifying a site or domain.
@@ -92,6 +62,36 @@ class SiteVerification {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.webResource.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Get a verification token for placing on a website or domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.webResource.getToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('token', 'POST', apiParams, clientConfig);
+
+    /**
+     * Relinquish ownership of a website or domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Get the most current data for a website or domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.webResource.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'GET', apiParams, clientConfig);
   }
 
 /**
