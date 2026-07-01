@@ -33,6 +33,52 @@ class Searchconsole {
      */
     this.urlInspection.index.inspect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/urlInspection/index:inspect', 'POST', apiParams, clientConfig);
 
+    this.sitemaps = {};
+
+    /**
+     * Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
+     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sitemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieves information about a specific sitemap.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
+     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sitemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Submits a sitemap for a site.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
+     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sitemaps.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
+     * @param {string} apiParams.sitemapIndex - A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sitemaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps', 'GET', apiParams, clientConfig);
+
     this.searchanalytics = {};
 
     /**
@@ -60,53 +106,26 @@ class Searchconsole {
      */
     this.urlTestingTools.mobileFriendlyTest.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/urlTestingTools/mobileFriendlyTest:run', 'POST', apiParams, clientConfig);
 
-    this.sitemaps = {};
-
-    /**
-     * Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
-     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sitemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Retrieves information about a specific sitemap.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
-     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sitemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
-     * @param {string} apiParams.sitemapIndex - A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sitemaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps', 'GET', apiParams, clientConfig);
-
-    /**
-     * Submits a sitemap for a site.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.feedpath - (Required) The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`.
-     * @param {string} apiParams.siteUrl - (Required) The site's URL, including protocol. For example: `http://www.example.com/`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sitemaps.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'PUT', apiParams, clientConfig);
-
     this.sites = {};
+
+    /**
+     * Lists the user's Search Console sites.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites', 'GET', apiParams, clientConfig);
+
+    /**
+     * Adds a site to the set of the user's sites in Search Console.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.siteUrl - (Required) The URL of the site to add.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.sites.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'PUT', apiParams, clientConfig);
 
     /**
      * Removes a site from the set of the user's Search Console sites.
@@ -127,25 +146,6 @@ class Searchconsole {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the user's Search Console sites.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites', 'GET', apiParams, clientConfig);
-
-    /**
-     * Adds a site to the set of the user's sites in Search Console.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.siteUrl - (Required) The URL of the site to add.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.sites.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'PUT', apiParams, clientConfig);
   }
 
 /**
