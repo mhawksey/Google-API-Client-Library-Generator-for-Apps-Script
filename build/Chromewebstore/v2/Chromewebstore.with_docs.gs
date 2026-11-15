@@ -24,6 +24,17 @@ class Chromewebstore {
     this.publishers.items = {};
 
     /**
+     * Rolls back an item's published CRX package to a specified previously published CRX package and publishes it to all users.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the item to rollback in the form `publishers/{publisherId}/items/{itemId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.publishers.items.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollback', 'POST', apiParams, clientConfig);
+
+    /**
      * Set a higher target deploy percentage for the item's published revision. This will be updated without the item being submitted for review. This is only available to items with over 10,000 seven-day active users.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}`
@@ -46,6 +57,17 @@ class Chromewebstore {
     this.publishers.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:publish', 'POST', apiParams, clientConfig);
 
     /**
+     * Cancel the current active submission of an item if present. This can be used to cancel the review of a pending submission.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the item to cancel the submission of in the form `publishers/{publisherId}/items/{itemId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
+
+    /**
      * Fetch the status of an item.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}`
@@ -56,15 +78,48 @@ class Chromewebstore {
     this.publishers.items.fetchStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchStatus', 'GET', apiParams, clientConfig);
 
     /**
-     * Cancel the current active submission of an item if present. This can be used to cancel the review of a pending submission.
+     * Gets the RatingSummary for the publishers item.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the item to cancel the submission of in the form `publishers/{publisherId}/items/{itemId}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the rating summary to retrieve. Format: publishers/{publisher}/items/{item}/ratingSummary
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
+    this.publishers.items.getRatingSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Query the metrics for an item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dimensions - Optional. Dimensions to slice the metrics by. At most one dimension can be specified. **Supported dimensions:** - os: The operating system of the user. - app-version: The version of the item. - country: The country of the user. - install-source: The source of the install. - install-type: The type of install (from webstore, inline, or other). - language: The language of the user. - enabled: If the item is enabled or disabled. - utm-campaign: The UTM campaign of the user. - utm-content: The UTM content of the user. - utm-medium: The UTM medium of the user. - utm-source: The UTM source of the user. - utm-term: The UTM term of the user.
+     * @param {string} apiParams.metrics - Required. The metrics to query the metric set for. **Supported metrics:** - installs: Count of item installs. - installs-7d: Count of item installs in the last 7 days. - uninstalls: Count of item uninstalls. - users: Count of daily active users of the item. - users-7d: Count of 7-day active users of the item. - impressions: Count of item impressions across the entire store front. - page-views: Count of individual views of the item's detail page.
+     * @param {string} apiParams.name - (Required) Required. The name of the item to query the metrics for. Format: publishers/{publisher}/items/{item}
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of rows to return. If unspecified, at most 100 rows will be returned. The maximum value is 1000; Values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to the request must match the call that provided the page token.
+     * @param {integer} apiParams.timeSpec.firstDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.timeSpec.firstDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.timeSpec.firstDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {integer} apiParams.timeSpec.lastDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.timeSpec.lastDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.timeSpec.lastDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.publishers.items.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:queryMetrics', 'GET', apiParams, clientConfig);
+
+    /**
+     * Fetch user reviews for an item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter to apply to the reviews. Only equality comparison on rating is supported, e.g. `rating = 5`.
+     * @param {string} apiParams.name - (Required) Required. The item resource name whose reviews are being fetched. Format: publishers/{publisher_id}/items/{item_id}
+     * @param {string} apiParams.orderBy - Optional. An optional comma-separated list of fields by which to sort the results. The default sort order is ascending (`asc`). Supported fields are: - `rating`: Supported orders are `asc` (default) and `desc`. - `create_time`: Only `desc` (most recent first) is supported; `desc` must be explicitly specified since the default is `asc`. Example: `rating desc`, `create_time desc`, or `rating desc, create_time desc`.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of reviews to return. The service may return fewer than this value. If unspecified, at most 50 reviews will be returned. The maximum value is 200; values above 200 will be coerced to 200.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `FetchItemReviews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchItemReviews` must match the call that provided the page token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.publishers.items.fetchReviews = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchReviews', 'GET', apiParams, clientConfig);
 
     this.media = {};
 
