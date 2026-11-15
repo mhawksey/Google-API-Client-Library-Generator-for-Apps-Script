@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:25:31 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:25:31 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:02:19 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:02:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:39 GMT
 
 
@@ -13,6 +13,18 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 ---
 
 ## API Reference
+
+### `testEnvironmentCatalog`
+
+#### `testEnvironmentCatalog.get()`
+
+Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
+| `params.environmentType` | `string` | Yes | Required. The type of environment that should be listed. |
+| `params.includeViewableModels` | `boolean` | No | Optional. Whether to include viewable only models in the response. This is only applicable for Android models. |
 
 ### `projects`
 
@@ -34,8 +46,8 @@ Cancels unfinished test executions in a test matrix. This call returns immediate
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectId` | `string` | Yes | Cloud project that owns the test. |
 | `params.testMatrixId` | `string` | Yes | Test matrix that will be canceled. |
+| `params.projectId` | `string` | Yes | Cloud project that owns the test. |
 
 #### `projects.testMatrices.get()`
 
@@ -47,6 +59,35 @@ Checks the status of a test matrix and the executions once they are created. The
 | `params.testMatrixId` | `string` | Yes | Unique test matrix id which was assigned by the service. |
 
 ### `projects.deviceSessions`
+
+#### `projects.deviceSessions.patch()`
+
+PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. The list of fields to update. |
+| `params.name` | `string` | Yes | Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deviceSessions.list()`
+
+GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
+| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
+| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
+
+#### `projects.deviceSessions.get()`
+
+GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
 
 #### `projects.deviceSessions.create()`
 
@@ -66,35 +107,6 @@ POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes
 | `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.deviceSessions.patch()`
-
-PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-| `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deviceSessions.list()`
-
-GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
-| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
-| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
-| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
-
-#### `projects.deviceSessions.get()`
-
-GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents the allocation status and whether the device is allocated. Clients making requests from this API must poll GetDeviceSession.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-
 ### `applicationDetailService`
 
 #### `applicationDetailService.getApkDetails()`
@@ -105,15 +117,3 @@ Gets the details of an Android application APK.
 |---|---|---|---|
 | `params.bundleLocation.gcsPath` | `string` | No | A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `testEnvironmentCatalog`
-
-#### `testEnvironmentCatalog.get()`
-
-Gets the catalog of supported test environments. May return any of the following canonical error codes: - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the environment type does not exist - INTERNAL - if an internal error occurred
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
-| `params.environmentType` | `string` | Yes | Required. The type of environment that should be listed. |
-| `params.includeViewableModels` | `boolean` | No | Optional. Whether to include viewable only models in the response. This is only applicable for Android models. |
