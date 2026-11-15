@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Trace API (version: v2beta1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:41:47 GMT
+- **Last Checked:** Sun, 15 Nov 2026 15:49:30 GMT
 - **Last Modified:** Tue, 30 Jun 2026 23:41:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:06 GMT
 
@@ -59,6 +59,6 @@ Updates a sink. This method updates fields in the existing sink according to the
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. |
 | `params.name` | `string` | Yes | Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
+| `params.updateMask` | `string` | No | Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. |
 | `params.requestBody` | `object` | Yes | The request body. |
