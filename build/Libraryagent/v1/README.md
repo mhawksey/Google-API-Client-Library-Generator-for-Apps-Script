@@ -4,8 +4,8 @@ Auto-generated client library for using the **Library Agent API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:03:22 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:03:22 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:29:32 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:29:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:57 GMT
 
 
@@ -35,13 +35,13 @@ Lists shelves. The order is unspecified but deterministic. Newly created shelves
 
 ### `shelves.books`
 
-#### `shelves.books.borrow()`
+#### `shelves.books.get()`
 
-Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.
+Gets a book. Returns NOT_FOUND if the book does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the book to borrow. |
+| `params.name` | `string` | Yes | Required. The name of the book to retrieve. |
 
 #### `shelves.books.return()`
 
@@ -51,13 +51,13 @@ Return a book to the library. Returns the book if it is returned to the library 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the book to return. |
 
-#### `shelves.books.get()`
+#### `shelves.books.borrow()`
 
-Gets a book. Returns NOT_FOUND if the book does not exist.
+Borrow a book from the library. Returns the book if it is borrowed successfully. Returns NOT_FOUND if the book does not exist in the library. Returns quota exceeded error if the amount of books borrowed exceeds allocation quota in any dimensions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the book to retrieve. |
+| `params.name` | `string` | Yes | Required. The name of the book to borrow. |
 
 #### `shelves.books.list()`
 
@@ -65,6 +65,6 @@ Lists books in a shelf. The order is unspecified but deterministic. Newly create
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the shelf whose books we'd like to list. |
 | `params.pageSize` | `integer` | No | Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method. |
-| `params.parent` | `string` | Yes | Required. The name of the shelf whose books we'd like to list. |
