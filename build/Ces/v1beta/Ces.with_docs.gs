@@ -24,20 +24,6 @@ class Ces {
     this.projects.locations = {};
 
     /**
-     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
-     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
-     * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
-     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
-     * @param {string} apiParams.pageToken - A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/locations', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets information about a location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Resource name for the location.
@@ -46,16 +32,6 @@ class Ces {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Retrieves the security settings for the project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the security settings to retrieve. Format: `projects/{project}/locations/{location}/securitySettings`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.getSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the security settings for the project and location.
@@ -69,21 +45,31 @@ class Ces {
      */
     this.projects.locations.updateSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
     /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * Retrieves the security settings for the project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the security settings to retrieve. Format: `projects/{project}/locations/{location}/securitySettings`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.getSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+     * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
+     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
+     * @param {string} apiParams.pageToken - A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
 
     /**
      * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
@@ -106,6 +92,20 @@ class Ces {
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -119,15 +119,26 @@ class Ces {
     this.projects.locations.apps = {};
 
     /**
-     * Imports evaluations into the app.
+     * Exports the specified app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The app to import the evaluations into. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app to export.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.importEvaluations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:importEvaluations', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.exportApp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:exportApp', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieve the schema of the given tool. The schema is computed on the fly for the given instance of the tool.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.retrieveToolSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:retrieveToolSchema', 'POST', apiParams, clientConfig);
 
     /**
      * Tests the voice of a persona. Also accepts a default persona.
@@ -141,6 +152,59 @@ class Ces {
     this.projects.locations.apps.testPersonaVoice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:testPersonaVoice', 'POST', apiParams, clientConfig);
 
     /**
+     * Runs Arc, the AI assistant, for the specified assistant session.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.app - (Required) Required. The app to run assistant for. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.chatAiAssistant = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:chatAiAssistant', 'POST', apiParams, clientConfig);
+
+    /**
+     * Runs an evaluation of the app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.app - (Required) Required. The app to evaluate. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.runEvaluation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:runEvaluation', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the app. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the extended agent card for the authenticated agent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.getExtendedAgentCard = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/extendedAgentCard', 'GET', apiParams, clientConfig);
+
+    /**
      * Executes the given tool with the given arguments.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}`
@@ -152,27 +216,16 @@ class Ces {
     this.projects.locations.apps.executeTool = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:executeTool', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a new app in the given project and location.
+     * Updates the specified app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appId - Optional. The ID to use for the app, which will become the final component of the app's resource name. If not provided, a unique ID will be automatically assigned for the app.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the location to create an app in.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the app. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'POST', apiParams, clientConfig);
-
-    /**
-     * Exports the specified app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app to export.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.exportApp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:exportApp', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists apps in the given project and location.
@@ -189,59 +242,26 @@ class Ces {
     this.projects.locations.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets details of the specified app.
+     * Generates personalized onboarding suggestions for the Arc zero state: classifies the requesting user (new / exploring / returning) from their assistant-session history in the app and returns suggestion chips (resume a session, continue work, or start something new) to render before any message is sent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the app. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {string} apiParams.name - (Required) Required. The app whose zero state is being rendered. Format: `projects/{project}/locations/{location}/apps/{app}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apps.generateOnboardingSuggestions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateOnboardingSuggestions', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the specified app.
+     * Runs the assistant agent for the specified assistant session.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the app. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Imports the specified app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name with the location of the app to import.
+     * @param {string} apiParams.app - (Required) Required. The app to run assistant for. Format: `projects/{project}/locations/{location}/apps/{app}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.importApp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps:importApp', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve the schema of the given tool. The schema is computed on the fly for the given instance of the tool.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app which the tool/toolset belongs to. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.retrieveToolSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:retrieveToolSchema', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.runAssistant = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:runAssistant', 'POST', apiParams, clientConfig);
 
     /**
      * Generates specific resources (e.g. agent) in the app using LLM assistant.
@@ -255,17 +275,349 @@ class Ces {
     this.projects.locations.apps.generateAppResource = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:generateAppResource', 'POST', apiParams, clientConfig);
 
     /**
-     * Runs an evaluation of the app.
+     * Imports the specified app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.app - (Required) Required. The app to evaluate. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name with the location of the app to import.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.runEvaluation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:runEvaluation', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.importApp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps:importApp', 'POST', apiParams, clientConfig);
+
+    /**
+     * Imports evaluations into the app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The app to import the evaluations into. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.importEvaluations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:importEvaluations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new app in the given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appId - Optional. The ID to use for the app, which will become the final component of the app's resource name. If not provided, a unique ID will be automatically assigned for the app.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the location to create an app in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apps.sessions = {};
+
+    /**
+     * Initiates a single-turn interaction with the CES agent. Uses server-side streaming to deliver incremental results and partial responses as they are generated. By default, complete responses (e.g., messages from callbacks or full LLM responses) are sent to the client as soon as they are available. To enable streaming individual text chunks directly from the model, set enable_text_streaming to true.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required) Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.sessions.streamRunSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+session}:streamRunSession', 'POST', apiParams, clientConfig);
+
+    /**
+     * Generates a session scoped token for chat widget to authenticate with Session APIs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The session name to generate the chat token for. Format: projects/{project}/locations/{location}/apps/{app}/sessions/{session}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.sessions.generateChatToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateChatToken', 'POST', apiParams, clientConfig);
+
+    /**
+     * Initiates a single-turn interaction with the CES agent within a session.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.session - (Required) Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.sessions.runSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+session}:runSession', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apps.versions = {};
+
+    /**
+     * Updates the specified app version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the app version. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}`
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update. If empty, fields `display_name` and `description` will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified app version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified app version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the app version. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app version, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a new app version in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appVersionId - Optional. The ID to use for the app version, which will become the final component of the app version's resource name. If not provided, a unique ID will be automatically assigned for the app version.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an app version in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/versions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Restores the specified app version. This will create a new app version from the current draft app and overwrite the current draft with the specified app version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to restore.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:restore', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all app versions in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the app versions. See https://google.aip.dev/160 for more details.
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list app versions from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/versions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the extended agent card for the authenticated agent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.getExtendedAgentCard = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/extendedAgentCard', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apps.versions.message = {};
+
+    /**
+     * Sends a message to an agent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.message.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:send', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.versions.message.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:stream', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apps.evaluations = {};
+
+    /**
+     * Updates an evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of this evaluation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Uploads audio for use in Golden Evaluations. Stores the audio in the Cloud Storage bucket defined in 'App.logging_settings.evaluation_audio_recording_config.gcs_bucket' and returns a transcript.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Evaluation for which to upload the evaluation audio. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.uploadEvaluationAudio = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:uploadEvaluationAudio', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the evaluation. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation, deletion will be blocked and an ABORTED error will be returned.
+     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the evaluation, even if it is still referenced by evaluation datasets. * If `force = false`, the deletion will fail if any datasets still reference the evaluation. * If `force = true`, all existing references from datasets will be removed and the evaluation will be deleted.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates an evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.evaluationId - Optional. The ID to use for the evaluation, which will become the final component of the evaluation's resource name. If not provided, a unique ID will be automatically assigned for the evaluation.
+     * @param {string} apiParams.parent - (Required) Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all evaluations in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.evaluationFilter - Optional. Filter to be applied on the evaluation when listing the evaluations. See https://google.aip.dev/160 for more details. Supported fields: evaluation_datasets
+     * @param {string} apiParams.evaluationRunFilter - Optional. Filter string for fields on the associated EvaluationRun resources. See https://google.aip.dev/160 for more details. Supported fields: create_time, initiated_by, app_version_display_name
+     * @param {string} apiParams.filter - Optional. Deprecated: Use evaluation_filter and evaluation_run_filter instead.
+     * @param {boolean} apiParams.lastTenResults - Optional. Whether to include the last 10 evaluation results for each evaluation in the response.
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluations call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list evaluations from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Exports evaluations.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to export evaluations from. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations:export', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apps.evaluations.results = {};
+
+    /**
+     * Gets details of the specified evaluation result.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation result to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.results.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes an evaluation result.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation result to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.results.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists all evaluation results for a given evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the evaluation results. See https://google.aip.dev/160 for more details.
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationResults call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the evaluation to list evaluation results from. To filter by evaluation run, use `-` as the evaluation ID and specify the evaluation run ID in the filter. For example: `projects/{project}/locations/{location}/apps/{app}/evaluations/-`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/results', 'GET', apiParams, clientConfig);
+
+    /**
+     * Runs metrics on an existing evaluation result.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.evaluationResultId - (Required) Required. The evaluation result to run metrics for. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}/results/{evaluation_result_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.results.runEvaluationResultMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+evaluationResultId}:runEvaluationResultMetrics', 'POST', apiParams, clientConfig);
+
+    /**
+     * Exports evaluations results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the evaluation to export evaluation results from. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluations.results.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/results:export', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apps.toolsets = {};
+
+    /**
+     * Retrieve the list of tools included in the specified toolset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.toolset - (Required) Required. The name of the toolset to retrieve the tools for. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.toolsets.retrieveTools = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+toolset}:retrieveTools', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the specified toolset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.toolsets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists toolsets in the given app.
@@ -292,16 +644,16 @@ class Ces {
     this.projects.locations.apps.toolsets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the specified toolset.
+     * Creates a new toolset in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create a toolset in.
+     * @param {string} apiParams.toolsetId - Optional. The ID to use for the toolset, which will become the final component of the toolset's resource name. If not provided, a unique ID will be automatically assigned for the toolset.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.toolsets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apps.toolsets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/toolsets', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes the specified toolset.
@@ -315,187 +667,7 @@ class Ces {
      */
     this.projects.locations.apps.toolsets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
-    /**
-     * Creates a new toolset in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create a toolset in.
-     * @param {string} apiParams.toolsetId - Optional. The ID to use for the toolset, which will become the final component of the toolset's resource name. If not provided, a unique ID will be automatically assigned for the toolset.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.toolsets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/toolsets', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieve the list of tools included in the specified toolset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.toolset - (Required) Required. The name of the toolset to retrieve the tools for. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.toolsets.retrieveTools = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+toolset}:retrieveTools', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apps.deployments = {};
-
-    /**
-     * Lists deployments in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 deployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeployments` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/deployments', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
-     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The name of the deployment to delete. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new deployment in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deploymentId - Optional. The ID to use for the deployment, which will become the final component of the deployment's resource name. If not provided, a unique ID will be automatically assigned for the deployment.
-     * @param {string} apiParams.parent - (Required) Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/deployments', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apps.agents = {};
-
-    /**
-     * Updates the specified agent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.agents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified agent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned.
-     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the agent, even if it is still referenced by other app/agents/examples. * If `force = false`, the deletion fails if other agents/examples reference it. * If `force = true`, delete the agent and remove it from all referencing apps/agents/examples.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the agent to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.agents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists agents in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the agents. See https://google.aip.dev/160 for more details.
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListAgents call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list agents from.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.agents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/agents', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified agent.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the agent to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new agent in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.agentId - Optional. The ID to use for the agent, which will become the final component of the agent's resource name. If not provided, a unique ID will be automatically assigned for the agent.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an agent in.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.agents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/agents', 'POST', apiParams, clientConfig);
-
     this.projects.locations.apps.examples = {};
-
-    /**
-     * Creates a new example in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.exampleId - Optional. The ID to use for the example, which will become the final component of the example's resource name. If not provided, a unique ID will be automatically assigned for the example.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an example in.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.examples.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/examples', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the specified example.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the example. Format: `projects/{project}/locations/{location}/apps/{app}/examples/{example}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.examples.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified example.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the example. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the example, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the example to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.examples.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists examples in the given app.
@@ -512,6 +684,41 @@ class Ces {
     this.projects.locations.apps.examples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/examples', 'GET', apiParams, clientConfig);
 
     /**
+     * Creates a new example in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.exampleId - Optional. The ID to use for the example, which will become the final component of the example's resource name. If not provided, a unique ID will be automatically assigned for the example.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an example in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.examples.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/examples', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified example.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the example. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the example, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the example to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.examples.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the specified example.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the example. Format: `projects/{project}/locations/{location}/apps/{app}/examples/{example}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.examples.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
      * Gets details of the specified example.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the example to retrieve.
@@ -521,140 +728,162 @@ class Ces {
      */
     this.projects.locations.apps.examples.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.apps.guardrails = {};
+    this.projects.locations.apps.changelogs = {};
 
     /**
-     * Creates a new guardrail in the given app.
+     * Gets the specified changelog.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.guardrailId - Optional. The ID to use for the guardrail, which will become the final component of the guardrail's resource name. If not provided, a unique ID will be automatically assigned for the guardrail.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create a guardrail in.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the changelog to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.guardrails.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guardrails', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.changelogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists guardrails in the given app.
+     * Lists the changelogs of the specified app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the guardrails. See https://google.aip.dev/160 for more details.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the changelogs. See https://google.aip.dev/160 for more details. The filter string can be used to filter by `action`, `resource_type`, `resource_name`, `author`, and `create_time`. The `:` comparator can be used for case-insensitive partial matching on string fields, while `=` performs an exact case-sensitive match. Examples: * `action:update` (case-insensitive partial match) * `action="Create"` (case-sensitive exact match) * `resource_type:agent` * `resource_name:my-agent` * `author:me@example.com` * `create_time > "2025-01-01T00:00:00Z"` * `create_time <= "2025-01-01T00:00:00Z" AND resource_type:tool`
      * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListGuardrails call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list guardrails from.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListChangelogs call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list changelogs from.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.guardrails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guardrails', 'GET', apiParams, clientConfig);
+    this.projects.locations.apps.changelogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/changelogs', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apps.conversations = {};
 
     /**
-     * Gets details of the specified guardrail.
+     * Batch deletes the specified conversations.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the guardrail to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.guardrails.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified guardrail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the guardrail. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.guardrails.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apps.conversations.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversations:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the specified guardrail.
+     * Creates a golden evaluation from a conversation.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned.
-     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the guardrail, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any apps/agents still reference the guardrail. * If `force = true`, all existing references from apps/agents will be removed and the guardrail will be deleted.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the guardrail to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.guardrails.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.apps.sessions = {};
-
-    /**
-     * Initiates a single-turn interaction with the CES agent. Uses server-side streaming to deliver incremental results and partial responses as they are generated. By default, complete responses (e.g., messages from callbacks or full LLM responses) are sent to the client as soon as they are available. To enable streaming individual text chunks directly from the model, set enable_text_streaming to true.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required) Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+     * @param {string} apiParams.conversation - (Required) Required. The conversation to create the golden evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.sessions.streamRunSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+session}:streamRunSession', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.conversations.generateEvaluation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+conversation}:generateEvaluation', 'POST', apiParams, clientConfig);
 
     /**
-     * Initiates a single-turn interaction with the CES agent within a session.
+     * Lists conversations in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.session - (Required) Required. The unique identifier of the session. Format: `projects/{project}/locations/{location}/apps/{app}/sessions/{session}`
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the conversations. See https://google.aip.dev/160 for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListConversations call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list conversations from.
+     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field.
+     * @param {string} apiParams.sources - Optional. Indicate the sources of the conversations. If not set, all available sources will be applied by default.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.conversations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified conversation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the conversation to delete.
+     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.conversations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified conversation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the conversation to retrieve.
+     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, all source will be searched.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.conversations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apps.assistantSessions = {};
+
+    /**
+     * Lists all assistant sessions in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the assistant sessions. See https://google.aip.dev/160 for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AssistantService.ListAssistantSessions call.
+     * @param {string} apiParams.parent - (Required) Required. The app to list assistant sessions from. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.assistantSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/assistantSessions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Cancels the assistant session's in-flight turn, if any: the explicit user stop for a turn running detached from any stream. A cancel landing on a task that does not host the turn preempts it through the session turn epoch instead, ending it within one lease renewal.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The assistant session whose in-flight turn to cancel.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.sessions.runSession = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+session}:runSession', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.assistantSessions.cancelAssistantTurn = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancelAssistantTurn', 'POST', apiParams, clientConfig);
 
     /**
-     * Generates a session scoped token for chat widget to authenticate with Session APIs.
+     * Creates a new assistant session in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The session name to generate the chat token for. Format: projects/{project}/locations/{location}/apps/{app}/sessions/{session}
+     * @param {string} apiParams.parent - (Required) Required. The app to create the assistant session in Format: `projects/{project}/locations/{location}/apps/{app}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.sessions.generateChatToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateChatToken', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.assistantSessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/assistantSessions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified assistant session.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the assistant session to delete. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.assistantSessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified assistant session.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.assistantSessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Runs Arc, the AI assistant, for the specified assistant session in a streaming fashion.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The assistant session to be used to run the assistant. Format: `projects/{project}/locations/{location}/apps/{app}/assistantSessions/{assistant_session}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.assistantSessions.streamChatAiAssistant = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:streamChatAiAssistant', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apps.tools = {};
-
-    /**
-     * Lists tools in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the tools. Use "include_system_tools=true" to include system tools in the response. See https://google.aip.dev/160 for more details.
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListTools call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list tools from.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/tools', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified tool.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the tool to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.tools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified tool.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The resource name of the tool. Format: * `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is expected.
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.tools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Deletes the specified tool.
@@ -680,238 +909,137 @@ class Ces {
      */
     this.projects.locations.apps.tools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/tools', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.apps.changelogs = {};
+    /**
+     * Gets details of the specified tool.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the tool to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.tools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists the changelogs of the specified app.
+     * Updates the specified tool.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the changelogs. See https://google.aip.dev/160 for more details. The filter string can be used to filter by `action`, `resource_type`, `resource_name`, `author`, and `create_time`. The `:` comparator can be used for case-insensitive partial matching on string fields, while `=` performs an exact case-sensitive match. Examples: * `action:update` (case-insensitive partial match) * `action="Create"` (case-sensitive exact match) * `resource_type:agent` * `resource_name:my-agent` * `author:me@example.com` * `create_time > "2025-01-01T00:00:00Z"` * `create_time <= "2025-01-01T00:00:00Z" AND resource_type:tool`
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the tool. Format: * `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` for standalone tools. * `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}/tools/{tool}` for tools retrieved from a toolset. These tools are dynamic and output-only; they cannot be referenced directly where a tool is expected.
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.tools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists tools in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the tools. Use "include_system_tools=true" to include system tools in the response. See https://google.aip.dev/160 for more details.
      * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListChangelogs call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list changelogs from.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListTools call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list tools from.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.changelogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/changelogs', 'GET', apiParams, clientConfig);
+    this.projects.locations.apps.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/tools', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apps.deployments = {};
 
     /**
-     * Gets the specified changelog.
+     * Creates a new deployment in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the changelog to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.changelogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apps.scheduledEvaluationRuns = {};
-
-    /**
-     * Gets details of the specified scheduled evaluation run.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the scheduled evaluation run to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.scheduledEvaluationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all scheduled evaluation runs in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the scheduled evaluation runs. See https://google.aip.dev/160 for more details. Currently supports filtering by: * request.evaluations:evaluation_id * request.evaluation_dataset:evaluation_dataset_id
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Supported fields are: "name" (ascending), "create_time" (descending), "update_time" (descending), "next_scheduled_execution" (ascending), and "last_completed_run.create_time" (descending). If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListScheduledEvaluationRuns call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list scheduled evaluation runs from.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.scheduledEvaluationRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scheduledEvaluationRuns', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a scheduled evaluation run.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the scheduled evaluation run config. Format: projects/{projectId}/locations/{locationId}/apps/{appId}/scheduledEvaluationRuns/{scheduledEvaluationRunId}
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {string} apiParams.deploymentId - Optional. The ID to use for the deployment, which will become the final component of the deployment's resource name. If not provided, a unique ID will be automatically assigned for the deployment.
+     * @param {string} apiParams.parent - (Required) Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.scheduledEvaluationRuns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apps.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/deployments', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a scheduled evaluation run.
+     * Gets details of the specified deployment.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The etag of the ScheduledEvaluationRun. If provided, it must match the server's etag.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the scheduled evaluation run to delete.
+     * @param {string} apiParams.name - (Required) Required. The name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.scheduledEvaluationRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apps.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a scheduled evaluation run.
+     * Deletes the specified deployment.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The app to create the scheduled evaluation run for. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {string} apiParams.scheduledEvaluationRunId - Optional. The ID to use for the scheduled evaluation run, which will become the final component of the scheduled evaluation run's resource name. If not provided, a unique ID will be automatically assigned.
+     * @param {string} apiParams.etag - Optional. The etag of the deployment. If an etag is provided and does not match the current etag of the deployment, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The name of the deployment to delete. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists deployments in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of deployments to return. The service may return fewer than this value. If unspecified, at most 50 deployments will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDeployments` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent app. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/deployments', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the specified deployment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}`
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.scheduledEvaluationRuns.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scheduledEvaluationRuns', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apps.evaluations = {};
+    this.projects.locations.apps.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Creates an evaluation.
+     * Gets the extended agent card for the authenticated agent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.evaluationId - Optional. The ID to use for the evaluation, which will become the final component of the evaluation's resource name. If not provided, a unique ID will be automatically assigned for the evaluation.
-     * @param {string} apiParams.parent - (Required) Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.deployments.getExtendedAgentCard = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/extendedAgentCard', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apps.deployments.message = {};
+
+    /**
+     * Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.evaluations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.deployments.message.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:stream', 'POST', apiParams, clientConfig);
 
     /**
-     * Exports evaluations.
+     * Sends a message to an agent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to export evaluations from. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.evaluations.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations:export', 'POST', apiParams, clientConfig);
-
-    /**
-     * Uploads audio for use in Golden Evaluations. Stores the audio in the Cloud Storage bucket defined in 'App.logging_settings.evaluation_audio_recording_config.gcs_bucket' and returns a transcript.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Evaluation for which to upload the evaluation audio. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.uploadEvaluationAudio = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:uploadEvaluationAudio', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an evaluation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of this evaluation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes an evaluation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the evaluation. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation, deletion will be blocked and an ABORTED error will be returned.
-     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the evaluation, even if it is still referenced by evaluation datasets. * If `force = false`, the deletion will fail if any datasets still reference the evaluation. * If `force = true`, all existing references from datasets will be removed and the evaluation will be deleted.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified evaluation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all evaluations in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.evaluationFilter - Optional. Filter to be applied on the evaluation when listing the evaluations. See https://google.aip.dev/160 for more details. Supported fields: evaluation_datasets
-     * @param {string} apiParams.evaluationRunFilter - Optional. Filter string for fields on the associated EvaluationRun resources. See https://google.aip.dev/160 for more details. Supported fields: create_time, initiated_by, app_version_display_name
-     * @param {string} apiParams.filter - Optional. Deprecated: Use evaluation_filter and evaluation_run_filter instead.
-     * @param {boolean} apiParams.lastTenResults - Optional. Whether to include the last 10 evaluation results for each evaluation in the response.
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluations call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list evaluations from.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluations', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apps.evaluations.results = {};
-
-    /**
-     * Deletes an evaluation result.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation result to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.results.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Exports evaluations results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the evaluation to export evaluation results from. Format: `projects/{project}/locations/{location}/apps/{app}/evaluations/{evaluation}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.results.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/results:export', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified evaluation result.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation result to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.results.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all evaluation results for a given evaluation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the evaluation results. See https://google.aip.dev/160 for more details.
-     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time", and "update_time" are supported. Time fields are ordered in descending order, and the name field is ordered in ascending order. If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListEvaluationResults call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the evaluation to list evaluation results from. To filter by evaluation run, use `-` as the evaluation ID and specify the evaluation run ID in the filter. For example: `projects/{project}/locations/{location}/apps/{app}/evaluations/-`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluations.results.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/results', 'GET', apiParams, clientConfig);
+    this.projects.locations.apps.deployments.message.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:send', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apps.evaluationRuns = {};
-
-    /**
-     * Gets details of the specified evaluation run.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation run to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all evaluation runs in the given app.
@@ -928,6 +1056,16 @@ class Ces {
     this.projects.locations.apps.evaluationRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationRuns', 'GET', apiParams, clientConfig);
 
     /**
+     * Deletes an evaluation run.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation run to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluationRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Exports evaluations runs.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The resource name of the app to export evaluation runs from. Format: `projects/{project}/locations/{location}/apps/{app}`
@@ -939,74 +1077,138 @@ class Ces {
     this.projects.locations.apps.evaluationRuns.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationRuns:export', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes an evaluation run.
+     * Gets details of the specified evaluation run.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation run to delete.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation run to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.evaluationRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apps.evaluationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.apps.versions = {};
+    this.projects.locations.apps.agents = {};
 
     /**
-     * Creates a new app version in the given app.
+     * Creates a new agent in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appVersionId - Optional. The ID to use for the app version, which will become the final component of the app version's resource name. If not provided, a unique ID will be automatically assigned for the app version.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an app version in.
+     * @param {string} apiParams.agentId - Optional. The ID to use for the agent, which will become the final component of the agent's resource name. If not provided, a unique ID will be automatically assigned for the agent.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create an agent in.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.agents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/agents', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the specified app version.
+     * Lists agents in the given app.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the app version. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the app version, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists all app versions in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the app versions. See https://google.aip.dev/160 for more details.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the agents. See https://google.aip.dev/160 for more details.
      * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListAppVersions call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list app versions from.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListAgents call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list agents from.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.apps.agents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/agents', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets details of the specified app version.
+     * Deletes the specified agent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to retrieve.
+     * @param {string} apiParams.etag - Optional. The current etag of the agent. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the agent, deletion will be blocked and an ABORTED error will be returned.
+     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the agent, even if it is still referenced by other app/agents/examples. * If `force = false`, the deletion fails if other agents/examples reference it. * If `force = true`, delete the agent and remove it from all referencing apps/agents/examples.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the agent to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apps.agents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Restores the specified app version. This will create a new app version from the current draft app and overwrite the current draft with the specified app version.
+     * Gets details of the specified agent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the app version to restore.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the agent to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.agents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the specified agent.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.apps.agents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.apps.guardrails = {};
+
+    /**
+     * Lists guardrails in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the guardrails. See https://google.aip.dev/160 for more details.
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Only "name" and "create_time" is supported. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListGuardrails call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list guardrails from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.guardrails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guardrails', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the specified guardrail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the guardrail. Format: `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.guardrails.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified guardrail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the guardrail to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.guardrails.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified guardrail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the guardrail. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the guardrail, deletion will be blocked and an ABORTED error will be returned.
+     * @param {boolean} apiParams.force - Optional. Indicates whether to forcefully delete the guardrail, even if it is still referenced by app/agents. * If `force = false`, the deletion fails if any apps/agents still reference the guardrail. * If `force = true`, all existing references from apps/agents will be removed and the guardrail will be deleted.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the guardrail to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.guardrails.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a new guardrail in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.guardrailId - Optional. The ID to use for the guardrail, which will become the final component of the guardrail's resource name. If not provided, a unique ID will be automatically assigned for the guardrail.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to create a guardrail in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.guardrails.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guardrails', 'POST', apiParams, clientConfig);
 
     this.projects.locations.apps.evaluationExpectations = {};
 
@@ -1023,6 +1225,17 @@ class Ces {
     this.projects.locations.apps.evaluationExpectations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationExpectations', 'POST', apiParams, clientConfig);
 
     /**
+     * Deletes an evaluation expectation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the evaluation expectation. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation expectation, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation expectation to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluationExpectations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Updates an evaluation expectation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The unique identifier of this evaluation expectation. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluation_expectation}`
@@ -1035,15 +1248,14 @@ class Ces {
     this.projects.locations.apps.evaluationExpectations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes an evaluation expectation.
+     * Gets details of the specified evaluation expectation.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the evaluation expectation. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation expectation, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation expectation to delete.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation expectation to retrieve.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.evaluationExpectations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apps.evaluationExpectations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all evaluation expectations in the given app.
@@ -1059,22 +1271,23 @@ class Ces {
      */
     this.projects.locations.apps.evaluationExpectations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationExpectations', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.apps.message = {};
+
     /**
-     * Gets details of the specified evaluation expectation.
+     * Sends a streaming message to an agent, allowing for real-time interaction and status updates. Streaming version of `SendMessage`
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation expectation to retrieve.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.apps.evaluationExpectations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apps.message = {};
+    this.projects.locations.apps.message.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:stream', 'POST', apiParams, clientConfig);
 
     /**
      * Sends a message to an agent.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.tenant - (Required) Optional. Tenant ID, provided as a path parameter.
+     * @param {string} apiParams.tenant - (Required) Optional. Opaque routing identifier. Must match the `tenant` value from the selected `AgentInterface` in the Agent Card when that field is set.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -1082,90 +1295,7 @@ class Ces {
      */
     this.projects.locations.apps.message.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+tenant}/message:send', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.apps.conversations = {};
-
-    /**
-     * Batch deletes the specified conversations.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.conversations.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversations:batchDelete', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists conversations in the given app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the conversations. See https://google.aip.dev/160 for more details.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list AgentService.ListConversations call.
-     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list conversations from.
-     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default. Will be deprecated in favor of `sources` field.
-     * @param {string} apiParams.sources - Optional. Indicate the sources of the conversations. If not set, all available sources will be applied by default.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.conversations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified conversation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the conversation to retrieve.
-     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, all source will be searched.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.conversations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a golden evaluation from a conversation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.conversation - (Required) Required. The conversation to create the golden evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.conversations.generateEvaluation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+conversation}:generateEvaluation', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified conversation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the conversation to delete.
-     * @param {string} apiParams.source - Optional. Indicate the source of the conversation. If not set, Source.Live will be applied by default.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.conversations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.apps.evaluationDatasets = {};
-
-    /**
-     * Creates an evaluation dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.evaluationDatasetId - Optional. The ID to use for the evaluation dataset, which will become the final component of the evaluation dataset's resource name. If not provided, a unique ID will be automatically assigned for the evaluation.
-     * @param {string} apiParams.parent - (Required) Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluationDatasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationDatasets', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets details of the specified evaluation dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation dataset to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.apps.evaluationDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all evaluation datasets in the given app.
@@ -1194,6 +1324,28 @@ class Ces {
     this.projects.locations.apps.evaluationDatasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Creates an evaluation dataset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.evaluationDatasetId - Optional. The ID to use for the evaluation dataset, which will become the final component of the evaluation dataset's resource name. If not provided, a unique ID will be automatically assigned for the evaluation.
+     * @param {string} apiParams.parent - (Required) Required. The app to create the evaluation for. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluationDatasets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/evaluationDatasets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified evaluation dataset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the evaluation dataset to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.evaluationDatasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Deletes an evaluation dataset.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.etag - Optional. The current etag of the evaluation dataset. If an etag is not provided, the deletion will overwrite any concurrent changes. If an etag is provided and does not match the current etag of the evaluation dataset, deletion will be blocked and an ABORTED error will be returned.
@@ -1203,6 +1355,67 @@ class Ces {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.apps.evaluationDatasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.apps.scheduledEvaluationRuns = {};
+
+    /**
+     * Lists all scheduled evaluation runs in the given app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter to be applied when listing the scheduled evaluation runs. See https://google.aip.dev/160 for more details. Currently supports filtering by: * request.evaluations:evaluation_id * request.evaluation_dataset:evaluation_dataset_id
+     * @param {string} apiParams.orderBy - Optional. Field to sort by. Supported fields are: "name" (ascending), "create_time" (descending), "update_time" (descending), "next_scheduled_execution" (ascending), and "last_completed_run.create_time" (descending). If not included, "update_time" will be the default. See https://google.aip.dev/132#ordering for more details.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous list EvaluationService.ListScheduledEvaluationRuns call.
+     * @param {string} apiParams.parent - (Required) Required. The resource name of the app to list scheduled evaluation runs from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.scheduledEvaluationRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scheduledEvaluationRuns', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a scheduled evaluation run.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique identifier of the scheduled evaluation run config. Format: projects/{projectId}/locations/{locationId}/apps/{appId}/scheduledEvaluationRuns/{scheduledEvaluationRunId}
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.scheduledEvaluationRuns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets details of the specified scheduled evaluation run.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the scheduled evaluation run to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.scheduledEvaluationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a scheduled evaluation run.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The app to create the scheduled evaluation run for. Format: `projects/{project}/locations/{location}/apps/{app}`
+     * @param {string} apiParams.scheduledEvaluationRunId - Optional. The ID to use for the scheduled evaluation run, which will become the final component of the scheduled evaluation run's resource name. If not provided, a unique ID will be automatically assigned.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.scheduledEvaluationRuns.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scheduledEvaluationRuns', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a scheduled evaluation run.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The etag of the ScheduledEvaluationRun. If provided, it must match the server's etag.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the scheduled evaluation run to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.apps.scheduledEvaluationRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
