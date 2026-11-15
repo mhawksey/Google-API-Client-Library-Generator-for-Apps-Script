@@ -20,8 +20,8 @@ class Servicecontrol {
 
 
     this.services = {};
-    this.services.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/services/{serviceName}:check', 'POST', apiParams, clientConfig);
     this.services.report = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/services/{serviceName}:report', 'POST', apiParams, clientConfig);
+    this.services.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/services/{serviceName}:check', 'POST', apiParams, clientConfig);
   }
 
 /**
