@@ -4,8 +4,8 @@ Auto-generated client library for using the **Organization Policy API (version: 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:07:16 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:07:16 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:40:23 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:40:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:33 GMT
 
 
@@ -14,158 +14,9 @@ Auto-generated client library for using the **Organization Policy API (version: 
 
 ## API Reference
 
-### `projects`
-
-### `projects.constraints`
-
-#### `projects.constraints.list()`
-
-Lists constraints that could be applied on the specified resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
-
-### `projects.policies`
-
-#### `projects.policies.list()`
-
-Retrieves all of the policies that exist on a particular resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
-
-#### `projects.policies.create()`
-
-Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.policies.get()`
-
-Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
-
-#### `projects.policies.getEffectivePolicy()`
-
-Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The effective policy to compute. See Policy for naming requirements. |
-
-#### `projects.policies.delete()`
-
-Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the policy to delete. See the policy entry for naming rules. |
-| `params.etag` | `string` | No | Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. |
-
-#### `projects.policies.patch()`
-
-Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
-| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy. The fields specified in the update_mask are relative to the policy, not the full request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `folders`
-
-### `folders.constraints`
-
-#### `folders.constraints.list()`
-
-Lists constraints that could be applied on the specified resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
-
-### `folders.policies`
-
-#### `folders.policies.list()`
-
-Retrieves all of the policies that exist on a particular resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
-
-#### `folders.policies.create()`
-
-Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `folders.policies.get()`
-
-Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
-
-#### `folders.policies.getEffectivePolicy()`
-
-Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The effective policy to compute. See Policy for naming requirements. |
-
-#### `folders.policies.delete()`
-
-Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the policy to delete. See the policy entry for naming rules. |
-| `params.etag` | `string` | No | Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. |
-
-#### `folders.policies.patch()`
-
-Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
-| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy. The fields specified in the update_mask are relative to the policy, not the full request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `organizations`
 
 ### `organizations.customConstraints`
-
-#### `organizations.customConstraints.patch()`
-
-Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.customConstraints.get()`
 
@@ -175,13 +26,15 @@ Gets a custom or managed constraint. Returns a `google.rpc.Status` with `google.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the custom or managed constraint. See the custom constraint entry for naming requirements. |
 
-#### `organizations.customConstraints.delete()`
+#### `organizations.customConstraints.list()`
 
-Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist.
+Retrieves all of the custom constraints that exist on a particular organization resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the custom constraint to delete. See the custom constraint entry for naming rules. |
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
+| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of custom constraints that will be returned from this call. Must be in one of the following forms: * `organizations/{organization_id}` |
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
 
 #### `organizations.customConstraints.create()`
 
@@ -192,37 +45,34 @@ Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code
 | `params.parent` | `string` | Yes | Required. Must be in the following form: * `organizations/{organization_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.customConstraints.list()`
+#### `organizations.customConstraints.delete()`
 
-Retrieves all of the custom constraints that exist on a particular organization resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of custom constraints that will be returned from this call. Must be in one of the following forms: * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
-
-### `organizations.constraints`
-
-#### `organizations.constraints.list()`
-
-Lists constraints that could be applied on the specified resource.
+Deletes a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
-| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+| `params.name` | `string` | Yes | Required. Name of the custom constraint to delete. See the custom constraint entry for naming rules. |
+
+#### `organizations.customConstraints.patch()`
+
+Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Note: the supplied policy will perform a full overwrite of all fields.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Name of the constraint. This is unique within the organization. The name must be of the form: * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 71 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/custom.` is not counted. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.policies`
 
-#### `organizations.policies.get()`
+#### `organizations.policies.list()`
 
-Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
+Retrieves all of the policies that exist on a particular resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
+| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
 
 #### `organizations.policies.getEffectivePolicy()`
 
@@ -231,6 +81,15 @@ Gets the effective policy on a resource. This is the result of merging policies 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The effective policy to compute. See Policy for naming requirements. |
+
+#### `organizations.policies.create()`
+
+Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.policies.delete()`
 
@@ -241,31 +100,172 @@ Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 | `params.name` | `string` | Yes | Required. Name of the policy to delete. See the policy entry for naming rules. |
 | `params.etag` | `string` | No | Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. |
 
+#### `organizations.policies.get()`
+
+Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
+
 #### `organizations.policies.patch()`
 
 Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
 | `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy. The fields specified in the update_mask are relative to the policy, not the full request. |
+| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.policies.list()`
+### `organizations.constraints`
+
+#### `organizations.constraints.list()`
+
+Lists constraints that could be applied on the specified resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+
+### `projects`
+
+### `projects.policies`
+
+#### `projects.policies.get()`
+
+Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
+
+#### `projects.policies.list()`
 
 Retrieves all of the policies that exist on a particular resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
 | `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
 | `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
 
-#### `organizations.policies.create()`
+#### `projects.policies.getEffectivePolicy()`
+
+Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The effective policy to compute. See Policy for naming requirements. |
+
+#### `projects.policies.patch()`
+
+Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
+| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy. The fields specified in the update_mask are relative to the policy, not the full request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.policies.create()`
 
 Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.policies.delete()`
+
+Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the policy to delete. See the policy entry for naming rules. |
+| `params.etag` | `string` | No | Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. |
+
+### `projects.constraints`
+
+#### `projects.constraints.list()`
+
+Lists constraints that could be applied on the specified resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
+
+### `folders`
+
+### `folders.policies`
+
+#### `folders.policies.list()`
+
+Retrieves all of the policies that exist on a particular resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
+| `params.parent` | `string` | Yes | Required. The target Google Cloud resource that parents the set of constraints and policies that will be returned from this call. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+
+#### `folders.policies.patch()`
+
+Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or the policy doesn't exist. Returns a `google.rpc.Status` with `google.rpc.Code.ABORTED` if the ETag supplied in the request doesn't match the persisted ETag of the policy. Note: the supplied policy will perform a full overwrite of all fields.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy. The fields specified in the update_mask are relative to the policy, not the full request. |
+| `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint that this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_number}/policies/{constraint_name}` * `organizations/{organization_number}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `folders.policies.getEffectivePolicy()`
+
+Gets the effective policy on a resource. This is the result of merging policies in the resource hierarchy and evaluating conditions. The returned policy will not have an ETag or `condition` set because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource hierarchy with 'under:' prefix will not be expanded.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The effective policy to compute. See Policy for naming requirements. |
+
+#### `folders.policies.create()`
+
+Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Google Cloud resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `folders.policies.delete()`
+
+Deletes a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint or organization policy does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the policy to delete. See the policy entry for naming rules. |
+| `params.etag` | `string` | No | Optional. The current entity tag (ETag) of the organization policy. If an ETag is provided and doesn't match the current ETag of the policy, deletion of the policy will be blocked and an `ABORTED` error will be returned. |
+
+#### `folders.policies.get()`
+
+Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The entity tag (ETag) can be used with `UpdatePolicy()` to update a policy during read-modify-write.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the policy. See Policy for naming requirements. |
+
+### `folders.constraints`
+
+#### `folders.constraints.list()`
+
+Lists constraints that could be applied on the specified resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Google Cloud resource that parents the constraint. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_number}` * `organizations/{organization_number}` |
+| `params.pageToken` | `string` | No | Page token used to retrieve the next page. This is not used, but the server may at any point start using this field. |
+| `params.pageSize` | `integer` | No | Size of the pages to be returned. This is not used, but the server may at any point start using this field to limit page size. |
