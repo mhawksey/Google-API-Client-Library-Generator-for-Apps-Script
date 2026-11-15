@@ -41,206 +41,7 @@ class Securitycenter {
      */
     this.organizations.getOrganizationSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations.sources = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.organizations.sources.findings = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings:group', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.startTime - 
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.findingId - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.fieldMask - 
-     * @param {string} apiParams.filter - 
-     * @param {string} apiParams.orderBy - 
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.parent - (Required)
-     * @param {string} apiParams.readTime - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.sources.findings.setState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:setState', 'POST', apiParams, clientConfig);
-
-    this.organizations.operations = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - 
-     * @param {string} apiParams.name - (Required)
-     * @param {integer} apiParams.pageSize - 
-     * @param {string} apiParams.pageToken - 
-     * @param {boolean} apiParams.returnPartialSuccess - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.organizations.assets = {};
-
-    /**
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required)
-     * @param {string} apiParams.startTime - 
-     * @param {string} apiParams.updateMask - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.assets.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * @param {object} apiParams - The parameters for the API request.
@@ -277,6 +78,205 @@ class Securitycenter {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.assets.runDiscovery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/assets:runDiscovery', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.startTime - 
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.assets.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.organizations.sources = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.organizations.sources.findings = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.findingId - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.setState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:setState', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.fieldMask - 
+     * @param {string} apiParams.filter - 
+     * @param {string} apiParams.orderBy - 
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.parent - (Required)
+     * @param {string} apiParams.readTime - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {string} apiParams.startTime - 
+     * @param {string} apiParams.updateMask - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.sources.findings.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings:group', 'POST', apiParams, clientConfig);
+
+    this.organizations.operations = {};
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - 
+     * @param {string} apiParams.name - (Required)
+     * @param {integer} apiParams.pageSize - 
+     * @param {string} apiParams.pageToken - 
+     * @param {boolean} apiParams.returnPartialSuccess - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
