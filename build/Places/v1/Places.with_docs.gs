@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Places API (New)
- * Documentation URL: https://mapsplatform.google.com/maps-products/#places-section
+ * Documentation URL: https://developers.google.com/maps/documentation/places/web-service
  * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
@@ -22,16 +22,6 @@ class Places {
     this.places = {};
 
     /**
-     * Returns predictions for the given input.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
-
-    /**
      * Get the details of a place based on its resource name, which is a string in the `places/{place_id}` format.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.languageCode - Optional. Place details will be displayed with the preferred language if available. Current list of supported languages: https://developers.google.com/maps/faq#languagesupport.
@@ -45,6 +35,16 @@ class Places {
     this.places.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
+     * Text query based place search.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.places.searchText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchText', 'POST', apiParams, clientConfig);
+
+    /**
      * Search for places near locations.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -55,14 +55,14 @@ class Places {
     this.places.searchNearby = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchNearby', 'POST', apiParams, clientConfig);
 
     /**
-     * Text query based place search.
+     * Returns predictions for the given input.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.places.searchText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchText', 'POST', apiParams, clientConfig);
+    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
 
     this.places.photos = {};
 
