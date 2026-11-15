@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:17:32 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:17:32 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:00:14 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:00:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -15,6 +15,14 @@ Auto-generated client library for using the **Google Site Verification API (vers
 ## API Reference
 
 ### `webResource`
+
+#### `webResource.delete()`
+
+Relinquish ownership of a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
 
 #### `webResource.insert()`
 
@@ -30,18 +38,26 @@ Attempt verification of a website or domain.
 Get the list of your verified websites and domains.
 
 
-#### `webResource.patch()`
+#### `webResource.update()`
 
-Modify the list of owners for your website or domain. This method supports patch semantics.
+Modify the list of owners for your website or domain.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `webResource.update()`
+#### `webResource.get()`
 
-Modify the list of owners for your website or domain.
+Get the most current data for a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
+
+#### `webResource.patch()`
+
+Modify the list of owners for your website or domain. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -55,19 +71,3 @@ Get a verification token for placing on a website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `webResource.delete()`
-
-Relinquish ownership of a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.get()`
-
-Get the most current data for a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
