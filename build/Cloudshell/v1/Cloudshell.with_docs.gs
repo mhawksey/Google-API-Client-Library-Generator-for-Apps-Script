@@ -82,15 +82,14 @@ class Cloudshell {
     this.users.environments.removePublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:removePublicKey', 'POST', apiParams, clientConfig);
 
     /**
-     * Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.
+     * Gets an environment. Returns NOT_FOUND if the environment does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.environments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
+    this.users.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Adds a public SSH key to an environment, allowing clients with the corresponding private key to connect to that environment via SSH. If a key with the same content already exists, this will error with ALREADY_EXISTS.
@@ -104,6 +103,17 @@ class Cloudshell {
     this.users.environments.addPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:addPublicKey', 'POST', apiParams, clientConfig);
 
     /**
+     * Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.environments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
+
+    /**
      * Generates an access token for the user's environment.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.environment - (Required) Required. The environment to generate the access token for.
@@ -114,16 +124,6 @@ class Cloudshell {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.environments.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:generateAccessToken', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets an environment. Returns NOT_FOUND if the environment does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Sends OAuth credentials to a running environment on behalf of a user. When this completes, the environment will be authorized to run various Google Cloud command line tools without requiring the user to manually authenticate.
