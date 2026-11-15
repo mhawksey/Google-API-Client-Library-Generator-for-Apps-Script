@@ -23,6 +23,15 @@ class Fcm {
 
     this.projects.messages = {};
     this.projects.messages.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages:send', 'POST', apiParams, clientConfig);
+
+    this.projects.registrations = {};
+
+    this.projects.registrations.topicSubscriptions = {};
+    this.projects.registrations.topicSubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.registrations.topicSubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/topicSubscriptions', 'POST', apiParams, clientConfig);
+    this.projects.registrations.topicSubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/topicSubscriptions', 'GET', apiParams, clientConfig);
+    this.projects.registrations.topicSubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.registrations.topicSubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
