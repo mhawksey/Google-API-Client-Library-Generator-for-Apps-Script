@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Runtime Configuration API (v
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:15:47 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:51:57 GMT
 - **Last Modified:** Wed, 01 Jul 2026 00:15:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:03 GMT
 
@@ -40,7 +40,7 @@ Lists operations that match the specified filter in the request. If the server d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
