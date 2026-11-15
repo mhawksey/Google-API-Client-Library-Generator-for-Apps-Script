@@ -68,18 +68,7 @@ class Storage {
     this.anywhereCaches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches', 'GET', apiParams, clientConfig);
 
     /**
-     * Pauses an Anywhere Cache instance.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.anywhereCacheId - (Required) The ID of requested Anywhere Cache instance.
-     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.anywhereCaches.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}/pause', 'POST', apiParams, clientConfig);
-
-    /**
-     * Resumes a paused or disabled Anywhere Cache instance.
+     * Resumes a disabled Anywhere Cache instance.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.anywhereCacheId - (Required) The ID of requested Anywhere Cache instance.
      * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
@@ -99,6 +88,65 @@ class Storage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.anywhereCaches.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}/disable', 'POST', apiParams, clientConfig);
+
+    this.rapidCaches = {};
+
+    /**
+     * Creates a Rapid Cache instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rapidCaches.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the configuration of a Rapid Cache instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
+     * @param {string} apiParams.rapidCacheId - (Required) The ID of the requested Rapid Cache instance.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rapidCaches.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns the metadata of a Rapid Cache instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
+     * @param {string} apiParams.rapidCacheId - (Required) The ID of the requested Rapid Cache instance.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rapidCaches.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a list of Rapid Cache instances of the bucket.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return in a single page of responses.
+     * @param {string} apiParams.pageToken - A previously-returned page token representing part of the larger set of results to view.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rapidCaches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches', 'GET', apiParams, clientConfig);
+
+    /**
+     * Disables a Rapid Cache instance.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the parent bucket.
+     * @param {string} apiParams.rapidCacheId - (Required) The ID of the requested Rapid Cache instance.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rapidCaches.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}/disable', 'POST', apiParams, clientConfig);
 
     this.bucketAccessControls = {};
 
@@ -405,18 +453,6 @@ class Storage {
      */
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/operations', 'GET', apiParams, clientConfig);
 
-    this.channels = {};
-
-    /**
-     * Stop watching resources through this channel
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
-
     this.defaultObjectAccessControls = {};
 
     /**
@@ -605,6 +641,20 @@ class Storage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.managedFolders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a managed folder using patch semantics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) The name of the bucket containing the managed folder.
+     * @param {string} apiParams.ifMetagenerationMatch - Makes the operation conditional on whether the metageneration of the managed folder matches the specified value.
+     * @param {string} apiParams.ifMetagenerationNotMatch - Makes the operation conditional on whether the metageneration of the managed folder doesn't match the specified value.
+     * @param {string} apiParams.managedFolder - (Required) The name of the managed folder.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedFolders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Returns an IAM policy for the specified managed folder.
@@ -813,7 +863,10 @@ class Storage {
      * @param {string} apiParams.destinationBucket - (Required) Name of the bucket containing the source objects. The destination object is stored in this bucket.
      * @param {string} apiParams.destinationObject - (Required) Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
      * @param {string} apiParams.destinationPredefinedAcl - Apply a predefined set of access controls to the destination object.
-     * @param {string} apiParams.dropContextGroups - Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object.
+     * @param {string} apiParams.dropContextGroups - Specifies which object context groups to drop from the source object(s) during a compose operation. The accepted value is 'custom'.
+    Destination contexts behave as follows:
+    - When request body contexts are provided, they override all source contexts.
+    - When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped.
      * @param {string} apiParams.ifGenerationMatch - Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      * @param {string} apiParams.ifMetagenerationMatch - Makes the operation conditional on whether the object's current metageneration matches the given value.
      * @param {string} apiParams.kmsKeyName - Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
@@ -979,7 +1032,10 @@ class Storage {
      * @param {string} apiParams.destinationKmsKeyName - Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.
      * @param {string} apiParams.destinationObject - (Required) Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
      * @param {string} apiParams.destinationPredefinedAcl - Apply a predefined set of access controls to the destination object.
-     * @param {string} apiParams.dropContextGroups - Specifies which groups of Object Contexts from the source object should be dropped from the destination object.
+     * @param {string} apiParams.dropContextGroups - Specifies which object context groups to drop from the source object during a copy operation. The accepted value is 'custom'.
+    Destination contexts behave as follows:
+    - When request body contexts are provided, they override all source contexts.
+    - When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped.
      * @param {string} apiParams.ifGenerationMatch - Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object.
      * @param {string} apiParams.ifGenerationNotMatch - Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object.
      * @param {string} apiParams.ifMetagenerationMatch - Makes the operation conditional on whether the destination object's current metageneration matches the given value.
@@ -1103,6 +1159,20 @@ class Storage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.objects.bulkRestore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/bulkRestore', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves a specific object context with its extended data for a given object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Name of the bucket in which the object resides.
+     * @param {string} apiParams.contextKey - (Required) Key identifying the object context to retrieve.
+     * @param {string} apiParams.generation - If present, selects a specific revision of this object (as opposed to the latest version, the default).
+     * @param {string} apiParams.object - (Required) Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding).
+     * @param {string} apiParams.userProject - The project to be billed for this request. Required for Requester Pays buckets.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.objects.viewFullContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/viewFullContext', 'GET', apiParams, clientConfig);
 
     this.projects = {};
 
