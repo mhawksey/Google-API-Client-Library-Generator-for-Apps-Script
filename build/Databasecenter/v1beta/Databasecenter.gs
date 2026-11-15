@@ -19,21 +19,21 @@ class Databasecenter {
     this._servicePath = '';
 
 
+    this.projects = {};
+    this.projects.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
+
     this.organizations = {};
     this.organizations.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
 
+    this.v1beta = {};
+    this.v1beta.queryIssues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryIssues', 'POST', apiParams, clientConfig);
+    this.v1beta.queryProducts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryProducts', 'GET', apiParams, clientConfig);
+    this.v1beta.aggregateFleet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateFleet', 'GET', apiParams, clientConfig);
+    this.v1beta.queryDatabaseResourceGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryDatabaseResourceGroups', 'POST', apiParams, clientConfig);
+    this.v1beta.aggregateIssueStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateIssueStats', 'POST', apiParams, clientConfig);
+
     this.folders = {};
     this.folders.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
-
-    this.v1beta = {};
-    this.v1beta.queryProducts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryProducts', 'GET', apiParams, clientConfig);
-    this.v1beta.queryDatabaseResourceGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryDatabaseResourceGroups', 'POST', apiParams, clientConfig);
-    this.v1beta.queryIssues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryIssues', 'POST', apiParams, clientConfig);
-    this.v1beta.aggregateIssueStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateIssueStats', 'POST', apiParams, clientConfig);
-    this.v1beta.aggregateFleet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateFleet', 'GET', apiParams, clientConfig);
-
-    this.projects = {};
-    this.projects.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
   }
 
 /**
