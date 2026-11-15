@@ -1,0 +1,435 @@
+
+/**
+ * Google Apps Script client library for the Curation Partners API
+ * Documentation URL: https://developers.google.com/authorized-buyers/curation/apis/guides/curationpartners/overview
+ * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
+ * @class
+ */
+class Curationpartners {
+  /**
+   * @constructor
+   * @param {object} [config] - Optional configuration object.
+   * @param {string} [config.token] - An explicit OAuth2 token.
+   * @param {object} [config.backoff] - Configuration for exponential backoff.
+   */
+  constructor(config = {}) {
+    this._token = config.token || ScriptApp.getOAuthToken();
+    this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
+    this._rootUrl = 'https://curationpartners.googleapis.com/';
+    this._servicePath = '';
+
+
+    this.mediaPlanners = {};
+
+    /**
+     * Searches for media planner accounts matching the given DSP seat ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dspSeatId - Required. The DSP seat ID to search for. The DSP seat ID is provided by the media planner.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of media planners to return. If unspecified, at most 100 media planners will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. This value is received from a previous `SearchMediaPlanners` call in SearchMediaPlannersResponse.nextPageToken.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.mediaPlanners.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mediaPlanners:search', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all media planner accounts that the caller has access to. For curators, this will return all media planners that have accepted curator terms. For other accounts, attempting to list media planners will return an error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Supported columns for filtering are: * `name` * `displayName` * `ancestorNames`
+     * @param {integer} apiParams.pageSize - The maximum number of media planners to return. If unspecified, at most 100 media planners will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.This value is received from a previous `ListMediaPlanners` call in ListMediaPlannersResponse.nextPageToken.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.mediaPlanners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mediaPlanners', 'GET', apiParams, clientConfig);
+
+    this.curators = {};
+
+    this.curators.dataSegments = {};
+
+    /**
+     * Gets a data segment given its name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of data segment to get. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Activates a data segment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of data segment to activate. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a data segment owned by the listed curator. The data segment will be created in the `ACTIVE` state, meaning it will be immediately available for buyers to use in preferred deals, private auction deals, and auction packages.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this data segment will be created. Format: `curators/{accountId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSegments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deactivates a data segment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of data segment to deactivate. Format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a data segment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID that created the segment. Format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}`
+     * @param {string} apiParams.updateMask - Optional. List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * List the data segments owned by a curator.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500.
+     * @param {string} apiParams.pageToken - Optional. The page token as returned. ListDataSegmentsResponse.nextPageToken
+     * @param {string} apiParams.parent - (Required) Required. Name of the parent curator that can access the data segment. Format: `curators/{accountId}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSegments', 'GET', apiParams, clientConfig);
+
+    this.curators.reports = {};
+
+    /**
+     * Retrieves a `Report` object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the report. Format: `curators/{account_id}/reports/{report_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Initiates the execution of an existing report asynchronously. Users can get the report by polling this operation using `OperationsService.GetOperation`. Poll every 5 seconds initially, with an exponential backoff. Once a report is complete, the operation will contain a `RunReportResponse` in its response field containing a report_result that can be passed to the `FetchReportResultRows` method to retrieve the report data.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The report to run. Format: `curators/{account_id}/reports/{report_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a `Report` object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the report to delete. Format: `curators/{account_id}/reports/{report_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates a `Report` object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the report. Report resource name have the form: `curators/{account_id}/reports/{report_id}`
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a `Report` object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this `Report` will be created. Format: `curators/{account_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists `Report` objects.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Expression to filter the response. See syntax details at https://developers.google.com/ad-manager/api/beta/filters
+     * @param {string} apiParams.orderBy - Optional. Expression to specify sorting order. See syntax details at https://developers.google.com/ad-manager/api/beta/filters#order
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of `Reports` to return. The service may return fewer than this value. If unspecified, at most 50 `Reports` will be returned. The maximum value is 1000; values greater than 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReports` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of reports. Format: `curators/{account_id}`
+     * @param {integer} apiParams.skip - Optional. Number of individual resources to skip while paginating.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
+
+    this.curators.reports.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.curators.reports.results = {};
+
+    /**
+     * Returns the result rows from a completed report. The caller must have previously called `RunReport` and waited for that operation to complete. The rows will be returned according to the order specified by the `sorts` member of the report definition.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The report result being fetched. Format: `curators/{account_id}/reports/{report_id}/results/{report_result_id}`
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of rows to return. The service may return fewer than this value. If unspecified, at most 1,000 rows will be returned. The maximum value is 10,000; values greater than 10,000 will be reduced to 10,000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `FetchReportResultRows` call. Provide this to retrieve the second and subsequent batches of rows.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.reports.results.fetchRows = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchRows', 'GET', apiParams, clientConfig);
+
+    this.curators.curatedPackages = {};
+
+    /**
+     * Activates an existing curated package.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the curated package to activate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists curated packages owned by the specified curator.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Optional query string using the [Cloud API list filtering syntax](/authorized-buyers/apis/guides/list-filters). Supported columns for filtering are: * displayName * createTime * updateTime * state * feeCpm.currencyCode * feeCpm.units * feeCpm.nanos * floorPriceCpm.currencyCode * floorPriceCpm.units * floorPriceCpm.nanos
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListCuratedPackages` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent curator account which owns this collection of curated packages. Format: `curators/{accountId}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/curatedPackages', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new curated package.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent curator account where this curated package will be created. Format: `curators/{accountId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/curatedPackages', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deactivates an existing curated package.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the curated package to deactivate. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a curated package given its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the curated package to retrieve. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an existing curated package.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The unique resource name for the curated package. Format: `curators/{accountId}/curatedPackages/{curatedPackageId}`
+     * @param {string} apiParams.updateMask - Optional. List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement (the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.curatedPackages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+  }
+
+/**
+ * @private Builds the full request URL and options object for a request.
+ */
+_buildRequestDetails(path, httpMethod, apiParams, clientConfig = {}) {
+    let url;
+    if (path.startsWith('/upload/')) {
+        url = 'https://www.googleapis.com' + path;
+    } else {
+        url = this._rootUrl + this._servicePath + path;
+    }
+
+    const remainingParams = { ...apiParams };
+    const pathParams = url.match(/{[^{}]+}/g) || [];
+
+    pathParams.forEach(placeholder => {
+        const isPlus = placeholder.startsWith('{+');
+        const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+        if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+            url = url.replace(placeholder, remainingParams[paramName]);
+            delete remainingParams[paramName];
+        }
+    });
+
+    const options = {
+        method: httpMethod,
+        headers: {
+            'Authorization': 'Bearer ' + this._token,
+            ...(clientConfig.headers || {}),
+        },
+        muteHttpExceptions: true,
+    };
+
+    if (apiParams && apiParams.media && apiParams.media.body) {
+        let mediaBlob;
+        // Check if the body is already a blob by "duck typing" for the getBytes method.
+        if (apiParams.media.body.getBytes && typeof apiParams.media.body.getBytes === 'function') {
+            mediaBlob = apiParams.media.body;
+        } else {
+            // If it's not a blob (e.g., a string or byte array), create one.
+            mediaBlob = Utilities.newBlob(apiParams.media.body);
+        }
+
+        const hasMetadata = apiParams.requestBody && Object.keys(apiParams.requestBody).length > 0;
+
+        if (hasMetadata) {
+            // ** Multipart Upload (Media + Metadata) **
+            remainingParams.uploadType = 'multipart';
+            
+            const boundary = '----' + Utilities.getUuid();
+            const metadata = apiParams.requestBody;
+
+            let requestData = '--' + boundary + '\r\n';
+            requestData += 'Content-Type: application/json; charset=UTF-8\r\n\r\n';
+            requestData += JSON.stringify(metadata) + '\r\n';
+            requestData += '--' + boundary + '\r\n';
+            requestData += 'Content-Type: ' + apiParams.media.mimeType + '\r\n\r\n';
+            
+            const payloadBytes = Utilities.newBlob(requestData).getBytes()
+                .concat(mediaBlob.getBytes())
+                .concat(Utilities.newBlob('\r\n--' + boundary + '--').getBytes());
+
+            options.contentType = 'multipart/related; boundary=' + boundary;
+            options.payload = payloadBytes;
+
+        } else {
+            // ** Simple Media Upload (Media only) **
+            remainingParams.uploadType = 'media';
+
+            options.contentType = mediaBlob.getContentType();
+            options.payload = mediaBlob.getBytes();
+        }
+
+    } else if (apiParams && apiParams.requestBody) {
+        options.contentType = 'application/json';
+        options.payload = JSON.stringify(apiParams.requestBody);
+    }
+    const queryParts = [];
+    for (const key in remainingParams) {
+        if (key !== 'requestBody' && key !== 'media') {
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+        }
+    }
+    if (queryParts.length > 0) {
+        url += '?' + queryParts.join('&');
+    }
+
+    return { url, options };
+}
+
+  /**
+   * @private Makes the HTTP request with exponential backoff for retries.
+   * @return {Promise<object>} A promise that resolves with the response object.
+   */
+  async _makeRequest(path, httpMethod, apiParams, clientConfig = {}) {
+    const isMediaDownload = apiParams.alt === 'media';
+
+    const { url, options } = this._buildRequestDetails(path, httpMethod, apiParams, clientConfig);
+
+    for (let i = 0; i <= this._backoffConfig.retries; i++) {
+      const response = UrlFetchApp.fetch(url, options);
+      const responseCode = response.getResponseCode();
+      const responseHeaders = response.getAllHeaders();
+
+      if (responseCode >= 200 && responseCode < 300) {
+        // Prioritize responseType:'blob' and media downloads to return raw data.
+        if ((clientConfig && (clientConfig.responseType === 'blob' || clientConfig.responseType === 'stream')) || isMediaDownload) {
+          return {
+            data: response.getBlob(),
+            status: responseCode,
+            headers: responseHeaders,
+          };
+        }
+
+        const responseText = response.getContentText();
+        // Handle empty responses, which are valid (e.g., a 204 No Content).
+        const responseBody = responseText ? JSON.parse(responseText) : {};
+        return {
+          data: responseBody,
+          status: responseCode,
+          headers: responseHeaders,
+        };
+      }
+
+      const retryableErrors = [429, 500, 503];
+      if (retryableErrors.includes(responseCode) && i < this._backoffConfig.retries) {
+        const delay = this._backoffConfig.baseDelay * Math.pow(2, i) + Math.random() * 1000;
+        Utilities.sleep(delay);
+        continue;
+      }
+
+      const responseText = response.getContentText(); // Get response text for error
+      let errorMessage = `Request failed with status ${responseCode}`;
+      try {
+        const errorObj = JSON.parse(responseText);
+        if (errorObj.error && errorObj.error.message) {
+          errorMessage += `: ${errorObj.error.message}`;
+        }
+      } catch (e) {
+        // If the error response isn't JSON, include the raw text.
+        if (responseText) {
+          errorMessage += `. Response: ${responseText}`;
+        }
+      }
+      throw new Error(errorMessage);
+    }
+
+    throw new Error('Request failed after multiple retries.');
+  }
+}
