@@ -19,6 +19,19 @@ class Databasecenter {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    /**
+     * AggregateQueryStats provides database resource query execution statistics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
+
     this.organizations = {};
 
     /**
@@ -32,42 +45,7 @@ class Databasecenter {
      */
     this.organizations.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
 
-    this.folders = {};
-
-    /**
-     * AggregateQueryStats provides database resource query execution statistics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Parent can be a project, a folder, or an organization. The search is limited to the resources within the `parent`. The allowed values are: * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.folders.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
-
     this.v1beta = {};
-
-    /**
-     * QueryProducts provides a list of all possible products which can be used to filter database resources.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLocations` call. Provide this to retrieve the subsequent page. All other parameters except page size should match the call that provided the page page token.
-     * @param {string} apiParams.parent - Required. Parent can be a project, a folder, or an organization. The allowed values are: * projects/{PROJECT_ID}/locations/{LOCATION} (e.g.,"projects/foo-bar/locations/us-central1") * projects/{PROJECT_NUMBER}/locations/{LOCATION} (e.g.,"projects/12345678/locations/us-central1") * folders/{FOLDER_NUMBER}/locations/{LOCATION} (e.g.,"folders/1234567/locations/us-central1") * organizations/{ORGANIZATION_NUMBER}/locations/{LOCATION} (e.g.,"organizations/123456/locations/us-central1") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.v1beta.queryProducts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryProducts', 'GET', apiParams, clientConfig);
-
-    /**
-     * QueryDatabaseResourceGroups returns paginated results of database groups.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.v1beta.queryDatabaseResourceGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryDatabaseResourceGroups', 'POST', apiParams, clientConfig);
 
     /**
      * QueryIssues provides a list of issues and recommendations that a user has access to and that are within the requested scope.
@@ -80,14 +58,16 @@ class Databasecenter {
     this.v1beta.queryIssues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryIssues', 'POST', apiParams, clientConfig);
 
     /**
-     * AggregateIssueStats provides database resource issues statistics.
+     * QueryProducts provides a list of all possible products which can be used to filter database resources.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Optional. If unspecified, at most 50 products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLocations` call. Provide this to retrieve the subsequent page. All other parameters except page size should match the call that provided the page page token.
+     * @param {string} apiParams.parent - Required. Parent can be a project, a folder, or an organization. The allowed values are: * projects/{PROJECT_ID}/locations/{LOCATION} (e.g.,"projects/foo-bar/locations/us-central1") * projects/{PROJECT_NUMBER}/locations/{LOCATION} (e.g.,"projects/12345678/locations/us-central1") * folders/{FOLDER_NUMBER}/locations/{LOCATION} (e.g.,"folders/1234567/locations/us-central1") * organizations/{ORGANIZATION_NUMBER}/locations/{LOCATION} (e.g.,"organizations/123456/locations/us-central1") * projects/{PROJECT_ID} (e.g., "projects/foo-bar") * projects/{PROJECT_NUMBER} (e.g., "projects/12345678") * folders/{FOLDER_NUMBER} (e.g., "folders/1234567") * organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.v1beta.aggregateIssueStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateIssueStats', 'POST', apiParams, clientConfig);
+    this.v1beta.queryProducts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryProducts', 'GET', apiParams, clientConfig);
 
     /**
      * AggregateFleet provides statistics about the fleet grouped by various fields.
@@ -107,7 +87,27 @@ class Databasecenter {
      */
     this.v1beta.aggregateFleet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateFleet', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
+    /**
+     * QueryDatabaseResourceGroups returns paginated results of database groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.v1beta.queryDatabaseResourceGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:queryDatabaseResourceGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * AggregateIssueStats provides database resource issues statistics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.v1beta.aggregateIssueStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta:aggregateIssueStats', 'POST', apiParams, clientConfig);
+
+    this.folders = {};
 
     /**
      * AggregateQueryStats provides database resource query execution statistics.
@@ -118,7 +118,7 @@ class Databasecenter {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
+    this.folders.aggregateQueryStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:aggregateQueryStats', 'POST', apiParams, clientConfig);
   }
 
 /**
