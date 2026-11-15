@@ -4,8 +4,8 @@ Auto-generated client library for using the **Ad Exchange Buyer API II (version:
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:21:07 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:21:07 GMT
+- **Last Checked:** Sun, 15 Nov 2026 15:24:42 GMT
+- **Last Modified:** Sun, 15 Nov 2026 15:24:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:43 GMT
 
 
@@ -13,168 +13,6 @@ Auto-generated client library for using the **Ad Exchange Buyer API II (version:
 ---
 
 ## API Reference
-
-### `buyers`
-
-### `buyers.filterSets`
-
-#### `buyers.filterSets.create()`
-
-Creates the specified filter set for the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
-| `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `buyers.filterSets.get()`
-
-Retrieves the requested filter set for the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-#### `buyers.filterSets.list()`
-
-Lists all filter sets for the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. |
-| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
-
-#### `buyers.filterSets.delete()`
-
-Deletes the requested filter set from the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `buyers.filterSets.filteredBids`
-
-#### `buyers.filterSets.filteredBids.list()`
-
-List all reasons for which bids were filtered, with the number of bids filtered for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. |
-
-### `buyers.filterSets.filteredBids.details`
-
-#### `buyers.filterSets.filteredBids.details.list()`
-
-List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
-
-### `buyers.filterSets.filteredBids.creatives`
-
-#### `buyers.filterSets.filteredBids.creatives.list()`
-
-List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `buyers.filterSets.bidResponseErrors`
-
-#### `buyers.filterSets.bidResponseErrors.list()`
-
-List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `buyers.filterSets.losingBids`
-
-#### `buyers.filterSets.losingBids.list()`
-
-List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
-
-### `buyers.filterSets.bidMetrics`
-
-#### `buyers.filterSets.bidMetrics.list()`
-
-Lists all metrics that are measured in terms of number of bids.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `buyers.filterSets.impressionMetrics`
-
-#### `buyers.filterSets.impressionMetrics.list()`
-
-Lists all metrics that are measured in terms of number of impressions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
-
-### `buyers.filterSets.filteredBidRequests`
-
-#### `buyers.filterSets.filteredBidRequests.list()`
-
-List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
-
-### `buyers.filterSets.bidResponsesWithoutBids`
-
-#### `buyers.filterSets.bidResponsesWithoutBids.list()`
-
-List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `buyers.filterSets.nonBillableWinningBids`
-
-#### `buyers.filterSets.nonBillableWinningBids.list()`
-
-List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. |
 
 ### `bidders`
 
@@ -192,24 +30,6 @@ Creates the specified filter set for the account with the given account ID.
 | `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `bidders.accounts.filterSets.get()`
-
-Retrieves the requested filter set for the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-#### `bidders.accounts.filterSets.list()`
-
-Lists all filter sets for the account with the given account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. |
-| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
-
 #### `bidders.accounts.filterSets.delete()`
 
 Deletes the requested filter set from the account with the given account ID.
@@ -218,41 +38,23 @@ Deletes the requested filter set from the account with the given account ID.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
-### `bidders.accounts.filterSets.nonBillableWinningBids`
+#### `bidders.accounts.filterSets.list()`
 
-#### `bidders.accounts.filterSets.nonBillableWinningBids.list()`
-
-List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
+Lists all filter sets for the account with the given account ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 
-### `bidders.accounts.filterSets.filteredBidRequests`
+#### `bidders.accounts.filterSets.get()`
 
-#### `bidders.accounts.filterSets.filteredBidRequests.list()`
-
-List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+Retrieves the requested filter set for the account with the given account ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
-
-### `bidders.accounts.filterSets.bidResponsesWithoutBids`
-
-#### `bidders.accounts.filterSets.bidResponsesWithoutBids.list()`
-
-List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
+| `params.name` | `string` | Yes | Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `bidders.accounts.filterSets.bidMetrics`
 
@@ -262,21 +64,45 @@ Lists all metrics that are measured in terms of number of bids.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
-### `bidders.accounts.filterSets.impressionMetrics`
+### `bidders.accounts.filterSets.nonBillableWinningBids`
 
-#### `bidders.accounts.filterSets.impressionMetrics.list()`
+#### `bidders.accounts.filterSets.nonBillableWinningBids.list()`
 
-Lists all metrics that are measured in terms of number of impressions.
+List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. |
+
+### `bidders.accounts.filterSets.bidResponseErrors`
+
+#### `bidders.accounts.filterSets.bidResponseErrors.list()`
+
+List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+
+### `bidders.accounts.filterSets.losingBids`
+
+#### `bidders.accounts.filterSets.losingBids.list()`
+
+List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 
 ### `bidders.accounts.filterSets.filteredBids`
 
@@ -286,8 +112,8 @@ List all reasons for which bids were filtered, with the number of bids filtered 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `bidders.accounts.filterSets.filteredBids.details`
@@ -299,9 +125,9 @@ List all details associated with a specific reason for which bids were filtered,
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
 
 ### `bidders.accounts.filterSets.filteredBids.creatives`
 
@@ -311,34 +137,46 @@ List all creatives associated with a specific reason for which bids were filtere
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
 
-### `bidders.accounts.filterSets.bidResponseErrors`
+### `bidders.accounts.filterSets.filteredBidRequests`
 
-#### `bidders.accounts.filterSets.bidResponseErrors.list()`
+#### `bidders.accounts.filterSets.filteredBidRequests.list()`
 
-List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. |
-
-### `bidders.accounts.filterSets.losingBids`
-
-#### `bidders.accounts.filterSets.losingBids.list()`
-
-List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+
+### `bidders.accounts.filterSets.impressionMetrics`
+
+#### `bidders.accounts.filterSets.impressionMetrics.list()`
+
+Lists all metrics that are measured in terms of number of impressions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `bidders.accounts.filterSets.bidResponsesWithoutBids`
+
+#### `bidders.accounts.filterSets.bidResponsesWithoutBids.list()`
+
+List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 
 ### `bidders.filterSets`
 
@@ -351,6 +189,14 @@ Creates the specified filter set for the account with the given account ID.
 | `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 | `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `bidders.filterSets.delete()`
+
+Deletes the requested filter set from the account with the given account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 #### `bidders.filterSets.get()`
 
@@ -366,41 +212,21 @@ Lists all filter sets for the account with the given account ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. |
+| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 
-#### `bidders.filterSets.delete()`
+### `bidders.filterSets.losingBids`
 
-Deletes the requested filter set from the account with the given account ID.
+#### `bidders.filterSets.losingBids.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
-
-### `bidders.filterSets.bidResponsesWithoutBids`
-
-#### `bidders.filterSets.bidResponsesWithoutBids.list()`
-
-List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
-
-### `bidders.filterSets.filteredBidRequests`
-
-#### `bidders.filterSets.filteredBidRequests.list()`
-
-List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `bidders.filterSets.nonBillableWinningBids`
 
@@ -410,9 +236,33 @@ List all reasons for which winning bids were not billable, with the number of bi
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+
+### `bidders.filterSets.bidMetrics`
+
+#### `bidders.filterSets.bidMetrics.list()`
+
+Lists all metrics that are measured in terms of number of bids.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `bidders.filterSets.filteredBidRequests`
+
+#### `bidders.filterSets.filteredBidRequests.list()`
+
+List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
 
 ### `bidders.filterSets.bidResponseErrors`
 
@@ -426,16 +276,28 @@ List all errors that occurred in bid responses, with the number of bid responses
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
-### `bidders.filterSets.losingBids`
+### `bidders.filterSets.impressionMetrics`
 
-#### `bidders.filterSets.losingBids.list()`
+#### `bidders.filterSets.impressionMetrics.list()`
 
-List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+Lists all metrics that are measured in terms of number of impressions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+
+### `bidders.filterSets.bidResponsesWithoutBids`
+
+#### `bidders.filterSets.bidResponsesWithoutBids.list()`
+
+List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `bidders.filterSets.filteredBids`
@@ -446,9 +308,22 @@ List all reasons for which bids were filtered, with the number of bids filtered 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. |
+
+### `bidders.filterSets.filteredBids.creatives`
+
+#### `bidders.filterSets.filteredBids.creatives.list()`
+
+List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `bidders.filterSets.filteredBids.details`
 
@@ -459,50 +334,242 @@ List all details associated with a specific reason for which bids were filtered,
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
 
-### `bidders.filterSets.filteredBids.creatives`
+### `buyers`
 
-#### `bidders.filterSets.filteredBids.creatives.list()`
+### `buyers.filterSets`
+
+#### `buyers.filterSets.list()`
+
+Lists all filter sets for the account with the given account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilterSetsResponse.nextPageToken returned from the previous call to the accounts.filterSets.list method. |
+| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
+
+#### `buyers.filterSets.get()`
+
+Retrieves the requested filter set for the account with the given account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Full name of the resource being requested. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+#### `buyers.filterSets.create()`
+
+Creates the specified filter set for the account with the given account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
+| `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `buyers.filterSets.delete()`
+
+Deletes the requested filter set from the account with the given account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `buyers.filterSets.bidResponseErrors`
+
+#### `buyers.filterSets.bidResponseErrors.list()`
+
+List all errors that occurred in bid responses, with the number of bid responses affected for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the bidResponseErrors.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+
+### `buyers.filterSets.filteredBids`
+
+#### `buyers.filterSets.filteredBids.list()`
+
+List all reasons for which bids were filtered, with the number of bids filtered for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the filteredBids.list method. |
+
+### `buyers.filterSets.filteredBids.creatives`
+
+#### `buyers.filterSets.filteredBids.creatives.list()`
 
 List all creatives associated with a specific reason for which bids were filtered, with the number of bids filtered for each creative.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
 | `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the previous call to the filteredBids.creatives.list method. |
-| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
-### `bidders.filterSets.impressionMetrics`
+### `buyers.filterSets.filteredBids.details`
 
-#### `bidders.filterSets.impressionMetrics.list()`
+#### `buyers.filterSets.filteredBids.details.list()`
 
-Lists all metrics that are measured in terms of number of impressions.
+List all details associated with a specific reason for which bids were filtered, with the number of bids filtered for each detail.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
+| `params.creativeStatusId` | `integer` | Yes | The ID of the creative status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and 87. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from the previous call to the filteredBids.details.list method. |
 
-### `bidders.filterSets.bidMetrics`
+### `buyers.filterSets.bidMetrics`
 
-#### `bidders.filterSets.bidMetrics.list()`
+#### `buyers.filterSets.bidMetrics.list()`
 
 Lists all metrics that are measured in terms of number of bids.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `buyers.filterSets.losingBids`
+
+#### `buyers.filterSets.losingBids.list()`
+
+List all reasons for which bids lost in the auction, with the number of bids that lost for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the losingBids.list method. |
+
+### `buyers.filterSets.filteredBidRequests`
+
+#### `buyers.filterSets.filteredBidRequests.list()`
+
+List all reasons that caused a bid request not to be sent for an impression, with the number of bid requests not sent for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the filteredBidRequests.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `buyers.filterSets.nonBillableWinningBids`
+
+#### `buyers.filterSets.nonBillableWinningBids.list()`
+
+List all reasons for which winning bids were not billable, with the number of bids not billed for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the nonBillableWinningBids.list method. |
 | `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 | `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidMetricsResponse.nextPageToken returned from the previous call to the bidMetrics.list method. |
+
+### `buyers.filterSets.bidResponsesWithoutBids`
+
+#### `buyers.filterSets.bidResponsesWithoutBids.list()`
+
+List all reasons for which bid responses were considered to have no applicable bids, with the number of bid responses affected for each reason.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous call to the bidResponsesWithoutBids.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
+
+### `buyers.filterSets.impressionMetrics`
+
+#### `buyers.filterSets.impressionMetrics.list()`
+
+Lists all metrics that are measured in terms of number of impressions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the impressionMetrics.list method. |
+| `params.filterSetName` | `string` | Yes | Name of the filter set that should be applied to the requested metrics. For example: - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123/filterSets/abc` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456/filterSets/abc` |
 
 ### `accounts`
 
+### `accounts.products`
+
+#### `accounts.products.list()`
+
+List all products visible to the buyer (optionally filtered by the specified PQL query).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | The page token as returned from ListProductsResponse. |
+
+#### `accounts.products.get()`
+
+Gets the requested product by ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.productId` | `string` | Yes | The ID for the product to get the head revision for. |
+
+### `accounts.finalizedProposals`
+
+#### `accounts.finalizedProposals.resume()`
+
+Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.finalizedProposals.pause()`
+
+Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.finalizedProposals.list()`
+
+List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The page token as returned from ListProposalsResponse. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSyntax` | `string` | No | Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. |
+| `params.filter` | `string` | No | An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+
 ### `accounts.clients`
+
+#### `accounts.clients.list()`
+
+Lists all the clients for the current sponsor buyer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Unique numerical account ID of the sponsor buyer to list the clients for. |
+| `params.partnerClientId` | `string` | No | Optional unique identifier (from the standpoint of an Ad Exchange sponsor buyer partner) of the client to return. If specified, at most one client will be returned in the response. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientsResponse.nextPageToken returned from the previous call to the accounts.clients.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default. |
 
 #### `accounts.clients.get()`
 
@@ -512,17 +579,6 @@ Gets a client buyer with a given client account ID.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer to retrieve. (required) |
-
-#### `accounts.clients.list()`
-
-Lists all the clients for the current sponsor buyer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.partnerClientId` | `string` | No | Optional unique identifier (from the standpoint of an Ad Exchange sponsor buyer partner) of the client to return. If specified, at most one client will be returned in the response. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientsResponse.nextPageToken returned from the previous call to the accounts.clients.list method. |
-| `params.accountId` | `string` | Yes | Unique numerical account ID of the sponsor buyer to list the clients for. |
 
 #### `accounts.clients.create()`
 
@@ -539,22 +595,11 @@ Updates an existing client buyer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Unique numerical account ID for the buyer of which the client buyer is a customer; the sponsor buyer to update a client for. (required) |
 | `params.clientAccountId` | `string` | Yes | Unique numerical account ID of the client to update. (required) |
+| `params.accountId` | `string` | Yes | Unique numerical account ID for the buyer of which the client buyer is a customer; the sponsor buyer to update a client for. (required) |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.clients.users`
-
-#### `accounts.clients.users.list()`
-
-Lists all the known client users for a specified sponsor buyer account ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Numerical account ID of the sponsor buyer of the client to list users for. (required) |
-| `params.clientAccountId` | `string` | Yes | The account ID of the client buyer to list users for. (required) You must specify either a string representation of a numerical account identifier or the `-` character to list all the client users for all the clients of a given sponsor buyer. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientUsersResponse.nextPageToken returned from the previous call to the accounts.clients.users.list method. |
 
 #### `accounts.clients.users.update()`
 
@@ -562,10 +607,21 @@ Updates an existing client user. Only the user status can be changed on update.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user to be retrieved is associated with. (required) |
+| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.userId` | `string` | Yes | Numerical identifier of the user to retrieve. (required) |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.clients.users.list()`
+
+Lists all the known client users for a specified sponsor buyer account ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientUsersResponse.nextPageToken returned from the previous call to the accounts.clients.users.list method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer clients than requested. If unspecified, the server will pick an appropriate default. |
+| `params.clientAccountId` | `string` | Yes | The account ID of the client buyer to list users for. (required) You must specify either a string representation of a numerical account identifier or the `-` character to list all the client users for all the clients of a given sponsor buyer. |
+| `params.accountId` | `string` | Yes | Numerical account ID of the sponsor buyer of the client to list users for. (required) |
 
 #### `accounts.clients.users.get()`
 
@@ -573,21 +629,11 @@ Retrieves an existing client user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user to be retrieved is associated with. (required) |
 | `params.userId` | `string` | Yes | Numerical identifier of the user to retrieve. (required) |
+| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 
 ### `accounts.clients.invitations`
-
-#### `accounts.clients.invitations.create()`
-
-Creates and sends out an email invitation to access an Ad Exchange client buyer account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
-| `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user should be associated with. (required) |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.clients.invitations.get()`
 
@@ -596,8 +642,8 @@ Retrieves an existing client user invitation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.invitationId` | `string` | Yes | Numerical identifier of the user invitation to retrieve. (required) |
-| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user invitation to be retrieved is associated with. (required) |
+| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 
 #### `accounts.clients.invitations.list()`
 
@@ -605,68 +651,32 @@ Lists all the client users invitations for a client with a given account ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer clients than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the clients.invitations.list method. |
 | `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the clients.invitations.list method. |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer to list invitations for. (required) You must either specify a string representation of a numerical account identifier or the `-` character to list all the invitations for all the clients of a given sponsor buyer. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer clients than requested. If unspecified, server will pick an appropriate default. |
 
-### `accounts.finalizedProposals`
+#### `accounts.clients.invitations.create()`
 
-#### `accounts.finalizedProposals.resume()`
-
-Update given deals to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.resume endpoint. It is a no-op to resume running deals or deals paused by the other party. It is an error to call ResumeProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
+Creates and sends out an email invitation to access an Ad Exchange client buyer account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
+| `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user should be associated with. (required) |
+| `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.finalizedProposals.list()`
-
-List finalized proposals, regardless if a proposal is being renegotiated. A filter expression (PQL query) may be specified to filter the results. The notes will not be returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.filterSyntax` | `string` | No | Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | The page token as returned from ListProposalsResponse. |
-| `params.filter` | `string` | No | An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered. |
-
-#### `accounts.finalizedProposals.pause()`
-
-Update given deals to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all listed deals in the request. Currently, this method only applies to PG and PD deals. For PA deals, call accounts.proposals.pause endpoint. It is a no-op to pause already-paused deals. It is an error to call PauseProposalDeals for deals which are not part of the proposal of proposal_id or which are not finalized or renegotiating.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `accounts.products`
-
-#### `accounts.products.get()`
-
-Gets the requested product by ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.productId` | `string` | Yes | The ID for the product to get the head revision for. |
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-
-#### `accounts.products.list()`
-
-List all products visible to the buyer (optionally filtered by the specified PQL query).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | The page token as returned from ListProductsResponse. |
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.filter` | `string` | No | An optional PQL query used to query for products. See https://developers.google.com/ad-manager/docs/pqlreference for documentation about PQL and examples. Nested repeated fields, such as product.targetingCriterion.inclusions, cannot be filtered. |
 
 ### `accounts.proposals`
+
+#### `accounts.proposals.pause()`
+
+Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.proposalId` | `string` | Yes | The ID of the proposal to pause. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.completeSetup()`
 
@@ -678,24 +688,15 @@ You can opt-in to manually update proposals to indicate that setup is complete. 
 | `params.proposalId` | `string` | Yes | The ID of the proposal to mark as setup completed. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.proposals.cancelNegotiation()`
+#### `accounts.proposals.resume()`
 
-Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.
+Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The ID of the proposal to cancel negotiation for. |
+| `params.proposalId` | `string` | Yes | The ID of the proposal to resume. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.proposals.get()`
-
-Gets a proposal given its ID. The proposal is returned at its head revision.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The unique ID of the proposal |
 
 #### `accounts.proposals.create()`
 
@@ -722,31 +723,20 @@ List proposals. A filter expression (PQL query) may be specified to filter the r
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filterSyntax` | `string` | No | Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. |
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | The page token as returned from ListProposalsResponse. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer results than requested. If unspecified, the server will pick an appropriate default. |
+| `params.filterSyntax` | `string` | No | Syntax the filter is written in. Current implementation defaults to PQL but in the future it will be LIST_FILTER. |
 | `params.filter` | `string` | No | An optional PQL filter query used to query for proposals. Nested repeated fields, such as proposal.deals.targetingCriterion, cannot be filtered. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
 
-#### `accounts.proposals.accept()`
+#### `accounts.proposals.get()`
 
-Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher.
+Gets a proposal given its ID. The proposal is returned at its head revision.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The ID of the proposal to accept. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.proposals.pause()`
-
-Update the given proposal to pause serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to true for all deals in the proposal. It is a no-op to pause an already-paused proposal. It is an error to call PauseProposal for a proposal that is not finalized or renegotiating.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The ID of the proposal to pause. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.proposalId` | `string` | Yes | The unique ID of the proposal |
 
 #### `accounts.proposals.addNote()`
 
@@ -758,14 +748,24 @@ Create a new note and attach it to the proposal. The note is assigned a unique I
 | `params.proposalId` | `string` | Yes | The ID of the proposal to attach the note to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.proposals.resume()`
+#### `accounts.proposals.cancelNegotiation()`
 
-Update the given proposal to resume serving. This method will set the `DealServingMetadata.DealPauseStatus.has_buyer_paused` bit to false for all deals in the proposal. Note that if the `has_seller_paused` bit is also set, serving will not resume until the seller also resumes. It is a no-op to resume an already-running proposal. It is an error to call ResumeProposal for a proposal that is not finalized or renegotiating.
+Cancel an ongoing negotiation on a proposal. This does not cancel or end serving for the deals if the proposal has been finalized, but only cancels a negotiation unilaterally.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.proposalId` | `string` | Yes | The ID of the proposal to resume. |
+| `params.proposalId` | `string` | Yes | The ID of the proposal to cancel negotiation for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.proposals.accept()`
+
+Mark the proposal as accepted at the given revision number. If the number does not match the server's revision number an `ABORTED` error message will be returned. This call updates the proposal_state from `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`. Upon calling this endpoint, the buyer implicitly agrees to the terms and conditions optionally set within the proposal by the publisher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
+| `params.proposalId` | `string` | Yes | The ID of the proposal to accept. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.publisherProfiles`
@@ -776,8 +776,8 @@ Gets the requested publisher profile by id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.publisherProfileId` | `string` | Yes | The id for the publisher profile to get. |
+| `params.accountId` | `string` | Yes | Account ID of the buyer. |
 
 #### `accounts.publisherProfiles.list()`
 
@@ -791,15 +791,14 @@ List all publisher profiles visible to the buyer
 
 ### `accounts.creatives`
 
-#### `accounts.creatives.watch()`
+#### `accounts.creatives.get()`
 
-Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.
+Gets a creative.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The account of the creative to watch. |
-| `params.creativeId` | `string` | Yes | The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.creativeId` | `string` | Yes | The ID of the creative to retrieve. |
+| `params.accountId` | `string` | Yes | The account the creative belongs to. |
 
 #### `accounts.creatives.create()`
 
@@ -821,25 +820,15 @@ Updates a creative.
 | `params.creativeId` | `string` | Yes | The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.creatives.get()`
+#### `accounts.creatives.watch()`
 
-Gets a creative.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The account the creative belongs to. |
-| `params.creativeId` | `string` | Yes | The ID of the creative to retrieve. |
-
-#### `accounts.creatives.list()`
-
-Lists creatives.
+Watches a creative. Will result in push notifications being sent to the topic when the creative changes status.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The account to list the creatives from. Specify "-" to list all creatives the current user has access to. |
-| `params.query` | `string` | No | An optional query string to filter creatives. If no filter is specified, all active creatives will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsStatus: {approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus: {approved, conditionally_approved, disapproved, not_checked} - attribute: {a numeric attribute from the list of attributes} - disapprovalReason: {a reason from DisapprovalReason} Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content) OR attribute:47' |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available through another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method. |
+| `params.creativeId` | `string` | Yes | The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic. |
+| `params.accountId` | `string` | Yes | The account of the creative to watch. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.stopWatching()`
 
@@ -847,21 +836,34 @@ Stops watching a creative. Will stop push notifications being sent to the topics
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The account of the creative to stop notifications for. |
 | `params.creativeId` | `string` | Yes | The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications. |
+| `params.accountId` | `string` | Yes | The account of the creative to stop notifications for. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `accounts.creatives.dealAssociations`
+#### `accounts.creatives.list()`
 
-#### `accounts.creatives.dealAssociations.add()`
-
-Associate an existing deal with a creative.
+Lists creatives.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The account the creative belongs to. |
-| `params.creativeId` | `string` | Yes | The ID of the creative associated with the deal. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListCreativesResponse.next_page_token returned from the previous call to 'ListCreatives' method. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer creatives than requested (due to timeout constraint) even if more are available through another call. If unspecified, server will pick an appropriate default. Acceptable values are 1 to 1000, inclusive. |
+| `params.query` | `string` | No | An optional query string to filter creatives. If no filter is specified, all active creatives will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsStatus: {approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus: {approved, conditionally_approved, disapproved, not_checked} - attribute: {a numeric attribute from the list of attributes} - disapprovalReason: {a reason from DisapprovalReason} Example: 'accountId=12345 AND (dealsStatus:disapproved AND disapprovalReason:unacceptable_content) OR attribute:47' |
+| `params.accountId` | `string` | Yes | The account to list the creatives from. Specify "-" to list all creatives the current user has access to. |
+
+### `accounts.creatives.dealAssociations`
+
+#### `accounts.creatives.dealAssociations.list()`
+
+List all creative-deal associations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.creativeId` | `string` | Yes | The creative ID to list the associations from. Specify "-" to list all creatives under the above account. |
+| `params.query` | `string` | No | An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved' |
+| `params.accountId` | `string` | Yes | The account to list the associations from. Specify "-" to list all creatives the current user has access to. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer associations than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method. |
 
 #### `accounts.creatives.dealAssociations.remove()`
 
@@ -873,14 +875,12 @@ Remove the association between a deal and a creative.
 | `params.creativeId` | `string` | Yes | The ID of the creative associated with the deal. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.creatives.dealAssociations.list()`
+#### `accounts.creatives.dealAssociations.add()`
 
-List all creative-deal associations.
+Associate an existing deal with a creative.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.creativeId` | `string` | Yes | The creative ID to list the associations from. Specify "-" to list all creatives under the above account. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer associations than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListDealAssociationsResponse.next_page_token returned from the previous call to 'ListDealAssociations' method. |
-| `params.accountId` | `string` | Yes | The account to list the associations from. Specify "-" to list all creatives the current user has access to. |
-| `params.query` | `string` | No | An optional query string to filter deal associations. If no filter is specified, all associations will be returned. Supported queries are: - accountId=*account_id_string* - creativeId=*creative_id_string* - dealsId=*deals_id_string* - dealsStatus:{approved, conditionally_approved, disapproved, not_checked} - openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked} Example: 'dealsId=12345 AND dealsStatus:disapproved' |
+| `params.accountId` | `string` | Yes | The account the creative belongs to. |
+| `params.creativeId` | `string` | Yes | The ID of the creative associated with the deal. |
+| `params.requestBody` | `object` | Yes | The request body. |
