@@ -22,16 +22,6 @@ class Cloudproductregistry {
     this.productSuites = {};
 
     /**
-     * Look up entities.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.lookupUri - (Required) Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.productSuites.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
-
-    /**
      * Get details of a ProductSuite.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the ProductSuite to retrieve. Format: productSuites/{product_suite}
@@ -40,6 +30,16 @@ class Cloudproductregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.productSuites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Look up entities.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.lookupUri - (Required) Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.productSuites.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
 
     /**
      * Lists ProductSuites.
@@ -55,16 +55,6 @@ class Cloudproductregistry {
     this.logicalProducts = {};
 
     /**
-     * Gets details of a LogicalProduct.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the LogicalProduct to retrieve. Format: logicalProducts/{logical_product}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.logicalProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists LogicalProducts matching given criteria.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. The filter expression for listing logical products. Filter syntax: https://google.aip.dev/160 Supported fields: suite_id
@@ -77,6 +67,16 @@ class Cloudproductregistry {
     this.logicalProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/logicalProducts', 'GET', apiParams, clientConfig);
 
     /**
+     * Gets details of a LogicalProduct.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the LogicalProduct to retrieve. Format: logicalProducts/{logical_product}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.logicalProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Look up entities.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.lookupUri - (Required) Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite}
@@ -87,6 +87,18 @@ class Cloudproductregistry {
     this.logicalProducts.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
 
     this.logicalProducts.variants = {};
+
+    /**
+     * Lists LogicalProductVariants matching given criteria.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of logical product variants to return. The service may return fewer than this value. If unspecified, at most 100 logical product variants will be returned. The maximum value is 500; values above 500 will be coerced to 500.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLogicalProductVariants` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProductVariants` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent logical product id. Format: logicalProducts/{logical_product}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.logicalProducts.variants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/variants', 'GET', apiParams, clientConfig);
 
     /**
      * Look up entities.
@@ -107,18 +119,6 @@ class Cloudproductregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.logicalProducts.variants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists LogicalProductVariants matching given criteria.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of logical product variants to return. The service may return fewer than this value. If unspecified, at most 100 logical product variants will be returned. The maximum value is 500; values above 500 will be coerced to 500.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListLogicalProductVariants` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProductVariants` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. Parent logical product id. Format: logicalProducts/{logical_product}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.logicalProducts.variants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/variants', 'GET', apiParams, clientConfig);
   }
 
 /**
