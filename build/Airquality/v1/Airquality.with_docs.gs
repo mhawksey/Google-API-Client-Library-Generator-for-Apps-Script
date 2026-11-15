@@ -19,30 +19,6 @@ class Airquality {
     this._servicePath = '';
 
 
-    this.currentConditions = {};
-
-    /**
-     * The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.currentConditions.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/currentConditions:lookup', 'POST', apiParams, clientConfig);
-
-    this.history = {};
-
-    /**
-     * Returns air quality history for a specific location for a given time range.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
-
     this.mapTypes = {};
 
     this.mapTypes.heatmapTiles = {};
@@ -60,6 +36,18 @@ class Airquality {
      */
     this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
 
+    this.currentConditions = {};
+
+    /**
+     * The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.currentConditions.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/currentConditions:lookup', 'POST', apiParams, clientConfig);
+
     this.forecast = {};
 
     /**
@@ -71,6 +59,18 @@ class Airquality {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'POST', apiParams, clientConfig);
+
+    this.history = {};
+
+    /**
+     * Returns air quality history for a specific location for a given time range.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
   }
 
 /**
