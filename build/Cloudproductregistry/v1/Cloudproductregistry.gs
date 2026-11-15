@@ -20,19 +20,19 @@ class Cloudproductregistry {
 
 
     this.productSuites = {};
-    this.productSuites.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
     this.productSuites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.productSuites.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
     this.productSuites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/productSuites', 'GET', apiParams, clientConfig);
 
     this.logicalProducts = {};
-    this.logicalProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.logicalProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/logicalProducts', 'GET', apiParams, clientConfig);
+    this.logicalProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.logicalProducts.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
 
     this.logicalProducts.variants = {};
+    this.logicalProducts.variants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/variants', 'GET', apiParams, clientConfig);
     this.logicalProducts.variants.lookupEntity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+lookupUri}:lookupEntity', 'GET', apiParams, clientConfig);
     this.logicalProducts.variants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.logicalProducts.variants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/variants', 'GET', apiParams, clientConfig);
   }
 
 /**
