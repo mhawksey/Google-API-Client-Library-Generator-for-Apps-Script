@@ -46,16 +46,14 @@ class Assuredworkloads {
     this.organizations.locations.workloads.enableResourceMonitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enableResourceMonitoring', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates an existing workload. Currently allows updating of workload display_name and labels. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress.
+     * This endpoint enables Assured Workloads service to offer compliance updates for the folder based assured workload. It sets up an Assured Workloads Service Agent, having permissions to read compliance controls (for example: Org Policies) applied on the workload. The caller must have `resourcemanager.folders.getIamPolicy` and `resourcemanager.folders.setIamPolicy` permissions on the assured workload folder.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-     * @param {string} apiParams.updateMask - Required. The list of fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.workloads.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.locations.workloads.enableComplianceUpdates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enableComplianceUpdates', 'PUT', apiParams, clientConfig);
 
     /**
      * Deletes the workload. Make sure that workload's direct children are already in a deleted state, otherwise the request will fail with a FAILED_PRECONDITION error. In addition to assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set permission on the deleted folder to remove Assured Workloads OrgPolicies.
@@ -69,53 +67,16 @@ class Assuredworkloads {
     this.organizations.locations.workloads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Lists Assured Workloads under a CRM Node.
+     * Updates an existing workload. Currently allows updating of workload display_name and labels. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A custom filter for filtering by properties of a workload. At this time, only filtering by labels is supported.
-     * @param {integer} apiParams.pageSize - Page size.
-     * @param {string} apiParams.pageToken - Page token returned from previous request. Page token contains context from previous request. Page token needs to be passed in the second and following requests.
-     * @param {string} apiParams.parent - (Required) Required. Parent Resource to list workloads from. Must be of the form `organizations/{org_id}/locations/{location}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloads', 'GET', apiParams, clientConfig);
-
-    /**
-     * Restrict the list of resources allowed in the Workload environment. The current list of allowed products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In addition to assuredworkloads.workload.update permission, the user should also have orgpolicy.policy.set permission on the folder resource to use this functionality.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Workload. This is the workloads's relative path in the API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
+     * @param {string} apiParams.name - (Required) Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+     * @param {string} apiParams.updateMask - Required. The list of fields to be updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.workloads.restrictAllowedResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restrictAllowedResources', 'POST', apiParams, clientConfig);
-
-    /**
-     * Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks. The analysis is best effort and is not guaranteed to be exhaustive.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.assetTypes - Optional. List of asset types to be analyzed, including and under the source resource. If empty, all assets are analyzed. The complete list of asset types is available [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
-     * @param {integer} apiParams.pageSize - Optional. Page size. If a value is not specified, the default value of 10 is used. The maximum value is 50.
-     * @param {string} apiParams.pageToken - Optional. The page token from the previous response. It needs to be passed in the second and following requests.
-     * @param {string} apiParams.project - The source type is a project. Specify the project's relative resource name, formatted as either a project number or a project ID: "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For example: "projects/951040570662" when specifying a project number, or "projects/my-project-123" when specifying a project ID.
-     * @param {string} apiParams.target - (Required) Required. The resource ID of the folder-based destination workload. This workload is where the source resource will hypothetically be moved to. Specify the workload's relative resource name, formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.analyzeWorkloadMove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+target}:analyzeWorkloadMove', 'GET', apiParams, clientConfig);
-
-    /**
-     * Update the permissions settings for an existing partner workload. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.mutatePartnerPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:mutatePartnerPermissions', 'PATCH', apiParams, clientConfig);
+    this.organizations.locations.workloads.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Creates Assured Workload.
@@ -130,16 +91,107 @@ class Assuredworkloads {
     this.organizations.locations.workloads.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloads', 'POST', apiParams, clientConfig);
 
     /**
-     * This endpoint enables Assured Workloads service to offer compliance updates for the folder based assured workload. It sets up an Assured Workloads Service Agent, having permissions to read compliance controls (for example: Org Policies) applied on the workload. The caller must have `resourcemanager.folders.getIamPolicy` and `resourcemanager.folders.setIamPolicy` permissions on the assured workload folder.
+     * Update the permissions settings for an existing partner workload. For force updates don't set etag field in the Workload. Only one update operation per workload can be in progress.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The `name` field is used to identify the workload. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.organizations.locations.workloads.enableComplianceUpdates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enableComplianceUpdates', 'PUT', apiParams, clientConfig);
+    this.organizations.locations.workloads.mutatePartnerPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:mutatePartnerPermissions', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks. The analysis is best effort and is not guaranteed to be exhaustive.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.assetTypes - Optional. List of asset types to be analyzed, including and under the source resource. If empty, all assets are analyzed. The complete list of asset types is available [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types).
+     * @param {integer} apiParams.pageSize - Optional. Page size. If a value is not specified, the default value of 10 is used. The maximum value is 50.
+     * @param {string} apiParams.pageToken - Optional. The page token from the previous response. It needs to be passed in the second and following requests.
+     * @param {string} apiParams.project - The source type is a project. Specify the project's relative resource name, formatted as either a project number or a project ID: "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For example: "projects/951040570662" when specifying a project number, or "projects/my-project-123" when specifying a project ID.
+     * @param {string} apiParams.target - (Required) Required. The resource name of the folder-based destination workload. This workload is where the source resource will hypothetically be moved to. Specify the workload's relative resource name, formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.analyzeWorkloadMove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+target}:analyzeWorkloadMove', 'GET', apiParams, clientConfig);
+
+    /**
+     * Restrict the list of resources allowed in the Workload environment. The current list of allowed products can be found at https://cloud.google.com/assured-workloads/docs/supported-products In addition to assuredworkloads.workload.update permission, the user should also have orgpolicy.policy.set permission on the folder resource to use this functionality.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Workload. This is the workloads's relative path in the API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.restrictAllowedResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restrictAllowedResources', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists Assured Workloads under a CRM Node.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A custom filter for filtering by properties of a workload. At this time, only filtering by labels is supported.
+     * @param {integer} apiParams.pageSize - Optional. Page size.
+     * @param {string} apiParams.pageToken - Optional. Page token returned from previous request. Page token contains context from previous request. Page token needs to be passed in the second and following requests.
+     * @param {string} apiParams.parent - (Required) Required. Parent Resource to list workloads from. Must be of the form `organizations/{org_id}/locations/{location}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloads', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.workloads.violations = {};
+
+    /**
+     * Retrieves an Assured Workloads violation by its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the violation to retrieve (that is, the value of `Violation.name`). Format: `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
+     * @param {string} apiParams.view - Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or `VIOLATION_VIEW_DATA_BOUNDARY`) that the violation belongs to. If not specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.violations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the Violations in the AssuredWorkload Environment. Callers may also choose to read across multiple Workloads as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of workload-id in the parent. Format `organizations/{org_id}/locations/{location}/workloads/-`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter expression that restricts the violations that are returned. The syntax follows [AIP-160](https://google.aip.dev/160). Only the equality operator (`=`) is supported, and expressions can be combined with `AND`, `OR`, and `NOT`. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, the following fields are supported: `violationId`, `category`, `state` (`UNRESOLVED`, `RESOLVED`, or `EXCEPTION`), `violationType` (`ORG_POLICY` or `RESOURCE`), `resourceType`, `resourceName`, `project`, `associatedOrgPolicyViolationId`, `cloudControlName`, `workloadDisplayName`, and `complianceType` (a framework ID). Example: `state = "UNRESOLVED" AND complianceType = "builtin-fedramp-high"`
+     * @param {string} apiParams.interval.endTime - The end of the time window.
+     * @param {string} apiParams.interval.startTime - The start of the time window.
+     * @param {string} apiParams.orderBy - Optional. A comma-separated list of fields to sort the results by. The default sort order is ascending; to sort in descending order, append ` desc` to the field name. For example, `update_time desc,category`. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, the following fields are supported: `begin_time`, `update_time`, `resource_type`, `state`, and `category`. If not specified, results are sorted by `begin_time` in descending order.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of violations to return. The service might return fewer violations than this value. If unspecified, at most 100 violations are returned. The maximum value is 1000; values above 1000 are coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListViolations` call. Provide this token to retrieve the subsequent page. When paginating, all other parameters that are provided to `ListViolations` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The workload to list violations for. To list violations across all workloads in an organization, use `-` as the workload ID. When `view` is `VIOLATION_VIEW_DATA_BOUNDARY`, violations are listed for the entire organization and location, and the workload ID is ignored. Format: `organizations/{organization}/locations/{location}/workloads/{workload}`
+     * @param {string} apiParams.view - Optional. The violation view (`VIOLATION_VIEW_ASSURED_WORKLOADS` or `VIOLATION_VIEW_DATA_BOUNDARY`) to list violations for. If not specified, `VIOLATION_VIEW_ASSURED_WORKLOADS` is used.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.violations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/violations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Acknowledges an existing violation. By acknowledging a violation, users acknowledge the existence of a compliance violation in their workload and decide to ignore it due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the violation to acknowledge. Format: `organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.violations.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acknowledge', 'POST', apiParams, clientConfig);
 
     this.organizations.locations.workloads.updates = {};
+
+    /**
+     * This endpoint creates a new operation to apply the given update.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the update. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.organizations.locations.workloads.updates.apply = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:apply', 'POST', apiParams, clientConfig);
 
     /**
      * This endpoint lists all updates for the given workload.
@@ -153,93 +205,7 @@ class Assuredworkloads {
      */
     this.organizations.locations.workloads.updates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/updates', 'GET', apiParams, clientConfig);
 
-    /**
-     * This endpoint creates a new operation to apply the given update.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the update. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.updates.apply = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:apply', 'POST', apiParams, clientConfig);
-
-    this.organizations.locations.workloads.violations = {};
-
-    /**
-     * Acknowledges multiple existing violations. By acknowledging violations, users acknowledge the existence of compliance violations in their workload and decide to ignore them due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted. This is a batch version of AcknowledgeViolation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Optional. The parent resource shared by all violations being acknowledged. Format: organizations/{organization}/locations/{location}/workloads/{workload}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.violations.batchAcknowledgeViolations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/violations:batchAcknowledgeViolations', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieves Assured Workload Violation based on ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Violation to fetch (ie. Violation.name). Format: organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.violations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the Violations in the AssuredWorkload Environment. Callers may also choose to read across multiple Workloads as per [AIP-159](https://google.aip.dev/159) by using '-' (the hyphen or dash character) as a wildcard character instead of workload-id in the parent. Format `organizations/{org_id}/locations/{location}/workloads/-`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A custom filter for filtering by the Violations properties.
-     * @param {string} apiParams.interval.endTime - The end of the time window.
-     * @param {string} apiParams.interval.startTime - The start of the time window.
-     * @param {string} apiParams.orderBy - Optional. Actionable sorting delegation.
-     * @param {integer} apiParams.pageSize - Optional. Page size.
-     * @param {string} apiParams.pageToken - Optional. Page token returned from previous request.
-     * @param {string} apiParams.parent - (Required) Required. The Workload name. Format `organizations/{org_id}/locations/{location}/workloads/{workload}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.violations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/violations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Acknowledges an existing violation. By acknowledging a violation, users acknowledge the existence of a compliance violation in their workload and decide to ignore it due to a valid business justification. Acknowledgement is a permanent operation and it cannot be reverted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Violation to acknowledge. Format: organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.workloads.violations.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acknowledge', 'POST', apiParams, clientConfig);
-
-    this.organizations.locations.dbFindingSummaries = {};
-
-    /**
-     * Lists the finding summary by category for a given scope.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. The filtering results.
-     * @param {integer} apiParams.pageSize - Optional. The requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token that identifies the page of results that the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The parent scope for the framework overview page. Formats: - projects/{project}/locations/{location} - folders/{folder}/locations/{location} - organizations/{organization}/locations/{location}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.dbFindingSummaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dbFindingSummaries', 'GET', apiParams, clientConfig);
-
     this.organizations.locations.operations = {};
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -255,65 +221,15 @@ class Assuredworkloads {
      */
     this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
 
-    this.folders = {};
-
-    this.folders.locations = {};
-
-    this.folders.locations.dbFindingSummaries = {};
-
     /**
-     * Lists the finding summary by category for a given scope.
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. The filtering results.
-     * @param {integer} apiParams.pageSize - Optional. The requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token that identifies the page of results that the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The parent scope for the framework overview page. Formats: - projects/{project}/locations/{location} - folders/{folder}/locations/{location} - organizations/{organization}/locations/{location}
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.folders.locations.dbFindingSummaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dbFindingSummaries', 'GET', apiParams, clientConfig);
-
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.dbFindingSummaries = {};
-
-    /**
-     * Lists the finding summary by category for a given scope.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. The filtering results.
-     * @param {integer} apiParams.pageSize - Optional. The requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token that identifies the page of results that the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The parent scope for the framework overview page. Formats: - projects/{project}/locations/{location} - folders/{folder}/locations/{location} - organizations/{organization}/locations/{location}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dbFindingSummaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dbFindingSummaries', 'GET', apiParams, clientConfig);
-
-    this.assuredworkloads = {};
-
-    /**
-     * Finds matching ArchivedResourceEvents and moves them back to the ResourceEvents table.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.assuredworkloads.revertArchivedResourceEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/assuredworkloads:revertArchivedResourceEvents', 'POST', apiParams, clientConfig);
-
-    /**
-     * Finds orphan ResourceEvents matching the criteria and moves them to the ArchivedResourceEvents table.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.assuredworkloads.archiveResourceEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/assuredworkloads:archiveResourceEvents', 'POST', apiParams, clientConfig);
+    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
