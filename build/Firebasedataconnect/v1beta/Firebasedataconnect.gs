@@ -26,40 +26,52 @@ class Firebasedataconnect {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.services = {};
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.generateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateQuery', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
     this.projects.locations.services.generateSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateSchema', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
     this.projects.locations.services.introspectGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:introspectGraphql', 'POST', apiParams, clientConfig);
     this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.generateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateQuery', 'POST', apiParams, clientConfig);
     this.projects.locations.services.executeGraphqlRead = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphqlRead', 'POST', apiParams, clientConfig);
 
     this.projects.locations.services.schemas = {};
-    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.services.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'GET', apiParams, clientConfig);
     this.projects.locations.services.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.schemas.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:migrate', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'GET', apiParams, clientConfig);
     this.projects.locations.services.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.services.connectors = {};
-    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeQuery', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeMutation', 'POST', apiParams, clientConfig);
     this.projects.locations.services.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.services.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeMutation', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.services.connectors.impersonateMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateMutation', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeQuery', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
     this.projects.locations.services.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connectors', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.services.postgrest = {};
+    this.projects.locations.services.postgrest.postgrestInsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.postgrest.postgrestSelect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.postgrest.postgrestUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.postgrest.postgrestUpsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.services.postgrest.postgrestDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.services.postgrest.rpc = {};
+    this.projects.locations.services.postgrest.rpc.postgrestQueryFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.postgrest.rpc.postgrestCallFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', 'POST', apiParams, clientConfig);
+
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
