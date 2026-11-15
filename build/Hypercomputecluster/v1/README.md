@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cluster Director API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:56:23 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:56:23 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:27:37 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:27:37 GMT
 - **Created:** Wed, 18 Mar 2026 21:48:03 GMT
 
 
@@ -28,11 +28,11 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -43,38 +43,6 @@ Gets information about a location.
 | `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.clusters`
-
-#### `projects.locations.clusters.list()`
-
-Lists Clusters in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Maximum number of clusters to return. The service may return fewer than this value. |
-| `params.filter` | `string` | No | Optional. [Filter](https://google.aip.dev/160) to apply to the returned results. |
-| `params.parent` | `string` | Yes | Required. Parent location of the clusters to list, in the format `projects/{project}/locations/{location}`. |
-| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListClusters` must match the call that provided the page token. |
-| `params.orderBy` | `string` | No | Optional. How to order the resulting clusters. Must be one of the following strings: * `name` * `name desc` * `create_time` * `create_time desc` If not specified, clusters will be returned in an arbitrary order. |
-
-#### `projects.locations.clusters.delete()`
-
-Deletes a single Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. |
-| `params.name` | `string` | Yes | Required. Name of the cluster to delete, in the format `projects/{project}/locations/{location}/clusters/{cluster}`. |
-
-#### `projects.locations.clusters.patch()`
-
-Updates the parameters of a single Cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. |
-| `params.updateMask` | `string` | No | Optional. Mask specifying which fields in the cluster to update. All paths must be specified explicitly - wildcards are not supported. At least one path must be provided. |
-| `params.name` | `string` | Yes | Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the format `projects/{project}/locations/{location}/clusters/{cluster}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.get()`
 
@@ -95,6 +63,38 @@ Creates a new Cluster in a given project and location.
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.clusters.patch()`
+
+Updates the parameters of a single Cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Mask specifying which fields in the cluster to update. All paths must be specified explicitly - wildcards are not supported. At least one path must be provided. |
+| `params.name` | `string` | Yes | Identifier. [Relative resource name](https://google.aip.dev/122) of the cluster, in the format `projects/{project}/locations/{location}/clusters/{cluster}`. |
+| `params.requestId` | `string` | No | Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.clusters.list()`
+
+Lists Clusters in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListClusters` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListClusters` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. [Filter](https://google.aip.dev/160) to apply to the returned results. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of clusters to return. The service may return fewer than this value. |
+| `params.parent` | `string` | Yes | Required. Parent location of the clusters to list, in the format `projects/{project}/locations/{location}`. |
+| `params.orderBy` | `string` | No | Optional. How to order the resulting clusters. Must be one of the following strings: * `name` * `name desc` * `create_time` * `create_time desc` If not specified, clusters will be returned in an arbitrary order. |
+
+#### `projects.locations.clusters.delete()`
+
+Deletes a single Cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the cluster to delete, in the format `projects/{project}/locations/{location}/clusters/{cluster}`. |
+| `params.requestId` | `string` | No | Optional. A unique identifier for this request. A random UUID is recommended. This request is idempotent if and only if `request_id` is provided. |
+
 ### `projects.locations.operations`
 
 #### `projects.locations.operations.list()`
@@ -103,11 +103,19 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `projects.locations.operations.delete()`
 
@@ -125,11 +133,3 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
