@@ -22,6 +22,16 @@ class Artifactregistry {
     this.projects = {};
 
     /**
+     * Retrieves the Settings for the Project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the projectSettings resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.getProjectSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates the Settings for the Project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set
@@ -32,16 +42,6 @@ class Artifactregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.updateProjectSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Retrieves the Settings for the Project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the projectSettings resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.getProjectSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
 
@@ -69,42 +69,29 @@ class Artifactregistry {
      */
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.repositories = {};
 
     /**
-     * Lists repositories.
+     * Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.orderBy - Optional. The field to order the results by.
-     * @param {integer} apiParams.pageSize - The maximum number of repositories to return. Maximum page size is 1,000.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource whose repositories will be listed.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource where the repository will be created.
+     * @param {string} apiParams.repositoryId - Required. The repository id to use for this repository.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/repositories', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/repositories', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets a repository.
+     * Deletes a repository and all of its contents. The returned Operation will finish once the repository has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty response.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the repository to retrieve.
+     * @param {string} apiParams.name - (Required) Required. The name of the repository to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates a repository.
@@ -119,6 +106,16 @@ class Artifactregistry {
     this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Gets a repository.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the repository to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Tests if the caller has a list of permissions on a resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
@@ -130,16 +127,17 @@ class Artifactregistry {
     this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
+     * Lists repositories.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource where the repository will be created.
-     * @param {string} apiParams.repositoryId - Required. The repository id to use for this repository.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.orderBy - Optional. The field to order the results by.
+     * @param {integer} apiParams.pageSize - The maximum number of repositories to return. Maximum page size is 1,000.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource whose repositories will be listed.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/repositories', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/repositories', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the IAM policy for a given resource.
@@ -163,73 +161,20 @@ class Artifactregistry {
      */
     this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
-    /**
-     * Deletes a repository and all of its contents. The returned Operation will finish once the repository has been deleted. It will not have any Operation metadata and will return a google.protobuf.Empty response.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the repository to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.repositories.aptArtifacts = {};
-
-    /**
-     * Imports Apt artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be imported.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.aptArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/aptArtifacts:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * Directly uploads an Apt artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be uploaded.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.aptArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1beta2/{+parent}/aptArtifacts:create' : 'v1beta2/{+parent}/aptArtifacts:create';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
-    this.projects.locations.repositories.yumArtifacts = {};
-
-    /**
-     * Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be imported.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.yumArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/yumArtifacts:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * Directly uploads a Yum artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be uploaded.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.yumArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1beta2/{+parent}/yumArtifacts:create' : 'v1beta2/{+parent}/yumArtifacts:create';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
     this.projects.locations.repositories.packages = {};
+
+    /**
+     * Lists packages.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.orderBy - Optional. The field to order the results by.
+     * @param {integer} apiParams.pageSize - The maximum number of packages to return. Maximum page size is 1,000.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource whose packages will be listed.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/packages', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a package and all of its versions and tags. The returned operation will complete once the package has been deleted.
@@ -252,19 +197,6 @@ class Artifactregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.repositories.packages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists packages.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.orderBy - Optional. The field to order the results by.
-     * @param {integer} apiParams.pageSize - The maximum number of packages to return. Maximum page size is 1,000.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource whose packages will be listed.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/packages', 'GET', apiParams, clientConfig);
 
     /**
      * Gets a package.
@@ -329,19 +261,6 @@ class Artifactregistry {
     this.projects.locations.repositories.packages.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Lists tags.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project "`y-project` in the us-central region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
-     * @param {integer} apiParams.pageSize - The maximum number of tags to return. Maximum page size is 1,000.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
-     * @param {string} apiParams.parent - (Required) The name of the parent package whose tags will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/tags', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets a tag.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the tag to retrieve.
@@ -350,16 +269,6 @@ class Artifactregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.repositories.packages.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a tag.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the tag to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a tag.
@@ -372,6 +281,57 @@ class Artifactregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.repositories.packages.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/tags', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a tag.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the tag to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists tags.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - An expression for filtering the results of the request. Filter rules are case insensitive. The fields eligible for filtering are: * `name` * `version` Examples of using a filter: To filter the results of your request to tags with the name `my-tag` in package `my-package` in repository `my-repo` in project "`y-project` in the us-central region, append the following filter expression to your request: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my-tag"` You can also use wildcards to match any number of characters before or after the value: * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/my*"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag"` * `name="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/tags/*tag*"` To filter the results of your request to tags applied to the version `1.0` in package `my-package`, append the following filter expression to your request: * `version="projects/my-project/locations/us-central1/repositories/my-repo/packages/my-package/versions/1.0"`
+     * @param {integer} apiParams.pageSize - The maximum number of tags to return. Maximum page size is 1,000.
+     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous list request, if any.
+     * @param {string} apiParams.parent - (Required) The name of the parent package whose tags will be listed. For example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/tags', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.yumArtifacts = {};
+
+    /**
+     * Imports Yum (RPM) artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be imported.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.yumArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/yumArtifacts:import', 'POST', apiParams, clientConfig);
+
+    /**
+     * Directly uploads a Yum artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be uploaded.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.yumArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1beta2/{+parent}/yumArtifacts:create' : 'v1beta2/{+parent}/yumArtifacts:create';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     this.projects.locations.repositories.files = {};
 
@@ -407,6 +367,46 @@ class Artifactregistry {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.repositories.files.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:download', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.aptArtifacts = {};
+
+    /**
+     * Directly uploads an Apt artifact. The returned Operation will complete once the resources are uploaded. Package, Version, and File resources are created based on the imported artifact. Imported artifacts that conflict with existing resources are ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be uploaded.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.aptArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1beta2/{+parent}/aptArtifacts:create' : 'v1beta2/{+parent}/aptArtifacts:create';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    /**
+     * Imports Apt artifacts. The returned Operation will complete once the resources are imported. Package, Version, and File resources are created based on the imported artifacts. Imported artifacts that conflict with existing resources are ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The name of the parent resource where the artifacts will be imported.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.repositories.aptArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/aptArtifacts:import', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
