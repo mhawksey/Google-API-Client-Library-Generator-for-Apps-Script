@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: reports_v1)
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:05:15 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:31:41 GMT
 - **Last Modified:** Fri, 01 May 2026 00:08:00 GMT
 - **Created:** Sun, 31 Aug 2025 23:44:19 GMT
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **Merchant API (version: reports_v1)
 
 #### `accounts.reports.search()`
 
-Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested.
+Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started), [Use Merchant Center Query Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query results](https://developers.google.com/merchant/api/guides/reports/paging).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
