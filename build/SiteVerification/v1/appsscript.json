@@ -3,8 +3,8 @@
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "oauthScopes": [
-    "https://www.googleapis.com/auth/siteverification",
     "https://www.googleapis.com/auth/siteverification.verify_only",
+    "https://www.googleapis.com/auth/siteverification",
     "https://www.googleapis.com/auth/script.external_request"
   ]
 }
