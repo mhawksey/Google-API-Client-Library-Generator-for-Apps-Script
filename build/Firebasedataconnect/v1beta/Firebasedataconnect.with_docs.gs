@@ -50,32 +50,26 @@ class Firebasedataconnect {
     this.projects.locations.services = {};
 
     /**
-     * Creates a new Service in a given project and location.
+     * Generates GraphQL schema based on a natural language prompt or data description. This allows users to scaffold new types and tables quickly. Streams results with real-time status and output chunks.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Value of parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.serviceId - Required. The ID to use for the service, which will become the final component of the service's resource name.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the Service, but do not actually create it.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the service in which to generate the schema. Format: projects/{project}/locations/{location}/services/{service}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.generateSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateSchema', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists Services in a given project and location.
+     * Execute any GraphQL query or mutation against the Firebase SQL Connect's generated GraphQL schema. Grants full read and write access to the connected data sources. Note: Use introspection query to explore the generated GraphQL schema.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results.
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListServices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListServices` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. Value of parent.
+     * @param {string} apiParams.name - (Required) Required. The relative resource name of Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ```
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single Service.
@@ -93,47 +87,18 @@ class Firebasedataconnect {
     this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Gets details of a single Service.
+     * Lists Services in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the service to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service} ```
+     * @param {string} apiParams.filter - Optional. Filtering results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListServices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListServices` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Value of parent.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generates a GraphQL query based on a natural language prompt and the provided schema context. This is a stateless method; the schema is provided per request to support local development states. Streams results with real-time status and output chunks.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the service in which to generate the query. Format: projects/{project}/locations/{location}/services/{service}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.generateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateQuery', 'POST', apiParams, clientConfig);
-
-    /**
-     * Execute any GraphQL query or mutation against the Firebase SQL Connect's generated GraphQL schema. Grants full read and write access to the connected data sources. Note: Use introspection query to explore the generated GraphQL schema.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The relative resource name of Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ```
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
-
-    /**
-     * Generates GraphQL schema based on a natural language prompt or data description. This allows users to scaffold new types and tables quickly. Streams results with real-time status and output chunks.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the service in which to generate the schema. Format: projects/{project}/locations/{location}/services/{service}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.generateSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateSchema', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
 
     /**
      * Execute introspection query against the Firebase SQL Connect's generated GraphQL schema. GraphQL introspection query provides metadata such as what tables the schema have, what queries and mutations can be performed on the schema, and so on. Read more at https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead.
@@ -162,6 +127,41 @@ class Firebasedataconnect {
     this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Gets details of a single Service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the service to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service} ```
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new Service in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Value of parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.serviceId - Required. The ID to use for the service, which will become the final component of the service's resource name.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the Service, but do not actually create it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'POST', apiParams, clientConfig);
+
+    /**
+     * Generates a GraphQL query based on a natural language prompt and the provided schema context. This is a stateless method; the schema is provided per request to support local development states. Streams results with real-time status and output chunks.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the service in which to generate the query. Format: projects/{project}/locations/{location}/services/{service}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.generateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateQuery', 'POST', apiParams, clientConfig);
+
+    /**
      * Execute any GraphQL query against the Firebase SQL Connect's generated GraphQL schema. Grants full read to the connected data sources. `ExecuteGraphqlRead` is identical to `ExecuteGraphql` except it only accepts read-only query.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The relative resource name of Firebase SQL Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ```
@@ -173,16 +173,6 @@ class Firebasedataconnect {
     this.projects.locations.services.executeGraphqlRead = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeGraphqlRead', 'POST', apiParams, clientConfig);
 
     this.projects.locations.services.schemas = {};
-
-    /**
-     * Gets details of a single Schema.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the schema to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ```
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a new Schema in a given project and location. Only creation of `schemas/main` is supported and calling create with any other schema ID will result in an error.
@@ -197,20 +187,6 @@ class Firebasedataconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.services.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists Schemas in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results.
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemas` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. Value of parent.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a single Schema. Because the schema and connectors must be compatible at all times, if this is called while any connectors are active, this will result in an error.
@@ -228,6 +204,41 @@ class Firebasedataconnect {
     this.projects.locations.services.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Gets details of a single Schema.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the schema to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/schemas/{schema} ```
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Executes SQL migration steps against the active database schema. This operation compares submitted migration steps against the schema migration ledger (`firebasesql.schema_migrations`), executes unapplied DDL, and records applied steps. It does NOT persist the GraphQL schema to the control plane.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the target schema: projects/{project}/locations/{location}/services/{service}/schemas/{schema} Note: Only `schemas/main` is supported (singleton schema per service).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.schemas.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:migrate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists Schemas in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results.
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemas` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Value of parent.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/schemas', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates the parameters of a single Schema, and creates a new SchemaRevision with the updated Schema.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.allowMissing - Optional. If true and the Schema is not found, a new Schema will be created. In this case, `update_mask` is ignored.
@@ -243,53 +254,6 @@ class Firebasedataconnect {
     this.projects.locations.services.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.services.connectors = {};
-
-    /**
-     * Execute a predefined query in a Connector.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined query, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeQuery', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a single Connector.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allowMissing - Optional. If true and the Connector is not found, the request will succeed but no action will be taken on the server.
-     * @param {string} apiParams.etag - Optional. The etag of the Connector. If this is provided, it must match the server's etag.
-     * @param {boolean} apiParams.force - Optional. If set to true, any child resources (i.e. ConnectorRevisions) will also be deleted. Otherwise, the request will only work if the Connector has no child resources.
-     * @param {string} apiParams.name - (Required) Required. The name of the connector to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the Connector, but do not actually delete it.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single Connector.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the connector to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Execute a predefined mutation in a Connector.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeMutation', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single Connector, and creates a new ConnectorRevision with the updated Connector. The operations are validated against and must be compatible with the live schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error.
@@ -321,15 +285,40 @@ class Firebasedataconnect {
     this.projects.locations.services.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connectors', 'GET', apiParams, clientConfig);
 
     /**
-     * Impersonate a query defined on a Firebase SQL Connect connector. It grants the admin SDK access to queries defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.
+     * Execute a predefined mutation in a Connector.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined query/mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
+     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeMutation', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a single Connector.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.allowMissing - Optional. If true and the Connector is not found, the request will succeed but no action will be taken on the server.
+     * @param {string} apiParams.etag - Optional. The etag of the Connector. If this is provided, it must match the server's etag.
+     * @param {boolean} apiParams.force - Optional. If set to true, any child resources (i.e. ConnectorRevisions) will also be deleted. Otherwise, the request will only work if the Connector has no child resources.
+     * @param {string} apiParams.name - (Required) Required. The name of the connector to delete, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, validate the request and preview the Connector, but do not actually delete it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Connector.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the connector to retrieve, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Impersonate a mutation defined on a Firebase SQL Connect connector. It grants the admin SDK access to mutations defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.
@@ -341,6 +330,28 @@ class Firebasedataconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.services.connectors.impersonateMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateMutation', 'POST', apiParams, clientConfig);
+
+    /**
+     * Execute a predefined query in a Connector.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined query, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:executeQuery', 'POST', apiParams, clientConfig);
+
+    /**
+     * Impersonate a query defined on a Firebase SQL Connect connector. It grants the admin SDK access to queries defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the connector to find the predefined query/mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a new Connector in a given project and location. The operations are validated against and must be compatible with the active schema. If the operations and schema are not compatible or if the schema is not present, this will result in an error.
@@ -356,7 +367,113 @@ class Firebasedataconnect {
      */
     this.projects.locations.services.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/connectors', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.services.postgrest = {};
+
+    /**
+     * Executes a dynamic INSERT (create) or UPSERT mutation on a target table.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {string} apiParams.firebasedataconnectTable - (Required) Required. The name of the table to insert into.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.postgrestInsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'POST', apiParams, clientConfig);
+
+    /**
+     * Executes a dynamic SELECT (read) query on a target PostgreSQL table. Projections, filters, sorting, and embeddings are mapped from the HTTP URL query parameters.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {string} apiParams.firebasedataconnectTable - (Required) Required. The name of the table to select from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.postgrestSelect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Executes a dynamic UPDATE (modify) mutation on rows matching the URL filters.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {string} apiParams.firebasedataconnectTable - (Required) Required. The name of the table to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.postgrestUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Executes a dynamic UPSERT (replace or create) mutation on a target table identified by primary key filters.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {string} apiParams.firebasedataconnectTable - (Required) Required. The name of the table to upsert into.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.postgrestUpsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Executes a dynamic DELETE mutation on rows matching the URL filters.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {string} apiParams.firebasedataconnectTable - (Required) Required. The name of the table to delete from.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.postgrestDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/{+firebasedataconnectTable}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.services.postgrest.rpc = {};
+
+    /**
+     * Executes a read-only PostgreSQL database function.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectFunction - (Required) Required. The name of the database function.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.rpc.postgrestQueryFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Executes a PostgreSQL database function.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.firebasedataconnectFunction - (Required) Required. The name of the database function.
+     * @param {string} apiParams.firebasedataconnectService - (Required) Required. The resource name of the service, in the format: `projects/{project}/locations/{location}/services/{service}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.services.postgrest.rpc.postgrestCallFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+firebasedataconnectService}/postgrest/rpc/{+firebasedataconnectFunction}', 'POST', apiParams, clientConfig);
+
     this.projects.locations.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
@@ -373,16 +490,6 @@ class Firebasedataconnect {
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
@@ -391,17 +498,6 @@ class Firebasedataconnect {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
