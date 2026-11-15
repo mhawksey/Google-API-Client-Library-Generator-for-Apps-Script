@@ -1,11 +1,11 @@
-# blogger API - Apps Script Client Library
+# Blogger API - Apps Script Client Library
 
-Auto-generated client library for using the **blogger API (version: v3)** in Google Apps Script.
+Auto-generated client library for using the **Blogger API (version: v3)** in Google Apps Script.
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:25:47 GMT
-- **Last Modified:** Sun, 31 May 2026 23:31:38 GMT
+- **Last Checked:** Sun, 15 Nov 2026 15:37:34 GMT
+- **Last Modified:** Sun, 15 Nov 2026 15:37:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:46 GMT
 
 
@@ -14,100 +14,96 @@ Auto-generated client library for using the **blogger API (version: v3)** in Goo
 
 ## API Reference
 
-### `comments`
+### `blogUserInfos`
 
-#### `comments.approve()`
+#### `blogUserInfos.get()`
 
-Marks a comment as not spam by blog id, post id and comment id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.commentId` | `string` | Yes |  |
-
-#### `comments.delete()`
-
-Deletes a comment by blog id, post id and comment id.
+Gets one blog and user info pair by blog id and user id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.maxPosts` | `integer` | No |  |
+| `params.userId` | `string` | Yes |  |
 | `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.commentId` | `string` | Yes |  |
 
-#### `comments.get()`
+### `postUserInfos`
 
-Gets a comment by id.
+#### `postUserInfos.get()`
+
+Gets one post and user info pair, by post_id and user_id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.maxComments` | `integer` | No |  |
+| `params.userId` | `string` | Yes |  |
 | `params.blogId` | `string` | Yes |  |
 | `params.postId` | `string` | Yes |  |
-| `params.commentId` | `string` | Yes |  |
-| `params.view` | `string` | No |  |
 
-#### `comments.list()`
+#### `postUserInfos.list()`
 
-Lists comments.
+Lists post and user info pairs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.startDate` | `string` | No |  |
-| `params.endDate` | `string` | No |  |
 | `params.maxResults` | `integer` | No |  |
 | `params.fetchBodies` | `boolean` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.view` | `string` | No |  |
-| `params.status` | `string` | No |  |
-
-#### `comments.listByBlog()`
-
-Lists comments by blog.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
+| `params.orderBy` | `string` | No |  |
+| `params.userId` | `string` | Yes |  |
 | `params.startDate` | `string` | No |  |
-| `params.endDate` | `string` | No |  |
-| `params.maxResults` | `integer` | No |  |
-| `params.fetchBodies` | `boolean` | No |  |
-| `params.pageToken` | `string` | No |  |
 | `params.status` | `string` | No |  |
-
-#### `comments.markAsSpam()`
-
-Marks a comment as spam by blog id, post id and comment id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.endDate` | `string` | No |  |
 | `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.commentId` | `string` | Yes |  |
-
-#### `comments.removeContent()`
-
-Removes the content of a comment by blog id, post id and comment id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.commentId` | `string` | Yes |  |
+| `params.labels` | `string` | No |  |
+| `params.view` | `string` | No |  |
 
 ### `pages`
 
-#### `pages.delete()`
+#### `pages.patch()`
 
-Deletes a page by blog id and page id.
+Patches a page.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.publish` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.pageId` | `string` | Yes |  |
+| `params.revert` | `boolean` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `pages.update()`
+
+Updates a page by blog id and page id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
+| `params.publish` | `boolean` | No |  |
+| `params.revert` | `boolean` | No |  |
 | `params.pageId` | `string` | Yes |  |
-| `params.useTrash` | `boolean` | No | Move to Trash if possible |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `pages.list()`
+
+Lists pages.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.blogId` | `string` | Yes |  |
+| `params.view` | `string` | No |  |
+| `params.fetchBodies` | `boolean` | No |  |
+| `params.maxResults` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.status` | `string` | No |  |
+
+#### `pages.publish()`
+
+Publishes a page.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
 
 #### `pages.get()`
 
@@ -115,9 +111,9 @@ Gets a page by blog id and page id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.view` | `string` | No |  |
 | `params.blogId` | `string` | Yes |  |
 | `params.pageId` | `string` | Yes |  |
-| `params.view` | `string` | No |  |
 
 #### `pages.insert()`
 
@@ -129,152 +125,37 @@ Inserts a page.
 | `params.isDraft` | `boolean` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `pages.list()`
-
-Lists pages.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.fetchBodies` | `boolean` | No |  |
-| `params.maxResults` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.status` | `string` | No |  |
-| `params.view` | `string` | No |  |
-
-#### `pages.patch()`
-
-Patches a page.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.pageId` | `string` | Yes |  |
-| `params.publish` | `boolean` | No |  |
-| `params.revert` | `boolean` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `pages.publish()`
-
-Publishes a page.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.pageId` | `string` | Yes |  |
-
 #### `pages.revert()`
 
 Reverts a published or scheduled page to draft state.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
 | `params.pageId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
 
-#### `pages.update()`
+#### `pages.delete()`
 
-Updates a page by blog id and page id.
+Deletes a page by blog id and page id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.useTrash` | `boolean` | No | Move to Trash if possible |
+| `params.pageId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+
+### `pageViews`
+
+#### `pageViews.get()`
+
+Gets page views by blog id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
-| `params.pageId` | `string` | Yes |  |
-| `params.publish` | `boolean` | No |  |
-| `params.revert` | `boolean` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.range` | `string` | No |  |
 
 ### `posts`
-
-#### `posts.delete()`
-
-Deletes a post by blog id and post id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.useTrash` | `boolean` | No | Move to Trash if possible |
-
-#### `posts.get()`
-
-Gets a post by blog id and post id
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.fetchBody` | `boolean` | No |  |
-| `params.fetchImages` | `boolean` | No |  |
-| `params.maxComments` | `integer` | No |  |
-| `params.view` | `string` | No |  |
-
-#### `posts.getByPath()`
-
-Gets a post by path.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.path` | `string` | Yes |  |
-| `params.maxComments` | `integer` | No |  |
-| `params.view` | `string` | No |  |
-
-#### `posts.insert()`
-
-Inserts a post.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.fetchBody` | `boolean` | No |  |
-| `params.fetchImages` | `boolean` | No |  |
-| `params.isDraft` | `boolean` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `posts.list()`
-
-Lists posts.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.endDate` | `string` | No |  |
-| `params.fetchBodies` | `boolean` | No |  |
-| `params.fetchImages` | `boolean` | No |  |
-| `params.labels` | `string` | No |  |
-| `params.maxResults` | `integer` | No |  |
-| `params.orderBy` | `string` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.startDate` | `string` | No |  |
-| `params.status` | `string` | No |  |
-| `params.view` | `string` | No |  |
-| `params.sortOption` | `string` | No | Sort direction applied to post list. |
-
-#### `posts.patch()`
-
-Patches a post.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.fetchBody` | `boolean` | No |  |
-| `params.fetchImages` | `boolean` | No |  |
-| `params.maxComments` | `integer` | No |  |
-| `params.publish` | `boolean` | No |  |
-| `params.revert` | `boolean` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `posts.publish()`
-
-Publishes a post.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.publishDate` | `string` | No |  |
 
 #### `posts.revert()`
 
@@ -285,16 +166,40 @@ Reverts a published or scheduled post to draft state.
 | `params.blogId` | `string` | Yes |  |
 | `params.postId` | `string` | Yes |  |
 
-#### `posts.search()`
+#### `posts.delete()`
 
-Searches for posts matching given query terms in the specified blog.
+Deletes a post by blog id and post id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
-| `params.q` | `string` | Yes |  |
-| `params.fetchBodies` | `boolean` | No |  |
-| `params.orderBy` | `string` | No |  |
+| `params.useTrash` | `boolean` | No | Move to Trash if possible |
+| `params.postId` | `string` | Yes |  |
+
+#### `posts.publish()`
+
+Publishes a post.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.publishDate` | `string` | No |  |
+| `params.postId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+
+#### `posts.patch()`
+
+Patches a post.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.publish` | `boolean` | No |  |
+| `params.fetchImages` | `boolean` | No |  |
+| `params.revert` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.maxComments` | `integer` | No |  |
+| `params.fetchBody` | `boolean` | No |  |
+| `params.postId` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `posts.update()`
 
@@ -302,14 +207,80 @@ Updates a post by blog id and post id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.fetchBody` | `boolean` | No |  |
 | `params.fetchImages` | `boolean` | No |  |
+| `params.fetchBody` | `boolean` | No |  |
+| `params.revert` | `boolean` | No |  |
 | `params.maxComments` | `integer` | No |  |
 | `params.publish` | `boolean` | No |  |
-| `params.revert` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.postId` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `posts.insert()`
+
+Inserts a post.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fetchBody` | `boolean` | No |  |
+| `params.fetchImages` | `boolean` | No |  |
+| `params.isDraft` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `posts.search()`
+
+Searches for posts matching given query terms in the specified blog.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fetchBodies` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.q` | `string` | Yes |  |
+| `params.orderBy` | `string` | No |  |
+
+#### `posts.get()`
+
+Gets a post by blog id and post id
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.view` | `string` | No |  |
+| `params.fetchImages` | `boolean` | No |  |
+| `params.fetchBody` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.maxComments` | `integer` | No |  |
+| `params.postId` | `string` | Yes |  |
+
+#### `posts.list()`
+
+Lists posts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.blogId` | `string` | Yes |  |
+| `params.labels` | `string` | No |  |
+| `params.startDate` | `string` | No |  |
+| `params.status` | `string` | No |  |
+| `params.fetchImages` | `boolean` | No |  |
+| `params.endDate` | `string` | No |  |
+| `params.view` | `string` | No |  |
+| `params.maxResults` | `integer` | No |  |
+| `params.sortOption` | `string` | No | Sort direction applied to post list. |
+| `params.pageToken` | `string` | No |  |
+| `params.orderBy` | `string` | No |  |
+| `params.fetchBodies` | `boolean` | No |  |
+
+#### `posts.getByPath()`
+
+Gets a post by path.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.path` | `string` | Yes |  |
+| `params.maxComments` | `integer` | No |  |
+| `params.view` | `string` | No |  |
+| `params.blogId` | `string` | Yes |  |
 
 ### `blogs`
 
@@ -320,8 +291,8 @@ Gets a blog by id.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
-| `params.maxPosts` | `integer` | No |  |
 | `params.view` | `string` | No | Unspecified is interpreted as READER. |
+| `params.maxPosts` | `integer` | No |  |
 
 #### `blogs.getByUrl()`
 
@@ -338,65 +309,11 @@ Lists blogs by user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes |  |
 | `params.fetchUserInfo` | `boolean` | No |  |
-| `params.role` | `string` | No |  |
 | `params.status` | `string` | No | Default value of status is LIVE. |
 | `params.view` | `string` | No | Unspecified is interpreted as the user's role on the blog. |
-
-### `blogUserInfos`
-
-#### `blogUserInfos.get()`
-
-Gets one blog and user info pair by blog id and user id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.role` | `string` | No |  |
 | `params.userId` | `string` | Yes |  |
-| `params.blogId` | `string` | Yes |  |
-| `params.maxPosts` | `integer` | No |  |
-
-### `pageViews`
-
-#### `pageViews.get()`
-
-Gets page views by blog id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.blogId` | `string` | Yes |  |
-| `params.range` | `string` | No |  |
-
-### `postUserInfos`
-
-#### `postUserInfos.get()`
-
-Gets one post and user info pair, by post_id and user_id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes |  |
-| `params.blogId` | `string` | Yes |  |
-| `params.postId` | `string` | Yes |  |
-| `params.maxComments` | `integer` | No |  |
-
-#### `postUserInfos.list()`
-
-Lists post and user info pairs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes |  |
-| `params.blogId` | `string` | Yes |  |
-| `params.startDate` | `string` | No |  |
-| `params.endDate` | `string` | No |  |
-| `params.fetchBodies` | `boolean` | No |  |
-| `params.labels` | `string` | No |  |
-| `params.maxResults` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.orderBy` | `string` | No |  |
-| `params.view` | `string` | No |  |
-| `params.status` | `string` | No |  |
 
 ### `users`
 
@@ -407,3 +324,86 @@ Gets one user by user_id.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes |  |
+
+### `comments`
+
+#### `comments.delete()`
+
+Deletes a comment by blog id, post id and comment id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.commentId` | `string` | Yes |  |
+
+#### `comments.approve()`
+
+Marks a comment as not spam by blog id, post id and comment id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.commentId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.postId` | `string` | Yes |  |
+
+#### `comments.list()`
+
+Lists comments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.status` | `string` | No |  |
+| `params.endDate` | `string` | No |  |
+| `params.fetchBodies` | `boolean` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.maxResults` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.view` | `string` | No |  |
+| `params.postId` | `string` | Yes |  |
+| `params.startDate` | `string` | No |  |
+
+#### `comments.removeContent()`
+
+Removes the content of a comment by blog id, post id and comment id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.commentId` | `string` | Yes |  |
+| `params.postId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+
+#### `comments.listByBlog()`
+
+Lists comments by blog.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.status` | `string` | No |  |
+| `params.fetchBodies` | `boolean` | No |  |
+| `params.startDate` | `string` | No |  |
+| `params.endDate` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.maxResults` | `integer` | No |  |
+
+#### `comments.get()`
+
+Gets a comment by id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.commentId` | `string` | Yes |  |
+| `params.view` | `string` | No |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.postId` | `string` | Yes |  |
+
+#### `comments.markAsSpam()`
+
+Marks a comment as spam by blog id, post id and comment id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.commentId` | `string` | Yes |  |
+| `params.blogId` | `string` | Yes |  |
+| `params.postId` | `string` | Yes |  |
