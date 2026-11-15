@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE Hub API (version: v1alpha)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:55:15 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:55:15 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:20:37 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:20:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:18 GMT
 
 
@@ -13,6 +13,22 @@ Auto-generated client library for using the **GKE Hub API (version: v1alpha)** i
 ---
 
 ## API Reference
+
+### `organizations`
+
+### `organizations.locations`
+
+### `organizations.locations.fleets`
+
+#### `organizations.locations.fleets.list()`
+
+Returns all fleets within an organization or a project that the caller has access to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The organization or project to list for Fleets under, in the format `organizations/*/locations/*` or `projects/*/locations/*`. |
 
 ### `projects`
 
@@ -36,21 +52,105 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 
-### `projects.locations.rollouts`
+### `projects.locations.features`
 
-#### `projects.locations.rollouts.get()`
+#### `projects.locations.features.setIamPolicy()`
 
-Retrieves a single rollout.
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout to retrieve. projects/{project}/locations/{location}/rollouts/{rollout} |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.features.delete()`
+
+Removes a Feature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*`. |
+| `params.force` | `boolean` | No | If set to true, the delete will ignore any outstanding resources for this Feature (that is, `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or modified in any way. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.features.get()`
+
+Gets details of a single Feature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field in Feature proto will be populated. If set to false, the request will fail when some regions are unreachable. |
+| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*` |
+
+#### `projects.locations.features.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.features.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.features.list()`
+
+Lists Features in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field in Feature proto will be populated. If set to false, the request will fail when some regions are unreachable. |
+| `params.pageSize` | `integer` | No | When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.filter` | `string` | No | Lists Features that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh" in project "foo-proj": name = "projects/foo-proj/locations/global/features/servicemesh" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar |
+| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*`. |
+| `params.pageToken` | `string` | No | Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
+
+#### `projects.locations.features.create()`
+
+Adds a new Feature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/*`. |
+| `params.featureId` | `string` | No | The ID of the feature to create. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.features.patch()`
+
+Updates an existing Feature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Mask of fields to update. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.rollouts`
+
+#### `projects.locations.rollouts.resume()`
+
+Resume a paused Rollout. The rollout will be resumed and allowed to be started on clusters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the rollout to resume. projects/{project}/locations/{location}/rollouts/{rollout} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.rollouts.cancel()`
 
@@ -61,14 +161,13 @@ Cancels a Rollout. The rollout will not be started on new clusters, however the 
 | `params.name` | `string` | Yes | Required. The name of the rollout to cancel. projects/{project}/locations/{location}/rollouts/{rollout} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.rollouts.forceCompleteStage()`
+#### `projects.locations.rollouts.get()`
 
-Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed.
+Retrieves a single rollout.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout. Format: projects/{project}/locations/{location}/rollouts/{rollout} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the rollout to retrieve. projects/{project}/locations/{location}/rollouts/{rollout} |
 
 #### `projects.locations.rollouts.list()`
 
@@ -77,17 +176,17 @@ Retrieves the list of all rollouts.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No | The maximum number of rollout to return. The service may return fewer than this value. If unspecified, at most 50 rollouts will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListRollouts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRollouts` must match the call that provided the page token. |
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of rollout. Format: projects/{project}/locations/{location} |
 | `params.filter` | `string` | No | Optional. Lists Rollouts that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListRollouts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRollouts` must match the call that provided the page token. |
 
-#### `projects.locations.rollouts.pause()`
+#### `projects.locations.rollouts.forceCompleteStage()`
 
-Pauses a running Rollout. The rollout will not be started on new clusters, however the rollout running on the cluster will be allowed to finish.
+Force-completes a rollout stage. Only the active stage of an active rollout can be force-completed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout to pause. projects/{project}/locations/{location}/rollouts/{rollout} |
+| `params.name` | `string` | Yes | Required. The name of the rollout. Format: projects/{project}/locations/{location}/rollouts/{rollout} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.rollouts.delete()`
@@ -99,16 +198,24 @@ Removes a Rollout.
 | `params.name` | `string` | Yes | Required. The name of the rollout to delete. projects/{project}/locations/{location}/rollouts/{rollout} |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
-#### `projects.locations.rollouts.resume()`
+#### `projects.locations.rollouts.pause()`
 
-Resume a paused Rollout. The rollout will be resumed and allowed to be started on clusters.
+Pauses a running Rollout. The rollout will not be started on new clusters, however the rollout running on the cluster will be allowed to finish.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout to resume. projects/{project}/locations/{location}/rollouts/{rollout} |
+| `params.name` | `string` | Yes | Required. The name of the rollout to pause. projects/{project}/locations/{location}/rollouts/{rollout} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.rolloutSequences`
+
+#### `projects.locations.rolloutSequences.delete()`
+
+Removes a RolloutSequence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the rollout sequence to delete. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
 
 #### `projects.locations.rolloutSequences.get()`
 
@@ -117,25 +224,6 @@ Retrieve a single rollout sequence.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the rollout sequence to retrieve. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
-
-#### `projects.locations.rolloutSequences.patch()`
-
-Updates a rollout sequence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Name of the rollout sequence in the format of: projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.rolloutSequences.upgrade()`
-
-Upgrades a rollout sequence.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout sequence. Format: projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.rolloutSequences.create()`
 
@@ -147,13 +235,24 @@ Creates a new rollout sequence resource.
 | `params.rolloutSequenceId` | `string` | No | Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.rolloutSequences.delete()`
+#### `projects.locations.rolloutSequences.upgrade()`
 
-Removes a RolloutSequence.
+Upgrades a rollout sequence.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the rollout sequence to delete. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
+| `params.name` | `string` | Yes | Required. The name of the rollout sequence. Format: projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.rolloutSequences.patch()`
+
+Updates a rollout sequence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Name of the rollout sequence in the format of: projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.rolloutSequences.list()`
 
@@ -161,12 +260,95 @@ Retrieves the list of all rollout sequences.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional. Lists Rollout Sequences that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of rollout sequences to return. The service may return fewer than this value. If unspecified, at most 50 rollout sequences will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListRolloutSequences` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRolloutSequences` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Lists Rollout Sequences that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of rollout sequences. Format: projects/{project}/locations/{location} |
 
+### `projects.locations.fleets`
+
+#### `projects.locations.fleets.list()`
+
+Returns all fleets within an organization or a project that the caller has access to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The organization or project to list for Fleets under, in the format `organizations/*/locations/*` or `projects/*/locations/*`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+#### `projects.locations.fleets.delete()`
+
+Removes a Fleet. There must be no memberships remaining in the Fleet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`. |
+
+#### `projects.locations.fleets.patch()`
+
+Updates a fleet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. The fields to be updated; |
+| `params.name` | `string` | Yes | Output only. The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default". |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.fleets.get()`
+
+Returns the details of a fleet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`. |
+
+#### `projects.locations.fleets.create()`
+
+Creates a fleet.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Fleet will be created. Specified in the format `projects/*/locations/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.memberships`
+
+#### `projects.locations.memberships.patch()`
+
+Updates an existing Membership.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. |
+| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.memberships.create()`
+
+Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.membershipId` | `string` | No | Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.memberships.generateConnectManifest()`
+
+Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.registry` | `string` | No | Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. |
+| `params.isUpgrade` | `boolean` | No | Optional. If true, generate the resources for upgrade only. Some resources generated only for installation (e.g. secrets) will be excluded. |
+| `params.imagePullSecretContent` | `string` | No | Optional. The image pull secret content for the registry, if not public. |
+| `params.name` | `string` | Yes | Required. The Membership resource name the Agent will associate with, in the format `projects/*/locations/*/memberships/*`. |
+| `params.version` | `string` | No | Optional. The Connect agent version to use. Defaults to the most current version. |
+| `params.namespace` | `string` | No | Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. |
+| `params.proxy` | `string` | No | Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. |
 
 #### `projects.locations.memberships.testIamPermissions()`
 
@@ -183,51 +365,11 @@ Lists Memberships of admin clusters in a given project and location. **This meth
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships of admin cluster will be listed. Specified in the format `projects/*/locations/*`. |
 | `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListAdminClusterMemberships` which specifies the position in the list from where to continue listing the resources. |
 | `params.orderBy` | `string` | No | Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships of admin cluster will be listed. Specified in the format `projects/*/locations/*`. |
 | `params.filter` | `string` | No | Optional. Lists Memberships of admin clusters that match the filter expression. |
 | `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-
-#### `projects.locations.memberships.validateCreate()`
-
-ValidateCreateMembership is a preflight check for CreateMembership. It checks the following: 1. Caller has the required `gkehub.memberships.create` permission. 2. The membership_id is still available.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.memberships.validateExclusivity()`
-
-ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not depend on an existing Hub membership resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.intendedMembership` | `string` | No | Required. The intended membership name under the `parent`. This method only does validation in anticipation of a CreateMembership call with the same name. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
-| `params.crManifest` | `string` | No | Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. |
-
-#### `projects.locations.memberships.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.memberships.list()`
-
-Lists Memberships in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. |
-| `params.orderBy` | `string` | No | Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the regions. |
-| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING |
 
 #### `projects.locations.memberships.generateExclusivityManifest()`
 
@@ -239,17 +381,6 @@ GenerateExclusivityManifest generates the manifests to update the exclusivity ar
 | `params.crdManifest` | `string` | No | Optional. The YAML manifest of the membership CRD retrieved by `kubectl get customresourcedefinitions membership`. Leave empty if the resource does not exist. |
 | `params.crManifest` | `string` | No | Optional. The YAML manifest of the membership CR retrieved by `kubectl get memberships membership`. Leave empty if the resource does not exist. |
 
-#### `projects.locations.memberships.create()`
-
-Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
-| `params.membershipId` | `string` | No | Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.memberships.setIamPolicy()`
 
 Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -259,30 +390,45 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.memberships.patch()`
+#### `projects.locations.memberships.validateCreate()`
 
-Updates an existing Membership.
+ValidateCreateMembership is a preflight check for CreateMembership. It checks the following: 1. Caller has the required `gkehub.memberships.create` permission. 2. The membership_id is still available.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.memberships.generateConnectManifest()`
+#### `projects.locations.memberships.getIamPolicy()`
 
-Generates the manifest for deployment of the GKE connect agent. **This method is used internally by Google-provided libraries.** Most clients should not need to call this method directly.
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.imagePullSecretContent` | `string` | No | Optional. The image pull secret content for the registry, if not public. |
-| `params.isUpgrade` | `boolean` | No | Optional. If true, generate the resources for upgrade only. Some resources generated only for installation (e.g. secrets) will be excluded. |
-| `params.proxy` | `string` | No | Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound traffic through a HTTP(S) proxy. |
-| `params.registry` | `string` | No | Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect. |
-| `params.name` | `string` | Yes | Required. The Membership resource name the Agent will associate with, in the format `projects/*/locations/*/memberships/*`. |
-| `params.version` | `string` | No | Optional. The Connect agent version to use. Defaults to the most current version. |
-| `params.namespace` | `string` | No | Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect Agent is authorized automatically when run in the default namespace. Otherwise, explicit authorization must be granted with an additional IAM binding. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+
+#### `projects.locations.memberships.list()`
+
+Lists Memberships in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMemberships` which specifies the position in the list from where to continue listing the resources. |
+| `params.orderBy` | `string` | No | Optional. One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be listed. Specified in the format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the regions. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+
+#### `projects.locations.memberships.validateExclusivity()`
+
+ValidateExclusivity validates the state of exclusivity in the cluster. The validation does not depend on an existing Hub membership resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.crManifest` | `string` | No | Optional. The YAML of the membership CR in the cluster. Empty if the membership CR does not exist. |
+| `params.intendedMembership` | `string` | No | Required. The intended membership name under the `parent`. This method only does validation in anticipation of a CreateMembership call with the same name. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Memberships will be created. Specified in the format `projects/*/locations/*`. |
 
 #### `projects.locations.memberships.get()`
 
@@ -298,22 +444,19 @@ Removes a Membership. **This is currently only supported for GKE clusters on Goo
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.force` | `boolean` | No | Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`. |
-| `params.force` | `boolean` | No | Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise, the request will only work if the Membership has no subresource. |
 
 ### `projects.locations.memberships.bindings`
 
-#### `projects.locations.memberships.bindings.list()`
+#### `projects.locations.memberships.bindings.get()`
 
-Lists MembershipBindings.
+Returns the details of a MembershipBinding.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional. Lists MembershipBindings that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
-| `params.parent` | `string` | Yes | Required. The parent Membership for which the MembershipBindings will be listed. Specified in the format `projects/*/locations/*/memberships/*`. |
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMembershipBindings` which specifies the position in the list from where to continue listing the resources. |
+| `params.name` | `string` | Yes | Required. The MembershipBinding resource name in the format `projects/*/locations/*/memberships/*/bindings/*`. |
 
 #### `projects.locations.memberships.bindings.create()`
 
@@ -325,14 +468,6 @@ Creates a MembershipBinding.
 | `params.membershipBindingId` | `string` | No | Required. The ID to use for the MembershipBinding. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.memberships.bindings.delete()`
-
-Deletes a MembershipBinding.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The MembershipBinding resource name in the format `projects/*/locations/*/memberships/*/bindings/*`. |
-
 #### `projects.locations.memberships.bindings.patch()`
 
 Updates a MembershipBinding.
@@ -343,43 +478,26 @@ Updates a MembershipBinding.
 | `params.updateMask` | `string` | No | Required. The fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.memberships.bindings.get()`
+#### `projects.locations.memberships.bindings.delete()`
 
-Returns the details of a MembershipBinding.
+Deletes a MembershipBinding.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The MembershipBinding resource name in the format `projects/*/locations/*/memberships/*/bindings/*`. |
 
-### `projects.locations.memberships.rbacrolebindings`
+#### `projects.locations.memberships.bindings.list()`
 
-#### `projects.locations.memberships.rbacrolebindings.get()`
-
-Returns the details of a Membership RBACRoleBinding.
+Lists MembershipBindings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/memberships/*/rbacrolebindings/*`. |
-
-#### `projects.locations.memberships.rbacrolebindings.list()`
-
-Lists all Membership RBACRoleBindings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/memberships/*`. |
 | `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMembershipRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. |
+| `params.filter` | `string` | No | Optional. Lists MembershipBindings that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
+| `params.parent` | `string` | Yes | Required. The parent Membership for which the MembershipBindings will be listed. Specified in the format `projects/*/locations/*/memberships/*`. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMembershipBindings` which specifies the position in the list from where to continue listing the resources. |
 
-#### `projects.locations.memberships.rbacrolebindings.create()`
-
-Creates a Membership RBACRoleBinding.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
-| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
+### `projects.locations.memberships.rbacrolebindings`
 
 #### `projects.locations.memberships.rbacrolebindings.delete()`
 
@@ -388,16 +506,6 @@ Deletes a Membership RBACRoleBinding.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/memberships/*/rbacrolebindings/*`. |
-
-#### `projects.locations.memberships.rbacrolebindings.generateMembershipRBACRoleBindingYAML()`
-
-Generates a YAML of the RBAC policies for the specified RoleBinding and its associated impersonation resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
-| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.memberships.rbacrolebindings.patch()`
 
@@ -409,43 +517,57 @@ Updates a Membership RBACRoleBinding.
 | `params.updateMask` | `string` | No | Required. The fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.features`
+#### `projects.locations.memberships.rbacrolebindings.get()`
 
-#### `projects.locations.features.list()`
-
-Lists Features in a given project and location.
+Returns the details of a Membership RBACRoleBinding.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field in Feature proto will be populated. If set to false, the request will fail when some regions are unreachable. |
-| `params.pageSize` | `integer` | No | When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*`. |
-| `params.pageToken` | `string` | No | Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
-| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
-| `params.filter` | `string` | No | Lists Features that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Examples: - Feature with the name "servicemesh" in project "foo-proj": name = "projects/foo-proj/locations/global/features/servicemesh" - Features that have a label called `foo`: labels.foo:* - Features that have a label called `foo` whose value is `bar`: labels.foo = bar |
+| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/memberships/*/rbacrolebindings/*`. |
 
-#### `projects.locations.features.create()`
+#### `projects.locations.memberships.rbacrolebindings.generateMembershipRBACRoleBindingYAML()`
 
-Adds a new Feature.
+Generates a YAML of the RBAC policies for the specified RoleBinding and its associated impersonation resources.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Feature will be created. Specified in the format `projects/*/locations/*`. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.featureId` | `string` | No | The ID of the feature to create. |
+| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.features.delete()`
+#### `projects.locations.memberships.rbacrolebindings.list()`
 
-Removes a Feature.
+Lists all Membership RBACRoleBindings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*`. |
-| `params.force` | `boolean` | No | If set to true, the delete will ignore any outstanding resources for this Feature (that is, `FeatureState.has_resources` is set to true). These resources will NOT be cleaned up or modified in any way. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListMembershipRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/memberships/*`. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
 
-#### `projects.locations.features.setIamPolicy()`
+#### `projects.locations.memberships.rbacrolebindings.create()`
+
+Creates a Membership RBACRoleBinding.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.scopes`
+
+#### `projects.locations.scopes.list()`
+
+Lists Scopes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be listed. Specified in the format `projects/*/locations/*`. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListScopes` which specifies the position in the list from where to continue listing the resources. |
+
+#### `projects.locations.scopes.setIamPolicy()`
 
 Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
@@ -454,139 +576,30 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.features.testIamPermissions()`
+#### `projects.locations.scopes.get()`
 
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.features.patch()`
-
-Updates an existing Feature.
+Returns the details of a Scope.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*`. |
-| `params.updateMask` | `string` | No | Mask of fields to update. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The Scope resource name in the format `projects/*/locations/*/scopes/*`. |
 
-#### `projects.locations.features.get()`
+#### `projects.locations.scopes.delete()`
 
-Gets details of a single Feature.
+Deletes a Scope.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Feature resource name in the format `projects/*/locations/*/features/*` |
-| `params.returnPartialSuccess` | `boolean` | No | Optional. If set to true, the response will return partial results when some regions are unreachable and the unreachable field in Feature proto will be populated. If set to false, the request will fail when some regions are unreachable. |
+| `params.name` | `string` | Yes | Required. The Scope resource name in the format `projects/*/locations/*/scopes/*`. |
 
-#### `projects.locations.features.getIamPolicy()`
+#### `projects.locations.scopes.create()`
 
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Creates a Scope.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.fleets`
-
-#### `projects.locations.fleets.get()`
-
-Returns the details of a fleet.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`. |
-
-#### `projects.locations.fleets.patch()`
-
-Updates a fleet.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Required. The fields to be updated; |
-| `params.name` | `string` | Yes | Output only. The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one fleet resource, named "default". |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.fleets.list()`
-
-Returns all fleets within an organization or a project that the caller has access to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.parent` | `string` | Yes | Required. The organization or project to list for Fleets under, in the format `organizations/*/locations/*` or `projects/*/locations/*`. |
-
-#### `projects.locations.fleets.create()`
-
-Creates a fleet.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Fleet will be created. Specified in the format `projects/*/locations/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.fleets.delete()`
-
-Removes a Fleet. There must be no memberships remaining in the Fleet.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Fleet resource name in the format `projects/*/locations/*/fleets/*`. |
-
-### `projects.locations.scopes`
-
-#### `projects.locations.scopes.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.scopeId` | `string` | No | Required. Client chosen ID for the Scope. `scope_id` must be a ???? |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be created. Specified in the format `projects/*/locations/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.scopes.patch()`
@@ -599,13 +612,26 @@ Updates a scopes.
 | `params.updateMask` | `string` | No | Required. The fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.scopes.get()`
+#### `projects.locations.scopes.listMemberships()`
 
-Returns the details of a Scope.
+Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Scope resource name in the format `projects/*/locations/*/scopes/*`. |
+| `params.scopeName` | `string` | Yes | Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the Memberships are bound. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListBoundMemberships` which specifies the position in the list from where to continue listing the resources. |
+| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`, `labels`, `create_time`, `update_time`, and `unique_id`. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. Pagination is currently not supported; therefore, setting this field does not have any impact for now. |
+
+#### `projects.locations.scopes.listPermitted()`
+
+Lists permitted Scopes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be listed. Specified in the format `projects/*/locations/*`. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position in the list from where to continue listing the resources. |
 
 #### `projects.locations.scopes.getIamPolicy()`
 
@@ -616,65 +642,74 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 
-#### `projects.locations.scopes.listMemberships()`
+#### `projects.locations.scopes.testIamPermissions()`
 
-Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. Pagination is currently not supported; therefore, setting this field does not have any impact for now. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListBoundMemberships` which specifies the position in the list from where to continue listing the resources. |
-| `params.scopeName` | `string` | Yes | Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the Memberships are bound. |
-| `params.filter` | `string` | No | Optional. Lists Memberships that match the filter expression, following the syntax outlined in https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`, `labels`, `create_time`, `update_time`, and `unique_id`. |
-
-#### `projects.locations.scopes.list()`
-
-Lists Scopes.
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be listed. Specified in the format `projects/*/locations/*`. |
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListScopes` which specifies the position in the list from where to continue listing the resources. |
-
-#### `projects.locations.scopes.listPermitted()`
-
-Lists permitted Scopes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position in the list from where to continue listing the resources. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be listed. Specified in the format `projects/*/locations/*`. |
-
-#### `projects.locations.scopes.create()`
-
-Creates a Scope.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Scope will be created. Specified in the format `projects/*/locations/*`. |
-| `params.scopeId` | `string` | No | Required. Client chosen ID for the Scope. `scope_id` must be a ???? |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.scopes.delete()`
+### `projects.locations.scopes.rbacrolebindings`
 
-Deletes a Scope.
+#### `projects.locations.scopes.rbacrolebindings.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Scope resource name in the format `projects/*/locations/*/scopes/*`. |
-
-#### `projects.locations.scopes.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+Lists all Scope RBACRoleBindings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/scopes/*`. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListScopeRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. |
+
+#### `projects.locations.scopes.rbacrolebindings.delete()`
+
+Deletes a Scope RBACRoleBinding.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/scopes/*/rbacrolebindings/*`. |
+
+#### `projects.locations.scopes.rbacrolebindings.get()`
+
+Returns the details of a Scope RBACRoleBinding.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/scopes/*/rbacrolebindings/*`. |
+
+#### `projects.locations.scopes.rbacrolebindings.patch()`
+
+Updates a Scope RBACRoleBinding.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}` |
+| `params.updateMask` | `string` | No | Required. The fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.scopes.rbacrolebindings.create()`
+
+Creates a Scope RBACRoleBinding.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/scopes/*`. |
+| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.scopes.namespaces`
+
+#### `projects.locations.scopes.namespaces.list()`
+
+Lists fleet namespaces.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/scopes/*`. |
+| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
+| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
 
 #### `projects.locations.scopes.namespaces.get()`
 
@@ -694,26 +729,6 @@ Updates a fleet namespace.
 | `params.updateMask` | `string` | No | Required. The fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.scopes.namespaces.list()`
-
-Lists fleet namespaces.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/scopes/*`. |
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. |
-
-#### `projects.locations.scopes.namespaces.create()`
-
-Creates a fleet namespace.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Namespace will be created. Specified in the format `projects/*/locations/*/scopes/*`. |
-| `params.scopeNamespaceId` | `string` | No | Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.scopes.namespaces.delete()`
 
 Deletes a fleet namespace.
@@ -722,66 +737,51 @@ Deletes a fleet namespace.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Namespace resource name in the format `projects/*/locations/*/scopes/*/namespaces/*`. |
 
-### `projects.locations.scopes.rbacrolebindings`
+#### `projects.locations.scopes.namespaces.create()`
 
-#### `projects.locations.scopes.rbacrolebindings.get()`
-
-Returns the details of a Scope RBACRoleBinding.
+Creates a fleet namespace.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/scopes/*/rbacrolebindings/*`. |
-
-#### `projects.locations.scopes.rbacrolebindings.list()`
-
-Lists all Scope RBACRoleBindings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. |
-| `params.pageToken` | `string` | No | Optional. Token returned by previous call to `ListScopeRBACRoleBindings` which specifies the position in the list from where to continue listing the resources. |
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Features will be listed. Specified in the format `projects/*/locations/*/scopes/*`. |
-
-#### `projects.locations.scopes.rbacrolebindings.create()`
-
-Creates a Scope RBACRoleBinding.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) where the RBACRoleBinding will be created. Specified in the format `projects/*/locations/*/scopes/*`. |
-| `params.rbacrolebindingId` | `string` | No | Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
+| `params.scopeNamespaceId` | `string` | No | Required. Client chosen ID for the Namespace. `namespace_id` must be a valid RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) where the Namespace will be created. Specified in the format `projects/*/locations/*/scopes/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.scopes.rbacrolebindings.delete()`
+### `projects.locations.operations`
 
-Deletes a Scope RBACRoleBinding.
+#### `projects.locations.operations.cancel()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The RBACRoleBinding resource name in the format `projects/*/locations/*/scopes/*/rbacrolebindings/*`. |
-
-#### `projects.locations.scopes.rbacrolebindings.patch()`
-
-Updates a Scope RBACRoleBinding.
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Required. The fields to be updated. |
-| `params.name` | `string` | Yes | The resource name for the rbacrolebinding `projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}` or `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}` |
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations`
+#### `projects.locations.operations.get()`
 
-### `organizations.locations`
-
-### `organizations.locations.fleets`
-
-#### `organizations.locations.fleets.list()`
-
-Returns all fleets within an organization or a project that the caller has access to.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The organization or project to list for Fleets under, in the format `organizations/*/locations/*` or `projects/*/locations/*`. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
