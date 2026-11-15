@@ -32,6 +32,17 @@ class Slides {
     this.presentations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations', 'POST', apiParams, clientConfig);
 
     /**
+     * Gets the latest version of the specified presentation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.commentsViewMode - The comments view mode to apply to the presentation. This allows viewing the presentation with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used.
+     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.presentationId - (Required) The presentation to apply the updates to.
@@ -42,28 +53,7 @@ class Slides {
      */
     this.presentations.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}:batchUpdate', 'POST', apiParams, clientConfig);
 
-    /**
-     * Gets the latest version of the specified presentation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
-
     this.presentations.pages = {};
-
-    /**
-     * Gets the latest version of the specified page in the presentation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.pageObjectId - (Required) The object ID of the page to retrieve.
-     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.presentations.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}', 'GET', apiParams, clientConfig);
 
     /**
      * Generates a thumbnail of the latest version of the specified page in the presentation and returns a URL to the thumbnail image. This request counts as an [expensive read request](https://developers.google.com/workspace/slides/limits) for quota purposes.
@@ -77,6 +67,18 @@ class Slides {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.presentations.pages.getThumbnail = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the latest version of the specified page in the presentation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.commentsViewMode - The comments view mode to apply to the page. This allows viewing the page with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used.
+     * @param {string} apiParams.pageObjectId - (Required) The object ID of the page to retrieve.
+     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.presentations.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}/pages/{pageObjectId}', 'GET', apiParams, clientConfig);
   }
 
 /**
