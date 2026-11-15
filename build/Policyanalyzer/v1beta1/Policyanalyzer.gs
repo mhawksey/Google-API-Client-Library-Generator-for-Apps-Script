@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Policy Analyzer API
- * Documentation URL: https://www.google.com
+ * Documentation URL: https://cloud.google.com/policy-intelligence/docs/overview
  * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
@@ -28,15 +28,6 @@ class Policyanalyzer {
     this.folders.locations.activityTypes.activities = {};
     this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.activityTypes = {};
-
-    this.projects.locations.activityTypes.activities = {};
-    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -45,6 +36,15 @@ class Policyanalyzer {
 
     this.organizations.locations.activityTypes.activities = {};
     this.organizations.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.activityTypes = {};
+
+    this.projects.locations.activityTypes.activities = {};
+    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
   }
 
 /**
