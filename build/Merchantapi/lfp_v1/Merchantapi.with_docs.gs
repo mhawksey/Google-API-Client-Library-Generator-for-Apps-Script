@@ -21,7 +21,41 @@ class Merchantapi {
 
     this.accounts = {};
 
+    this.accounts.lfpSales = {};
+
+    /**
+     * Inserts a `LfpSale` for the given merchant.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The LFP provider account. Format: `accounts/{lfp_partner}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpSales.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpSales:insert', 'POST', apiParams, clientConfig);
+
     this.accounts.lfpStores = {};
+
+    /**
+     * Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The LFP provider account Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves information about a store.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the stores of the target merchant, specified by the filter in `ListLfpStoresRequest`.
@@ -45,40 +79,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Retrieves information about a store.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the store to retrieve. Format: `accounts/{account}/lfpStores/{target_merchant}~{store_code}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Inserts a store for the target merchant. If the store with the same store code already exists, it will be replaced.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The LFP provider account Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
-
-    this.accounts.lfpSales = {};
-
-    /**
-     * Inserts a `LfpSale` for the given merchant.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The LFP provider account. Format: `accounts/{lfp_partner}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.lfpSales.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpSales:insert', 'POST', apiParams, clientConfig);
 
     this.accounts.lfpInventories = {};
 
