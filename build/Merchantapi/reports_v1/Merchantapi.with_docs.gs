@@ -24,7 +24,7 @@ class Merchantapi {
     this.accounts.reports = {};
 
     /**
-     * Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested.
+     * Retrieves a report defined by a search query. The response might contain fewer rows than specified by `page_size`. Rely on `next_page_token` to determine if there are more rows to be requested. For more information, see [Get started](https://developers.google.com/merchant/api/guides/reports/get-started), [Use Merchant Center Query Language](https://developers.google.com/merchant/api/guides/reports/query-language), and [Paginate query results](https://developers.google.com/merchant/api/guides/reports/paging).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Id of the account making the call. Must be a standalone account or a subaccount of an advanced account. Format: accounts/{account}
      * @param {object} apiParams.requestBody - The request body.
