@@ -19,10 +19,13 @@ class Developerknowledge {
     this._servicePath = '';
 
 
+    this.v1 = {};
+    this.v1.answerQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:answerQuery', 'POST', apiParams, clientConfig);
+
     this.documents = {};
-    this.documents.searchDocumentChunks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:searchDocumentChunks', 'GET', apiParams, clientConfig);
-    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:batchGet', 'GET', apiParams, clientConfig);
+    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.documents.searchDocumentChunks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents:searchDocumentChunks', 'GET', apiParams, clientConfig);
   }
 
 /**
