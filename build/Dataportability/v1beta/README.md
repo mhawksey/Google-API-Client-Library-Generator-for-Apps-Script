@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:44:25 GMT
-- **Last Modified:** Sun, 31 May 2026 23:42:52 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:00:15 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:00:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:22 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **Data Portability API (version: v1b
 ---
 
 ## API Reference
-
-### `portabilityArchive`
-
-#### `portabilityArchive.initiate()`
-
-Initiates a new Archive job for the Portability API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `archiveJobs`
 
@@ -67,6 +57,16 @@ Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This m
 #### `accessType.check()`
 
 Gets the access type of the token.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `portabilityArchive`
+
+#### `portabilityArchive.initiate()`
+
+Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
