@@ -22,9 +22,9 @@ class Smartdevicemanagement {
     this.enterprises = {};
 
     this.enterprises.devices = {};
-    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
     this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.devices.executeCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeCommand', 'POST', apiParams, clientConfig);
+    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
 
     this.enterprises.structures = {};
     this.enterprises.structures.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
