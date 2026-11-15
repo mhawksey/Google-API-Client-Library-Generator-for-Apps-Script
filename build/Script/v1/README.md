@@ -4,8 +4,8 @@ Auto-generated client library for using the **Apps Script API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:16:08 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:16:08 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:52:36 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:52:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:23 GMT
 
 
@@ -14,15 +14,44 @@ Auto-generated client library for using the **Apps Script API (version: v1)** in
 
 ## API Reference
 
-### `projects`
+### `processes`
 
-#### `projects.create()`
+#### `processes.list()`
 
-Creates a new, empty script project with no script files and a base manifest file.
+List information about processes made by or on behalf of a user, such as process type and current status.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.userProcessFilter.projectName` | `string` | No | Optional field used to limit returned processes to those originating from projects with project names containing a specific string. |
+| `params.userProcessFilter.startTime` | `string` | No | Optional field used to limit returned processes to those that were started on or after the given timestamp. |
+| `params.userProcessFilter.functionName` | `string` | No | Optional field used to limit returned processes to those originating from a script function with the given function name. |
+| `params.userProcessFilter.endTime` | `string` | No | Optional field used to limit returned processes to those that completed on or before the given timestamp. |
+| `params.userProcessFilter.userAccessLevels` | `string` | No | Optional field used to limit returned processes to those having one of the specified user access levels. |
+| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
+| `params.userProcessFilter.statuses` | `string` | No | Optional field used to limit returned processes to those having one of the specified process statuses. |
+| `params.pageSize` | `integer` | No | The maximum number of returned processes per page of results. Defaults to 50. |
+| `params.userProcessFilter.deploymentId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific deployment ID. |
+| `params.userProcessFilter.scriptId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific script ID. |
+| `params.userProcessFilter.types` | `string` | No | Optional field used to limit returned processes to those having one of the specified process types. |
+
+#### `processes.listScriptProcesses()`
+
+List information about a script's executed processes, such as process type and current status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
+| `params.scriptProcessFilter.deploymentId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific deployment ID. |
+| `params.scriptProcessFilter.startTime` | `string` | No | Optional field used to limit returned processes to those that were started on or after the given timestamp. |
+| `params.scriptProcessFilter.types` | `string` | No | Optional field used to limit returned processes to those having one of the specified process types. |
+| `params.scriptProcessFilter.userAccessLevels` | `string` | No | Optional field used to limit returned processes to those having one of the specified user access levels. |
+| `params.scriptProcessFilter.endTime` | `string` | No | Optional field used to limit returned processes to those that completed on or before the given timestamp. |
+| `params.scriptProcessFilter.statuses` | `string` | No | Optional field used to limit returned processes to those having one of the specified process statuses. |
+| `params.scriptProcessFilter.functionName` | `string` | No | Optional field used to limit returned processes to those originating from a script function with the given function name. |
+| `params.pageSize` | `integer` | No | The maximum number of returned processes per page of results. Defaults to 50. |
+| `params.scriptId` | `string` | No | The script ID of the project whose processes are listed. |
+
+### `projects`
 
 #### `projects.getMetrics()`
 
@@ -30,17 +59,16 @@ Get metrics data for scripts, such as number of executions and active users.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.scriptId` | `string` | Yes | Required field indicating the script to get metrics for. |
 | `params.metricsFilter.deploymentId` | `string` | No | Optional field indicating a specific deployment to retrieve metrics from. |
 | `params.metricsGranularity` | `string` | No | Required field indicating what granularity of metrics are returned. |
+| `params.scriptId` | `string` | Yes | Required field indicating the script to get metrics for. |
 
-#### `projects.updateContent()`
+#### `projects.create()`
 
-Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.
+Creates a new, empty script project with no script files and a base manifest file.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.get()`
@@ -51,6 +79,15 @@ Gets a script project's metadata.
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 
+#### `projects.updateContent()`
+
+Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.getContent()`
 
 Gets the content of the script project, including the code source and metadata for each script file.
@@ -59,55 +96,6 @@ Gets the content of the script project, including the code source and metadata f
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 | `params.versionNumber` | `integer` | No | The version number of the project to retrieve. If not provided, the project's HEAD version is returned. |
-
-### `projects.deployments`
-
-#### `projects.deployments.update()`
-
-Updates a deployment of an Apps Script project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.deploymentId` | `string` | Yes | The deployment ID for this deployment. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deployments.create()`
-
-Creates a deployment of an Apps Script project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deployments.delete()`
-
-Deletes a deployment of an Apps Script project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.deploymentId` | `string` | Yes | The deployment ID to be undeployed. |
-
-#### `projects.deployments.get()`
-
-Gets a deployment of an Apps Script project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.deploymentId` | `string` | Yes | The deployment ID. |
-
-#### `projects.deployments.list()`
-
-Lists the deployments of an Apps Script project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
-| `params.pageSize` | `integer` | No | The maximum number of deployments on each returned page. Defaults to 50. |
-| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 
 ### `projects.versions`
 
@@ -135,46 +123,58 @@ List the versions of a script project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
-| `params.pageSize` | `integer` | No | The maximum number of versions on each returned page. Defaults to 50. |
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.pageSize` | `integer` | No | The maximum number of versions on each returned page. Defaults to 50. |
+| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
 
-### `processes`
+### `projects.deployments`
 
-#### `processes.listScriptProcesses()`
+#### `projects.deployments.create()`
 
-List information about a script's executed processes, such as process type and current status.
+Creates a deployment of an Apps Script project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.scriptProcessFilter.deploymentId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific deployment ID. |
-| `params.scriptProcessFilter.userAccessLevels` | `string` | No | Optional field used to limit returned processes to those having one of the specified user access levels. |
-| `params.scriptProcessFilter.startTime` | `string` | No | Optional field used to limit returned processes to those that were started on or after the given timestamp. |
-| `params.scriptId` | `string` | No | The script ID of the project whose processes are listed. |
-| `params.scriptProcessFilter.types` | `string` | No | Optional field used to limit returned processes to those having one of the specified process types. |
-| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
-| `params.scriptProcessFilter.functionName` | `string` | No | Optional field used to limit returned processes to those originating from a script function with the given function name. |
-| `params.scriptProcessFilter.endTime` | `string` | No | Optional field used to limit returned processes to those that completed on or before the given timestamp. |
-| `params.scriptProcessFilter.statuses` | `string` | No | Optional field used to limit returned processes to those having one of the specified process statuses. |
-| `params.pageSize` | `integer` | No | The maximum number of returned processes per page of results. Defaults to 50. |
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `processes.list()`
+#### `projects.deployments.get()`
 
-List information about processes made by or on behalf of a user, such as process type and current status.
+Gets a deployment of an Apps Script project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userProcessFilter.startTime` | `string` | No | Optional field used to limit returned processes to those that were started on or after the given timestamp. |
-| `params.userProcessFilter.functionName` | `string` | No | Optional field used to limit returned processes to those originating from a script function with the given function name. |
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.deploymentId` | `string` | Yes | The deployment ID. |
+
+#### `projects.deployments.update()`
+
+Updates a deployment of an Apps Script project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.deploymentId` | `string` | Yes | The deployment ID for this deployment. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deployments.delete()`
+
+Deletes a deployment of an Apps Script project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
+| `params.deploymentId` | `string` | Yes | The deployment ID to be undeployed. |
+
+#### `projects.deployments.list()`
+
+Lists the deployments of an Apps Script project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 | `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response. |
-| `params.userProcessFilter.endTime` | `string` | No | Optional field used to limit returned processes to those that completed on or before the given timestamp. |
-| `params.userProcessFilter.userAccessLevels` | `string` | No | Optional field used to limit returned processes to those having one of the specified user access levels. |
-| `params.pageSize` | `integer` | No | The maximum number of returned processes per page of results. Defaults to 50. |
-| `params.userProcessFilter.deploymentId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific deployment ID. |
-| `params.userProcessFilter.types` | `string` | No | Optional field used to limit returned processes to those having one of the specified process types. |
-| `params.userProcessFilter.statuses` | `string` | No | Optional field used to limit returned processes to those having one of the specified process statuses. |
-| `params.userProcessFilter.scriptId` | `string` | No | Optional field used to limit returned processes to those originating from projects with a specific script ID. |
-| `params.userProcessFilter.projectName` | `string` | No | Optional field used to limit returned processes to those originating from projects with project names containing a specific string. |
+| `params.pageSize` | `integer` | No | The maximum number of deployments on each returned page. Defaults to 50. |
 
 ### `scripts`
 
