@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:44:40 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:44:40 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:00:41 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:00:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:40 GMT
 
 
@@ -16,45 +16,18 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1)*
 
 ### `projects`
 
-#### `projects.runQuery()`
+#### `projects.allocateIds()`
 
-Queries for entities.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.runAggregationQuery()`
-
-Runs an aggregation query.
+Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.rollback()`
+#### `projects.export()`
 
-Rolls back a transaction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.reserveIds()`
-
-Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.import()`
-
-Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore.
+Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -79,18 +52,9 @@ Commits a transaction, optionally creating, deleting or modifying some entities.
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.export()`
+#### `projects.runAggregationQuery()`
 
-Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. Project ID against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.allocateIds()`
-
-Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
+Runs an aggregation query.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -100,6 +64,42 @@ Allocates IDs for the given keys, which is useful for referencing an entity befo
 #### `projects.beginTransaction()`
 
 Begins a new transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.rollback()`
+
+Rolls back a transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.import()`
+
+Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Datastore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. Project ID against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.reserveIds()`
+
+Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.runQuery()`
+
+Queries for entities.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -117,6 +117,26 @@ Creates the specified index. A newly created index's initial state is `CREATING`
 | `params.projectId` | `string` | Yes | Project ID against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.indexes.get()`
+
+Gets an index.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.indexId` | `string` | Yes | The resource ID of the index to get. |
+| `params.projectId` | `string` | Yes | Project ID against which to make the request. |
+
+#### `projects.indexes.list()`
+
+Lists the indexes that match the specified filters. Datastore uses an eventually consistent query to fetch the list of indexes and may occasionally return stale results.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Project ID against which to make the request. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. If zero, then all results will be returned. |
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.filter` | `string` | No |  |
+
 #### `projects.indexes.delete()`
 
 Deletes an existing index. An index can only be deleted if it is in a `READY` or `ERROR` state. On successful execution of the request, the index will be in a `DELETING` state. And on completion of the returned google.longrunning.Operation, the index will be removed. During index deletion, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, followed by calling delete again.
@@ -126,35 +146,27 @@ Deletes an existing index. An index can only be deleted if it is in a `READY` or
 | `params.projectId` | `string` | Yes | Project ID against which to make the request. |
 | `params.indexId` | `string` | Yes | The resource ID of the index to delete. |
 
-#### `projects.indexes.get()`
-
-Gets an index.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Project ID against which to make the request. |
-| `params.indexId` | `string` | Yes | The resource ID of the index to get. |
-
-#### `projects.indexes.list()`
-
-Lists the indexes that match the specified filters. Datastore uses an eventually consistent query to fetch the list of indexes and may occasionally return stale results.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Project ID against which to make the request. |
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. If zero, then all results will be returned. |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-
 ### `projects.operations`
 
-#### `projects.operations.delete()`
+#### `projects.operations.get()`
 
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
 
 #### `projects.operations.cancel()`
 
@@ -164,22 +176,10 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 
-#### `projects.operations.list()`
+#### `projects.operations.delete()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
