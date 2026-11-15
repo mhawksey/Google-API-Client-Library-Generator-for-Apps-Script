@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:23:56 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:23:56 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:01:18 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:01:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -54,18 +54,9 @@ Returns a list of Anywhere Cache instances of the bucket matching the criteria.
 | `params.pageSize` | `integer` | No | Maximum number of items to return in a single page of responses. Maximum 1000. |
 | `params.pageToken` | `string` | No | A previously-returned page token representing part of the larger set of results to view. |
 
-#### `anywhereCaches.pause()`
-
-Pauses an Anywhere Cache instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.bucket` | `string` | Yes | Name of the parent bucket. |
-| `params.anywhereCacheId` | `string` | Yes | The ID of requested Anywhere Cache instance. |
-
 #### `anywhereCaches.resume()`
 
-Resumes a paused or disabled Anywhere Cache instance.
+Resumes a disabled Anywhere Cache instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -80,6 +71,55 @@ Disables an Anywhere Cache instance.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the parent bucket. |
 | `params.anywhereCacheId` | `string` | Yes | The ID of requested Anywhere Cache instance. |
+
+### `rapidCaches`
+
+#### `rapidCaches.insert()`
+
+Creates a Rapid Cache instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the parent bucket. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `rapidCaches.update()`
+
+Updates the configuration of a Rapid Cache instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the parent bucket. |
+| `params.rapidCacheId` | `string` | Yes | The ID of the requested Rapid Cache instance. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `rapidCaches.get()`
+
+Returns the metadata of a Rapid Cache instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the parent bucket. |
+| `params.rapidCacheId` | `string` | Yes | The ID of the requested Rapid Cache instance. |
+
+#### `rapidCaches.list()`
+
+Returns a list of Rapid Cache instances of the bucket.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the parent bucket. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return in a single page of responses. |
+| `params.pageToken` | `string` | No | A previously-returned page token representing part of the larger set of results to view. |
+
+#### `rapidCaches.disable()`
+
+Disables a Rapid Cache instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the parent bucket. |
+| `params.rapidCacheId` | `string` | Yes | The ID of the requested Rapid Cache instance. |
 
 ### `bucketAccessControls`
 
@@ -340,16 +380,6 @@ Lists operations that match the specified filter in the request.
 | `params.pageSize` | `integer` | No | Maximum number of items to return in a single page of responses. Fewer total results may be returned than requested. The service uses this parameter or 100 items, whichever is smaller. |
 | `params.pageToken` | `string` | No | A previously-returned page token representing part of the larger set of results to view. |
 
-### `channels`
-
-#### `channels.stop()`
-
-Stop watching resources through this channel
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `defaultObjectAccessControls`
 
 #### `defaultObjectAccessControls.delete()`
@@ -510,6 +540,18 @@ Returns metadata of the specified managed folder.
 | `params.managedFolder` | `string` | Yes | The managed folder name/path. |
 | `params.ifMetagenerationMatch` | `string` | No | Makes the return of the managed folder metadata conditional on whether the managed folder's current metageneration matches the given value. |
 | `params.ifMetagenerationNotMatch` | `string` | No | Makes the return of the managed folder metadata conditional on whether the managed folder's current metageneration does not match the given value. |
+
+#### `managedFolders.update()`
+
+Updates a managed folder using patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | The name of the bucket containing the managed folder. |
+| `params.managedFolder` | `string` | Yes | The name of the managed folder. |
+| `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the metageneration of the managed folder matches the specified value. |
+| `params.ifMetagenerationNotMatch` | `string` | No | Makes the operation conditional on whether the metageneration of the managed folder doesn't match the specified value. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedFolders.getIamPolicy()`
 
@@ -691,7 +733,10 @@ Concatenates a list of existing objects into a new object in the same bucket.
 | `params.destinationBucket` | `string` | Yes | Name of the bucket containing the source objects. The destination object is stored in this bucket. |
 | `params.destinationObject` | `string` | Yes | Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.destinationPredefinedAcl` | `string` | No | Apply a predefined set of access controls to the destination object. |
-| `params.dropContextGroups` | `string` | No | Specifies which groups of Object Contexts from the source object(s) should be dropped from the destination object. |
+| `params.dropContextGroups` | `string` | No | Specifies which object context groups to drop from the source object(s) during a compose operation. The accepted value is 'custom'.
+Destination contexts behave as follows:
+- When request body contexts are provided, they override all source contexts.
+- When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped. |
 | `params.ifGenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. |
 | `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current metageneration matches the given value. |
 | `params.kmsKeyName` | `string` | No | Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. |
@@ -837,7 +882,10 @@ Rewrites a source object to a destination object. Optionally overrides metadata.
 | `params.destinationKmsKeyName` | `string` | No | Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. |
 | `params.destinationObject` | `string` | Yes | Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.destinationPredefinedAcl` | `string` | No | Apply a predefined set of access controls to the destination object. |
-| `params.dropContextGroups` | `string` | No | Specifies which groups of Object Contexts from the source object should be dropped from the destination object. |
+| `params.dropContextGroups` | `string` | No | Specifies which object context groups to drop from the source object during a copy operation. The accepted value is 'custom'.
+Destination contexts behave as follows:
+- When request body contexts are provided, they override all source contexts.
+- When no request body contexts are provided, source contexts are preserved unless 'dropContextGroups' contains 'custom', in which case all contexts are dropped. |
 | `params.ifGenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current generation matches the given value. Setting to 0 makes the operation succeed only if there are no live versions of the object. |
 | `params.ifGenerationNotMatch` | `string` | No | Makes the operation conditional on whether the object's current generation does not match the given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there is a live version of the object. |
 | `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the destination object's current metageneration matches the given value. |
@@ -944,6 +992,18 @@ Initiates a long-running bulk restore operation on the specified bucket.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket in which the object resides. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `objects.viewFullContext()`
+
+Retrieves a specific object context with its extended data for a given object.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bucket` | `string` | Yes | Name of the bucket in which the object resides. |
+| `params.object` | `string` | Yes | Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
+| `params.generation` | `string` | No | If present, selects a specific revision of this object (as opposed to the latest version, the default). |
+| `params.contextKey` | `string` | Yes | Key identifying the object context to retrieve. |
+| `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
 
 ### `projects`
 
