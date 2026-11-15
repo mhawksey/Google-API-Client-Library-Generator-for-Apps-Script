@@ -19,6 +19,9 @@ class Sts {
     this._servicePath = '';
 
 
+    this.v1 = {};
+    this.v1.token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/token', 'POST', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.locations = {};
@@ -30,9 +33,6 @@ class Sts {
 
     this.projects.locations.workloadIdentityPools.openid = {};
     this.projects.locations.workloadIdentityPools.openid.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/openid/jwks', 'GET', apiParams, clientConfig);
-
-    this.v1 = {};
-    this.v1.token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/token', 'POST', apiParams, clientConfig);
 
     this.organizations = {};
 
