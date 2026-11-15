@@ -19,69 +19,587 @@ class Displayvideo {
     this._servicePath = '';
 
 
-    this.firstAndThirdPartyAudiences = {};
+    this.googleAudiences = {};
 
     /**
-     * Updates the member list of a Customer Match audience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+     * Gets a Google audience.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.firstAndThirdPartyAudienceId - (Required) Required. The ID of the Customer Match FirstAndThirdPartyAudience whose members will be edited.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched Google audience.
+     * @param {string} apiParams.googleAudienceId - (Required) Required. The ID of the Google audience to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched Google audience.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.googleAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences/{+googleAudienceId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Google audiences. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched Google audiences.
+     * @param {string} apiParams.filter - Allows filtering by Google audience fields. Supported syntax: * Filter expressions for Google audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All Google audiences for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `googleAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGoogleAudiences` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched Google audiences.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.googleAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences', 'GET', apiParams, clientConfig);
+
+    this.partners = {};
+
+    /**
+     * Lists partners that are accessible to the current user. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Allows filtering by partner fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `entityStatus` Examples: * All active partners: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListPartners` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a partner.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner to fetch.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Edits targeting options under a single partner. The operation will delete the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.firstAndThirdPartyAudiences.editCustomerMatchMembers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers', 'POST', apiParams, clientConfig);
+    this.partners.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    this.partners.targetingTypes = {};
+
+    this.partners.targetingTypes.assignedTargetingOptions = {};
 
     /**
-     * Creates a FirstAndThirdPartyAudience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+     * Lists the targeting options assigned to a partner.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - Required. The ID of the advertiser under whom the FirstAndThirdPartyAudience will be created.
+     * @param {string} apiParams.filter - Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resource with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListPartnerAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes an assigned targeting option from a partner.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Assigns a targeting option to a partner. Returns the assigned targeting option if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.firstAndThirdPartyAudiences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'POST', apiParams, clientConfig);
+    this.partners.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists first and third party audiences. The order is defined by the order_by parameter.
+     * Gets a single targeting option assigned to a partner.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched first and third party audiences.
-     * @param {string} apiParams.filter - Allows filtering by first and third party audience fields. Supported syntax: * Filter expressions for first and third party audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All first and third party audiences for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `firstAndThirdPartyAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `5000`. If unspecified, this value defaults to `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListFirstAndThirdPartyAudiences` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched first and third party audiences.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this partner that identifies the assigned targeting option being requested.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.firstAndThirdPartyAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'GET', apiParams, clientConfig);
+    this.partners.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
+
+    this.partners.channels = {};
 
     /**
-     * Gets a first and third party audience.
+     * Gets a channel for a partner or advertiser.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched first and third party audience.
-     * @param {string} apiParams.firstAndThirdPartyAudienceId - (Required) Required. The ID of the first and third party audience to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched first and third party audience.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the fetched channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the channel to fetch.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the fetched channel.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.firstAndThirdPartyAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'GET', apiParams, clientConfig);
+    this.partners.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates an existing FirstAndThirdPartyAudience. Only supported for the following audience_type: * `CUSTOMER_MATCH_CONTACT_INFO` * `CUSTOMER_MATCH_DEVICE_ID`
+     * Updates a channel. Returns the updated channel if successful.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - Required. The ID of the owner advertiser of the updated FirstAndThirdPartyAudience.
-     * @param {string} apiParams.firstAndThirdPartyAudienceId - (Required) Output only. The unique ID of the first and third party audience. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update. Updates are only supported for the following fields: * `displayName` * `description` * `membershipDurationDays`
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the created channel.
+     * @param {string} apiParams.channelId - (Required) Output only. The unique ID of the channel. Assigned by the system.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the created channel.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.firstAndThirdPartyAudiences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'PATCH', apiParams, clientConfig);
+    this.partners.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a new channel. Returns the newly created channel if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the created channel.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the created channel.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists channels for a partner or advertiser.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the channels.
+     * @param {string} apiParams.filter - Allows filtering by channel fields. Supported syntax: * Filter expressions for channel can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All channels for which the display name contains "google": `displayName : "google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `channelId` The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListChannels` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the channels.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'GET', apiParams, clientConfig);
+
+    this.partners.channels.sites = {};
+
+    /**
+     * Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel whose sites will be replaced.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a site from a channel.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the site belongs.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
+     * @param {string} apiParams.urlOrAppId - (Required) Required. The URL or app ID of the site to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the sites belong.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a site in a channel.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel in which the site will be created.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists sites in a channel.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the requested sites belong.
+     * @param {string} apiParams.filter - Allows filtering by site fields. Supported syntax: * Filter expressions for site retrieval can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `urlOrAppId` Examples: * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `urlOrAppId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `urlOrAppId desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `10000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListSites` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms = {};
+
+    /**
+     * Gets a custom bidding algorithm.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the DV360 partner that has access to the custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm to fetch.
+     * @param {string} apiParams.partnerId - The ID of the DV360 partner that has access to the custom bidding algorithm.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a rules reference object for an AlgorithmRules file. The resulting reference object provides a resource path where the AlgorithmRules file should be uploaded. This reference object should be included when creating a new CustomBiddingAlgorithmRules resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.uploadRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadRules', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful. Requests updating a custom bidding algorithm assigned to a line item will return an error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a custom bidding script reference object for a script file. The resulting reference object provides a resource path to which the script file should be uploaded. This reference object should be included in when creating a new custom bidding script object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.uploadScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists custom bidding algorithms that are accessible to the current user and can be used in bidding stratgies. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the custom bidding algorithm.
+     * @param {string} apiParams.filter - Allows filtering by custom bidding algorithm fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `customBiddingAlgorithmType` field must use the `EQUALS (=)` operator. * The `displayName` field must use the `HAS (:)` operator. Supported fields: * `customBiddingAlgorithmType` * `displayName` Examples: * All custom bidding algorithms for which the display name contains "politics": `displayName:"politics"`. * All custom bidding algorithms for which the type is "SCRIPT_BASED": `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingAlgorithms` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the DV360 partner that has access to the custom bidding algorithm.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms.rules = {};
+
+    /**
+     * Retrieves a rules resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
+     * @param {string} apiParams.customBiddingAlgorithmRulesId - (Required) Required. The ID of the rules resource to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new rules resource. Returns the newly created rules resource if successful. Requests creating a custom bidding rules resource under an algorithm assigned to a line item will return an error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this rules resource.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists rules resources that belong to the given algorithm. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default sorting order is descending. To specify ascending order for a field, the suffix "desc" should be removed. Example: `createTime`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingAlgorithmRules` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms.scripts = {};
+
+    /**
+     * Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a custom bidding script under an algorithm assigned to a line item will return an error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the script.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.scripts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a custom bidding script.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
+     * @param {string} apiParams.customBiddingScriptId - (Required) Required. The ID of the custom bidding script to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.scripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
+     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default sorting order is descending. To specify ascending order for a field, the suffix "desc" should be removed. Example: `createTime`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingScripts` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customBiddingAlgorithms.scripts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'GET', apiParams, clientConfig);
+
+    this.media = {};
+
+    /**
+     * Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.` **Note**: Upload requests will not be successful without including `upload_type=media` query string.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded. See ReadRequest.resource_name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/media/{+resourceName}' : 'media/{+resourceName}';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    /**
+     * Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.` **Note**: Download requests will not be successful without including `alt=media` query string.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded. See ReadRequest.resource_name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('download/{+resourceName}', 'GET', apiParams, clientConfig);
+
+    this.inventorySourceGroups = {};
+
+    /**
+     * Creates a new inventory source group. Returns the newly created inventory source group if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner will not have access to this group.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner will have write access to this group. Only advertisers to which this group is explicitly shared will have read access to this group.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists inventory source groups that are accessible to the current user. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the inventory source group. If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared can access the group.
+     * @param {string} apiParams.filter - Allows filtering by inventory source group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `inventorySourceGroupId` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `inventorySourceGroupId` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInventorySources` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the inventory source group. A partner cannot access advertiser-owned inventory source groups.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an inventory source group. Returns the updated inventory source group if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Output only. The unique ID of the inventory source group. Assigned by the system.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner has write access to this group.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{inventorySourceGroupId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets an inventory source group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the inventory source group. If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared can access the group.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the inventory source group. A partner cannot access an advertiser-owned inventory source group.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes an inventory source group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to delete.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner has write access to this group.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'DELETE', apiParams, clientConfig);
+
+    this.inventorySourceGroups.assignedInventorySources = {};
+
+    /**
+     * Lists inventory sources assigned to an inventory source group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the assignment. If the parent inventory source group is partner-owned, only advertisers to which the parent group is explicitly shared can access the assigned inventory source.
+     * @param {string} apiParams.filter - Allows filtering by assigned inventory source fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedInventorySourceId` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which these assignments are assigned.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedInventorySourceId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `assignedInventorySourceId desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAssignedInventorySources` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the assignment. If the parent inventory source group is advertiser-owned, the assignment cannot be accessed via a partner.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.assignedInventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'GET', apiParams, clientConfig);
+
+    /**
+     * Bulk edits multiple assignments between inventory sources and a single inventory source group. The operation will delete the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which the assignments are assigned.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.assignedInventorySources.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the assignment between an inventory source and an inventory source group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent inventory source group. The parent partner does not have access to this assigned inventory source.
+     * @param {string} apiParams.assignedInventorySourceId - (Required) Required. The ID of the assigned inventory source to delete.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which this assignment is assigned.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent inventory source group. Only this partner has write access to this assigned inventory source.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.assignedInventorySources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates an assignment between an inventory source and an inventory source group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent inventory source group. The parent partner will not have access to this assigned inventory source.
+     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which the assignment will be assigned.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent inventory source group. Only this partner will have write access to this assigned inventory source.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.inventorySourceGroups.assignedInventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'POST', apiParams, clientConfig);
+
+    this.combinedAudiences = {};
+
+    /**
+     * Gets a combined audience.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched combined audience.
+     * @param {string} apiParams.combinedAudienceId - (Required) Required. The ID of the combined audience to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched combined audience.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.combinedAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences/{+combinedAudienceId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists combined audiences. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched combined audiences.
+     * @param {string} apiParams.filter - Allows filtering by combined audience fields. Supported syntax: * Filter expressions for combined audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All combined audiences for which the display name contains "Google": `displayName : "Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `combinedAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCombinedAudiences` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched combined audiences.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.combinedAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences', 'GET', apiParams, clientConfig);
 
     this.targetingTypes = {};
 
@@ -95,12 +613,24 @@ class Displayvideo {
      * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `targetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingOptionId desc`.
      * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
      * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.targetingType - (Required) Required. The type of targeting option to be listed. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+     * @param {string} apiParams.targetingType - (Required) Required. The type of targeting option to be listed. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.targetingTypes.targetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a single targeting option.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - Required. The Advertiser this request is being made in the context of.
+     * @param {string} apiParams.targetingOptionId - (Required) Required. The ID of the of targeting option to retrieve.
+     * @param {string} apiParams.targetingType - (Required) Required. The type of targeting option to retrieve. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.targetingTypes.targetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}', 'GET', apiParams, clientConfig);
 
     /**
      * Searches for targeting options of a given type based on the given search terms.
@@ -112,84 +642,6 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.targetingTypes.targetingOptions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions:search', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a single targeting option.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - Required. The Advertiser this request is being made in the context of.
-     * @param {string} apiParams.targetingOptionId - (Required) Required. The ID of the of targeting option to retrieve.
-     * @param {string} apiParams.targetingType - (Required) Required. The type of targeting option to retrieve. Accepted values are: * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_OMID`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.targetingTypes.targetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}', 'GET', apiParams, clientConfig);
-
-    this.guaranteedOrders = {};
-
-    /**
-     * Gets a guaranteed order.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the guaranteed order.
-     * @param {string} apiParams.guaranteedOrderId - (Required) Required. The ID of the guaranteed order to fetch. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the guaranteed order.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.guaranteedOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an existing guaranteed order. Returns the updated guaranteed order if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that the request is being made within.
-     * @param {string} apiParams.guaranteedOrderId - (Required) Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format `{exchange}-{legacy_guaranteed_order_id}`.
-     * @param {string} apiParams.partnerId - The ID of the partner that the request is being made within.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.guaranteedOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, guaranteed orders with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the guaranteed order.
-     * @param {string} apiParams.filter - Allows filtering by guaranteed order fields. * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `guaranteed_order_id` * `exchange` * `display_name` * `status.entityStatus` Examples: * All active guaranteed orders: `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging to Google Ad Manager or Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGuaranteedOrders` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the guaranteed order.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.guaranteedOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new guaranteed order. Returns the newly created guaranteed order if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that the request is being made within.
-     * @param {string} apiParams.partnerId - The ID of the partner that the request is being made within.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.guaranteedOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'POST', apiParams, clientConfig);
-
-    /**
-     * Edits read advertisers of a guaranteed order.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.guaranteedOrderId - (Required) Required. The ID of the guaranteed order to edit. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.guaranteedOrders.editGuaranteedOrderReadAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors', 'POST', apiParams, clientConfig);
 
     this.floodlightGroups = {};
 
@@ -245,32 +697,139 @@ class Displayvideo {
      */
     this.floodlightGroups.floodlightActivities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities', 'GET', apiParams, clientConfig);
 
-    this.customLists = {};
+    this.users = {};
 
     /**
-     * Gets a custom list.
+     * Lists users that are accessible to the current user. If two users have user roles on the same partner or advertiser, they can access each other. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the fetched custom lists.
-     * @param {string} apiParams.customListId - (Required) Required. The ID of the custom list to fetch.
+     * @param {string} apiParams.filter - Allows filtering by user fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `displayName` and `email` fields must use the `HAS (:)` operator. * The `lastLoginTime` field must use either the `LESS THAN OR EQUAL TO (<=)` or `GREATER THAN OR EQUAL TO (>=)` operator. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `assignedUserRole.advertiserId` * `assignedUserRole.entityType`: This is synthetic field of `AssignedUserRole` used for filtering. Identifies the type of entity to which the user role is assigned. Valid values are `Partner` and `Advertiser`. * `assignedUserRole.parentPartnerId`: This is a synthetic field of `AssignedUserRole` used for filtering. Identifies the parent partner of the entity to which the user role is assigned. * `assignedUserRole.partnerId` * `assignedUserRole.userRole` * `displayName` * `email` * `lastLoginTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * The user with `displayName` containing "foo": `displayName:"foo"` * The user with `email` containing "bar": `email:"bar"` * All users with standard user roles: `assignedUserRole.userRole="STANDARD"` * All users with user roles for partner 123: `assignedUserRole.partnerId="123"` * All users with user roles for advertiser 123: `assignedUserRole.advertiserId="123"` * All users with partner level user roles: `entityType="PARTNER"` * All users with user roles for partner 123 and advertisers under partner 123: `parentPartnerId="123"` * All users that last logged in on or after 2023-01-01T00:00:00Z (format of ISO 8601): `lastLoginTime>="2023-01-01T00:00:00Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListUsers` method. If not specified, the first page of results will be returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists/{+customListId}', 'GET', apiParams, clientConfig);
+    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists custom lists. The order is defined by the order_by parameter.
+     * Bulk edits user roles for a user. The operation will delete the assigned user roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in BulkEditAssignedUserRolesRequest.createdAssignedUserRoles. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the fetched custom lists.
-     * @param {string} apiParams.filter - Allows filtering by custom list fields. Supported syntax: * Filter expressions for custom lists can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All custom lists for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `customListId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomLists` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.userId - (Required) Required. The ID of the user to which the assigned user roles belong.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists', 'GET', apiParams, clientConfig);
+    this.users.bulkEditAssignedUserRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}:bulkEditAssignedUserRoles', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an existing user. Returns the updated user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {string} apiParams.userId - (Required) Output only. The unique ID of the user. Assigned by the system.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a new user. Returns the newly created user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) Required. The ID of the user to fetch.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) Required. The ID of the user to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'DELETE', apiParams, clientConfig);
+
+    this.guaranteedOrders = {};
+
+    /**
+     * Creates a new guaranteed order. Returns the newly created guaranteed order if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that the request is being made within.
+     * @param {string} apiParams.partnerId - The ID of the partner that the request is being made within.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.guaranteedOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists guaranteed orders that are accessible to the current user. The order is defined by the order_by parameter. If a filter by entity_status is not specified, guaranteed orders with entity status `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the guaranteed order.
+     * @param {string} apiParams.filter - Allows filtering by guaranteed order fields. * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `guaranteed_order_id` * `exchange` * `display_name` * `status.entityStatus` Examples: * All active guaranteed orders: `status.entityStatus="ENTITY_STATUS_ACTIVE"` * Guaranteed orders belonging to Google Ad Manager or Rubicon exchanges: `exchange="EXCHANGE_GOOGLE_AD_MANAGER" OR exchange="EXCHANGE_RUBICON"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGuaranteedOrders` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the guaranteed order.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.guaranteedOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a guaranteed order.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the guaranteed order.
+     * @param {string} apiParams.guaranteedOrderId - (Required) Required. The ID of the guaranteed order to fetch. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
+     * @param {string} apiParams.partnerId - The ID of the partner that has access to the guaranteed order.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.guaranteedOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an existing guaranteed order. Returns the updated guaranteed order if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the advertiser that the request is being made within.
+     * @param {string} apiParams.guaranteedOrderId - (Required) Output only. The unique identifier of the guaranteed order. The guaranteed order IDs have the format `{exchange}-{legacy_guaranteed_order_id}`.
+     * @param {string} apiParams.partnerId - The ID of the partner that the request is being made within.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.guaranteedOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Edits read advertisers of a guaranteed order.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.guaranteedOrderId - (Required) Required. The ID of the guaranteed order to edit. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.guaranteedOrders.editGuaranteedOrderReadAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors', 'POST', apiParams, clientConfig);
 
     this.sdfdownloadtasks = {};
 
@@ -296,6 +855,33 @@ class Displayvideo {
      */
     this.sdfdownloadtasks.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
+    this.customLists = {};
+
+    /**
+     * Lists custom lists. The order is defined by the order_by parameter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the fetched custom lists.
+     * @param {string} apiParams.filter - Allows filtering by custom list fields. Supported syntax: * Filter expressions for custom lists can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All custom lists for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `customListId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomLists` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a custom list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the fetched custom lists.
+     * @param {string} apiParams.customListId - (Required) Required. The ID of the custom list to fetch.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists/{+customListId}', 'GET', apiParams, clientConfig);
+
     this.advertisers = {};
 
     /**
@@ -309,17 +895,6 @@ class Displayvideo {
     this.advertisers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers', 'POST', apiParams, clientConfig);
 
     /**
-     * Edits targeting options under a single advertiser. The operation will delete the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    /**
      * Gets an advertiser.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to fetch.
@@ -328,39 +903,6 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an advertiser. Deleting an advertiser will delete all of its child resources, for example, campaigns, insertion orders and line items. A deleted advertiser cannot be recovered.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser we need to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Audits an advertiser. Returns the counts of used entities per resource type under the advertiser provided. Used entities count towards their respective resource limit. See https://support.google.com/displayvideo/answer/6071450.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to audit.
-     * @param {string} apiParams.readMask - Optional. The specific fields to return. If no mask is specified, all fields in the response proto will be filled. Valid values are: * usedLineItemsCount * usedInsertionOrdersCount * usedCampaignsCount * channelsCount * negativelyTargetedChannelsCount * negativeKeywordListsCount * adGroupCriteriaCount * campaignCriteriaCount
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.audit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:audit', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an existing advertiser. Returns the updated advertiser if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists advertisers that are accessible to the current user. The order is defined by the order_by parameter. A single partner_id is required. Cross-partner listing is not supported.
@@ -390,29 +932,198 @@ class Displayvideo {
      */
     this.advertisers.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
 
-    this.advertisers.insertionOrders = {};
-
     /**
-     * Creates a new insertion order. Returns the newly created insertion order if successful.
+     * Edits targeting options under a single advertiser. The operation will delete the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the insertion order belongs to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.insertionOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'POST', apiParams, clientConfig);
+    this.advertisers.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist.
+     * Updates an existing advertiser. Returns the updated advertiser if successful.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this insertion order belongs to.
-     * @param {string} apiParams.insertionOrderId - (Required) Required. The ID of the insertion order to fetch.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser. Assigned by the system.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.insertionOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'GET', apiParams, clientConfig);
+    this.advertisers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes an advertiser. Deleting an advertiser will delete all of its child resources, for example, campaigns, insertion orders and line items. A deleted advertiser cannot be recovered.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser we need to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Audits an advertiser. Returns the counts of used entities per resource type under the advertiser provided. Used entities count towards their respective resource limit. See https://support.google.com/displayvideo/answer/6071450.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to audit.
+     * @param {string} apiParams.readMask - Optional. The specific fields to return. If no mask is specified, all fields in the response proto will be filled. Valid values are: * usedLineItemsCount * usedInsertionOrdersCount * usedCampaignsCount * channelsCount * negativelyTargetedChannelsCount * negativeKeywordListsCount * adGroupCriteriaCount * campaignCriteriaCount
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.audit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:audit', 'GET', apiParams, clientConfig);
+
+    this.advertisers.adGroups = {};
+
+    /**
+     * Creates a new ad group. Returns the newly created ad group if successful. This method is only supported for Demand Gen ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned targeting options are not included.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupIds - Required. The IDs of the ad groups to list assigned targeting options for.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line items belongs to.
+     * @param {string} apiParams.filter - Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.bulkListAdGroupAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad groups belongs to.
+     * @param {string} apiParams.filter - Optional. Allows filtering by custom ad group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported properties: * `adGroupId` * `displayName` * `entityStatus` * `lineItemId` * `adGroupFormat` Examples: * All ad groups under an line item: `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` `AD_GROUP_FORMAT_IN_STREAM` ad groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="AD_GROUP_FORMAT_IN_STREAM"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroups` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only supported for Demand Gen ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to delete.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group belongs to.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand Gen ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad groups belong to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets an ad group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to fetch.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group belongs to.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an existing ad group. Returns the updated ad group if successful. This method is only supported for Demand Gen ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Output only. The unique ID of the ad group. Assigned by the system.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'PATCH', apiParams, clientConfig);
+
+    this.advertisers.adGroups.targetingTypes = {};
+
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions = {};
+
+    /**
+     * Lists the targeting options assigned to an ad group. Inherited assigned targeting options are not included.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to list assigned targeting options for.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.filter - Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_COMBINED_AUDIENCE` * `TARGETING_TYPE_CUSTOM_LIST` * `TARGETING_TYPE_FIRST_PARTY_AND_PARTNER_AUDIENCE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_GOOGLE_AUDIENCE` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_LOOKALIKE_AUDIENCE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. This method is only supported for Demand Gen ad groups.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option will belong to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_COMBINED_AUDIENCE` * `TARGETING_TYPE_CUSTOM_LIST` * `TARGETING_TYPE_FIRST_PARTY_AND_PARTNER_AUDIENCE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_GOOGLE_AUDIENCE` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_LOOKALIKE_AUDIENCE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an assigned targeting option from an ad group. This method is only supported for Demand Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option belongs to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_COMBINED_AUDIENCE` * `TARGETING_TYPE_CUSTOM_LIST` * `TARGETING_TYPE_FIRST_PARTY_AND_PARTNER_AUDIENCE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_GOOGLE_AUDIENCE` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_LOOKALIKE_AUDIENCE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a single targeting option assigned to an ad group. Inherited assigned targeting options are not included.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option belongs to.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_COMBINED_AUDIENCE` * `TARGETING_TYPE_CUSTOM_LIST` * `TARGETING_TYPE_FIRST_PARTY_AND_PARTNER_AUDIENCE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_GOOGLE_AUDIENCE` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_LOOKALIKE_AUDIENCE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
+
+    this.advertisers.insertionOrders = {};
 
     /**
      * Deletes an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist. The insertion order should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
@@ -452,132 +1163,40 @@ class Displayvideo {
      */
     this.advertisers.insertionOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'GET', apiParams, clientConfig);
 
-    this.advertisers.negativeKeywordLists = {};
-
     /**
-     * Creates a new negative keyword list. Returns the newly created negative keyword list if successful.
+     * Creates a new insertion order. Returns the newly created insertion order if successful.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list will belong.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the insertion order belongs to.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.negativeKeywordLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'POST', apiParams, clientConfig);
+    this.advertisers.insertionOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates a negative keyword list. Returns the updated negative keyword list if successful.
+     * Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Output only. The unique ID of the negative keyword list. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this insertion order belongs to.
+     * @param {string} apiParams.insertionOrderId - (Required) Required. The ID of the insertion order to fetch.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.negativeKeywordLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets a negative keyword list given an advertiser ID and a negative keyword list ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the negative keyword list to fetch.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a negative keyword list given an advertiser ID and a negative keyword list ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the negative keyword list to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists negative keyword lists based on a given advertiser id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched negative keyword lists belong.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywordLists` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'GET', apiParams, clientConfig);
-
-    this.advertisers.negativeKeywordLists.negativeKeywords = {};
-
-    /**
-     * Replaces all negative keywords in a single negative keyword list. The operation will replace the keywords in a negative keyword list with keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keywords belong.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.negativeKeywords.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a negative keyword from a negative keyword list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
-     * @param {string} apiParams.keywordValue - (Required) Required. The keyword value of the negative keyword to delete.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keyword belongs.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.negativeKeywords.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Bulk edits negative keywords in a single negative keyword list. The operation will delete the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords. This operation is guaranteed to be atomic and will never result in a partial success or partial failure.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keywords belong.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists negative keywords in a negative keyword list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
-     * @param {string} apiParams.filter - Allows filtering by negative keyword fields. Supported syntax: * Filter expressions for negative keywords can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `keywordValue` Examples: * All negative keywords for which the keyword value contains "google": `keywordValue : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the requested negative keywords belong.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `keywordValue` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `keywordValue desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `1000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywords` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.negativeKeywords.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a negative keyword in a negative keyword list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
-     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list in which the negative keyword will be created.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.negativeKeywordLists.negativeKeywords.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'POST', apiParams, clientConfig);
+    this.advertisers.insertionOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'GET', apiParams, clientConfig);
 
     this.advertisers.lineItems = {};
+
+    /**
+     * Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line items cannot be created or updated using the API.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this line item belongs to.
+     * @param {string} apiParams.lineItemId - (Required) The ID of the line item to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.lineItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Bulk edits targeting options under multiple line items. The operation will delete the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.delete_requests and then create the assigned targeting options provided in BulkEditAssignedTargetingOptionsRequest.create_requests. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkUpdate * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API.
@@ -602,15 +1221,53 @@ class Displayvideo {
     this.advertisers.lineItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a line item. Returns error code `NOT_FOUND` if the line item does not exist. The line item should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. YouTube & Partners line items cannot be created or updated using the API.
+     * Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this line item belongs to.
-     * @param {string} apiParams.lineItemId - (Required) The ID of the line item to delete.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the line item belongs to.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.lineItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.lineItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the line item belongs to.
+     * @param {string} apiParams.lineItemId - (Required) Output only. The unique ID of the line item. Assigned by the system.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to list line items for.
+     * @param {string} apiParams.filter - Allows filtering by line item fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `displayName` * `entityStatus` * `insertionOrderId` * `lineItemId` * `lineItemType` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All line items under an insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items with an update time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLineItems` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.lineItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this line item belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.lineItems.bulkUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkUpdate', 'POST', apiParams, clientConfig);
 
     /**
      * Duplicates a line item. Returns the ID of the created line item if successful. YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
@@ -639,55 +1296,6 @@ class Displayvideo {
      */
     this.advertisers.lineItems.bulkListAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions', 'GET', apiParams, clientConfig);
 
-    /**
-     * Lists line items in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, line items with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to list line items for.
-     * @param {string} apiParams.filter - Allows filtering by line item fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `campaignId` * `displayName` * `entityStatus` * `insertionOrderId` * `lineItemId` * `lineItemType` * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * All line items under an insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items with an update time less than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLineItems` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.lineItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the line item belongs to.
-     * @param {string} apiParams.lineItemId - (Required) Output only. The unique ID of the line item. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the line item belongs to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.lineItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this line item belongs to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.lineItems.bulkUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkUpdate', 'POST', apiParams, clientConfig);
-
     this.advertisers.lineItems.targetingTypes = {};
 
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions = {};
@@ -697,7 +1305,7 @@ class Displayvideo {
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line item belongs to.
      * @param {string} apiParams.lineItemId - (Required) Required. The ID of the line item the assigned targeting option will belong to.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -706,30 +1314,30 @@ class Displayvideo {
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets a single targeting option assigned to a line item.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line item belongs to.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested.
-     * @param {string} apiParams.lineItemId - (Required) Required. The ID of the line item the assigned targeting option belongs to.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch * CreateLineItemAssignedTargetingOption YouTube & Partners line items cannot be created or updated using the API.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line item belongs to.
      * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
      * @param {string} apiParams.lineItemId - (Required) Required. The ID of the line item the assigned targeting option belongs to.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a single targeting option assigned to a line item.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line item belongs to.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested.
+     * @param {string} apiParams.lineItemId - (Required) Required. The ID of the line item the assigned targeting option belongs to.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the targeting options assigned to a line item.
@@ -740,12 +1348,74 @@ class Displayvideo {
      * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
      * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
      * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLineItemAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUCTION_PACKAGE` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE_DEAL` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` * `TARGETING_TYPE_YOUTUBE_CHANNEL` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items) * `TARGETING_TYPE_YOUTUBE_VIDEO` (only for `LINE_ITEM_TYPE_YOUTUBE_AND_PARTNERS_VIDEO_SEQUENCE` line items)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    this.advertisers.creatives = {};
+
+    /**
+     * Gets a creative.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) Required. The ID of the creative to fetch.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates an existing creative. Returns the updated creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) Output only. The unique ID of the creative. Assigned by the system.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to list creatives for.
+     * @param {string} apiParams.filter - Allows filtering by creative fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `lineItemIds` field must use the `HAS (:)` operator. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. * For `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic` fields, there may be at most one restriction. Supported Fields: * `approvalStatus` * `creativeId` * `creativeType` * `dimensions` (input in the form of `{width}x{height}`) * `dynamic` * `entityStatus` * `exchangeReviewStatus` (input in the form of `{exchange}-{reviewStatus}`) * `lineItemIds` * `maxDuration` (input in the form of `{duration}s`. Only seconds are supported) * `minDuration` (input in the form of `{duration}s`. Only seconds are supported) * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Notes: * For `updateTime`, a creative resource's field value reflects the last time that a creative has been updated, which includes updates made by the system (e.g. creative review updates). Examples: * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms: `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` * All creatives with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions` (sorts by width first, then by height) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `createTime desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCreatives` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this creative belongs to.
+     * @param {string} apiParams.creativeId - (Required) The ID of the creative to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.creatives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a new creative. Returns the newly created creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the creative belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'POST', apiParams, clientConfig);
 
     this.advertisers.assets = {};
 
@@ -764,62 +1434,18 @@ class Displayvideo {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
 
-    this.advertisers.targetingTypes = {};
-
-    this.advertisers.targetingTypes.assignedTargetingOptions = {};
-
-    /**
-     * Lists the targeting options assigned to an advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
-     * @param {string} apiParams.filter - Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdvertiserAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Assigns a targeting option to an advertiser. Returns the assigned targeting option if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a single targeting option assigned to an advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this advertiser that identifies the assigned targeting option being requested.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an assigned targeting option from an advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
-
     this.advertisers.campaigns = {};
+
+    /**
+     * Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this campaign belongs to.
+     * @param {string} apiParams.campaignId - (Required) The ID of the campaign we need to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.campaigns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists campaigns in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, campaigns with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
@@ -836,19 +1462,6 @@ class Displayvideo {
     this.advertisers.campaigns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates an existing campaign. Returns the updated campaign if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the campaign belongs to.
-     * @param {string} apiParams.campaignId - (Required) Output only. The unique ID of the campaign. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.campaigns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'PATCH', apiParams, clientConfig);
-
-    /**
      * Gets a campaign.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this campaign belongs to.
@@ -858,17 +1471,6 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.campaigns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this campaign belongs to.
-     * @param {string} apiParams.campaignId - (Required) The ID of the campaign we need to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.campaigns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a new campaign. Returns the newly created campaign if successful.
@@ -881,19 +1483,20 @@ class Displayvideo {
      */
     this.advertisers.campaigns.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'POST', apiParams, clientConfig);
 
-    this.advertisers.channels = {};
-
     /**
-     * Gets a channel for a partner or advertiser.
+     * Updates an existing campaign. Returns the updated campaign if successful.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the fetched channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the channel to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the fetched channel.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the campaign belongs to.
+     * @param {string} apiParams.campaignId - (Required) Output only. The unique ID of the campaign. Assigned by the system.
+     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
+    this.advertisers.campaigns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'PATCH', apiParams, clientConfig);
+
+    this.advertisers.channels = {};
 
     /**
      * Creates a new channel. Returns the newly created channel if successful.
@@ -922,6 +1525,18 @@ class Displayvideo {
     this.advertisers.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Gets a channel for a partner or advertiser.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the fetched channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the channel to fetch.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the fetched channel.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists channels for a partner or advertiser.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the channels.
@@ -937,19 +1552,6 @@ class Displayvideo {
     this.advertisers.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels', 'GET', apiParams, clientConfig);
 
     this.advertisers.channels.sites = {};
-
-    /**
-     * Creates a site in a channel.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the parent channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel in which the site will be created.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent channel.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a site from a channel.
@@ -977,18 +1579,6 @@ class Displayvideo {
     this.advertisers.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
 
     /**
-     * Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the parent channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel whose sites will be replaced.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
-
-    /**
      * Lists sites in a channel.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the parent channel.
@@ -1004,289 +1594,32 @@ class Displayvideo {
      */
     this.advertisers.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
 
-    this.advertisers.adGroupAds = {};
-
     /**
-     * Gets an ad group ad.
+     * Creates a site in a channel.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupAdId - (Required) Required. The ID of the ad to fetch.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group ad belongs to.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroupAds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupAdId - (Required) Required. The ID of the ad to delete. Only Demand Gen ads are supported.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad belongs to.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroupAds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupAdId - (Required) Output only. The unique ID of the ad. Assigned by the system.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the parent channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel in which the site will be created.
+     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent channel.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.adGroupAds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists ad group ads.
+     * Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ads belong to.
-     * @param {string} apiParams.filter - Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` * All ad group ads under an ad group with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAds` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates an ad group ad. This method is only supported for Demand Gen ads. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
+     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser that owns the parent channel.
+     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel whose sites will be replaced.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.adGroupAds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'POST', apiParams, clientConfig);
-
-    this.advertisers.adGroups = {};
-
-    /**
-     * Lists assigned targeting options for multiple ad groups across targeting types. Inherited assigned targeting options are not included.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupIds - Required. The IDs of the ad groups to list assigned targeting options for.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the line items belongs to.
-     * @param {string} apiParams.filter - Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - Optional. A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.bulkListAdGroupAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new ad group. Returns the newly created ad group if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets an ad group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to fetch.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group belongs to.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to delete.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group belongs to.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates an existing ad group. Returns the updated ad group if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Output only. The unique ID of the ad group. Assigned by the system.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad group belongs to.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists ad groups.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad groups belongs to.
-     * @param {string} apiParams.filter - Optional. Allows filtering by custom ad group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported properties: * `adGroupId` * `displayName` * `entityStatus` * `lineItemId` * `adGroupFormat` Examples: * All ad groups under an line item: `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` `AD_GROUP_FORMAT_IN_STREAM` ad groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="AD_GROUP_FORMAT_IN_STREAM"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroups` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
-
-    /**
-     * Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad groups belong to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    this.advertisers.adGroups.targetingTypes = {};
-
-    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions = {};
-
-    /**
-     * Gets a single targeting option assigned to an ad group. Inherited assigned targeting options are not included.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option belongs to.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this line item that identifies the assigned targeting option being requested.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an assigned targeting option from an ad group. This method is only supported for Demand Gen ad groups with the AdGroupFormat `AD_GROUP_FORMAT_DEMAND_GEN`. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option belongs to.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. This method is only supported for Demand Gen ad groups. Retrieval and management of Demand Gen resources is currently rolling out. This method will be available to all partners by *June 24, 2026*.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group the assigned targeting option will belong to.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists the targeting options assigned to an ad group. Inherited assigned targeting options are not included.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.adGroupId - (Required) Required. The ID of the ad group to list assigned targeting options for.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad group belongs to.
-     * @param {string} apiParams.filter - Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-
-    this.advertisers.creatives = {};
-
-    /**
-     * Creates a new creative. Returns the newly created creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the creative belongs to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an existing creative. Returns the updated creative if successful. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) Output only. The unique ID of the creative. Assigned by the system.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets a creative.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) Required. The ID of the creative to fetch.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exist. The creative should be archived first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, before it can be deleted. A ["Standard" user role](//support.google.com/displayvideo/answer/2723011) or greater for the parent advertiser or partner is required to make this request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) The ID of the advertiser this creative belongs to.
-     * @param {string} apiParams.creativeId - (Required) The ID of the creative to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.creatives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists creatives in an advertiser. The order is defined by the order_by parameter. If a filter by entity_status is not specified, creatives with `ENTITY_STATUS_ARCHIVED` will not be included in the results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to list creatives for.
-     * @param {string} apiParams.filter - Allows filtering by creative fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `lineItemIds` field must use the `HAS (:)` operator. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)` operators. * All other fields must use the `EQUALS (=)` operator. * For `entityStatus`, `minDuration`, `maxDuration`, `updateTime`, and `dynamic` fields, there may be at most one restriction. Supported Fields: * `approvalStatus` * `creativeId` * `creativeType` * `dimensions` (input in the form of `{width}x{height}`) * `dynamic` * `entityStatus` * `exchangeReviewStatus` (input in the form of `{exchange}-{reviewStatus}`) * `lineItemIds` * `maxDuration` (input in the form of `{duration}s`. Only seconds are supported) * `minDuration` (input in the form of `{duration}s`. Only seconds are supported) * `updateTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Notes: * For `updateTime`, a creative resource's field value reflects the last time that a creative has been updated, which includes updates made by the system (e.g. creative review updates). Examples: * All native creatives: `creativeType="CREATIVE_TYPE_NATIVE"` * All active creatives with 300x400 or 50x100 dimensions: `entityStatus="ENTITY_STATUS_ACTIVE" AND (dimensions="300x400" OR dimensions="50x100")` * All dynamic creatives that are approved by AdX or AppNexus, with a minimum duration of 5 seconds and 200ms: `dynamic="true" AND minDuration="5.2s" AND (exchangeReviewStatus="EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED" OR exchangeReviewStatus="EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED")` * All video creatives that are associated with line item ID 1 or 2: `creativeType="CREATIVE_TYPE_VIDEO" AND (lineItemIds:1 OR lineItemIds:2)` * Find creatives by multiple creative IDs: `creativeId=1 OR creativeId=2` * All creatives with an update time greater than or equal to 2020-11-04T18:54:47Z (format of ISO 8601): `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `creativeId` (default) * `createTime` * `mediaDuration` * `dimensions` (sorts by width first, then by height) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `createTime desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCreatives` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'GET', apiParams, clientConfig);
+    this.advertisers.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
 
     this.advertisers.invoices = {};
-
-    /**
-     * Retrieves the invoice currency used by an advertiser in a given month.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to lookup currency for.
-     * @param {string} apiParams.invoiceMonth - Month for which the currency is needed. If not set, the request will return existing currency settings for the advertiser. Must be in the format YYYYMM.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.invoices.lookupInvoiceCurrency = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency', 'GET', apiParams, clientConfig);
 
     /**
      * Lists invoices posted for an advertiser in a given month. Invoices generated by billing profiles with a "Partner" invoice level are not retrievable through this method.
@@ -1302,18 +1635,87 @@ class Displayvideo {
      */
     this.advertisers.invoices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/invoices', 'GET', apiParams, clientConfig);
 
-    this.advertisers.locationLists = {};
+    /**
+     * Retrieves the invoice currency used by an advertiser in a given month.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser to lookup currency for.
+     * @param {string} apiParams.invoiceMonth - Month for which the currency is needed. If not set, the request will return existing currency settings for the advertiser. Must be in the format YYYYMM.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.invoices.lookupInvoiceCurrency = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency', 'GET', apiParams, clientConfig);
+
+    this.advertisers.targetingTypes = {};
+
+    this.advertisers.targetingTypes.assignedTargetingOptions = {};
 
     /**
-     * Creates a new location list. Returns the newly created location list if successful.
+     * Deletes an assigned targeting option from an advertiser.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the location list belongs.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Assigns a targeting option to an advertiser. Returns the assigned targeting option if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.locationLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'POST', apiParams, clientConfig);
+    this.advertisers.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the targeting options assigned to an advertiser.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
+     * @param {string} apiParams.filter - Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdvertiserAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a single targeting option assigned to an advertiser.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser.
+     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this advertiser that identifies the assigned targeting option being requested.
+     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_YOUTUBE_VIDEO` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_CONTENT_THEME_EXCLUSION`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
+
+    this.advertisers.locationLists = {};
+
+    /**
+     * Lists location lists based on a given advertiser id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched location lists belong.
+     * @param {string} apiParams.filter - Allows filtering by location list fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `locationType` Examples: * All regional location list: `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `locationListId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLocationLists` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.locationLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a location list. Returns the updated location list if successful.
@@ -1340,44 +1742,17 @@ class Displayvideo {
     this.advertisers.locationLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists/{+locationListId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists location lists based on a given advertiser id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched location lists belong.
-     * @param {string} apiParams.filter - Allows filtering by location list fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `locationType` Examples: * All regional location list: `locationType="TARGETING_LOCATION_TYPE_REGIONAL"` * All proximity location list: `locationType="TARGETING_LOCATION_TYPE_PROXIMITY"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `locationListId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListLocationLists` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.locationLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'GET', apiParams, clientConfig);
-
-    this.advertisers.locationLists.assignedLocations = {};
-
-    /**
-     * Deletes the assignment between a location and a location list.
+     * Creates a new location list. Returns the newly created location list if successful.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the location list belongs.
-     * @param {string} apiParams.assignedLocationId - (Required) Required. The ID of the assigned location to delete.
-     * @param {string} apiParams.locationListId - (Required) Required. The ID of the location list to which this assignment is assigned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.advertisers.locationLists.assignedLocations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in deletedAssignedLocations and then create the assigned locations provided in createdAssignedLocations.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the location list belongs.
-     * @param {string} apiParams.locationListId - (Required) Required. The ID of the location list to which these assignments are assigned.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.advertisers.locationLists.assignedLocations.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit', 'POST', apiParams, clientConfig);
+    this.advertisers.locationLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'POST', apiParams, clientConfig);
+
+    this.advertisers.locationLists.assignedLocations = {};
 
     /**
      * Creates an assignment between a location and a location list.
@@ -1390,6 +1765,18 @@ class Displayvideo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.advertisers.locationLists.assignedLocations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the assignment between a location and a location list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the location list belongs.
+     * @param {string} apiParams.assignedLocationId - (Required) Required. The ID of the assigned location to delete.
+     * @param {string} apiParams.locationListId - (Required) Required. The ID of the location list to which this assignment is assigned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.locationLists.assignedLocations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Lists locations assigned to a location list.
@@ -1406,655 +1793,204 @@ class Displayvideo {
      */
     this.advertisers.locationLists.assignedLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'GET', apiParams, clientConfig);
 
-    this.users = {};
-
     /**
-     * Creates a new user. Returns the newly created user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * Bulk edits multiple assignments between locations and a single location list. The operation will delete the assigned locations provided in deletedAssignedLocations and then create the assigned locations provided in createdAssignedLocations.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the location list belongs.
+     * @param {string} apiParams.locationListId - (Required) Required. The ID of the location list to which these assignments are assigned.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'POST', apiParams, clientConfig);
+    this.advertisers.locationLists.assignedLocations.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit', 'POST', apiParams, clientConfig);
+
+    this.advertisers.adGroupAds = {};
 
     /**
-     * Bulk edits user roles for a user. The operation will delete the assigned user roles provided in BulkEditAssignedUserRolesRequest.deletedAssignedUserRoles and then assign the user roles provided in BulkEditAssignedUserRolesRequest.createdAssignedUserRoles. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * Creates an ad group ad.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) Required. The ID of the user to which the assigned user roles belong.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.bulkEditAssignedUserRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}:bulkEditAssignedUserRoles', 'POST', apiParams, clientConfig);
+    this.advertisers.adGroupAds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * Lists ad group ads.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) Required. The ID of the user to fetch.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ads belong to.
+     * @param {string} apiParams.filter - Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus` * `adGroupAdId` * `parentCreativeId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` * All ad group ads under an ad group with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` * All ad group ads under a parent creative: `parentCreativeId="12345"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.orderBy - Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAds` method. If not specified, the first page of results will be returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a user. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
+     * Updates an ad group ad.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) Required. The ID of the user to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates an existing user. Returns the updated user if successful. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {string} apiParams.userId - (Required) Output only. The unique ID of the user. Assigned by the system.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists users that are accessible to the current user. If two users have user roles on the same partner or advertiser, they can access each other. This method has unique authentication requirements. Read the prerequisites in our [Managing Users guide](/display-video/api/guides/users/overview#prerequisites) before using this method. The "Try this method" feature does not work for this method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Allows filtering by user fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `displayName` and `email` fields must use the `HAS (:)` operator. * The `lastLoginTime` field must use either the `LESS THAN OR EQUAL TO (<=)` or `GREATER THAN OR EQUAL TO (>=)` operator. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `assignedUserRole.advertiserId` * `assignedUserRole.entityType`: This is synthetic field of `AssignedUserRole` used for filtering. Identifies the type of entity to which the user role is assigned. Valid values are `Partner` and `Advertiser`. * `assignedUserRole.parentPartnerId`: This is a synthetic field of `AssignedUserRole` used for filtering. Identifies the parent partner of the entity to which the user role is assigned. * `assignedUserRole.partnerId` * `assignedUserRole.userRole` * `displayName` * `email` * `lastLoginTime` (input in ISO 8601 format, or `YYYY-MM-DDTHH:MM:SSZ`) Examples: * The user with `displayName` containing "foo": `displayName:"foo"` * The user with `email` containing "bar": `email:"bar"` * All users with standard user roles: `assignedUserRole.userRole="STANDARD"` * All users with user roles for partner 123: `assignedUserRole.partnerId="123"` * All users with user roles for advertiser 123: `assignedUserRole.advertiserId="123"` * All users with partner level user roles: `entityType="PARTNER"` * All users with user roles for partner 123 and advertisers under partner 123: `parentPartnerId="123"` * All users that last logged in on or after 2023-01-01T00:00:00Z (format of ISO 8601): `lastLoginTime>="2023-01-01T00:00:00Z"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListUsers` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'GET', apiParams, clientConfig);
-
-    this.googleAudiences = {};
-
-    /**
-     * Gets a Google audience.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched Google audience.
-     * @param {string} apiParams.googleAudienceId - (Required) Required. The ID of the Google audience to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched Google audience.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.googleAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences/{+googleAudienceId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists Google audiences. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched Google audiences.
-     * @param {string} apiParams.filter - Allows filtering by Google audience fields. Supported syntax: * Filter expressions for Google audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All Google audiences for which the display name contains "Google": `displayName:"Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `googleAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListGoogleAudiences` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched Google audiences.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.googleAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences', 'GET', apiParams, clientConfig);
-
-    this.inventorySourceGroups = {};
-
-    /**
-     * Lists inventory source groups that are accessible to the current user. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the inventory source group. If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared can access the group.
-     * @param {string} apiParams.filter - Allows filtering by inventory source group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `inventorySourceGroupId` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `inventorySourceGroupId` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInventorySources` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the inventory source group. A partner cannot access advertiser-owned inventory source groups.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.inventorySourceGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets an inventory source group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the inventory source group. If an inventory source group is partner-owned, only advertisers to which the group is explicitly shared can access the group.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the inventory source group. A partner cannot access an advertiser-owned inventory source group.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.inventorySourceGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an inventory source group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to delete.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner has write access to this group.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.inventorySourceGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates an inventory source group. Returns the updated inventory source group if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Output only. The unique ID of the inventory source group. Assigned by the system.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner has write access to this group.
+     * @param {string} apiParams.adGroupAdId - (Required) Output only. The unique ID of the ad. Assigned by the system.
+     * @param {string} apiParams.advertiserId - (Required) Output only. The unique ID of the advertiser the ad belongs to.
      * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.inventorySourceGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{inventorySourceGroupId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.adGroupAds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Creates a new inventory source group. Returns the newly created inventory source group if successful.
+     * Deletes an ad group ad.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the inventory source group. The parent partner will not have access to this group.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the inventory source group. Only this partner will have write access to this group. Only advertisers to which this group is explicitly shared will have read access to this group.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.adGroupAdId - (Required) Required. The ID of the ad to delete.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser the ad belongs to.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.inventorySourceGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'POST', apiParams, clientConfig);
-
-    this.inventorySourceGroups.assignedInventorySources = {};
+    this.advertisers.adGroupAds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Lists inventory sources assigned to an inventory source group.
+     * Gets an ad group ad.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the assignment. If the parent inventory source group is partner-owned, only advertisers to which the parent group is explicitly shared can access the assigned inventory source.
-     * @param {string} apiParams.filter - Allows filtering by assigned inventory source fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedInventorySourceId` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which these assignments are assigned.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedInventorySourceId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `assignedInventorySourceId desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAssignedInventorySources` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the assignment. If the parent inventory source group is advertiser-owned, the assignment cannot be accessed via a partner.
+     * @param {string} apiParams.adGroupAdId - (Required) Required. The ID of the ad to fetch.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the advertiser this ad group ad belongs to.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.inventorySourceGroups.assignedInventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroupAds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'GET', apiParams, clientConfig);
+
+    this.advertisers.negativeKeywordLists = {};
 
     /**
-     * Deletes the assignment between an inventory source and an inventory source group.
+     * Deletes a negative keyword list given an advertiser ID and a negative keyword list ID.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent inventory source group. The parent partner does not have access to this assigned inventory source.
-     * @param {string} apiParams.assignedInventorySourceId - (Required) Required. The ID of the assigned inventory source to delete.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which this assignment is assigned.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent inventory source group. Only this partner has write access to this assigned inventory source.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the negative keyword list to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.inventorySourceGroups.assignedInventorySources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Bulk edits multiple assignments between inventory sources and a single inventory source group. The operation will delete the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources and then create the assigned inventory sources provided in BulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.
+     * Updates a negative keyword list. Returns the updated negative keyword list if successful.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which the assignments are assigned.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.inventorySourceGroups.assignedInventorySources.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates an assignment between an inventory source and an inventory source group.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent inventory source group. The parent partner will not have access to this assigned inventory source.
-     * @param {string} apiParams.inventorySourceGroupId - (Required) Required. The ID of the inventory source group to which the assignment will be assigned.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent inventory source group. Only this partner will have write access to this assigned inventory source.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.inventorySourceGroups.assignedInventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'POST', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms = {};
-
-    /**
-     * Creates a rules reference object for an AlgorithmRules file. The resulting reference object provides a resource path where the AlgorithmRules file should be uploaded. This reference object should be included when creating a new CustomBiddingAlgorithmRules resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.uploadRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadRules', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a custom bidding script reference object for a script file. The resulting reference object provides a resource path to which the script file should be uploaded. This reference object should be included in when creating a new custom bidding script object.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.uploadScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new custom bidding algorithm. Returns the newly created custom bidding algorithm if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists custom bidding algorithms that are accessible to the current user and can be used in bidding stratgies. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the DV360 advertiser that has access to the custom bidding algorithm.
-     * @param {string} apiParams.filter - Allows filtering by custom bidding algorithm fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The `customBiddingAlgorithmType` field must use the `EQUALS (=)` operator. * The `displayName` field must use the `HAS (:)` operator. Supported fields: * `customBiddingAlgorithmType` * `displayName` Examples: * All custom bidding algorithms for which the display name contains "politics": `displayName:"politics"`. * All custom bidding algorithms for which the type is "SCRIPT_BASED": `customBiddingAlgorithmType=SCRIPT_BASED` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingAlgorithms` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the DV360 partner that has access to the custom bidding algorithm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a custom bidding algorithm.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the DV360 partner that has access to the custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm to fetch.
-     * @param {string} apiParams.partnerId - The ID of the DV360 partner that has access to the custom bidding algorithm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an existing custom bidding algorithm. Returns the updated custom bidding algorithm if successful. Requests updating a custom bidding algorithm assigned to a line item will return an error.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Output only. The unique ID of the custom bidding algorithm. Assigned by the system.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Output only. The unique ID of the negative keyword list. Assigned by the system.
      * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customBiddingAlgorithms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'PATCH', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms.scripts = {};
+    this.advertisers.negativeKeywordLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Lists custom bidding scripts that belong to the given algorithm. The order is defined by the order_by parameter.
+     * Gets a negative keyword list given an advertiser ID and a negative keyword list ID.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default sorting order is descending. To specify ascending order for a field, the suffix "desc" should be removed. Example: `createTime`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingScripts` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the negative keyword list to fetch.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customBiddingAlgorithms.scripts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'GET', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new custom bidding script. Returns the newly created script if successful. Requests creating a custom bidding script under an algorithm assigned to a line item will return an error.
+     * Lists negative keyword lists based on a given advertiser id.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the script.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the fetched negative keyword lists belong.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. Defaults to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywordLists` method. If not specified, the first page of results will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.negativeKeywordLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new negative keyword list. Returns the newly created negative keyword list if successful.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the negative keyword list will belong.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customBiddingAlgorithms.scripts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'POST', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'POST', apiParams, clientConfig);
+
+    this.advertisers.negativeKeywordLists.negativeKeywords = {};
 
     /**
-     * Gets a custom bidding script.
+     * Lists negative keywords in a negative keyword list.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm owns the script.
-     * @param {string} apiParams.customBiddingScriptId - (Required) Required. The ID of the custom bidding script to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
+     * @param {string} apiParams.filter - Allows filtering by negative keyword fields. Supported syntax: * Filter expressions for negative keywords can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `keywordValue` Examples: * All negative keywords for which the keyword value contains "google": `keywordValue : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the requested negative keywords belong.
+     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `keywordValue` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `keywordValue desc`.
+     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `1000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListNegativeKeywords` method. If not specified, the first page of results will be returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customBiddingAlgorithms.scripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}', 'GET', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms.rules = {};
+    this.advertisers.negativeKeywordLists.negativeKeywords.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a new rules resource. Returns the newly created rules resource if successful. Requests creating a custom bidding rules resource under an algorithm assigned to a line item will return an error.
+     * Deletes a negative keyword from a negative keyword list.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this rules resource.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
+     * @param {string} apiParams.keywordValue - (Required) Required. The keyword value of the negative keyword to delete.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keyword belongs.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.advertisers.negativeKeywordLists.negativeKeywords.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Replaces all negative keywords in a single negative keyword list. The operation will replace the keywords in a negative keyword list with keywords provided in ReplaceNegativeKeywordsRequest.new_negative_keywords.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keywords belong.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customBiddingAlgorithms.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'POST', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves a rules resource.
+     * Bulk edits negative keywords in a single negative keyword list. The operation will delete the negative keywords provided in BulkEditNegativeKeywordsRequest.deleted_negative_keywords and then create the negative keywords provided in BulkEditNegativeKeywordsRequest.created_negative_keywords. This operation is guaranteed to be atomic and will never result in a partial success or partial failure.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
-     * @param {string} apiParams.customBiddingAlgorithmRulesId - (Required) Required. The ID of the rules resource to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists rules resources that belong to the given algorithm. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent custom bidding algorithm.
-     * @param {string} apiParams.customBiddingAlgorithmId - (Required) Required. The ID of the custom bidding algorithm that owns the rules resource.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `createTime desc` (default) The default sorting order is descending. To specify ascending order for a field, the suffix "desc" should be removed. Example: `createTime`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCustomBiddingAlgorithmRules` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that owns the parent custom bidding algorithm.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customBiddingAlgorithms.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'GET', apiParams, clientConfig);
-
-    this.combinedAudiences = {};
-
-    /**
-     * Gets a combined audience.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched combined audience.
-     * @param {string} apiParams.combinedAudienceId - (Required) Required. The ID of the combined audience to fetch.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched combined audience.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.combinedAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences/{+combinedAudienceId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists combined audiences. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that has access to the fetched combined audiences.
-     * @param {string} apiParams.filter - Allows filtering by combined audience fields. Supported syntax: * Filter expressions for combined audiences can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All combined audiences for which the display name contains "Google": `displayName : "Google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `combinedAudienceId` (default) * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCombinedAudiences` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - The ID of the partner that has access to the fetched combined audiences.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.combinedAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences', 'GET', apiParams, clientConfig);
-
-    this.media = {};
-
-    /**
-     * Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?upload_type=media.` **Note**: Upload requests will not be successful without including `upload_type=media` query string.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded. See ReadRequest.resource_name.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list to which the negative keywords belong.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/media/{+resourceName}' : 'media/{+resourceName}';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit', 'POST', apiParams, clientConfig);
 
     /**
-     * Downloads media. Download is supported on the URI `/download/{resource_name=**}?alt=media.` **Note**: Download requests will not be successful without including `alt=media` query string.
+     * Creates a negative keyword in a negative keyword list.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded. See ReadRequest.resource_name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('download/{+resourceName}', 'GET', apiParams, clientConfig);
-
-    this.partners = {};
-
-    /**
-     * Gets a partner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner to fetch.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists partners that are accessible to the current user. The order is defined by the order_by parameter.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Allows filtering by partner fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `entityStatus` Examples: * All active partners: `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. For example, `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListPartners` method. If not specified, the first page of results will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners', 'GET', apiParams, clientConfig);
-
-    /**
-     * Edits targeting options under a single partner. The operation will delete the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.deleteRequests and then create the assigned targeting options provided in BulkEditPartnerAssignedTargetingOptionsRequest.createRequests .
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {string} apiParams.advertiserId - (Required) Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs.
+     * @param {string} apiParams.negativeKeywordListId - (Required) Required. The ID of the parent negative keyword list in which the negative keyword will be created.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    this.partners.channels = {};
-
-    /**
-     * Lists channels for a partner or advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the channels.
-     * @param {string} apiParams.filter - Allows filtering by channel fields. Supported syntax: * Filter expressions for channel can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `displayName` Examples: * All channels for which the display name contains "google": `displayName : "google"`. The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `displayName` (default) * `channelId` The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `displayName desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListChannels` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the channels.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new channel. Returns the newly created channel if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the created channel.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the created channel.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a channel. Returns the updated channel if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the created channel.
-     * @param {string} apiParams.channelId - (Required) Output only. The unique ID of the channel. Assigned by the system.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the created channel.
-     * @param {string} apiParams.updateMask - Required. The mask to control which fields to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets a channel for a partner or advertiser.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the fetched channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the channel to fetch.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the fetched channel.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
-
-    this.partners.channels.sites = {};
-
-    /**
-     * Deletes a site from a channel.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the site belongs.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
-     * @param {string} apiParams.urlOrAppId - (Required) Required. The URL or app ID of the site to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Bulk edits sites under a single channel. The operation will delete the sites provided in BulkEditSitesRequest.deleted_sites and then create the sites provided in BulkEditSitesRequest.created_sites.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the sites belong.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
-
-    /**
-     * Replaces all of the sites under a single channel. The operation will replace the sites under a channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel whose sites will be replaced.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists sites in a channel.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel to which the requested sites belong.
-     * @param {string} apiParams.filter - Allows filtering by site fields. Supported syntax: * Filter expressions for site retrieval can only contain at most one restriction. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `HAS (:)` operator. Supported fields: * `urlOrAppId` Examples: * All sites for which the URL or app ID contains "google": `urlOrAppId : "google"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `urlOrAppId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix " desc" should be added to the field name. Example: `urlOrAppId desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `10000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListSites` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a site in a channel.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - The ID of the advertiser that owns the parent channel.
-     * @param {string} apiParams.channelId - (Required) Required. The ID of the parent channel in which the site will be created.
-     * @param {string} apiParams.partnerId - (Required) The ID of the partner that owns the parent channel.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
-
-    this.partners.targetingTypes = {};
-
-    this.partners.targetingTypes.assignedTargetingOptions = {};
-
-    /**
-     * Gets a single targeting option assigned to a partner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. An identifier unique to the targeting type in this partner that identifies the assigned targeting option being requested.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an assigned targeting option from a partner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.assignedTargetingOptionId - (Required) Required. The ID of the assigned targeting option to delete.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Assigns a targeting option to a partner. Returns the assigned targeting option if successful.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists the targeting options assigned to a partner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resource with ID 123456: `assignedTargetingOptionId="123456"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
-     * @param {string} apiParams.orderBy - Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`.
-     * @param {integer} apiParams.pageSize - Requested page size. Must be between `1` and `200`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListPartnerAssignedTargetingOptions` method. If not specified, the first page of results will be returned.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
-     * @param {string} apiParams.targetingType - (Required) Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'POST', apiParams, clientConfig);
   }
 
 /**
