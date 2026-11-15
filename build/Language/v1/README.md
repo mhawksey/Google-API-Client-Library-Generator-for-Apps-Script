@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:03:15 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:03:15 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:29:23 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:29:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:52 GMT
 
 
@@ -24,25 +24,17 @@ Classifies a document into categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.annotateText()`
+#### `documents.moderateText()`
 
-A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `documents.analyzeSentiment()`
-
-Analyzes the sentiment of the provided text.
+Moderates a document for harmful and sensitive categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntitySentiment()`
+#### `documents.analyzeEntities()`
 
-Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
+Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -56,17 +48,25 @@ Analyzes the syntax of the text and provides sentence boundaries and tokenizatio
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.moderateText()`
+#### `documents.analyzeEntitySentiment()`
 
-Moderates a document for harmful and sensitive categories.
+Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each entity and its mentions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntities()`
+#### `documents.annotateText()`
 
-Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
+A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `documents.analyzeSentiment()`
+
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
