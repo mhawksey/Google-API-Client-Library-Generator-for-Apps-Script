@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Workspace Marketplace API (
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:24:04 GMT
+- **Last Checked:** Sun, 15 Nov 2026 15:29:07 GMT
 - **Last Modified:** Sun, 31 May 2026 23:24:24 GMT
 - **Created:** Sun, 01 Feb 2026 00:23:31 GMT
 
@@ -22,8 +22,8 @@ Gets the customer's licensing status to determine if they have access to a given
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.applicationId` | `string` | Yes | The ID of the application. |
 | `params.customerId` | `string` | Yes | The ID of the customer. |
+| `params.applicationId` | `string` | Yes | The ID of the application. |
 
 ### `userLicense`
 
