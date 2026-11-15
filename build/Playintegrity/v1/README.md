@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Integrity API (version
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:13:30 GMT
-- **Last Modified:** Fri, 01 May 2026 00:18:18 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:41:59 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:41:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:27 GMT
 
 
@@ -13,6 +13,17 @@ Auto-generated client library for using the **Google Play Integrity API (version
 ---
 
 ## API Reference
+
+### `deviceRecall`
+
+#### `deviceRecall.write()`
+
+Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.packageName` | `string` | Yes | Required. Package name of the app the attached integrity token belongs to. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `v1`
 
@@ -32,15 +43,4 @@ Decodes the PC integrity token and returns the PC token payload.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app the attached integrity token belongs to. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `deviceRecall`
-
-#### `deviceRecall.write()`
-
-Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.packageName` | `string` | Yes | Required. Package name of the app the attached integrity token belongs to. |
 | `params.requestBody` | `object` | Yes | The request body. |
