@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:17:36 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:17:36 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:00:23 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:00:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
 
@@ -24,6 +24,15 @@ Creates a blank presentation using the title given in the request. If a `present
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `presentations.get()`
+
+Gets the latest version of the specified presentation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
+| `params.commentsViewMode` | `string` | No | The comments view mode to apply to the presentation. This allows viewing the presentation with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. |
+
 #### `presentations.batchUpdate()`
 
 Applies one or more updates to the presentation. Each request is validated before being applied. If any request is not valid, then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. Other requests do not need to return information; these each return an empty reply. The order of replies matches that of the requests. For example, suppose you call batchUpdate with four updates, and only the third one returns information. The response would have two empty replies: the reply to the third request, and another empty reply, in that order. Because other users may be editing the presentation, the presentation might not exactly reflect your changes: your changes may be altered with respect to collaborator changes. If there are no collaborators, the presentation should reflect your changes. In any case, the updates in your request are guaranteed to be applied together atomically.
@@ -33,24 +42,7 @@ Applies one or more updates to the presentation. Each request is validated befor
 | `params.presentationId` | `string` | Yes | The presentation to apply the updates to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `presentations.get()`
-
-Gets the latest version of the specified presentation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
-
 ### `presentations.pages`
-
-#### `presentations.pages.get()`
-
-Gets the latest version of the specified page in the presentation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
-| `params.pageObjectId` | `string` | Yes | The object ID of the page to retrieve. |
 
 #### `presentations.pages.getThumbnail()`
 
@@ -60,5 +52,15 @@ Generates a thumbnail of the latest version of the specified page in the present
 |---|---|---|---|
 | `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 | `params.pageObjectId` | `string` | Yes | The object ID of the page whose thumbnail to retrieve. |
-| `params.thumbnailProperties.mimeType` | `string` | No | The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. |
 | `params.thumbnailProperties.thumbnailSize` | `string` | No | The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. |
+| `params.thumbnailProperties.mimeType` | `string` | No | The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. |
+
+#### `presentations.pages.get()`
+
+Gets the latest version of the specified page in the presentation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
+| `params.commentsViewMode` | `string` | No | The comments view mode to apply to the page. This allows viewing the page with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. |
+| `params.pageObjectId` | `string` | Yes | The object ID of the page to retrieve. |
