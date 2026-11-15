@@ -22,11 +22,11 @@ class Adsenseplatform {
     this.platforms = {};
 
     this.platforms.accounts = {};
-    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
     this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
     this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
 
     this.platforms.accounts.events = {};
     this.platforms.accounts.events.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/events', 'POST', apiParams, clientConfig);
