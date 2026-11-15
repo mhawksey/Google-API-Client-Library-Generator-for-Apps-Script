@@ -19,15 +19,17 @@ class Meet {
     this._servicePath = '';
 
 
-    this.spaces = {};
-    this.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.spaces.endActiveConference = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:endActiveConference', 'POST', apiParams, clientConfig);
-    this.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/spaces', 'POST', apiParams, clientConfig);
-
     this.conferenceRecords = {};
     this.conferenceRecords.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.conferenceRecords.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/conferenceRecords', 'GET', apiParams, clientConfig);
+
+    this.conferenceRecords.recordings = {};
+    this.conferenceRecords.recordings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/recordings', 'GET', apiParams, clientConfig);
+    this.conferenceRecords.recordings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.conferenceRecords.smartNotes = {};
+    this.conferenceRecords.smartNotes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/smartNotes', 'GET', apiParams, clientConfig);
+    this.conferenceRecords.smartNotes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.conferenceRecords.participants = {};
     this.conferenceRecords.participants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
@@ -38,20 +40,26 @@ class Meet {
     this.conferenceRecords.participants.participantSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/participantSessions', 'GET', apiParams, clientConfig);
 
     this.conferenceRecords.transcripts = {};
-    this.conferenceRecords.transcripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.conferenceRecords.transcripts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/transcripts', 'GET', apiParams, clientConfig);
+    this.conferenceRecords.transcripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.conferenceRecords.transcripts.entries = {};
-    this.conferenceRecords.transcripts.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.conferenceRecords.transcripts.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/entries', 'GET', apiParams, clientConfig);
+    this.conferenceRecords.transcripts.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
-    this.conferenceRecords.recordings = {};
-    this.conferenceRecords.recordings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.conferenceRecords.recordings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/recordings', 'GET', apiParams, clientConfig);
+    this.spaces = {};
+    this.spaces.endActiveConference = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:endActiveConference', 'POST', apiParams, clientConfig);
+    this.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/spaces', 'POST', apiParams, clientConfig);
+    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
-    this.conferenceRecords.smartNotes = {};
-    this.conferenceRecords.smartNotes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.conferenceRecords.smartNotes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/smartNotes', 'GET', apiParams, clientConfig);
+    this.spaces.members = {};
+    this.spaces.members.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.members.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.spaces.members.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.spaces.members.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/members', 'POST', apiParams, clientConfig);
+    this.spaces.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/members', 'GET', apiParams, clientConfig);
+    this.spaces.members.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/members:batchUpdate', 'POST', apiParams, clientConfig);
   }
 
 /**
