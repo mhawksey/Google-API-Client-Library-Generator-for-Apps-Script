@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:44:27 GMT
-- **Last Modified:** Sun, 31 May 2026 23:42:58 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:00:21 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:00:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:26 GMT
 
 
@@ -14,17 +14,26 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 
 ## API Reference
 
-### `portabilityArchive`
+### `authorization`
 
-#### `portabilityArchive.initiate()`
+#### `authorization.reset()`
 
-Initiates a new Archive job for the Portability API.
+Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `archiveJobs`
+
+#### `archiveJobs.cancel()`
+
+Cancels a Portability Archive job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `archiveJobs.getPortabilityArchiveState()`
 
@@ -43,20 +52,11 @@ Retries a failed Portability Archive job.
 | `params.name` | `string` | Yes | Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `archiveJobs.cancel()`
+### `portabilityArchive`
 
-Cancels a Portability Archive job.
+#### `portabilityArchive.initiate()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `authorization`
-
-#### `authorization.reset()`
-
-Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
+Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
