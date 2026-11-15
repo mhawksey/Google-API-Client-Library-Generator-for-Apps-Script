@@ -20,8 +20,8 @@ class Indexing {
 
 
     this.urlNotifications = {};
-    this.urlNotifications.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/urlNotifications:publish', 'POST', apiParams, clientConfig);
     this.urlNotifications.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/urlNotifications/metadata', 'GET', apiParams, clientConfig);
+    this.urlNotifications.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/urlNotifications:publish', 'POST', apiParams, clientConfig);
   }
 
 /**
