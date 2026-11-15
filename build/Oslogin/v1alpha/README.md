@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:12:47 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:12:47 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:40:55 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:40:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:49 GMT
 
 
@@ -14,20 +14,19 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1alp
 
 ## API Reference
 
-### `projects`
+### `users`
 
-### `projects.locations`
+#### `users.importSshPublicKey()`
 
-#### `projects.locations.signSshPublicKey()`
-
-Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent for the signing request. Format: projects/{project}/locations/{location} |
+| `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
+| `params.regions` | `string` | No | Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. |
+| `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
+| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `users`
 
 #### `users.getLoginProfile()`
 
@@ -36,59 +35,10 @@ Retrieves the profile information used for logging in to a virtual machine on Go
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
-| `params.projectId` | `string` | No | Required. The project ID of the Google Cloud Platform project. |
-| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
 | `params.systemId` | `string` | No | Optional. A system ID for filtering the results of the request. |
 | `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
-
-#### `users.importSshPublicKey()`
-
-Adds an SSH public key and returns the profile information. Default POSIX account information is set when no username and UID exist as part of the login profile.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.regions` | `string` | No | Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. |
-| `params.projectId` | `string` | No | The project ID of the Google Cloud Platform project. |
-| `params.view` | `string` | No | The view configures whether to retrieve security keys information. |
-| `params.parent` | `string` | Yes | The unique ID for the user in format `users/{user}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `users.sshPublicKeys`
-
-#### `users.sshPublicKeys.create()`
-
-Create an SSH public key
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.sshPublicKeys.patch()`
-
-Updates an SSH public key and returns the profile information. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
-| `params.updateMask` | `string` | No | Optional. Mask to control which fields get updated. Updates all if not present. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.sshPublicKeys.delete()`
-
-Deletes an SSH public key.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
-
-#### `users.sshPublicKeys.get()`
-
-Retrieves an SSH public key.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
+| `params.projectId` | `string` | No | Required. The project ID of the Google Cloud Platform project. |
+| `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
 
 ### `users.projects`
 
@@ -98,8 +48,8 @@ Deletes a POSIX account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
 | `params.operatingSystemType` | `string` | No | Optional. The type of operating system associated with the account. |
+| `params.name` | `string` | Yes | Required. A reference to the POSIX account to update. POSIX accounts are identified by the project ID they are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`. |
 
 #### `users.projects.provisionPosixAccount()`
 
@@ -108,6 +58,17 @@ Create a POSIX account if it doesn't exist.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique ID for the user in format `users/{user}/projects/{project}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.projects.zones`
+
+#### `users.projects.zones.signSshPublicKey()`
+
+Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent project and region for the signing request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.projects.locations`
@@ -121,13 +82,52 @@ Signs an SSH public key for a user to authenticate to a virtual machine on Googl
 | `params.parent` | `string` | Yes | Required. The parent project and region for the signing request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.projects.zones`
+### `users.sshPublicKeys`
 
-#### `users.projects.zones.signSshPublicKey()`
+#### `users.sshPublicKeys.delete()`
+
+Deletes an SSH public key.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
+
+#### `users.sshPublicKeys.patch()`
+
+Updates an SSH public key and returns the profile information. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The fingerprint of the public key to update. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
+| `params.updateMask` | `string` | No | Optional. Mask to control which fields get updated. Updates all if not present. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.sshPublicKeys.create()`
+
+Create an SSH public key
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The unique ID for the user in format `users/{user}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.sshPublicKeys.get()`
+
+Retrieves an SSH public key.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The fingerprint of the public key to retrieve. Public keys are identified by their SHA-256 fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`. |
+
+### `projects`
+
+### `projects.locations`
+
+#### `projects.locations.signSshPublicKey()`
 
 Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent project and region for the signing request. |
+| `params.parent` | `string` | Yes | Required. The parent for the signing request. Format: projects/{project}/locations/{location} |
 | `params.requestBody` | `object` | Yes | The request body. |
