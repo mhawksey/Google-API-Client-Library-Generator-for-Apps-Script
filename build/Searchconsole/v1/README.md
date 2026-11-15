@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:16:20 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:16:20 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:52:53 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:52:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
 
@@ -13,6 +13,88 @@ Auto-generated client library for using the **Google Search Console API (version
 ---
 
 ## API Reference
+
+### `sites`
+
+#### `sites.list()`
+
+ Lists the user's Search Console sites.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+#### `sites.get()`
+
+ Retrieves information about specific site.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
+
+#### `sites.delete()`
+
+ Removes a site from the set of the user's Search Console sites.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
+
+#### `sites.add()`
+
+ Adds a site to the set of the user's sites in Search Console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
+
+### `searchanalytics`
+
+#### `searchanalytics.query()`
+
+Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `sitemaps`
+
+#### `sitemaps.submit()`
+
+Submits a sitemap for a site.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
+
+#### `sitemaps.delete()`
+
+Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
+
+#### `sitemaps.list()`
+
+ Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+
+#### `sitemaps.get()`
+
+Retrieves information about a specific sitemap.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 
 ### `urlInspection`
 
@@ -26,55 +108,6 @@ Index inspection.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `sitemaps`
-
-#### `sitemaps.delete()`
-
-Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
-
-#### `sitemaps.get()`
-
-Retrieves information about a specific sitemap.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
-
-#### `sitemaps.submit()`
-
-Submits a sitemap for a site.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
-
-#### `sitemaps.list()`
-
- Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for this site, or included in the sitemap index file (if `sitemapIndex` is specified in the request).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
-
-### `searchanalytics`
-
-#### `searchanalytics.query()`
-
-Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `urlTestingTools`
 
 ### `urlTestingTools.mobileFriendlyTest`
@@ -86,36 +119,3 @@ Runs Mobile-Friendly Test for a given URL.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `sites`
-
-#### `sites.list()`
-
- Lists the user's Search Console sites.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-#### `sites.add()`
-
- Adds a site to the set of the user's sites in Search Console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
-
-#### `sites.delete()`
-
- Removes a site from the set of the user's Search Console sites.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
-
-#### `sites.get()`
-
- Retrieves information about specific site.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
