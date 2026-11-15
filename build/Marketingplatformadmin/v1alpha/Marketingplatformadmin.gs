@@ -20,16 +20,36 @@ class Marketingplatformadmin {
 
 
     this.organizations = {};
+    this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
+    this.organizations.findSalesPartnerManagedClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:findSalesPartnerManagedClients', 'POST', apiParams, clientConfig);
     this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
-    this.organizations.findSalesPartnerManagedClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:findSalesPartnerManagedClients', 'POST', apiParams, clientConfig);
-    this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
+
+    this.organizations.userGroups = {};
+    this.organizations.userGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.userGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/userGroups', 'POST', apiParams, clientConfig);
+    this.organizations.userGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.userGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.userGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/userGroups', 'GET', apiParams, clientConfig);
+
+    this.organizations.userGroups.members = {};
+    this.organizations.userGroups.members.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.userGroups.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/members', 'GET', apiParams, clientConfig);
+    this.organizations.userGroups.members.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.userGroups.members.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.userGroups.members.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/members', 'POST', apiParams, clientConfig);
 
     this.organizations.analyticsAccountLinks = {};
-    this.organizations.analyticsAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.analyticsAccountLinks.setPropertyServiceLevel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel', 'POST', apiParams, clientConfig);
-    this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
     this.organizations.analyticsAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'POST', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.setPropertyServiceLevel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel', 'POST', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
+
+    this.organizations.adminAccessBindings = {};
+    this.organizations.adminAccessBindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.adminAccessBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/adminAccessBindings', 'GET', apiParams, clientConfig);
+    this.organizations.adminAccessBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.adminAccessBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/adminAccessBindings', 'POST', apiParams, clientConfig);
   }
 
 /**
