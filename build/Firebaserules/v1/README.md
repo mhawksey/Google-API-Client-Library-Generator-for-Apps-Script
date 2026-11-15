@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Rules API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:54:37 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:56:19 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:19:27 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:19:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:48 GMT
 
 
@@ -50,10 +50,10 @@ List `Ruleset` metadata only and optionally filter the results by `Ruleset` name
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for the project. Format: `projects/{project_id}` |
-| `params.filter` | `string` | No | Optional. `Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`. Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to the RFC 3339 date/time specifications. Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*` |
-| `params.pageSize` | `integer` | No | Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. |
 | `params.pageToken` | `string` | No | Optional. Next page token for loading the next batch of `Ruleset` instances. |
+| `params.pageSize` | `integer` | No | Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load less than `page_size` due to the size of the output. To traverse all of the releases, caller should iterate until the `page_token` is empty. |
+| `params.filter` | `string` | No | Optional. `Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`. Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to the RFC 3339 date/time specifications. Example: `create_time > date("2017-01-01T00:00:00Z") AND name=UUID-*` |
+| `params.name` | `string` | Yes | Required. Resource name for the project. Format: `projects/{project_id}` |
 
 #### `projects.rulesets.delete()`
 
@@ -64,6 +64,42 @@ Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Releas
 | `params.name` | `string` | Yes | Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}` |
 
 ### `projects.releases`
+
+#### `projects.releases.list()`
+
+List the `Release` values for a project. This list may optionally be filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any combination thereof.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for the project. Format: `projects/{project_id}` |
+| `params.pageToken` | `string` | No | Optional. Next page token for the next batch of `Release` instances. |
+| `params.pageSize` | `integer` | No | Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load fewer than `page_size` results due to the size of the output. To traverse all of the releases, the caller should iterate until the `page_token` on the response is empty. |
+| `params.filter` | `string` | No | Optional. `Release` filter. The list method supports filters with restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return `Release`s with names within 'projects/foo' prefixed with 'prod': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod* ruleset_name=uuid1234` would return only `Release` instances for 'projects/foo' with names prefixed with 'prod' referring to the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/1234 In the examples, the filter parameters refer to the search filters are relative to the project. Fully qualified prefixed may also be used. |
+
+#### `projects.releases.getExecutable()`
+
+Get the `Release` executable to use when enforcing rules.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` |
+| `params.executableVersion` | `string` | No | Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1. |
+
+#### `projects.releases.get()`
+
+Get a `Release` by name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` |
+
+#### `projects.releases.delete()`
+
+Delete a `Release` by resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}` |
 
 #### `projects.releases.create()`
 
@@ -88,39 +124,3 @@ Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `R
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.releases.get()`
-
-Get a `Release` by name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` |
-
-#### `projects.releases.list()`
-
-List the `Release` values for a project. This list may optionally be filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any combination thereof.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for the project. Format: `projects/{project_id}` |
-| `params.filter` | `string` | No | Optional. `Release` filter. The list method supports filters with restrictions on the `Release.name`, and `Release.ruleset_name`. Example 1: A filter of 'name=prod*' might return `Release`s with names within 'projects/foo' prefixed with 'prod': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/uuid1234 * projects/foo/releases/prod/v2 -> projects/foo/rulesets/uuid8888 Example 2: A filter of `name=prod* ruleset_name=uuid1234` would return only `Release` instances for 'projects/foo' with names prefixed with 'prod' referring to the same `Ruleset` name of 'uuid1234': Name -> Ruleset Name: * projects/foo/releases/prod -> projects/foo/rulesets/1234 * projects/foo/releases/prod/v1 -> projects/foo/rulesets/1234 In the examples, the filter parameters refer to the search filters are relative to the project. Fully qualified prefixed may also be used. |
-| `params.pageSize` | `integer` | No | Optional. Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the service may choose to load fewer than `page_size` results due to the size of the output. To traverse all of the releases, the caller should iterate until the `page_token` on the response is empty. |
-| `params.pageToken` | `string` | No | Optional. Next page token for the next batch of `Release` instances. |
-
-#### `projects.releases.delete()`
-
-Delete a `Release` by resource name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}` |
-
-#### `projects.releases.getExecutable()`
-
-Get the `Release` executable to use when enforcing rules.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}` |
-| `params.executableVersion` | `string` | No | Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1. |
