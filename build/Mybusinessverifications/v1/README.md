@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:06:14 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:06:14 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:38:47 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:38:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -16,6 +16,14 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ### `locations`
 
+#### `locations.getVoiceOfMerchantState()`
+
+Gets the VoiceOfMerchant state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the location. |
+
 #### `locations.verify()`
 
 Starts the verification process for a location.
@@ -24,14 +32,6 @@ Starts the verification process for a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `locations.getVoiceOfMerchantState()`
-
-Gets the VoiceOfMerchant state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the location. |
 
 #### `locations.fetchVerificationOptions()`
 
@@ -44,6 +44,16 @@ Reports all eligible verification options for a location in a specific language.
 
 ### `locations.verifications`
 
+#### `locations.verifications.list()`
+
+List verifications of a location, ordered by create time.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
+| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
+| `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
+
 #### `locations.verifications.complete()`
 
 Completes a `PENDING` verification. It is only necessary for non `AUTO` verification methods. `AUTO` verification request is instantly `VERIFIED` upon creation.
@@ -52,16 +62,6 @@ Completes a `PENDING` verification. It is only necessary for non `AUTO` verifica
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `locations.verifications.list()`
-
-List verifications of a location, ordered by create time.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
-| `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
-| `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
 
 ### `verificationTokens`
 
