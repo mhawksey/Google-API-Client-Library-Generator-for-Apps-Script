@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:25:41 GMT
-- **Last Modified:** Mon, 01 Jun 2026 00:17:27 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:02:29 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:02:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:46 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 ---
 
 ## API Reference
-
-### `voices`
-
-#### `voices.list()`
-
-Returns a list of Voice supported for synthesis.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.languageCode` | `string` | No | Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned. |
 
 ### `text`
 
@@ -49,18 +39,6 @@ Synthesizes long form text asynchronously.
 
 ### `projects.locations.operations`
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
 #### `projects.locations.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
@@ -68,6 +46,28 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+
+### `voices`
+
+#### `voices.list()`
+
+Returns a list of Voice supported for synthesis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No | Optional. Recommended. [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If not specified, the API will return all supported voices. If specified, the ListVoices call will only return voices that can be used to synthesize this language_code. For example, if you specify `"en-NZ"`, all `"en-NZ"` voices will be returned. If you specify `"no"`, both `"no-\*"` (Norwegian) and `"nb-\*"` (Norwegian Bokmal) voices will be returned. |
 
 ### `operations`
 
