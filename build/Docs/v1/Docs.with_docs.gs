@@ -22,18 +22,6 @@ class Docs {
     this.documents = {};
 
     /**
-     * Gets the latest version of the specified document.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.documentId - (Required) The ID of the document to retrieve.
-     * @param {boolean} apiParams.includeTabsContent - Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty.
-     * @param {string} apiParams.suggestionsViewMode - The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Creates a blank document using the title given in the request. Other fields in the request, including any provided content, are ignored. Returns the created document.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -53,6 +41,19 @@ class Docs {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.documents.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}:batchUpdate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest version of the specified document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.commentsViewMode - The comments view mode to apply to the document. This allows viewing the document with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. If you set comments_view_mode to any value, you must also set include_tabs_content to `true` or use a field mask that references the Document.tabs field (or any subfield). If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED, you must also explicitly set suggestions_view_mode to SUGGESTIONS_INLINE. If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED or COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS, you may not set suggestions_view_mode to PREVIEW_WITHOUT_SUGGESTIONS or PREVIEW_SUGGESTIONS_ACCEPTED.
+     * @param {string} apiParams.documentId - (Required) The ID of the document to retrieve.
+     * @param {boolean} apiParams.includeTabsContent - Whether to populate the `Document.tabs` field instead of the text content fields like `body` and `documentStyle` on `Document`. - When `true`: Document content populates in the `Document.tabs` field instead of the text content fields in `Document`. - When `false`: The content of the document's first tab populates the content fields in `Document` excluding `Document.tabs`. If a document has only one tab, then that tab is used to populate the document content. `Document.tabs` will be empty. If you use a field mask that references the `Document.tabs` field (or any subfield), the API implicitly treats the request as if you set `include_tabs_content` to `true`.
+     * @param {string} apiParams.suggestionsViewMode - The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}', 'GET', apiParams, clientConfig);
   }
 
 /**
