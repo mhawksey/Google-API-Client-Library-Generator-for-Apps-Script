@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:51:49 GMT
-- **Last Modified:** Thu, 30 Apr 2026 23:53:39 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:10:39 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:10:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:11 GMT
 
 
@@ -15,16 +15,6 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 ## API Reference
 
 ### `documents`
-
-#### `documents.get()`
-
-Gets the latest version of the specified document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
-| `params.suggestionsViewMode` | `string` | No | The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. |
-| `params.includeTabsContent` | `boolean` | No | Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty. |
 
 #### `documents.create()`
 
@@ -42,3 +32,14 @@ Applies one or more updates to the document. Each request is validated before be
 |---|---|---|---|
 | `params.documentId` | `string` | Yes | The ID of the document to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `documents.get()`
+
+Gets the latest version of the specified document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.commentsViewMode` | `string` | No | The comments view mode to apply to the document. This allows viewing the document with comments omitted or included. If one is not specified, COMMENTS_VIEW_MODE_OMITTED is used. If you set comments_view_mode to any value, you must also set include_tabs_content to `true` or use a field mask that references the Document.tabs field (or any subfield). If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED, you must also explicitly set suggestions_view_mode to SUGGESTIONS_INLINE. If you set comments_view_mode to COMMENTS_VIEW_MODE_INCLUDED or COMMENTS_VIEW_MODE_DEFAULT_FOR_CURRENT_ACCESS, you may not set suggestions_view_mode to PREVIEW_WITHOUT_SUGGESTIONS or PREVIEW_SUGGESTIONS_ACCEPTED. |
+| `params.suggestionsViewMode` | `string` | No | The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. |
+| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
+| `params.includeTabsContent` | `boolean` | No | Whether to populate the `Document.tabs` field instead of the text content fields like `body` and `documentStyle` on `Document`. - When `true`: Document content populates in the `Document.tabs` field instead of the text content fields in `Document`. - When `false`: The content of the document's first tab populates the content fields in `Document` excluding `Document.tabs`. If a document has only one tab, then that tab is used to populate the document content. `Document.tabs` will be empty. If you use a field mask that references the `Document.tabs` field (or any subfield), the API implicitly treats the request as if you set `include_tabs_content` to `true`. |
