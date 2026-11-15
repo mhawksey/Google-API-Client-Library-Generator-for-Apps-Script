@@ -3,8 +3,11 @@
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "oauthScopes": [
-    "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/discoveryengine.serving.readwrite",
     "https://www.googleapis.com/auth/cloud-platform.read-only",
+    "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/discoveryengine.assist.readwrite",
+    "https://www.googleapis.com/auth/aiplatform",
     "https://www.googleapis.com/auth/script.external_request"
   ]
 }
