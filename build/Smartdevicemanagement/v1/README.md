@@ -4,8 +4,8 @@ Auto-generated client library for using the **Smart Device Management API (versi
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:22:51 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:22:51 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:00:30 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:00:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:47 GMT
 
 
@@ -17,15 +17,6 @@ Auto-generated client library for using the **Smart Device Management API (versi
 ### `enterprises`
 
 ### `enterprises.devices`
-
-#### `enterprises.devices.list()`
-
-Lists devices managed by the enterprise.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | The parent enterprise to list devices under. E.g. "enterprises/XYZ". |
-| `params.filter` | `string` | No | Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' |
 
 #### `enterprises.devices.get()`
 
@@ -44,6 +35,15 @@ Executes a command to device managed by the enterprise.
 | `params.name` | `string` | Yes | The name of the device requested. For example: "enterprises/XYZ/devices/123" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `enterprises.devices.list()`
+
+Lists devices managed by the enterprise.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | The parent enterprise to list devices under. E.g. "enterprises/XYZ". |
+| `params.filter` | `string` | No | Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing' |
+
 ### `enterprises.structures`
 
 #### `enterprises.structures.get()`
@@ -60,8 +60,8 @@ Lists structures managed by the enterprise.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional filter to list structures. |
 | `params.parent` | `string` | Yes | The parent enterprise to list structures under. E.g. "enterprises/XYZ". |
+| `params.filter` | `string` | No | Optional filter to list structures. |
 
 ### `enterprises.structures.rooms`
 
