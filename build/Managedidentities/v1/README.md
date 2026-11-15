@@ -4,8 +4,8 @@ Auto-generated client library for using the **Managed Service for Microsoft Acti
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:03:47 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:03:47 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:30:10 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:30:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:07 GMT
 
 
@@ -36,35 +36,15 @@ Lists information about the supported locations for this service. This method li
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 
 ### `projects.locations.global`
 
 ### `projects.locations.global.operations`
-
-#### `projects.locations.global.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.global.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 
 #### `projects.locations.global.operations.delete()`
 
@@ -73,6 +53,26 @@ Deletes a long-running operation. This method indicates that the client is no lo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.global.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+
+#### `projects.locations.global.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `projects.locations.global.operations.cancel()`
 
@@ -83,151 +83,16 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.global.peerings`
-
-#### `projects.locations.global.peerings.patch()`
-
-Updates the labels for specified Peering.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Peering: * `labels` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.peerings.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.peerings.create()`
-
-Creates a Peering for Managed AD instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource project name and location using the form: `projects/{project_id}/locations/global` |
-| `params.peeringId` | `string` | No | Required. Peering Id, unique name to identify peering. It should follow the regex format "^(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)$" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.peerings.list()`
-
-Lists Peerings in a given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. |
-| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. For example, `peering.authorized_network="projects/myprojectid/global/networks/mynetwork"`. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
-| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. |
-| `params.parent` | `string` | Yes | Required. The resource name of the peering location using the form: `projects/{project_id}/locations/global` |
-
-#### `projects.locations.global.peerings.delete()`
-
-Deletes identified Peering.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` |
-
-#### `projects.locations.global.peerings.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.peerings.get()`
-
-Gets details of a single Peering.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` |
-
-#### `projects.locations.global.peerings.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
 ### `projects.locations.global.domains`
 
-#### `projects.locations.global.domains.validateTrust()`
+#### `projects.locations.global.domains.patch()`
 
-Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.detachTrust()`
-
-Removes an AD trust.
+Updates the metadata and configuration of a domain.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.disableMigration()`
-
-Disable Domain Migration
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.list()`
-
-Lists domains in a project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used. Regardless of the page_size value, the response may include a partial list. Callers should rely on a response's next_page_token to determine if there are additional results to list. |
-| `params.filter` | `string` | No | Optional. A filter specifying constraints of a list operation. For example, `Domain.fqdn="mydomain.myorginization"`. |
-| `params.pageToken` | `string` | No | Optional. The `next_page_token` value returned from a previous ListDomainsRequest request, if any. |
-| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. |
-| `params.parent` | `string` | Yes | Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` |
-
-#### `projects.locations.global.domains.updateLdapssettings()`
-
-Patches a single ldaps settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.create()`
-
-Creates a Microsoft AD domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource project name and location using the form: `projects/{project_id}/locations/global` |
-| `params.domainName` | `string` | No | Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.checkMigrationPermission()`
-
-CheckMigrationPermission API gets the current state of DomainMigration
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` |
+| `params.name` | `string` | Yes | Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.resetAdminPassword()`
@@ -239,38 +104,13 @@ Resets a domain's administrator password.
 | `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.domains.setIamPolicy()`
+#### `projects.locations.global.domains.enableMigration()`
 
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.delete()`
-
-Deletes a domain.
+Enable Domain Migration
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-
-#### `projects.locations.global.domains.getLdapssettings()`
-
-Gets the domain ldaps settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-
-#### `projects.locations.global.domains.domainJoinMachine()`
-
-DomainJoinMachine API joins a Compute Engine VM to the domain
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.domain` | `string` | Yes | Required. The domain resource name using the form: projects/{project_id}/locations/global/domains/{domain_name} |
+| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.restore()`
@@ -282,49 +122,14 @@ RestoreDomain restores domain backup mentioned in the RestoreDomainRequest
 | `params.name` | `string` | Yes | Required. Resource name for the domain to which the backup belongs |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.domains.patch()`
+#### `projects.locations.global.domains.create()`
 
-Updates the metadata and configuration of a domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+Creates a Microsoft AD domain.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.global.domains.get()`
-
-Gets information about a domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-
-#### `projects.locations.global.domains.extendSchema()`
-
-Extend Schema for Domain
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.global.domains.attachTrust()`
-
-Adds an AD trust to a domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.domainName` | `string` | No | Required. The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * First segment length (mydomain for example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. * Must be unique within the customer project. |
+| `params.parent` | `string` | Yes | Required. The resource project name and location using the form: `projects/{project_id}/locations/global` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.reconfigureTrust()`
@@ -336,13 +141,59 @@ Updates the DNS conditional forwarder.
 | `params.name` | `string` | Yes | Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.domains.enableMigration()`
+#### `projects.locations.global.domains.delete()`
 
-Enable Domain Migration
+Deletes a domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+
+#### `projects.locations.global.domains.get()`
+
+Gets information about a domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+
+#### `projects.locations.global.domains.list()`
+
+Lists domains in a project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. The `next_page_token` value returned from a previous ListDomainsRequest request, if any. |
+| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results. See [Sorting order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more information. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used. Regardless of the page_size value, the response may include a partial list. Callers should rely on a response's next_page_token to determine if there are additional results to list. |
+| `params.filter` | `string` | No | Optional. A filter specifying constraints of a list operation. For example, `Domain.fqdn="mydomain.myorginization"`. |
+| `params.parent` | `string` | Yes | Required. The resource name of the domain location using the form: `projects/{project_id}/locations/global` |
+
+#### `projects.locations.global.domains.extendSchema()`
+
+Extend Schema for Domain
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+
+#### `projects.locations.global.domains.attachTrust()`
+
+Adds an AD trust to a domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.testIamPermissions()`
@@ -354,11 +205,93 @@ Returns permissions that a caller has on the specified resource. If the resource
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.global.domains.getLdapssettings()`
+
+Gets the domain ldaps settings.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+
+#### `projects.locations.global.domains.disableMigration()`
+
+Disable Domain Migration
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.validateTrust()`
+
+Validates a trust state, that the target domain is reachable, and that the target domain is able to accept incoming trust requests.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.domainJoinMachine()`
+
+DomainJoinMachine API joins a Compute Engine VM to the domain
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.domain` | `string` | Yes | Required. The domain resource name using the form: projects/{project_id}/locations/global/domains/{domain_name} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.detachTrust()`
+
+Removes an AD trust.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.updateLdapssettings()`
+
+Patches a single ldaps settings.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.checkMigrationPermission()`
+
+CheckMigrationPermission API gets the current state of DomainMigration
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.global.domains.backups`
 
-#### `projects.locations.global.domains.backups.get()`
+#### `projects.locations.global.domains.backups.create()`
 
-Gets details of a single Backup.
+Creates a Backup for a domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.backupId` | `string` | No | Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain. |
+| `params.parent` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.domains.backups.delete()`
+
+Deletes identified Backup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -373,6 +306,18 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
 
+#### `projects.locations.global.domains.backups.list()`
+
+Lists Backup in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. |
+| `params.parent` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
+| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. |
+| `params.pageToken` | `string` | No | Optional. The `next_page_token` value returned from a previous List request, if any. |
+
 #### `projects.locations.global.domains.backups.setIamPolicy()`
 
 Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -382,35 +327,13 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.domains.backups.list()`
+#### `projects.locations.global.domains.backups.get()`
 
-Lists Backup in a given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. |
-| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. |
-| `params.pageToken` | `string` | No | Optional. The `next_page_token` value returned from a previous List request, if any. |
-| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. |
-| `params.parent` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-
-#### `projects.locations.global.domains.backups.delete()`
-
-Deletes identified Backup.
+Gets details of a single Backup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The backup resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}/backups/{backup_id}` |
-
-#### `projects.locations.global.domains.backups.patch()`
-
-Updates the labels for specified Backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The unique name of the Backup in the form of `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}` |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Backup: * `labels` |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.backups.testIamPermissions()`
 
@@ -421,14 +344,14 @@ Returns permissions that a caller has on the specified resource. If the resource
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.global.domains.backups.create()`
+#### `projects.locations.global.domains.backups.patch()`
 
-Creates a Backup for a domain.
+Updates the labels for specified Backup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.backupId` | `string` | No | Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain. |
+| `params.name` | `string` | Yes | Output only. The unique name of the Backup in the form of `projects/{project_id}/locations/global/domains/{domain_name}/backups/{name}` |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Backup: * `labels` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.domains.sqlIntegrations`
@@ -447,8 +370,85 @@ Lists SqlIntegrations in a given domain.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response'ANIZATIONs next_page_token to determine if there are more instances left to be queried. |
-| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. For example, `SqlIntegration.name="sql"`. |
 | `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
 | `params.orderBy` | `string` | No | Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response'ANIZATIONs next_page_token to determine if there are more instances left to be queried. |
+| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. For example, `SqlIntegration.name="sql"`. |
 | `params.parent` | `string` | Yes | Required. The resource name of the SqlIntegrations using the form: `projects/{project_id}/locations/global/domains/*` |
+
+### `projects.locations.global.peerings`
+
+#### `projects.locations.global.peerings.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.peerings.create()`
+
+Creates a Peering for Managed AD instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource project name and location using the form: `projects/{project_id}/locations/global` |
+| `params.peeringId` | `string` | No | Required. Peering Id, unique name to identify peering. It should follow the regex format "^(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)$" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.peerings.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+
+#### `projects.locations.global.peerings.patch()`
+
+Updates the labels for specified Peering.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Peering: * `labels` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.peerings.get()`
+
+Gets details of a single Peering.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` |
+
+#### `projects.locations.global.peerings.delete()`
+
+Deletes identified Peering.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Peering resource name using the form: `projects/{project_id}/locations/global/peerings/{peering_id}` |
+
+#### `projects.locations.global.peerings.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.global.peerings.list()`
+
+Lists Peerings in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the peering location using the form: `projects/{project_id}/locations/global` |
+| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results following syntax at https://cloud.google.com/apis/design/design_patterns#sorting_order. |
+| `params.filter` | `string` | No | Optional. Filter specifying constraints of a list operation. For example, `peering.authorized_network="projects/myprojectid/global/networks/mynetwork"`. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the page_size value, the response may include a partial list and a caller should only rely on response's next_page_token to determine if there are more instances left to be queried. |
