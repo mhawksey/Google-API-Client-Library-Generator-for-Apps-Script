@@ -19,6 +19,11 @@ class Kmsinventory {
     this._servicePath = '';
 
 
+    this.organizations = {};
+
+    this.organizations.protectedResources = {};
+    this.organizations.protectedResources.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/protectedResources:search', 'GET', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.cryptoKeys = {};
@@ -33,11 +38,6 @@ class Kmsinventory {
 
     this.projects.locations.keyRings.cryptoKeys = {};
     this.projects.locations.keyRings.cryptoKeys.getProtectedResourcesSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/protectedResourcesSummary', 'GET', apiParams, clientConfig);
-
-    this.organizations = {};
-
-    this.organizations.protectedResources = {};
-    this.organizations.protectedResources.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/protectedResources:search', 'GET', apiParams, clientConfig);
   }
 
 /**
