@@ -19,22 +19,36 @@ class Cloudsupport {
     this._servicePath = '';
 
 
+    this.caseClassifications = {};
+    this.caseClassifications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/caseClassifications:search', 'GET', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.supportEventSubscriptions = {};
+    this.organizations.supportEventSubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.expunge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:expunge', 'POST', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/supportEventSubscriptions', 'GET', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.supportEventSubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/supportEventSubscriptions', 'POST', apiParams, clientConfig);
+
     this.media = {};
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:download', 'GET', apiParams, clientConfig);
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v2/{+parent}/attachments' : 'v2/{+parent}/attachments';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:download', 'GET', apiParams, clientConfig);
 
     this.cases = {};
-    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.cases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'POST', apiParams, clientConfig);
-    this.cases.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases:search', 'GET', apiParams, clientConfig);
     this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'GET', apiParams, clientConfig);
     this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.cases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases', 'POST', apiParams, clientConfig);
+    this.cases.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/cases:search', 'GET', apiParams, clientConfig);
     this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:close', 'POST', apiParams, clientConfig);
     this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.cases.attachments = {};
     this.cases.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/attachments', 'GET', apiParams, clientConfig);
@@ -42,19 +56,8 @@ class Cloudsupport {
 
     this.cases.comments = {};
     this.cases.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/comments', 'GET', apiParams, clientConfig);
-    this.cases.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/comments', 'POST', apiParams, clientConfig);
     this.cases.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.caseClassifications = {};
-    this.caseClassifications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/caseClassifications:search', 'GET', apiParams, clientConfig);
-
-    this.supportEventSubscriptions = {};
-    this.supportEventSubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/supportEventSubscriptions', 'POST', apiParams, clientConfig);
-    this.supportEventSubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.supportEventSubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.supportEventSubscriptions.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.supportEventSubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.supportEventSubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/supportEventSubscriptions', 'GET', apiParams, clientConfig);
+    this.cases.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/comments', 'POST', apiParams, clientConfig);
   }
 
 /**
