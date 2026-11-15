@@ -22,10 +22,14 @@ class Chromewebstore {
     this.publishers = {};
 
     this.publishers.items = {};
+    this.publishers.items.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollback', 'POST', apiParams, clientConfig);
     this.publishers.items.setPublishedDeployPercentage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setPublishedDeployPercentage', 'POST', apiParams, clientConfig);
     this.publishers.items.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:publish', 'POST', apiParams, clientConfig);
-    this.publishers.items.fetchStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchStatus', 'GET', apiParams, clientConfig);
     this.publishers.items.cancelSubmission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancelSubmission', 'POST', apiParams, clientConfig);
+    this.publishers.items.fetchStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchStatus', 'GET', apiParams, clientConfig);
+    this.publishers.items.getRatingSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.publishers.items.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:queryMetrics', 'GET', apiParams, clientConfig);
+    this.publishers.items.fetchReviews = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:fetchReviews', 'GET', apiParams, clientConfig);
 
     this.media = {};
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
