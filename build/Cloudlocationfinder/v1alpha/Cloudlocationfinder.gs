@@ -22,8 +22,8 @@ class Cloudlocationfinder {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.cloudLocations = {};
     this.projects.locations.cloudLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/cloudLocations', 'GET', apiParams, clientConfig);
