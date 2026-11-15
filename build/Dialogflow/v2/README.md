@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:45:21 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:45:21 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:08:27 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:08:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:31 GMT
 
 
@@ -24,8 +24,8 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.setAgent()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deleteAgent()`
@@ -33,111 +33,89 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
 
-### `projects.conversationDatasets`
+### `projects.conversationProfiles`
 
-#### `projects.conversationDatasets.list()`
+#### `projects.conversationProfiles.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationProfiles.clearSuggestionFeatureConfig()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversationProfile` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationProfiles.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.conversationProfiles.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationProfiles.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.conversationProfiles.setSuggestionFeatureConfig()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversationProfile` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationProfiles.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.operations`
+
+#### `projects.operations.cancel()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.operations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.operations.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
+| `params.filter` | `string` | No |  |
 | `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
+| `params.name` | `string` | Yes |  |
+| `params.returnPartialSuccess` | `boolean` | No |  |
 
-#### `projects.conversationDatasets.importConversationData()`
+### `projects.answerRecords`
+
+#### `projects.answerRecords.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.conversationDatasets.get()`
+#### `projects.answerRecords.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.conversationModels`
-
-#### `projects.conversationModels.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.conversationModels.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.conversationModels.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationModels.deploy()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationModels.undeploy()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationModels.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.filter` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-### `projects.conversationModels.evaluations`
-
-#### `projects.conversationModels.evaluations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.conversationModels.evaluations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-### `projects.suggestions`
-
-#### `projects.suggestions.generateStatelessSummary()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.suggestions.searchKnowledge()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.knowledgeBases`
-
-#### `projects.knowledgeBases.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.force` | `boolean` | No |  |
-
-#### `projects.knowledgeBases.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.knowledgeBases.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.filter` | `string` | No |  |
 
 #### `projects.knowledgeBases.patch()`
 | Parameter | Type | Required | Description |
@@ -152,13 +130,37 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.knowledgeBases.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.knowledgeBases.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.filter` | `string` | No |  |
+
+#### `projects.knowledgeBases.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.force` | `boolean` | No |  |
+
 ### `projects.knowledgeBases.documents`
+
+#### `projects.knowledgeBases.documents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 
 #### `projects.knowledgeBases.documents.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.create()`
@@ -167,18 +169,16 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.knowledgeBases.documents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
 #### `projects.knowledgeBases.documents.import()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.knowledgeBases.documents.reload()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.export()`
@@ -187,43 +187,35 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.knowledgeBases.documents.delete()`
+#### `projects.knowledgeBases.documents.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
+| `params.filter` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
 
 #### `projects.knowledgeBases.documents.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-#### `projects.knowledgeBases.documents.reload()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.conversations`
-
-#### `projects.conversations.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.conversationId` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
 | `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
 
-#### `projects.conversations.get()`
+#### `projects.conversations.create()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
+| `params.conversationId` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.complete()`
 | Parameter | Type | Required | Description |
@@ -231,7 +223,43 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.conversations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.conversations.suggestions`
+
+#### `projects.conversations.suggestions.generate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversations.suggestions.suggestConversationSummary()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversations.suggestions.searchKnowledge()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.conversations.participants`
+
+#### `projects.conversations.participants.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.conversations.participants.analyzeContent()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.participant` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.create()`
 | Parameter | Type | Required | Description |
@@ -249,24 +277,13 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.conversations.participants.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-#### `projects.conversations.participants.analyzeContent()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.participant` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversations.participants.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
 
 ### `projects.conversations.participants.suggestions`
 
-#### `projects.conversations.participants.suggestions.suggestSmartReplies()`
+#### `projects.conversations.participants.suggestions.suggestArticles()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
@@ -278,7 +295,7 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.conversations.participants.suggestions.suggestArticles()`
+#### `projects.conversations.participants.suggestions.suggestSmartReplies()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
@@ -300,64 +317,68 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.filter` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 
-### `projects.conversations.suggestions`
+### `projects.conversationModels`
 
-#### `projects.conversations.suggestions.searchKnowledge()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversations.suggestions.suggestConversationSummary()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversations.suggestions.generate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.operations`
-
-#### `projects.operations.list()`
+#### `projects.conversationModels.undeploy()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-| `params.pageToken` | `string` | No |  |
-| `params.returnPartialSuccess` | `boolean` | No |  |
-| `params.filter` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationModels.deploy()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationModels.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.conversationModels.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.conversationModels.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.conversationModels.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
 
-#### `projects.operations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
+### `projects.conversationModels.evaluations`
 
-#### `projects.operations.cancel()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.generators`
-
-#### `projects.generators.list()`
+#### `projects.conversationModels.evaluations.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 
-#### `projects.generators.create()`
+#### `projects.conversationModels.evaluations.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.generatorId` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes |  |
 
 ### `projects.locations`
+
+#### `projects.locations.getAgent()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.locations.getEncryptionSpec()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 
 #### `projects.locations.deleteAgent()`
 | Parameter | Type | Required | Description |
@@ -369,10 +390,14 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-#### `projects.locations.getAgent()`
+#### `projects.locations.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
+| `params.name` | `string` | Yes |  |
+| `params.extraLocationTypes` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.filter` | `string` | No |  |
 
 #### `projects.locations.setAgent()`
 | Parameter | Type | Required | Description |
@@ -381,83 +406,12 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.getEncryptionSpec()`
+### `projects.locations.encryptionSpec`
+
+#### `projects.locations.encryptionSpec.initialize()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-
-#### `projects.locations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.pageToken` | `string` | No |  |
-| `params.extraLocationTypes` | `string` | No |  |
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.operations.cancel()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.operations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No |  |
-| `params.name` | `string` | Yes |  |
-| `params.returnPartialSuccess` | `boolean` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.filter` | `string` | No |  |
-
-### `projects.locations.conversationProfiles`
-
-#### `projects.locations.conversationProfiles.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationProfiles.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationProfiles.clearSuggestionFeatureConfig()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversationProfile` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationProfiles.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.conversationProfiles.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationProfiles.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationProfiles.setSuggestionFeatureConfig()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversationProfile` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tools`
@@ -465,23 +419,9 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.locations.tools.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.tools.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.toolId` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.tools.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No |  |
 
 #### `projects.locations.tools.get()`
 | Parameter | Type | Required | Description |
@@ -493,18 +433,460 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-### `projects.locations.agent`
-
-#### `projects.locations.agent.getValidationResult()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.languageCode` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.agent.getFulfillment()`
+#### `projects.locations.tools.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.tools.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.toolId` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversationModels`
+
+#### `projects.locations.conversationModels.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.locations.conversationModels.undeploy()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversationModels.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationModels.deploy()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversationModels.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationModels.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversationModels.evaluations`
+
+#### `projects.locations.conversationModels.evaluations.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+
+#### `projects.locations.conversationModels.evaluations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationModels.evaluations.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.statelessSuggestion`
+
+#### `projects.locations.statelessSuggestion.generate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversationProfiles`
+
+#### `projects.locations.conversationProfiles.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationProfiles.clearSuggestionFeatureConfig()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversationProfile` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversationProfiles.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversationProfiles.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversationProfiles.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationProfiles.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+
+#### `projects.locations.conversationProfiles.setSuggestionFeatureConfig()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversationProfile` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.knowledgeBases`
+
+#### `projects.locations.knowledgeBases.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.knowledgeBases.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.filter` | `string` | No |  |
+
+#### `projects.locations.knowledgeBases.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.force` | `boolean` | No |  |
+
+### `projects.locations.knowledgeBases.documents`
+
+#### `projects.locations.knowledgeBases.documents.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.knowledgeBases.documents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.knowledgeBases.documents.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.documents.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.documents.import()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.documents.reload()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.documents.export()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.knowledgeBases.documents.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.filter` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+### `projects.locations.suggestions`
+
+#### `projects.locations.suggestions.generateStatelessSummary()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.suggestions.searchKnowledge()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.answerRecords`
+
+#### `projects.locations.answerRecords.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.answerRecords.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+
+### `projects.locations.companionAgents`
+
+#### `projects.locations.companionAgents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.companionAgents.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.companionAgents.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.companionAgentId` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.companionAgents.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.companionAgents.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+### `projects.locations.generators`
+
+#### `projects.locations.generators.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.generators.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.generatorId` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.generators.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.generators.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.locations.generators.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.generators.evaluations`
+
+#### `projects.locations.generators.evaluations.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.locations.generators.evaluations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.generators.evaluations.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.generators.evaluations.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.locations.conversations`
+
+#### `projects.locations.conversations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversations.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.conversationId` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.filter` | `string` | No |  |
+
+#### `projects.locations.conversations.ingestContextReferences()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.complete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversations.participants`
+
+#### `projects.locations.conversations.participants.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+
+#### `projects.locations.conversations.participants.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.participants.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversations.participants.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.participants.analyzeContent()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.participant` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversations.participants.suggestions`
+
+#### `projects.locations.conversations.participants.suggestions.suggestKnowledgeAssist()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.participants.suggestions.suggestArticles()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.participants.suggestions.suggestFaqAnswers()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.participants.suggestions.suggestSmartReplies()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversations.suggestions`
+
+#### `projects.locations.conversations.suggestions.searchKnowledge()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.suggestions.generate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.conversations.suggestions.suggestConversationSummary()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.conversation` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.conversations.messages`
+
+#### `projects.locations.conversations.messages.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+
+### `projects.locations.agent`
 
 #### `projects.locations.agent.updateFulfillment()`
 | Parameter | Type | Required | Description |
@@ -513,12 +895,16 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.search()`
+#### `projects.locations.agent.getValidationResult()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
+| `params.languageCode` | `string` | No |  |
+
+#### `projects.locations.agent.getFulfillment()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 
 #### `projects.locations.agent.train()`
 | Parameter | Type | Required | Description |
@@ -544,21 +930,136 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.agent.environments`
-
-#### `projects.locations.agent.environments.delete()`
+#### `projects.locations.agent.search()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
 
-#### `projects.locations.agent.environments.getHistory()`
+### `projects.locations.agent.intents`
+
+#### `projects.locations.agent.intents.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.intentView` | `string` | No |  |
+| `params.updateMask` | `string` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.intents.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.intentView` | `string` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.intents.batchDelete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.intents.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
+| `params.languageCode` | `string` | No |  |
 | `params.pageToken` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
 
-#### `projects.locations.agent.environments.get()`
+#### `projects.locations.agent.intents.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.intents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.intents.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.agent.entityTypes`
+
+#### `projects.locations.agent.entityTypes.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.languageCode` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.batchDelete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.entityTypes.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.languageCode` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.locations.agent.entityTypes.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+
+### `projects.locations.agent.entityTypes.entities`
+
+#### `projects.locations.agent.entityTypes.entities.batchCreate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.entities.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.entityTypes.entities.batchDelete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.agent.environments`
+
+#### `projects.locations.agent.environments.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
@@ -570,6 +1071,20 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 
+#### `projects.locations.agent.environments.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.environmentId` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.environments.getHistory()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+
 #### `projects.locations.agent.environments.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -578,23 +1093,10 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.environments.create()`
+#### `projects.locations.agent.environments.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.environmentId` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.agent.environments.intents`
-
-#### `projects.locations.agent.environments.intents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.languageCode` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
+| `params.name` | `string` | Yes |  |
 
 ### `projects.locations.agent.environments.users`
 
@@ -613,43 +1115,37 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ### `projects.locations.agent.environments.users.sessions.contexts`
 
-#### `projects.locations.agent.environments.users.sessions.contexts.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.environments.users.sessions.contexts.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
 #### `projects.locations.agent.environments.users.sessions.contexts.create()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.environments.users.sessions.contexts.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.agent.environments.users.sessions.contexts.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
 
-### `projects.locations.agent.environments.users.sessions.entityTypes`
-
-#### `projects.locations.agent.environments.users.sessions.entityTypes.create()`
+#### `projects.locations.agent.environments.users.sessions.contexts.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.environments.users.sessions.contexts.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.agent.environments.users.sessions.contexts.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.locations.agent.environments.users.sessions.entityTypes`
 
 #### `projects.locations.agent.environments.users.sessions.entityTypes.patch()`
 | Parameter | Type | Required | Description |
@@ -658,6 +1154,11 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.agent.environments.users.sessions.entityTypes.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
 #### `projects.locations.agent.environments.users.sessions.entityTypes.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -665,85 +1166,35 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
 
+#### `projects.locations.agent.environments.users.sessions.entityTypes.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.agent.environments.users.sessions.entityTypes.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-#### `projects.locations.agent.environments.users.sessions.entityTypes.delete()`
+### `projects.locations.agent.environments.intents`
+
+#### `projects.locations.agent.environments.intents.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.agent.entityTypes`
-
-#### `projects.locations.agent.entityTypes.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.intentView` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.entityTypes.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.entityTypes.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.entityTypes.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
 | `params.languageCode` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.agent.entityTypes.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
-
-#### `projects.locations.agent.entityTypes.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.entityTypes.batchDelete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.agent.entityTypes.entities`
-
-#### `projects.locations.agent.entityTypes.entities.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.entityTypes.entities.batchDelete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.entityTypes.entities.batchCreate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.versions`
+
+#### `projects.locations.agent.versions.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.versions.patch()`
 | Parameter | Type | Required | Description |
@@ -752,30 +1203,29 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.versions.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.agent.versions.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
-
-#### `projects.locations.agent.versions.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
+| `params.parent` | `string` | Yes |  |
 
 #### `projects.locations.agent.versions.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
+#### `projects.locations.agent.versions.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
 ### `projects.locations.agent.sessions`
+
+#### `projects.locations.agent.sessions.deleteContexts()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
 
 #### `projects.locations.agent.sessions.detectIntent()`
 | Parameter | Type | Required | Description |
@@ -783,51 +1233,17 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.session` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.sessions.deleteContexts()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-
-### `projects.locations.agent.sessions.contexts`
-
-#### `projects.locations.agent.sessions.contexts.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.sessions.contexts.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.sessions.contexts.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.agent.sessions.contexts.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.sessions.contexts.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
 ### `projects.locations.agent.sessions.entityTypes`
 
-#### `projects.locations.agent.sessions.entityTypes.list()`
+#### `projects.locations.agent.sessions.entityTypes.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.sessions.entityTypes.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 
 #### `projects.locations.agent.sessions.entityTypes.create()`
 | Parameter | Type | Required | Description |
@@ -838,121 +1254,50 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.locations.agent.sessions.entityTypes.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.agent.sessions.entityTypes.get()`
+#### `projects.locations.agent.sessions.entityTypes.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.sessions.entityTypes.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.agent.intents`
-
-#### `projects.locations.agent.intents.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.languageCode` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.intents.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.intents.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.agent.intents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-
-#### `projects.locations.agent.intents.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.languageCode` | `string` | No |  |
-| `params.intentView` | `string` | No |  |
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.intents.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.agent.intents.batchDelete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.answerRecords`
-
-#### `projects.locations.answerRecords.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.filter` | `string` | No |  |
 | `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
 
-#### `projects.locations.answerRecords.patch()`
+### `projects.locations.agent.sessions.contexts`
+
+#### `projects.locations.agent.sessions.contexts.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.sessions.contexts.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.encryptionSpec`
-
-#### `projects.locations.encryptionSpec.initialize()`
+#### `projects.locations.agent.sessions.contexts.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
+
+#### `projects.locations.agent.sessions.contexts.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.locations.agent.sessions.contexts.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversationDatasets`
-
-#### `projects.locations.conversationDatasets.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationDatasets.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.conversationDatasets.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationDatasets.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
 
 #### `projects.locations.conversationDatasets.importConversationData()`
 | Parameter | Type | Required | Description |
@@ -960,222 +1305,63 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.conversationModels`
-
-#### `projects.locations.conversationModels.delete()`
+#### `projects.locations.conversationDatasets.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationModels.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationModels.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationModels.deploy()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationModels.undeploy()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversationModels.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-### `projects.locations.conversationModels.evaluations`
-
-#### `projects.locations.conversationModels.evaluations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
 
-#### `projects.locations.conversationModels.evaluations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversationModels.evaluations.create()`
+#### `projects.locations.conversationDatasets.create()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.knowledgeBases`
-
-#### `projects.locations.knowledgeBases.list()`
+#### `projects.locations.conversationDatasets.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.conversationDatasets.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.locations.operations`
+
+#### `projects.locations.operations.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.operations.cancel()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.operations.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.returnPartialSuccess` | `boolean` | No |  |
+| `params.pageSize` | `integer` | No |  |
 | `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.knowledgeBases.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.force` | `boolean` | No |  |
-
-#### `projects.locations.knowledgeBases.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.knowledgeBases.documents`
-
-#### `projects.locations.knowledgeBases.documents.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.documents.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.documents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.locations.knowledgeBases.documents.import()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.documents.export()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.knowledgeBases.documents.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.knowledgeBases.documents.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.knowledgeBases.documents.reload()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.generators`
-
-#### `projects.locations.generators.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.generators.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.generatorId` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.generators.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-#### `projects.locations.generators.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.generators.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.generators.evaluations`
-
-#### `projects.locations.generators.evaluations.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.generators.evaluations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.generators.evaluations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-#### `projects.locations.generators.evaluations.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.statelessSuggestion`
-
-#### `projects.locations.statelessSuggestion.generate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sipTrunks`
 
 #### `projects.locations.sipTrunks.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sipTrunks.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
 
 #### `projects.locations.sipTrunks.create()`
 | Parameter | Type | Required | Description |
@@ -1187,199 +1373,13 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
 
 #### `projects.locations.sipTrunks.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-
-#### `projects.locations.sipTrunks.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.conversations`
-
-#### `projects.locations.conversations.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.locations.conversations.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.conversationId` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.complete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.ingestContextReferences()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-### `projects.locations.conversations.participants`
-
-#### `projects.locations.conversations.participants.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-#### `projects.locations.conversations.participants.analyzeContent()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.participant` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.locations.conversations.participants.suggestions`
-
-#### `projects.locations.conversations.participants.suggestions.suggestArticles()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.suggestions.suggestFaqAnswers()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.suggestions.suggestSmartReplies()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.participants.suggestions.suggestKnowledgeAssist()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.conversations.messages`
-
-#### `projects.locations.conversations.messages.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-### `projects.locations.conversations.suggestions`
-
-#### `projects.locations.conversations.suggestions.generate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.suggestions.searchKnowledge()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.conversations.suggestions.suggestConversationSummary()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversation` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.suggestions`
-
-#### `projects.locations.suggestions.searchKnowledge()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.suggestions.generateStatelessSummary()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.conversationProfiles`
-
-#### `projects.conversationProfiles.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.conversationProfiles.setSuggestionFeatureConfig()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversationProfile` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationProfiles.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.conversationProfiles.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationProfiles.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.conversationProfiles.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.conversationProfiles.clearSuggestionFeatureConfig()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.conversationProfile` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent`
 
@@ -1395,13 +1395,6 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.search()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
 #### `projects.agent.train()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1411,22 +1404,353 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.agent.getValidationResult()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.languageCode` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
+| `params.languageCode` | `string` | No |  |
 
 #### `projects.agent.getFulfillment()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
+#### `projects.agent.search()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+
 #### `projects.agent.updateFulfillment()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.restore()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.intents`
+
+#### `projects.agent.intents.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.agent.intents.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.intentView` | `string` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.intents.batchDelete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.intents.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.languageCode` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
+
+#### `projects.agent.intents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.intents.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.intents.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.knowledgeBases`
+
+#### `projects.agent.knowledgeBases.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.force` | `boolean` | No |  |
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.knowledgeBases.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.restore()`
+#### `projects.agent.knowledgeBases.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.knowledgeBases.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.agent.knowledgeBases.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.agent.knowledgeBases.documents`
+
+#### `projects.agent.knowledgeBases.documents.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.knowledgeBases.documents.reload()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.knowledgeBases.documents.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.filter` | `string` | No |  |
+
+#### `projects.agent.knowledgeBases.documents.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.knowledgeBases.documents.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.knowledgeBases.documents.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.updateMask` | `string` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.environments`
+
+#### `projects.agent.environments.getHistory()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.agent.environments.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.agent.environments.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.environments.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.allowLoadToDraftAndDiscardChanges` | `boolean` | No |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.environments.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.environments.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.environmentId` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.environments.intents`
+
+#### `projects.agent.environments.intents.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.languageCode` | `string` | No |  |
+| `params.intentView` | `string` | No |  |
+| `params.pageToken` | `string` | No |  |
+
+### `projects.agent.environments.users`
+
+### `projects.agent.environments.users.sessions`
+
+#### `projects.agent.environments.users.sessions.deleteContexts()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+
+#### `projects.agent.environments.users.sessions.detectIntent()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.session` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.environments.users.sessions.entityTypes`
+
+#### `projects.agent.environments.users.sessions.entityTypes.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.environments.users.sessions.entityTypes.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.environments.users.sessions.entityTypes.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.environments.users.sessions.entityTypes.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.agent.environments.users.sessions.entityTypes.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+### `projects.agent.environments.users.sessions.contexts`
+
+#### `projects.agent.environments.users.sessions.contexts.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.agent.environments.users.sessions.contexts.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.environments.users.sessions.contexts.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.environments.users.sessions.contexts.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.environments.users.sessions.contexts.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.entityTypes`
+
+#### `projects.agent.entityTypes.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.entityTypes.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.entityTypes.get()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.entityTypes.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.languageCode` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageSize` | `integer` | No |  |
+| `params.pageToken` | `string` | No |  |
+
+#### `projects.agent.entityTypes.batchDelete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.entityTypes.delete()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.agent.entityTypes.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.agent.entityTypes.entities`
+
+#### `projects.agent.entityTypes.entities.batchCreate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.entityTypes.entities.batchUpdate()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.entityTypes.entities.batchDelete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
@@ -1447,12 +1771,6 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ### `projects.agent.sessions.contexts`
 
-#### `projects.agent.sessions.contexts.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.agent.sessions.contexts.patch()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1463,9 +1781,15 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 #### `projects.agent.sessions.contexts.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes |  |
 | `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
+
+#### `projects.agent.sessions.contexts.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.sessions.contexts.get()`
 | Parameter | Type | Required | Description |
@@ -1479,6 +1803,26 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ### `projects.agent.sessions.entityTypes`
 
+#### `projects.agent.sessions.entityTypes.list()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
+
+#### `projects.agent.sessions.entityTypes.patch()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No |  |
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.agent.sessions.entityTypes.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.agent.sessions.entityTypes.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1489,86 +1833,12 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-#### `projects.agent.sessions.entityTypes.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.sessions.entityTypes.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.sessions.entityTypes.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-### `projects.agent.intents`
-
-#### `projects.agent.intents.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.intents.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.intents.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.intents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-
-#### `projects.agent.intents.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-
-#### `projects.agent.intents.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.agent.intents.batchDelete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.agent.versions`
 
-#### `projects.agent.versions.list()`
+#### `projects.agent.versions.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
+| `params.name` | `string` | Yes |  |
 
 #### `projects.agent.versions.create()`
 | Parameter | Type | Required | Description |
@@ -1583,301 +1853,64 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 | `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.versions.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
 #### `projects.agent.versions.delete()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
 
-### `projects.agent.entityTypes`
-
-#### `projects.agent.entityTypes.get()`
+#### `projects.agent.versions.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
 
-#### `projects.agent.entityTypes.delete()`
+### `projects.generators`
+
+#### `projects.generators.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes |  |
+| `params.parent` | `string` | Yes |  |
+| `params.pageToken` | `string` | No |  |
+| `params.pageSize` | `integer` | No |  |
 
-#### `projects.agent.entityTypes.batchDelete()`
+#### `projects.generators.create()`
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.generatorId` | `string` | No |  |
+| `params.parent` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.suggestions`
+
+#### `projects.suggestions.searchKnowledge()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.entityTypes.create()`
+#### `projects.suggestions.generateStatelessSummary()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.entityTypes.patch()`
+### `projects.conversationDatasets`
+
+#### `projects.conversationDatasets.importConversationData()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
-| `params.updateMask` | `string` | No |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.agent.entityTypes.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.entityTypes.list()`
+#### `projects.conversationDatasets.list()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
 | `params.parent` | `string` | Yes |  |
-| `params.languageCode` | `string` | No |  |
-
-### `projects.agent.entityTypes.entities`
-
-#### `projects.agent.entityTypes.entities.batchUpdate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.entityTypes.entities.batchCreate()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.entityTypes.entities.batchDelete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.agent.knowledgeBases`
-
-#### `projects.agent.knowledgeBases.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.knowledgeBases.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.knowledgeBases.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.filter` | `string` | No |  |
-
-#### `projects.agent.knowledgeBases.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.force` | `boolean` | No |  |
-
-#### `projects.agent.knowledgeBases.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.agent.knowledgeBases.documents`
-
-#### `projects.agent.knowledgeBases.documents.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.knowledgeBases.documents.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.knowledgeBases.documents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.filter` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
 | `params.pageToken` | `string` | No |  |
 
-#### `projects.agent.knowledgeBases.documents.get()`
+#### `projects.conversationDatasets.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-
-#### `projects.agent.knowledgeBases.documents.reload()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.knowledgeBases.documents.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.agent.environments`
-
-#### `projects.agent.environments.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No |  |
-| `params.allowLoadToDraftAndDiscardChanges` | `boolean` | No |  |
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.environments.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.environmentId` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.environments.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.agent.environments.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.agent.environments.getHistory()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.agent.environments.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.agent.environments.users`
-
-### `projects.agent.environments.users.sessions`
-
-#### `projects.agent.environments.users.sessions.deleteContexts()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.agent.environments.users.sessions.detectIntent()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.session` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.agent.environments.users.sessions.contexts`
-
-#### `projects.agent.environments.users.sessions.contexts.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.environments.users.sessions.contexts.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.environments.users.sessions.contexts.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-
-#### `projects.agent.environments.users.sessions.contexts.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.agent.environments.users.sessions.contexts.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-### `projects.agent.environments.users.sessions.entityTypes`
-
-#### `projects.agent.environments.users.sessions.entityTypes.delete()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.agent.environments.users.sessions.entityTypes.get()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-
-#### `projects.agent.environments.users.sessions.entityTypes.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-
-#### `projects.agent.environments.users.sessions.entityTypes.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.agent.environments.users.sessions.entityTypes.create()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.agent.environments.intents`
-
-#### `projects.agent.environments.intents.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No |  |
-| `params.parent` | `string` | Yes |  |
-| `params.intentView` | `string` | No |  |
-| `params.languageCode` | `string` | No |  |
-| `params.pageSize` | `integer` | No |  |
-
-### `projects.answerRecords`
-
-#### `projects.answerRecords.list()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes |  |
-| `params.pageSize` | `integer` | No |  |
-| `params.pageToken` | `string` | No |  |
-| `params.filter` | `string` | No |  |
-
-#### `projects.answerRecords.patch()`
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.updateMask` | `string` | No |  |
-| `params.requestBody` | `object` | Yes | The request body. |
