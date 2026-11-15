@@ -4,8 +4,8 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:33:14 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:33:14 GMT
+- **Last Checked:** Sun, 15 Nov 2026 17:04:09 GMT
+- **Last Modified:** Sun, 15 Nov 2026 17:04:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:25 GMT
 
 
@@ -15,6 +15,24 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 ## API Reference
 
 ### `flights`
+
+#### `flights.computeDetailedFlightEmissions()`
+
+Retrieves detailed emission estimates. Detailed Flight Emissions are transparent per-passenger greenhouse gas emission estimates supplemented by comprehensive metadata detailing the calculation methodology, emissions breakdown, contrail impact, and data provenance. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include:
+
+* The flight is unknown to the server.
+
+* The input flight leg is missing one or more identifiers.
+
+* The flight date is in the past.
+
+* The aircraft type is not supported by the model.
+
+* Missing seat configuration. The request can contain up to 100 flight legs. If the request has more than 100 flight legs, it will fail with an INVALID_ARGUMENT error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flights.computeFlightEmissions()`
 
@@ -47,24 +65,6 @@ Retrieves GHG emissions estimates for a set of flight segments for Scope 3 repor
 * The flight distance is 0 or lower.
 
 * Missing cabin class. Because the request is processed with fallback logic, it is possible that misconfigured requests return valid emissions estimates using fallback methods. For example, if a request has the wrong flight number but specifies the origin and destination, the request will still succeed, but the returned emissions will be based solely on the typical flight emissions. Similarly, if a request is missing the origin for a typical flight emissions request, but specifies a valid distance, the request could succeed based solely on the distance-based emissions. Consequently, one should check the source of the returned emissions (source) to confirm the results are as expected.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `flights.computeDetailedFlightEmissions()`
-
-Retrieves detailed emission estimates. Detailed Flight Emissions are transparent per-passenger greenhouse gas emission estimates supplemented by comprehensive metadata detailing the calculation methodology, emissions breakdown, contrail impact, and data provenance. Details on how emission estimates are computed are in [GitHub](https://github.com/google/travel-impact-model). The response will contain all entries that match the input flight legs, in the same order. If there are no estimates available for a certain flight leg, the response will return the flight leg object with empty emission fields. The request will still be considered successful. Reasons for missing emission estimates include:
-
-* The flight is unknown to the server.
-
-* The input flight leg is missing one or more identifiers.
-
-* The flight date is in the past.
-
-* The aircraft type is not supported by the model.
-
-* Missing seat configuration. The request can contain up to 100 flight legs. If the request has more than 100 flight legs, it will fail with an INVALID_ARGUMENT error.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
