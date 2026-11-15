@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Business Information A
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:05:58 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:05:58 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:38:31 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:38:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:29 GMT
 
 
@@ -14,40 +14,31 @@ Auto-generated client library for using the **My Business Business Information A
 
 ## API Reference
 
-### `attributes`
+### `categories`
 
-#### `attributes.list()`
+#### `categories.list()`
 
-Returns the list of attributes that would be available for a location with the given primary category and country.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | No | Resource name of the location to look up available attributes. If this field is set, category_name, region_code, language_code and show_all are not required and must not be set. |
-| `params.regionCode` | `string` | No | The ISO 3166-1 alpha-2 country code to find available attributes. |
-| `params.showAll` | `boolean` | No | Metadata for all available attributes are returned when this field is set to true, disregarding parent and category_name fields. language_code and region_code are required when show_all is set to true. |
-| `params.pageToken` | `string` | No | If specified, the next page of attribute metadata is retrieved. |
-| `params.categoryName` | `string` | No | The primary category stable ID to find available attributes. Must be of the format categories/{category_id}. |
-| `params.languageCode` | `string` | No | The BCP 47 code of language to get attribute display names in. If this language is not available, they will be provided in English. |
-| `params.pageSize` | `integer` | No | How many attributes to include per page. Default is 200, minimum is 1. |
-
-### `chains`
-
-#### `chains.get()`
-
-Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist.
+Returns a list of business categories. Search will match the category name but not the category ID. Search only matches the front of a category name (that is, 'food' may return 'Food Court' but not 'Fast Food Restaurant').
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The chain's resource name, in the format `chains/{chain_place_id}`. |
+| `params.languageCode` | `string` | No | Required. The BCP 47 code of language. |
+| `params.pageSize` | `integer` | No | Optional. How many categories to fetch per page. Default is 100, minimum is 1, and maximum page size is 100. |
+| `params.filter` | `string` | No | Optional. Filter string from user. The only field that supported is `displayName`. Eg: `filter=displayName=foo`. |
+| `params.regionCode` | `string` | No | Required. The ISO 3166-1 alpha-2 country code. |
+| `params.pageToken` | `string` | No | Optional. If specified, the next page of categories will be fetched. |
+| `params.view` | `string` | No | Required. Specifies which parts to the Category resource should be returned in the response. |
 
-#### `chains.search()`
+#### `categories.batchGet()`
 
-Searches the chain based on chain name.
+Returns a list of business categories for the provided language and GConcept ids.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500. |
-| `params.chainName` | `string` | No | Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "沃尔玛" |
+| `params.names` | `string` | No | Required. At least one name must be set. The GConcept ids the localized category names should be returned for. To return details for more than one category, repeat this parameter in the request. |
+| `params.view` | `string` | No | Required. Specifies which parts to the Category resource should be returned in the response. |
+| `params.languageCode` | `string` | No | Required. The BCP 47 code of language that the category names should be returned in. |
+| `params.regionCode` | `string` | No | Optional. The ISO 3166-1 alpha-2 country code used to infer non-standard language. |
 
 ### `googleLocations`
 
@@ -59,22 +50,25 @@ Search all of the possible locations that are a match to the specified request.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `accounts`
+### `attributes`
 
-### `accounts.locations`
+#### `attributes.list()`
 
-#### `accounts.locations.list()`
-
-Lists the locations for the specified account.
+Returns the list of attributes that would be available for a location with the given primary category and country.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.readMask` | `string` | No | Required. Read mask to specify what fields will be returned in the response. |
-| `params.pageSize` | `integer` | No | Optional. How many locations to fetch per page. Default value is 10 if not set. Minimum is 1, and maximum page size is 100. |
-| `params.filter` | `string` | No | Optional. A filter constraining the locations to return. The response includes only entries that match the filter. If `filter` is empty, then constraints are applied and all locations (paginated) are retrieved for the requested account. For more information about valid fields and example usage, see [Work with Location Data Guide](https://developers.google.com/my-business/content/location-data#filter_results_when_you_list_locations). |
-| `params.orderBy` | `string` | No | Optional. Sorting order for the request. Multiple fields should be comma-separated, following SQL syntax. The default sorting order is ascending. To specify descending order, a suffix " desc" should be added. Valid fields to order_by are title and store_code. For example: "title, store_code desc" or "title" or "store_code desc" |
-| `params.parent` | `string` | Yes | Required. The name of the account to fetch locations from. If the parent Account is of AccountType PERSONAL, only Locations that are directly owned by the Account are returned, otherwise it will return all accessible locations from the Account, either directly or indirectly. |
-| `params.pageToken` | `string` | No | Optional. If specified, it fetches the next `page` of locations. The page token is returned by previous calls to `ListLocations` when there were more locations than could fit in the requested page size. |
+| `params.parent` | `string` | No | Optional. Resource name of the location to look up available attributes. If this field is set, `category_name`, `region_code`, `language_code` and `show_all` are not required and must not be set. Format: `locations/{location_id}` (e.g., `locations/1234567890`). |
+| `params.showAll` | `boolean` | No | Optional. If set to true, metadata for all available attributes are returned, disregarding `parent` and `category_name` fields. `language_code` and `region_code` are required when `show_all` is set to true. |
+| `params.categoryName` | `string` | No | Optional. The primary category stable ID to find available attributes. Must be of the format `categories/{category_id}` (e.g., `categories/gcid:restaurant`). Required if `parent` is not set and `show_all` is false. |
+| `params.languageCode` | `string` | No | Optional. The BCP 47 code of language to get attribute display names in. If this language is not available, they will be provided in English. |
+| `params.pageToken` | `string` | No | If specified, the next page of attribute metadata is retrieved. |
+| `params.regionCode` | `string` | No | Optional. The ISO 3166-1 alpha-2 country code to find available attributes. Required if `parent` is not set. |
+| `params.pageSize` | `integer` | No | How many attributes to include per page. Default is 200, minimum is 1. |
+
+### `accounts`
+
+### `accounts.locations`
 
 #### `accounts.locations.create()`
 
@@ -82,59 +76,25 @@ Creates a new Location that will be owned by the logged in user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually creating the location. |
 | `params.requestId` | `string` | No | Optional. A unique request ID for the server to detect duplicated requests. We recommend using UUIDs. Max length is 50 characters. |
 | `params.parent` | `string` | Yes | Required. The name of the account in which to create this location. |
+| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually creating the location. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `categories`
+#### `accounts.locations.list()`
 
-#### `categories.list()`
-
-Returns a list of business categories. Search will match the category name but not the category ID. Search only matches the front of a category name (that is, 'food' may return 'Food Court' but not 'Fast Food Restaurant').
+Lists the locations for the specified account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filter string from user. The only field that supported is `displayName`. Eg: `filter=displayName=foo`. |
-| `params.languageCode` | `string` | No | Required. The BCP 47 code of language. |
-| `params.regionCode` | `string` | No | Required. The ISO 3166-1 alpha-2 country code. |
-| `params.pageToken` | `string` | No | Optional. If specified, the next page of categories will be fetched. |
-| `params.view` | `string` | No | Required. Specifies which parts to the Category resource should be returned in the response. |
-| `params.pageSize` | `integer` | No | Optional. How many categories to fetch per page. Default is 100, minimum is 1, and maximum page size is 100. |
-
-#### `categories.batchGet()`
-
-Returns a list of business categories for the provided language and GConcept ids.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.names` | `string` | No | Required. At least one name must be set. The GConcept ids the localized category names should be returned for. To return details for more than one category, repeat this parameter in the request. |
-| `params.regionCode` | `string` | No | Optional. The ISO 3166-1 alpha-2 country code used to infer non-standard language. |
-| `params.languageCode` | `string` | No | Required. The BCP 47 code of language that the category names should be returned in. |
-| `params.view` | `string` | No | Required. Specifies which parts to the Category resource should be returned in the response. |
+| `params.filter` | `string` | No | Optional. A filter constraining the locations to return. The response includes only entries that match the filter. If `filter` is empty, then constraints are applied and all locations (paginated) are retrieved for the requested account. For more information about valid fields and example usage, see [Work with Location Data Guide](https://developers.google.com/my-business/content/location-data#filter_results_when_you_list_locations). |
+| `params.parent` | `string` | Yes | Required. The name of the account to fetch locations from. * **Specific Account ID**: If the account is of type `AccountType.PERSONAL`, the response returns only locations directly owned by that account. For all other types (e.g., `AccountType.LOCATION_GROUP`), it returns all accessible locations. * **Wildcard (`-`)**: Using `accounts/-` identifies the authenticated user. This scope defaults to `AccountType.PERSONAL` but includes both directly and indirectly owned locations (e.g., those accessible via member groups). |
+| `params.orderBy` | `string` | No | Optional. Sorting order for the request. Multiple fields should be comma-separated, following SQL syntax. The default sorting order is ascending. To specify descending order, a suffix " desc" should be added. Valid fields to order_by are title and store_code. For example: "title, store_code desc" or "title" or "store_code desc" |
+| `params.readMask` | `string` | No | Required. Read mask to specify what fields will be returned in the response. |
+| `params.pageSize` | `integer` | No | Optional. How many locations to fetch per page. Default value is 10 if not set. Minimum is 1, and maximum page size is 100. |
+| `params.pageToken` | `string` | No | Optional. If specified, it fetches the next `page` of locations. The page token is returned by previous calls to `ListLocations` when there were more locations than could fit in the requested page size. |
 
 ### `locations`
-
-#### `locations.patch()`
-
-Updates the specified location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Required. The specific fields to update. |
-| `params.name` | `string` | Yes | Google identifier for this location in the form: `locations/{location_id}`. |
-| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the location. When this field is set, we will only return validation errors if there were any. The response will be empty if no errors were found. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `locations.updateAttributes()`
-
-Update attributes for a given location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.attributeMask` | `string` | No | Required. Attribute name of attributes that you'd like to update. Represented by `attributes/{attribute}`. Updates: All attributes provided in the attributes field that you would like to update must be set in the `attribute_mask`. Attributes set in the above list but not in the `attribute_mask` will be ignored. Deletes: If you'd like to delete certain attributes, they must be specified in the `attribute_mask` with no matching entry in the attributes list. If you'd like to delete all attributes set on a location, you should look up all the applicable attributes for the location and then add them to the `attribute_mask` with an empty attributes field. |
-| `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.delete()`
 
@@ -143,14 +103,6 @@ Deletes a location. If this location cannot be deleted using the API and it is m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the location to delete. |
-
-#### `locations.getAttributes()`
-
-Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
 
 #### `locations.get()`
 
@@ -161,6 +113,14 @@ Returns the specified location as last set by the merchant. It may not reflect u
 | `params.readMask` | `string` | No | Required. Read mask to specify what fields will be returned in the response. |
 | `params.name` | `string` | Yes | Required. The name of the location to fetch. |
 
+#### `locations.getAttributes()`
+
+Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
+
 #### `locations.getGoogleUpdated()`
 
 Returns the specified location as it appears live on Google Maps and Search. This consumer-facing view may have been updated by Google or user-generated content and may differ from the merchant's version. The returned GoogleUpdatedLocation contains masks that indicate which fields differ from the merchant's information.
@@ -169,6 +129,27 @@ Returns the specified location as it appears live on Google Maps and Search. Thi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the location to fetch. |
 | `params.readMask` | `string` | No | Required. Read mask to specify what fields will be returned in the response. |
+
+#### `locations.updateAttributes()`
+
+Update attributes for a given location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
+| `params.attributeMask` | `string` | No | Required. Attribute name of attributes that you'd like to update. Represented by `attributes/{attribute}`. Updates: All attributes provided in the attributes field that you would like to update must be set in the `attribute_mask`. Attributes set in the above list but not in the `attribute_mask` will be ignored. Deletes: If you'd like to delete certain attributes, they must be specified in the `attribute_mask` with no matching entry in the attributes list. If you'd like to delete all attributes set on a location, you should look up all the applicable attributes for the location and then add them to the `attribute_mask` with an empty attributes field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `locations.patch()`
+
+Updates the specified location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Google identifier for this location in the form: `locations/{location_id}`. |
+| `params.updateMask` | `string` | No | Required. The specific fields to update. |
+| `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the location. When this field is set, we will only return validation errors if there were any. The response will be empty if no errors were found. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.attributes`
 
@@ -179,3 +160,22 @@ Retrieves attributes for a location as they appear live on Google Maps and Searc
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
+
+### `chains`
+
+#### `chains.search()`
+
+Searches the chain based on chain name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.chainName` | `string` | No | Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "沃尔玛" |
+| `params.pageSize` | `integer` | No | The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500. |
+
+#### `chains.get()`
+
+Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The chain's resource name, in the format `chains/{chain_place_id}`. |
