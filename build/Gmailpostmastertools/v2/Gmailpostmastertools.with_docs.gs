@@ -19,19 +19,37 @@ class Gmailpostmastertools {
     this._servicePath = '';
 
 
-    this.domainStats = {};
+    this.domains = {};
 
     /**
-     * Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
+     * [Developer Preview](https://developers.google.com/workspace/preview): Deletes a domain from the user's account. Returns NOT_FOUND if the domain is not registered by the user.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The domain to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
+    this.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.domains = {};
+    /**
+     * Retrieves the compliance status for a given domain. Returns PERMISSION_DENIED if you don't have permission to access compliance status for the domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the domain's compliance status to retrieve. Format: `domains/{domain_id}/complianceStatus`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domains.getComplianceStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves detailed information about a domain registered by you. Returns NOT_FOUND if the domain is not registered by you. Domain represents the metadata of a domain that has been registered within the system and linked to a user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Retrieves a list of all domains registered by you, along with their corresponding metadata. The order of domains in the response is unspecified and non-deterministic. Newly registered domains will not necessarily be added to the end of this list.
@@ -45,16 +63,6 @@ class Gmailpostmastertools {
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'GET', apiParams, clientConfig);
 
     /**
-     * [Developer Preview](https://developers.google.com/workspace/preview): Deletes a domain from the user's account. Returns NOT_FOUND if the domain is not registered by the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The domain to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * [Developer Preview](https://developers.google.com/workspace/preview): Verifies a user's ownership of a domain at the DNS level. Note that this is distinct from checking if the user has OWNER status within IRDB.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The domain to verify.
@@ -66,24 +74,14 @@ class Gmailpostmastertools {
     this.domains.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:verify', 'POST', apiParams, clientConfig);
 
     /**
-     * Retrieves detailed information about a domain registered by you. Returns NOT_FOUND if the domain is not registered by you. Domain represents the metadata of a domain that has been registered within the system and linked to a user.
+     * [Developer Preview](https://developers.google.com/workspace/preview): Adds a domain to the user's account. Returns INVALID_ARGUMENT if a domain is not provided. Returns ALREADY_EXISTS if the domain is already registered by the user.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com).
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Retrieves the compliance status for a given domain. Returns PERMISSION_DENIED if you don't have permission to access compliance status for the domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the domain's compliance status to retrieve. Format: `domains/{domain_id}/complianceStatus`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domains.getComplianceStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'POST', apiParams, clientConfig);
 
     /**
      * [Developer Preview](https://developers.google.com/workspace/preview): Gets a verification token used for verifying a user's ownership over a domain.
@@ -96,28 +94,20 @@ class Gmailpostmastertools {
      */
     this.domains.getVerificationToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
+    this.domains.domainStats = {};
+
     /**
-     * [Developer Preview](https://developers.google.com/workspace/preview): Adds a domain to the user's account. Returns INVALID_ARGUMENT if a domain is not provided. Returns ALREADY_EXISTS if the domain is already registered by the user.
+     * Retrieves a list of domain statistics for a given domain and time period. Returns statistics only for dates where data is available. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for the domain.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the stats are queried. Format: domains/{domain}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domains', 'POST', apiParams, clientConfig);
+    this.domains.domainStats.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/domainStats:query', 'POST', apiParams, clientConfig);
 
     this.domains.users = {};
-
-    /**
-     * [Developer Preview](https://developers.google.com/workspace/preview): Creates a user, who has access to a domain. Returns INVALID_ARGUMENT if a user is not provided.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where this user will be created. Format: domains/{domain}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domains.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/users', 'POST', apiParams, clientConfig);
 
     /**
      * [Developer Preview](https://developers.google.com/workspace/preview): Retrieves detailed information about a user that has access to a domain. Returns NOT_FOUND if the user does not exist.
@@ -142,6 +132,16 @@ class Gmailpostmastertools {
     this.domains.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * [Developer Preview](https://developers.google.com/workspace/preview): Deletes a user from a domain. Returns NOT_FOUND if the user does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the user to delete. Format: domains/{domain}/users/{user}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domains.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * [Developer Preview](https://developers.google.com/workspace/preview): Lists the users that have access to a domain.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer users than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200.
@@ -154,27 +154,27 @@ class Gmailpostmastertools {
     this.domains.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/users', 'GET', apiParams, clientConfig);
 
     /**
-     * [Developer Preview](https://developers.google.com/workspace/preview): Deletes a user from a domain. Returns NOT_FOUND if the user does not exist.
+     * [Developer Preview](https://developers.google.com/workspace/preview): Creates a user, who has access to a domain. Returns INVALID_ARGUMENT if a user is not provided.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the user to delete. Format: domains/{domain}/users/{user}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domains.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.domains.domainStats = {};
-
-    /**
-     * Retrieves a list of domain statistics for a given domain and time period. Returns statistics only for dates where data is available. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for the domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the stats are queried. Format: domains/{domain}
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this user will be created. Format: domains/{domain}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.domains.domainStats.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/domainStats:query', 'POST', apiParams, clientConfig);
+    this.domains.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/users', 'POST', apiParams, clientConfig);
+
+    this.domainStats = {};
+
+    /**
+     * Executes a batch of QueryDomainStats requests for multiple domains. Returns PERMISSION_DENIED if you don't have permission to access DomainStats for any of the requested domains.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domainStats.batchQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/domainStats:batchQuery', 'POST', apiParams, clientConfig);
   }
 
 /**
