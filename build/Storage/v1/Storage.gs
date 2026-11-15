@@ -24,9 +24,15 @@ class Storage {
     this.anywhereCaches.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}', 'PATCH', apiParams, clientConfig);
     this.anywhereCaches.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}', 'GET', apiParams, clientConfig);
     this.anywhereCaches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches', 'GET', apiParams, clientConfig);
-    this.anywhereCaches.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}/pause', 'POST', apiParams, clientConfig);
     this.anywhereCaches.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}/resume', 'POST', apiParams, clientConfig);
     this.anywhereCaches.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/anywhereCaches/{anywhereCacheId}/disable', 'POST', apiParams, clientConfig);
+
+    this.rapidCaches = {};
+    this.rapidCaches.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches', 'POST', apiParams, clientConfig);
+    this.rapidCaches.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}', 'PATCH', apiParams, clientConfig);
+    this.rapidCaches.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}', 'GET', apiParams, clientConfig);
+    this.rapidCaches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches', 'GET', apiParams, clientConfig);
+    this.rapidCaches.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/rapidCaches/{rapidCacheId}/disable', 'POST', apiParams, clientConfig);
 
     this.bucketAccessControls = {};
     this.bucketAccessControls.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/acl/{entity}', 'DELETE', apiParams, clientConfig);
@@ -57,9 +63,6 @@ class Storage {
     this.operations.advanceRelocateBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/operations/{operationId}/advanceRelocateBucket', 'POST', apiParams, clientConfig);
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/operations', 'GET', apiParams, clientConfig);
 
-    this.channels = {};
-    this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
-
     this.defaultObjectAccessControls = {};
     this.defaultObjectAccessControls.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/defaultObjectAcl/{entity}', 'DELETE', apiParams, clientConfig);
     this.defaultObjectAccessControls.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/defaultObjectAcl/{entity}', 'GET', apiParams, clientConfig);
@@ -79,6 +82,7 @@ class Storage {
     this.managedFolders = {};
     this.managedFolders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}', 'DELETE', apiParams, clientConfig);
     this.managedFolders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}', 'GET', apiParams, clientConfig);
+    this.managedFolders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}', 'PATCH', apiParams, clientConfig);
     this.managedFolders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders/{managedFolder}/iam', 'GET', apiParams, clientConfig);
     this.managedFolders.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders', 'POST', apiParams, clientConfig);
     this.managedFolders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/managedFolders', 'GET', apiParams, clientConfig);
@@ -119,6 +123,7 @@ class Storage {
     this.objects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}', 'PUT', apiParams, clientConfig);
     this.objects.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/restore', 'POST', apiParams, clientConfig);
     this.objects.bulkRestore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/bulkRestore', 'POST', apiParams, clientConfig);
+    this.objects.viewFullContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/o/{object}/viewFullContext', 'GET', apiParams, clientConfig);
 
     this.projects = {};
 
