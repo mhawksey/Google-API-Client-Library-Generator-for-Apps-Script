@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Places API (New)
- * Documentation URL: https://mapsplatform.google.com/maps-products/#places-section
+ * Documentation URL: https://developers.google.com/maps/documentation/places/web-service
  * Generator: https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/
  * @class
  */
@@ -20,10 +20,10 @@ class Places {
 
 
     this.places = {};
-    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
     this.places.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.places.searchNearby = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchNearby', 'POST', apiParams, clientConfig);
     this.places.searchText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchText', 'POST', apiParams, clientConfig);
+    this.places.searchNearby = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchNearby', 'POST', apiParams, clientConfig);
+    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
 
     this.places.photos = {};
     this.places.photos.getMedia = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
