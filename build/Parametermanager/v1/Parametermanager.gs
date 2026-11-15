@@ -22,23 +22,38 @@ class Parametermanager {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.parameters = {};
-    this.projects.locations.parameters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/parameters', 'POST', apiParams, clientConfig);
     this.projects.locations.parameters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.parameters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.parameters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/parameters', 'GET', apiParams, clientConfig);
     this.projects.locations.parameters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.parameters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/parameters', 'GET', apiParams, clientConfig);
+    this.projects.locations.parameters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/parameters', 'POST', apiParams, clientConfig);
+    this.projects.locations.parameters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.parameters.versions = {};
     this.projects.locations.parameters.versions.render = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:render', 'GET', apiParams, clientConfig);
     this.projects.locations.parameters.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.parameters.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.parameters.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
     this.projects.locations.parameters.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.parameters.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.parameters.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.parameters.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.templates = {};
+    this.projects.locations.templates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.templates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.templates.versions = {};
+    this.projects.locations.templates.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.templates.versions.render = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:render', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.templates.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
   }
 
 /**
