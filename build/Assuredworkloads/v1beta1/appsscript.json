@@ -3,6 +3,8 @@
   "exceptionLogging": "STACKDRIVER",
   "runtimeVersion": "V8",
   "oauthScopes": [
+    "https://www.googleapis.com/auth/assuredworkloads",
+    "https://www.googleapis.com/auth/assuredworkloads.readonly",
     "https://www.googleapis.com/auth/cloud-platform",
     "https://www.googleapis.com/auth/script.external_request"
   ]
