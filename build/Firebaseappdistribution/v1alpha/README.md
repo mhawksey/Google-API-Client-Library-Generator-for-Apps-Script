@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:53:26 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:53:26 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:18:17 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:18:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:13 GMT
 
 
@@ -13,82 +13,6 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 ---
 
 ## API Reference
-
-### `apps`
-
-#### `apps.get()`
-
-Get the app, if it exists
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.appView` | `string` | No | App view. When unset or set to BASIC, returns an App with everything set except for aab_state. When set to FULL, returns an App with aab_state set. |
-
-#### `apps.getJwt()`
-
-Get a JWT token
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-
-### `apps.release_by_hash`
-
-#### `apps.release_by_hash.get()`
-
-GET Release by binary upload hash
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.uploadHash` | `string` | Yes | Required. The hash for the upload |
-
-### `apps.releases`
-
-#### `apps.releases.enable_access()`
-
-Enable access on a release for testers.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.releaseId` | `string` | Yes | Required. Release identifier |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `apps.releases.notes`
-
-#### `apps.releases.notes.create()`
-
-Create release notes on a release.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.releaseId` | `string` | Yes | Required. Release identifier |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `apps.upload_status`
-
-#### `apps.upload_status.get()`
-
-GET Binary upload status by token
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.uploadToken` | `string` | Yes | Required. The token for the upload |
-
-### `apps.testers`
-
-#### `apps.testers.getTesterUdids()`
-
-Get UDIDs of tester iOS devices in a project
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.project` | `string` | No | The name of the project, which is the parent of testers Format: `projects/{project_number}` |
 
 ### `projects`
 
@@ -127,24 +51,23 @@ Updates automated test configuration.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The name of the test configuration resource. Format: `projects/{project_number}/apps/{app}/testConfig` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.name` | `string` | Yes | Identifier. The name of the test configuration resource. Format: `projects/{project_number}/apps/{app}/testConfig` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.releases`
 
 ### `projects.apps.releases.tests`
 
-#### `projects.apps.releases.tests.list()`
+#### `projects.apps.releases.tests.create()`
 
-List results for automated tests run on release.
+Run automated test(s) on release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListReleaseTests` call. Provide this to retrieve the subsequent page. |
-| `params.view` | `string` | No | Optional. The requested view on the returned ReleaseTests. Defaults to the basic view. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of tests to return. The service may return fewer than this value. |
-| `params.parent` | `string` | Yes | Required. The name of the release resource, which is the parent of the tests Format: `projects/{project_number}/apps/{app}/releases/{release}` |
+| `params.releaseTestId` | `string` | No | Optional. The ID to use for the test, which will become the final component of the test's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. If it is not provided one will be automatically generated. |
+| `params.parent` | `string` | Yes | Required. The name of the release resource, which is the parent of the test Format: `projects/{project_number}/apps/{app}/releases/{release}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.releases.tests.get()`
 
@@ -162,17 +85,55 @@ Abort automated test run on release.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the release test resource. Format: `projects/{project_number}/apps/{app}/releases/{release}/tests/{test}` |
 
-#### `projects.apps.releases.tests.create()`
+#### `projects.apps.releases.tests.list()`
 
-Run automated test(s) on release.
+List results for automated tests run on release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the release resource, which is the parent of the test Format: `projects/{project_number}/apps/{app}/releases/{release}` |
-| `params.releaseTestId` | `string` | No | Optional. The ID to use for the test, which will become the final component of the test's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. If it is not provided one will be automatically generated. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListReleaseTests` call. Provide this to retrieve the subsequent page. |
+| `params.view` | `string` | No | Optional. The requested view on the returned ReleaseTests. Defaults to the basic view. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of tests to return. The service may return fewer than this value. |
+| `params.parent` | `string` | Yes | Required. The name of the release resource, which is the parent of the tests Format: `projects/{project_number}/apps/{app}/releases/{release}` |
 
 ### `projects.apps.testCases`
+
+#### `projects.apps.testCases.list()`
+
+List test cases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListTestCases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTestCases` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of test cases to return. The service may return fewer than this value. If unspecified, at most 50 test cases will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent resource from which to list test cases. Format: `projects/{project_number}/apps/{app}` |
+
+#### `projects.apps.testCases.create()`
+
+Create a new test case.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.testCaseId` | `string` | No | Optional. The ID to use for the test case, which will become the final component of the test case's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
+| `params.parent` | `string` | Yes | Required. The parent resource where this test case will be created. Format: `projects/{project_number}/apps/{app}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.apps.testCases.delete()`
+
+Delete a test case.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the test case resource to delete. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` |
+
+#### `projects.apps.testCases.batchUpdate()`
+
+Updates multiple test cases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the test cases being updated. Format: `projects/{project_number}/apps/{app}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.testCases.patch()`
 
@@ -184,25 +145,6 @@ Update a test case.
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the test case is not found, a new test case will be created. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.apps.testCases.batchUpdate()`
-
-Updates multiple test cases.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the test cases being updated. Format: `projects/{project_number}/apps/{app}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.apps.testCases.list()`
-
-List test cases.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListTestCases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTestCases` must match the call that provided the page token. |
-| `params.parent` | `string` | Yes | Required. The parent resource from which to list test cases. Format: `projects/{project_number}/apps/{app}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of test cases to return. The service may return fewer than this value. If unspecified, at most 50 test cases will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
 #### `projects.apps.testCases.get()`
 
 Get a test case.
@@ -210,6 +152,15 @@ Get a test case.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the test case resource to retrieve. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` |
+
+#### `projects.apps.testCases.batchDelete()`
+
+Deletes multiple test cases.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the test cases being deleted. Format: `projects/{project_number}/apps/{app}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.testCases.clearTestCaseCache()`
 
@@ -220,29 +171,78 @@ Clears cached test runs for a specific test case and device(s).
 | `params.testCase` | `string` | Yes | Required. The name of the test case resource for which to clear the cache. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.apps.testCases.create()`
+### `apps`
 
-Create a new test case.
+#### `apps.getJwt()`
+
+Get a JWT token
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where this test case will be created. Format: `projects/{project_number}/apps/{app}` |
-| `params.testCaseId` | `string` | No | Optional. The ID to use for the test case, which will become the final component of the test case's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+
+#### `apps.get()`
+
+Get the app, if it exists
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.appView` | `string` | No | App view. When unset or set to BASIC, returns an App with everything set except for aab_state. When set to FULL, returns an App with aab_state set. |
+
+### `apps.release_by_hash`
+
+#### `apps.release_by_hash.get()`
+
+GET Release by binary upload hash
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.uploadHash` | `string` | Yes | Required. The hash for the upload |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+
+### `apps.testers`
+
+#### `apps.testers.getTesterUdids()`
+
+Get UDIDs of tester iOS devices in a project
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | No | The name of the project, which is the parent of testers Format: `projects/{project_number}` |
+| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+
+### `apps.releases`
+
+#### `apps.releases.enable_access()`
+
+Enable access on a release for testers.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.releaseId` | `string` | Yes | Required. Release identifier |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.apps.testCases.delete()`
+### `apps.releases.notes`
 
-Delete a test case.
+#### `apps.releases.notes.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the test case resource to delete. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` |
-
-#### `projects.apps.testCases.batchDelete()`
-
-Deletes multiple test cases.
+Create release notes on a release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource of the test cases being deleted. Format: `projects/{project_number}/apps/{app}` |
+| `params.releaseId` | `string` | Yes | Required. Release identifier |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `apps.upload_status`
+
+#### `apps.upload_status.get()`
+
+GET Binary upload status by token
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.uploadToken` | `string` | Yes | Required. The token for the upload |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
