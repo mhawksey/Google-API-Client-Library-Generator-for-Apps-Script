@@ -19,29 +19,6 @@ class Translate {
     this._servicePath = 'language/translate/';
 
 
-    this.detections = {};
-
-    /**
-     * Detects the language of text within a request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.detections.detect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'POST', apiParams, clientConfig);
-
-    /**
-     * Detects the language of text within a request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.q - (Required) The input text upon which to perform language detection. Repeat this
-    parameter to perform language detection on multiple text inputs.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
-
     this.translations = {};
 
     /**
@@ -75,6 +52,29 @@ class Translate {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.translations.translate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2', 'POST', apiParams, clientConfig);
+
+    this.detections = {};
+
+    /**
+     * Detects the language of text within a request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.q - (Required) The input text upon which to perform language detection. Repeat this
+    parameter to perform language detection on multiple text inputs.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.detections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'GET', apiParams, clientConfig);
+
+    /**
+     * Detects the language of text within a request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.detections.detect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/detect', 'POST', apiParams, clientConfig);
 
     this.languages = {};
 
