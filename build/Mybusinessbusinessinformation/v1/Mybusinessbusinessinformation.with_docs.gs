@@ -19,91 +19,6 @@ class Mybusinessbusinessinformation {
     this._servicePath = '';
 
 
-    this.attributes = {};
-
-    /**
-     * Returns the list of attributes that would be available for a location with the given primary category and country.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.categoryName - The primary category stable ID to find available attributes. Must be of the format categories/{category_id}.
-     * @param {string} apiParams.languageCode - The BCP 47 code of language to get attribute display names in. If this language is not available, they will be provided in English.
-     * @param {integer} apiParams.pageSize - How many attributes to include per page. Default is 200, minimum is 1.
-     * @param {string} apiParams.pageToken - If specified, the next page of attribute metadata is retrieved.
-     * @param {string} apiParams.parent - Resource name of the location to look up available attributes. If this field is set, category_name, region_code, language_code and show_all are not required and must not be set.
-     * @param {string} apiParams.regionCode - The ISO 3166-1 alpha-2 country code to find available attributes.
-     * @param {boolean} apiParams.showAll - Metadata for all available attributes are returned when this field is set to true, disregarding parent and category_name fields. language_code and region_code are required when show_all is set to true.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/attributes', 'GET', apiParams, clientConfig);
-
-    this.chains = {};
-
-    /**
-     * Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The chain's resource name, in the format `chains/{chain_place_id}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.chains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Searches the chain based on chain name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.chainName - Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "沃尔玛"
-     * @param {integer} apiParams.pageSize - The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.chains.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/chains:search', 'GET', apiParams, clientConfig);
-
-    this.googleLocations = {};
-
-    /**
-     * Search all of the possible locations that are a match to the specified request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.googleLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/googleLocations:search', 'POST', apiParams, clientConfig);
-
-    this.accounts = {};
-
-    this.accounts.locations = {};
-
-    /**
-     * Lists the locations for the specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A filter constraining the locations to return. The response includes only entries that match the filter. If `filter` is empty, then constraints are applied and all locations (paginated) are retrieved for the requested account. For more information about valid fields and example usage, see [Work with Location Data Guide](https://developers.google.com/my-business/content/location-data#filter_results_when_you_list_locations).
-     * @param {string} apiParams.orderBy - Optional. Sorting order for the request. Multiple fields should be comma-separated, following SQL syntax. The default sorting order is ascending. To specify descending order, a suffix " desc" should be added. Valid fields to order_by are title and store_code. For example: "title, store_code desc" or "title" or "store_code desc"
-     * @param {integer} apiParams.pageSize - Optional. How many locations to fetch per page. Default value is 10 if not set. Minimum is 1, and maximum page size is 100.
-     * @param {string} apiParams.pageToken - Optional. If specified, it fetches the next `page` of locations. The page token is returned by previous calls to `ListLocations` when there were more locations than could fit in the requested page size.
-     * @param {string} apiParams.parent - (Required) Required. The name of the account to fetch locations from. If the parent Account is of AccountType PERSONAL, only Locations that are directly owned by the Account are returned, otherwise it will return all accessible locations from the Account, either directly or indirectly.
-     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Location that will be owned by the logged in user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the account in which to create this location.
-     * @param {string} apiParams.requestId - Optional. A unique request ID for the server to detect duplicated requests. We recommend using UUIDs. Max length is 50 characters.
-     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually creating the location.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.locations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'POST', apiParams, clientConfig);
-
     this.categories = {};
 
     /**
@@ -134,20 +49,111 @@ class Mybusinessbusinessinformation {
      */
     this.categories.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/categories:batchGet', 'GET', apiParams, clientConfig);
 
-    this.locations = {};
+    this.googleLocations = {};
 
     /**
-     * Updates the specified location.
+     * Search all of the possible locations that are a match to the specified request.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Google identifier for this location in the form: `locations/{location_id}`.
-     * @param {string} apiParams.updateMask - Required. The specific fields to update.
-     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually updating the location. When this field is set, we will only return validation errors if there were any. The response will be empty if no errors were found.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.locations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.googleLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/googleLocations:search', 'POST', apiParams, clientConfig);
+
+    this.attributes = {};
+
+    /**
+     * Returns the list of attributes that would be available for a location with the given primary category and country.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.categoryName - Optional. The primary category stable ID to find available attributes. Must be of the format `categories/{category_id}` (e.g., `categories/gcid:restaurant`). Required if `parent` is not set and `show_all` is false.
+     * @param {string} apiParams.languageCode - Optional. The BCP 47 code of language to get attribute display names in. If this language is not available, they will be provided in English.
+     * @param {integer} apiParams.pageSize - How many attributes to include per page. Default is 200, minimum is 1.
+     * @param {string} apiParams.pageToken - If specified, the next page of attribute metadata is retrieved.
+     * @param {string} apiParams.parent - Optional. Resource name of the location to look up available attributes. If this field is set, `category_name`, `region_code`, `language_code` and `show_all` are not required and must not be set. Format: `locations/{location_id}` (e.g., `locations/1234567890`).
+     * @param {string} apiParams.regionCode - Optional. The ISO 3166-1 alpha-2 country code to find available attributes. Required if `parent` is not set.
+     * @param {boolean} apiParams.showAll - Optional. If set to true, metadata for all available attributes are returned, disregarding `parent` and `category_name` fields. `language_code` and `region_code` are required when `show_all` is set to true.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/attributes', 'GET', apiParams, clientConfig);
+
+    this.accounts = {};
+
+    this.accounts.locations = {};
+
+    /**
+     * Creates a new Location that will be owned by the logged in user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The name of the account in which to create this location.
+     * @param {string} apiParams.requestId - Optional. A unique request ID for the server to detect duplicated requests. We recommend using UUIDs. Max length is 50 characters.
+     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually creating the location.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.locations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the locations for the specified account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter constraining the locations to return. The response includes only entries that match the filter. If `filter` is empty, then constraints are applied and all locations (paginated) are retrieved for the requested account. For more information about valid fields and example usage, see [Work with Location Data Guide](https://developers.google.com/my-business/content/location-data#filter_results_when_you_list_locations).
+     * @param {string} apiParams.orderBy - Optional. Sorting order for the request. Multiple fields should be comma-separated, following SQL syntax. The default sorting order is ascending. To specify descending order, a suffix " desc" should be added. Valid fields to order_by are title and store_code. For example: "title, store_code desc" or "title" or "store_code desc"
+     * @param {integer} apiParams.pageSize - Optional. How many locations to fetch per page. Default value is 10 if not set. Minimum is 1, and maximum page size is 100.
+     * @param {string} apiParams.pageToken - Optional. If specified, it fetches the next `page` of locations. The page token is returned by previous calls to `ListLocations` when there were more locations than could fit in the requested page size.
+     * @param {string} apiParams.parent - (Required) Required. The name of the account to fetch locations from. * **Specific Account ID**: If the account is of type `AccountType.PERSONAL`, the response returns only locations directly owned by that account. For all other types (e.g., `AccountType.LOCATION_GROUP`), it returns all accessible locations. * **Wildcard (`-`)**: Using `accounts/-` identifies the authenticated user. This scope defaults to `AccountType.PERSONAL` but includes both directly and indirectly owned locations (e.g., those accessible via member groups).
+     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'GET', apiParams, clientConfig);
+
+    this.locations = {};
+
+    /**
+     * Deletes a location. If this location cannot be deleted using the API and it is marked so in the `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business Profile](https://business.google.com/manage/) website.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the location to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns the specified location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the location to fetch.
+     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form of `locations/{location_id}/attributes`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.getAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns the specified location as it appears live on Google Maps and Search. This consumer-facing view may have been updated by Google or user-generated content and may differ from the merchant's version. The returned GoogleUpdatedLocation contains masks that indicate which fields differ from the merchant's information.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the location to fetch.
+     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
 
     /**
      * Update attributes for a given location.
@@ -162,46 +168,17 @@ class Mybusinessbusinessinformation {
     this.locations.updateAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a location. If this location cannot be deleted using the API and it is marked so in the `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business Profile](https://business.google.com/manage/) website.
+     * Updates the specified location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the location to delete.
+     * @param {string} apiParams.name - (Required) Identifier. Google identifier for this location in the form: `locations/{location_id}`.
+     * @param {string} apiParams.updateMask - Required. The specific fields to update.
+     * @param {boolean} apiParams.validateOnly - Optional. If true, the request is validated without actually updating the location. When this field is set, we will only return validation errors if there were any. The response will be empty if no errors were found.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.locations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Retrieves attributes for a location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form of `locations/{location_id}/attributes`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.getAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the specified location as last set by the merchant. It may not reflect updates from Google or user-generated content that are live on Google Maps.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the location to fetch.
-     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the specified location as it appears live on Google Maps and Search. This consumer-facing view may have been updated by Google or user-generated content and may differ from the merchant's version. The returned GoogleUpdatedLocation contains masks that indicate which fields differ from the merchant's information.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the location to fetch.
-     * @param {string} apiParams.readMask - Required. Read mask to specify what fields will be returned in the response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
+    this.locations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.locations.attributes = {};
 
@@ -214,6 +191,29 @@ class Mybusinessbusinessinformation {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.attributes.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
+
+    this.chains = {};
+
+    /**
+     * Searches the chain based on chain name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.chainName - Required. Search for a chain by its name. Exact/partial/fuzzy/related queries are supported. Examples: "walmart", "wal-mart", "walmmmart", "沃尔玛"
+     * @param {integer} apiParams.pageSize - The maximum number of matched chains to return from this query. The default is 10. The maximum possible value is 500.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.chains.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/chains:search', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the specified chain. Returns `NOT_FOUND` if the chain does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The chain's resource name, in the format `chains/{chain_place_id}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.chains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
