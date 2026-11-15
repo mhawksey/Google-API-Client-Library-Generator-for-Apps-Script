@@ -19,53 +19,19 @@ class Drivelabels {
     this._servicePath = '';
 
 
-    this.limits = {};
-
-    /**
-     * Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum length of the label title.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - Required. Label revision resource name must be: "limits/label".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.limits.getLabel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/limits/label', 'GET', apiParams, clientConfig);
-
     this.labels = {};
 
     /**
-     * Disable a published label. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label will result in a new disabled published revision based on the current published revision. If there's a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
+     * Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels may be deleted.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Label resource name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:disable', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a single label by applying a set of update requests resulting in a new draft revision. For more information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label). The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive items.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the label to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.delta = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:delta', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent label resource name.
      * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.writeControl.requiredRevisionId - The revision ID of the label that the write request will be applied to. If this isn't the latest revision of the label, the request will not be processed and will return a 400 Bad Request error.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.labels.updatePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'PATCH', apiParams, clientConfig);
+    this.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * List labels. For more information, see [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
@@ -83,6 +49,62 @@ class Drivelabels {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/labels', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the label to update. The resource name of the label to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.updateLabelEnabledAppSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelEnabledAppSettings', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent label resource name.
+     * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.updatePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Publish all draft changes to the label. Once published, the label may not return to its draft state. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label will be rejected. For example, the following changes to a label will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot reject something that was previously accepted. * Reducing the maximum entries.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Label resource name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:publish', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a single label by applying a set of update requests resulting in a new draft revision. For more information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label). The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive items.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the label to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.delta = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:delta', 'POST', apiParams, clientConfig);
+
+    /**
+     * Enable a disabled label and restore it to its published state. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This will result in a new published revision based on the current disabled published revision. If there's an existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Label resource name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:enable', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a label. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label).
@@ -110,51 +132,6 @@ class Drivelabels {
     this.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Enable a disabled label and restore it to its published state. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This will result in a new published revision based on the current disabled published revision. If there's an existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Label resource name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:enable', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the label to update. The resource name of the label to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.updateLabelEnabledAppSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelEnabledAppSettings', 'POST', apiParams, clientConfig);
-
-    /**
-     * Publish all draft changes to the label. Once published, the label may not return to its draft state. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label will be rejected. For example, the following changes to a label will be rejected after the label is published: * The label cannot be directly deleted. It must be disabled first, then deleted. * `Field.FieldType` cannot be changed. * Changes to field validation options cannot reject something that was previously accepted. * Reducing the maximum entries.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Label resource name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:publish', 'POST', apiParams, clientConfig);
-
-    /**
-     * Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels may be deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Label resource name.
-     * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
-     * @param {string} apiParams.writeControl.requiredRevisionId - The revision ID of the label that the write request will be applied to. If this isn't the latest revision of the label, the request will not be processed and will return a 400 Bad Request error.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take effect immediately.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the label to update.
@@ -164,6 +141,31 @@ class Drivelabels {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.labels.updateLabelCopyMode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:updateLabelCopyMode', 'POST', apiParams, clientConfig);
+
+    /**
+     * Disable a published label. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label will result in a new disabled published revision based on the current published revision. If there's a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Label resource name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:disable', 'POST', apiParams, clientConfig);
+
+    this.labels.locks = {};
+
+    /**
+     * Lists the label locks on a label.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Maximum number of locks to return per page. Default: 100. Max: 200.
+     * @param {string} apiParams.pageToken - The token of the page to return.
+     * @param {string} apiParams.parent - (Required) Required. Label on which locks are applied. Format: `labels/{label}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.locks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/locks', 'GET', apiParams, clientConfig);
 
     this.labels.revisions = {};
 
@@ -182,15 +184,15 @@ class Drivelabels {
     this.labels.revisions.permissions = {};
 
     /**
-     * Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
+     * Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Label permission resource name.
-     * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
+     * @param {string} apiParams.parent - (Required) Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.labels.revisions.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.labels.revisions.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
@@ -204,15 +206,16 @@ class Drivelabels {
     this.labels.revisions.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
+     * Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field.
+     * @param {string} apiParams.parent - (Required) Required. The parent label resource name on the label permission is created. Format: `labels/{label}`.
+     * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.labels.revisions.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
+    this.labels.revisions.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'POST', apiParams, clientConfig);
 
     /**
      * Lists a label's permissions.
@@ -228,16 +231,15 @@ class Drivelabels {
     this.labels.revisions.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
+     * Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent label resource name on the label permission is created. Format: `labels/{label}`.
+     * @param {string} apiParams.name - (Required) Required. Label permission resource name.
      * @param {boolean} apiParams.useAdminAccess - Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.labels.revisions.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions', 'POST', apiParams, clientConfig);
+    this.labels.revisions.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.labels.revisions.locks = {};
 
@@ -253,32 +255,7 @@ class Drivelabels {
      */
     this.labels.revisions.locks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/locks', 'GET', apiParams, clientConfig);
 
-    this.labels.locks = {};
-
-    /**
-     * Lists the label locks on a label.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Maximum number of locks to return per page. Default: 100. Max: 200.
-     * @param {string} apiParams.pageToken - The token of the page to return.
-     * @param {string} apiParams.parent - (Required) Required. Label on which locks are applied. Format: `labels/{label}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.locks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/locks', 'GET', apiParams, clientConfig);
-
     this.labels.permissions = {};
-
-    /**
-     * Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.labels.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
@@ -326,6 +303,29 @@ class Drivelabels {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.labels.permissions.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchUpdate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.labels.permissions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/permissions:batchDelete', 'POST', apiParams, clientConfig);
+
+    this.limits = {};
+
+    /**
+     * Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum length of the label title.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - Required. Label revision resource name must be: "limits/label".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.limits.getLabel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/limits/label', 'GET', apiParams, clientConfig);
 
     this.users = {};
 
