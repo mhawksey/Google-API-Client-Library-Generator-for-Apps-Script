@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Jun 2026 23:44:37 GMT
-- **Last Modified:** Tue, 30 Jun 2026 23:44:37 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:00:36 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:00:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:36 GMT
 
 
@@ -16,24 +16,6 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1be
 
 ### `projects`
 
-#### `projects.allocateIds()`
-
-Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.reserveIds()`
-
-Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.lookup()`
 
 Looks up entities by key.
@@ -43,9 +25,9 @@ Looks up entities by key.
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.commit()`
+#### `projects.reserveIds()`
 
-Commits a transaction, optionally creating, deleting or modifying some entities.
+Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -70,6 +52,15 @@ Rolls back a transaction.
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.beginTransaction()`
+
+Begins a new transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.runAggregationQuery()`
 
 Runs an aggregation query.
@@ -79,9 +70,18 @@ Runs an aggregation query.
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.beginTransaction()`
+#### `projects.commit()`
 
-Begins a new transaction.
+Commits a transaction, optionally creating, deleting or modifying some entities.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.allocateIds()`
+
+Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
