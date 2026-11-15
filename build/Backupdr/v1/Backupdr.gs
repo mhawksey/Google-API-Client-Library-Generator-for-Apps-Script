@@ -33,85 +33,131 @@ class Backupdr {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.backupPlanAssociations = {};
-    this.projects.locations.backupPlanAssociations.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations:fetchForResourceType', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backupPlanAssociations.triggerBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:triggerBackup', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.restoreVerificationPlans = {};
+    this.projects.locations.restoreVerificationPlans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/restoreVerificationPlans', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/restoreVerificationPlans', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.restoreVerificationPlans.associations = {};
+    this.projects.locations.restoreVerificationPlans.associations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.associations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.associations.triggerRestoreVerification = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:triggerRestoreVerification', 'POST', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.associations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/associations', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreVerificationPlans.associations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/associations', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.backupPlans = {};
+    this.projects.locations.backupPlans.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.backupPlans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backupPlans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlans', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlans.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlans', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.backupPlans.revisions = {};
+    this.projects.locations.backupPlans.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlans.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.backupVaults = {};
+    this.projects.locations.backupVaults.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backupVaults.fetchUsable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults:fetchUsable', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.backupVaults.dataSources = {};
+    this.projects.locations.backupVaults.dataSources.abandonBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:abandonBackup', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSources', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.finalizeBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:finalizeBackup', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:remove', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.setInternalStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:setInternalStatus', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAccessToken', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.initiateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:initiateBackup', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.backupVaults.dataSources.backups = {};
+    this.projects.locations.backupVaults.dataSources.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.backups.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.backups.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups:fetchForResourceType', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupVaults.dataSources.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.managementServers = {};
+    this.projects.locations.managementServers.msComplianceMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:msComplianceMetadata', 'POST', apiParams, clientConfig);
+    this.projects.locations.managementServers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.managementServers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementServers', 'GET', apiParams, clientConfig);
+    this.projects.locations.managementServers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.managementServers.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.managementServers.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.managementServers.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.managementServers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementServers', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.serviceConfig = {};
+    this.projects.locations.serviceConfig.initialize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:initialize', 'POST', apiParams, clientConfig);
 
     this.projects.locations.dataSourceReferences = {};
-    this.projects.locations.dataSourceReferences.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSourceReferences:fetchForResourceType', 'GET', apiParams, clientConfig);
     this.projects.locations.dataSourceReferences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataSourceReferences.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSourceReferences:fetchForResourceType', 'GET', apiParams, clientConfig);
     this.projects.locations.dataSourceReferences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSourceReferences', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.restoreTemplates = {};
+    this.projects.locations.restoreTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/restoreTemplates', 'POST', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/restoreTemplates', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.restoreTemplates.executions = {};
+    this.projects.locations.restoreTemplates.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'GET', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.executions.triggerRestoreCleanup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:triggerRestoreCleanup', 'POST', apiParams, clientConfig);
+    this.projects.locations.restoreTemplates.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.backupPlanAssociations = {};
+    this.projects.locations.backupPlanAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations:fetchForResourceType', 'GET', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlanAssociations', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.triggerBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:triggerBackup', 'POST', apiParams, clientConfig);
+    this.projects.locations.backupPlanAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.trial = {};
     this.projects.locations.trial.end = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trial:end', 'POST', apiParams, clientConfig);
     this.projects.locations.trial.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trial:subscribe', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.managementServers = {};
-    this.projects.locations.managementServers.msComplianceMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:msComplianceMetadata', 'POST', apiParams, clientConfig);
-    this.projects.locations.managementServers.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.managementServers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.managementServers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementServers', 'GET', apiParams, clientConfig);
-    this.projects.locations.managementServers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.managementServers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementServers', 'POST', apiParams, clientConfig);
-    this.projects.locations.managementServers.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.managementServers.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.appliedAutoProtectionPolicies = {};
+    this.projects.locations.appliedAutoProtectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appliedAutoProtectionPolicies', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.serviceConfig = {};
-    this.projects.locations.serviceConfig.initialize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:initialize', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies = {};
+    this.projects.locations.autoProtectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoProtectionPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoProtectionPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.backupVaults = {};
-    this.projects.locations.backupVaults.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backupVaults.fetchUsable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults:fetchUsable', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.backupVaults.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupVaults', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings = {};
+    this.projects.locations.autoProtectionPolicies.bindings.initiateDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:initiateDelete', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bindings', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.backupVaults.dataSources = {};
-    this.projects.locations.backupVaults.dataSources.setInternalStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:setInternalStatus', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:remove', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSources', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.initiateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:initiateBackup', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.abandonBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:abandonBackup', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.finalizeBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+dataSource}:finalizeBackup', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAccessToken', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.backupVaults.dataSources.backups = {};
-    this.projects.locations.backupVaults.dataSources.backups.fetchForResourceType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups:fetchForResourceType', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.backups.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restore', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupVaults.dataSources.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings.matchingResources = {};
+    this.projects.locations.autoProtectionPolicies.bindings.matchingResources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoProtectionPolicies.bindings.matchingResources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/matchingResources', 'GET', apiParams, clientConfig);
 
     this.projects.locations.resourceBackupConfigs = {};
     this.projects.locations.resourceBackupConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/resourceBackupConfigs', 'GET', apiParams, clientConfig);
     this.projects.locations.resourceBackupConfigs.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/resourceBackupConfigs:fetch', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.backupPlans = {};
-    this.projects.locations.backupPlans.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backupPlans.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlans', 'POST', apiParams, clientConfig);
-    this.projects.locations.backupPlans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupPlans', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.backupPlans.revisions = {};
-    this.projects.locations.backupPlans.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backupPlans.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
 
     this.folders = {};
 
