@@ -4,8 +4,8 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 
 ## Metadata
 
-- **Last Checked:** Wed, 01 Jul 2026 00:02:27 GMT
-- **Last Modified:** Wed, 01 Jul 2026 00:02:27 GMT
+- **Last Checked:** Sun, 15 Nov 2026 16:27:57 GMT
+- **Last Modified:** Sun, 15 Nov 2026 16:27:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:09 GMT
 
 
@@ -30,18 +30,26 @@ Returns the trust boundary info for a given workforce pool.
 
 ### `projects.serviceAccounts`
 
-#### `projects.serviceAccounts.generateAccessToken()`
+#### `projects.serviceAccounts.signJwt()`
 
-Generates an OAuth 2.0 access token for a service account.
+Signs a JWT using a service account's system-managed private key.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.serviceAccounts.signJwt()`
+#### `projects.serviceAccounts.getAllowedLocations()`
 
-Signs a JWT using a service account's system-managed private key.
+Returns the trust boundary info for a given service account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}` |
+
+#### `projects.serviceAccounts.generateAccessToken()`
+
+Generates an OAuth 2.0 access token for a service account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -65,14 +73,6 @@ Signs a blob using a service account's system-managed private key.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.serviceAccounts.getAllowedLocations()`
-
-Returns the trust boundary info for a given service account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of service account. Format: `projects/-/serviceAccounts/{service_account_email}` |
 
 ### `projects.locations`
 
